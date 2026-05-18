@@ -1,0 +1,271 @@
+{
+  "id": 243068557,
+  "name": "列入经营异常名录信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "f1Mey-ThxL85WF4SDvcJ5",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口可用于获取企业相关公告信息及列入、移除情况",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/exceptionList",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582492584,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "organizationCode": {
+                "type": "string",
+                "title": "组织代码"
+              },
+              "registerCode": {
+                "type": "string",
+                "title": "注册号"
+              },
+              "name": {
+                "type": "string",
+                "title": "企业名称"
+              },
+              "creditNo": {
+                "type": "string",
+                "title": "统一社会信用代码"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "enterDate": {
+                      "type": "string",
+                      "title": "列入日期"
+                    },
+                    "dropDate": {
+                      "type": "string",
+                      "title": "移除日期"
+                    },
+                    "decisionOrgan": {
+                      "type": "string",
+                      "title": "决定机关"
+                    },
+                    "enterReason": {
+                      "type": "string",
+                      "title": "列入原因类型"
+                    },
+                    "eid": {
+                      "type": "string",
+                      "title": "企业id"
+                    },
+                    "enterDropReason": {
+                      "type": "string",
+                      "title": "列入移除原因"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "enterDate",
+                    "enterReason",
+                    "enterDropReason",
+                    "dropDate",
+                    "decisionOrgan",
+                    "eid"
+                  ]
+                }
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "organizationCode",
+              "registerCode",
+              "name",
+              "creditNo",
+              "items"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "organizationCode",
+              "registerCode",
+              "name",
+              "creditNo",
+              "items"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582492584,
+      "data": "{\n    \"reqId\": \"5bcbf51d8ae140e99880bd691604fe4b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"creditCode\": \"911**********90\",\n        \"organizationCode\": \"ma******r9\",\n        \"entityName\": \"*******信息技术有限公司\",\n        \"abnormalOperation\": [\n            {\n                \"enrolIdtfOrg\": \"\",\n                \"enrolNmLstOrigofincd\": \"\",\n                \"emgrtnNmLstDt\": \"\",\n                \"enrolNmLstDt\": \"\",\n                \"emgrtnNmLstOrigofincd\": \"\"\n            }\n        ],\n        \"registerCode\": \"110*******0840\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454749939
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582492584,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454749940
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 28,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T02:00:55.000Z",
+  "updatedAt": "2025-02-20T08:49:55.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582492584"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

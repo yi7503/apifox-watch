@@ -1,0 +1,17 @@
+{
+  "id": 2169150,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "\n## 产品概述\n   支持获取当前客户当期在电子税务局需要申报的税种条目，来源电子税务局应申报清册或者根据电子税务局税费种认定、财务会计制度备案、未申报查询组合生成。\n   仅返回条目，无状态，可用于单独获取税局应申报税种功能需求。\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372897/image-preview)\n## 接口列表\n第一步：发起获取申报条目任务\n\n| 接口名称|接口地址  |接口说明|\n| --- | --- |--- |\n|发起获取申报条目任务  | /v2/tax/qys/loadTaxItemTask |该接口用于发起获取清册条目信息\n\n第二步：根据发起获取申报条目任务调取成功后的taskID调用查询申报条目任务，发起获取申报条目任务未成功无法发起。\n| 接口名称 | 接口地址 | 接口说明|\n| --- | --- | --- |\n| 查询申报条目任务 | /v2/tax/qys/queryTaskTaxInfo |该接口返回税局应申报清册\n",
+  "folderId": 13384682,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-10T10:00:34.000Z",
+  "updatedAt": "2026-01-22T07:27:05.000Z",
+  "creatorId": 1441586,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

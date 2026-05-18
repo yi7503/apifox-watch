@@ -1,0 +1,17 @@
+{
+  "id": 7913513,
+  "name": "税局添加办税小号操作指引",
+  "sidebarTitle": "",
+  "content": "***说明：***\n1. 全国办税小号仍然可以添加，可通过各地电子税务局添加。\n2. 在任意省份税局完成小号的验证，验证后的状态其他区域会更新同步，推荐使用浙江电子税局自然人登录操作添加。\n\n\n***操作步骤：***\n**第1步：提前下载 国家网络身份证APP**\n<Icon icon=\"material-outline-room\"/>请使用图片的链接跳转下载，其他下载区域存在不稳定情况；\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/609159/image-preview)\n\n\n:::info[]\n**申报网证指引：**\nhttps://etax.shanghai.chinatax.gov.cn/wszx-web/videos/gjwlsf.pdf\n:::\n \n**第2步：通过该功能添加办税小号**\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/606863/image-preview)\n\n**第3步：输入办税小号和小号验证码**\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/606864/image-preview)\n\n**第4步：通过国家网络身份证APP扫码，完成人脸认证**\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/606865/image-preview)\n",
+  "folderId": 17492639,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-24T02:30:32.000Z",
+  "updatedAt": "2026-01-07T06:05:40.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -1,0 +1,198 @@
+{
+  "id": 372509777,
+  "name": "职工缴费记录打印",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "QqAlGveFmQmjyJYs2LxTg",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "打印职工缴费记录明细",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/printEmployeePaymentRecord",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "xm": {
+          "type": "string",
+          "description": "姓名"
+        },
+        "zjlx": {
+          "type": "string",
+          "description": "证件类型代码（详见 社保附录-证件类型代码）"
+        },
+        "zjhm": {
+          "type": "string",
+          "description": "证件号码"
+        },
+        "fkssqq": {
+          "type": "string",
+          "description": "费款所属期起，格式：YYYYMM"
+        },
+        "fkssqz": {
+          "type": "string",
+          "description": "费款所属期止，格式：YYYYMM"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "xm",
+        "zjlx",
+        "zjhm",
+        "fkssqq",
+        "fkssqz",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "xm",
+        "zjlx",
+        "zjhm",
+        "fkssqq",
+        "fkssqz"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 807958896,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/217274553"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 807958896,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"zgjfjllb\": [\n            {\n                \"zszm\": \"\",\n                \"dwbh\": \"34200007000000003\",\n                \"sbjbjg\": \"XXX本级企业(人社征缴中心)\",\n                \"sjje\": 22.5,\n                \"zsxm\": \"失业保险费\",\n                \"rybh\": \"34200007000000003\",\n                \"dzsphm\": \"34200007000000003\",\n                \"fkssqqz\": \"2025.10－2025.10\",\n                \"swzsjg\": \"国家税务总局XXX税务局\",\n                \"rkrq\": \"2025-10-20\",\n                \"zspm\": \"失业保险(个人缴纳)\"\n            }\n        ],\n        \"zgjfjlpdf\": \"http://qixiangyun.com/...\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 723854410
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 70383880,
+  "ordering": 37,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-11-06T03:39:15.000Z",
+  "updatedAt": "2025-12-02T03:12:57.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

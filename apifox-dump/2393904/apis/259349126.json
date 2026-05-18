@@ -1,0 +1,236 @@
+{
+  "id": 259349126,
+  "name": "扣除名单查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "WNDt1cerZ0fyV8d-BwcFc",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/deductionAmount/queryPreDeduct",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssnd": {
+          "type": "string",
+          "title": "税款所属年度",
+          "description": "yyyy"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssnd"
+      ],
+      "required": [
+        "aggOrgId",
+        "skssnd",
+        "accountId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"accountId\": \"4552900726228096\",\r\n\t\"skssnd\": \"2024\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 611218213,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "description": "数据",
+            "$ref": "#/definitions/145588633"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 611218213,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"nsrsbh\": \"税号\",\n        \"skssnd\": \"税款所属年度\",\n        \"kczglb\": [\n            {\n                \"xm\": \"姓名\",\n                \"zzlx\": \"证件类型\",\n                \"zzhm\": \"证件号码\",\n                \"gj\": \"国籍\",\n                \"kcbs\": \"扣除标识\",\n                \"sfqrkc\": \"Y\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"reqId\": \"3ab540a99471438cbc24686380a2e431\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 476914851
+    },
+    {
+      "name": "异常示例",
+      "responseId": 611218213,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 476914852
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 49973029,
+  "ordering": 96,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-02-11T02:56:37.000Z",
+  "updatedAt": "2026-03-07T02:19:22.000Z",
+  "creatorId": 1452584,
+  "editorId": 1910680,
+  "creatorUserId": 1452584,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

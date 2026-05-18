@@ -1,0 +1,224 @@
+{
+  "id": 185415909,
+  "name": "校验税务APP是否可快速登录",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n该接口用于检查APP账户是否可以快速登录（是否需要发送短信）：支持区域[APP登录支持区域](doc-4551922)\n 敏感信息支持加密，详见body参数说明，加密参见：[加密说明](doc-3774763)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/app/checkAppCache",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "四川传值5100，青岛为3702。"
+        },
+        "gryhm": {
+          "type": "string",
+          "title": "用户名",
+          "description": "可为：居民身份证/手机号/用户名。"
+        },
+        "gryhmm": {
+          "type": "string",
+          "title": "个人用户密码",
+          "description": "该值必须加密"
+        },
+        "sflx": {
+          "type": "string",
+          "title": "身份类型",
+          "description": "参见附录身份类型"
+        },
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码"
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sflx",
+        "sjhm"
+      ],
+      "required": [
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sflx"
+      ]
+    },
+    "examples": [
+      {
+        "value": "\r\n{\r\n    \"nsrsbh\":\"9151xxxxxxxxxxxxxx\",\r\n    \"areaCode\":\"5100\",\r\n    \"gryhm\":\"131xxxxxxxx\",\r\n    \"grymm\":\"xxxxxx\",\r\n    \"sflx\":\"BSY\",\r\n    \"sjhm\":\"131xxxxxxxx\"\r\n}\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "SMZY1iTN7W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "Zt75lxLyjs",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "ZAjVwbTLEP",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 473278162,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "返回结果",
+                "description": "true为可以；false不可以"
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "错误码",
+                "description": "2000：接口成功；4xxx;登录信息有误；5xxx:系统错误"
+              },
+              "success": {
+                "description": "接口是否成功（是否发生业务异常）",
+                "type": "boolean",
+                "title": "是否成功标记"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              }
+            },
+            "required": [
+              "code",
+              "success"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 473278162,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": true,\n    \"success\": true,\n    \"message\": \"可以快速登录\",\n    \"reqId\": \"a672fd8f966a49008ec1476b9851f932\"\n}",
+      "id": 413934802
+    },
+    {
+      "name": "异常示例",
+      "responseId": 473278162,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": true,\n    \"message\": \"参数gryhm不能为空！\",\n    \"reqId\": \"8b2991d73f924e85994670564975aa42\"\n}",
+      "id": 413934803
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841717,
+  "ordering": 57,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-06-20T08:00:00.000Z",
+  "updatedAt": "2024-07-12T02:13:47.000Z",
+  "creatorId": 1442097,
+  "editorId": 493984,
+  "creatorUserId": 1442097,
+  "editorUserId": 493984,
+  "responseChildren": [
+    "BLANK.473278162"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,410 @@
+{
+  "id": 325670325,
+  "name": "全年一次性奖金个税计算",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "Hj6Ne3D0QfYCaKGlfncpN",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是异步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/calculateTax/taxPlanning",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "maxLength": 64,
+          "title": "企业ID",
+          "description": "维护企业信息接口返回的aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "maxLength": 64,
+          "title": "账户ID",
+          "description": "传入accountId就免传登录信息"
+        },
+        "skssq": {
+          "type": "string",
+          "maxLength": 64,
+          "title": "所属期",
+          "description": "格式YYYYMM年月",
+          "pattern": "^\\d{6}$"
+        },
+        "gschlb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "maxLength": 64,
+                "title": "姓名"
+              },
+              "zzlx": {
+                "type": "string",
+                "maxLength": 64,
+                "title": "证件类型"
+              },
+              "zzhm": {
+                "type": "string",
+                "maxLength": 64,
+                "title": "证件号码"
+              },
+              "sre": {
+                "type": "number",
+                "title": "本期收入额"
+              },
+              "mssd": {
+                "type": "number",
+                "title": "免税收入",
+                "default": 0,
+                "description": "无则填0（填写数不得大于当期收入额）"
+              },
+              "jbylaobxf": {
+                "type": "number",
+                "title": "基本养老保险",
+                "default": 0
+              },
+              "jbylbxf": {
+                "type": "number",
+                "title": "基本医疗保险",
+                "default": 0
+              },
+              "sybxf": {
+                "type": "number",
+                "title": "失业保险",
+                "default": 0
+              },
+              "zfgjj": {
+                "type": "number",
+                "title": "住房公积金",
+                "default": 0
+              },
+              "nj": {
+                "type": "number",
+                "title": "年金",
+                "default": 0
+              },
+              "syjkbx": {
+                "type": "number",
+                "title": "商业健康保险",
+                "default": 0
+              },
+              "syylbx": {
+                "type": "number",
+                "title": "税延养老保险",
+                "default": 0
+              },
+              "qt": {
+                "type": "number",
+                "title": "其他",
+                "default": 0
+              },
+              "zykfjze": {
+                "type": "number",
+                "title": "准予扣除的捐赠额",
+                "default": 0,
+                "description": "按照税法以及相关法规、政策规定，可以在税前扣除的捐赠额"
+              },
+              "jmse": {
+                "type": "number",
+                "title": "减免税额",
+                "default": 0
+              },
+              "ljsre": {
+                "type": "number",
+                "title": "预计全年累计收入额",
+                "description": "不包含全年一次性奖金"
+              },
+              "qnycxjjsre": {
+                "type": "number",
+                "title": "全年一次性奖金收入额"
+              },
+              "ljmssd": {
+                "type": "number",
+                "title": "预计全年累计免税收入",
+                "default": 0
+              },
+              "ljzxkce": {
+                "type": "number",
+                "title": "预计全年累计专项扣除",
+                "default": 0
+              },
+              "ljqtkce": {
+                "type": "number",
+                "title": "预计全年累计其他扣除",
+                "default": 0
+              },
+              "ljzykcjze": {
+                "type": "number",
+                "title": "预计全年累计准予扣除的捐赠额",
+                "default": 0
+              },
+              "ljjmse": {
+                "type": "number",
+                "title": "预计全年累计减免税额",
+                "default": 0
+              }
+            },
+            "required": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "sre",
+              "ljsre",
+              "qnycxjjsre"
+            ],
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "sre",
+              "mssd",
+              "jbylaobxf",
+              "jbylbxf",
+              "sybxf",
+              "zfgjj",
+              "nj",
+              "syjkbx",
+              "syylbx",
+              "qt",
+              "zykfjze",
+              "jmse",
+              "ljsre",
+              "qnycxjjsre",
+              "ljmssd",
+              "ljzxkce",
+              "ljqtkce",
+              "ljzykcjze",
+              "ljjmse"
+            ]
+          },
+          "title": "个税筹划列表"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "skssq",
+        "gschlb"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "accountId"
+          ]
+        },
+        {
+          "required": [
+            "loginInfo"
+          ]
+        }
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "gschlb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"53547492576111\",\n    \"accountId\": \"4562588251111\",\n    \"skssq\": \"202604\",\n    \"gschlb\": [\n        {\n            \"xm\": \"张三\",\n            \"zzlx\": \"居民身份证\",\n            \"zzhm\": \"110101199001111114\",\n            \"sre\": 100.00,\n            \"ljsre\": 100.00,\n            \"qnycxjjsre\": 100.00\n        }\n    ]\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 727315864,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JH51ZWF4J5NMSD6DTGADM92A": {
+            "$ref": "#/definitions/141932940"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JH51ZWF4J5NMSD6DTGADM92A"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 727315864,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1000000000000001304\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 648453975
+    },
+    {
+      "name": "异常示例",
+      "responseId": 727315864,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 648453976
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 66,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2025-07-23T02:25:26.000Z",
+  "updatedAt": "2026-04-02T03:03:50.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

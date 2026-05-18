@@ -1,0 +1,201 @@
+{
+  "id": 243101219,
+  "name": "行政许可信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "jw1b4Wa9nHD9k9OIMBKoe",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/administrativeLicense",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582545428,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {},
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "01JESSCFT2RV2M5E2TAXXSY4TJ"
+            ],
+            "x-apifox-refs": {
+              "01JESSCFT2RV2M5E2TAXXSY4TJ": {
+                "$ref": "#/definitions/135614893"
+              }
+            },
+            "required": []
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582545428,
+      "data": "{\n    \"reqId\": \"284a6a2706914c18bde9096014e54c22\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": \"4\",\n        \"items\": [\n            {\n                \"licenseFileNumber\": \"9111*********90\",\n                \"licenseFileName\": \"营业执照\",\n                \"licenseStartDate\": \"2021-06-08\",\n                \"departmentCreditCode\": \"1111*******7840H\",\n                \"licenseEndDate\": \"2041-06-07\",\n                \"licenseName\": \"营业执照\",\n                \"licenseDate\": \"2021-12-16\",\n                \"content\": \"企享云(北京)信息技术有限公司\",\n                \"licenseCategory\": \"核准\",\n                \"licenseNumber\": \"911**********RR90\",\n                \"department\": \"北京市海淀区市场监督管理局\",\n                \"status\": \"\",\n                \"statusCode\": \"-1\"\n            },\n            {\n                \"licenseFileNumber\": \"京B2-20224948\",\n                \"licenseFileName\": \"电信业务经营许可\",\n                \"licenseStartDate\": \"\",\n                \"departmentCreditCode\": \"\",\n                \"licenseEndDate\": \"2027-12-29\",\n                \"licenseName\": \"\",\n                \"licenseDate\": \"\",\n                \"content\": \"\",\n                \"licenseCategory\": \"信息服务业务（仅限互联网信息服务）\",\n                \"licenseNumber\": \"京B2-20224948\",\n                \"department\": \"工信部\",\n                \"status\": \"\",\n                \"statusCode\": \"-1\"\n            }\n        ]\n    }\n}",
+      "id": 454764185
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582545428,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454764186
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 46,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T02:39:18.000Z",
+  "updatedAt": "2025-02-20T08:49:49.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582545428"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

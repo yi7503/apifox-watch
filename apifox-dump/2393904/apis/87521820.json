@@ -1,0 +1,243 @@
+{
+  "id": 87521820,
+  "name": "税源信息获取接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n目前支持房产税、城镇土地使用税、环保税、车船税发起税源信息获取的任务。 该接口返回taskId，可以通过[查询税源获取任务结果接口]来查询任务执行的情况和获取的税源信息。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\nPARAMETER_ERROR\t| 企业Id(aggOrgId)不能为空！\t\t\t\t|参数错误 |\nPARAMETER_ERROR\t| 请求参数不能为空\t\t\t\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 参数格式不正确，请参考文档!\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 当前已存在税源明细任务执行中，请稍后再试!\t|业务错误 |\nBUSINESS_ERROR\t| 当前已存在申报任务执行中，请稍后再试！\t|业务错误 |\nBUSINESS_ERROR\t| 当前不支持操作，敬请期待上线！\t\t\t|业务错误 |\nINTERFACE_ERROR\t| 接口异常，请联系技术人员\t\t\t\t\t|程序错误 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadTaxFundGainTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "x-apifox-overrides": {},
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "year",
+        "period",
+        "bsswjg",
+        "tdztswjgmc",
+        "kqyswjgmc",
+        "yzpzzlDm"
+      ],
+      "properties": {
+        "year": {
+          "type": "integer",
+          "title": "年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "月"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "yzpzzlDm": {
+          "type": "string",
+          "title": "应征凭证种类代码",
+          "description": "BDA0610790SYCJ城镇土地使用税税源采集 BDA0610791SYCJ房产税税源采集 BDA0610980SYCJ环保税税源采集 BDA0610005SYCJ车船税税源采集"
+        },
+        "bsswjg": {
+          "type": "string",
+          "title": "税务机关名称 ",
+          "description": "上传格式 省|市|区 如“湖南省|湘潭市|岳塘区"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）",
+          "title": "账号ID"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称"
+        },
+        "kqyswjgmc": {
+          "type": "string",
+          "title": "跨区域税局机关名称"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "yzpzzlDm",
+        "accountId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\":276924188***944,\r\n  \"period\":5,\r\n  \"year\":2023,\r\n  \"yzpzzlDm\":\"BDA0610791SYCJ\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 218627452,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1AZAA24M8WA0SKCX52NNY4": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "yzpzzlDm": {
+                    "type": "string",
+                    "title": "应征凭证种类代码"
+                  },
+                  "taskId": {
+                    "type": "string",
+                    "title": "申报任务id，可以通过查询任务状态接口来查询任务执行的情况"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "yzpzzlDm",
+                  "taskId"
+                ],
+                "required": [
+                  "yzpzzlDm",
+                  "taskId"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1AZAA24M8WA0SKCX52NNY4"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "存在执行中得任务",
+      "responseId": 218627452,
+      "data": "{\n    \"req_id\": \"17ff574def174246bb9618aa84cf0901\",\n    \"code\": \"BUSINESS_ERROR\",\n    \"success\": false,\n    \"message\": \"当前纳税人税源明细存在执行中的任务，请稍后再试！\",\n    \"data\": null\n}",
+      "id": 22150745
+    },
+    {
+      "name": "不支持示例",
+      "responseId": 218627452,
+      "data": "{\n    \"req_id\": \"f8bd56466f6840658e2ea0c1c2ecf5fd\",\n    \"code\": \"BUSINESS_ERROR\",\n    \"success\": false,\n    \"message\": \"当前不支持操作，敬请期待上线！\",\n    \"data\": null\n}",
+      "id": 22150746
+    },
+    {
+      "name": "成功示例",
+      "responseId": 218627452,
+      "data": "{\n    \"req_id\": \"873c6447008c438a94d2358d3b5dc106\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"yzpzzlDm\": \"BDA0610791SYCJ\",\n        \"taskId\": \"467497987334656\"\n    }\n}",
+      "id": 22150748
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 20505956,
+  "ordering": 54,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T05:47:20.000Z",
+  "updatedAt": "2025-11-27T03:51:17.000Z",
+  "creatorId": 2122743,
+  "editorId": 1442097,
+  "creatorUserId": 2122743,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

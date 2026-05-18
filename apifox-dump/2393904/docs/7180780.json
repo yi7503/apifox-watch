@@ -1,0 +1,17 @@
+{
+  "id": 7180780,
+  "name": "2025年7月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1.印花税支持按期和按次合并申报\n2.文化事业建设费同时认定广告业和娱乐业按照政策要求支持合并申报\n3.支持税源采集变更(房产税从租、房产税从价、城镇土地使用税)\n4.简易申报数据初始化获取支持小规模增值税、企业所得税 \n5.出口退税申报能力上线 （生产型）\n:::\n## 接口变化\n### 一、印花税支持按期和按次合并申报\n1. 新增应征凭证种类代码=BDA0610794HB\n2. 涉及接口：上传各税种申报表数据\n3. 支持能力：印花税支持按期和按次合并申报、缴款、完税凭证下载、PDF下载\n4. 调整点：增加合并申报报文的节点yhshbData、上传报文重新定义\n\n![企业微信截图_17539435902299.png](https://api.apifox.com/api/v1/projects/2393904/resources/553111/image-preview)\n![企业微信截图_17539442174704.png](https://api.apifox.com/api/v1/projects/2393904/resources/553110/image-preview)\n![企业微信截图_17539442355452.png](https://api.apifox.com/api/v1/projects/2393904/resources/553109/image-preview)\n\n### 二、文化事业建设费同时认定广告业和娱乐业按照税局要求支持合并申报\n1. 新增应征凭证种类代码=BDA0610334HB\n2. 涉及接口：上传各税种申报表数据\n3. 调整点：增加合并申报报文的节点yhshbData、上传报文重新定义\n4. 支持能力：文化事业建设费同时认定广告业和娱乐业合并申报、初始化、缴款、pdf下载\n![企业微信截图_17539445439993.png](https://api.apifox.com/api/v1/projects/2393904/resources/553113/image-preview)\n![企业微信截图_17539445725780.png](https://api.apifox.com/api/v1/projects/2393904/resources/553115/image-preview)\n![企业微信截图_17539445602420.png](https://api.apifox.com/api/v1/projects/2393904/resources/553114/image-preview)\n\n### 三、支持税源采集变更(房产税从租、房产税从价、城镇土地使用税)\n1. 新增接口：税源变更\n2. 支持能力：本主体、跨区域的房产税从价、房产税从租、城镇土地使用税\n3. 支持业务场景：每个任务仅支持一个变更动作，一个税源编号只能发一个变更任务操作，不支持多个税源编号多个变更任务发起，\n4. 之前支持税源采集能力后期不进行维护\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553120/image-preview)\n\n### 四、简易申报数据初始化增加支持小规模增值税、企业所得税取数\n1. 涉及接口：发起简易申报任务\n2. 运用场景：通过请求sbInit=Y获取税局带出来的部分初始化数据，进行数据核对以及填写\n3. 支持税种：增值税一般人、增值税小规模、企业所得税预缴A类\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553256/image-preview)\n\n### 五、出口退税申报\n1. 支持生产型企业的出口退税申报，支持能力包括：\n- 退税申报自检申请\n- 退税申报自检反馈\n- 退税申报确认提交\n- 审核进度查询\n- 获取审核结果清单\n- 退税文库查询\n- 附列资料上传\n- 出口退税申报表下载\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553143/image-preview)\n\n### 六、其他优化点\n1. 代扣代缴缴款同一个所属期需要同时发起任务\n2. 申报征期截止日期所有客户统一调整成税期最后一天18点关闭\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-08-06T06:06:56.000Z",
+  "updatedAt": "2025-08-06T09:27:14.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

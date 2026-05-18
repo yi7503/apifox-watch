@@ -1,0 +1,17 @@
+{
+  "id": 3774763,
+  "name": "加密说明",
+  "sidebarTitle": "",
+  "content": "- 加密工具示例\n```\n    JSONObject param= new JSONObject();\n   \n    param.put(\"gryhmm\",RSAClientUtil.encrypt(\"Zsjt999*\"));\n```\n- 公钥：\n```\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+vuYMGtTU+42wwbaFX+PkCuSeoREKe5V4EJMi553Gc03ficUdpLHIFdEjAMHAxepwm3RAGLwyxYFK/S93k8GYMuV35L2Nj/cVeHS8scsdqXzqLUKaI4wj438OI6HDh7rWsw1M5EgMsoZvQqja53+SgD3mgIy3XyILbmA5jUp2IwIDAQAB\n```\n\n- 加密方法样例\n```\npublic static String encrypt(String data) throws Exception {\n\tbyte[] bytes = Base64.decode(publicKey);//publicKey 公钥\n\tX509EncodedKeySpec spec = new X509EncodedKeySpec(bytes);\n\tKeyFactory factory = KeyFactory.getInstance(\"RSA\");\n\tPublicKey publicKey = factory.generatePublic(spec);\n\tCipher cipher = Cipher.getInstance(\"RSA\");\n\tcipher.init(Cipher.ENCRYPT_MODE, publicKey);\n\tint inputLen = data.getBytes().length;\n\tByteArrayOutputStream out = new ByteArrayOutputStream();\n\tint offset = 0;\n\tbyte[] cache;\n\tint i = 0;\n\twhile (inputLen - offset > 0) {\n\t  if (inputLen - offset > 117) {\n\t\t  cache = cipher.doFinal(data.getBytes(), offset, 117);\n\t  } else {\n\t\t  cache = cipher.doFinal(data.getBytes(), offset, inputLen - offset);\n\t  }\n\t  out.write(cache, 0, cache.length);\n\t  i++;\n\t  offset = i * 117;\n\t}\n\tbyte[] encryptedData = out.toByteArray();\n\tout.close();\n\treturn Base64.encode(encryptedData);\n}\n```",
+  "folderId": 13476167,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-02-26T09:26:41.000Z",
+  "updatedAt": "2024-02-26T09:28:53.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

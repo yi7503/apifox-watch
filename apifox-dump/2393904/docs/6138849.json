@@ -1,0 +1,17 @@
+{
+  "id": 6138849,
+  "name": "2025年2月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年2月发布内容\n\n发布日期：2025-02-27\n发布版本：V1.2025.02\n\n## 一. 发票查验\n\n1. 财政票据查验-医疗门诊和住院支持返回明细和版式地区逐步适配\n- 新增地区：山西、湖南\n目前已支持地区（21）：河北、浙江、上海、广东、北京、山东、江苏、天津、安徽、吉林、四川、湖北、重庆、辽宁、陕西、福建、海南、深圳、贵州、山西、湖南；\n- 接口文档：[财政票据查验（明细版）](api-241358209)\n\n2. 发票查验（电票平台）：税务代开发票，支持返回汇总属期字段\n    ![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500233/image-preview)\n\n## 二. 数电开票\n1. 扫脸认证过期返回报错文案优化\n- 涉及字段：message-返回错误信息提示\n  场景举例：提交开票时，如认证时间过期，返回报错明确过期的开票员账号\n例：开票人***（姓名）账号未进行扫脸认证，请前往认证后重试！\n\n2. 蓝票开具传参增加校验：优惠政策类型&特定征税方式对应关系校验\n- 涉及字段：tdzsfsdm-特定征税方式代码；ssyhzclx-税收优惠政策类型\n  优惠政策类型、特定征税方式代码、税率三者之间存在绑定传值关系，增加校验机制及对应关系映射：\n    （1）税率不为0时：\n        1)特定征税方式代码不能传02（零税率）、04（免税）\n        2)税收优惠政策类型不能传03（免税）、04（不征税）\n         例：报错文案：非0税率税收优惠政策类型不能传03\n         \n    （2）特定征税方式代码的免税、不征税和税收优惠政策类型的免税、不征税存在对应关系，可只传其一，当其一为空时，会自动将对应枚举补充\n       例1：税收优惠政策类型传03时，特定征税方式代码可不传，自动选择04\n       例2：税收优惠政策类型传04时，特定征税方式代码可不传，自动选择01\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500241/image-preview)\n\n\n\n\n3. 红冲异常场景增加code区分\n\n- 应对场景：针对于已存在红字确认单和没有可红冲金额的申请单做了单独的code区分，可根据code做对应业务逻辑处理\n\n      code710021：蓝票不存在/没有可红冲金额\n      code710024：发票存在进行中的红字确认单\n      \n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500246/image-preview)\n \n4. 红字确认单列表&已开发票列表&发票入账查询接口：查询日期范围增加限制\n- 应对场景：数据量过大时会导致超时异常，查询日期范围缩短会减少超时情况发生\n  1、 红字确认单列表：\n         a) 逻辑：开票日期起止范围不可超过3个月\n         b) 涉及字段：kprqq-开票起始日期，kprqz-开票结束日期\n   2、 已开发票列表：\n       a) 逻辑：开票日期起止范围不可超过1年\n       b) 涉及字段：kprqq-开票起始日期，kprqz-开票结束日期\n  3、 发票入账信息查询：\n       a) 逻辑：开票日期起止范围不可超过3个月\n       b) 涉及字段：kprqq-开票起始日期，kprqz-开票结束日期\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500252/image-preview)\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500253/image-preview)\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500254/image-preview)\n\n\n\n\n## 三. 发票归集\n1. 申请版式文件下载：支持通过任务ID查询任务结果&获取回调数据\n- 应对场景：发起版式的任务信息返参增加任务ID，任务执行成功后，回调接口同步对应返回\n- 新增字段：taskId-任务ID\n接口文档：[申请数电票版式文件下载](api-98527622)\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500256/image-preview)\n\n## 四. 发票识别\n1. 支持识别增值税特殊票种：成品油&通行费&农产品发票\n- 涉及字段：tspzDm-特殊票种代码-02、06、08\n接口文档:[普通票据识别](api-66365912)\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500257/image-preview)\n\n2. 定额发票识别逻辑调整\n- 应对场景：定额发票存在遮挡或不清晰时，购方名称和购方税号会有识别错误的情况发生\n逻辑调整：\n  1、购方名称（gfmc）返回的信息为字母及数字等错误信息时，返回为空\n  2、购方识别号（gfsbh）返回的信息只能是数字&字母，否则返回为空\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500259/image-preview)\n\n## 五. 发票认证\n1. 发票任务-海关缴款书采集：支持采集未到勾选日期的海关缴款书\n- 涉及字段：cjlx-10-到勾选日期的海关缴款书\n接口文档：[海关缴款书采集](api-181812990)\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500261/image-preview)\n\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-03-04T11:38:28.000Z",
+  "updatedAt": "2026-03-04T08:46:26.000Z",
+  "creatorId": 1391922,
+  "editorId": 1391922,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

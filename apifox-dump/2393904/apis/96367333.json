@@ -1,0 +1,280 @@
+{
+  "id": 96367333,
+  "name": "云抬头查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "nedwwVFOtILM6ea0Udxmq",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n 根据企业简称或统一社会信用代码查询出企业全名、纳税人识别号、企业法人、企业成立日期。\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|\n| NO_RESULT| 查询无结果。 |\n| QY_NORESULT| 查询企业不存在。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/risk/hmd/qycx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "qyName": {
+          "type": "string",
+          "title": "企业简称/统一社会信用代码，必填"
+        },
+        "showAll": {
+          "type": "boolean",
+          "title": "模糊查询企业明细",
+          "description": "showAll=true表示查询模糊企业列表，showAll不传或false查单个企业"
+        }
+      },
+      "x-apifox-orders": [
+        "qyName",
+        "showAll"
+      ],
+      "required": [
+        "qyName"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"qyName\": \"914XXXXXXXXX94XX\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "w5jadlJmG3",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "pMkUz3nF5G",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "9bXTL2ibIS",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "eawlZuZPdq",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 240588667,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "qyName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业全名"
+              },
+              "nsrsbh": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "纳税人识别号"
+              },
+              "startDate": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业成立日期"
+              },
+              "operName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业法人"
+              },
+              "all": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "qyName": {
+                      "type": "string",
+                      "title": "企业全名"
+                    },
+                    "nsrsbh": {
+                      "type": "string",
+                      "title": "纳税人识别号"
+                    },
+                    "operName": {
+                      "type": "string",
+                      "title": "企业法人"
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "title": "企业成立日期"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "qyName",
+                    "nsrsbh",
+                    "operName",
+                    "startDate"
+                  ],
+                  "required": [
+                    "qyName",
+                    "nsrsbh",
+                    "operName",
+                    "startDate"
+                  ]
+                },
+                "title": "模糊查询企业明细，showAll=true时显示"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "qyName",
+              "nsrsbh",
+              "operName",
+              "startDate",
+              "all"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例-单企业示例",
+      "responseId": 240588667,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"f7ea777f83f24e098baa25261cf35e50\",\n    \"data\": {\n        \"qyName\": \"广州XXXX有限公司\",\n        \"nsrsbh\": \"9144010XXXXXXXXX\",\n        \"operName\": \"董XX\",\n        \"startDate\": \"2018-06-17\"\n    }\n}",
+      "id": 24511459
+    },
+    {
+      "name": "成功示例-模糊查询多条企业列表",
+      "responseId": 240588667,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"f7ea777f83f24e098baa25261cf35e50\",\n    \"data\": {\n\t\t\"qyName\": \"企享云（北京）XXXX有限公司\",\n\t\t\"nsrsbh\": \"9111010XXXXXXXXXXX\",\n\t\t\"operName\": \"崔XX\",\n\t\t\"startDate\": \"2021-06-08\",\n\t\t\"all\": [\n\t\t\t{\n\t\t\t\t\"qyName\": \"企享云（北京）XXXX有限公司\",\n\t\t\t\t\"nsrsbh\": \"9111010XXXXXXXXXXX\",\n\t\t\t\t\"operName\": \"崔XX\",\n\t\t\t\t\"startDate\": \"2021-06-08\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"qyName\": \"企享云服XXXX公司\",\n\t\t\t\t\"nsrsbh\": \"9131011XXXXXXXXXXX\",\n\t\t\t\t\"operName\": \"崔XX\",\n\t\t\t\t\"startDate\": \"2021-07-08\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"qyName\": \"苏州企享云XXXX有限公司\",\n\t\t\t\t\"nsrsbh\": \"91320594XXXXXXXXXXX\",\n\t\t\t\t\"operName\": \"张XX\",\n\t\t\t\t\"startDate\": \"2015-10-10\"\n\t\t\t},\n\t\t\t...\n\t\t]\n\t}\n}",
+      "id": 24447731
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 19077483,
+  "ordering": 66,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-02T10:20:57.000Z",
+  "updatedAt": "2024-09-24T02:42:01.000Z",
+  "creatorId": 493984,
+  "editorId": 1564651,
+  "creatorUserId": 493984,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.240588667"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

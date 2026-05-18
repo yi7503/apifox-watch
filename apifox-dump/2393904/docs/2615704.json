@@ -1,0 +1,17 @@
+{
+  "id": 2615704,
+  "name": "glywData(企业年度关联业务往来报告表)",
+  "sidebarTitle": "",
+  "content": "\n```\n{\n    \"sbxxForm\": {\n        \"skssqq\": \"2022-01-01\", //税款所属期起\n        \"skssqz\": \"2022-12-31\"  //税款所属期止\n    },\n    \"attachEncode\": \"附件base64编码字符串\",\n    \"attachName\": \"附件名称.xls/.xlsx\" //只接收.xls或.xlsx文件\n}\n```",
+  "folderId": 14012227,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-06-16T09:11:27.000Z",
+  "updatedAt": "2023-06-16T09:12:34.000Z",
+  "creatorId": 791813,
+  "editorId": 791813,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

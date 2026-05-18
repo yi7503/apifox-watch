@@ -1,0 +1,17 @@
+{
+  "id": 3898778,
+  "name": "cbnbData(财务报表年报文件上传报文)",
+  "sidebarTitle": "",
+  "content": "\n```\n{\n \"sbxxForm\": {\n   \"szmc\":\"税种名称\",\n   \"nsrmc\": \"纳税人名称\",\n   \"nsrsbh\": \"纳税人识别号\",\n   \"sbqx\": \"申报期限\",\n   \"skssqq\": \"所属期起\",\n   \"skssqz\": \"所属期止\",\n   \"zlbsxlDm\": \"资料报送小类类型\",\n   \"templateCode\": \"资料报送子类类型\"\n  },\n  \"attachEncode\":\"附件base64编码字符串\",\n  \"attachName\":\"附件名称\"\n}\n```",
+  "folderId": 14012227,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-03-15T09:30:01.000Z",
+  "updatedAt": "2024-03-15T09:43:49.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

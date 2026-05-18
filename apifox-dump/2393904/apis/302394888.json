@@ -1,0 +1,220 @@
+{
+  "id": 302394888,
+  "name": "裁判文书相关企业",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "发生裁判文书相关的企业信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/judgementDocRelation",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页显示条数",
+          "description": "最大20"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "页码"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageSize",
+        "pageIndex"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686702733,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "judgmentDate": {
+                      "type": "string",
+                      "title": "裁判时间"
+                    },
+                    "entName": {
+                      "type": "string",
+                      "title": "企业名称"
+                    },
+                    "releaseDate": {
+                      "type": "string",
+                      "title": "发布时间"
+                    },
+                    "year": {
+                      "type": "string",
+                      "title": "年份"
+                    },
+                    "caseOfAction": {
+                      "type": "string",
+                      "title": "案由"
+                    },
+                    "caseType": {
+                      "type": "string",
+                      "title": "案件类型"
+                    },
+                    "contactCaseNo": {
+                      "type": "string",
+                      "title": "案号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "contactCaseNo",
+                    "judgmentDate",
+                    "entName",
+                    "releaseDate",
+                    "year",
+                    "caseOfAction",
+                    "caseType"
+                  ]
+                },
+                "title": "列表信息"
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 686702733,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"total\": \"10088\",\n        \"items\": [\n            {\n                \"judgmentDate\": \"2019-12-15\",\n                \"entName\": \"xx科技有限责任公司\",\n                \"releaseDate\": \"2019-12-30\",\n                \"year\": \"2019\",\n                \"caseOfAction\": \"知识产权权属侵权纠纷\",\n                \"caseType\": \"C0000\",\n                \"contactCaseNo\": \"xxxxxxxxx\"\n            },\n            {\n                \"judgmentDate\": \"2020-11-09\",\n                \"entName\": \"xx科技有限责任公司\",\n                \"releaseDate\": \"2020-12-11\",\n                \"year\": \"2020\",\n                \"caseOfAction\": \"知识产权权属侵权纠纷\",\n                \"caseType\": \"C0000\",\n                \"contactCaseNo\": \"xxxxxxxxx\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"成功\",\n    \"reqId\": \"34f30dded7924d83bd5634804f418276\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596441054
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 242,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T06:28:28.000Z",
+  "updatedAt": "2025-06-30T03:59:38.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.686702733"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

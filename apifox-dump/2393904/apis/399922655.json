@@ -1,0 +1,191 @@
+{
+  "id": 399922655,
+  "name": "查询涉税专业服务协议要素采集信息表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "查询涉税专业服务协议要素信息采集表\n\n\n| 涉税专业服务项目（sszyfwxm） | 税编 | 简称|\n| --- | --- | --- |\n|010000 | 3040802050000000000 | 纳税申报代办 |\n|020000 | 3040603010000000000 | 一般税务咨询 |\n|030000 | 3040802060000000000 | 其他税务事项代办 |\n|040000 | 3040603040000000000 | 其他税务代理 |\n|050000 | 3040603020000000000 | 专业税务顾问 |\n|060000 | 3040603030000000000 | 税务合规计划 |\n|070000 | 3040602020000000000 | 涉税鉴证 |\n|080000 | 3040602030000000000 | 纳税情况审查 |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/querySszyfwxyysxxcjb",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "shxydmOrNsrsbh": {
+              "type": "string",
+              "title": "委托人社会信用代码/纳税人识别号"
+            },
+            "pageNumber": {
+              "type": "integer",
+              "title": "页码",
+              "description": "默认：1"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页记录数",
+              "description": "默认 10，最大 20"
+            }
+          },
+          "x-apifox-orders": [
+            "shxydmOrNsrsbh",
+            "pageNumber",
+            "pageSize"
+          ],
+          "x-apifox-refs": {},
+          "required": [
+            "shxydmOrNsrsbh"
+          ]
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：queryJdcxx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**********QY4Y\",\r\n    \"data\": {\r\n        \"shxydmOrNsrsbh\": \"91**********701D\",\r\n        \"pageNumer\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KE3TBR4389M4BTT34S33YPAW"
+            ],
+            "required": [],
+            "x-apifox-refs": {
+              "01KE3TBR4389M4BTT34S33YPAW": {
+                "$ref": "#/definitions/234793518"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageNumber\": 1,\n        \"pageSize\": 10,\n        \"total\": 1,\n        \"list\": [\n            {\n                \"strdjxh\": \"10*****************381\",\n                \"xyuuid\": \"1C38*********************3E58\",\n                \"wtxyxxcjbh\": \"X1***************5270\",\n                \"wtrtyshxydm\": \"91**********0E02\",\n                \"wtrmc\": \"杭州*******有限公司\",\n                \"wtrdjxh\": \"10*****************351\",\n                \"strtyshxydm\": \"91**********49U\",\n                \"strmc\": \"杭州******有限公司\",\n                \"strzgswjgDm\": \"13301050000\",\n                \"fwqxq\": \"2024-01-01 00:00:00\",\n                \"fwqxz\": \"2025-12-01 00:00:00\",\n                \"sszyfwxm\": \"010000\",\n                \"zzrq\": \"2025-12-01 00:00:00\"\n            }\n        ]\n    }\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75292645,
+  "ordering": 49,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-01-04T05:46:21.000Z",
+  "updatedAt": "2026-01-07T02:37:06.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

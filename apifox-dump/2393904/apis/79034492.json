@@ -1,0 +1,226 @@
+{
+  "id": 79034492,
+  "name": "海关缴款书取数",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于获取企业电子发票服务平台（发票云）的海关缴款书信息。\n\n## 错误码\n\n| 错误代码        | 错误消息                                | 说明                               |\n| --------------- | --------------------------------------- | ---------------------------------- |\n| FprzSkssqIsNull | 获取已勾选发票，税款所属期起/止不能为空 | 已勾选发票是按照勾选税款所属期查询 |\n| FprzKprqIsNull  | 开票日期起/止不能为空                   |                                    |\n| FprzSbxxIsNull  | 企业申报信息为空                        | 没有获取到企业当前的申报信息       |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/hgjksqs",
+  "tags": [
+    "发票认证",
+    "数字证书认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/54174665"
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\":\"91****************90\",\r\n    \"skssqq\":\"202109\",\r\n    \"skssqz\":\"202302\",\r\n    \"kprqq\":\"20210901\",\r\n    \"kprqz\":\"20230331\",\r\n    \"rksjq\":\"20210901\",\r\n    \"rksjz\":\"20230301\",\r\n    \"glzt\":\"\",\r\n    \"gxzt\":\"1\",\r\n    \"fplx\":\"17\",  \r\n    \"fpzt\":\"0,1,2\",\r\n    \"page\":{\r\n        \"currentPage\":1,\r\n        \"pageSize\":50\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "yaanWcbgsp",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "IpNfHpFh2H",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "idf7Iz2xbZ",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 199398869,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXTCE76BRPV8KBW0VBP9DE96": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/86189205"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXTCE76BRPV8KBW0VBP9DE96"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"176dcdacf874429d887d02f50bfeb290\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"gxjzrq\": \"20221215\",\n        \"kgxKprqq\": \"20170101\",\n        \"kgxKprqz\": \"20220831\",\n        \"list\": [\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"01***************47-L02\",\n                \"jym\": null,\n                \"kprq\": \"2022-07-07 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 1076.87,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 1076.87,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"01******************71-L01\",\n                \"jym\": null,\n                \"kprq\": \"2022-08-25 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 16718.86,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 16718.86,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"01******************93-L01\",\n                \"jym\": null,\n                \"kprq\": \"2022-09-05 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 704.01,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 704.01,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"01******************50-L02\",\n                \"jym\": null,\n                \"kprq\": \"2022-09-05 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 2109.17,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 2109.17,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"01*****************09-L02\",\n                \"jym\": null,\n                \"kprq\": \"2022-09-06 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 214.05,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 214.05,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": \"14\",\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"\",\n                \"gxsj\": null,\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"01*****************18-L02\",\n                \"jym\": null,\n                \"kprq\": \"2023-01-05 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 3460.11,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": null,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"22********************20-L01\",\n                \"jym\": null,\n                \"kprq\": \"2022-07-11 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 373851.8,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 373851.8,\n                \"zmbh\": null,\n                \"zt\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": null,\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"17\",\n                \"fply\": \"1\",\n                \"fpzt\": null,\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************90\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"gxsj\": \"2022-12-01 00:00:00\",\n                \"gxzt\": \"0\",\n                \"hzsdbz\": false,\n                \"jkshm\": \"22*******************58-L02\",\n                \"jym\": null,\n                \"kprq\": \"2022-09-27 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 827831.87,\n                \"sfdbts\": null,\n                \"sflrbfx\": \"0\",\n                \"skssq\": \"202301\",\n                \"xfmc\": null,\n                \"xfsbh\": null,\n                \"yclx\": \"\",\n                \"yqkgxbz\": \"0\",\n                \"yskssq\": null,\n                \"yxse\": 827831.87,\n                \"zmbh\": null,\n                \"zt\": null\n            }\n        ],\n        \"page\": {\n            \"currentPage\": 1,\n            \"pageSize\": 50,\n            \"totalCount\": 8,\n            \"totalPage\": 1\n        },\n        \"skssq\": \"202211\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 19999169
+    },
+    {
+      "name": "请填写传递纳税人识别号示例",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"e74d2868a9874c4692b0c83dd133ba1a\",\n    \"code\": \"505063\",\n    \"success\": false,\n    \"message\": \"请填写传递纳税人识别号!\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 33068041
+    },
+    {
+      "name": "未查询到该企业信息",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"f0136c7955e74dd0950f9172b93964b5\",\n    \"code\": \"FprzOrgIsNull\",\n    \"success\": false,\n    \"message\": \"未查询到该企业信息！\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 348473209
+    },
+    {
+      "name": "此税号不属于当前appkey对应的企业，不可操作示例",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"c77c961a72a542d88a8927634265b204\",\n    \"code\": \"FprzForbiddenOperation\",\n    \"success\": false,\n    \"message\": \"此税号不属于当前appkey对应的企业，不可操作！\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 348513036
+    },
+    {
+      "name": "账号登录信息存在问题示例",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"1b3f5796575e404aa9c13fd9991a9c82\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"skssq\": null,\n        \"kgxKprqq\": null,\n        \"kgxKprqz\": null,\n        \"gxjzrq\": null,\n        \"list\": null,\n        \"page\": null,\n        \"code\": \"FprzTaxLoginFailed\",\n        \"message\": \"缺少[个人用户名,个人用户密码]请先完善信息！\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 348513037
+    },
+    {
+      "name": "token过期示例",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"905879a64f434a97bbc09472c9a23856\",\n    \"code\": \"40101\",\n    \"success\": false,\n    \"message\": \"登录信息过期!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 348550227
+    },
+    {
+      "name": "接口调用异常示例",
+      "responseId": 199398869,
+      "data": "{\n    \"reqId\": \"581ced4654f14df7b8b5d59e1ba320ab\",\n    \"code\": \"505002\",\n    \"success\": false,\n    \"message\": \"接口调用异常，请联系管理员!\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 348550228
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58725265,
+  "ordering": 108,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-30T02:30:50.000Z",
+  "updatedAt": "2025-09-17T06:28:48.000Z",
+  "creatorId": 1426961,
+  "editorId": 3099717,
+  "creatorUserId": 1426961,
+  "editorUserId": 3099717,
+  "responseChildren": [
+    "BLANK.199398869"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

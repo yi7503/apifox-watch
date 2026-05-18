@@ -1,0 +1,17 @@
+{
+  "id": 7611946,
+  "name": "2025年10月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年10月发布内容\n\n发布日期：2025-10-30\n发布版本：V2.2025.10\n\n\n## 一、发票开具\n1.数电发票开具增加金银首饰税收分类编码适配\n 1） 如果开具金银首饰蓝字发票时，商编使用1060509010000000000（金银珠宝首饰）、1060509020100000000（已加工钻石）和1060509020200000000（未加工钻石） ，需要查询《查询企业是否是试点企业》接口是否是试点企业，如果是特定要素类型代码tdyslxdm传\"26\":\"金银首饰批发\",\"27\":\"金银首饰零售\"，同时不能和其他商品编码混开；;如果否的，可以直接开具；  \n  《查询企业是否是试点企业》\n  https://openapi.qixiangyun.com/api-369596773\n   2）如果是开具\"26\":\"金银首饰批发\"，需校验购销方是否是金银首饰批发批发企业。\n   \n  《查询是否是金银首饰经营企业》\n  https://openapi.qixiangyun.com/api-369609886\n  \n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588452/image-preview)\n2.数电发票开具增加煤炭类的税收分类编码适配\n\n3.红字确认单增加作废状态枚举\nhttps://openapi.qixiangyun.com/api-107636830\nhttps://openapi.qixiangyun.com/api-100012785\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588428/image-preview)\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588200/image-preview)\n\n4.开票的版式文件下载，添加部分成功的返回示例。\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588486/image-preview)\nhttps://openapi.qixiangyun.com/api-155759098\n\n\n5.报废产品收购发票\nhttps://openapi.qixiangyun.com/api-362676959\n\n## 二、、发票认证\n1.进项发票取数，和进项发票采集接口增加销售方纳税人识别号和销售方纳税人名称\n新增：增加xfsbh及xfmc查询参数；\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588206/image-preview)\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588555/image-preview)\n https://openapi.qixiangyun.com/api-79034491\n \n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588559/image-preview)\nhttps://openapi.qixiangyun.com/api-120631810\n\n## 三、发票归集\n\n1.增加单张发票归集功能\nhttps://s.apifox.cn/932867ac-7777-47c1-9f37-7dece0d38995\n## 四、发票识别\n1.识别支持数电纸质机动车，二手车\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588495/image-preview)\nhttps://openapi.qixiangyun.com/api-66365912\n## 五、乐企\n1.可勾选发票批量查询缺失主票面关键信息，通过归集补充销方信息、税额、不含税金额、价税合计\n\n2.调整现有的生成版式文件的代码逻辑\n\n3.调整旅客运输发票板式\n## 六、发票沙箱\n增加发票沙箱增加场景\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/588480/image-preview)",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-11-04T14:33:01.000Z",
+  "updatedAt": "2026-03-04T08:46:46.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

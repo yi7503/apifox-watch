@@ -1,0 +1,351 @@
+{
+  "id": 121573897,
+  "name": "更新税款所属期",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于发起获取企业电子发票服务平台（发票云）最新税款所属期的任务。\n\n## 错误码\n| **错误代码**               | **错误消息**                                                 | **解决方案**                                        |\n| -------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |\n| 600004                     | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                          |\n| 505002                     | 接口调用异常，请联系管理员!                                  | 请联系管理员                                        |\n| FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                     |\n| FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！ | 请检查参数是否不为空<br/>请检查参数nsrsbh是否不为空 |\n| FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                  |\n| FprzServerError            | 申请获取税款所属期操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                          |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[更新税款所属期任务结果](https://openapi.qixiangyun.com/api-121573912)接口查询任务转异步后执行结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/sqSkssqCj",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01K5E1PB419R8JWA059ZB309KM": {
+          "$ref": "#/definitions/79290206",
+          "x-apifox-overrides": {}
+        },
+        "01K5E1PB41HWWEXEDGGYT0G0YB": {
+          "$ref": "#/definitions/203379208"
+        }
+      },
+      "properties": {},
+      "required": [],
+      "x-apifox-orders": [
+        "01K5E1PB419R8JWA059ZB309KM",
+        "01K5E1PB41HWWEXEDGGYT0G0YB"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"52**************XJ\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "name": "同步请求",
+        "value": "{\r\n  \"sync\": true,\r\n  \"nsrsbh\": \"91************QY4Y\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "cXK44uVype",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "Wxj6phUfZf",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "vqR3uFsBHh",
+        "name": "req_sign",
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 344663465,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H4JG2CGB80H2WQYWEGGGNKSR": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "发起获取最新税款所属期的任务Id"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H4JG2CGB80H2WQYWEGGGNKSR"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 772818483,
+      "name": "同步成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5E1RAQ00ZD4GM00FY7ZZTG5"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5E1RAQ00ZD4GM00FY7ZZTG5": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5E1RQCFJ6WWTKVD5XZCZZ9M"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5E1RQCFJ6WWTKVD5XZCZZ9M": {
+                    "$ref": "#/definitions/51474297"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 772818484,
+      "name": "同步超时转异步",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5E1W32CRY2S3T56EY0FMEYT"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5E1W32CRY2S3T56EY0FMEYT": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5E1WC0TT0YJA7EH2XJD3SYX"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5E1WC0TT0YJA7EH2XJD3SYX": {
+                    "$ref": "#/definitions/104050184"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "任务发起成功示例",
+      "responseId": 344663465,
+      "data": "{\n    \"reqId\": \"1accd95fefc343319163afcc2bb5879c\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": 475132666845504\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 344663466
+    },
+    {
+      "name": "任务发起失败示例",
+      "responseId": 344663465,
+      "data": "{\n    \"reqId\": \"afc85e7c8d204235a77d18de53da2f40\",\n    \"code\": \"FprzSqTaskFailed\",\n    \"success\": false,\n    \"message\": \"申请任务发起失败！\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 344663467
+    },
+    {
+      "name": "未开通权限，请联系管理员！",
+      "responseId": 344663465,
+      "data": "{\r\n    \"reqId\": \"f0fe71dd7808429889539513905f4fb6\",\r\n    \"code\": \"600004\",\r\n    \"success\": false,\r\n    \"message\": \"未开通权限，请联系管理员！\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 344663468
+    },
+    {
+      "name": "接口调用异常，请联系管理员!",
+      "responseId": 344663465,
+      "data": "{\r\n    \"reqId\": \"0e7bdefc4fba4c8c99e8743129d4c092\",\r\n    \"code\": \"505002\",\r\n    \"success\": false,\r\n    \"message\": \"接口调用异常，请联系管理员!\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 344663469
+    },
+    {
+      "name": "认证服务出错示例",
+      "responseId": 344663465,
+      "data": "{\r\n    \"reqId\": \"e323955ccae74206947dcfc6f0a3d4a3\",\r\n    \"code\": \"FprzServerError\",\r\n    \"success\": false,\r\n    \"message\": \"申请获取税款所属期操作发生异常，请联系管理员\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 344663470
+    },
+    {
+      "name": "超过当天可申请次数，请次日发起申请",
+      "responseId": 344663465,
+      "data": "{\n    \"reqId\": \"d17fc3626c914486817fe68687e727fe\",\n    \"code\": \"FprzExceededCallCountLimit\",\n    \"success\": false,\n    \"message\": \"超过当天可申请次数，请次日发起申请!\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 344663471
+    },
+    {
+      "name": "同步请求成功示例",
+      "responseId": 344663465,
+      "data": "{\r\n    \"reqId\": \"801bbfe1f5f44bddb70fcc109276cdf4\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"customReqId\": \"100019993c652b393447449b8ec2498a2ae1a7aa\",\r\n        \"gxfw\": \"20170101-20250930\",\r\n        \"message\": null,\r\n        \"nsrsbh\": \"91************QY4Y\",\r\n        \"sbxx\": \"0\",\r\n        \"skssq\": \"202509\",\r\n        \"skssqJzrq\": \"20251027\",\r\n        \"zt\": \"3\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707556632
+    },
+    {
+      "name": "同步成功",
+      "responseId": 772818483,
+      "data": "{\r\n    \"reqId\": \"9d0b4dd534c9424d84fc556d030ece2c\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"customReqId\": \"1000199932ec852b17ea4c01a6996486ede53fba\",\r\n        \"gxfw\": \"20170101-20240531\",\r\n        \"message\": null,\r\n        \"nsrsbh\": \"91**************2G\",\r\n        \"sbxx\": \"0\",\r\n        \"skssq\": \"202405\",\r\n        \"skssqJzrq\": \"20240619\",\r\n        \"zt\": \"3\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707693024
+    },
+    {
+      "name": "同步超时转异步示例",
+      "responseId": 772818484,
+      "data": "{\r\n    \"reqId\": \"0dd7f306967a44dfbfe251b8c5b5c240\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"action\": \"sqSkssqCj\",\r\n        \"code\": \"FprzSyncToAsync\",\r\n        \"message\": \"业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果\",\r\n        \"taskId\": 534457481415296,\r\n        \"nsrsbh\": \"91************2G\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707693025
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58717375,
+  "ordering": 333,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2024-12-03T08:43:06.000Z",
+  "updatedAt": "2025-09-19T07:34:32.000Z",
+  "creatorId": 1426961,
+  "editorId": 3099717,
+  "creatorUserId": 1426961,
+  "editorUserId": 3099717,
+  "responseChildren": [
+    "BLANK.344663465",
+    "BLANK.772818483",
+    "BLANK.772818484"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

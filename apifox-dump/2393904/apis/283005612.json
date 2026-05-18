@@ -1,0 +1,181 @@
+{
+  "id": 283005612,
+  "name": "A类纳税人信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/taxpayerLevelA",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "name和creditNo两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "name和creditNo两个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 653187816,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "levelAOfYear": {
+                  "type": "string",
+                  "title": "A类纳税人等级所属年"
+                },
+                "orgName": {
+                  "type": "string",
+                  "title": "企业名称"
+                }
+              },
+              "required": [
+                "levelAOfYear",
+                "orgName"
+              ],
+              "x-apifox-orders": [
+                "levelAOfYear",
+                "orgName"
+              ]
+            },
+            "title": "业务数据"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 653187816,
+      "data": "{\"reqId\":\"17f65ead6f13494c96d4656e0b99d5fe\",\"code\":\"2000\",\"success\":true,\"message\":\"成功\",\"data\":[{\"levelAOfYear\":\"2014\",\"orgName\":\"xx科技有限责任公司\"},{\"levelAOfYear\":\"2015\",\"orgName\":\"xx科技有限责任公司\"},{\"levelAOfYear\":\"2016\",\"orgName\":\"xx科技有限责任公司\"},{\"levelAOfYear\":\"2020\",\"orgName\":\"xx科技有限责任公司\"}]}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 583281013
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 172,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-04-11T08:21:07.000Z",
+  "updatedAt": "2025-04-11T08:37:53.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [
+    "BLANK.653187816"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

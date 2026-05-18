@@ -1,0 +1,17 @@
+{
+  "id": 8431298,
+  "name": "2026年3月发版内容",
+  "sidebarTitle": "",
+  "content": "2026年3月发布内容\n发布日期：2026-03-30\n发布版本：V2.2026.03\n\n# 功能优化\n\n## 1.代扣代缴优化\n\n1.个税-代扣代缴，支持测试环境。\n- 测试环境使用说明：使用开放平台可生成测试用的税号、人员的专附扣和个人养老金的数据，开放平台地址：https://open.qixiangyun.com/。\n- 注意：测试环境也要进行订购，订购后获取到aggOrdId,accountId,目前不订购无法发起请求\n- 注意：测试环境的人员报送可自行创建人员信息，使用接口报送即可\n- 测试环境的算税、申报、缴款、作废均需使用接口进行测试，不提供页面\n\n2.完善专项附加扣除查询反馈信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638141/image-preview)\n\n3.优化人员报送。报送失败的人员，会返回具体人员明细以及失败原因\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638148/image-preview)\n\n4.个税算税优化。算税失败的人员信息，会返回综合算税失败原因列表中，展示失败人员和错误信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638464/image-preview)\n\n\n5.个税申报优化。新增申报失败的人人员和失败原因\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638156/image-preview)\n\n6.缴款凭证反馈。新增缴款凭证文件，返回base64。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638154/image-preview)\n\n7.新增工资年终奖税筹测算接口。根据企业及人员的薪资、扣除项等信息，计算全年奖金筹划前后的税额及节税金额，返回税筹结果。\n税筹方式：1单独算税、2年终奖合并到工资薪金算税、3最优拆分算税\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638166/image-preview)\n\n8.年收入不足6万接口优化\n    - 扣除名单查询，新增是都确认扣除\n    \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638167/image-preview)\n\n    - 扣除名单确认反馈，新增扣除失败列表，以及是否确认扣除字段\n    \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638169/image-preview)\n\n9.新增通知提醒消息查询，可查询到消息通知信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638426/image-preview)\n\n10.查询退付手续费，增加返回退付手续费申请表、结报单和单户核对清册白表\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638421/image-preview)\n\n11.支持下载标准表样、大厅申报表样。注意只有通过接口申报，且申报成功的才可以下载\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638431/image-preview)\n\n12.生产经营支持漏报检查，可查询年度汇缴的申报缴款状态\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638436/image-preview)\n\n13.支持，综合所得-个人股权激励算税、申报及缴款\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638446/image-preview)\n\n14.个税申报，分类所得，支持附表\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638450/image-preview)\n\n15.非居民所得，完善一般劳务报酬、法律援助补贴劳务报酬算税、申报\n\n\n\n\n\n\n\n",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-01T07:30:40.000Z",
+  "updatedAt": "2026-04-02T07:24:40.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

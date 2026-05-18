@@ -1,0 +1,17 @@
+{
+  "id": 8513442,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "\n## 验证码登录与业务使用的调用流程指引\n\n![企业微信截图_e581d6cc-d9bf-4ce7-8d0f-adc037e04d7e.png](https://api.apifox.com/api/v1/projects/2393904/resources/609834/image-preview)\n\n调用流程图：\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/541182/image-preview\" style=\"width:50%\"></img>\n ",
+  "folderId": 80554291,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-13T07:44:23.000Z",
+  "updatedAt": "2026-04-13T07:54:46.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

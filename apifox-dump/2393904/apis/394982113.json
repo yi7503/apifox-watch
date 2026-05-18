@@ -1,0 +1,179 @@
+{
+  "id": 394982113,
+  "name": "提交跨区域涉税事项报验管理",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "开票-建筑服务-提交跨区域涉税事项报验-开具",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/saveKqysssxbg",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [
+            "01KD2GAH1R8JTA9RST6BP26MGG"
+          ],
+          "x-apifox-refs": {
+            "01KD2GAH1R8JTA9RST6BP26MGG": {
+              "$ref": "#/definitions/231515167"
+            }
+          }
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：saveKqysssxbg"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01J4V7BSSETKN72WHGHPHJTW4M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01J4V7BSSETKN72WHGHPHJTW4M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"nsrsbh\": \"913************QY4Y\",\n    \"data\": {\n        \"kqysssxbgVO\": {\n            \"htdfnsrsbh\": \"\",\n            \"htdfnsrmc\": \"宝鸡********有限公司\",\n            \"jyfsdmjh\": \"19\",\n            \"wcjydxzqhszDm\": \"610303\",\n            \"wcjyd\": \"宝鸡市********负一楼\",\n            \"jdxzDm\": \"十里铺街道\",\n            \"lxr\": \"董*\",\n            \"lxrsj\": \"138****3105\"\n        },\n        \"kqysssxbgHwxxVO\": {\n            \"wcjyhwmc\": \"宝鸡银泰城**********搭建合同\",\n            \"htbh\": \"\",\n            \"wcjyhwzz\": 87760.86,\n            \"wcjyhwyxqxq\": \"2025-10-06\",\n            \"wcjyhwyxqxz\": \"2025-12-31\"\n        }\n    }\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 533491697,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KD55DSDXDTP1W5127D6MZ542"
+            ],
+            "x-apifox-refs": {
+              "01KD55DSDXDTP1W5127D6MZ542": {
+                "$ref": "#/definitions/231940952"
+              }
+            },
+            "required": []
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HVKDS7N9RXXVA81489RZ05WM"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 533491697,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"result\": true,\n        \"msg\": \"跨区域涉税事项报告信息保存成功。\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 427121367
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 42130418,
+  "ordering": 49,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-12-22T07:21:41.000Z",
+  "updatedAt": "2026-04-24T01:46:21.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

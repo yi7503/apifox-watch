@@ -1,0 +1,187 @@
+{
+  "id": 273533250,
+  "name": "客户分类新增",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局新增客户分类",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/khxxFladd",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "khxx_fladd"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fjddm": {
+              "type": "string",
+              "title": "父级ID",
+              "description": "不传值则直接使用税局默认根级代码(0)"
+            },
+            "flmc": {
+              "type": "string",
+              "title": "分类名称"
+            }
+          },
+          "x-apifox-orders": [
+            "fjddm",
+            "flmc"
+          ],
+          "title": "",
+          "required": [
+            "flmc"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8R28AJ016ZAJY9RQHAJ0S"
+      ],
+      "x-apifox-refs": {
+        "01HMB8R28AJ016ZAJY9RQHAJ0S": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 636669786,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "boolean",
+                "title": "执行结果",
+                "description": "true成功， false失败"
+              },
+              "Fluuid": {
+                "type": "string",
+                "title": "分类uuid"
+              }
+            },
+            "x-apifox-orders": [
+              "result",
+              "Fluuid"
+            ],
+            "required": [
+              "result"
+            ]
+          },
+          "01JPPV7KG0WKVJHQVA90S33BD0": {
+            "x-tmp-pending-properties": true
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01HRHAQWRQQ62CVGPG5BX1TWHZ",
+          "01JPPV7KG0WKVJHQVA90S33BD0"
+        ],
+        "required": [
+          "data",
+          "01JPPV7KG0WKVJHQVA90S33BD0"
+        ],
+        "x-apifox-refs": {
+          "01HRHAQWRQQ62CVGPG5BX1TWHZ": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 52619809,
+  "ordering": 6,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-03-19T07:05:40.000Z",
+  "updatedAt": "2025-06-10T08:58:56.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.636669786"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

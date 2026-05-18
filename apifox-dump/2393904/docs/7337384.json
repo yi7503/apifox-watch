@@ -1,0 +1,17 @@
+{
+  "id": 7337384,
+  "name": "2025年8月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年8月发布内容\n\n发布日期：2025-08-29\n发布版本：V2.2025.08\n\n\n## 一、发票开具\n 1.支持开具1.5税率的发票\n \n 税收优惠政策类型,\"10\": \"按5%简易征收减按1.5%计征\"\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570078/image-preview)\n 2.开票任务回调的时候在request中返回accountid\n \n 返回的结果呈现开票任务和多账户的关联\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570082/image-preview)\n\n 3.已开发票明细支持返回增值税用途标签和勾选属期\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570083/image-preview)\n \n 4.开票明细行增加2000条限制\n 开票请求增加限制和税务界面保持一样的限制\n \n 5.汇总信息查询的发票类型代码要和归集做个统一\n入参 发票类型标准化\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570092/image-preview)\n\n## 二、发票查验\n 1.航空票查验自动重试机制\n dq定制+50 自动补偿查验\n \n 2.财政票据查验T+0去除缓存机制-配置项\n 如客户需要可根据配置当天不存储数据\n \n 3.财政票据-河北地区过滤重复数据\n   清除明细项重复数据\n 4.通用电子发票(广东)下架，前置拦截不再请求局端\n \n 5.财政票据查验返回地方税局报错原因&成功/失败状态\n   错误返回增加政务网站原生报错原因\n 6.电票平台查验红票支持返回原蓝票号码\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570108/image-preview)\n ## 三、发票认证\n 1.发票勾选需判断是否为不得抵扣发票\n \n 2.申请农产品加计扣除-处理类型入参结构调整\n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570115/image-preview)\n  \n 3.托管和自持的海关缴款书录入逻辑调整\n \n 任务申请后将信息直接返回，无需再调任务查询接口；\n 当超时时，返回超时报错，引导用户调用查询接口\n \n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570180/image-preview)\n \n 4.海关缴款书采集结果查询支持出口转内销海关缴款书发票 \n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570152/image-preview)\n  ## 四、发票归集\n  \n  1.进销项发票归集缓存优化\n      开票日期类型-日：\n    1、当传值区间不在当月时，先从一天缓存池中获取数据，否则实时查询\n    2、当传值区间在当月时，先从2小时缓存池中获取数据，否则实时查询\n    3、当传值区间为同一天时，走实时\n    \n  2.已勾选发票取消历史属期的统计确认校验\n  \n  3.已勾选归集接口：支持返回农产品加计扣除发票\n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570165/image-preview)\n   \n  ## 五、发票识别\n  \n  1.忽略single-是否单张识别标识，以用户上传发票张数为准\n  \n  废弃该字段single，根据用传入的发票进行识别，系统自动识别和判断后返回单张或多张。\n  \n  2.识别需要区分电子/纸质机动车销售统一发票\n  \n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570179/image-preview)",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-09-03T07:19:17.000Z",
+  "updatedAt": "2026-03-04T08:46:42.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

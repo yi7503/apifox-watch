@@ -1,0 +1,345 @@
+{
+  "id": 429848115,
+  "name": "工资年终奖税筹测算",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "oC2-fEZkGFR6B1nXN_OjX",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口为异步接口。根据企业及人员的薪资、扣除项等信息，计算全年奖金筹划前后的税额及节税金额，返回税筹结果。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/calculateTax/salaryBonusPlanning",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "yzdgz": {
+          "type": "number",
+          "title": "月最低工资"
+        },
+        "rylb": {
+          "type": "array",
+          "title": "人员列表",
+          "items": {
+            "type": "object",
+            "required": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "qnjjsr",
+              "chqdygz"
+            ],
+            "properties": {
+              "xm": {
+                "type": "string",
+                "title": "姓名",
+                "minLength": 1
+              },
+              "zzlx": {
+                "type": "string",
+                "title": "证件类型",
+                "minLength": 1
+              },
+              "zzhm": {
+                "type": "string",
+                "title": "证件号码",
+                "minLength": 1
+              },
+              "qnjjsr": {
+                "type": "number",
+                "title": "全年一次性奖金收入额"
+              },
+              "chqdygz": {
+                "type": "number",
+                "title": "筹划前当月工资"
+              },
+              "jbylaobxf": {
+                "type": "number",
+                "title": "基本养老保险费"
+              },
+              "jbylbxf": {
+                "type": "number",
+                "title": "基本医疗保险费"
+              },
+              "sybxf": {
+                "type": "number",
+                "title": "失业保险费"
+              },
+              "zfgjj": {
+                "type": "number",
+                "title": "住房公积金"
+              },
+              "nj": {
+                "type": "number",
+                "title": "年金"
+              },
+              "grylj": {
+                "type": "number",
+                "title": "个人养老金"
+              },
+              "syjkbx": {
+                "type": "number",
+                "title": "商业健康保险"
+              },
+              "syylbx": {
+                "type": "number",
+                "title": "税延养老保险"
+              },
+              "zykjfjze": {
+                "type": "number",
+                "title": "准予扣除的捐赠额"
+              },
+              "mssd": {
+                "type": "number",
+                "title": "免税收入"
+              },
+              "jmse": {
+                "type": "number",
+                "title": "减免税额"
+              },
+              "gwjtfy": {
+                "type": "number",
+                "title": "公务交通费用"
+              },
+              "txfy": {
+                "type": "number",
+                "title": "通讯费用"
+              },
+              "lsbafy": {
+                "type": "number",
+                "title": "律师办案费用"
+              },
+              "xzfjjcfy": {
+                "type": "number",
+                "title": "西藏附加减除费用"
+              },
+              "znjy": {
+                "type": "number",
+                "title": "子女教育支出"
+              },
+              "sylr": {
+                "type": "number",
+                "title": "赡养老人支出"
+              },
+              "jxjy": {
+                "type": "number",
+                "title": "继续教育支出"
+              },
+              "yyezh": {
+                "type": "number",
+                "title": "3岁以下婴幼儿照护支出"
+              },
+              "zfzj": {
+                "type": "number",
+                "title": "住房租金支出"
+              },
+              "zfdklx": {
+                "type": "number",
+                "title": "住房贷款利息支出"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "qnjjsr",
+              "chqdygz",
+              "jbylaobxf",
+              "jbylbxf",
+              "sybxf",
+              "zfgjj",
+              "nj",
+              "grylj",
+              "syjkbx",
+              "syylbx",
+              "zykjfjze",
+              "mssd",
+              "jmse",
+              "gwjtfy",
+              "txfy",
+              "lsbafy",
+              "xzfjjcfy",
+              "znjy",
+              "sylr",
+              "jxjy",
+              "yyezh",
+              "zfzj",
+              "zfdklx"
+            ]
+          }
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "rylb"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "yzdgz",
+        "rylb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"952345678345\",\r\n    \"accountId\": \"10345678945\",\r\n    \"yzdgz\": 2000.00,\r\n    \"rylb\": [\r\n        {\r\n            \"xm\": \"张三\",\r\n            \"zzlx\": \"居民身份证\",\r\n            \"zzhm\": \"110101199001011234\",\r\n            \"qnjjsr\": 50000.00,\r\n            \"chqdygz\": 15000.00,\r\n            \"jbylaobxf\": 800.00,\r\n            \"jbylbxf\": 200.00,\r\n            \"sybxf\": 50.00,\r\n            \"zfgjj\": 1500.00,\r\n            \"nj\": 0.00,\r\n            \"grylj\": 0.00,\r\n            \"syjkbx\": 0.00,\r\n            \"syylbx\": 0.00,\r\n            \"zykjfjze\": 0.00,\r\n            \"mssd\": 0.00,\r\n            \"jmse\": 0.00,\r\n            \"gwjtfy\": 0.00,\r\n            \"txfy\": 0.00,\r\n            \"lsbafy\": 0.00,\r\n            \"xzfjjcfy\": 0.00,\r\n            \"znjy\": 12000.00,\r\n            \"sylr\": 24000.00,\r\n            \"jxjy\": 3600.00,\r\n            \"yyezh\": 0.00,\r\n            \"zfzj\": 18000.00,\r\n            \"zfdklx\": 0.00\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId"
+            ],
+            "required": [
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"taskId\": \"1\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 46,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-18T09:00:36.000Z",
+  "updatedAt": "2026-04-01T09:08:48.000Z",
+  "creatorId": 1910680,
+  "editorId": 3222025,
+  "creatorUserId": 1910680,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

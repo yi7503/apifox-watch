@@ -1,0 +1,173 @@
+{
+  "id": 174461400,
+  "name": "红字发票概况统计",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于查询红字发票概况统计。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/hzfptjxxcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01JYDYT1CTVGYP1NH3ZD8APJVW": {
+          "$ref": "#/definitions/97816215",
+          "x-apifox-overrides": {}
+        },
+        "01JYDYT1CTE2Z2J7JZ0M78GJKR": {
+          "$ref": "#/definitions/178321158"
+        }
+      },
+      "properties": {},
+      "required": [],
+      "x-apifox-orders": [
+        "01JYDYT1CTVGYP1NH3ZD8APJVW",
+        "01JYDYT1CTE2Z2J7JZ0M78GJKR"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"hzfptjxx_cx\",\r\n    \"data\": {},\r\n    \"nsrsbh\": \"91*************2G\",\r\n    \"accountId\": \"\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "XxsVZH82Ru",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "nYvlTTMI8c",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "BlhCkyTC0O",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 451669461,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HXZM2KCSNG8TH7SDD44JJZZP": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/97758316"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HXZM2KCSNG8TH7SDD44JJZZP"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 451669461,
+      "data": "{\n    \"code\": \"2000\",\n    \"message\": null,\n    \"success\": true,\n    \"reqId\": \"75e20c4a7eec4ac0b42f9b3cdf223392\",\n    \"data\": {\n        \"byfcdqrd\": 0,\n        \"wfht\": 0,\n        \"byyzcjxse\": 0,\n        \"byhtsxed\": 0,\n        \"bysddqrd\": 0,\n        \"dqdcl\": 0,\n        \"bysddhpje\": 0\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409237895
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681470,
+  "ordering": 385,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-06-10T03:22:51.000Z",
+  "updatedAt": "2025-12-13T09:15:01.000Z",
+  "creatorId": 2706439,
+  "editorId": 2795319,
+  "creatorUserId": 2706439,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.451669461"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,313 @@
+{
+  "id": 306889565,
+  "name": "查询申请额度列表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局查询发起过的发票额度调整申请",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/querySxedtzSqxx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "string",
+              "title": "每页行数",
+              "enum": [
+                "10",
+                "20",
+                "50",
+                "100"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "10",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "20",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "50",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "100",
+                  "name": "",
+                  "description": ""
+                }
+              ]
+            },
+            "sqrqq": {
+              "type": "string",
+              "title": "申请日期起"
+            },
+            "sqrqz": {
+              "type": "string",
+              "title": "申请日期止"
+            },
+            "sqtzedlx": {
+              "type": "string",
+              "title": "申请调整额度类型 {\"1\": \"短期\", \"2\": \"长期\"}"
+            },
+            "shzt": {
+              "type": "string",
+              "title": "审核状态 {\"01\":\"已提交\",\"02\":\"已撤销\",\"03\":\"受理中\",\"04\":\"不予受理\",\"05\":\"待补正\",\"06\":\"审核中\",\"07\":\"审核通过\",\"08\":\"审核不通过\"}"
+            },
+            "pageIndex": {
+              "type": "string",
+              "title": "当前页码"
+            }
+          },
+          "x-apifox-orders": [
+            "pageSize",
+            "pageIndex",
+            "sqrqq",
+            "sqrqz",
+            "sqtzedlx",
+            "shzt"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "title": "操作类型",
+          "const": "khxx_add"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8WF4VYKDK31QWYCYJ2SG7"
+      ],
+      "x-apifox-refs": {
+        "01HMB8WF4VYKDK31QWYCYJ2SG7": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 694475937,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "pageIndex": {
+                "type": "integer"
+              },
+              "records": {
+                "type": "integer"
+              },
+              "pageSize": {
+                "type": "integer"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "szbm": {
+                      "type": "string",
+                      "title": "所在部门"
+                    },
+                    "yxqq": {
+                      "type": "string",
+                      "title": "生效日期"
+                    },
+                    "tzqsxzed": {
+                      "type": "string",
+                      "title": "调整前发票额度"
+                    },
+                    "sqrq": {
+                      "type": "string",
+                      "title": "申请日期"
+                    },
+                    "sqtzedlx": {
+                      "type": "string",
+                      "title": "申请调整额度类型",
+                      "description": "{\"1\": \"短期\", \"2\": \"长期\"}"
+                    },
+                    "sqtzed": {
+                      "type": "string",
+                      "title": "申请调整额度"
+                    },
+                    "yxqz": {
+                      "type": "string",
+                      "title": "失效日期"
+                    },
+                    "sxedlstzlx": {
+                      "type": "string",
+                      "title": "发票额度短期调整类型",
+                      "description": "{\"1\": \"当月\", \"2\": \"定期\"}"
+                    },
+                    "tzhsxzed": {
+                      "type": "string",
+                      "title": "调整后发票额度"
+                    },
+                    "shzt": {
+                      "type": "string",
+                      "title": "审核状态"
+                    },
+                    "yxbz": {
+                      "type": "string",
+                      "title": "有效状态"
+                    },
+                    "shsj": {
+                      "type": "string",
+                      "title": "审核时间"
+                    },
+                    "shrxm": {
+                      "type": "string",
+                      "title": "当前办理人员"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "szbm",
+                    "yxqq",
+                    "tzqsxzed",
+                    "sqrq",
+                    "sqtzedlx",
+                    "sqtzed",
+                    "yxqz",
+                    "sxedlstzlx",
+                    "tzhsxzed",
+                    "shzt",
+                    "yxbz",
+                    "shsj",
+                    "shrxm"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "pageIndex",
+              "records",
+              "pageSize",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "pageIndex",
+              "records",
+              "pageSize",
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHAYXAXVZP1DEVVTPB20H60"
+        ],
+        "x-apifox-refs": {
+          "01HRHAYXAXVZP1DEVVTPB20H60": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 694475937,
+      "data": "{\n    \"pageIndex\": 1,\n    \"records\": 1,\n    \"pageSize\": 100,\n    \"list\": [\n        {\n            \"szbm\": \"--\",\n            \"yxqq\": \"2025-06-09 18:18:12\",\n            \"tzqsxzed\": \"500000\",\n            \"sqrq\": \"2025-06-09 18:14:55\",\n            \"sqtzedlx\": \"1\",\n            \"sqtzed\": \"510000\",\n            \"yxqz\": \"2025-06-30 18:18:12\",\n            \"sxedlstzlx\": \"1\",\n            \"tzhsxzed\": \"1010000\",\n            \"shzt\": \"02\",\n            \"shsj\": \"2025-06-09 18:18:12\",\n            \"shrxm\": \"0.00\",\n            \"lcslid\": \"131000000***\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 599367941
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58714763,
+  "ordering": 36,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-10T08:58:56.000Z",
+  "updatedAt": "2025-12-24T07:40:35.000Z",
+  "creatorId": 2118003,
+  "editorId": 3099717,
+  "creatorUserId": 2118003,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,134 @@
+{
+  "id": 177984517,
+  "name": "任务回调接口样例(忽略https://api.qixiangyun.com/这个地址前缀)",
+  "type": "http",
+  "serverId": "default",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n采集税务、获取清册、初始化、申报、缴款、获取pdf、作废、通知需要上传验证码、通知上传财报报表数据、确税通知 回调接口样例。本接口需要客户自行设计实现，发布后把接口访问地址，我们进行配置对应环境中，进行回调。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/{客户自行设计}",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "requestbody": {
+          "type": "object",
+          "properties": {},
+          "title": "任务执行消息体",
+          "description": "任务执行消息体，具体字段见示例。",
+          "x-apifox-orders": []
+        }
+      },
+      "x-apifox-orders": [
+        "requestbody"
+      ],
+      "required": [
+        "requestbody"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "申报回调通知\r\n{\r\n    \"type\": \"sb\", // 任务类型：sb-申报 jk-缴款 cjsw-采集税务 qc-获取清册 sjqs-初始化 pdf-获取pdf zf-作废 yzm-通知需要上传验证码 readFiData通知上传财报 taxConfirm确税通知 tax-item获取条目 tax-check漏报检查 tax-sb-msg申报信息查询 fund税源采集 fund_gain税源获取 wszm 完税证明\r\n    \"taskId\": \"376724645718400\", // 任务ID\r\n    \"status\": \"STATE_SUCCESS\" // 任务状态：STATE_SUCCESS-成功/STATE_FAILED-失败\r\n}\r\n通知需要上传验证码\r\n{\r\n    \"type\": \"yzm\",\r\n    \"needYzm\": true // 是否上传验证码（type值为yzm时有这个字段）true-需要上传 false-不需要上传\r\n}\r\n确税通知: {\r\n    \"type\": \"taxConfirm\",\r\n    \"aggOrgId\": 403329073780736,\r\n    \"yzpzzlDm\": \"CWBBSB\",\r\n    \"skssqz\": \"2022-05-31\",\r\n    \"skssqq\": \"2022-05-01\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "path": [
+      {
+        "id": "客户自行设计#0",
+        "name": "客户自行设计",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 458497112,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [],
+        "title": "结果见示例"
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 458497112,
+      "data": "{\r\n    \"code\": \"2000\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 410650279
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 34859574,
+  "ordering": 16,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-05-27T02:28:41.000Z",
+  "updatedAt": "2026-05-11T03:57:00.000Z",
+  "creatorId": 2122743,
+  "editorId": 1452584,
+  "creatorUserId": 2122743,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

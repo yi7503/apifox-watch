@@ -1,0 +1,17 @@
+{
+  "id": 6950111,
+  "name": "2025年6月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年6月发布内容\n\n发布日期：2025-06-26\n发布版本：V2.2025.06\n\n## 一. 发票查验\n1. 支持查验数电二手车销售统一发票\n- 接口字段：0940-电子发票（二手车销售统一发票）\n- 接口文档：\n    - [增值税平台-数电票查验](apifox://link/endpoint/66282957)\n    - [电票平台-数电票查验](apifox://link/endpoint/193188103)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540159/image-preview)\n    \n## 二. 发票开具\n1. 支持开具农产品收购发票-反向开具\n- 业务场景：农产品收购发票是指收购单位向农业生产者个人（不包括从事农产品收购的个体经营者）收购自产免税农业产品时，由收购方向农业生产者开具的发票。\n- 接口文档：[农产品收购发票](apifox://link/endpoint/312610509)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540120/image-preview)\n\n2. 支持开具数电机动车销售统一发票\n- 业务场景：适用于机动车销售交易场景，为数电电子发票，票面信息包含车辆识别代号/车架号等机动车特有字段。\n- 接口字段：除发票类型代码为83外，其余参数与数电纸质（机动车销售统一发票）相同。\n- 接口文档：[蓝字发票开具](apifox://link/endpoint/100012782)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540122/image-preview)\n\n3. 支持发起开票额度调整申请\n- 业务场景：发票开具额度不够时，可向电子税局发起开票额度调整申请，由税局审核审核通过后即可获得动态额度（对应电子税局“发票额度人工调整申请”界面）。\n- 接口说明：发起申请返回成功状态后，再调查询列表接口获取申请结果（因税局没有唯一ID，无法将申请任务与列表日志匹配，所以调查询列表接口时尽可能精确申请日期起止时间，拿到返回参数后根据申请日期及调整额度做匹配关系。）\n- 接口文档：\n    - [申请发票额度调整](apifox://link/endpoint/307864132)\n    - [查询申请额度列表](apifox://link/endpoint/306889565)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540133/image-preview)\n    \n4. 跨区域涉税事项信息查询接口-新增查询参数 \n- 接口字段：wcjyhdssglzmbhq-跨税报起、wcjyhdssglzmbhy-跨税报止\n- 接口文档：[跨区域涉税事项报验管理编号信息查询](apifox://link/endpoint/217038654)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540155/image-preview)\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-06-30T02:31:18.000Z",
+  "updatedAt": "2026-03-04T08:46:38.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

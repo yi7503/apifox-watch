@@ -1,0 +1,1576 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 办税小号业务
+  version: latest
+  description: 'Split from full spec, module: 办税小号业务'
+tags:
+- name: 办税小号业务 / 小号管理
+- name: 办税小号业务 / 申请小号
+- name: 办税小号业务 / 短信管理
+paths:
+  /v2/public/sjhm/editBsxhOrderPushUrlConfig:
+    post:
+      summary: 配置小号订单开通通知地址
+      operationId: api-154344961
+      tags:
+      - 办税小号业务 / 申请小号
+      description: "## 接口描述\n\n此接口用于客户配置小号开通接受地址。\n\n## 错误码\n| 错误代码  | 错误信息   | \n| -------- | --------- |\n| PARAMETER_ERROR | 参数不能为空 |\n"
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callbackUrl:
+                  type: string
+                  title: 短信接受地址
+              x-apifox-orders:
+              - callbackUrl
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type: string
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type: string
+                    title: 错误信息
+                    description: 错误信息
+                  data:
+                    type: boolean
+                    title: 保存成功
+                    description: ' true-保存成功，false-保存失败'
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    req_id: f180a18300d048b190876e20a03a2ac8
+                    success: true
+                    data: true
+  /v2/public/sjhm/bindAxn:
+    post:
+      summary: 绑定实名手机号与办税小号
+      operationId: api-88235964
+      tags:
+      - 办税小号业务 / 小号管理
+      description: |-
+        ## 接口描述
+
+        该接口用于实名手机号与办税小号绑定，呼叫办税小号时呼叫转移至实名手机号。
+
+        ## 错误码
+        | 错误代码            | 错误消息                                                     | 状态码 |
+        | ------------------- | ------------------------------------------------------------ | ------ |
+        | PARAMETER_ERROR | 无效的手机号或固定电话（固定电话需要加区号，区号和号码中间不需要加连字符） phoneNoA，请检查手机号或固定电话格式是否正确 | 无     |
+        | PARAMETER_ERROR | 无效的办税小号 phoneNoX ，请检查办税小号格式是否正确！       | 无     |
+        | PARAMETER_ERROR | 实名手机号 phoneNoA与号码池key为poolKey 的办税小号 phoneNoX 绑定失败！ | 无     |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNoA:
+                  type: string
+                  title: 实名手机号
+                  description: 实名手机号（可设置为手机号码或固定电话，固定电话需要加区号，区号和号码中间不需要加连字符。）
+                phoneNoX:
+                  type: string
+                  title: 办税小号
+              x-apifox-orders:
+              - phoneNoA
+              - phoneNoX
+              required:
+              - phoneNoA
+              - phoneNoX
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties: {}
+                    description: 绑定成功返回的绑定关系Id
+                    x-apifox-orders: []
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: 915c51ddb1674f2caf982e30db8815a6
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data: '1000050000736099'
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    reqId: 915c51ddb1674f2caf982e30db8815a6
+                    code: PARAMETER_ERROR
+                    success: false
+                    message: 传入参数不能为空！
+  /v2/public/sjhm/updateNoA:
+    post:
+      summary: 更换绑定的实名手机号
+      operationId: api-88238191
+      tags:
+      - 办税小号业务 / 小号管理
+      description: |-
+        ## 接口描述
+
+        该接口用于更换与办税小号绑定的实名手机号，呼叫办税小号时呼叫转移至实名手机号。
+
+        ## 错误码
+        | 错误代码               | 错误消息                                                     | 状态码 |
+        | ---------------------- | ------------------------------------------------------------ | ------ |
+        | PARAMETER_ERROR    | 无效的办税小号phoneNoX ，请检查办税小号格式是否正确！        | 无     |
+        | PARAMETER_ERROR    | 无效的手机号或固定电话（固定电话需要加区号，区号和号码中间不需要加连字符）phoneNoA，请检查手机号或固定电话格式是否正确 | 无     |
+        | PARAMETER_ERROR    | 号码池key为 poolKey 的办税小号 phoneNoX 绑定关系已更新，更新后的实名手机号为phoneNoA，绑定id为subsId | 无     |
+        | PARAMETER_ERROR    | 号码池key为poolKey 的办税小号phoneNoX 更新绑定的实名手机号phoneNoA失败！ | 无     |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNoA:
+                  type: string
+                  title: 实名手机号
+                  description: 要换绑为的实名手机号（可设置为手机号码或固定电话，固定电话需要加区号，区号和号码中间不需要加连字符。）
+                phoneNoX:
+                  type: string
+                  title: 办税小号
+                  description: 办税小号
+                oldNoA:
+                  type: string
+                  title: 旧的实名手机号
+                  description: 旧的实名手机号
+              x-apifox-orders:
+              - oldNoA
+              - phoneNoA
+              - phoneNoX
+              required:
+              - phoneNoA
+              - phoneNoX
+              - oldNoA
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties: {}
+                    description: 实名手机号更换结果，true成功，false失败
+                    x-apifox-orders: []
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: 55a0b9c64e3c4792a9b026b306dd53a1
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data: true
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    reqId: 9292b64c0b034134bd89de8d0753b06d
+                    code: PARAMETER_ERROR
+                    success: false
+                    message: 传入的参数-原来的实体手机号phoneNoA不能为空！
+  /v2/public/sjhm/unbind:
+    post:
+      summary: 解除实名手机号与办税小号绑定
+      operationId: api-88243989
+      tags:
+      - 办税小号业务 / 小号管理
+      description: |-
+        ## 接口描述
+
+        该接口用于解除实名手机号与办税小号的绑定关系，呼叫办税小号时不再呼叫转移至实名手机号。
+
+        ## 错误码
+        | 错误代码            | 错误消息                                                     | 状态码 |
+        | ------------------- | ------------------------------------------------------------ | ------ |
+        | PARAMETER_ERROR    | 无效的办税小号phoneNoX ，请检查办税小号格式是否正确！        | 无     |
+        | PARAMETER_ERROR    | 号码池key为poolKey的办税小号phoneNoX尚未绑定！               | 无     |
+        | PARAMETER_ERROR    | 号码池key为 poolKey绑定关系id为 subsId的办税小号phoneNoX解除绑定关系失败！ | 无     |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNoA:
+                  type: string
+                  title: 实名手机号
+                  description: 要解除绑定的实名手机号（可设置为手机号码或固定电话，固定电话需要加区号，区号和号码中间不需要加连字符。）
+                phoneNoX:
+                  type: string
+                  title: 办税小号
+                  description: '办税小号 '
+              x-apifox-orders:
+              - phoneNoA
+              - phoneNoX
+              required:
+              - phoneNoA
+              - phoneNoX
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties: {}
+                    description: 解除绑定结果，true成功，false失败
+                    x-apifox-orders: []
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: 55a0b9c64e3c4792a9b026b306dd53a1
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data: true
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    reqId: 8fc4454f42354ec2956517c3f4a5bde9
+                    code: PARAMETER_ERROR
+                    success: false
+                    message: 传入参数不能为空！
+  /v2/public/sjhm/queryNote:
+    post:
+      summary: 查询短信验证码
+      operationId: api-88262035
+      tags:
+      - 办税小号业务 / 短信管理
+      description: |-
+        ## 接口描述
+
+            该接口用于根据手机号码查询企业短信验证码信息（接口只会返回最新的10条短信验证码信息）
+
+        ## 错误码
+        | 错误代码 | 错误信息                 | 说明 |
+        | -------- | ------------------------ | ---- |
+        | PARAMETER_ERROR   | 接收人手机号码不能为空！ | 200  |
+        | NO_RESULT   | 未查到结果！！ | 200  |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                receiver:
+                  type: string
+                  title: 办税小号
+                  description: 办税小号手机号
+                dq:
+                  type: string
+                  title: 地区代码
+                  description: 请参考附录地区代码>>[地区代码](doc-2246773)
+              x-apifox-orders:
+              - receiver
+              - dq
+              required:
+              - receiver
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      sender:
+                        type: string
+                        title: 发送人号码
+                        description: 发送人号码
+                      receiver:
+                        type: string
+                        title: 接收人手机号码
+                        description: 接收人手机号码
+                      smsContent:
+                        type: string
+                        title: 短信内容
+                        description: 短信内容
+                      createtime:
+                        type: string
+                        title: createtime
+                        description: createtime
+                    x-apifox-orders:
+                    - sender
+                    - receiver
+                    - smsContent
+                    - createtime
+                    required:
+                    - sender
+                    - receiver
+                    - smsContent
+                    - createtime
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: 55a0b9c64e3c4792a9b026b306dd53a1
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data:
+                    - sender: 发送人号码
+                      receiver: 接收人手机号码
+                      smsContent: 短信内容
+                      createtime: 短信创建时间
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    reqId: 8fc4454f42354ec2956517c3f4a5bde9
+                    code: NO_RESULT
+                    success: false
+                    message: 未查到结果！
+  /v2/public/sjhm/querySecretReportPageList:
+    post:
+      summary: 办税小号通话清单查询
+      operationId: api-91408718
+      tags:
+      - 办税小号业务 / 小号管理
+      description: "## 接口描述\n\n    此接口用于用户通过办税小号查询通话清单。\n\n## 错误码\n| 错误代码  | 错误信息   | \n| -------- | --------- |\n| PARAMETER_ERROR | 参数secret_no不能为空 |\n"
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone_no:
+                  type: string
+                  title: 实名手机号
+                  description: A号码
+                secret_no:
+                  type: string
+                  title: 办税小号
+                  description: X号码
+                peer_no:
+                  type: string
+                  title: 验证码短信内容
+                  description: 验证码短信内容
+                call_type:
+                  type: string
+                  title: 呼叫类型
+                  description: 取值：0：主叫，即phone_no打给peer_no。1：被叫，即peer_no打给phone_no。4：呼叫拦截。
+                starttime:
+                  type: string
+                  title: 查询通话的开始时间
+                  description: 格式为：yyyy-MM-dd HH:mm:ss,默认当天0点0分0秒
+                endtime:
+                  type: string
+                  title: 查询通话的结束时间
+                  description: 格式为：yyyy-MM-dd HH:mm:ss，默认当天23点59分59秒
+                page:
+                  type: object
+                  properties: {}
+                  x-apifox-orders: []
+                  title: 分页信息
+                  description: 可选，不传默认返回第 1 页，分页大小 100
+              x-apifox-orders:
+              - phone_no
+              - secret_no
+              - peer_no
+              - call_type
+              - starttime
+              - endtime
+              - page
+              required:
+              - secret_no
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type: string
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type: string
+                    title: 错误信息
+                    description: 错误信息
+                  data:
+                    type: object
+                    properties:
+                      page:
+                        type: object
+                        properties:
+                          totalPage:
+                            type: integer
+                            title: 总页数
+                          pageSize:
+                            type: integer
+                            title: 每页显示数量
+                          currentPage:
+                            type: integer
+                            title: 当前页
+                          totalCount:
+                            type: integer
+                            title: 总数量
+                        required:
+                        - totalPage
+                        - pageSize
+                        - currentPage
+                        - totalCount
+                        x-apifox-orders:
+                        - totalPage
+                        - pageSize
+                        - currentPage
+                        - totalCount
+                        title: 分页信息
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            phone_no:
+                              type: string
+                              title: 实名手机号,即A号码
+                            unconnected_cause:
+                              type: string
+                              title: 未接通通话的原因归类
+                              description: 取值：0：正常通话。1：黑名单拦截。2：无绑定关系。3：呼叫限制。4：其他
+                            call_time:
+                              type: string
+                              title: 主叫拨打时间
+                              description: 格式为：yyyy-MM-dd HH:mm:ss
+                            peer_no:
+                              type: string
+                              title: AXB中的B号码或者N号码
+                            release_dir:
+                              type: integer
+                              title: 通话释放方向
+                              description: 取值：0：平台释放。1：主叫挂断。2：被叫挂断
+                            start_time:
+                              type: string
+                              title: 查询通话的开始时间
+                              description: 格式为：yyyy-MM-dd HH:mm:ss
+                            talktime:
+                              type: string
+                              title: 通话时间，单位毫秒
+                            id:
+                              type: string
+                              title: 唯一id
+                            secret_no:
+                              type: string
+                              title: 办税小号,即X号码
+                            call_type:
+                              type: integer
+                              title: 呼叫类型
+                              description: 取值：0：主叫，即phone_no打给peer_no。1：被叫，即peer_no打给phone_no。4：呼叫拦截
+                            release_time:
+                              type: string
+                              title: 查询通话的结束时间
+                              description: 格式为：yyyy-MM-dd HH:mm:ss
+                          x-apifox-orders:
+                          - phone_no
+                          - call_time
+                          - peer_no
+                          - start_time
+                          - secret_no
+                          - release_time
+                          - unconnected_cause
+                          - release_dir
+                          - talktime
+                          - id
+                          - call_type
+                          required:
+                          - phone_no
+                          - call_time
+                          - peer_no
+                          - start_time
+                          - secret_no
+                          - id
+                          - call_type
+                          - talktime
+                    required:
+                    - page
+                    - list
+                    x-apifox-orders:
+                    - page
+                    - list
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    req_id: f180a18300d048b190876e20a03a2ac8
+                    success: true
+                    data:
+                      page:
+                        totalPage: 1
+                        pageSize: 100
+                        currentPage: 1
+                        totalCount: 1
+                      list:
+                      - phone_no: 18xxxxxxxxx
+                        unconnected_cause: 0
+                        call_time: '2023-03-29 09:08:58'
+                        peer_no: 106xxxxxxx9999999
+                        release_dir: 0
+                        start_time: '2023-03-29 09:08:58'
+                        talktime: 0
+                        id: 1038886104699
+                        secret_no: 1xxxxxxxxxx
+                        call_type: 1
+                        release_time: '2023-03-29 09:08:58'
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    req_id: 859aa47f22a4482f96e17a3968d7ecbb
+                    success: false
+                    code: '600001'
+                    message: 参数secret_no不能为空！
+  /客户提供的小号短信通知地址:
+    post:
+      summary: 小号短信通知回调
+      operationId: api-91843602
+      tags:
+      - 办税小号业务 / 短信管理
+      description: |-
+        ## 前提条件
+        1、客户添加应用时需设置短信通知接收地址，并确保提供的地址能够正常处理平台发送的通知消息。如果需要开启短信通知功能，请通过配置短信通知地址配置短信接受地址。
+
+        ## 接口描述
+        此接口向客户推送办税小号的短信通知。 客户收到通知后返回HTTP状态码为200的空消息即可。
+
+        ## 返回结果
+        客户服务器接收到短信事件通知后，返回无消息体的200响应
+
+        ## 响应示例：
+        HTTP/1.1 200 OK
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callId:
+                  type: string
+                  title: 短信唯一标识
+                sender:
+                  type: string
+                  title: 短信的发送人
+                  description: 一般指当地税局的号码，例如：10690510000000562537
+                receiver:
+                  type: string
+                  title: 短信的接收人，即办税小号
+                smsContent:
+                  type: string
+                  title: 短信内容
+                receiveTime:
+                  type: string
+                  title: 短信收到的时间
+                  description: 格式为yyyy-MM-dd HH:mm:ss
+                pushTime:
+                  type: string
+                  title: 短信推送给客户的时间
+                  description: 格式为yyyy-MM-dd HH:mm:ss
+              x-apifox-orders:
+              - callId
+              - sender
+              - receiver
+              - smsContent
+              - receiveTime
+              - pushTime
+              required:
+              - callId
+              - sender
+              - receiver
+              - smsContent
+              - receiveTime
+              - pushTime
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apifox-orders: []
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    message: 成功
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    reqId: 915c51ddb1674f2caf982e30db8815a6
+                    code: PARAMETER_ERROR
+                    success: false
+                    message: 传入参数不能为空！
+  /v2/public/sjhm/editPushSmsConfig:
+    post:
+      summary: 配置小号短信通知地址
+      operationId: api-91844768
+      tags:
+      - 办税小号业务 / 短信管理
+      description: |+
+        ## 接口描述
+          此接口用于客户配置短信接受地址
+
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callbackUrl:
+                  type: string
+                  title: 短信接受地址
+                hqnr:
+                  type: string
+                  description: 1-验证码信息， 2-全量短信信息，默认为1
+                  title: 获取内容
+              x-apifox-orders:
+              - callbackUrl
+              - hqnr
+              required:
+              - callbackUrl
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - boolean
+                    - 'null'
+                    description: true成功/false失败
+                    title: 配置结果
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    req_id: 5b0694c6f3af4771b88f76f31bf954fb
+                    success: true
+                    code: SUCCESS
+                    data: true
+  /v2/public/sjhm/createBsxhOrder:
+    post:
+      summary: 申请小号订单
+      operationId: api-92013219
+      tags:
+      - 办税小号业务 / 申请小号
+      description: |-
+        ## 接口描述
+
+           此接口用于用户购买小号，创建订单使用。
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uniCode:
+                  type: string
+                  title: 客户传入订单的唯一标识
+                bsxhNum:
+                  type: string
+                  title: 购买办税小号的数量
+                useType:
+                  type: string
+                  title: 使用类型
+                  description: 0=测试 1=正式使用，默认为1
+              x-apifox-orders:
+              - uniCode
+              - bsxhNum
+              - useType
+              required:
+              - uniCode
+              - bsxhNum
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      createTime:
+                        type: string
+                        title: 订单创建成功时间
+                      id:
+                        type: integer
+                        title: 客户系统的订单唯一标识
+                      uniCode:
+                        type: string
+                        title: 客户系统的订单唯一标识
+                      appKey:
+                        type: integer
+                        title: 客户的appkey
+                    x-apifox-orders:
+                    - id
+                    - uniCode
+                    - appKey
+                    - createTime
+                    required:
+                    - createTime
+                    - id
+                    - uniCode
+                    - appKey
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    req_id: 41fbefcd894d4a21a83730bf013382e4
+                    code: SUCCESS
+                    data:
+                      createTime: '2023-05-13 21:13:07'
+                      uniCode: a123456789
+                      appKey: 10001000
+                      id: 465623822463680
+                      bsxhNum: 10
+                    success: true
+                    message: ''
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    req_id: d0cbb450aa6e478d9c9a7a881b3a3979
+                    success: false
+                    code: INTERFACE_ERROR
+                    message: uniCode=a123456789的订单已存在
+  /v2/public/sjhm/queryBsxhOrder:
+    post:
+      summary: 查询小号订单详情
+      operationId: api-92020134
+      tags:
+      - 办税小号业务 / 申请小号
+      description: |-
+        ## 接口描述
+
+           此接口用于创建小号订单后，查询小号订单详情。
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uniCode:
+                  type: string
+                  title: 客户传入订单的唯一标识
+              x-apifox-orders:
+              - uniCode
+              required:
+              - uniCode
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                    description: 错误信息
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      createTime:
+                        type: string
+                        title: 订单创建成功时间
+                      id:
+                        type: integer
+                        title: 客户系统的订单唯一标识
+                      uniCode:
+                        type: string
+                        title: 客户系统的订单唯一标识
+                      appKey:
+                        type: integer
+                        title: 客户的appkey
+                      bsxhNum:
+                        type: string
+                        title: 订单小号数量
+                      effectiveBsxhList:
+                        type: string
+                        title: 办税小号明细
+                    x-apifox-orders:
+                    - id
+                    - uniCode
+                    - appKey
+                    - createTime
+                    - bsxhNum
+                    - effectiveBsxhList
+                    required:
+                    - createTime
+                    - id
+                    - uniCode
+                    - appKey
+                    - bsxhNum
+                    - effectiveBsxhList
+                required:
+                - code
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value: |-
+                    {
+                        "reqId": "2fc*******464e9639906",
+                        "code": "SUCCESS",
+                        "success": true,
+                        "message": "",
+                        "data": {
+                            "appKey": 10****2,
+                            "bsxhNum": 1,
+                            "createTime": "2024-02-02 16:05:16",
+                            "effectiveBsxhList": [
+                                "17*****618"
+                            ],
+                            "id": 5123****45792,
+                            "uniCode": "1203******43392"
+                        }
+                    }
+                失败示例:
+                  summary: 失败示例
+                  value:
+                    req_id: d0cbb450aa6e478d9c9a7a881b3a3979
+                    success: false
+                    code: INTERFACE_ERROR
+                    message: 参数uniCode不能为空
+  /客户提供的订单开通通知地址:
+    post:
+      summary: 小号订单开通通知回调
+      operationId: api-94067222
+      tags:
+      - 办税小号业务 / 申请小号
+      description: |-
+        ### 前提条件
+        1、客户添加应用时需设置小号开通接收地址，并确保提供的地址能够正常处理平台发送的通知消息。如果需要开小号开通成功通知功能，请通过配置小号开通通知地址配置开通的小号接受地址。
+
+        ### 接口描述  POST请求
+        此接口向客户推送开通小号的通知。 客户收到通知后返回HTTP状态码为200的 返回体为json格式{“code”:2000}。
+        ### 返回结果
+        客户服务器接收到事件通知后，返回无消息体的200响应
+
+        响应示例：
+        HTTP/1.1 200 OK
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: false
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  title: 企享云系统的订单id
+                uniCode:
+                  type: string
+                  title: 客户系统的订单唯一标识
+                appKey:
+                  type: integer
+                  title: 客户的appkey
+                bsxhNum:
+                  type: integer
+                  title: 订单购买的小号总数
+                effectiveNum:
+                  type: string
+                  title: 所有有效的小号数量
+                effectiveBsxhList:
+                  type: array
+                  items:
+                    type: string
+                  title: 所有有效的小号
+                pushTime:
+                  type: string
+                  title: 订单最新的推送时间
+              x-apifox-orders:
+              - id
+              - uniCode
+              - appKey
+              - bsxhNum
+              - effectiveNum
+              - effectiveBsxhList
+              - pushTime
+              required:
+              - id
+              - uniCode
+              - appKey
+              - bsxhNum
+              - effectiveNum
+              - effectiveBsxhList
+              - pushTime
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: '2000'
+                  message:
+                    type: string
+                    description: SUCCESS
+                x-apifox-orders:
+                - code
+                - message
+                required:
+                - code
+                - message

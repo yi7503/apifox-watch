@@ -1,0 +1,270 @@
+{
+  "id": 67295912,
+  "name": "查询企业是否黑名单",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "Xb6RJLejUbm2X_2U-Q-Dy",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n 根据企业全名/统一社会信用代码查询企业征信。 查询是否异常，以及经营异常、严重违法、重大税收违法风险的三个标志和列表。\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|\n| NO_RESULT| 查询无结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/risk/hmd/standard",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "qyName": {
+          "type": "string",
+          "title": "企业全名/统一社会信用代码"
+        }
+      },
+      "x-apifox-orders": [
+        "qyName"
+      ],
+      "required": [
+        "qyName"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"qyName\": \"XXXXXXXXXXX\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "gS5eYPiuUy",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "eHBt8PTRvN",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "NKO89L5Fcp",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "UWj9c4jFb7",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171101110,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "错误码",
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": "object",
+            "x-apifox-refs": {},
+            "properties": {
+              "qyName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业全名"
+              },
+              "isHmd": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "是否黑名单(false:不是黑名单；true:黑名单)如果经营异常、严重违法、重大税收违法风险有一项，就是黑名单"
+              },
+              "jyycFlag": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "经营异常风险标志(0：无经营异常；1:有经营异常)，如果返回报文是”当前公示信息“且”移出日期“为空视作经营异常；"
+              },
+              "yzwfFlag": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "严重违法风险标志(0：无严重违法；1:有严重违法)，如果返回报文是”当前公示信息“且”移出日期“为空 视作严重违法；"
+              },
+              "zdsswfFlag": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "重大税收违法风险标志(0：无重大税收违法；1:有重大税收违法)，如果返回报文是”当前公示信息“ 视作重大税收违法；"
+              },
+              "jyycList": {
+                "title": "经营异常列表",
+                "$ref": "#/definitions/37483494"
+              },
+              "yzwfList": {
+                "title": "严重违法列表",
+                "$ref": "#/definitions/37486261"
+              },
+              "zdsswfList": {
+                "title": "重大税收违法列表",
+                "$ref": "#/definitions/37486518"
+              }
+            },
+            "x-apifox-orders": [
+              "qyName",
+              "isHmd",
+              "jyycFlag",
+              "yzwfFlag",
+              "zdsswfFlag",
+              "jyycList",
+              "yzwfList",
+              "zdsswfList"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 171101110,
+      "data": "{\n    \"reqId\": \"18d349a72fd243ad9704e51cd1e3dc4a\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"qyName\": \"湖南长沙XX有限公司\",\n        \"isHmd\": true,\n        \"jyycFlag\": 1,\n        \"yzwfFlag\": 1,\n        \"zdsswfFlag\": 1,\n        \"jyycList\": [\n            {\n                \"total\": 2,\n                \"items\": [\n                    {\n                        \"outReason\": \"-\",\n                        \"regNo\": \"430102000312822\",\n                        \"outDate\": \"-\",\n                        \"province\": \"HUNAN\",\n                        \"inDate\": \"2018-07-09\",\n                        \"name\": \"湖南长沙XX有限公司\",\n                        \"disabled\": \"0\",\n                        \"inReason\": \"未按照规定报送年度报告\",\n                        \"department\": \"长沙市工商行政管理局芙蓉分局\"\n                    },\n                    {\n                        \"outReason\": \"-\",\n                        \"regNo\": \"430102000312822\",\n                        \"outDate\": \"-\",\n                        \"province\": \"HUNAN\",\n                        \"inDate\": \"2018-07-08\",\n                        \"name\": \"湖南长沙XX有限公司\",\n                        \"disabled\": \"1\",\n                        \"inReason\": \"未按照规定报送年度报告\",\n                        \"department\": \"长沙市工商行政管理局芙蓉分局\"\n                    }\n                ]\n            }\n        ],\n        \"yzwfList\": {\n            \"execution\": [\n                {\n                    \"in_department\": \"湖南省市场监督管理局\",\n                    \"out_department\": \"-\",\n                    \"in_date\": \"2019-07-30\",\n                    \"in_reason\": \"被列入经营异常名录届满3年仍未履行相关义务\",\n                    \"out_date\": \"-\",\n                    \"out_reason\": \"-\"\n                }\n            ]\n        },\n        \"zdsswfList\": {\n            \"total\": 1,\n            \"items\": [\n                {\n                    \"created_time\": \"2019-04-09\",\n                    \"updated_time\": \"2019-04-09\",\n                    \"agent\": \"-\",\n                    \"address\": \"湖南省经济技术开发区承德南路266号6#楼322室\",\n                    \"illegal_fact\": \"经江苏省淮安市国家税务局稽查局检查，发现其在2015年12月01日至2016年05月31日期间，主要存在以下问题：对外虚开增值税销项发票150份，金额1408.00万元，税额239.00万元。\",\n                    \"url\": \"http://hd.chinatax.gov.cn/xxk/action/GetArticleView1.do?op=xxkweb&id=234642\",\n                    \"result\": \"依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款0.01万元的行政处罚，并依法移送司法机关。\",\n                    \"credit_no\": \"91320891MA1MC20690\",\n                    \"name\": \"湖南长沙XX有限公司\",\n                    \"property\": \"虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票\",\n                    \"oper\": \"史桂,男\",\n                    \"time\": \"2017-03-01\",\n                    \"org_no\": \"A1MC2069\",\n                    \"finance_officer\": \"-\"\n                }\n            ]\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17717647
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13475842,
+  "ordering": 40,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-24T08:49:50.000Z",
+  "updatedAt": "2025-04-07T06:04:41.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.171101110"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

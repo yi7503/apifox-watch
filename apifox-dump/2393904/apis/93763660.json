@@ -1,0 +1,313 @@
+{
+  "id": 93763660,
+  "name": "发票勾选",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于发起企业电子发票服务平台（发票云）进项发票勾选任务。\n\n### 错误码\n| **错误代码**       | **错误消息**                                                 | **解决方案**                                                 |\n| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004             | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002             | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq   | 暂不支持该地区进行发票云认证！                               |                                                              |\n| 50008              | 参数不能为空                                                 | 请检查入参是否不为空                                         |\n| 50001              | 传入参数不能为空！                                           | 请检查入参是否不为空                                         |\n| 50002              | 传入的参数-企业纳税人识别号nsrsbh不能为空！                  | 请检查入参里的纳税人识别号nsrsbh是否为空                     |\n| 50003              | 传入的参数-税款所属期skssq不能为空！                         | 请检查入参里的skssq是否为空                                  |\n| 50004              | 传入的参数-勾选类型gxlx不能为空！                            | 请检查入参里的gxlx是否为空                                   |\n| 50005              | 传入参数中的list数据不能为空                                 | 请检查入参里的list是否为空                                   |\n| 50006              | 参数list中，发票代码fpdm、发票号码fphm、全电发票号码qdfphm不能同时为空 | 请检查入参里的发票代码fpdm、发票号码fphm、全电发票号码qdfphm是否都为空 |\n| FprzNsrsbhIsNull   | 纳税人识别号为空                                             | 请检查入参里的纳税人识别号nsrsbh是否为空                     |\n| FprzNsrsbhNotExist | 纳税人识别号不存在                                           | 请检查入参里的纳税人识别号nsrsbh是否正确                     |\n| FprzSbxxIsNull     | 企业申报信息为空                                             | 请先获取税款所属期                                           |\n| FprzSkssqIsAtypism | 税款所属期不一致                                             | 请重新获取税款所属期确认后重新勾选                           |\n| 5000               | 通过发票代码or缴款书号码or转内销编号无法识别发票类型，请确认数据真实有效！ | 请检查发票信息是否正确                                       |\n| FprzUnsupportFplx  | 目前暂不支持发票类型为\" +发票类型值 + 发票代码为fpdm 发票号码为fphm的发票勾选！ | 请确认当前发票类型是否支持勾选认证                           |\n| 50009              | 增值税专用发票申请认证失败，请联系管理员!                    | 请联系管理员                                                 |\n| 50009              | 全电专用发票申请认证失败，请联系管理员!                      | 请联系管理员                                                 |\n| 50009              | 机动车销售统一发票申请认证失败，请联系管理员!                | 请联系管理员                                                 |\n| 50009              | 出口转内销发票申请认证失败，请联系管理员!                    | 请联系管理员                                                 |\n| 8600               | 当前发票勾选操作发生异常，请联系管理员                       | 请联系管理员                                                 |\n| 4100               | 当前勾选类型不支持                                           | 请检查入参中的gxlx勾选类型是否在支持的范围内                 |\n| 50013              | 当前请求参数中不抵扣原因不能为空！                           | 不抵扣勾选需要选择不抵扣原因                                 |\n| 50014              | 不支持当前请求参数中的不抵扣原因！                           | 请检查选择的不抵扣原因是否在支持的范围内                     |\n| 50015              | 当不抵扣原因选择-其他时，不抵扣原因描述不能为空！            | 请检查不抵扣原因描述是否不为空                               |\n| 8600               | 当前发票勾选操作发生异常，请联系管理员                       | 请联系管理员                                                 |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[发票勾选结果查询](https://openapi.qixiangyun.com/api-93763337)接口查询任务转异步后执行结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/jxfpgx",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01K5G8TA04J555M0SYC0KZK9VA": {
+          "$ref": "#/definitions/54181407",
+          "x-apifox-overrides": {}
+        }
+      },
+      "properties": {},
+      "x-apifox-orders": [
+        "01K5G8TA04J555M0SYC0KZK9VA"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"52**************XJ\",\r\n  \"skssq\": \"202303\",\r\n  \"gxlx\": \"1\",\r\n  \"bdkyy\":\"\",\r\n  \"bdkyyms\":\"\",\r\n  \"list\": [{\r\n    \"fpdm\": \"01********12\",\r\n    \"fphm\": \"46****48\",\r\n    \"qdfphm\": \"\",\r\n    \"yxse\": 13.0,\r\n    \"zmbh\": \"\"\r\n  }]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "name": "同步请求示例",
+        "value": "{\r\n    \"nsrsbh\": \"91************QY4Y\",\r\n    \"skssq\": \"202509\",\r\n    \"gxlx\": \"1\",\r\n    \"list\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"fphm\": \"\",\r\n            \"qdfphm\": \"24318781111000227667\",\r\n            \"yxse\": 110.48,\r\n            \"zmbh\": \"\"\r\n        }\r\n    ],\r\n    \"sync\": true\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Op0jIBPUEd",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "a9sVr6QKfw",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "GtjCoCW3qJ",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 234121271,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXTCSGXV36NYPYY7K6HPRDEE": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "勾选任务id"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXTCSGXV36NYPYY7K6HPRDEE"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 234121272,
+      "name": "失败",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$ref": "#/definitions/35327531"
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 773394511,
+      "name": "同步请求成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5G8VWXW6M1R2AJ1TJH8EGTZ"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5G8VWXW6M1R2AJ1TJH8EGTZ": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5G8W7ERGZ7F140DGHKG4FRX"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5G8W7ERGZ7F140DGHKG4FRX": {
+                    "$ref": "#/definitions/54191223"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 773394512,
+      "name": "同步超时转异步",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5G8YKWCNE9DCH0XMG2R6E6A"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5G8YKWCNE9DCH0XMG2R6E6A": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5G8YXZA2YQPDB1GH7QW4TWS"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5G8YXZA2YQPDB1GH7QW4TWS": {
+                    "$ref": "#/definitions/104050184"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 234121271,
+      "data": "{\r\n    \"reqId\": \"3ed8a814c9e7489cb650e9a598c58912\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": 459933925460288\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 23746624
+    },
+    {
+      "name": "税款所属期不一致",
+      "responseId": 234121272,
+      "data": "{\n    \"reqId\": \"0106b22de0b244b08cb80fee9eb1d4a6\",\n    \"code\": \"FprzSkssqIsAtypism\",\n    \"success\": false,\n    \"message\": \"税款所属期不一致\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 23746625
+    },
+    {
+      "name": "同步成功示例",
+      "responseId": 773394511,
+      "data": "{\r\n    \"reqId\": \"aa9220ac0bc042f287d1f5ade7b6d513\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"customReqId\": \"10001999fdcecadc3a75440f969494ecb03c38d5\",\r\n        \"list\": [\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"cljg\": \"1\",\r\n                \"code\": null,\r\n                \"fpdm\": \"\",\r\n                \"fphm\": \"\",\r\n                \"fplx\": \"81\",\r\n                \"fpzt\": null,\r\n                \"gfsbh\": \"91***************4Y\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": \"1\",\r\n                \"gxsj\": \"2024-10-22 15:49:06\",\r\n                \"gxzt\": \"1\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 296.23,\r\n                \"kprq\": \"2024-06-19 13:21:42\",\r\n                \"message\": null,\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": \"24****************47\",\r\n                \"se\": 17.77,\r\n                \"skssq\": \"202409\",\r\n                \"yskssq\": null,\r\n                \"yxse\": 17.77,\r\n                \"zmbh\": null,\r\n                \"zt\": \"3\"\r\n            }\r\n        ],\r\n        \"message\": null,\r\n        \"zt\": \"3\"\r\n    }\r\n}{\r\n    \"reqId\": \"aa9220ac0bc042f287d1f5ade7b6d513\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"customReqId\": \"10001999fdcecadc3a75440f969494ecb03c38d5\",\r\n        \"list\": [\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"cljg\": \"1\",\r\n                \"code\": null,\r\n                \"fpdm\": \"\",\r\n                \"fphm\": \"\",\r\n                \"fplx\": \"81\",\r\n                \"fpzt\": null,\r\n                \"gfsbh\": \"91***************4Y\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": \"1\",\r\n                \"gxsj\": \"2024-10-22 15:49:06\",\r\n                \"gxzt\": \"1\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 296.23,\r\n                \"kprq\": \"2024-06-19 13:21:42\",\r\n                \"message\": null,\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": \"24****************47\",\r\n                \"se\": 17.77,\r\n                \"skssq\": \"202409\",\r\n                \"yskssq\": null,\r\n                \"yxse\": 17.77,\r\n                \"zmbh\": null,\r\n                \"zt\": \"3\"\r\n            }\r\n        ],\r\n        \"message\": null,\r\n        \"zt\": \"3\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707698176
+    },
+    {
+      "name": "同步超时转异步示例",
+      "responseId": 773394512,
+      "data": "{\r\n    \"reqId\": \"0dd7f306967a44dfbfe251b8c5b5c240\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"action\": \"jxfpgx\",\r\n        \"code\": \"FprzSyncToAsync\",\r\n        \"message\": \"业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果\",\r\n        \"taskId\": 534457481415296,\r\n        \"nsrsbh\": \"91************2G\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707698177
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58873778,
+  "ordering": 25,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-03T08:46:38.000Z",
+  "updatedAt": "2025-09-19T07:43:27.000Z",
+  "creatorId": 1426961,
+  "editorId": 3099717,
+  "creatorUserId": 1426961,
+  "editorUserId": 3099717,
+  "responseChildren": [
+    "BLANK.234121271",
+    "BLANK.234121272",
+    "BLANK.773394511",
+    "BLANK.773394512"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

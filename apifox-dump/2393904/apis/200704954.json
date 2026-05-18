@@ -1,0 +1,293 @@
+{
+  "id": 200704954,
+  "name": "入账状态及用途标签查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询发票的入账状态及用途标签。\n\n::: highlight red 💡\n注意：不同的数电票价税合计取值不同\n:::\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| CheckRzztAndYtbqException | 入账状态及用途标签查询失败！ |请重试\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/ytbqCx",
+  "tags": [
+    "发票查验",
+    "电票平台查验"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "customReqId": {
+          "type": "string",
+          "title": "传入的请求ID",
+          "description": "用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+        },
+        "cyList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/112819816"
+          },
+          "title": "查验列表"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "customReqId",
+        "cyList"
+      ],
+      "required": [
+        "customReqId",
+        "cyList"
+      ]
+    },
+    "examples": [
+      {
+        "value": "// 电子发票（增值税专用发票）/电子发票（普通发票）/电子发票（铁路电子客票）/电子发票（航空电子客票行程单）/数电纸质（增值税专用发票）/数电纸质（增智税普通发票）查询入参示例\r\n{\r\n    \"customReqId\": \"\",\r\n    \"cyList\": [\r\n        {\r\n            \"fphm\": \"23****************27\",\r\n            \"kprq\": \"2023-01-05\",\r\n            \"jshj\": \"60000\"\r\n        }\r\n    ]\r\n}\r\n\r\n// 增值税专用发票/增值税电子专用发票/机动车销售统一发票/二手车统一销售发票查询入参示例\r\n{\r\n    \"customReqId\": \"\",\r\n    \"cyList\": [\r\n        {\r\n            \"fpdm\": \"01********17\",\r\n            \"fphm\": \"01****70\",\r\n            \"kprq\": \"20240229\",\r\n            \"jshj\": \"8000.00\"\r\n        }\r\n    ]\r\n}\r\n\r\n// 增值税普通发票/增值税电子普通发票/增值税普通发票(卷票)/增值税电子普通发票(通行费)查询入参示例\r\n{\r\n    \"customReqId\": \"\",\r\n    \"cyList\": [\r\n        {\r\n            \"fpdm\": \"04********12\",\r\n            \"fphm\": \"13****89\",\r\n            \"kprq\": \"20230215\",\r\n            \"jym\": \"346351\",\r\n            \"jshj\": \"26.69\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "XtvBSgYd9H",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "F4eXY9x60y",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "7hoHC5AqDy",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 502844745,
+      "name": "电票平台入账状态及用途标签查询成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01J2K178KY5EEE7VN8E24FKN9C": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/definitions/112197564"
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01J2K178KY5EEE7VN8E24FKN9C"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 502844759,
+      "name": "电票平台查验失败",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01J2K7FPHDRDH5KHFSXHDVAQE0": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/definitions/108159489"
+                },
+                "title": "业务数据"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01J2K7FPHDRDH5KHFSXHDVAQE0"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "数电票查询成功示例",
+      "responseId": 502844745,
+      "data": "{\n    \"reqId\": \"a1621b0da26f403e8f76ae496f98dd0d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"cyjg\": \"第三方发票，经查验，发票信息一致\",\n            \"dsffpbz\": \"Y\",\n            \"fpdm\": null,\n            \"fpfxdj\": \"正常\",\n            \"fphm\": \"\",\n            \"fplyDm\": \"2\",\n            \"fplymc\": \"电子发票服务平台\",\n            \"fpztDm\": \"0\",\n            \"gfsbh\": \"91*************2G\",\n            \"gmfssjswjgDm\": null,\n            \"kprq\": \"2021-12-01 00:00:00\",\n            \"qdfphm\": \"21****************61\",\n            \"sfch\": \"未冲红\",\n            \"sfchDm\": \"N\",\n            \"sffxbz\": \"N\",\n            \"sfzf\": \"未作废\",\n            \"taxSjlybz\": \"13100000000\",\n            \"xsfssjswjgDm\": \"13100000000\",\n            \"ytbqxx\": {\n                \"fpdm\": \"\",\n                \"fphm\": \"\",\n                \"fplyDm\": \"2\",\n                \"fplymc\": \"电子发票服务平台\",\n                \"fprzzt\": \"未入账\",\n                \"qdfphm\": \"21****************61\",\n                \"xfsytbq\": \"未使用\",\n                \"zzsgxsq\": null,\n                \"zzsytbq\": \"未使用\"\n            }\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 420400142
+    },
+    {
+      "name": "电票平台查验暂不支持非数电票查验",
+      "responseId": 502844759,
+      "data": "{\n    \"reqId\": \"b7557bcb8f08482ebab04539915d881c\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": \"CheckInvoiceNotSupport\",\n            \"customReqId\": \"10001999413a18a1aab54dc6aecdc005c146d333\",\n            \"fpdm\": \"011001800304\",\n            \"fphm\": \"87022902\",\n            \"fplx\": \"04\",\n            \"jym\": \"668200\",\n            \"kprq\": \"2020-04-01 00:00:00\",\n            \"message\": \"电票平台查验暂不支持非数电票查验！\",\n            \"success\": false\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 420377007
+    },
+    {
+      "name": "增值税发票查询结果示例",
+      "responseId": 502844745,
+      "data": "{\r\n    \"reqId\": \"8fb1f92cfedd431da08e17791629592a\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"cyjg\": \"第三方发票，经查验，发票信息一致\",\r\n            \"dsffpbz\": \"Y\",\r\n            \"fpdm\": \"04********12\",\r\n            \"fpfxdj\": \"正常\",\r\n            \"fphm\": \"13****89\",\r\n            \"fplyDm\": \"1\",\r\n            \"fplymc\": \"增值税发票管理系统\",\r\n            \"fpztDm\": \"0\",\r\n            \"gfsbh\": \"91**************9H\",\r\n            \"gmfssjswjgDm\": \"14400000000\",\r\n            \"kprq\": \"2023-02-15 00:00:00\",\r\n            \"qdfphm\": null,\r\n            \"sfch\": \"未冲红\",\r\n            \"sfchDm\": \"N\",\r\n            \"sffxbz\": \"N\",\r\n            \"sfzf\": \"未作废\",\r\n            \"taxSjlybz\": \"14400000000\",\r\n            \"xsfssjswjgDm\": \"14400000000\",\r\n            \"ytbqxx\": {\r\n                \"fpdm\": \"04********12\",\r\n                \"fphm\": \"13***89\",\r\n                \"fplyDm\": \"1\",\r\n                \"fplymc\": \"增值税发票管理系统\",\r\n                \"fprzzt\": \"未入账\",\r\n                \"qdfphm\": \"\",\r\n                \"xfsytbq\": \"未使用\",\r\n                \"zzsgxsq\": null,\r\n                \"zzsytbq\": \"未使用\"\r\n            }\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 470549346
+    },
+    {
+      "name": "入账状态及用途标签查询失败！",
+      "responseId": 502844759,
+      "data": "{\n    \"reqId\": \"abd447e064a542e188d845877cb3284f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": \"CheckRzztAndYtbqException\",\n            \"customReqId\": \"1000199934505098569e4db4a28735662a2f58d6\",\n            \"fpdm\": null,\n            \"fphm\": \"21**************61\",\n            \"fplx\": \"09\",\n            \"jym\": null,\n            \"kprq\": \"2021-12-01 00:00:00\",\n            \"message\": \"入账状态及用途标签查询失败！\",\n            \"success\": false\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 420739265
+    },
+    {
+      "name": "数电纸质普通发票查询结果示例",
+      "responseId": 502844745,
+      "data": "{\r\n    \"reqId\": \"b524b97a47d24a5c8afc6d5ec2749b12\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"cyjg\": \"第三方发票，经查验，发票信息一致\",\r\n            \"dsffpbz\": \"Y\",\r\n            \"fpdm\": \"03********04\",\r\n            \"fpfxdj\": \"正常\",\r\n            \"fphm\": \"23****59\",\r\n            \"fplyDm\": \"2\",\r\n            \"fplymc\": \"电子发票服务平台\",\r\n            \"fpztDm\": \"0\",\r\n            \"gfsbh\": \"91***************1H\",\r\n            \"gmfssjswjgDm\": \"13100000000\",\r\n            \"kprq\": \"2023-07-03 00:00:00\",\r\n            \"qdfphm\": \"23***************89\",\r\n            \"sfch\": \"未冲红\",\r\n            \"sfchDm\": \"N\",\r\n            \"sffxbz\": \"N\",\r\n            \"sfzf\": \"未作废\",\r\n            \"taxSjlybz\": \"13100000000\",\r\n            \"xsfssjswjgDm\": \"13100000000\",\r\n            \"ytbqxx\": {\r\n                \"fpdm\": \"03********04\",\r\n                \"fphm\": \"23****59\",\r\n                \"fplyDm\": \"2\",\r\n                \"fplymc\": \"电子发票服务平台\",\r\n                \"fprzzt\": \"未入账\",\r\n                \"qdfphm\": \"23***************89\",\r\n                \"xfsytbq\": \"未使用\",\r\n                \"zzsgxsq\": null,\r\n                \"zzsytbq\": \"未使用\"\r\n            }\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 470549348
+    },
+    {
+      "name": "专票价税合计不能为空",
+      "responseId": 502844759,
+      "data": "{\r\n    \"reqId\": \"c530474bc2f541e08ba62712cdceebef\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"code\": \"IllegalParameter.IllegalTotalAmount\",\r\n            \"customReqId\": \"10001999144fef0463df4c9fbbab2e154d0d0bd5\",\r\n            \"fpdm\": \"34******30\",\r\n            \"fphm\": \"17****68\",\r\n            \"fplx\": \"01\",\r\n            \"je\": null,\r\n            \"jshj\": null,\r\n            \"jym\": null,\r\n            \"kprq\": \"2021-11-01 00:00:00\",\r\n            \"message\": \"请求参数不正确,电票平台查询增值税专用发票入账状态及用途标签时，价税合计不能为空！\",\r\n            \"success\": false\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 470280387
+    },
+    {
+      "name": "普票校验码不能为空",
+      "responseId": 502844759,
+      "data": "{\r\n    \"reqId\": \"660cffe63d5b4b0f91dab5a5bc883bb8\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"code\": \"IllegalParameter.IllegalCheckCode\",\r\n            \"customReqId\": \"100019999d723627b00c4173918f676fd845f02f\",\r\n            \"fpdm\": \"01********04\",\r\n            \"fphm\": \"87****02\",\r\n            \"fplx\": \"04\",\r\n            \"je\": null,\r\n            \"jshj\": 178.00,\r\n            \"jym\": null,\r\n            \"kprq\": \"2020-04-01 00:00:00\",\r\n            \"message\": \"请求参数不正确,电票平台查询增值税普通发票入账状态及用途标签时，校验码不能为空！\",\r\n            \"success\": false\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 470274013
+    },
+    {
+      "name": "数电票-已红冲-部分",
+      "responseId": 502844745,
+      "data": "{\r\n    \"reqId\": \"5dfe193580694879bb1fa5f83cd3b6f9\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"cyjg\": \"第三方发票，经查验，发票信息一致\",\r\n            \"dsffpbz\": \"Y\",\r\n            \"fpdm\": null,\r\n            \"fpfxdj\": \"正常\",\r\n            \"fphm\": \"\",\r\n            \"fplyDm\": \"2\",\r\n            \"fplymc\": \"电子发票服务平台\",\r\n            \"fppzDm\": \"02\",\r\n            \"fpztDm\": \"7\",\r\n            \"fpztMc\": \"已红冲-部分\",\r\n            \"gfsbh\": \"12***************01\",\r\n            \"gmfssjswjgDm\": \"13400000000\",\r\n            \"kprq\": \"2024-06-19 00:00:00\",\r\n            \"qdfphm\": \"24****************84\",\r\n            \"sfch\": \"已冲红\",\r\n            \"sfchDm\": \"Y\",\r\n            \"sffxbz\": \"N\",\r\n            \"sfzf\": \"未作废\",\r\n            \"taxSjlybz\": \"13400000000\",\r\n            \"xsfssjswjgDm\": \"13400000000\",\r\n            \"ytbqxx\": {\r\n                \"fpdm\": \"\",\r\n                \"fphm\": \"\",\r\n                \"fplyDm\": \"2\",\r\n                \"fplymc\": \"电子发票服务平台\",\r\n                \"fprzzt\": \"已入账\",\r\n                \"qdfphm\": \"24****************84\",\r\n                \"xfsytbq\": \"未使用\",\r\n                \"zzsgxsq\": null,\r\n                \"zzsytbq\": \"未使用\"\r\n            }\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 476518168
+    },
+    {
+      "name": "增值税发票-已作废",
+      "responseId": 502844745,
+      "data": "{\r\n    \"reqId\": \"794e3289aed74675b4ad23c6dc758cce\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"cyjg\": \"第三方发票，经查验，发票信息一致\",\r\n            \"dsffpbz\": \"Y\",\r\n            \"fpdm\": \"44******30\",\r\n            \"fpfxdj\": \"正常\",\r\n            \"fphm\": \"32****02\",\r\n            \"fplyDm\": \"1\",\r\n            \"fplymc\": \"增值税发票管理系统\",\r\n            \"fppzDm\": null,\r\n            \"fpztDm\": \"2\",\r\n            \"fpztMc\": \"已作废\",\r\n            \"gfsbh\": \"91***************69\",\r\n            \"gmfssjswjgDm\": \"14403000000\",\r\n            \"kprq\": \"2022-05-30 00:00:00\",\r\n            \"qdfphm\": null,\r\n            \"sfch\": \"未冲红\",\r\n            \"sfchDm\": \"N\",\r\n            \"sffxbz\": \"N\",\r\n            \"sfzf\": \"已作废\",\r\n            \"taxSjlybz\": \"14400000000\",\r\n            \"xsfssjswjgDm\": \"14400000000\",\r\n            \"ytbqxx\": {\r\n                \"fpdm\": \"44******30\",\r\n                \"fphm\": \"32****02\",\r\n                \"fplyDm\": \"1\",\r\n                \"fplymc\": \"增值税发票管理系统\",\r\n                \"fprzzt\": \"未入账\",\r\n                \"qdfphm\": \"\",\r\n                \"xfsytbq\": \"未使用\",\r\n                \"zzsgxsq\": null,\r\n                \"zzsytbq\": \"未使用\"\r\n            }\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 476523505
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 40381481,
+  "ordering": 31,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-08-03T03:11:57.000Z",
+  "updatedAt": "2025-02-07T08:03:22.000Z",
+  "creatorId": 1426961,
+  "editorId": 1426961,
+  "creatorUserId": 1426961,
+  "editorUserId": 1426961,
+  "responseChildren": [
+    "BLANK.502844745",
+    "BLANK.502844759"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

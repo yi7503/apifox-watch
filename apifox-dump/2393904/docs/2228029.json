@@ -1,0 +1,17 @@
+{
+  "id": 2228029,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n   支持获取当前客户当期在电子税务局所有申报的税种实时的申报状态、缴款状态、应补退税额以及相关截图。来源于电子税务局有效的税费种认定、申报查询、缴款查询、未缴款查询各个功能模块数据的整合。\n   仅支持返回当期的申报结果查询，不支持往期查询\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372899/image-preview)\n\n## 接口列表\n第一步：发起申报信息查询任务\n\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- |--- |\n| 发起申报信息查询任务 |/v2/tax/qys/loadDeclareInfoTask|该接口用于发起获取申报查询结果信息接口\n\n第二步：根据发起申报信息查询任务成功后的tsakID调用查询申报条目任务，申报信息查询任务未成功无法发起。\n\n| 接口名称 |接口地址  |接口说明 |\n| --- | --- | --- |\n| 查询申报信息任务 | v2/tax/qys/queryTaskTaxInfo|该接口返回客户在税局所有税种的申报状态、缴款状态、税局金额、截图\n\n",
+  "folderId": 13530951,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-23T12:46:09.000Z",
+  "updatedAt": "2025-01-21T09:49:24.000Z",
+  "creatorId": 1441586,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

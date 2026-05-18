@@ -1,0 +1,171 @@
+{
+  "id": 309036087,
+  "name": "出口退税查询申报确认提交结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "查询申报确认提交任务返回得结果",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/getDeclareConfirmationResult",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 4797560596251712,\r\n    \"taskId\": \"600734271675392\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 698120136,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "$ref": "#/definitions/176213673"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 698120136,
+      "data": "{\n    \"reqId\": \"\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"确认成功\",\n    \"data\": {\n        \"businessStatus\": \"3\",\n        \"code\": \"2000\",\n        \"success\": true,\n        \"message\": \"确认成功\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 604360735
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63427120,
+  "ordering": 36,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-16T02:48:57.000Z",
+  "updatedAt": "2025-08-06T06:05:37.000Z",
+  "creatorId": 1452584,
+  "editorId": 1476015,
+  "creatorUserId": 1452584,
+  "editorUserId": 1476015,
+  "responseChildren": [
+    "BLANK.698120136"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

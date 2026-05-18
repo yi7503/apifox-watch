@@ -1,0 +1,17 @@
+{
+  "id": 6597976,
+  "name": "2025年4月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1.代扣代缴申报及初始化进行优化\n2.支持excel上传申报财务报表年报\n3.财报-企业会计制度支持所有者权益变动表申报\n4.特定主体登录支持房产、土地、增值税预缴的申报、缴款、初始化、完税凭证、下载PDF\n5.跨区域增加主管税务机关字段上传（申报、缴款、初始化、完税凭证、下载PDF）\n:::\n\n## 接口变化\n### 一、代扣代缴申报及初始化进行优化\n1. 增值税代扣代缴申报和初始化每次都只允许请求一个合同\n2. 申报允许多个任务同时进来是以系统合同编号进行唯一判断\n3. 初始化变化：\n  - 增值税代扣代缴支持返回系统合同编号\n  - xthtbhList--刪除，不支持上传多个合同编号，调整成htbh\n  - 企业所得税和增值税代扣代缴初始化都需要请求系统合同编号和合同编号\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520643/image-preview)\n4. 申报变化：\n  - 增值税代扣代缴申报新增系统合同编号\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520644/image-preview)\n\n- 企业所得税\"htbh\":\"系统合同编号\",调整为\"xthtbh\":\"系统合同编号\"\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520645/image-preview)\n\n4. 查询合同变化：\n增值税代扣代缴：\n- 原先参数xthtbh 名称从合同编号调整为系统合同编号，返回信息也调整成返回接口看到的系统合同编号\n- 新增htbh 合同编号返回  对应税局界面和合同编号\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520647/image-preview)\n\n### 二、支持excel上传申报财务报表年报\n1. 涉及接口：上传各税种申报表EXCEL数据\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520651/image-preview)\n\n### 三、财报-企业会计制度支持所有者权益变动表申报\n\n1. 涉及接口：上传财报数据 （仅支持报文上传不支持excel上传）\n2. 运用场景：根据用户实际财务会计制度备案场景进行上传和申报\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520652/image-preview)\n\n### 四、特定主体登录支持房产、土地、增值税预缴的申报、缴款、初始化、完税凭证、下载PDF\n1. 特定主体登录支持申报缴款税种：房产、城镇土地税使用税、增值税预缴\n2. 接口请求参数新增tdztswjgmc=特定主体税务机关名称，涉及接口：\n- 上传各税种申报表数据、上传各税种申报表EXCEL数据 （申报任务用此接口 isDirectDeclare=true即是申报）\n- 发起税款缴纳任务 \n- 发起下载当期PDF任务、发起下载往期PDF任务\n- 发起下载完税证明任务、发起下载完税证明并解析任务\n如：上传申报表数据参数： \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/521141/image-preview)\n\n2. 对应税局场景：在税局完成特定主体登录后，可能存在多条，需要选择对应的主管税务机关名称进入税局\n![d38c97e221a6fb544092d60d76a7273.jpg](https://api.apifox.com/api/v1/projects/2393904/resources/520657/image-preview)\n\n### 四、跨区域增加主管税务机关字段上传\n\n1. 请求参数新增kqyswjgmc=跨区域税局机关名称，涉及接口：\n\n- 上传各税种申报表数据\\上传各税种申报表EXCEL数据 （申报任务用此接口 isDirectDeclare=true即是申报）\n- 发起税款缴纳任务 \n- 发起下载当期PDF任务、发起下载往期PDF任务\n- 发起下载完税证明任务、发起下载完税证明并解析任务\n如：上传申报表数据参数： \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/521143/image-preview)\n\n2. 对应税局场景：之前参数bbswjg要求上传是省|市|区，发现一个省市区会有多个税务机关找不到唯一记录进行切换，这类情况就上传跨区域税局机关名称，找对应主管税务机关名称进行切换\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520711/image-preview)\n\n3. 与之前参数bbswjg参数的关系：\n- 保持原来的对接只传这个参数也可以，只是存在多个记录时不知道选择哪一个会返回失败\n- 请求bbswjg以及kqyswjgmc时以跨区域税局机关名称为主\n- 也可只请求kqyswjgmc\n总之，bbswjg和kqyswjgmc其中一个有值都算跨区域的业务场景\n\n3. 跨区域主管税务机关名称获取，在企业信息采集中支持返回账户中心中税源登记选择所有正常状态的记录\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520713/image-preview)\n\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-05-06T08:50:34.000Z",
+  "updatedAt": "2025-11-26T10:09:59.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

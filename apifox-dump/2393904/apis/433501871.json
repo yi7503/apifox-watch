@@ -1,0 +1,222 @@
+{
+  "id": 433501871,
+  "name": "申报公示申请",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "zH4QcKOhuMWMKbRYtgSm2",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "工商年报发起数据报送申请",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/gsnb/business/applySubmit",
+  "tags": [],
+  "status": -2,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "nsrmc": {
+          "type": "string",
+          "title": "纳税人名称"
+        },
+        "data": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "x-apifox-refs": {},
+          "title": "报送数据",
+          "description": "参数各地区表单目录下不同的不同的表单json"
+        },
+        "nd": {
+          "type": "string",
+          "title": "申报年度"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "cityCode": {
+          "type": "string",
+          "description": "四位数字字符串",
+          "title": "城市编码"
+        }
+      },
+      "if": {
+        "properties": {
+          "bsywsx": {
+            "const": "01"
+          }
+        },
+        "required": [
+          "bsywsx"
+        ],
+        "x-apifox-orders": [
+          "bsywsx"
+        ]
+      },
+      "then": {
+        "required": [
+          "xkzbh",
+          "ywzl1",
+          "xkzyxqq",
+          "xkzyxqz"
+        ]
+      },
+      "else": {
+        "if": {
+          "properties": {
+            "bsywsx": {
+              "const": "02"
+            }
+          },
+          "required": [
+            "bsywsx"
+          ],
+          "x-apifox-orders": [
+            "bsywsx"
+          ]
+        },
+        "then": {
+          "required": [
+            "pthyycxmc",
+            "yykssj",
+            "ywlxdmjh"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "cityCode",
+        "nsrmc",
+        "nd",
+        "data"
+      ],
+      "x-apifox-refs": {},
+      "required": [
+        "nsrmc",
+        "nd",
+        "aggOrgId",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\n    \"aggOrgId\": \"50123135********\",\n    \"nd\": \"2025\",\n    \"nsrmc\": \"xxxxxxxxxxxxxxxxx\",\n    \"data\": {}\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790300683,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "x-apifox-orders": [
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS"
+        ],
+        "x-apifox-refs": {
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01KMJ4A616TQAS5ZXNG4YS0D84"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01KMJ4A616TQAS5ZXNG4YS0D84": {
+                    "$ref": "#/definitions/257610598"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81235447,
+  "ordering": 101,
+  "responsibleId": 543708,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2026-03-25T09:15:40.000Z",
+  "updatedAt": "2026-04-28T12:04:01.000Z",
+  "creatorId": 3099717,
+  "editorId": 1534873,
+  "creatorUserId": 3099717,
+  "editorUserId": 1534873,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 7983494,
+  "name": "2025年12月发布内容",
+  "sidebarTitle": "",
+  "content": "### 2025年12月发布内容\n发布日期：2025-12-30\n发布版本：V1.0.23\n\n\n### 1.发版内容：扣代缴-备份文件，汇总以及申报报表没展示汇总数\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610697/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610699/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610701/image-preview)\n### 2.发版内容：员工并档\n如果一个人有多条数据需要并档，注意需要一条一条并档。比如人员有A、B、C三条信息，以C为最终结果，先把A并档到B，再把B并档到C，调用两次。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610702/image-preview)\n\n### 3.发版内容：员工信息报送，返回增加自然人档案号信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610707/image-preview)\n\n### 4.发版内容：账号信息上传并校验，是否发起校验，默认Y，默认要校验\n解决问题：税号下存在多个登记序号时，在校验账密时，会检查是否多主管机关，如果不开启账密校验，多个登记序号时导致客户用错误的主管机关进行申报。\n\n### 5.发版内容：正常工资薪金，异步算税/申报，传入的请求参数不在我们接口请求参数范围内，B端默认置为空\n解决问题：正常工资薪金异步算税、正常工资薪金个税申报，请求参数传了累计值和当月值，导致算税加了累计值，出现算税错误的问题\n\n### 6.发版内容：完善个税申报，只申报一个报表，其他报表不申报时，允许其他报表传空，比如只申报综合所得，那么分类所得，非居民所得可以穿空\n\n### 7.发版内容：获取累计数据反馈，增加本期专附扣数据返回\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610732/image-preview)\n\n### 8.发版内容：支持获取上年在职职工人数、上年在职职工工资总额\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610734/image-preview)\n\n### 9.发版内容：新增生产经营，预缴纳税，备份文件\n备份文件包含生产经营人员报送、算税、申报、申报数据查询。备份时间从2025年7月开始\n\n### 10.发版内容：新增单位申报记录查询的截图\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610738/image-preview)\n\n### 11.发版内容：个税申报-代扣代缴，校验上月是否申报逻辑优化\n方案调整为：先确认上月是否申报，再判断上月是否在税费种认定起止时间内，若有效期内，且上月未申报，则提示上期未申报；若不在有效期内或者无认定的税费种，则可直接申报本月\n解决问题：税局税费种信息不正确时，本月申报时，要检测上月是否申报，不影响本月申报\n\n### 12.发版内容：员工报送，新增是否高级专家报送\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610743/image-preview)\n\n### 13.发版内容：综合所得，一次性年终奖、解除劳动合同一次性补偿金、一般劳务报酬，支持汇总申报\n解决问题：使用接口算税，申报时可不用再次传输算税明细数据，可用算税的数据进行申报",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-01-06T09:08:26.000Z",
+  "updatedAt": "2026-01-06T10:28:23.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

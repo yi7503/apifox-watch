@@ -1,0 +1,17 @@
+{
+  "id": 7174781,
+  "name": "2025年7月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年7月发布内容\n\n发布日期：2025-07-31\n发布版本：V2.2025.07\n\n## 一. 汇总信息查询\n1. 全量发票汇总信息：支持根据发票类型统计张数及金额\n- 接口字段：发票类型代码-fplxDm\n- 接口文档：[全量发票汇总信息](apifox://link/endpoint/256971137)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553039/image-preview)\n\n## 二、发票开具\n1. 异步请求结果查询：支持根据来源订单编号查询开票任务结果\n- 接口字段：来源订单编号-ly_ddbh\n- 接口文档：[异步请求结果查询](apifox://link/endpoint/100012793)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553045/image-preview)\n\n## 三、发票查验\n1. 数电票查验：支持返回差额开票对应的征税类型\n- 接口字段：差额征税类型代码-cezslxDm\n- 接口文档：[数电票查验](apifox://link/endpoint/193188103)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553048/image-preview)",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-08-05T06:01:41.000Z",
+  "updatedAt": "2026-03-04T08:46:40.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -1,0 +1,198 @@
+{
+  "id": 223841158,
+  "name": "二维码状态确认",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "二维码状态确认\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/bsrygl/common/getQrcodeState",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        },
+        "qrcode_id": {
+          "type": "string",
+          "title": "二维码Id"
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "qrcode_id"
+      ],
+      "required": [
+        "taskId",
+        "qrcode_id"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "4ydHFG09t9",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "w5PEAaz02B",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "7eJE20LaKA",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "5rybCw1X7D",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 546389975,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": []
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 546389975,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {},\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"9e39c2456fed470eb56215559e139089\"\n}",
+      "id": 431653400
+    },
+    {
+      "name": "异常示例",
+      "responseId": 546389975,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"身份证号已存在\",\n    \"reqId\": \"0e01a588abf44c2aacbb17b9d28cb5f6\"\n}",
+      "id": 431653401
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23937671,
+  "ordering": 37,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-10-28T08:25:12.000Z",
+  "updatedAt": "2024-10-28T08:25:12.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.546389975"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

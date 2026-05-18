@@ -1,0 +1,211 @@
+{
+  "id": 329683181,
+  "name": "出口退税获取审核任务清单发起",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "实现对应属期、批次的正式审核结果清单获取，包括审核的明细和相关附表数据",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/loadAuditTaskList",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "账号"
+        },
+        "ssyf": {
+          "type": "string",
+          "title": "申报所属月份",
+          "description": "必传yyyyMM"
+        },
+        "pc": {
+          "type": "string",
+          "title": "批次",
+          "description": "生产企业默认为001，一个月只有一个批次，贸易型企业一个月可以有多次"
+        },
+        "swsx": {
+          "type": "string",
+          "description": "MDS 生产型企业获取\nMTS 外贸型企业获取",
+          "title": "税务事项"
+        }
+      },
+      "required": [
+        "ssyf",
+        "aggOrgId",
+        "pc",
+        "swsx"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "ssyf",
+        "pc",
+        "swsx"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\": \"string\",\r\n  \"accountId\": \"string\",\r\n  \"ssyf\": \"string\",\r\n  \"pc\": \"string\",\r\n  \"swsx\":\"MTS\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "rSyr64WKw6",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "n0nUQ1pPFB",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "Ah95QpYzj6",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "HpbzGGYmxb",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 734212050,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01GW664NTG8DAA40CQ3926Y530": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "x-apifox-refs": {
+                  "01JWX7QQGXX4YJKTV4NQFFAMKT": {
+                    "$ref": "#/definitions/33757676",
+                    "x-apifox-overrides": {
+                      "aggOrgId": null
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01JWX7QQGXX4YJKTV4NQFFAMKT"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW664NTG8DAA40CQ3926Y530"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 734212050,
+      "data": "{\n    \"reqId\": \"424b7a5093d54954bab8ecfe2272e9bd\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 4797560596251712,\n        \"taskId\": 600734271675392\n    }\n}",
+      "id": 650777798
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63427251,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-31T07:26:28.000Z",
+  "updatedAt": "2025-11-12T06:22:10.000Z",
+  "creatorId": 1910680,
+  "editorId": 1442097,
+  "creatorUserId": 1910680,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

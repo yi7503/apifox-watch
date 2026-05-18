@@ -1,0 +1,17 @@
+{
+  "id": 5791182,
+  "name": "2024年12月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年12月发布内容\n\n发布日期：2024-12-31\n发布版本：V1.0.12\n\n\n\n## 企业税\n1.接口变化\n1)城镇土地使用税税源获取新增字段\n涉及接口：[查询税源获取任务结果接口](api-87525549)\n新增字段：宗地号、权属证书类型；\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487895/image-preview)\n\n2)车船税申报需要增加税源编号节点\n涉及报文：[ccsData(车船税报文）](doc-5217199)\n字段变化：新增传税源编号节点，车船税申报提交需要将税源编号一并提交，在税局需要完成税源采集提交动作后才能进行申报；\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487896/image-preview)\n\n3)代扣代缴初始化信息--计划2025年1月9日上线\n涉及接口：[发起查询合同接口任务](api-250807905)\n[查询合同任务结果](api-250825437)\n主要能力：1.查询合同信息支持增值税和企业所得税的代扣代缴合同明细获取\n2.支持企业所得税、增值税的代扣代缴的初始化\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487898/image-preview)\n\n4)新增我的待办\n涉及接口：[发起获取我的待办](api-249896730)\n支持内容：获取税局首页-我的待办-本期应申报内容\n产品权限：根据客户权限进行配置，有需要需和商务联系\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487899/image-preview)\n\n5)新增我的提醒\n涉及接口：[获取我的待办结果](api-249923120)\n支持场景：获取税局首页-我的提醒中服务提醒、风险提示、政策速递、通知公告的内容\n产品权限：根据客户权限进行配置，有需要需和商务联系\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487900/image-preview)\n\n2.自身产品能力优化\n1)房产土地申报一个流程兼容房产和土地单独申报及合并申报的共3套报文\n\n## 企业数据采集\n1.申报文件下载支持返回资源税\n2.基础础信息部分字段新版税局没有，后端返回报文下线，具体以现在最新的接口文档中返回字段为主\n3.本月增加能力：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487901/image-preview)\n\n## 公共业务\n\n1.新增自持模式账号登出接口\n涉及接口：[登出](api-243194152)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487902/image-preview)\n\n2.新增自持模式账密检查接口\n涉及接口：[账密检查接口](api-248736646)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/487903/image-preview)",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-01-05T04:36:48.000Z",
+  "updatedAt": "2025-01-05T04:58:29.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

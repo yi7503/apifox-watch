@@ -1,0 +1,236 @@
+{
+  "id": 308726911,
+  "name": "出口退税审核进度查询结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/getReviewProgress",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454760922049792\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 697575626,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "title": "业务code",
+                "description": "2000业务成功"
+              },
+              "message": {
+                "type": "string",
+                "title": "信息"
+              },
+              "businessStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "description": "1进行中，2 失败，3成功"
+              },
+              "result": {
+                "type": "string",
+                "title": "查询结果",
+                "description": "xml数据 附录-出口退税审核进度说明： https://openapi.qixiangyun.com/doc-7151343"
+              }
+            },
+            "x-apifox-orders": [
+              "code",
+              "businessStatus",
+              "message",
+              "result"
+            ],
+            "required": [
+              "code",
+              "businessStatus"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 697575626,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"退税申报审核进度信息查询成功\",\n    \"reqId\": \"\",\n    \"data\": {\n        \"businessStatus\": \"3\",\n        \"code\": \"2000\",\n        \"message\": \"退税申报审核进度信息查询成功\",\n        \"result\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<business comment=\\\"审核进度查询\\\" id=\\\"SHJDCX\\\"><body yylxdm=\\\"1\\\"><output><returncode>0</returncode><returnmsg>成功</returnmsg><lclist><lc><lchjmc>受理</lchjmc><slmdse>0</slmdse><fszzstse></fszzstse><zkzzstse></zkzzstse><fsmdse></fsmdse><blrq>2025-06-10</blrq><slzzstse>1265449.59</slzzstse><fsbyblxfstse></fsbyblxfstse><fsbyblzzstse></fsbyblzzstse><sehzxfstse></sehzxfstse><lchjDm>01</lchjDm><fsbybltmse></fsbybltmse><zkxfstse></zkxfstse><fsxfstse></fsxfstse><sehzmdse></sehzmdse><slxfstse>0</slxfstse><sehzzzstse></sehzzzstse></lc><lc><lchjmc>审核</lchjmc><slmdse></slmdse><fszzstse></fszzstse><zkzzstse></zkzzstse><fsmdse></fsmdse><blrq>2025-06-10</blrq><slzzstse></slzzstse><fsbyblxfstse></fsbyblxfstse><fsbyblzzstse></fsbyblzzstse><sehzxfstse></sehzxfstse><lchjDm>02</lchjDm><fsbybltmse></fsbybltmse><zkxfstse></zkxfstse><fsxfstse></fsxfstse><sehzmdse></sehzmdse><slxfstse></slxfstse><sehzzzstse></sehzzzstse></lc><lc><lchjmc>复审</lchjmc><slmdse></slmdse><fszzstse>1265449.59</fszzstse><zkzzstse></zkzzstse><fsmdse>0</fsmdse><blrq>2025-06-10</blrq><slzzstse></slzzstse><fsbyblxfstse>0</fsbyblxfstse><fsbyblzzstse>0</fsbyblzzstse><sehzxfstse></sehzxfstse><lchjDm>04</lchjDm><fsbybltmse>0</fsbybltmse><zkxfstse></zkxfstse><fsxfstse>0</fsxfstse><sehzmdse></sehzmdse><slxfstse></slxfstse><sehzzzstse></sehzzzstse></lc><lc><lchjmc>业务核准</lchjmc><slmdse></slmdse><fszzstse></fszzstse><zkzzstse></zkzzstse><fsmdse></fsmdse><blrq>2025-06-11</blrq><slzzstse></slzzstse><fsbyblxfstse></fsbyblxfstse><fsbyblzzstse></fsbyblzzstse><sehzxfstse></sehzxfstse><lchjDm>05</lchjDm><fsbybltmse></fsbybltmse><zkxfstse></zkxfstse><fsxfstse></fsxfstse><sehzmdse></sehzmdse><slxfstse></slxfstse><sehzzzstse></sehzzzstse></lc><lc><lchjmc>税额核准</lchjmc><slmdse></slmdse><fszzstse></fszzstse><zkzzstse>0</zkzzstse><fsmdse></fsmdse><blrq>2025-06-11</blrq><slzzstse></slzzstse><fsbyblxfstse></fsbyblxfstse><fsbyblzzstse></fsbyblzzstse><sehzxfstse>0</sehzxfstse><lchjDm>06</lchjDm><fsbybltmse></fsbybltmse><zkxfstse>0</zkxfstse><fsxfstse></fsxfstse><sehzmdse>0</sehzmdse><slxfstse></slxfstse><sehzzzstse>1265449.59</sehzzzstse></lc><lc><lchjmc>发放</lchjmc><slmdse></slmdse><fszzstse></fszzstse><zkzzstse></zkzzstse><fsmdse></fsmdse><blrq>2025-06-11</blrq><slzzstse></slzzstse><fsbyblxfstse></fsbyblxfstse><fsbyblzzstse></fsbyblzzstse><sehzxfstse></sehzxfstse><lchjDm>07</lchjDm><fsbybltmse></fsbybltmse><zkxfstse></zkxfstse><fsxfstse></fsxfstse><sehzmdse></sehzmdse><slxfstse></slxfstse><sehzzzstse></sehzzzstse></lc></lclist></output></body></business>\"\n    }\n}",
+      "id": 650798240
+    },
+    {
+      "name": "企业不存在",
+      "responseId": 697575626,
+      "data": "{\"reqId\":\"807aa626b84b4e49ab0405dee305682d\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 604188561
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 697575626,
+      "data": "{\"reqId\":\"489b28c74c0a4e8e94da5409c67818db\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "id": 604188562
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63427100,
+  "ordering": 18,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-14T01:50:19.000Z",
+  "updatedAt": "2026-01-13T08:00:10.000Z",
+  "creatorId": 1910680,
+  "editorId": 1476015,
+  "creatorUserId": 1910680,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

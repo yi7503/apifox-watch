@@ -1,0 +1,322 @@
+{
+  "id": 360777051,
+  "name": "日常申报提交反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "日常申报提交反馈",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/dailyDeclarationFk",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId",
+        "accountId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 786843718,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "title": "请求id"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务Id"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态"
+              },
+              "taskStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "sbjglb": {
+                    "type": "array",
+                    "items": {
+                      "title": "申报结果",
+                      "type": "object",
+                      "properties": {
+                        "yzpzxh": {
+                          "type": "string",
+                          "title": "应征凭证序号"
+                        },
+                        "yjfy": {
+                          "type": "string",
+                          "title": "应缴费额合计"
+                        },
+                        "djje": {
+                          "type": "string",
+                          "title": "抵缴费额合计"
+                        },
+                        "sjyjfe": {
+                          "type": "string",
+                          "title": "实际应缴纳费额合计"
+                        },
+                        "yclsl": {
+                          "type": "string",
+                          "title": "预处理数量"
+                        },
+                        "mxlb": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "zgswjgmc": {
+                                "type": "string",
+                                "title": "主管税务机关名称"
+                              },
+                              "ssqq": {
+                                "type": "string",
+                                "title": "所属期起"
+                              },
+                              "ssqz": {
+                                "type": "string",
+                                "title": "所属期止"
+                              },
+                              "sjly": {
+                                "type": "string",
+                                "title": "数据来源"
+                              },
+                              "sbjbjg": {
+                                "type": "string",
+                                "title": "社保经办机构"
+                              },
+                              "dwbh": {
+                                "type": "string",
+                                "title": "单位编号"
+                              },
+                              "zjtzlsh": {
+                                "type": "string",
+                                "title": "征集通知流水号"
+                              }
+                            },
+                            "required": [
+                              "zgswjgmc",
+                              "zjtzlsh",
+                              "ssqq",
+                              "ssqz",
+                              "sjly",
+                              "sbjbjg",
+                              "dwbh"
+                            ],
+                            "x-apifox-orders": [
+                              "zgswjgmc",
+                              "zjtzlsh",
+                              "ssqq",
+                              "ssqz",
+                              "sjly",
+                              "sbjbjg",
+                              "dwbh"
+                            ]
+                          },
+                          "title": "明细列表"
+                        }
+                      },
+                      "required": [
+                        "yzpzxh",
+                        "yjfy",
+                        "djje",
+                        "sjyjfe",
+                        "yclsl",
+                        "mxlb"
+                      ],
+                      "x-apifox-orders": [
+                        "yzpzxh",
+                        "yjfy",
+                        "djje",
+                        "sjyjfe",
+                        "yclsl",
+                        "mxlb"
+                      ]
+                    },
+                    "title": "申报结果"
+                  }
+                },
+                "required": [
+                  "sbjglb"
+                ],
+                "x-apifox-orders": [
+                  "sbjglb"
+                ],
+                "title": "任务返回业务结果"
+              }
+            },
+            "required": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ],
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "reqId",
+          "success",
+          "data",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "reqId",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 786843718,
+      "data": "{\r\n  \"code\": \"2000\",\r\n  \"success\": true,\r\n  \"message\": null,\r\n  \"data\": {\r\n    \"code\": \"2000\",\r\n    \"message\": \"申报成功\",\r\n    \"result\": {\r\n      \"sbjglb\": [\r\n        {\r\n          \"djje\": \"\",\r\n          \"mxlb\": [\r\n            {\r\n              \"dwbh\": \"3000001\",\r\n              \"sbjbjg\": \"XXXX社会保险基金管理中心（医保）\",\r\n              \"sjly\": \"税务生成\",\r\n              \"ssqq\": \"2025-10\",\r\n              \"ssqz\": \"2025-10\",\r\n              \"zgswjgmc\": \"国家税务总局XXXX税务局\",\r\n              \"zjtzlsh\": null\r\n            },\r\n            {\r\n              \"dwbh\": \"2000000000002\",\r\n              \"sbjbjg\": \"XXXX社会保险基金管理中心（人社）\",\r\n              \"sjly\": \"税务生成\",\r\n              \"ssqq\": \"2025-10\",\r\n              \"ssqz\": \"2025-10\",\r\n              \"zgswjgmc\": \"国家税务总局XXXX税务局\",\r\n              \"zjtzlsh\": null\r\n            }\r\n          ],\r\n          \"sjyjfe\": \"77350.83\",\r\n          \"yclsl\": \"1\",\r\n          \"yjfy\": \"77350.83\",\r\n          \"yzpzxh\": \"1000000008\"\r\n        }\r\n      ]\r\n    },\r\n    \"taskId\": \"5009000000\",\r\n    \"taskStatus\": \"3\",\r\n    \"taskStatusName\": \"执行成功\",\r\n    \"taskTypeCode\": \"shbx-rcsb\",\r\n    \"taskTypeName\": \"日常申报申请\"\r\n  },\r\n  \"timestamp\": \"2025-11-13 10:30:50\",\r\n  \"reqId\": \"Te70a3\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 712318262
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68408456,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-14T06:55:12.000Z",
+  "updatedAt": "2025-12-24T09:28:47.000Z",
+  "creatorId": 1442097,
+  "editorId": 1910680,
+  "creatorUserId": 1442097,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

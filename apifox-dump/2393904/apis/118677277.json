@@ -1,0 +1,156 @@
+{
+  "id": 118677277,
+  "name": "删除商品分类",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局删除指定的商品分类信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/spxxFldel",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "spxx_fldel"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fluuid": {
+              "type": "string",
+              "title": "商品分类uuid"
+            }
+          },
+          "x-apifox-orders": [
+            "fluuid"
+          ],
+          "title": "",
+          "required": [
+            "fluuid"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8T05Q6M10Y6MZ035XX7YZ"
+      ],
+      "x-apifox-refs": {
+        "01HMB8T05Q6M10Y6MZ035XX7YZ": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947659,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "boolean",
+                "title": "执行结果",
+                "description": "true成功， false失败"
+              }
+            },
+            "x-apifox-orders": [
+              "result"
+            ],
+            "required": [
+              "result"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01HRHASYCKRP3BZ13DZ4MKP7C2"
+        ],
+        "required": [
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HRHASYCKRP3BZ13DZ4MKP7C2": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23430606,
+  "ordering": 270,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-10-22T11:46:09.000Z",
+  "updatedAt": "2025-06-10T02:17:01.000Z",
+  "creatorId": 577326,
+  "editorId": 2706439,
+  "creatorUserId": 577326,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.42947659"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

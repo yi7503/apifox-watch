@@ -1,0 +1,201 @@
+{
+  "id": 243058455,
+  "name": "税务非正常户",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "cRrCFp1J0rmj872F_RBk1",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可通过该接口获取企业的欠税状态、金额、税种、判定信息等数据，辅助进行税收管理、风险防控和商业决策。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/taxUnNormalInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582476949,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {},
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "01JESPQX4GH5RMPM2WW1P4CXSF"
+            ],
+            "x-apifox-refs": {
+              "01JESPQX4GH5RMPM2WW1P4CXSF": {
+                "$ref": "#/definitions/135646959"
+              }
+            },
+            "required": []
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "异常示例",
+      "responseId": 582476949,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454745261
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582476949,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454745262
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 16,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T01:46:02.000Z",
+  "updatedAt": "2025-03-25T06:07:45.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582476949"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

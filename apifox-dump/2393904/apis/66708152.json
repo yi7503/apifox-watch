@@ -1,0 +1,174 @@
+{
+  "id": 66708152,
+  "name": "批量设置会计准则制度",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n该接口用于批量设置会计准则制度。\n    \n## 错误码\n\n| **错误代码** | **错误消息** | **解决方案** |\n| --- | --- | --- |\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ |\n| PARAMETER_ERROR | 财务会计制度准则ID不能为空! |\n| PARAMETER_ERROR | 资料报送小类编码不能为空! |\n| PARAMETER_ERROR | 资料报送子类编码不能为空! |\n| PARAMETER_ERROR | 报送期间不能为空! |\n| PARAMETER_ERROR |参数格式不合法,不是有效的json格式! |\n| INTERFACE_ERROR |接口异常,请联系管理员! |\n| INTERFACE_ERROR |系统繁忙，请降低调用频率！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/batchAccountingStandard",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/36652086"
+    },
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgIds\": [\r\n    447*********200\r\n  ],\r\n  \"accountingStandardsId\": 101,\r\n  \"reportingCategoryCode\": \"ZL1001001\",\r\n  \"reportingSubCategoryCode\": \"ZL100100101\",\r\n  \"reportingPeriod\": 2000270003,\r\n  \"isSkipOperatorWarn\": true\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "24AFE5wUZc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "zz8H91X2RC",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "o66zFhqWcL",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "KH4aCzzFB4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 169563945,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW13WXCF6JJWRT78GER315A3": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "boolean",
+                    "description": "true 成功 false失败",
+                    "title": "修改结果"
+                  }
+                },
+                "x-apifox-orders": [
+                  "result"
+                ],
+                "required": [
+                  "result"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW13WXCF6JJWRT78GER315A3"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 169563945,
+      "data": "{\"reqId\":\"757906235169413a955062f55a8a8e41\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17621857
+    },
+    {
+      "name": "任务执行成功-设置失败（已申报）",
+      "responseId": 169563945,
+      "data": "{\"reqId\":\"1786af88a33944f4a455b214adf936de\",\"code\":\"\",\"success\":true,\"message\":\"广州雷跃卓景贸易有限公司本月已申报过财务报表,不允许修改财务会计制度备案!\",\"data\":null}",
+      "id": 17621913
+    },
+    {
+      "name": "任务执行成功-设置成功",
+      "responseId": 169563945,
+      "data": "{\"reqId\":\"fd1ce30b98f44d54b9af8b82b2e88043\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"result\":true,\"operateFlag\":false}}",
+      "id": 17622269
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13281987,
+  "ordering": 164,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-03-07T09:46:41.000Z",
+  "updatedAt": "2024-12-03T08:30:27.000Z",
+  "creatorId": 887778,
+  "editorId": 1910680,
+  "creatorUserId": 887778,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.169563945"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 2227973,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n用户通过作废接口发起作废任务，企享云平台根据用户传输的作废信息完成税费种作废。\n支持的税种：增值税一般人/小规模、企业所得税预缴A类、消费税、文建费、通用申报/非税收入、印花税\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372919/image-preview)\n## 接口列表\n第一步：发起作废申报任务。\n| 接口 |地址  |说明|\n| --- | --- |--- |\n|发起作废申报任务  |/v2/tax/qys/loadTaxSbCancel  |异步发起申报作废任务|\n\n\n第二步：根据发起发起作废申报任务taskID调用询查询作废申报任务结果。\n| 接口 |地址  |说明|\n| --- | --- |--- |\n|查询作废申报任务  |/v2/tax/qys/queryTaxSbCancel  |查询作废是否成功|",
+  "folderId": 13531291,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-23T12:13:35.000Z",
+  "updatedAt": "2025-07-09T04:04:02.000Z",
+  "creatorId": 1486053,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

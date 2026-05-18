@@ -1,0 +1,17 @@
+{
+  "id": 4632325,
+  "name": "2024年6月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年6月发布内容\n\n发布日期：2024-06-30\n发布版本：V1.0.6\n\n## 一. 数电开票\n### 入参和出参新增\n<span style=\"font-size:0.9em;\"> [红字确认单明细信息](api-100012785)</span>\n<span style=\"font-size:0.9em;\"> 1.入参增加pdfDownload（是否下载pdf文件） </span>\n<span style=\"font-size:0.9em;\"> 2.出参增加pdfUrl字段 </span>\n\n<span style=\"font-size:0.9em;\"> [已开发票明细查询](api-100012790)</span>\n<span style=\"font-size:0.9em;\"> 1. 入参增加ly_ddbh（来源订单编号）</span>\n<span style=\"font-size:0.9em;\">同开具接口来源订单编号，通过订单号查询已开明细，如果传此参数，fphm和kprq可不传</span>\n\n## 二. 发票认证\n\n1、新增功能接口：发票认证同步接口\n<span style=\"font-size:0.9em;\"> [同步认证](doc-4617825)</span>\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/450657/image-preview)\n\n2、勾选最大支持单笔5000张发票勾选提交（企享云自动拆分处理）\n\n3、勾选结果查询返参增加总任务zt字段 （任务状态）\n\n<span style=\"font-size:0.9em;\"> [进项发票勾选结果查询](api-93763337)</span>\n\n4、认证采集类接口原有调用次数限制去掉\n\n5、发票云认证新增支持采集 8208 数电票（通行费发票）\n\n## 二. 发票归集\n1、版式文件下载获取支持同步接口单张获取版式（税局上传延迟的场景，可以通过单张做补偿）\n\n<span style=\"font-size:0.9em;\">[同步下载数电票版式文件](api-186922208)</span>\n\n2、发票归集返回备注字段统一按照最大2000字符处理（针对备注超长导致无法入库）\n\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-07-01T05:56:53.000Z",
+  "updatedAt": "2026-03-04T08:46:00.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

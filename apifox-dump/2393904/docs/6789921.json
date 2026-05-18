@@ -1,0 +1,17 @@
+{
+  "id": 6789921,
+  "name": "2025年5月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1.财务会计制度备案 返回备案的表单信息\n2.税款缴纳支持二维码（微信、支付宝扫码）缴款，jkfs=2\n3.重点税源申报增加审核流程，申报也增加审核情况明细表填写\n4.税源获取优化：房产、土地、环保基本信息中新增一个字段“税源状态“ ；城镇土地新增三个字段\n5.漏保检查优化\n:::\n\n## 接口变化\n### 一、财务会计制度备案 返回备案的表单信息\n1. 涉及接口：查询企业信息\n2. 接口中financeReportSettingDto会计备案信息节点增加一个bdbaxx表单备案信息列表数组，具体返回备案的纳税期限、以及备案哪几张表单信息\n3. 运用场景：财务报表申报时请求的表单信息与备案信息保持一致，避免申报的时候请求税局又未备案无表单可填写\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530239/image-preview)\n\n### 二、税款缴纳支持二维码缴款\n1. 涉及接口：发起税款缴纳、查询税款缴纳任务结果\n2. jkfs缴款方式新增=2  则是二维码缴款，不传则都是默认三方协议缴款\n3. 运用场景：未签订三方协议、不会处理银行端缴款的客户可以选择二维码缴款，返回税局二维码缴款的图的url以及电子税票号码、金额等字段\n发起税款缴纳：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530242/image-preview)\n查询税款缴纳任务结果：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530243/image-preview)\n返回url链接：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530244/image-preview)\n\n### 三、税源获取优化\n1. 涉及接口：查询税源获取任务结果接口\n2. 城镇土地使用税基本信息新增3个参数：权属证书号、权属证书类型、不动产单元号\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530283/image-preview)\n4. 涉及税种：房产、土地、环保的基本信息增加一个参数syzt税源状态\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530280/image-preview)\n\n### 四、重点税源调整\n1. 涉及接口：上传各税种申报表数据以及重点税源上传报文新增一个业务节点\n2. 上传各税种申报表数据接口中新增参数zdsysfsh重点税源是否审核，1=审核 不传或者传空则是直接申报\n3. 重点税源审核成功返回的code=2221以及会把税局【审核情况说明】弹框则将弹框内容进行返回，返回结构是：序号||表名||变长表关键字||审核提示信息&序号||表名||变长表关键字||审核提示信息&序号||表名||变长表关键字||审核提示信息&序号||表名||变长表关键字||审核提示信息&\n\n\n5. 申报支持审核情况说明填写，在重点税源申报报文中增加一个节点，需要将对应的信息请求 根据请求的据表名、变长表关键字、审核提示信息去进行匹配后填写情况说明\n\n税局审核情况说明弹窗：（每一列按照||分割，每一行按照&分割）\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/530952/image-preview)\n上传报文新增审核情况说明节点：\n![企业微信截图_17468672805447.png](https://api.apifox.com/api/v1/projects/2393904/resources/530968/image-preview)\n\n### 五、漏报检查优化\n1. 漏保检查调整查询路径：之前以税费种认定判断本期应申报的最后以申报查询、缴款查询、未申报查询进行整合。本期进行优化以税局为主，只判断税局未申报信息查询、以及未缴款查询进行整合返回。\n2. 未申报查询只返回申报期限为本年度，非本年度不进行返回\n3. 未缴款查询过滤仅返回缴款期限是本年度\n4. 运用场景上：未申报申报期限判断大于本月就不需要进行处理，小于等于本月需尽快进行申报；未缴款根据返回所属期起止进行判断\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-06-03T04:12:12.000Z",
+  "updatedAt": "2025-11-21T06:49:39.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

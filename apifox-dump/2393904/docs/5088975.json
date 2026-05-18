@@ -1,0 +1,17 @@
+{
+  "id": 5088975,
+  "name": "2024年8月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年8月发布内容\n\n发布日期：2024-08-30\n发布版本：V1.0.8\n\n## 一. 发票查验\n\n1. 新增能力：增加入账状态及用途标签查询接口\n\n- 该接口用于数电票入账状态及用途标签查询，目前仅支持数电票与数电纸质发票查询。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463588/image-preview)\n\n2. 电票平台查验：航空行程单（61），铁路电子客票（83），数电机动车，新增明细信息解析\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463592/image-preview)\n\n3.  电票平台查验：获取数电票版式文件\n- 同步接口\n- 只返回版式，不返回结构化数据\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463593/image-preview)\n\n## 二. 数电开票\n\n1. 数电发票开具接口支持勾选展示购销方地址、电话\n    \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463594/image-preview)\n\n\n2. 数电发票开具接口-特定业务类型枚举补充\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463595/image-preview)\n\n3. 数电发票开具接口-不动产经营租赁信息支持多条\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463776/image-preview)\n\n\n## 三. 发票认证\n\n1. 发票采集接口（同步）可以返回总页数和总条数\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463596/image-preview)\n\n2. 进项发票采集（异步）支持返回特定业务类型字段\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463598/image-preview)\n\n3. 海关缴款书采集-增加未到勾选日期采集类型\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463600/image-preview)\n\n## 四. 发票归集\n1. 海关缴款书归集，增加税局源文件税号列对应的是HS编码（shxx）\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/463646/image-preview)\n\n\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-09-03T12:39:43.000Z",
+  "updatedAt": "2026-03-04T08:46:03.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -1,0 +1,388 @@
+{
+  "id": 69919108,
+  "name": "查询申报辅助设置弹窗信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   查询申报辅助（弹窗）的相关设置选项，以及企业当前对弹窗的设置。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 没有找到对应的企业！ | |\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n|PARAMETER_ERROR|参数格式不合法,不是有效的json格式!||\n|INTERFACE_ERROR|接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/queryDiaLogInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":455320626256640\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42948192,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "description": "错误码",
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "dialogId",
+              "dialogType",
+              "area",
+              "yzpzzlDm",
+              "yzpzzldmName",
+              "projectName",
+              "keyWord",
+              "memo",
+              "taxDialogOptionList"
+            ],
+            "properties": {
+              "dialogId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "弹窗id"
+              },
+              "area": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "地区编码"
+              },
+              "yzpzzlDm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "税种应征凭证种类代码"
+              },
+              "projectName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "弹窗名称"
+              },
+              "keyWord": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "匹配弹窗的关键字"
+              },
+              "memo": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "弹窗说明"
+              },
+              "taxDialogOptionList": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "选项ID"
+                    },
+                    "dialogId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "申报辅助项主表id"
+                    },
+                    "optionCode": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "选项code 每级三位，每级从001开始，递增，位数暂不限制"
+                    },
+                    "parentCode": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "上级节点"
+                    },
+                    "optionType": {
+                      "title": "选项类型",
+                      "description": "0-下拉框 1-文本",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "optionName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "选项名称 ",
+                      "description": "如果optionType是文本会显示保存文本信息"
+                    },
+                    "leafNode": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "title": "叶子节点标记",
+                      "description": " 0-否 1-是"
+                    },
+                    "showOrder": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "title": "排序"
+                    },
+                    "checked": {
+                      "title": "选中状态",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "children": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": []
+                      },
+                      "title": "包含多个业务弹窗数据源设置明细"
+                    },
+                    "fileUrl": {
+                      "type": "string",
+                      "title": "强制申报文件url"
+                    }
+                  },
+                  "x-apifox-refs": {},
+                  "x-apifox-orders": [
+                    "id",
+                    "dialogId",
+                    "optionCode",
+                    "parentCode",
+                    "optionType",
+                    "optionName",
+                    "leafNode",
+                    "showOrder",
+                    "checked",
+                    "fileUrl",
+                    "children"
+                  ],
+                  "required": [
+                    "fileUrl"
+                  ]
+                }
+              },
+              "dialogType": {
+                "type": "integer",
+                "title": "弹窗类型",
+                "description": "0-企业，1-报表"
+              },
+              "yzpzzldmName": {
+                "title": "税种应征凭证种类代码名称",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42948192,
+      "data": "{\n    \"reqId\": \"0361dc23bc3647da885b50f66b4cecb7\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"area\": \"44\",\n            \"dialogType\": null,\n            \"yzpzzlDm\": \"BDA0610606\",\n            \"taxDialogOptionList\": [\n                {\n                    \"dialogId\": 104,\n                    \"optionType\": 0,\n                    \"optionCode\": \"104001\",\n                    \"parentCode\": \"104\",\n                    \"children\": [],\n                    \"checked\": false,\n                    \"showOrder\": 1,\n                    \"id\": 10021,\n                    \"optionName\": \"符合条件，立即申请留抵退税\",\n                    \"leafNode\": 1\n                },\n                {\n                    \"dialogId\": 104,\n                    \"optionType\": 0,\n                    \"optionCode\": \"104002\",\n                    \"parentCode\": \"104\",\n                    \"children\": [\n                        {\n                            \"dialogId\": 104,\n                            \"optionType\": 0,\n                            \"optionCode\": \"104002001\",\n                            \"parentCode\": \"104002\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 1,\n                            \"id\": 10024,\n                            \"optionName\": \"可退税额较小或预计留抵税额将快速消化\",\n                            \"leafNode\": 1\n                        },\n                        {\n                            \"dialogId\": 104,\n                            \"optionType\": 0,\n                            \"optionCode\": \"104002002\",\n                            \"parentCode\": \"104002\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 2,\n                            \"id\": 10025,\n                            \"optionName\": \"拟申请享受增值税即征即退、先征后返（退）政策\",\n                            \"leafNode\": 1\n                        },\n                        {\n                            \"dialogId\": 104,\n                            \"optionType\": 0,\n                            \"optionCode\": \"104002003\",\n                            \"parentCode\": \"104002\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 3,\n                            \"id\": 10026,\n                            \"optionName\": \"拟先申报出口退税\",\n                            \"leafNode\": 1\n                        },\n                        {\n                            \"dialogId\": 104,\n                            \"optionType\": 0,\n                            \"optionCode\": \"104002004\",\n                            \"parentCode\": \"104002\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 4,\n                            \"id\": 10027,\n                            \"optionName\": \"退税资金不能保障\",\n                            \"leafNode\": 1\n                        },\n                        {\n                            \"dialogId\": 104,\n                            \"optionType\": 0,\n                            \"optionCode\": \"104002005\",\n                            \"parentCode\": \"104002\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 5,\n                            \"id\": 10028,\n                            \"optionName\": \"其他原因\",\n                            \"leafNode\": 1\n                        }\n                    ],\n                    \"checked\": false,\n                    \"showOrder\": 2,\n                    \"id\": 10022,\n                    \"optionName\": \"符合条件，暂不申请留抵退税\",\n                    \"leafNode\": 0\n                },\n                {\n                    \"dialogId\": 104,\n                    \"optionType\": 0,\n                    \"optionCode\": \"104003\",\n                    \"parentCode\": \"104\",\n                    \"children\": [],\n                    \"checked\": false,\n                    \"showOrder\": 3,\n                    \"id\": 10023,\n                    \"optionName\": \"不符合条件，不申请留抵退税\",\n                    \"leafNode\": 1\n                }\n            ],\n            \"memo\": \"尊敬的纳税人∶\\n您好!根据系统预判，您很可能符合《财政部税务总局 海关总署关于深化增值税改革有关政策的公告》（2019年第39号）或《财政部 税务总局关于进一步加大增值税期末留抵退税政策实施力度的公告》（财政部税务总局公告2022年第14号）、《财政部税务总局关于扩大全额退还增值税留抵税额政策行业范围的公告》（财政部税务总局公告2022年第21号）中规定的申请退还期末留抵税额条件。请您及时、准确地判断是否符合上述政策规定。如符合，您可以通过电子税务局或前往办税服务厅申请退还期末留抵税。\",\n            \"dialogId\": 104,\n            \"projectName\": \"本期是否申请留底退税\",\n            \"yzpzzldmName\": \"增值税及附加税(适用于一般纳税人)\",\n            \"keyWord\": \"退税\"\n        },\n        {\n            \"area\": \"44\",\n            \"dialogType\": null,\n            \"yzpzzlDm\": \"BDA0611159\",\n            \"taxDialogOptionList\": [\n                {\n                    \"dialogId\": 108,\n                    \"optionType\": 0,\n                    \"optionCode\": \"108001\",\n                    \"parentCode\": \"108\",\n                    \"children\": [],\n                    \"checked\": false,\n                    \"showOrder\": 1,\n                    \"id\": 10037,\n                    \"optionName\": \"申请退税\",\n                    \"leafNode\": 1\n                },\n                {\n                    \"dialogId\": 108,\n                    \"optionType\": 0,\n                    \"optionCode\": \"108002\",\n                    \"parentCode\": \"108\",\n                    \"children\": [],\n                    \"checked\": false,\n                    \"showOrder\": 2,\n                    \"id\": 10038,\n                    \"optionName\": \"暂不办理\",\n                    \"leafNode\": 1\n                }\n            ],\n            \"memo\": \"您存在企业所得税多缴税款，建议申请办理退税。请逐项选择“申请退税”或“暂不办理”，并确认。选择申请退税，将自动转入\\n退税申请业务。\",\n            \"dialogId\": 108,\n            \"projectName\": \"企业所得税多缴退税\",\n            \"yzpzzldmName\": \"企业所得税A类\",\n            \"keyWord\": \"企业所得税退税\"\n        },\n        {\n            \"area\": \"44\",\n            \"dialogType\": null,\n            \"yzpzzlDm\": \"CWBBSB\",\n            \"taxDialogOptionList\": [\n                {\n                    \"dialogId\": 110,\n                    \"optionType\": 0,\n                    \"optionCode\": \"110001\",\n                    \"parentCode\": \"110\",\n                    \"children\": [\n                        {\n                            \"dialogId\": 110,\n                            \"optionType\": 0,\n                            \"optionCode\": \"110001001\",\n                            \"parentCode\": \"110001\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 1,\n                            \"id\": 10045,\n                            \"optionName\": \"测试节点2\",\n                            \"leafNode\": 1\n                        }\n                    ],\n                    \"checked\": false,\n                    \"showOrder\": 1,\n                    \"id\": 10044,\n                    \"optionName\": \"测试节点1\",\n                    \"leafNode\": 0\n                }\n            ],\n            \"memo\": \"测试1\",\n            \"dialogId\": 110,\n            \"projectName\": \"财报测试\",\n            \"yzpzzldmName\": \"财务报表月季报\",\n            \"keyWord\": \"测试 \"\n        }\n    ]\n}",
+      "id": 42948193
+    },
+    {
+      "name": "一窗式比对成功示例",
+      "responseId": 42948192,
+      "data": "{\n    \"reqId\": \"94cf0ff63c224da7882baf8c78e1f632\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"area\": \"*\",\n            \"yzpzzlDm\": \"BDA0610606,BDA0610611\",\n            \"taxDialogOptionList\": [\n                {\n                    \"optionType\": 0,\n                    \"optionCode\": \"999001\",\n                    \"parentCode\": \"999\",\n                    \"children\": [\n                        {\n                            \"optionType\": 1,\n                            \"optionCode\": \"999001001\",\n                            \"parentCode\": \"999001\",\n                            \"children\": [],\n                            \"checked\": false,\n                            \"showOrder\": 1,\n                            \"fileUrl\": null,\n                            \"id\": 99902,\n                            \"dialogId\": 999,\n                            \"optionName\": \"请输入原因\",\n                            \"leafNode\": 1\n                        }\n                    ],\n                    \"checked\": false,\n                    \"showOrder\": 1,\n                    \"fileUrl\": null,\n                    \"id\": 99901,\n                    \"dialogId\": 999,\n                    \"optionName\": \"继续\",\n                    \"leafNode\": 0\n                }\n            ],\n            \"memo\": \"一窗式比对不通过，请确认是否继续申报，继续则配置弹窗选项！\",\n            \"dialogId\": 999,\n            \"projectName\": \"一窗式比对是否强制申报\",\n            \"yzpzzldmName\": \"增值税及附加税(适用于一般纳税人),增值税及附加税(适用于小规模纳税人)\",\n            \"keyWord\": \"\"\n        }\n    ]\n}",
+      "id": 42948194
+    },
+    {
+      "name": "一窗式比对带文件成功示例",
+      "responseId": 42948192,
+      "data": "{\n    \"reqId\": \"94cf0ff63c224da7882baf8c78e1f632\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"area\": \"*\",\n            \"yzpzzlDm\": \"BDA0610606,BDA0610611\",\n            \"taxDialogOptionList\": [\n                {\n                    \"optionType\": 0,\n                    \"optionCode\": \"999001\",\n                    \"parentCode\": \"999\",\n                    \"children\": [\n                        {\n                            \"optionType\": 1,\n                            \"optionCode\": \"999001001\",\n                            \"parentCode\": \"999001\",\n                            \"children\": [],\n                            \"checked\": true,\n                            \"showOrder\": 1,\n                            \"fileUrl\": \"https://qxy-oss-test.oss-cn-beijing.aliyuncs.com/ATTACHMENT/482734358988800/482734358988800-518280781170688-%E5%BC%BA%E5%88%B6%E6%AF%94%E5%AF%B9%E6%96%87%E4%BB%B6?Expires=1709784992&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=WkTu2u6T6EKIs%2BKuG3iJztkCaPU%3D\",\n                            \"id\": 99902,\n                            \"dialogId\": 999,\n                            \"optionName\": \"测试数据w2\",\n                            \"leafNode\": 1\n                        }\n                    ],\n                    \"checked\": false,\n                    \"showOrder\": 1,\n                    \"fileUrl\": null,\n                    \"id\": 99901,\n                    \"dialogId\": 999,\n                    \"optionName\": \"继续\",\n                    \"leafNode\": 0\n                }\n            ],\n            \"memo\": \"一窗式比对不通过，请确认是否继续申报，继续则配置弹窗选项！\",\n            \"dialogId\": 999,\n            \"projectName\": \"一窗式比对是否强制申报\",\n            \"yzpzzldmName\": \"增值税及附加税(适用于一般纳税人),增值税及附加税(适用于小规模纳税人)\",\n            \"keyWord\": \"\"\n        }\n    ]\n}",
+      "id": 399933965
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 14015021,
+  "ordering": 104,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-03T08:42:54.000Z",
+  "updatedAt": "2025-01-23T02:50:12.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.42948192"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

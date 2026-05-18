@@ -1,0 +1,176 @@
+{
+  "id": 66685544,
+  "name": "查询企业税务信息状态",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n   该接口用于查询从税局读取企业信息状态。\n\n该接口不再维护，后续计划下线，请使用查询多个任务执行结果接口  https://openapi.qixiangyun.com/api-69721501\n    \n## 错误码\n\n| **错误代码** | **错误消息** | **解决方案** |\n| --- | --- |---|\n| BUSINESS_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/hasReadSJInfo",
+  "tags": [],
+  "status": 0,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":369161****80320\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "24AFE5wUZc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "zz8H91X2RC",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "o66zFhqWcL",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "KH4aCzzFB4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 169488572,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3EKYVY2PETZ2E2BG7VBZX4": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "业务数据",
+                "description": "当data=true时，表示采集成功，当data=false且success=true时，表示采集中，当success=false时，采集失败，此时message字段中有失败原因"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3EKYVY2PETZ2E2BG7VBZX4"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 169488572,
+      "data": "{\r\n    \"reqId\": \"babd78c2d8d541ff852893070a601a58\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": true\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17683251
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13281987,
+  "ordering": 77,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:24:14.000Z",
+  "updatedAt": "2025-06-13T05:45:06.000Z",
+  "creatorId": 1452584,
+  "editorId": 1564651,
+  "creatorUserId": 1452584,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.169488572"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

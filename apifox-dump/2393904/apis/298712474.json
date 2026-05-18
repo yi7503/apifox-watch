@@ -1,0 +1,296 @@
+{
+  "id": 298712474,
+  "name": "海关缴款书入账",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可调用此接口完成海关缴款书入账或将调整已入账缴款书的入账类型",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/fpruz/hgjksrzbc",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "number",
+          "title": "企业id"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "params": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "hgjkshm": {
+                    "type": "string",
+                    "title": "海关缴款书号码"
+                  },
+                  "kprq": {
+                    "type": "string",
+                    "title": "开票日期",
+                    "description": "yyyy-MM-dd HH:mm:ss 格式"
+                  },
+                  "je": {
+                    "type": "number",
+                    "title": "金额",
+                    "description": "税款金额，最多两位小数(对应“海关缴款书入账信息查询”接口税款金额-skje)"
+                  },
+                  "se": {
+                    "type": "number",
+                    "title": "税额",
+                    "description": "最多两位小数"
+                  },
+                  "rzsj": {
+                    "type": "string",
+                    "title": "入账时间",
+                    "description": "yyyy-MM-dd 格式"
+                  },
+                  "rzytDm": {
+                    "type": "string",
+                    "title": "入账用途代码",
+                    "description": "02 已入账（企业所得税税前扣除）、03 已入账（企业所得税不扣除）、06 入账撤销"
+                  }
+                },
+                "x-apifox-orders": [
+                  "hgjkshm",
+                  "kprq",
+                  "je",
+                  "se",
+                  "rzsj",
+                  "rzytDm"
+                ],
+                "required": [
+                  "hgjkshm",
+                  "kprq",
+                  "je",
+                  "se",
+                  "rzsj",
+                  "rzytDm"
+                ]
+              },
+              "title": "待入账的海关缴款书信息"
+            },
+            "rzType": {
+              "type": "string",
+              "title": "提交类型",
+              "description": "不传默认为0",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "0",
+                  "name": "",
+                  "description": "税局未查询到入账信息后中断提交"
+                },
+                {
+                  "value": "1",
+                  "name": "",
+                  "description": "税局未查询到的以列表返回，查到的继续提交"
+                }
+              ]
+            }
+          },
+          "x-apifox-orders": [
+            "params",
+            "rzType"
+          ],
+          "required": [
+            "params"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "nsrsbh",
+        "data"
+      ],
+      "required": [
+        "aggOrgId",
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"aggOrgId\":451678202380672,\r\n    \"nsrsbh\":\"9144011155441xxxxx\",\r\n    \"data\":[\r\n        {\r\n            \"hgjkshm\":\"222520251000071111-L01\",\r\n            \"kprq\":\"2025-04-01 00:00:00\",\r\n            \"je\":51771.92,\r\n            \"se\":0.00,\r\n            \"rzsj\":\"2025-05-01\",\r\n            \"rzytDm\":\"03\"\r\n        }\r\n    ]\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 680335774,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          },
+          "code": {
+            "type": "string",
+            "title": "状态码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "结果状态"
+          },
+          "message": {
+            "type": "null",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "rzuuid": {
+                "type": "string",
+                "title": "入账的uuid"
+              },
+              "errorList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "kprq": {
+                      "type": "string",
+                      "title": "开票日期"
+                    },
+                    "hgjkshm": {
+                      "type": "string",
+                      "title": "缴款书号码"
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "title": "错误码"
+                    },
+                    "errorMsg": {
+                      "type": "string",
+                      "title": "提示信息"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "hgjkshm",
+                    "kprq",
+                    "errorCode",
+                    "errorMsg"
+                  ],
+                  "required": [
+                    "hgjkshm",
+                    "errorMsg",
+                    "errorCode",
+                    "kprq"
+                  ]
+                },
+                "description": "入参中rzType为1时返回"
+              }
+            },
+            "required": [
+              "rzuuid"
+            ],
+            "x-apifox-orders": [
+              "rzuuid",
+              "errorList"
+            ],
+            "title": "业务报文"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 680335774,
+      "data": "{\r\n  \"reqId\": \"23f8b9b8de834e1aa96f86f0fe67d1b5\",\r\n  \"code\": \"2000\",\r\n  \"success\": true,\r\n  \"message\": null,\r\n  \"data\": {\r\n    \"rzuuid\": \"bcb87699dfd94478a462e2ad0c09ad17\"\r\n  }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 593293359
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58688186,
+  "ordering": 121,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-21T05:42:52.000Z",
+  "updatedAt": "2025-12-05T01:24:40.000Z",
+  "creatorId": 887778,
+  "editorId": 2118003,
+  "creatorUserId": 887778,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

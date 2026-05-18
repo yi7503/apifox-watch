@@ -1,0 +1,244 @@
+{
+  "id": 416672433,
+  "name": "公益慈善捐赠信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "MG3Hw0c1SiZYzWdD4T6a3",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "当前接口用于发起相关人员的公益捐赠信息采集任务",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/dkdj/gycsjzxxcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        },
+        "kcnd": {
+          "type": "string",
+          "title": "扣除年度"
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "title": "姓名"
+              },
+              "zzhm": {
+                "type": "string",
+                "title": "证照号码"
+              },
+              "zzlx": {
+                "type": "string",
+                "title": "证照类型"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzhm",
+              "zzlx"
+            ]
+          },
+          "title": "人员列表"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "kcnd",
+        "rylb"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "kcnd",
+        "rylb"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\n    \"aggOrgId\": \"535474925760832\",\n    \"accountId\": \"4562588251259072\",\n    \"kcnd\":\"2026\",\n    \"rylb\":[\n        {\n            \"xm\":\"王陶亮\",\n            \"zzhm\":\"123456\",\n            \"zzlx\":\"证照类型\"\n        }\n    ]\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 126688662,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "jzpzh": {
+                  "type": "string"
+                },
+                "kcbl": {
+                  "type": "string"
+                },
+                "szdwmc": {
+                  "type": "string"
+                },
+                "xm": {
+                  "type": "string"
+                },
+                "zzlx": {
+                  "type": "string"
+                },
+                "jzje": {
+                  "type": "string"
+                },
+                "zt": {
+                  "type": "string"
+                },
+                "zzhm": {
+                  "type": "string"
+                },
+                "jzrq": {
+                  "type": "string"
+                },
+                "szdwtyshxydm": {
+                  "type": "string"
+                },
+                "cjlsh": {
+                  "type": "string"
+                }
+              },
+              "x-apifox-orders": [
+                "jzpzh",
+                "kcbl",
+                "szdwmc",
+                "xm",
+                "zzlx",
+                "jzje",
+                "zt",
+                "zzhm",
+                "jzrq",
+                "szdwtyshxydm",
+                "cjlsh"
+              ]
+            }
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 126688662,
+      "data": "{\n    \"reqId\": \"b0225c131a6c43d39f2a8e79d54def40\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"jzpzh\": \"4200002951202601269553668825\",\n            \"kcbl\": \"0.3\",\n            \"szdwmc\": \"\",\n            \"xm\": \"邵xx\",\n            \"zzlx\": \"居民身份证\",\n            \"jzje\": \"10.0\",\n            \"zt\": \"报送成功\",\n            \"zzhm\": \"32010519xxxxxx812\",\n            \"jzrq\": \"2026-01-26\",\n            \"szdwtyshxydm\": \"\",\n            \"cjlsh\": \"6022795\"\n        }\n    ]\n}",
+      "id": "019c35f4-6f85-77ba-bf20-451da79d77db"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 78249522,
+  "ordering": 13,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-07T03:24:48.000Z",
+  "updatedAt": "2026-03-02T01:21:11.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 8720838,
+  "name": "2026年4月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 新增土地增值税申报表解析\n2. 财务报表企业会计准则已执行新增所有者解析\n:::\n\n一、新增土地增值税申报表解析\n1. 支持解析土地增值税的财产行为纳税申报表和减免表\n![企业微信截图_17780751972265.png](https://api.apifox.com/api/v1/projects/2393904/resources/652997/image-preview)\n\n二、财务报表企业会计准则已执行新增所有者解析\n1、支持企业会计准则已执行新增所有者解析，查看最新的示例报文\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652999/image-preview)",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-05-08T11:30:14.000Z",
+  "updatedAt": "2026-05-08T11:30:16.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

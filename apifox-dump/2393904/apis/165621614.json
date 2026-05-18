@@ -1,0 +1,263 @@
+{
+  "id": 165621614,
+  "name": "查询成品油库存汇总台账",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "查询成品油库存汇总台账",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryKchztz",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "nsrsbh": {
+              "type": "string",
+              "title": "税号"
+            },
+            "cxssny": {
+              "type": "string",
+              "title": "月份（格式：yyyyMM)"
+            }
+          },
+          "required": [
+            "nsrsbh",
+            "cxssny"
+          ],
+          "x-apifox-orders": [
+            "01HVKE8FF1AJZD7855BD8NPRCD",
+            "nsrsbh",
+            "cxssny"
+          ],
+          "title": "",
+          "x-apifox-refs": {
+            "01HVKE8FF1AJZD7855BD8NPRCD": {
+              "$ref": "#/definitions/92664906"
+            }
+          }
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：kchztz"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01JA9ZTGK0EAK18F6HNT0XZ3TA",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JA9ZTGK0EAK18F6HNT0XZ3TA": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"data\": {\r\n        \"cxssny\": \"202404\",\r\n        \"pageSize\": \"10\",\r\n        \"nsrsbh\": \"91***************2C\",\r\n        \"pageIndex\": \"1\"\r\n    },\r\n    \"nsrsbh\": \"91***************2C\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 433958171,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "qcdqkc": {
+                      "type": "string",
+                      "title": "期初库存  期初库存"
+                    },
+                    "qmdqkc": {
+                      "type": "string",
+                      "title": "期末库存 期末库存"
+                    },
+                    "qcsdkc": {
+                      "type": "string",
+                      "title": "期初库存 锁定库存"
+                    },
+                    "bqjsuokc": {
+                      "type": "string",
+                      "title": "本期发生库存 解锁库存"
+                    },
+                    "qmsdkc": {
+                      "type": "string",
+                      "title": "期末库存 锁定库存"
+                    },
+                    "xh": {
+                      "type": "integer",
+                      "title": "序号"
+                    },
+                    "bqsdkc": {
+                      "type": "string",
+                      "title": "本期发生库存 锁定库存"
+                    },
+                    "ypmc": {
+                      "type": "string",
+                      "title": "成品油类别"
+                    },
+                    "bqjskc": {
+                      "type": "string",
+                      "title": "本期发生库存 减少库存"
+                    },
+                    "ypbm": {
+                      "type": "string",
+                      "title": "编码"
+                    },
+                    "bqzjkc": {
+                      "type": "string",
+                      "title": "本期发生库存 增加库存"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "xh",
+                    "ypbm",
+                    "ypmc",
+                    "qcdqkc",
+                    "qcsdkc",
+                    "bqzjkc",
+                    "bqjskc",
+                    "bqsdkc",
+                    "bqjsuokc",
+                    "qmdqkc",
+                    "qmsdkc"
+                  ],
+                  "required": [
+                    "bqzjkc"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "list"
+            ],
+            "x-apifox-orders": [
+              "list",
+              "01HVKDSZE7ZSW05257JHYDXVRC"
+            ],
+            "x-apifox-refs": {
+              "01HVKDSZE7ZSW05257JHYDXVRC": {
+                "$ref": "#/definitions/92664510"
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HVKDS7N9RXXVA81489RZ05WM"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 433958171,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageIndex\": 1,\n        \"records\": 16,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"qcdqkc\": \"71.98544995\",\n                \"qmdqkc\": \"70.50685032\",\n                \"qcsdkc\": \"0\",\n                \"bqjsuokc\": \"0\",\n                \"qmsdkc\": \"0\",\n                \"xh\": 1,\n                \"bqsdkc\": \"0\",\n                \"ypmc\": \"汽油\",\n                \"bqjskc\": \"1.47859963\",\n                \"ypbm\": \"1070101010100000000\"\n            }\n        ]\n    }\n}",
+      "id": 405474009
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32480793,
+  "ordering": 4,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-30T08:25:46.000Z",
+  "updatedAt": "2026-04-24T01:43:37.000Z",
+  "creatorId": 887900,
+  "editorId": 3099717,
+  "creatorUserId": 887900,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

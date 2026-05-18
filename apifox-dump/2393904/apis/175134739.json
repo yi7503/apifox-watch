@@ -1,0 +1,459 @@
+{
+  "id": 175134739,
+  "name": "申请全量发票汇总信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于申请全量发票汇总信息；通过调用标志可以根据实际应用场景选择同步或异步。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/queryFpsljeseHj",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "企业纳税人识别号，必填"
+        },
+        "jxxbz": {
+          "type": "string",
+          "title": "进销项标志",
+          "description": "进销项标志，必填，格式 jx 进项 xx 销项"
+        },
+        "kprqq": {
+          "type": "string",
+          "title": "开票日期起",
+          "description": "开票日期起，必填，2022-11-01，格式yyyy-MM-dd"
+        },
+        "kprqz": {
+          "type": "string",
+          "title": "开票日期止",
+          "description": "开票日期止，必填，2023-10-31，格式yyyy-MM-dd"
+        },
+        "fply": {
+          "type": "string",
+          "title": "发票来源",
+          "description": "非必填项，不填默认全部 0:全部 1:增值税发票管理系统 2:电子发票服务平台"
+        },
+        "fpzt": {
+          "type": "string",
+          "title": "发票状态",
+          "description": "非必填项，不填默认全部 0:正常 1:已作废 2:已红冲-全额 3:已红冲-部分",
+          "enum": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "x-apifox-enum": [
+            {
+              "name": "",
+              "value": "0",
+              "description": "正常"
+            },
+            {
+              "name": "",
+              "value": "1",
+              "description": "已作废"
+            },
+            {
+              "name": "",
+              "value": "2",
+              "description": "已红冲-全额"
+            },
+            {
+              "name": "",
+              "value": "3",
+              "description": "已红冲-部分"
+            }
+          ]
+        },
+        "fplxDm": {
+          "type": "string",
+          "title": "发票类型",
+          "description": "发票类型代码，非必填，不填时默认全部,传多个类型时以','进行分割",
+          "enum": [
+            "01",
+            "03",
+            "04",
+            "08",
+            "10",
+            "11",
+            "14",
+            "15",
+            "81",
+            "82",
+            "84",
+            "85",
+            "83",
+            "87",
+            "70",
+            "88",
+            "51",
+            "61",
+            "8208"
+          ],
+          "x-apifox-enum": [
+            {
+              "name": "",
+              "value": "01",
+              "description": "增值税专用发票"
+            },
+            {
+              "name": "",
+              "value": "03",
+              "description": "机动车销售统一发票"
+            },
+            {
+              "name": "",
+              "value": "04",
+              "description": "增值税普通发票"
+            },
+            {
+              "name": "",
+              "value": "08",
+              "description": "增值税专用发票（电子）"
+            },
+            {
+              "name": "",
+              "value": "10",
+              "description": "增值税普通发票（电子）"
+            },
+            {
+              "name": "",
+              "value": "11",
+              "description": "增值税普通发票（卷票）"
+            },
+            {
+              "name": "",
+              "value": "14",
+              "description": "通行费发票"
+            },
+            {
+              "name": "",
+              "value": "15",
+              "description": "二手车统一销售发票"
+            },
+            {
+              "name": "",
+              "value": "81",
+              "description": "电子发票(增值税专用发票)"
+            },
+            {
+              "name": "",
+              "value": "82",
+              "description": "电子发票(增值税普通发票)"
+            },
+            {
+              "name": "",
+              "value": "84",
+              "description": "纸质发票(增值税专用发票)"
+            },
+            {
+              "name": "",
+              "value": "85",
+              "description": "纸质发票(增值税普通发票)"
+            },
+            {
+              "name": "",
+              "value": "83",
+              "description": "数电票（机动车销售统一发票）"
+            },
+            {
+              "name": "",
+              "value": "87",
+              "description": "数电纸质发票（机动车销售统一发票）"
+            },
+            {
+              "name": "",
+              "value": "70",
+              "description": "数电票（二手车销售统一发票）"
+            },
+            {
+              "name": "",
+              "value": "88",
+              "description": "数电纸质发票（二手车销售统一发票）"
+            },
+            {
+              "name": "",
+              "value": "51",
+              "description": "数电票(铁路)"
+            },
+            {
+              "name": "",
+              "value": "61",
+              "description": "数电票(航空)"
+            },
+            {
+              "value": "8208",
+              "name": "",
+              "description": "数电票（通行费）"
+            }
+          ]
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号唯一标识",
+          "description": "多账号下的账号唯一标识"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "syncBz": {
+          "type": "string",
+          "title": "调用标志",
+          "enum": [
+            "0",
+            "1"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "0",
+              "name": "异步调用",
+              "description": ""
+            },
+            {
+              "value": "1",
+              "name": "同步调用",
+              "description": ""
+            }
+          ],
+          "description": "默认为异步调用"
+        }
+      },
+      "required": [
+        "kprqq",
+        "kprqz",
+        "nsrsbh",
+        "jxxbz",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "fplxDm",
+        "jxxbz",
+        "kprqq",
+        "kprqz",
+        "fply",
+        "fpzt",
+        "syncBz",
+        "aggOrgId",
+        "accountId"
+      ],
+      "x-apifox-refs": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"nsrsbh\": \"91310118MA1********\",\n    \"jxxbz\": \"xx\",\n    \"kprqq\": \"2024-01-03\",\n    \"kprqz\": \"2024-05-03\"\n}",
+        "mediaType": "application/json",
+        "description": "",
+        "name": "异步"
+      },
+      {
+        "name": "同步",
+        "value": "{\n    \"nsrsbh\": \"91310118MAD5*****\",\n    \"jxxbz\": \"xx\",\n    \"syncBz\": \"1\",\n    \"kprqq\": \"2024-01-01\",\n    \"kprqz\": \"2024-11-01\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "S4CQ6aHueY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "c2c8mNZDgi",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "491JAzxqeH",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 452993278,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code(2000成功，其他失败)"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务id",
+                "description": "用于获取全量发票汇总信息（异步调用时返回）"
+              },
+              "fpzs": {
+                "type": "string",
+                "title": "发票张数",
+                "description": "同步调用时返回"
+              },
+              "hjje": {
+                "type": "string",
+                "title": "合计金额",
+                "description": "同步调用时返回"
+              },
+              "hjse": {
+                "type": "string",
+                "title": "合计税额",
+                "description": "同步调用时返回"
+              },
+              "success": {
+                "type": "string",
+                "title": "是否成功标记",
+                "description": "同步调用时返回"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId",
+              "fpzs",
+              "hjje",
+              "hjse",
+              "success"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "异步",
+      "responseId": 452993278,
+      "data": "{\n    \"reqId\": \"f650ac40f6914f328aa587116957899e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"taskId\": \"1792869769977511938\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409422110
+    },
+    {
+      "name": "同步",
+      "responseId": 452993278,
+      "data": "{\n    \"reqId\": \"ce99609d36ad4d6c8274b99d68ffe672\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"fpzs\": \"47\",\n        \"hjse\": \"0.37\",\n        \"success\": \"true\",\n        \"hjje\": \"3.1\"\n    }\n}",
+      "id": "019b1636-c2bf-76bc-b42a-6cb03494cd8c"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 62797071,
+  "ordering": 131,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-03T03:36:03.000Z",
+  "updatedAt": "2025-12-16T07:12:51.000Z",
+  "creatorId": 2118003,
+  "editorId": 2795319,
+  "creatorUserId": 2118003,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

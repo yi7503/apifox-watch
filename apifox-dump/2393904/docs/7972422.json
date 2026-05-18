@@ -1,0 +1,17 @@
+{
+  "id": 7972422,
+  "name": "2025年12月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年11月发布内容\n\n发布日期：2025-12-30\n发布版本：V2.2025.12\n\n\n## 一、发票开具\n1.涉税专业服务协议要素开票流程兼容\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/610541/image-preview)\n2.【申请红字信息表】 入参增加字段:ly ddbh(来源订单编号)\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/610006/image-preview)\n3.发票产品回调3次间隔30秒调整；\n4.数据库增加特定业务类型代码可以查询到对应的发票信息和开具记录。\n5.煤炭类开票 税收分类编码兼容；\n当单张发票煤炭销售金额大于或等于1000万时，请在“每千克煤炭发热量（千卡）”、“干基全硫（%）（保留两位小数）”、“干燥无灰基挥发分（%）（保留两位小数）列填写具体信息；若单张发票煤炭销售金额小于1000万，则“每千克煤炭发热量（千卡）”、“干基全硫（%）（保留两位小数）”、“干燥无灰基挥发分（%）（保留两位小数）列无需填写。\n\n6.建筑发票-外经证申请开具\n https://openapi.qixiangyun.com/api-394982113\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/610544/image-preview)\n7.数电铁路电子客票未适配发票查询需要适配\n8.数电机动车销售统一发票，支持红冲\n## 二、发票认证 \n1.综服铁路电子客票和机动车 发票类型标准化；\n## 三、发票归集\n1.数电发票（通行费发票） 适配；\n- 发起作废/红冲归集任务 ；\n- 发起已勾选归集任务 ；\n- 查询已勾选归集数据 ；\n## 四、发票查验和识别\n1.财政票据查验-河北和浙江的票据返回医疗清单项目大类名称\nhttps://openapi.qixiangyun.com/api-241358209\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/610013/image-preview)\n2. 识别产品-缓存自动化清理；\n## 五、发票版式下载\n1.全国财政票据-北京、上海、安徽、海南、安徽，升级适配\n2.8208-数电发票（通行费发票） 适配\n## 六、乐企\n 1.乐企成品油发票开具\n 2.乐企白酒条形码发票开具\n  ",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-01-04T14:15:11.000Z",
+  "updatedAt": "2026-03-04T08:46:50.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

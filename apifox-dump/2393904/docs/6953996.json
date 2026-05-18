@@ -1,0 +1,17 @@
+{
+  "id": 6953996,
+  "name": "  2025年6月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1.基础信息增加核定征收信息返回\n2.财产行为税房产、土地、印花增加减免信息返回\n:::\n\n## 接口变化\n### 一、基础信息增加核定征收信息返回\n1. 基础信息节点增加hdzsInfo节点\n2. 权限：需要单独联系技术支持进行配置\n3. 对应税局路径：我要查询-一户式查询-定期定额核定信息查询\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540582/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540583/image-preview)\n\n### 二、财产行为税房产、土地、印花增加减免信息返回\n1. 房产、土地、印花税支持减免明细表数据返回，详细查看报文示例\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540584/image-preview)\n",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-06-30T12:20:59.000Z",
+  "updatedAt": "2025-06-30T12:21:07.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

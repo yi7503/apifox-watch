@@ -1,0 +1,204 @@
+{
+  "id": 100012773,
+  "name": "获取人脸识别结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "通过本接口可获取当前登录用户人脸识别的结果",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/rzztcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：rzztcx",
+          "const": "rzztcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "rzid": {
+              "type": "string",
+              "title": "前一接口获取到的认证二维码ID",
+              "description": "参考获取人脸识别认证二维码接口返回值"
+            }
+          },
+          "required": [
+            "rzid"
+          ],
+          "x-apifox-orders": [
+            "rzid"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB91BTK2HXB2E2XX337QBZW",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HMB91BTK2HXB2E2XX337QBZW": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"rzztcx\",\r\n    \"nsrsbh\": \"**************4PDDL2G\",\r\n    \"data\": {\r\n        \"rzid\": \"2e7cfe4c02f547ed8ee1d016f05\"\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847707,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "slzt": {
+                "type": "string",
+                "title": "刷脸状态",
+                "enum": [
+                  "1,已生成二维码未扫脸",
+                  "2,扫脸成功",
+                  "3,二维码已过期"
+                ],
+                "x-apifox": {
+                  "enumDescriptions": {
+                    "1,已生成二维码未扫脸": "已生成二维码未扫脸",
+                    "2,扫脸成功": "扫脸成功",
+                    "3,二维码已过期": "二维码已过期"
+                  }
+                }
+              }
+            },
+            "required": [
+              "nsrsbh",
+              "slzt"
+            ],
+            "x-apifox-orders": [
+              "nsrsbh",
+              "slzt"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HREBS7Z5SM5BGCMYXTMYXP84"
+        ],
+        "x-apifox-refs": {
+          "01HREBS7Z5SM5BGCMYXTMYXP84": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 248847707,
+      "data": "{\n    \"reqId\": \"bad3a46b47dc4c509717463cebc5f28e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"nsrsbh\": \"**************4PDDL2G\",\n        \"slzt\": \"1\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400148300
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58654707,
+  "ordering": 102,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-10T02:31:30.000Z",
+  "updatedAt": "2026-04-14T03:19:26.000Z",
+  "creatorId": 2706439,
+  "editorId": 3099717,
+  "creatorUserId": 2706439,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,211 @@
+{
+  "id": 66965100,
+  "name": "发起申报信息查询任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   申报查询接口用于发起获取申报查询结果信息接口。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR | 请求参数year或period不能为空！ |  |\n| PARAMETER_ERROR | 请求参数年份year不是当前年份！ |  |\n| PARAMETER_ERROR | 请求参数月份period不是当前月份！ |  |\n| PARAMETER_ERROR | 参数格式不合法,不是有效的json格式!||\n| INTERFACE_ERROR | 接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadDeclareInfoTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "year": {
+          "type": "integer",
+          "description": "年"
+        },
+        "period": {
+          "type": "integer",
+          "description": "月"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）"
+        },
+        "kqyswjgmc": {
+          "type": "string",
+          "description": "跨区域税局机关名称"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "description": "特定主体税务机关名称"
+        },
+        "bsswjg": {
+          "type": "string",
+          "description": "跨区域上传省市区(上传格式 省|市|区 如“湖南省|湘潭市|岳塘区”\n"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "year",
+        "period"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "year",
+        "period",
+        "tdztswjgmc",
+        "kqyswjgmc",
+        "bsswjg"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"year\": 2023,\r\n    \"period\":3\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "HheZG7olO9",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "lfbawVNl9v",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "h1qm3VE9yS",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "NYzB5CvZGx",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 170244721,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01GW664NTG8DAA40CQ3926Y530": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/33757676"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW664NTG8DAA40CQ3926Y530"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 170244721,
+      "data": "{\n    \"reqId\": \"b73cb23f46004b5abc2e96097936a34b\",\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"没有找到对应的企业！\",\n    \"data\": null\n}",
+      "id": 17711082
+    },
+    {
+      "name": "任务发起成功",
+      "responseId": 170244721,
+      "data": "{\n    \"reqId\": \"3cc23d8265734d29ae882001da7ccc48\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 455320626256640,\n        \"taskId\": \"456197880985088\"\n    }\n}",
+      "id": 17221524
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13530951,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:36:31.000Z",
+  "updatedAt": "2026-01-22T10:09:38.000Z",
+  "creatorId": 1452584,
+  "editorId": 1442097,
+  "creatorUserId": 1452584,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

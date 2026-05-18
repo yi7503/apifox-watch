@@ -1,0 +1,147 @@
+{
+  "id": 258212230,
+  "name": "个税回调接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "个税回调接口，异步接口状态为成功或失败会回调通知客户，客户根据通知内容做相应的业务处理。\n客户需要提供回调地址给管理员，POST请求 请求参数为JSON对象",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/callbackUrl",
+  "tags": [
+    "结果回调"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskStatus": {
+          "type": "integer",
+          "description": "任务状态 2失败  3已完成",
+          "title": "任务状态"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "对应请求任务ID",
+          "description": "任务唯一标识"
+        },
+        "01JKF04BYB2TBRFWMBMJ7XNXJF": {
+          "x-tmp-pending-properties": true
+        }
+      },
+      "required": [
+        "taskStatus",
+        "taskId",
+        "01JKF04BYB2TBRFWMBMJ7XNXJF"
+      ],
+      "x-apifox-orders": [
+        "01JKF04BYB2TBRFWMBMJ7XNXJF",
+        "taskStatus",
+        "taskId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"taskStatus\": 3,//任务状态 2失败  3已完成\r\n    \"taskId\": \"4719559035509186654\"//对应请求任务ID\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 609277452,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "2000",
+            "description": "一定返回2000，否则会持续通知多次"
+          },
+          "msg": {
+            "type": "string",
+            "title": "成功"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 609277452,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "id": 476440039
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 54279649,
+  "ordering": 50,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-02-07T01:28:44.000Z",
+  "updatedAt": "2025-04-10T12:03:59.000Z",
+  "creatorId": 2400309,
+  "editorId": 493984,
+  "creatorUserId": 2400309,
+  "editorUserId": 493984,
+  "responseChildren": [
+    "BLANK.609277452"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

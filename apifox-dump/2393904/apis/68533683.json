@@ -1,0 +1,397 @@
+{
+  "id": 68533683,
+  "name": "数电纸质发票查验",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于全电纸质发票查验。与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致。\n【**数电纸质发票**】包含：数电纸质（增值税专用发票）、数电纸质（增值税普通发票）、数电纸质（机动车销售统一发票）、数电纸质（二手车销售统一发票）；\n\n::: highlight red 💡\n注意：不同类型的发票cyList里的字段不同\n:::\n\n\n\n\n## 错误码\n| **错误代码**                                     | **错误信息**                                   | **说明**                                                     |\n| ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |\n| CheckInvoiceOverSupportCount                     | 超过当前接口支持最大查验张数!                  | 超过接口限制的单次请求张数，请调整单次请求张数。             |\n| CheckInvoiceForTheSameFrequent                   | 当前发票正在查验中,请不要频繁请求              | 当前发票正在查验中,请稍后重试                                |\n| CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| IllegalParameter                                 | 请求参数不正确                                 | 请核对请求参数                                               |\n| IllegalParameter.IllegalInvoiceCode              | 请求参数不正确,参数fpdm发票代码不正确！        | 请核对fpdm发票代码是否符合参数规范                           |\n| IllegalParameter.IllegalInvoiceNumber            | 请求参数不正确,参数fphm发票号码不正确！        | 请核对fphm发票号码是否符合参数规范                           |\n| IllegalParameter.IllegalBillingDate              | 请求参数不正确,参数kprq开票日期不正确！        | 请核对kprq开票日期是否符合参数规范                           |\n| IllegalParameter.IllegalCheckCode                | 参数jym[发票校验码后6位]不正确                 | 请核对jym校验码是否符合参数规范                              |\n| IllegalParameter.IllegalTotalAmount              | 参数je[不含税金额]不正确                       | 请核对je金额是否符合参数规范                                 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！                  | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh                    | 请求参数不正确,销售方识别号为空！              | 请核对xfsbh销方识别号是否符合参数规范                        |\n| IllegalParameter.IllegalArea                     | 请求参数不正确,参数dq地区不正确！              | 请核对dq地区是否符合参数规范                                 |\n| CheckInvoicesMoreThanToday                       | 开票日期超过当前日期                           | 请核对开票日期是否正确                                       |\n| CheckInvoicesOverFiveYears                       | 超过五年的发票不能查验                         | 请核对开票日期是否正确                                       |\n| CheckInvoiceNotSupport                           | 暂不支持该（省市）电子票据查验                 | 该地区暂不支持该票种查验                                     |\n| CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| CheckInvoiceMoreFiveTimes                        | 超过该张票当天查验次数                         | 请确认在调用接口前是否已经通过官方平台查验超过5次            |\n| CheckInvoiceNotExistence                         | 查验成功所查发票不存在                         | 发票代码或发票号码在税局查不到，请核对代码、号码是否正确  <br>注：可能原因如下：(1)输入的查验项有误；(2)查询的发票开票日期距当前日期超过5年；(3)由于开票方离线开票，发票数据未上传至税务局；(4)非增值税发票管理系统开具的发票。 |\n| CheckInvoiceNotSame                              | 查验成功所查发票不一致                         | 请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票 |\n| CheckInvoiceNotStandard                          | 查询发票不规范                                 | 请核对四要素是否符合发票规范                                 |\n| CheckInvoiceRequestNonStandard                   | 请求不规范                                     | 请核对请求参数                                               |\n| CheckInvoiceException                            | 税局服务异常，建议15-20分钟后重试              | 税局服务异常，建议15-20分钟后重试                            |\n| CheckAbnormal                                    | 查验异常（错误信息不固定）                     | 税局服务异常，建议15-20分钟后重试                            |\n| CheckExceedingLimit                              | 查验发票张数超过限制                           | 发票剩余查验量不足，请与运营负责人沟通确认                   |\n| CheckInvoiceSingular                             | 请求太频繁或超过服务器最大请求数，请稍后访问！ | 当前请求数达到服务最大并发数                                 |\n| ServerError                                      | 服务器异常，请稍后重试                         | 服务器异常                                                   |\n| InternalServerError                              | 服务遇到未知错误，请稍后重试                   | 请联系管理员                                                 |\n| RemoteDataException                              | 税局数据异常                                   | 请联系管理员                                                 |\n| RemoteResultFail                                 | 调用税局异常，请稍后重试。                     | 请联系管理员                                                 |\n| 50008                                            | 字段文件名称不能为空(name)                     | 请联系管理员                                                 |\n| 50014                                            | 超过并发限制                                   | 请降低并发                                                   |\n| 59999                                            | 未知异常                                       | 请联系管理员                                                 |\n| 505002                                           | 接口调用异常!                                  | 请联系管理员                                                 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/zzsfpCy",
+  "tags": [
+    "发票查验",
+    "全电发票查验"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01HKM9BJJP5N72W2T484GE0GHZ": {
+          "$ref": "#/definitions/33124987",
+          "x-apifox-overrides": {}
+        }
+      },
+      "properties": {
+        "customReqId": {
+          "type": "string",
+          "description": "传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+        }
+      },
+      "x-apifox-orders": [
+        "01HKM9BJJP5N72W2T484GE0GHZ",
+        "customReqId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"cyList\": [\r\n        {\r\n            \"fpdm\": \"31******30\",\r\n            \"fphm\": \"20****95\",\r\n            \"kprq\": \"2022-09-23\",\r\n            \"je\": 94339.62\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Xp1PFkxoym",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "qGOlDbwQ1w",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "VlwydZoHPX",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947080,
+      "name": "全电纸质发票(增值税专用发票)查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXZJR5QEQ8Y3NTMTE0SCD3HV": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01HNAKXG0TC5XTGEEKYEZKFHCD": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "$ref": "#/definitions/41470817"
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HNAKXG0TC5XTGEEKYEZKFHCD"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXZJR5QEQ8Y3NTMTE0SCD3HV"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 42947081,
+      "name": "全电纸质发票(增值税普通发票)查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXZJYGGX8APG8XR3BTB7P2KZ": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01HNAKYRA5AKSZWEAB32FCNGBX": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "$ref": "#/definitions/41471345"
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HNAKYRA5AKSZWEAB32FCNGBX"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXZJYGGX8APG8XR3BTB7P2KZ"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 499171678,
+      "name": "全电纸质发票（机动车销售统一发票)查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01J3YX7VEJSCM2YY2SSAHX3CNY": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01J3YYJPWK0B844SMVVZ25FB0X": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/41350857"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01J3YYJPWK0B844SMVVZ25FB0X"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01J3YX7VEJSCM2YY2SSAHX3CNY"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 499171679,
+      "name": "全电纸质发票（二手车统一销售发票)查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01J3YX8WSBK9C0TWP5T3XMFFGF": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01J3YYKBMJAZ9QGN3ERTQ1R3SD": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/40996898"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01J3YYKBMJAZ9QGN3ERTQ1R3SD"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01J3YX8WSBK9C0TWP5T3XMFFGF"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "全电纸质发票(增值税专用发票)查验成功示例",
+      "responseId": 42947080,
+      "data": "{\n    \"reqId\": \"5384870061504dab93ad977be2a40348\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": null,\n            \"czpjCyAndGetFile\": null,\n            \"data\": {\n                \"bz\": \"\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": \"上海\",\n                \"fhr\": null,\n                \"fpdm\": \"3********0\",\n                \"fphm\": \"2******5\",\n                \"fplx\": \"0901\",\n                \"fpztBz\": null,\n                \"fpztDm\": \"0\",\n                \"gfmc\": \"维美**************公司\",\n                \"gfsbh\": \"9*************F\",\n                \"gmfdzdh\": \"江苏*********2号0**********9\",\n                \"gmfyhzh\": \"4180530143\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"94339.6226415094\",\n                        \"ggxh\": \"\",\n                        \"je\": 94339.62,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*人力资源服务*服务费\",\n                        \"mxxh\": 1,\n                        \"qdbz\": null,\n                        \"se\": 5660.38,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": \"3040803990000000000\",\n                        \"ysse\": \"5660.38\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"je\": 94339.62,\n                \"jshj\": 100000,\n                \"jshjcn\": \"壹拾万元整\",\n                \"jym\": \"2*****************1\",\n                \"kjlx\": \"1\",\n                \"kpjh\": null,\n                \"kpr\": null,\n                \"kprq\": \"2022-09-23 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"purl\": null,\n                \"qdfphm\": \"2*****************1\",\n                \"qdlx\": \"01\",\n                \"sbbh\": \"\",\n                \"se\": 5660.38,\n                \"skm\": null,\n                \"skr\": null,\n                \"slv\": null,\n                \"tspzDm\": \" \",\n                \"url\": null,\n                \"xfmc\": \"悠派***************公司\",\n                \"xfsbh\": \"9**************B\",\n                \"xhqdBz\": \"N\",\n                \"xsfdzdh\": \"上海****************15楼1********5\",\n                \"xsfyhzh\": \"1************1\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            },\n            \"dq\": \"31\",\n            \"fpdm\": \"3********0\",\n            \"fphm\": \"2*****5\",\n            \"fplx\": \"0901\",\n            \"je\": 94339.62,\n            \"jshj\": null,\n            \"jym\": null,\n            \"kprq\": \"2022-09-23 00:00:00\",\n            \"message\": null,\n            \"qkl\": null,\n            \"retry\": null,\n            \"skm\": null,\n            \"success\": true,\n            \"time\": \"2023-04-14 17:44:48\",\n            \"times\": 36,\n            \"tydz\": null,\n            \"xzpj\": null,\n            \"ylpjFile\": null\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947082
+    },
+    {
+      "name": "全电纸质发票(增值税普通发票)查验成功示例",
+      "responseId": 42947081,
+      "data": "{\n    \"reqId\": \"ecc387e00a064b50ac7d6cfc78831bb5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": null,\n            \"czpjCyAndGetFile\": null,\n            \"data\": {\n                \"bz\": \"\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": \"上海\",\n                \"fhr\": null,\n                \"fpdm\": \"0********4\",\n                \"fphm\": \"1******9\",\n                \"fplx\": \"0904\",\n                \"fpztBz\": null,\n                \"fpztDm\": \"0\",\n                \"gfmc\": \"嘉艺*********公司\",\n                \"gfsbh\": \"9*************B\",\n                \"gmfdzdh\": \"nullnull\",\n                \"gmfyhzh\": \"\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"\",\n                        \"ggxh\": \"\",\n                        \"je\": 933.96,\n                        \"jldw\": \"\",\n                        \"lslbs\": \" \",\n                        \"mc\": \"*住宿服务*住宿服务\",\n                        \"mxxh\": 1,\n                        \"qdbz\": null,\n                        \"se\": 56.04,\n                        \"sl\": \"\",\n                        \"slv\": 0.06,\n                        \"spbm\": \"3070402000000000000\",\n                        \"ysse\": \"56.04\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"je\": 933.96,\n                \"jshj\": 990,\n                \"jshjcn\": \"玖佰玖拾元整\",\n                \"jym\": \"2***************2\",\n                \"kjlx\": \"1\",\n                \"kpjh\": null,\n                \"kpr\": null,\n                \"kprq\": \"2022-11-09 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"purl\": null,\n                \"qdfphm\": \"2****************2\",\n                \"qdlx\": \"04\",\n                \"sbbh\": \"\",\n                \"se\": 56.04,\n                \"skm\": null,\n                \"skr\": null,\n                \"slv\": null,\n                \"tspzDm\": \" \",\n                \"url\": null,\n                \"xfmc\": \"上海***********公司\",\n                \"xfsbh\": \"9****************W\",\n                \"xhqdBz\": \"N\",\n                \"xsfdzdh\": \"上海**********************层0*********8\",\n                \"xsfyhzh\": \"3**************1\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            },\n            \"dq\": \"31\",\n            \"fpdm\": \"0*********4\",\n            \"fphm\": \"1******9\",\n            \"fplx\": \"0904\",\n            \"je\": null,\n            \"jshj\": null,\n            \"jym\": \"555922\",\n            \"kprq\": \"2022-11-09 00:00:00\",\n            \"message\": null,\n            \"qkl\": null,\n            \"retry\": null,\n            \"skm\": null,\n            \"success\": true,\n            \"time\": \"2023-04-14 17:50:58\",\n            \"times\": 101,\n            \"tydz\": null,\n            \"xzpj\": null,\n            \"ylpjFile\": null\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947083
+    },
+    {
+      "name": "成功示例",
+      "responseId": 499171678,
+      "data": "{\r\n    \"reqId\": \"c445246b29924bd78197a11fd099fe28\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"customReqId\": \"10001999cb9bb379f6a24938a2dcad225ee17b02\",\r\n            \"data\": {\r\n                \"cd\": \"深圳市\",\r\n                \"cjhm\": \"LC*************32\",\r\n                \"cllx\": \"插电式混合动力轿车\",\r\n                \"cpxh\": \"比亚迪牌BY***********V7\",\r\n                \"dh\": \"28******01-11\",\r\n                \"dkdwdm\": null,\r\n                \"dkdwmc\": null,\r\n                \"dq\": \"天津\",\r\n                \"dw\": \"0.5\",\r\n                \"dz\": \"河西****************区85\",\r\n                \"fdjhm\": \"L2*******61\",\r\n                \"fpdm\": \"11******60\",\r\n                \"fphm\": \"00****11\",\r\n                \"fplx\": \"0903\",\r\n                \"fpztDm\": \"0\",\r\n                \"gfmc\": \"张*轩\",\r\n                \"gfsbh\": \"12************29\",\r\n                \"hgzh\": \"YK**************15\",\r\n                \"hzfpxx\": [],\r\n                \"je\": 189203.54,\r\n                \"jkzmsh\": \"无\",\r\n                \"jshj\": 213800.00,\r\n                \"jshjcn\": \"贰拾壹万叁仟捌佰元整\",\r\n                \"khyh\": \"中国**************************业部\",\r\n                \"kjlx\": \"1\",\r\n                \"kpr\": null,\r\n                \"kprq\": \"2023-11-17 00:00:00\",\r\n                \"lslbs\": \"\",\r\n                \"sbbh\": \"\",\r\n                \"sfzhm\": \"\",\r\n                \"sjdh\": \"无\",\r\n                \"skm\": null,\r\n                \"slv\": 0.13,\r\n                \"spbm\": null,\r\n                \"swjgDm\": \"11***********00\",\r\n                \"swjgMc\": \"国家************************务所\",\r\n                \"wspzhm\": \"\",\r\n                \"xcrs\": \"5\",\r\n                \"xhdwmc\": \"天津******************公司\",\r\n                \"xhdwsbh\": \"91**************5A\",\r\n                \"yfpdm\": null,\r\n                \"yfphm\": null,\r\n                \"ysslv\": \"13%\",\r\n                \"yszzsse\": \"24596.46\",\r\n                \"zh\": \"75********************39\",\r\n                \"zzsse\": 24596.46\r\n            },\r\n            \"dq\": \"12\",\r\n            \"fpdm\": \"11********60\",\r\n            \"fphm\": \"00****11\",\r\n            \"fplx\": \"0903\",\r\n            \"je\": 189203.54,\r\n            \"jshj\": null,\r\n            \"jym\": null,\r\n            \"kprq\": \"2023-11-17 00:00:00\",\r\n            \"success\": true,\r\n            \"time\": \"2024-07-29 17:32:04\",\r\n            \"times\": 45\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 419547431
+    },
+    {
+      "name": "成功示例",
+      "responseId": 499171679,
+      "data": "{\r\n    \"reqId\": \"5f4afc2e01ac4f86a05a84148e7909e5\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"customReqId\": \"10001999867de90c6090426b99e57628beda4ad0\",\r\n            \"data\": {\r\n                \"bz\": \"\",\r\n                \"cjhj\": 1000.00,\r\n                \"cjhjcn\": \"壹仟元整\",\r\n                \"cllx\": \"小型轿车\",\r\n                \"clsbdm\": \"LS****************10\",\r\n                \"cpxh\": \"晶锐牌SV******SD\",\r\n                \"cpzh\": \"津*******\",\r\n                \"djzh\": \"12*********32\",\r\n                \"dq\": \"天津\",\r\n                \"escDh\": \"022-26******58\",\r\n                \"escDz\": \"天津*********************************院内\",\r\n                \"escMc\": \"天津************************公司\",\r\n                \"escSbh\": \"91******************1J\",\r\n                \"escYhzh\": \"天津**********************支行 90*********************60\",\r\n                \"fpdm\": \"01***********17\",\r\n                \"fphm\": \"00****96\",\r\n                \"fplx\": \"0915\",\r\n                \"fpztDm\": \"0\",\r\n                \"gfDh\": \"13********21\",\r\n                \"gfDm\": \"12**************46\",\r\n                \"gfDz\": \"天津***********************14号\",\r\n                \"gfMc\": \"张*\",\r\n                \"hzfpxx\": [],\r\n                \"jyPmDh\": \"\",\r\n                \"jyPmDz\": \"\",\r\n                \"jyPmMc\": \"\",\r\n                \"jyPmSbh\": \"\",\r\n                \"jyPmYhzh\": \"\",\r\n                \"kjlx\": \"1\",\r\n                \"kpr\": null,\r\n                \"kprq\": \"2023-11-14 00:00:00\",\r\n                \"sbbh\": \"\",\r\n                \"skm\": null,\r\n                \"spbm\": null,\r\n                \"xfDh\": \"18*************51\",\r\n                \"xfDm\": \"12********************27\",\r\n                \"xfDz\": \"天津****************************4号\",\r\n                \"xfMc\": \"吴*\",\r\n                \"yfpdm\": null,\r\n                \"yfphm\": null,\r\n                \"zfr\": null,\r\n                \"zfrq\": null,\r\n                \"zrdclglsMc\": \"天津******理所\"\r\n            },\r\n            \"dq\": \"12\",\r\n            \"fpdm\": \"01**********17\",\r\n            \"fphm\": \"00****96\",\r\n            \"fplx\": \"0915\",\r\n            \"je\": 1000.00,\r\n            \"jshj\": null,\r\n            \"jym\": null,\r\n            \"kprq\": \"2023-11-14 00:00:00\",\r\n            \"success\": true,\r\n            \"time\": \"2024-07-29 17:34:36\",\r\n            \"times\": 36\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 419553574
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13283951,
+  "ordering": 96,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-07-26T03:33:17.000Z",
+  "updatedAt": "2025-04-21T10:39:18.000Z",
+  "creatorId": 1426961,
+  "editorId": 1426961,
+  "creatorUserId": 1426961,
+  "editorUserId": 1426961,
+  "responseChildren": [
+    "BLANK.42947080",
+    "BLANK.42947081",
+    "BLANK.499171678",
+    "BLANK.499171679"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,210 @@
+{
+  "id": 329683183,
+  "name": "出口退税申报表下载",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/downloadSbForm",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "账号"
+        },
+        "ssyf": {
+          "type": "string",
+          "title": "申报所属月份",
+          "description": "必传yyyyMM"
+        },
+        "pc": {
+          "type": "string",
+          "title": "批次号"
+        },
+        "swsx": {
+          "type": "string",
+          "title": "税务事项",
+          "description": "MDS： 生产型企业获取 ，MTS ：外贸型企业获取"
+        },
+        "sxzlDm": {
+          "type": "string",
+          "title": "事项种类代码",
+          "description": "MDS 对应事项种类代码：免抵退_汇总表（MDT_ZXSB_SB_MDT_SBDSHZ_S）、 免抵退_明细表\n（MDT_ZXSB_SB_MDT_TSSB_S）\nMTS 对应的事项种类代码：免退税_退税出口申报明细（MTS_ZXSB_SB_MTS_TSSB_S）、免退税_退税进货明细（MTS_ZXSB_SB_MTS_TSJH_S）"
+        }
+      },
+      "required": [
+        "ssyf",
+        "aggOrgId",
+        "pc",
+        "swsx",
+        "sxzlDm"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "ssyf",
+        "pc",
+        "swsx",
+        "sxzlDm"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"50\",\r\n    \"accountId\": \"90\",\r\n    \"ssyf\": \"202506\",\r\n    \"pc\": \"0001\",\r\n    \"swsx\": \"MDS\",\r\n    \"sxzlDm\": \"MDT_ZXSB_SB_MDT_TSSB_S\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "bIlRjEQnUP",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "078T8Bzir8",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "kmjGHjwvO7",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "rOqZAIFnh0",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 734212052,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01GW664NTG8DAA40CQ3926Y530": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "x-apifox-refs": {
+                  "01JWX7QQGXX4YJKTV4NQFFAMKT": {
+                    "$ref": "#/definitions/33757676",
+                    "x-apifox-overrides": {
+                      "aggOrgId": null
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01JWX7QQGXX4YJKTV4NQFFAMKT"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW664NTG8DAA40CQ3926Y530"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63427299,
+  "ordering": 12,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-31T07:26:28.000Z",
+  "updatedAt": "2025-11-11T07:39:45.000Z",
+  "creatorId": 1910680,
+  "editorId": 1442097,
+  "creatorUserId": 1910680,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

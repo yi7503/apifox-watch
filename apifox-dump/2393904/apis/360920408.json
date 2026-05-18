@@ -1,0 +1,339 @@
+{
+  "id": 360920408,
+  "name": "账户密码上传校验",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "OyJfk0LMUYvgEwyetoHmI",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "用于社保账户密码或申报密码，上传校验；此处是账户密码或申报密码为社保费管理客户端的密码。\n如何设置社保客户端密码?登录电子税务局—热门服务—社保费业务—社保费客户端密码重置，可设置密码",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/checkAccountPassword",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "企业登录/申报相关信息Schema",
+      "description": "用于描述企业登录或申报时所需的核心字段，包含企业标识、登录方式及对应凭证等信息",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aggOrgId",
+        "nsrsbh",
+        "areaid",
+        "qymc"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "description": "企业ID，用于唯一标识企业",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "ORG20240001",
+            "ENT_887654321"
+          ],
+          "title": "企业ID"
+        },
+        "nsrsbh": {
+          "description": "纳税人识别号，企业税务登记的唯一标识",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "91310101MA1G888888",
+            "310104123456789"
+          ],
+          "title": "纳税人识别号"
+        },
+        "djxhid": {
+          "description": "登记序号，企业登记时生成的唯一序号",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "DJ2024050001",
+            "SEQ_12345678"
+          ],
+          "title": "登记序号"
+        },
+        "dlfs": {
+          "description": "登录方式，1表示单位密码登录，2表示用户名密码登录，默认值为1",
+          "type": "string",
+          "enum": [
+            "1",
+            "2"
+          ],
+          "default": "1",
+          "examples": [
+            "1",
+            "2"
+          ],
+          "title": "登录方式"
+        },
+        "sbmm": {
+          "description": "申报密码，仅当登录方式为1（单位密码登录）时必填。（密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "Sbm@202405",
+            "Dwmm_888888"
+          ],
+          "title": "申报密码"
+        },
+        "yhm": {
+          "description": "用户名，仅当登录方式为2（用户名密码登录）时必填",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "tax_admin01",
+            "ent_user_999"
+          ],
+          "title": "用户名"
+        },
+        "yhmmm": {
+          "description": "用户名密码，仅当登录方式为2（用户名密码登录）时必填。\n（密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）",
+          "type": "string",
+          "minLength": 1,
+          "examples": [
+            "Yhm@202405",
+            "UserPwd_1234"
+          ],
+          "title": "用户名密码"
+        },
+        "areaid": {
+          "type": "string",
+          "title": "行政区划代码",
+          "description": "地区代码，String类型，必填项（4位地区码）"
+        },
+        "qymc": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "dwbh": {
+          "type": "string",
+          "title": "单位编号"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "dlfs": {
+                "const": "1"
+              }
+            },
+            "required": [
+              "dlfs"
+            ],
+            "x-apifox-orders": [
+              "dlfs"
+            ]
+          },
+          "then": {
+            "required": [
+              "sbmm"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "sbmm"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dlfs": {
+                "const": "2"
+              }
+            },
+            "required": [
+              "dlfs"
+            ],
+            "x-apifox-orders": [
+              "dlfs"
+            ]
+          },
+          "then": {
+            "required": [
+              "yhm",
+              "yhmmm"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "yhm",
+                "yhmmm"
+              ]
+            }
+          }
+        }
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "nsrsbh",
+        "dwbh",
+        "djxhid",
+        "areaid",
+        "qymc",
+        "dlfs",
+        "sbmm",
+        "yhm",
+        "yhmmm"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"aggOrgId\": \"4987245897876736\",\r\n    \"nsrsbh\": \"91400000000000036\",\r\n    \"djxhid\": \"DJ2024050001\",\r\n    \"dlfs\": \"1\",\r\n    \"sbmm\": \"mLb8LXAj2pWxkXyFYV9gJbVfn/rVrE6aAn0wFRWYvhT0gsWQ4bgwelCP4U=\",\r\n    \"yhm\": \"91400000000000036\",\r\n    \"yhmmm\": \"Aa@123456\",\r\n    \"areaid\": \"4100\",\r\n    \"qymc\": \"社保测试91400000000000036\",\r\n    \"dwbh\": \"\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 787122933,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "type": "string",
+                "title": "账号ID",
+                "description": "账号信息上传之后会生成账号ID，各服务商保存好，接下来个税接口服务需要传入accountId"
+              },
+              "checkFlag": {
+                "type": "string",
+                "title": "密码校验状态",
+                "description": "true代表账号信息正确，false则是错误"
+              }
+            },
+            "x-apifox-orders": [
+              "accountId",
+              "checkFlag"
+            ],
+            "description": "数据",
+            "required": [
+              "accountId",
+              "checkFlag"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68385955,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-14T08:49:21.000Z",
+  "updatedAt": "2025-12-13T02:18:48.000Z",
+  "creatorId": 1442097,
+  "editorId": 3222025,
+  "creatorUserId": 1442097,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

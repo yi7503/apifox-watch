@@ -1,0 +1,17 @@
+{
+  "id": 7942697,
+  "name": "A102010-一般企业成本支出明细表",
+  "sidebarTitle": "",
+  "content": "\n## 概述\n\n本表用于填报一般企业的成本支出明细情况。适用于企业所得税年度纳税申报，记录营业成本、主营业务成本、其他业务成本、营业外支出等详细信息。\n\n\n\n## 数据结构\n\n```\nA102010\n└── ybqycbzcmxbForm (一般企业成本支出明细表申报信息节点)\n    ├── 营业成本类字段 (27个)\n    └── 营业外支出类字段\n```\n\n---\n\n## 一、字段说明\n\n### 通用字段说明\n\n| 字段名 | 字段说明 | 类型 | 必填 | 说明 |\n|--------|----------|------|------|------|\n| yycb | 营业成本 | string|  否 | 精度2位 |\n| zyywcb | 主营业务成本 | string|  否 | 精度2位 |\n| xsspcb | 销售商品成本 | string|  否 | 精度2位 |\n| zyywcbfhbxzcjhcb | 主营业务成本-非货币性资产交换成本 | string|  否 | 精度2位 |\n| tglwcb | 提供劳务成本 | string|  否 | 精度2位 |\n| jzhtcb | 建造合同成本 | string|  否 | 精度2位 |\n| rdzcsyqcb | 让渡资产使用权成本 | string|  否 | 精度2位 |\n| zyywcbqt | 主营业务成本-其他 | string|  否 | 精度2位 |\n| qtywcb | 其他业务成本 | string|  否 | 精度2位 |\n| clxscb | 材料销售成本 | string|  否 | 精度2位 |\n| qtywcbfhbxzcjhcb | 其他业务成本-非货币性资产交换成本 | string|  否 | 精度2位 |\n| czgdzccb | 出租固定资产成本 | string|  否 | 精度2位 |\n| czwxzccb | 出租无形资产成本 | string|  否 | 精度2位 |\n| bzwczcb | 包装物出租成本 | string|  否 | 精度2位 |\n| qtywcbqt | 其他业务成本-其他 | string|  否 | 精度2位 |\n| yywzc | 营业外支出 | string|  否 | 精度2位 |\n| fldzcczss | 非流动资产处置损失 | string|  否 | 精度2位 |\n| fhbxzcjhss | 非货币性资产交换损失 | string|  否 | 精度2位 |\n| zwczss | 债务重组损失 | string|  否 | 精度2位 |\n| fcss | 非常损失 | string|  否 | 精度2位 |\n| jzzc | 捐赠支出 | string|  否 | 精度2位 |\n| zzzc | 赞助支出 | string|  否 | 精度2位 |\n| fmzc | 罚没支出 | string|  否 | 精度2位 |\n| hzss | 坏账损失 | string|  否 | 精度2位 |\n| wfshdzqgqtzss | 无法收回的债券股权投资损失 | string|  否 | 精度2位 |\n| yywzcqt | 营业外支出-其他 | string|  否 | 精度2位 |\n\n \n\n---\n\n## 样例报文\n\n```jsonc\n{\n  \"A102010\": {\n    \"ybqycbzcmxbForm\": {\n      \"yycb\": \"5000000.00\",\n      \"zyywcb\": \"4500000.00\",\n      \"xsspcb\": \"3500000.00\",\n      \"zyywcbfhbxzcjhcb\": \"0.00\",\n      \"tglwcb\": \"800000.00\",\n      \"jzhtcb\": \"0.00\",\n      \"rdzcsyqcb\": \"200000.00\",\n      \"zyywcbqt\": \"0.00\",\n      \"qtywcb\": \"500000.00\",\n      \"clxscb\": \"300000.00\",\n      \"qtywcbfhbxzcjhcb\": \"0.00\",\n      \"czgdzccb\": \"100000.00\",\n      \"czwxzccb\": \"50000.00\",\n      \"bzwczcb\": \"30000.00\",\n      \"qtywcbqt\": \"20000.00\",\n      \"yywzc\": \"50000.00\",\n      \"fldzcczss\": \"0.00\",\n      \"fhbxzcjhss\": \"0.00\",\n      \"zwczss\": \"0.00\",\n      \"fcss\": \"10000.00\",\n      \"jzzc\": \"20000.00\",\n      \"zzzc\": \"5000.00\",\n      \"fmzc\": \"3000.00\",\n      \"hzss\": \"8000.00\",\n      \"wfshdzqgqtzss\": \"0.00\",\n      \"yywzcqt\": \"4000.00\"\n    }\n  }\n}\n```\n\n---\n\n\n---\n",
+  "folderId": 74110741,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-29T08:38:11.000Z",
+  "updatedAt": "2026-02-02T09:01:41.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

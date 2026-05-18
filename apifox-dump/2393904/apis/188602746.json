@@ -1,0 +1,334 @@
+{
+  "id": 188602746,
+  "name": "登录税局发送短信验证码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "IqzUueE1LJ5Wnlq1B5YCm",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n该接口用于36个地区新版电子税局登录和新版电票平台登录。如税局登录需要短信验证码登录，则触发短信发送。 \n 敏感信息支持加密，详见body参数说明，加密参见：[加密说明](doc-3774763)\n备注：\n1、目前该接口已经支持升级为“增强版”模式，有意向合作的客户可以发送邮件申请（mous@qixiangyun.com）；\n2、同一个区域同一个自然人只能存在一个有效登录，请您知晓同一个自然人在同一个税号下的不同身份也是无法同时登录的；\n3、敏感信息传递支持内容加密，详见接口body参数说明，加密见：加密说明",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/ext/etaxcookie",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "该值必填"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "四川传值5100，青岛为3702。不传aggOrgId时，该值必填"
+        },
+        "gryhm": {
+          "type": "string",
+          "title": "用户名",
+          "description": "可为：居民身份证/手机号/用户名。不传aggOrgId时，该值必填"
+        },
+        "gryhmm": {
+          "type": "string",
+          "title": "个人用户密码",
+          "description": "该值必填，当encryptionType=1时该值必须加密"
+        },
+        "sflx": {
+          "type": "string",
+          "title": "身份类型",
+          "description": "参见身份类型附录"
+        },
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码",
+          "description": "除浙江外，不传aggOrgId时，该值必填"
+        },
+        "encryptionType": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "title": "加密类型",
+          "description": " 1表示加密,默认0不加密"
+        }
+      },
+      "x-apifox-orders": [
+        "encryptionType",
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sflx",
+        "sjhm"
+      ],
+      "required": [
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sjhm",
+        "sflx"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "//方式一：传参为指定登录信息\r\n{\r\n    \"nsrsbh\":\"9151xxxxxxxxxxxxxx\",\r\n    \"areaCode\":\"5100\",\r\n    \"gryhm\":\"131xxxxxxxx\",\r\n    \"gryhmm\":\"xxxxxx\",\r\n    \"sflx\":\"BSY\",\r\n    \"sjhm\":\"131xxxxxxxx\"\r\n}\r\n\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "2vO958cn6e",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "ave60xx8e3",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Y7LxvDySGx",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 479377878,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "dppt": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "登录税局成功的cookie值"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "required": [
+                      "cookie"
+                    ],
+                    "title": "登录数字账户信息"
+                  },
+                  "taskId": {
+                    "type": "string",
+                    "title": "发送短信成功的id，推送短信接口的传参"
+                  },
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "登录成功后的纳税人识别号"
+                  },
+                  "nsrsbh_name": {
+                    "type": "string",
+                    "title": "登录成功后的纳税人名称"
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "title": "接收短信的手机号",
+                    "description": "185****2434"
+                  },
+                  "tpass": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "cookie"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "title": "tpass",
+                    "required": [
+                      "cookie"
+                    ]
+                  },
+                  "etax": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "cookie"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "title": "etax",
+                    "required": [
+                      "cookie"
+                    ]
+                  }
+                },
+                "title": "业务数据",
+                "description": "当code为2000，从data获取任务id或者登录结果",
+                "x-apifox-orders": [
+                  "dppt",
+                  "tpass",
+                  "etax",
+                  "mobile",
+                  "nsrsbh",
+                  "nsrsbh_name",
+                  "taskId"
+                ]
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "登录返回的code",
+                "description": "2000：登录成功；4xxx;登录信息有误;8xxx短信发送频繁；5xxx:系统错误"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "发送短信成功结果示例",
+      "responseId": 479377878,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"mobile\": \"185****2434\",\n        \"taskId\": 1804053744766218200\n    },\n    \"success\": true,\n    \"reqId\": \"32082494e0874abf96973c38b23d970b\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 415258051
+    },
+    {
+      "name": "异常示例",
+      "responseId": 479377878,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数nsrsbh不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 415258052
+    },
+    {
+      "name": "登录成功示例",
+      "responseId": 479377878,
+      "data": "{\n    \"msg\": \"税务数字账户登录成功\",\n    \"code\": \"2000\",\n    \"result\": {\n        \"tpass\": {\n            \"cookie\": \"token=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjY4YzNmMGUzNzA5NDQ4ODRiZTg4MDYyMzM1ZGM5NjFkIn0.UgVncXmxd7Gr0HN-QETXVatberVqArqOLwc9x6Zr5Fs85SFImnxDlxVwOHvrT8G8uc4F4r78mCM_SVaqW8pl_g\",\n            \"localStorage\": {\n                \"naturepublicKey\": \"040321D4D9439E7518572311D271C9087DDA4C71D6E27823A1B1B09F52E1C9CEB79B8DAB7BCEBAE7D486219D2E845EEDDAAD5FBFB581E878204EDA10E3C66E7E9D\",\n                \"access_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjY4YzNmMGUzNzA5NDQ4ODRiZTg4MDYyMzM1ZGM5NjFkIn0.UgVncXmxd7Gr0HN-QETXVatberVqArqOLwc9x6Zr5Fs85SFImnxDlxVwOHvrT8G8uc4F4r78mCM_SVaqW8pl_g\",\n                \"code\": \"AC11F70ED8C044E19616427D0155EA67\",\n                \"clientId\": \"c6dc3eJecf7a445495Jdf4fb6ab38ec5\",\n                \"areaPrefix\": \"3702\",\n                \"new_key16\": \"vs8LMYpGdt!Ppb9t\",\n                \"natureuuid\": \"37261d8841f94171b4f2950e141fedb2\",\n                \"userinfo\": \"JTdCJTIyY2xpZW50X2lkJTIyJTNBJTIwJTIyMTRmZTU4N2RmZWY0NDQxZDhmNWUxZDJiZGQ1ZGJmMWQlMjIlMkMlMjAlMjJjbGllbnRfdHlwZSUyMiUzQSUyMCUyMjAyJTIyJTJDJTIwJTIydXNlcl90eXBlJTIyJTNBJTIwJTIyMiUyMiUyQyUyMCUyMnVzZXJfbmFtZSUyMiUzQSUyMCUyMjM3MDIwMjE5ODAwMzE2NTQyWCUyMiUyQyUyMCUyMmZ1bGxfbmFtZSUyMiUzQSUyMCUyMiU1Q3U4ZjliJTVDdTU0MWIlNUN1NzQ3NiUyMiUyQyUyMCUyMnRydXN0ZWRfbGV2ZWwlMjIlM0ElMjAlMjIlNUN1NTZkYiU1Q3U3ZWE3JTIyJTJDJTIwJTIybmV3RXRheEZsYWclMjIlM0ElMjAlMjIxJTIyJTJDJTIwJTIyb3ZlcnNlYXMlMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIycmVnaXN0cmF0aW9uVHlwZU9mTGV2eVN1YmplY3QlMjIlM0ElMjAlMjIxMTEwJTIyJTJDJTIwJTIyZnVuY3Rpb25NZW51ZSUyMiUzQSUyMCU1QiUyMkkwMDAwMDAwMDA5JTIyJTJDJTIwJTIySTAwMDAwMDAwMTAlMjIlMkMlMjAlMjJJMDAwMDAwMDAxMSUyMiUyQyUyMCUyMkkwMDAwMDAwMDEyJTIyJTJDJTIwJTIySTAwMDAwMDAwMjYlMjIlMkMlMjAlMjJJMDAwMDAwMDAyOSUyMiU1RCUyQyUyMCUyMmFncmVlbWVudE51bWJlciUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmV4cGlyZXNfaW4lMjIlM0ElMjAzNjAwJTJDJTIwJTIydGF4U3RhdHVzJTIyJTNBJTIwJTIyMCUyMiUyQyUyMCUyMmJ1c2luZXNzQWRkcmVzcyUyMiUzQSUyMCUyMiU1Q3U1YzcxJTVDdTRlMWMlNUN1NzcwMSU1Q3U5NzUyJTVDdTVjOWIlNUN1NWUwMiU1Q3U1ZTAyJTVDdTUzNTclNUN1NTMzYSU1Q3U5OTk5JTVDdTZlMmYlNUN1NGUyZCU1Q3U4ZGVmMzAlNUN1NTNmNyU1Q3U3NTMyJTVDdTRmMWYlNUN1NGUxYyU1Q3U0ZTE2JTVDdTU5NjUlNUN1NTZmZCU1Q3U5NjQ1JTVDdTU5MjclNUN1NTNhNjMlNUN1NWM0MiU1Q3UzMDAxNSU1Q3U1YzQyJTIyJTJDJTIwJTIycmVsb2NhdGlvbiUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmxvZ2luX2xldmVsJTIyJTNBJTIwJTIyJTVDdTRlMDAlNUN1N2VhNyUyMiUyQyUyMCUyMmxhc3RfdHJ1c3RlZF9kYXRhJTIyJTNBJTIwJTIyMjAyNC0wOS0yOSUyMDE1JTNBNTYlM0E1OCUyMiUyQyUyMCUyMmxhc3RfdHJ1c3RlZF9kYXRlJTIyJTNBJTIwJTIyMjAyNC0wOS0yOSUyMDE1JTNBNTYlM0E1OCUyMiUyQyUyMCUyMmxhc3RMb2dpblRpbWUlMjIlM0ElMjAlMjIyMDI0LTA5LTI5JTIwMTQlM0ExNiUzQTA0JTIyJTJDJTIwJTIydXNlcl9pZCUyMiUzQSUyMCUyMjEwMDA2ZTI3MDU3NjM0YTE0ZGM1YjU5NWY1NGQwZDg3NGE3NiUyMiUyQyUyMCUyMmVudGVycHJpc2VfaWQlMjIlM0ElMjAlMjIzNzAyMDM4ZWMyZWI4NDVhNDFjNmFlZTNmODNmNTY0ZmY4NjAlMjIlMkMlMjAlMjJhZ2VuY3lfZW50ZXJwcmlzZV9pZCUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnRheF9hdXRob3JpdHlfY29kZSUyMiUzQSUyMCUyMjEzNzAyMDIxMzAwJTIyJTJDJTIwJTIydGF4X2F1dGhvcml0eV9sZXZlbCUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnRheF9hdXRob3JpdHlfbmFtZSUyMiUzQSUyMCUyMiU1Q3U1NmZkJTVDdTViYjYlNUN1N2EwZSU1Q3U1MmExJTVDdTYwM2IlNUN1NWM0MCU1Q3U5NzUyJTVDdTVjOWIlNUN1NWUwMiU1Q3U1ZTAyJTVDdTUzNTclNUN1NTMzYSU1Q3U3YTBlJTVDdTUyYTElNUN1NWM0MCU1Q3U5OTk5JTVDdTZlMmYlNUN1NGUyZCU1Q3U4ZGVmJTVDdTdhMGUlNUN1NTJhMSU1Q3U2MjQwJTIyJTJDJTIwJTIydGF4cGF5ZXJfaWQlMjIlM0ElMjAlMjI5MTM3MDIwMk1BOTRZNFk5MzMlMjIlMkMlMjAlMjJjb21wYW55X25hbWUlMjIlM0ElMjAlMjIlNUN1OTc1MiU1Q3U1YzliJTVDdTVlMDIlNUN1NWUwMiU1Q3U1MzU3JTVDdTUzM2ElNUN1NTNlZiU1Q3U0ZTUwJTVDdTU4MDIlNUN1NzlkMSU1Q3U2MjgwJTVDdTU3ZjklNUN1OGJhZCU1Q3U1YjY2JTVDdTY4MjElNUN1NjcwOSU1Q3U5NjUwJTVDdTUxNmMlNUN1NTNmOCUyMiUyQyUyMCUyMmxhc3RfZmFjZV92ZXJpZnlfZGF0ZSUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmlkX2NhcmQlMjIlM0ElMjAlMjIzNzAyMDIxOTgwMDMxNjU0MlglMjIlMkMlMjAlMjJjYXJkX3R5cGUlMjIlM0ElMjAlMjIyMDElMjIlMkMlMjAlMjJyZWdfbnVtYmVyJTIyJTNBJTIwJTIyMTAyMTM3MDIwMDAwMDA3MDAwMzUlMjIlMkMlMjAlMjJ0cnVzdF9jb2RlJTIyJTNBJTIwJTIyOTEzNzAyMDJNQTk0WTRZOTMzJTIyJTJDJTIwJTIycGhvbmUlMjIlM0ElMjAlMjIxNTY0NTg4NDU0NyUyMiUyQyUyMCUyMm1vYmlsZSUyMiUzQSUyMCUyMjE1NjQ1ODg0NTQ3JTIyJTJDJTIwJTIydGF4X2ZpbGVfbm8lMjIlM0ElMjAlMjIxMDIxMzcwMjAwMDAwMDI4NTY4OCUyMiUyQyUyMCUyMnBvc2l0aW9uJTIyJTNBJTIwJTIyMDIlMjIlMkMlMjAlMjJsb2dpbl90eXBlJTIyJTNBJTIwJTIyMSUyMiUyQyUyMCUyMnJlbGF0ZWRUeXBlJTIyJTNBJTIwJTIyMDIlMjIlMkMlMjAlMjJjcmVkaXRDb2RlJTIyJTNBJTIwJTIyOTEzNzAyMDJNQTk0WTRZOTMzJTIyJTJDJTIwJTIyc3Byb2xlX2xpc3QlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJ0YXhlcl9jb2RlJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIydGF4ZXJfbmFtZSUyMiUzQSUyMCUyMiU1Q3U4ZjliJTVDdTU0MWIlNUN1NzQ3NiUyMiUyQyUyMCUyMnRheF9pZCUyMiUzQSUyMCUyMjEwMDA2ZTI3MDU3NjM0YTE0ZGM1YjU5NWY1NGQwZDg3NGE3NiUyMiUyQyUyMCUyMnRheGVyX3N0YXR1c19jb2RlJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIydGF4ZXJfc3RhdHVzX25hbWUlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJhZ2VuY3lDcmVkaXRDb2RlJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyYWdlbmN5TmFtZSUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmFnZW5jeVJlZ19udW1iZXIlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJhcmVhUHJlZml4JTIyJTNBJTIwJTIyMzcwMiUyMiUyQyUyMCUyMmFyZWFQcmVOYW1lJTIyJTNBJTIwJTIyJTVDdTk3NTIlNUN1NWM5YiU1Q3U1ZTAyJTIyJTJDJTIwJTIyZW50ZXJwcmlzZV90eXBlJTIyJTNBJTIwJTIyMCUyMiUyQyUyMCUyMmluaXRpYWxfZW50ZXJwcmlzZV90eXBlJTIyJTNBJTIwJTIyMCUyMiUyQyUyMCUyMmNyb3NzSW5zcGVjdGlvbk51bWJlciUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnByb2plY3ROYW1lJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyY3Jvc3NSZWdpb25hbFByb3BlcnR5VGF4U3ViamVjdFJlZ2lzdHJhdGlvbk1hcmslMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJnZW5kZXIlMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIybmF0aW9uYWxpdHklMjIlM0ElMjAlMjIxNTYlMjIlMkMlMjAlMjJzdGFydERhdGUlMjIlM0ElMjAlMjIyMDE1MDgzMSUyMiUyQyUyMCUyMmVuZERhdGUlMjIlM0ElMjAlMjIyMDM1MDgzMSUyMiUyQyUyMCUyMmJpcnRoZGF0ZSUyMiUzQSUyMCUyMjE5ODAwMzE2JTIyJTJDJTIwJTIyYWRkcmVzcyUyMiUzQSUyMCUyMiU1Q3U3M2UwJTVDdTZkNzclNUN1NGU4YyU1Q3U4ZGVmMTIlNUN1NTNmNyUyMiUyQyUyMCUyMmVtYWlsJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyZW50ZXJwcmlzZVN0YXR1cyUyMiUzQSUyMCUyMjAxJTIyJTJDJTIwJTIyYWdlbmN5VGF4cGF5ZXJfaWQlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJhZ2VuY3lUYXhwYXllclN0YXR1c0NvZGUlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJ0YXhwYXllclN0YXR1c0NvZGUlMjIlM0ElMjAlMjIwMyUyMiUyQyUyMCUyMnJlZ2lzdGVyX3RpbWUlMjIlM0ElMjAlMjIyMDIyLTA1LTE1JTIwMDAlM0EzNiUzQTUwJTIyJTJDJTIwJTIyYWdlbmN5VHlwZSUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmlzSGF2ZVBzdyUyMiUzQSUyMCUyMjElMjIlMkMlMjAlMjJjb21wZXRlbnRfdGF4X2J1cmVhdV9jb2RlJTIyJTNBJTIwJTIyMTM3MDIwMjAwMDAlMjIlMkMlMjAlMjJjb21wZXRlbnRfdGF4X2J1cmVhdV9uYW1lJTIyJTNBJTIwJTIyJTVDdTU2ZmQlNUN1NWJiNiU1Q3U3YTBlJTVDdTUyYTElNUN1NjAzYiU1Q3U1YzQwJTVDdTk3NTIlNUN1NWM5YiU1Q3U1ZTAyJTVDdTVlMDIlNUN1NTM1NyU1Q3U1MzNhJTVDdTdhMGUlNUN1NTJhMSU1Q3U1YzQwJTIyJTJDJTIwJTIybWFpbklkZW50aXR5JTIyJTNBJTIwJTIyMSUyMiUyQyUyMCUyMm91dGdvaW5nQnVzaW5lc3NDZXJ0aWZpY2F0ZVVVSUQlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJ0YXhfYXV0aG9yaXR5X2FiYnJldmlhdGlvbiUyMiUzQSUyMCUyMiU1Q3U5NzUyJTVDdTVjOWIlNUN1NWUwMiU1Q3U1ZTAyJTVDdTUzNTclNUN1NTMzYSU1Q3U3YTBlJTVDdTUyYTElNUN1NWM0MCU1Q3U5OTk5JTVDdTZlMmYlNUN1NGUyZCU1Q3U4ZGVmJTVDdTdhMGUlNUN1NTJhMSU1Q3U2MjQwJTIyJTJDJTIwJTIyY29tcGV0ZW50X3RheF9idXJlYXVfYWJicmV2aWF0aW9uJTIyJTNBJTIwJTIyJTVDdTVlMDIlNUN1NTM1NyU1Q3U1MzNhJTVDdTdhMGUlNUN1NTJhMSU1Q3U1YzQwJTIyJTJDJTIwJTIybGFuZyUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnJhcmVseSUyMiUzQSUyMCUyMjAlMjIlMkMlMjAlMjJhcmVhTmFtZSUyMiUzQSUyMCUyMiU1Q3U5NzUyJTVDdTVjOWIlMjIlN0Q=\",\n                \"key\": \"Ly05ofEVZQvFUS3q\",\n                \"timestamp\": \"20240929155658\",\n                \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjY4YzNmMGUzNzA5NDQ4ODRiZTg4MDYyMzM1ZGM5NjFkIn0.UgVncXmxd7Gr0HN-QETXVatberVqArqOLwc9x6Zr5Fs85SFImnxDlxVwOHvrT8G8uc4F4r78mCM_SVaqW8pl_g\"\n            }\n        },\n        \"nsrsbh_name\": \"XXXXXXX\",\n        \"nsrsbh\": \"XXXXXXX\",\n        \"etax\": {\n            \"access_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjY4YzNmMGUzNzA5NDQ4ODRiZTg4MDYyMzM1ZGM5NjFkIn0.UgVncXmxd7Gr0HN-QETXVatberVqArqOLwc9x6Zr5Fs85SFImnxDlxVwOHvrT8G8uc4F4r78mCM_SVaqW8pl_g\",\n            \"cookie\": \"gizqLgxJ4gkhO=6013Bos1JkS.bv0lCUNq4vI50jH0x4sCOXkIRU6ElkdPej62atozKj1XsNlO04ku_miOCsoNMpAiIhZvLYRwdPaA;gizqLgxJ4gkhP=0fYduJV3QzHupdrA9KVVwvqamf9FsrDn4luWG8SziMIo1OPaxneJYmU07kJygpFI.AhA66e0VQHqAjeR8YgaR62fIr1mWDqI6XS.fBE3R3T7ZpyeArXsQ9Sg2gf_yo09EMQ7zMVBHjhuwc1ezAglXMEZcnEzTnjhqs4tk.vOuZm18F54WQw9fZ3zIJxDgyLLUA_2s1qKiYtrRShMECGXoAnbgOF6P5zeL8dTGbZil4e9;tpass_vt8337t23tv94cdvbdb875e7t8a357e2=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImUyMjA4MDVkMmIyYzQxNjA4ZTkzODFkNWJkMzBkMmJmIn0.jlohtM4LkwM2Vi0cEfPegKfIYQ0gUYRQr0U-fRj5490MULc4XvNL7JqrM3KH-gZx8qEYt1CiGwftNC95TgC6GA;tpass_f5d843e943fd4f7692ff953f35f7fccd=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImE2NjQ4ZjNmNTA5YzQ5NzNhYzlhYzIyOTEzNDgzYzlkIn0.S6z8cJQNw_CuW_t5FVLfbOK1Y2BEc0NsxVlYcyT63Ievw1ogVeim4Q2qyIJYVr0KfTRC9eLAE9q02wn2EHZPyw\",\n            \"localStorage\": \"\"\n        },\n        \"individualId\": \"e6aa08e183728981ad2115f63e8e0870\",\n        \"dppt\": {\n            \"cookie\": \"gizqLgxJ4gkhO=6013Bos1JkS.bv0lCUNq4vI50jH0x4sCOXkIRU6ElkdPej62atozKj1XsNlO04ku_miOCsoNMpAiIhZvLYRwdPaA;gizqLgxJ4gkhP=0fYduJV3QzHupdrA9KVVwvqamf9FsrDn4luWG8SziMIo1OPaxneJYmU07kJygpFI.AhA66e0VQHqAjeR8YgaR62fIr1mWDqI6XS.fBE3R3T7ZpyeArXsQ9Sg2gf_yo09EMQ7zMVBHjhuwc1ezAglXMEZcnEzTnjhqs4tk.vOuZm18F54WQw9fZ3zIJxDgyLLUA_2s1qKiYtrRShMECGXoAnbgOF6P5zeL8dTGbZil4e9;tpass_vt8337t23tv94cdvbdb875e7t8a357e2=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImUyMjA4MDVkMmIyYzQxNjA4ZTkzODFkNWJkMzBkMmJmIn0.jlohtM4LkwM2Vi0cEfPegKfIYQ0gUYRQr0U-fRj5490MULc4XvNL7JqrM3KH-gZx8qEYt1CiGwftNC95TgC6GA;tpass_f5d843e943fd4f7692ff953f35f7fccd=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImE2NjQ4ZjNmNTA5YzQ5NzNhYzlhYzIyOTEzNDgzYzlkIn0.S6z8cJQNw_CuW_t5FVLfbOK1Y2BEc0NsxVlYcyT63Ievw1ogVeim4Q2qyIJYVr0KfTRC9eLAE9q02wn2EHZPy;oauth2_referer=etax.qingdao.chinatax.gov.cn;DTSwUOYx7MiWN=22c38a563cff748b11d6d856870928a3b04cddad3ca5f3797cda34e1ac4f49e0;lzkqow39189=d6248e73bd8841d08d59a946d0fd8f50;SSO_SECURITY_CHECK_TOKEN=58d2f986b54f4124a53d82a90ef2fb9e;dzfp-ssotoken=50dd639d8b09496f91825019c94a5d34\"\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 415258053
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841717,
+  "ordering": 134,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-22T02:02:46.000Z",
+  "updatedAt": "2026-02-04T12:22:03.000Z",
+  "creatorId": 1442097,
+  "editorId": 1391922,
+  "creatorUserId": 1442097,
+  "editorUserId": 1391922,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

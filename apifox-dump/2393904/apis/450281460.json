@@ -1,0 +1,220 @@
+{
+  "id": 450281460,
+  "name": "获取登录状态",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "LAA0icAnIadXWHBNAWWMp",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "工商年报-获取登录状态",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/gsnb/login/getLoginStatus",
+  "tags": [],
+  "status": -2,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "cityCode": {
+          "type": "string",
+          "description": "四位数字字符串",
+          "title": "城市编码"
+        }
+      },
+      "if": {
+        "properties": {
+          "bsywsx": {
+            "const": "01"
+          }
+        },
+        "required": [
+          "bsywsx"
+        ],
+        "x-apifox-orders": [
+          "bsywsx"
+        ]
+      },
+      "then": {
+        "required": [
+          "xkzbh",
+          "ywzl1",
+          "xkzyxqq",
+          "xkzyxqz"
+        ]
+      },
+      "else": {
+        "if": {
+          "properties": {
+            "bsywsx": {
+              "const": "02"
+            }
+          },
+          "required": [
+            "bsywsx"
+          ],
+          "x-apifox-orders": [
+            "bsywsx"
+          ]
+        },
+        "then": {
+          "required": [
+            "pthyycxmc",
+            "yykssj",
+            "ywlxdmjh"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "cityCode"
+      ],
+      "x-apifox-refs": {},
+      "required": [
+        "aggOrgId",
+        "cityCode"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\n    \"aggOrgId\": \"5277481********\",\n    \"cityCode\": \"1300\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790300683,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "x-apifox-orders": [
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS"
+        ],
+        "x-apifox-refs": {
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "dlzt": {
+                    "type": "string",
+                    "title": "登录状态",
+                    "enum": [
+                      "Y",
+                      "N"
+                    ],
+                    "x-apifox-enum": [
+                      {
+                        "value": "Y",
+                        "name": "已登录",
+                        "description": ""
+                      },
+                      {
+                        "value": "N",
+                        "name": "未登录",
+                        "description": ""
+                      }
+                    ]
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "dlzt"
+                ],
+                "required": [
+                  "dlzt"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81308383,
+  "ordering": 98,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2026-04-27T10:06:15.000Z",
+  "updatedAt": "2026-05-16T03:44:24.000Z",
+  "creatorId": 3099717,
+  "editorId": 1534873,
+  "creatorUserId": 3099717,
+  "editorUserId": 1534873,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

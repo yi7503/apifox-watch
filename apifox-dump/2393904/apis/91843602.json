@@ -1,0 +1,201 @@
+{
+  "id": 91843602,
+  "name": "小号短信通知回调",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 前提条件\n1、客户添加应用时需设置短信通知接收地址，并确保提供的地址能够正常处理平台发送的通知消息。如果需要开启短信通知功能，请通过配置短信通知地址配置短信接受地址。\n\n## 接口描述\n此接口向客户推送办税小号的短信通知。 客户收到通知后返回HTTP状态码为200的空消息即可。\n\n## 返回结果\n客户服务器接收到短信事件通知后，返回无消息体的200响应\n\n## 响应示例：\nHTTP/1.1 200 OK",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/客户提供的小号短信通知地址",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "callId": {
+          "type": "string",
+          "title": "短信唯一标识"
+        },
+        "sender": {
+          "type": "string",
+          "title": "短信的发送人",
+          "description": "一般指当地税局的号码，例如：10690510000000562537"
+        },
+        "receiver": {
+          "type": "string",
+          "title": "短信的接收人，即办税小号"
+        },
+        "smsContent": {
+          "type": "string",
+          "title": "短信内容"
+        },
+        "receiveTime": {
+          "type": "string",
+          "title": "短信收到的时间",
+          "description": "格式为yyyy-MM-dd HH:mm:ss"
+        },
+        "pushTime": {
+          "type": "string",
+          "title": "短信推送给客户的时间",
+          "description": "格式为yyyy-MM-dd HH:mm:ss"
+        }
+      },
+      "x-apifox-orders": [
+        "callId",
+        "sender",
+        "receiver",
+        "smsContent",
+        "receiveTime",
+        "pushTime"
+      ],
+      "required": [
+        "callId",
+        "sender",
+        "receiver",
+        "smsContent",
+        "receiveTime",
+        "pushTime"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"callId\":\"a1234xxxxxxxx\",\r\n    \"pushTime\":\"2023-04-25 15:53:30\",\r\n    \"receiveTime\":\"2023-04-25 15:53:26\",\r\n    \"receiver\":\"170XXXXXXXX\",\r\n    \"sender\":\"131XXXXXXXX\",\r\n    \"smsContent\":\"【山东税务】务平台功能，验证码为xxxxxx，请您输入短信验证码完成操作。（温馨提示：请勿泄露短信验证码）\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 229245800,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": []
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 229245800,
+      "data": "{\n    \"code\": \"2000\",\n    \"message\": \"成功\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 23251433
+    },
+    {
+      "name": "失败示例",
+      "responseId": 229245800,
+      "data": "{\n    \"reqId\": \"915c51ddb1674f2caf982e30db8815a6\",\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": false,\n    \"message\": \"传入参数不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 23251434
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843727,
+  "ordering": 199,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-06-28T09:48:12.000Z",
+  "updatedAt": "2025-06-20T12:50:20.000Z",
+  "creatorId": 1659553,
+  "editorId": 493303,
+  "creatorUserId": 1659553,
+  "editorUserId": 493303,
+  "responseChildren": [
+    "BLANK.229245800"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

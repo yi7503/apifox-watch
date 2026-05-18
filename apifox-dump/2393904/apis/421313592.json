@@ -1,0 +1,266 @@
+{
+  "id": 421313592,
+  "name": "社保漏报检查",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "rRb2inuztFZ3R454HIHYp",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "社保漏报检查",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/querySocialSecurityFeeOmissionCheck",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "fkssq": {
+          "type": "string",
+          "description": "费款所属期，格式：YYYYMM"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "fkssq"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssq"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "sblbjx": {
+                "type": "object",
+                "title": "社保漏报检查结果",
+                "properties": {
+                  "rcsb": {
+                    "type": "object",
+                    "properties": {
+                      "zt": {
+                        "type": "string",
+                        "description": "状态：未申报、已申报未缴款、已申报已缴款、已申报部分未缴"
+                      },
+                      "fkssq": {
+                        "type": "string",
+                        "description": "费款所属期"
+                      },
+                      "sblx": {
+                        "type": "string",
+                        "description": "申报类型：日常申报、特殊缴款申报"
+                      },
+                      "jflx": {
+                        "type": "string",
+                        "description": "缴费类型：正常应缴、基数调整补缴-社平标准调整（多个用顿号分隔）"
+                      },
+                      "zsxmmc": {
+                        "type": "string",
+                        "description": "征收项目名称（多个用顿号分隔）"
+                      },
+                      "zspmmc": {
+                        "type": "string",
+                        "description": "征收品目名称（多个用顿号分隔）"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "zt",
+                      "fkssq",
+                      "sblx",
+                      "jflx",
+                      "zsxmmc",
+                      "zspmmc"
+                    ],
+                    "title": "日常申报结果"
+                  },
+                  "tsjksb": {
+                    "type": "object",
+                    "properties": {
+                      "zt": {
+                        "type": "string",
+                        "description": "状态：未申报、已申报未缴款、已申报已缴款、已申报部分未缴"
+                      },
+                      "fkssq": {
+                        "type": "string",
+                        "description": "费款所属期"
+                      },
+                      "sblx": {
+                        "type": "string",
+                        "description": "申报类型：日常申报、特殊缴款申报"
+                      },
+                      "jflx": {
+                        "type": "string",
+                        "description": "缴费类型：正常应缴、基数调整补缴-社平标准调整（多个用顿号分隔）"
+                      },
+                      "zsxmmc": {
+                        "type": "string",
+                        "description": "征收项目名称（多个用顿号分隔）"
+                      },
+                      "zspmmc": {
+                        "type": "string",
+                        "description": "征收品目名称（多个用顿号分隔）"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "zt",
+                      "fkssq",
+                      "sblx",
+                      "jflx",
+                      "zsxmmc",
+                      "zspmmc"
+                    ],
+                    "title": "特殊缴款申报结果"
+                  }
+                },
+                "x-apifox-orders": [
+                  "rcsb",
+                  "tsjksb"
+                ]
+              }
+            },
+            "x-apifox-orders": [
+              "sblbjx"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"sblbjx\": {\n            \"rcsb\": {\n                \"fkssq\": \"2026-01\",\n                \"jflx\": \"正常应缴\",\n                \"sblx\": \"日常申报\",\n                \"zspmmc\": \"职工大额医疗互助保险(单位缴纳);职工基本养老保险(单位缴纳);职工大额医疗互助保险(个人缴纳);职工基本养老保险(个人缴纳);失业保险(单位缴纳);职工基本医疗保险(单位缴纳);工伤保险;失业保险(个人缴纳);职工基本医疗保险(个人缴纳)\",\n                \"zsxmmc\": \"失业保险费;企业职工基本养老保险费;工伤保险费;基本医疗保险费\",\n                \"zt\": \"已申报已缴款\"\n            },\n            \"tsjksb\": {\n                \"fkssq\": \"2026-01\",\n                \"jflx\": \"\",\n                \"sblx\": \"特殊缴款申报\",\n                \"zspmmc\": \"\",\n                \"zsxmmc\": \"\",\n                \"zt\": \"未申报\"\n            }\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68385480,
+  "ordering": 19,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-02T02:12:35.000Z",
+  "updatedAt": "2026-04-24T03:54:29.000Z",
+  "creatorId": 1910680,
+  "editorId": 3222025,
+  "creatorUserId": 1910680,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

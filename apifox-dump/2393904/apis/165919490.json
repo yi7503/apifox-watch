@@ -1,0 +1,353 @@
+{
+  "id": 165919490,
+  "name": "不动产房源信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "不动产房源信息查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryMhcxfyxx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "params": {
+              "type": "object",
+              "properties": {
+                "tdzzsxmbh": {
+                  "type": "string",
+                  "title": "土地增值税项目编号"
+                },
+                "bdcdyh": {
+                  "type": "string",
+                  "title": "不动产单元代码"
+                },
+                "wqhtzh": {
+                  "type": "string",
+                  "title": "网签合同备案编号"
+                },
+                "fwzh": {
+                  "type": "string",
+                  "title": "房屋幢号"
+                },
+                "dyh": {
+                  "type": "string",
+                  "title": "单元号"
+                },
+                "lc2": {
+                  "type": "string",
+                  "title": "楼层号"
+                },
+                "fh": {
+                  "type": "string",
+                  "title": "房号"
+                }
+              },
+              "x-apifox-orders": [
+                "tdzzsxmbh",
+                "bdcdyh",
+                "wqhtzh",
+                "fwzh",
+                "dyh",
+                "lc2",
+                "fh"
+              ],
+              "x-apifox-refs": {}
+            }
+          },
+          "x-apifox-orders": [
+            "01HVNG5GM4P39XZHBAS4TE4TDW",
+            "params"
+          ],
+          "x-apifox-refs": {
+            "01HVNG5GM4P39XZHBAS4TE4TDW": {
+              "$ref": "#/definitions/92664906"
+            }
+          },
+          "required": [
+            "params"
+          ]
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：mhcxfyxx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01J4V7BSSETKN72WHGHPHJTW4M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01J4V7BSSETKN72WHGHPHJTW4M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"data\": {},\r\n    \"nsrsbh\": \"91****************2C\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434549472,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "bdcdyh": {
+                      "type": "string",
+                      "title": "不动产单元代码"
+                    },
+                    "dyh": {
+                      "type": "string",
+                      "title": "单元号"
+                    },
+                    "fdckfxmbh": {
+                      "type": "string",
+                      "title": "房地产开发项目编号"
+                    },
+                    "fdckfxmfyuuid": {
+                      "type": "string",
+                      "title": "房地产开发项目uuid"
+                    },
+                    "fdckfxmmc": {
+                      "type": "string",
+                      "title": "房地产开发项目名称"
+                    },
+                    "fh": {
+                      "type": "string",
+                      "title": "房号"
+                    },
+                    "fwzh": {
+                      "type": "string",
+                      "title": "房屋幢号"
+                    },
+                    "gfrxm": {
+                      "type": "string",
+                      "title": "购房人名称"
+                    },
+                    "gfrzjhm": {
+                      "type": "string",
+                      "title": "购房人证件号码"
+                    },
+                    "gfrzjlxdm": {
+                      "type": "string",
+                      "title": "购房人证件类型"
+                    },
+                    "htje": {
+                      "type": "string",
+                      "title": "合同金额"
+                    },
+                    "lc": {
+                      "type": "string",
+                      "title": "楼层"
+                    },
+                    "scjzmj": {
+                      "type": "string",
+                      "title": "实测建筑面积"
+                    },
+                    "sctnmj": {
+                      "type": "string",
+                      "title": "实测套内面积"
+                    },
+                    "wqhtbh": {
+                      "type": "string",
+                      "title": "网签合同备案编号"
+                    },
+                    "xmxxzldd": {
+                      "type": "string",
+                      "title": "项目详细坐落地址"
+                    },
+                    "ycjzmj": {
+                      "type": "string",
+                      "title": "预测建筑面积"
+                    },
+                    "yctnmj": {
+                      "type": "string",
+                      "title": "预测套内面积"
+                    },
+                    "yxbz": {
+                      "type": "string",
+                      "title": "有效标志"
+                    }
+                  },
+                  "required": [
+                    "bdcdyh",
+                    "dyh",
+                    "fdckfxmbh",
+                    "fdckfxmfyuuid",
+                    "fdckfxmmc",
+                    "fh",
+                    "fwzh",
+                    "gfrxm",
+                    "gfrzjhm",
+                    "gfrzjlxdm",
+                    "htje",
+                    "lc",
+                    "scjzmj",
+                    "sctnmj",
+                    "wqhtbh",
+                    "xmxxzldd",
+                    "ycjzmj",
+                    "yctnmj",
+                    "yxbz"
+                  ],
+                  "x-apifox-orders": [
+                    "bdcdyh",
+                    "dyh",
+                    "fdckfxmbh",
+                    "fdckfxmfyuuid",
+                    "fdckfxmmc",
+                    "fh",
+                    "fwzh",
+                    "gfrxm",
+                    "gfrzjhm",
+                    "gfrzjlxdm",
+                    "htje",
+                    "lc",
+                    "scjzmj",
+                    "sctnmj",
+                    "wqhtbh",
+                    "xmxxzldd",
+                    "ycjzmj",
+                    "yctnmj",
+                    "yxbz"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "list"
+            ],
+            "x-apifox-orders": [
+              "list",
+              "01HVKDSZE7ZSW05257JHYDXVRC"
+            ],
+            "x-apifox-refs": {
+              "01HVKDSZE7ZSW05257JHYDXVRC": {
+                "$ref": "#/definitions/92664510"
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HVKDS7N9RXXVA81489RZ05WM"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434549472,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageIndex\": 1,\n        \"records\": 1,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"bdcdyh\": \"不动产单元代码\",\n                \"dyh\": \"单元号\",\n                \"fdckfxmbh\": \"房地产开发项目编号\",\n                \"fdckfxmfyuuid\": \"房地产开发项目uuid\",\n                \"fdckfxmmc\": \"房地产开发项目名称\",\n                \"fh\": \"房号\",\n                \"fwzh\": \"房屋幢号\",\n                \"gfrxm\": \"购房人名称\",\n                \"gfrzjhm\": \"购房人证件号码\",\n                \"gfrzjlxdm\": \"购房人证件类型\",\n                \"htje\": \"合同金额\",\n                \"lc\": \"楼层\",\n                \"scjzmj\": \"实测建筑面积\",\n                \"sctnmj\": \"实测套内面积\",\n                \"wqhtbh\": \"网签合同备案编号\",\n                \"xmxxzldd\": \"项目详细坐落地址\",\n                \"ycjzmj\": \"预测建筑面积\",\n                \"yctnmj\": \"预测套内面积\",\n                \"yxbz\": \"有效标志\"\n            }\n        ]\n    }\n}",
+      "id": 405613896
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32537576,
+  "ordering": 37,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-08-09T09:26:31.000Z",
+  "updatedAt": "2024-09-30T08:24:44.000Z",
+  "creatorId": 887900,
+  "editorId": 887900,
+  "creatorUserId": 887900,
+  "editorUserId": 887900,
+  "responseChildren": [
+    "BLANK.434549472"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

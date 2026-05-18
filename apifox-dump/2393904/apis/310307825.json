@@ -1,0 +1,193 @@
+{
+  "id": 310307825,
+  "name": "获取政策附件文件下载地址",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "根据附件的key和名称，实时获取附件文件的下载地址",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/legislation/getFileUrl",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "文件key",
+          "description": "参数取数来源为政策详情接口返回参数中的attachmentInfo字段\n示例值：\"policy/409b14e13a0249f58c8dcae1399adab5\""
+        },
+        "fileName": {
+          "type": "string",
+          "title": "文件名称",
+          "description": "参数取数来源为政策详情接口返回参数中的attachmentInfo字段\n示例值：\"中国东方资产管理公司所属二级分支机构名单.doc\""
+        }
+      },
+      "required": [
+        "key",
+        "fileName"
+      ],
+      "x-apifox-orders": [
+        "key",
+        "fileName"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"key\": \"policy/409b14e13a0249f58c8dcae1399adab5\",\n    \"fileName\": \"中国东方资产管理公司所属二级分支机构名单.doc\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Ud5k1foWPO",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "kgnQevy54Y",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "zemiLse7y2",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 700360173,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "相应返回信息"
+          },
+          "code": {
+            "type": "string",
+            "title": "响应返回码 "
+          },
+          "data": {
+            "type": "string",
+            "description": "文件下载地址",
+            "title": "文件下载地址"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一ID"
+          }
+        },
+        "required": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 700360173,
+      "data": "{\n    \"data\": \"http://prd-cabinet-1257122416.cos.ap-shanghai.myqcloud.com/policy/409b14e13a0249f58c8dcae1399adab5?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDkT5ZwBPOILzqtq9VdJ4lHcljYBg7OXTM%26q-sign-time%3D1747307846%3B1747309646%26q-key-time%3D1747307846%3B1747309646%26q-header-list%3D%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D31f166f7472076f830913216c4ec01c80092afd0&response-content-disposition=filename%3D%E4%B8%AD%E5%9B%BD%E4%B8%9C%E6%96%B9%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E5%85%AC%E5%8F%B8%E6%89%80%E5%B1%9E%E4%BA%8C%E7%BA%A7%E5%88%86%E6%94%AF%E6%9C%BA%E6%9E%84%E5%90%8D%E5%8D%95.doc\",\n    \"message\": \"成功\",\n    \"code\": \"0\",\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 607321349
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59359025,
+  "ordering": 24,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-18T03:45:17.000Z",
+  "updatedAt": "2025-07-08T03:18:02.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.700360173"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

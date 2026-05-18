@@ -1,0 +1,254 @@
+{
+  "id": 256448758,
+  "name": "作废人员信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "4sMAKO9Xeos6iIgu9nI9f",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n该接口主要用于纳税人在局端（电子税务局或个税app）修改姓名后，重新进行初始化人员信息，将报送状态、人员验证状态。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/declare/batchInvalidSubmission",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "bizNo": {
+          "type": "string",
+          "title": "外部业务编号"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "传入accountId就免传登录信息"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01JJ3TC5WB51KST05KDJZA85WC"
+            ],
+            "x-apifox-refs": {
+              "01JJ3TC5WB51KST05KDJZA85WC": {
+                "$ref": "#/definitions/143990924"
+              }
+            }
+          }
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "bizNo",
+        "aggOrgId",
+        "accountId",
+        "rylb"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "rylb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4539696148287232\",\r\n    \"rylb\": [\r\n        {\r\n            \"xm\": \"姓名\",\r\n            \"zzlx\": \"证件类型\",\r\n            \"zzhm\": \"证件号码\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 606340146,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/205522654"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 606340146,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"rylb\": [\n            {\n                \"xm\": \"张三\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"123456789\",\n                \"zfzt\": \"1\",\n                \"sbyy\": \"\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 473135877
+    },
+    {
+      "name": "异常示例",
+      "responseId": 606340146,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 473135878
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 49389821,
+  "ordering": 79,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-01-21T06:53:27.000Z",
+  "updatedAt": "2026-01-08T09:23:04.000Z",
+  "creatorId": 1452584,
+  "editorId": 2795319,
+  "creatorUserId": 1452584,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

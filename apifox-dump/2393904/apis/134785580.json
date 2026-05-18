@@ -1,0 +1,244 @@
+{
+  "id": 134785580,
+  "name": "账号产品解绑",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n003\t认证\n004\t数电开票\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/account/unbindAccountProduct",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "integer",
+          "title": "账户ID"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业ID"
+        },
+        "productCode": {
+          "type": "string",
+          "title": "产品码"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "productCode",
+        "accountId"
+      ],
+      "x-apifox-orders": [
+        "accountId",
+        "aggOrgId",
+        "productCode"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "TLjWYyFhLS",
+        "name": "Content-Type",
+        "required": "true",
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "EEB33jnCKK",
+        "name": "access_token",
+        "required": "true",
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "UOC6McUQPG",
+        "name": "req_date",
+        "required": "true",
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Ea8RPo5fUm",
+        "name": "req_sign",
+        "required": "true",
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 372463883,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "mock": {
+              "mock": "错误码"
+            }
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "type": "integer",
+                "mock": {
+                  "mock": "账户id"
+                }
+              },
+              "productCode": {
+                "type": "string",
+                "mock": {
+                  "mock": "产品码"
+                }
+              },
+              "aggOrgId": {
+                "type": "integer",
+                "mock": {
+                  "mock": "企业ID"
+                }
+              }
+            },
+            "required": [
+              "accountId",
+              "productCode",
+              "aggOrgId"
+            ],
+            "x-apifox-orders": [
+              "accountId",
+              "productCode",
+              "aggOrgId"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "mock": {
+              "mock": "接口是否成功"
+            }
+          },
+          "message": {
+            "type": "string",
+            "mock": {
+              "mock": "错误信息"
+            }
+          },
+          "reqId": {
+            "type": "string",
+            "mock": {
+              "mock": "请求ID"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 372463883,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"accountId\": 501319884953664,\n        \"productCode\": \"006\",\n        \"aggOrgId\": 7583454730897015\n    },\n    \"success\": true,\n    \"message\": \"解绑成功\",\n    \"reqId\": \"0e8fe079d2714044b876ee1171cec463\"\n}",
+      "id": 372463884
+    },
+    {
+      "name": "异常示例",
+      "responseId": 372463883,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"没有找到对应的企业！\",\n    \"reqId\": \"83d7802f3fb3403d853e0651577319f8\"\n}",
+      "id": 372463885
+    },
+    {
+      "name": "未登录",
+      "responseId": 372463883,
+      "data": "{\n    \"reqId\": \"0516f06b781b4590a23de8b7b148a853\",\n    \"code\": \"40100\",\n    \"success\": false,\n    \"message\": \"未登录!\"\n}",
+      "id": 372463886
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841702,
+  "ordering": 258,
+  "responsibleId": 1442097,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-12-19T07:07:06.000Z",
+  "updatedAt": "2025-12-24T12:00:35.000Z",
+  "creatorId": 1442097,
+  "editorId": 2400309,
+  "creatorUserId": 1442097,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

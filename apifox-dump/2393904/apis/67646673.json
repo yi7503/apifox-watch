@@ -1,0 +1,197 @@
+{
+  "id": 67646673,
+  "name": "区块链发票(深圳)",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于区块链发票查验，与[深圳区块链发票查验](https://etax.shenzhen.chinatax.gov.cn/BsfwtWeb/apps/views/fp/fpcy/fp_fpcy.html)保持一致。\n\n\n## 错误码\n| **错误代码**                                     | **错误信息**                                   | **说明**                                                     |\n| ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |\n| CheckInvoiceOverSupportCount                     | 超过当前接口支持最大查验张数!                  | 超过接口限制的单次请求张数，请调整单次请求张数。             |\n| CheckInvoiceForTheSameFrequent                   | 当前发票正在查验中,请不要频繁请求              | 当前发票正在查验中,请稍后重试                                |\n| CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| IllegalParameter                                 | 请求参数不正确                                 | 请核对请求参数                                               |\n| IllegalParameter.IllegalInvoiceCode              | 请求参数不正确,参数fpdm发票代码不正确！        | 请核对fpdm发票代码是否符合参数规范                           |\n| IllegalParameter.IllegalInvoiceNumber            | 请求参数不正确,参数fphm发票号码不正确！        | 请核对fphm发票号码是否符合参数规范                           |\n| IllegalParameter.IllegalBillingDate              | 请求参数不正确,参数kprq开票日期不正确！        | 请核对kprq开票日期是否符合参数规范                           |\n| IllegalParameter.IllegalCheckCode                | 参数jym[发票校验码后6位]不正确                 | 请核对jym校验码是否符合参数规范                              |\n| IllegalParameter.IllegalTotalAmount              | 参数je[不含税金额]不正确                       | 请核对je金额是否符合参数规范                                 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！                  | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh                    | 请求参数不正确,销售方识别号为空！              | 请核对xfsbh销方识别号是否符合参数规范                        |\n| IllegalParameter.IllegalArea                     | 请求参数不正确,参数dq地区不正确！              | 请核对dq地区是否符合参数规范                                 |\n| CheckInvoicesMoreThanToday                       | 开票日期超过当前日期                           | 请核对开票日期是否正确                                       |\n| CheckInvoicesOverFiveYears                       | 超过五年的发票不能查验                         | 请核对开票日期是否正确                                       |\n| CheckInvoiceNotSupport                           | 暂不支持该（省市）电子票据查验                 | 该地区暂不支持该票种查验                                     |\n| CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| CheckInvoiceMoreFiveTimes                        | 超过该张票当天查验次数                         | 请确认在调用接口前是否已经通过官方平台查验超过5次            |\n| CheckInvoiceNotExistence                         | 查验成功所查发票不存在                         | 发票代码或发票号码在税局查不到，请核对代码、号码是否正确  <br>注：可能原因如下：(1)输入的查验项有误；(2)查询的发票开票日期距当前日期超过5年；(3)由于开票方离线开票，发票数据未上传至税务局；(4)非增值税发票管理系统开具的发票。 |\n| CheckInvoiceNotSame                              | 查验成功所查发票不一致                         | 请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票 |\n| CheckInvoiceNotStandard                          | 查询发票不规范                                 | 请核对四要素是否符合发票规范                                 |\n| CheckInvoiceRequestNonStandard                   | 请求不规范                                     | 请核对请求参数                                               |\n| CheckInvoiceException                            | 税局服务异常，建议15-20分钟后重试              | 税局服务异常，建议15-20分钟后重试                            |\n| CheckAbnormal                                    | 查验异常（错误信息不固定）                     | 税局服务异常，建议15-20分钟后重试                            |\n| CheckExceedingLimit                              | 查验发票张数超过限制                           | 发票剩余查验量不足，请与运营负责人沟通确认                   |\n| CheckInvoiceSingular                             | 请求太频繁或超过服务器最大请求数，请稍后访问！ | 当前请求数达到服务最大并发数                                 |\n| ServerError                                      | 服务器异常，请稍后重试                         | 服务器异常                                                   |\n| InternalServerError                              | 服务遇到未知错误，请稍后重试                   | 请联系管理员                                                 |\n| RemoteDataException                              | 税局数据异常                                   | 请联系管理员                                                 |\n| RemoteResultFail                                 | 调用税局异常，请稍后重试。                     | 请联系管理员                                                 |\n| 50008                                            | 字段文件名称不能为空(name)                     | 请联系管理员                                                 |\n| 50014                                            | 超过并发限制                                   | 请降低并发                                                   |\n| 59999                                            | 未知异常                                       | 请联系管理员                                                 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/qklfpCy",
+  "tags": [
+    "发票查验",
+    "区块链发票查验"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01HKM9GA220HKN945SVQ4N48D1": {
+          "$ref": "#/definitions/33129990",
+          "x-apifox-overrides": {}
+        }
+      },
+      "properties": {
+        "customReqId": {
+          "type": "string",
+          "description": "传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+        }
+      },
+      "x-apifox-orders": [
+        "01HKM9GA220HKN945SVQ4N48D1",
+        "customReqId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"cyList\": [\r\n        {\r\n            \"fpdm\": \"14******10\",\r\n            \"fphm\": \"28****43\",\r\n            \"xfsbh\": \"92**************5J\",\r\n            \"jym\": \"ff59e\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "OT5zMlopRD",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "qypYoFi4FI",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "2VJJd7gKR0",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947092,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXZCVH27SR4E5ZNYKQ4Z8ENN": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01HNAK1GTNHWKRR3X54FBST1T3": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "$ref": "#/definitions/41435896"
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HNAK1GTNHWKRR3X54FBST1T3"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXZCVH27SR4E5ZNYKQ4Z8ENN"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947092,
+      "data": "{\r\n    \"reqId\": \"2f1e094469234435a388ddc36f2a6c42\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"customReqId\": \"10001999e523b7ffc8f94b5ba9b28be287062b12\",\r\n            \"data\": {\r\n                \"bz\": null,\r\n                \"dkXsfmc\": null,\r\n                \"dkXsfsbh\": null,\r\n                \"dq\": \"深圳\",\r\n                \"fhr\": null,\r\n                \"fpdm\": \"14******10\",\r\n                \"fphm\": \"28****43\",\r\n                \"fplx\": \"100\",\r\n                \"fpzt\": \"1\",\r\n                \"fpztDm\": null,\r\n                \"gfmc\": \"深圳********公司\",\r\n                \"je\": null,\r\n                \"jshj\": 337.00,\r\n                \"jshjcn\": \"叁佰****元整\",\r\n                \"jym\": \"ff59e\",\r\n                \"kjlx\": \"1\",\r\n                \"kpjh\": null,\r\n                \"kpr\": null,\r\n                \"kprq\": \"2022-10-20 00:00:00\",\r\n                \"se\": null,\r\n                \"skm\": null,\r\n                \"xfmc\": \"深圳************吃店\",\r\n                \"xfsbh\": \"92***************5J\",\r\n                \"yczt\": \"0\",\r\n                \"yfpdm\": null,\r\n                \"yfphm\": null\r\n            },\r\n            \"fpdm\": \"14********10\",\r\n            \"fphm\": \"28****43\",\r\n            \"fplx\": \"100\",\r\n            \"jshj\": null,\r\n            \"jym\": \"ff59e\",\r\n            \"qkl\": true,\r\n            \"skm\": null,\r\n            \"success\": true,\r\n            \"xfsbh\": \"92****************5J\"\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 444419633
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58677115,
+  "ordering": 37,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-03T09:48:03.000Z",
+  "updatedAt": "2025-11-03T09:12:10.000Z",
+  "creatorId": 1426961,
+  "editorId": 493303,
+  "creatorUserId": 1426961,
+  "editorUserId": 493303,
+  "responseChildren": [
+    "BLANK.42947092"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

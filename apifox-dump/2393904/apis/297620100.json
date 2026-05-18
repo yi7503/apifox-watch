@@ -1,0 +1,283 @@
+{
+  "id": 297620100,
+  "name": "个人扣缴明细查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "JC8NVg95tk2fWdKpMBFd_",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/report/queryPersonWithhold",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssq": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "所属期",
+          "description": "skssq同skssqq、skssqz必须有一组是必填，格式：YYYYMM"
+        },
+        "skssqq": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "所属期起",
+          "description": "skssq同skssqq、skssqz必须有一组是必填，\n1.所属期起止时间必须在同一年度\n2.所属期止必须大于所属期起\n3.所属期止不能超过自然月\n4.格式：YYYYMM"
+        },
+        "skssqz": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "所属期止",
+          "description": "skssq同skssqq、skssqz必须有一组是必填，\n1.所属期起止时间必须在同一年度\n2.所属期止必须大于所属期起\n3.所属期止不能超过自然月\n4.格式：YYYYMM"
+        },
+        "ryxx": {
+          "title": "人员信息",
+          "$ref": "#/definitions/143990924"
+        },
+        "sfxzhzb": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "是否下载汇总表"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "ryxx",
+        "skssq",
+        "skssqq",
+        "skssqz"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "skssqq",
+        "skssqz",
+        "sfxzhzb",
+        "ryxx"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4552900726228096\",\r\n    \"skssq\": \"202412\",\r\n    \"ryxx\": {\r\n        \"xm\": \"张三\",\r\n        \"zzlx\": \"居民身份证\",\r\n        \"zzhm\": \"12313123132132131\"\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 678542774,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "$ref": "#/definitions/169198731"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 678542774,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"8afc14e4384a49b7b0e587224c746d06\",\n    \"data\": {\n        \"qymc\": \"某某科技有限公司\",\n        \"nsrsbh\": \"911100000001234\",\n        \"areaid\": \"110108\",\n        \"bmbh\": \"BM001\",\n        \"bmmc\": \"技术研发部\",\n        \"skssq\": \"202405\",\n        \"zhsd\": [\n            {\n                \"xm\": \"张三\",\n                \"zzlx\": \"居民身份证\",\n                \"zzhm\": \"110101199003072316\",\n                \"sre\": \"15000.00\",\n                \"mssd\": \"0.00\",\n                \"jbylaobxf\": \"1000.00\",\n                \"jbylbxf\": \"800.00\",\n                \"sybxf\": \"200.00\",\n                \"zfgjj\": \"1200.00\",\n                \"znjyzc\": \"1000.00\",\n                \"sylrzc\": \"2000.00\",\n                \"zfdklxzc\": \"1000.00\",\n                \"zfzjzc\": \"1500.00\",\n                \"jxjyzc\": \"500.00\",\n                \"fxljxjyzc\": \"300.00\",\n                \"yyezhzc\": \"1000.00\",\n                \"nj\": \"5000.00\",\n                \"syjkbx\": \"0.00\",\n                \"syylbx\": \"0.00\",\n                \"qt\": \"0.00\",\n                \"zykcjze\": \"0.00\",\n                \"jmse\": \"0.00\",\n                \"bz\": \"示例数据\",\n                \"jcfy\": \"5000.00\",\n                \"qtckhj\": \"0.00\",\n                \"ynssde\": null,\n                \"ynse\": null,\n                \"ykjse\": null,\n                \"yingkjse\": null,\n                \"sl\": null,\n                \"sskcs\": null,\n                \"sdxm\": \"工资薪金所得\",\n                \"ybtse\": null,\n                \"ljsre\": \"90000.00\",\n                \"ljmssd\": \"0.00\",\n                \"ljzxkce\": \"30000.00\",\n                \"ljzxfjkce\": \"15000.00\",\n                \"ljqtkce\": \"0.00\",\n                \"ljjmse\": \"0.00\",\n                \"ljjcfye\": \"30000.00\",\n                \"ljyjcfy\": \"30000.00\",\n                \"yxkcsf\": \"0.00\",\n                \"zycb\": \"0.00\",\n                \"yjcfy\": \"5000.00\",\n                \"ljynssde\": \"45000.00\",\n                \"ljynse\": \"5400.00\",\n                \"ljyingkjse\": \"5400.00\",\n                \"ljykjse\": \"5400.00\",\n                \"ljznjyzc\": \"6000.00\",\n                \"ljjxjyzc\": \"3000.00\",\n                \"ljfxljxjyzc\": \"1800.00\",\n                \"ljxljxjyzc\": \"1200.00\",\n                \"ljzfzjzc\": \"9000.00\",\n                \"ljzfdklxzc\": \"6000.00\",\n                \"ljsylrzc\": \"12000.00\",\n                \"ljyyezhzc\": \"6000.00\",\n                \"ljzykcjze\": \"0.00\",\n                \"ljgrylj\": \"0.00\",\n                \"ftnds\": 1,\n                \"njcfy\": \"60000.00\"\n            }\n        ],\n        \"flsd\": [\n            {\n                \"xm\": \"张三\",\n                \"zzlx\": \"居民身份证\",\n                \"zzhm\": \"110101199003072316\",\n                \"sre\": \"50000.00\",\n                \"mssd\": \"0.00\",\n                \"ccyz\": \"20000.00\",\n                \"yxkcsf\": \"5000.00\",\n                \"tzdk\": \"0.00\",\n                \"qt\": \"无\",\n                \"bz\": \"无备注\",\n                \"jcfy\": \"0.00\",\n                \"jjbl\": \"0.00\",\n                \"zykcjze\": \"0.00\",\n                \"sqkcxmhj\": \"25000.00\",\n                \"ynssde\": \"25000.00\",\n                \"ynse\": \"5000.00\",\n                \"jmse\": \"0.00\",\n                \"ykjse\": \"0.00\",\n                \"yingkjse\": \"5000.00\",\n                \"sl\": \"20%\",\n                \"sskcs\": \"0.00\",\n                \"ybtse\": \"5000.00\",\n                \"sdxm\": \"利息股息红利所得\",\n                \"sdqjq\": \"2024-01\",\n                \"sdqjz\": \"2024-12\"\n            }\n        ],\n        \"fjmsd\": [\n            {\n                \"xm\": \"张三\",\n                \"zzlx\": \"居民身份证\",\n                \"zzhm\": \"110101199003072356\",\n                \"sre\": \"10000.00\",\n                \"ljsre\": \"50000.00\",\n                \"mssd\": \"2000.00\",\n                \"ccyz\": \"30000.00\",\n                \"yxkcsf\": \"500.00\",\n                \"tzdk\": \"0\",\n                \"qt\": \"无\",\n                \"bz\": \"正常工资薪金\",\n                \"sjgznxs\": \"12\",\n                \"jcfy\": \"5000.00\",\n                \"zykcjze\": \"0\",\n                \"sqkcxmhj\": \"10500.00\",\n                \"ynssde\": \"89500.00\",\n                \"ynse\": \"10000.00\",\n                \"jmse\": \"0\",\n                \"yingkjse\": \"10000.00\",\n                \"ykjse\": \"0\",\n                \"sl\": \"20%\",\n                \"sskcs\": \"1410\",\n                \"sbfs\": \"自行申报\",\n                \"ybtse\": \"10000.00\",\n                \"sdxm\": \"正常工资薪金\",\n                \"sdqjq\": \"2023-01\",\n                \"sdqjz\": \"2023-12\"\n            }\n        ],\n        \"xsgsd\": [\n            {\n                \"xm\": \"张三\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101199003072316\",\n                \"zqzhh\": \"A123456789\",\n                \"gpdm\": \"000001\",\n                \"gpmc\": \"平安银行\",\n                \"mgjsjg\": 15.5,\n                \"zrgs\": 1000,\n                \"xsgyz\": 10000,\n                \"zrsr\": 20000,\n                \"hlsf\": 500,\n                \"kcjjcxmhj\": 10500,\n                \"ynssde\": 9500,\n                \"sl\": 0.2,\n                \"kjse\": 1900\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 592804763
+    },
+    {
+      "name": "异常示例",
+      "responseId": 678542774,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 592804764
+    },
+    {
+      "name": "查询失败",
+      "responseId": 678542774,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 592804765
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59973166,
+  "ordering": 95,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-19T07:38:10.000Z",
+  "updatedAt": "2026-05-15T08:25:22.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

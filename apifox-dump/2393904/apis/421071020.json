@@ -1,0 +1,196 @@
+{
+  "id": 421071020,
+  "name": "查询用户登录切换次数(托管)",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "托管客户查看用户登录切换次数，自持客户不支持该功能，次接口只统计本通道的切换次数，其他通道以及客户线下切换均不在统计范围内，数据仅供参考，不要参与业务逻辑处理",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/info/querySwitchCount",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "x-apifox-orders": [
+        "accountId",
+        "aggOrgId"
+      ],
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "企业获取",
+        "value": "{\r\n    \"accountId\": \"513333424214213\",\r\n    \"aggOrgId\": \"34322344324232\"\r\n}",
+        "mediaType": "application/json"
+      },
+      {
+        "name": "代理获取",
+        "value": "{\r\n    \"gryhm\": \"131****2354\",\r\n    \"areaCode\": \"31\",\r\n    \"proxyNsrsbh\": \"9187*******8768\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 168900456,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "currentSwitchCount": {
+                "type": "integer",
+                "title": "最近一小时切换次数",
+                "description": "当前请求时间最近一小时，如果期间出现达到切换次数限制，那么取到达限制时间后的切换次数"
+              },
+              "todaySwitchCount": {
+                "type": "integer",
+                "title": "今日总切换次数"
+              },
+              "currentSwitchCheckStartTime": {
+                "type": "string",
+                "title": "最新一小时切换的查询开始时间",
+                "description": "时间格式yyyy-MM-dd hh:mm:ss"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "currentSwitchCount",
+              "currentSwitchCheckStartTime",
+              "todaySwitchCount"
+            ],
+            "required": [
+              "currentSwitchCount",
+              "todaySwitchCount",
+              "currentSwitchCheckStartTime"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 168900456,
+      "data": "{\r\n\t\"code\": \"2000\",\r\n\t\"success\": true,\r\n\t\"message\": \"成功\",\r\n\t\"data\": {\r\n\t\t\"currentSwitchCount\": 1,\r\n\t\t\"currentSwitchCheckStartTime\": \"2026-03-04 09:47:47\",\r\n\t\t\"todaySwitchCount\": 1\r\n\t},\r\n\t\"timestamp\": \"2026-02-28 17:29:48\",\r\n\t\"reqId\": \"T65f49f8bf25b422d99e92c237463d9ec\"\r\n}",
+      "id": "019ca3a1-99df-745e-b354-36f5ededdb14"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75021689,
+  "ordering": 186,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-28T09:43:23.000Z",
+  "updatedAt": "2026-03-17T05:40:29.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "creatorUserId": 2400309,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,256 @@
+{
+  "id": 432835678,
+  "name": "查询税局申报状态汇总任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询税局申报状态汇总任务结果。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| NO_RESULT | 任务不存在 |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！  |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ |\n|PARAMETER_ERROR |参数格式不合法！ |检查入参的json格式正确|\n|INTERFACE_ERROR |接口异常,请联系管理员 |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskBySjsbzthz",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/37195008"
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557441,\r\n    \"taskId\":\"455863094200832\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 172669562,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "businessStatusName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务执行状态名称"
+              },
+              "businessStatus": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "serviceName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "服务名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业id"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "服务类型"
+              },
+              "detail": {
+                "title": "明细数据",
+                "$ref": "#/definitions/257185444"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "businessStatus",
+              "businessStatusName",
+              "code",
+              "serviceCode",
+              "serviceName",
+              "aggOrgId",
+              "detail"
+            ],
+            "required": [
+              "serviceCode",
+              "code",
+              "aggOrgId",
+              "detail"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 172669562,
+      "data": "{\r\n    \"reqId\": \"bd4472c661ea45c0bc27a1838563a000\",\r\n    \"code\": \"PARAMETER_ERROR\",\r\n    \"success\": true,\r\n    \"message\": \"没有找到对应的企业！\",\r\n    \"data\": null\r\n}",
+      "id": 17751515
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 172669562,
+      "data": "{\r\n    \"reqId\": \"469e384136bd4d04aa8d3c3ec2ed5f33\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"businessStatusName\": \"执行中\",\r\n        \"code\": \"null\",\r\n        \"serviceCode\": \"tax-sjsbzthz\",\r\n        \"businessStatus\": 1,\r\n        \"aggOrgId\": \"5204095655021952\",\r\n        \"serviceName\": \"企税-税局申报状态汇总查询\",\r\n        \"taskId\": 650513206095360\r\n    }\r\n}",
+      "id": 17186438
+    },
+    {
+      "name": "任务执行成功-已申报",
+      "responseId": 172669562,
+      "data": "{\n    \"reqId\": \"194e10a49beb404099f06e883ba6b6bf\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"tax-sjsbzthz\",\n        \"businessStatus\": 3,\n        \"detail\": {\n            \"sbcx\": {\n                \"sbcxGridlb\": [\n                    {\n                        \"zfrq\": \"2026-01-31\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"ybtse\": 1568.90,\n                        \"sbrq\": \"2026-01-10\",\n                        \"gglx\": \"正常更正\",\n                        \"sbblx\": \"增值税及附加税费申报表（一般纳税人适用）\",\n                        \"zfbz\": \"否\",\n                        \"skssqq\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"bqysb\": {\n                \"bqysbGridlb\": [\n                    {\n                        \"bllx\": \"2026-01-05\",\n                        \"bzzt\": \"已生效\",\n                        \"sxmc\": \"增值税一般纳税人资格登记\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"qsxxcx\": {\n                \"qsxxcxGridlb\": [\n                    {\n                        \"qjje\": 1250.80,\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"jkqx\": \"2026-02-18\",\n                        \"sbrq\": \"2026-02-10\",\n                        \"sbblx\": \"增值税及附加税费申报表（一般纳税人）\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"zspm\": \"销售货物\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"jkxxcx\": {\n                \"jkxxcxGridlb\": [\n                    {\n                        \"jkqr\": \"2026-02-10\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"pzzl\": \"税收电子缴款书\",\n                        \"sjjine\": 2896.50,\n                        \"dzsphm\": \"98765432109876543210\",\n                        \"pzhm\": \"0100000123456789\",\n                        \"skjnsf\": \"银行端查询缴款\",\n                        \"zspm\": \"销售货物\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"wsbxxcx\": {\n                \"wsbxxcxGridlb\": [\n                    {\n                        \"sbqx\": \"2026-02-15\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"zsdlfs\": \"自行申报\",\n                        \"sfwcbzb\": \"否\",\n                        \"zspm\": \"销售货物\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"nsqx\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"cwbbxxcx\": {\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\",\n                \"cwbbxxcxGridlb\": [\n                    {\n                        \"bbssqq\": \"2026-01-01\",\n                        \"cwbblx\": \"资产负债表\",\n                        \"lrq\": \"2026-02-15\",\n                        \"bbssqz\": \"2026-01-31\"\n                    }\n                ]\n            },\n            \"sfzrd\": {\n                \"sfzrdGridlb\": [\n                    {\n                        \"sbqx\": \"2026-01-15\",\n                        \"slhwdse\": \"13.00%\",\n                        \"zspm\": \"销售货物\",\n                        \"hy\": \"批发和零售业\",\n                        \"zsl\": \"3%\",\n                        \"rdyxqq\": \"2026-01-01\",\n                        \"zszm\": \"一般货物销售\",\n                        \"zsxm\": \"增值税\",\n                        \"zfsbz\": \"主税\",\n                        \"rdyxqz\": \"2026-12-31\",\n                        \"jkqx\": \"2026-01-18\",\n                        \"zsdlfs\": \"自行申报\",\n                        \"nsqx\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            }\n        },\n        \"aggOrgId\": \"482734358988800\",\n        \"serviceName\": \"企税-税局申报状态汇总查询\",\n        \"message\": \"税局申报状态汇总查询成功\",\n        \"taskId\": 650510476234240\n    }\n}",
+      "id": 17579386
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81161874,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-24T09:47:01.000Z",
+  "updatedAt": "2026-04-22T09:54:10.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

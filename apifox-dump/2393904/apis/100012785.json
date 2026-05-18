@@ -1,0 +1,593 @@
+{
+  "id": 100012785,
+  "name": "查询红字信息明细",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "对数电发票红冲时，需先完成红字信息确认单申请，本接口可通过红字信息UUID查询对应的信息确认单处理（红冲）状态。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/hzqrxxDetail",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "hzqrxx_detail"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "xsfNsrsbh": {
+              "type": "string",
+              "title": "销方纳税人识别号"
+            },
+            "hzuuid": {
+              "type": "string",
+              "title": "红字信息UUID"
+            },
+            "pdfDownload": {
+              "type": "boolean",
+              "title": "是否下载pdf文件",
+              "description": "true:是，false:否"
+            },
+            "wjgs": {
+              "type": "string",
+              "title": "获取红字发票版式文件格式",
+              "description": "（OFD,PDF,XML,EWM)多个以,隔开"
+            }
+          },
+          "required": [
+            "hzuuid",
+            "xsfNsrsbh"
+          ],
+          "x-apifox-orders": [
+            "hzuuid",
+            "xsfNsrsbh",
+            "pdfDownload",
+            "wjgs"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB98MG6WHA0PY6847DS6ARD",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HMB98MG6WHA0PY6847DS6ARD": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"nsrsbh\": \"91************R\",\r\n\t\"data\": {\r\n\t\t\"hzuuid\": \"0ccfd******************a2529\",\r\n\t\t\"xsfNsrsbh\": \"91************R\"\r\n\t},\r\n\t\"action\": \"hzqrxx_detail\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "aufElXORnY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "GPaBfTHl3e",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "x5CKF0wgTT",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947681,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "hzuuid": {
+                "type": "string",
+                "title": "红字确认单UUID"
+              },
+              "xsfNsrsbh": {
+                "type": "string",
+                "title": "销售方纳税人识别号"
+              },
+              "xsfNsrmc": {
+                "type": "string",
+                "title": "销售方纳税人名称"
+              },
+              "gmfNsrsbh": {
+                "type": "string",
+                "title": "购买方纳税人识别号"
+              },
+              "gmfNsrmc": {
+                "type": "string",
+                "title": "购买方纳税人名称"
+              },
+              "hzqrztDm": {
+                "type": "string",
+                "title": "红字确认状态代码",
+                "description": "01：无需确认（全电大多数情况是自动01）        02：销方录入待购方确认        03：购方录入待销方确认        04：购销双方已确认        05：作废（销方录入购方否认）        06：作废（购方录入销方否认）        07：作废（超 72 小时未确认）        08：作废（发起方撤销）        09：作废（确认后撤销）        10：作废（异常凭证）        11：作废（纳税人状态异常阻断）        12：作废（自然人拒收）        13：作废（已开具退税申请）"
+              },
+              "qrrq": {
+                "type": "string",
+                "title": "确认日期",
+                "description": "未确认时为null"
+              },
+              "hzkjBz": {
+                "type": "string",
+                "title": "红字开具标志",
+                "description": "Y已开票，N或空为未开票"
+              },
+              "hcyydm": {
+                "type": "string",
+                "description": "01-开票有误，02-销货退回 ， 03-服务中止，04-销售折让",
+                "title": "红冲原因代码"
+              },
+              "lzFpdm": {
+                "type": "string",
+                "title": "蓝字发票代码",
+                "description": "数电时为空"
+              },
+              "lzFphm": {
+                "type": "string",
+                "title": "蓝字发票号码",
+                "description": "数电时为20位数电号码"
+              },
+              "lzKprq": {
+                "type": "string",
+                "title": "蓝字开票日期"
+              },
+              "lzHjje": {
+                "type": "number",
+                "title": "蓝字合计金额"
+              },
+              "lzHjse": {
+                "type": "number",
+                "title": "蓝字合计税额"
+              },
+              "hzFpdm": {
+                "type": "string",
+                "title": "红字发票代码",
+                "description": "数电时为空"
+              },
+              "hzFphm": {
+                "type": "string",
+                "title": "红字发票号码",
+                "description": "数电时为20位数电号码"
+              },
+              "hzKprq": {
+                "type": "string",
+                "title": "红字开票日期"
+              },
+              "hzHjje": {
+                "type": "number",
+                "title": "红字合计金额"
+              },
+              "hzHjse": {
+                "type": "number",
+                "title": "红字合计税额"
+              },
+              "hzqrdbh": {
+                "type": "string",
+                "title": "红字确认单编号"
+              },
+              "lzFplxdm": {
+                "type": "string",
+                "title": "蓝字发票类型代码",
+                "description": "30-普通发票，32-专票"
+              },
+              "qrjkp": {
+                "type": "string",
+                "title": "确认即开票",
+                "description": "Y-是，N-否"
+              },
+              "bz": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "备注"
+              },
+              "ydkse": {
+                "type": "number",
+                "title": "已抵扣税额"
+              },
+              "yjjdkncpse": {
+                "type": "number",
+                "title": "已加计抵扣农产品进项税额"
+              },
+              "rzzt": {
+                "type": "string",
+                "title": "入账状态",
+                "description": "00:未入账；01:已入帐。"
+              },
+              "zzsYtzt": {
+                "type": "string",
+                "title": "增值税用途状态",
+                "description": "00-已勾选未确认、01-已确认、03-未勾选"
+              },
+              "xfsYtZt": {
+                "type": "string",
+                "title": "消费税用途状态",
+                "description": "00-未勾选、01-已勾选"
+              },
+              "xmmx": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "xh": {
+                      "type": "integer",
+                      "title": "行序号"
+                    },
+                    "spbm": {
+                      "type": "string",
+                      "title": "商品税收编码",
+                      "description": "19位税收分类代码"
+                    },
+                    "spmc": {
+                      "type": "string",
+                      "title": "商品税收名称"
+                    },
+                    "xmmc2": {
+                      "type": "string",
+                      "title": "项目名称全称",
+                      "description": "带税收名称和星号"
+                    },
+                    "xmmc": {
+                      "type": "string",
+                      "title": "项目名称",
+                      "description": "不带税收名称"
+                    },
+                    "dw": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "单位"
+                    },
+                    "ggxh": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "规格型号"
+                    },
+                    "spsl": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "商品数量"
+                    },
+                    "dj": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "商品单价"
+                    },
+                    "je": {
+                      "type": "number",
+                      "title": "金额"
+                    },
+                    "sl": {
+                      "type": "string",
+                      "title": "税率",
+                      "description": "例如 0.06"
+                    },
+                    "se": {
+                      "type": "number",
+                      "title": "税额"
+                    },
+                    "kce": {
+                      "type": "number",
+                      "title": "扣除额"
+                    },
+                    "lzMxxh": {
+                      "type": "integer",
+                      "title": "对应蓝字明细序",
+                      "description": "仅负数发票有值"
+                    },
+                    "uuid": {
+                      "type": "string",
+                      "title": "行UUID"
+                    }
+                  },
+                  "required": [
+                    "xh",
+                    "uuid",
+                    "spbm",
+                    "spmc",
+                    "xmmc2",
+                    "xmmc",
+                    "dw",
+                    "ggxh",
+                    "spsl",
+                    "dj",
+                    "je",
+                    "sl",
+                    "se",
+                    "kce",
+                    "lzMxxh"
+                  ],
+                  "x-apifox-orders": [
+                    "xh",
+                    "uuid",
+                    "spbm",
+                    "spmc",
+                    "xmmc2",
+                    "xmmc",
+                    "dw",
+                    "ggxh",
+                    "spsl",
+                    "dj",
+                    "je",
+                    "sl",
+                    "se",
+                    "kce",
+                    "lzMxxh"
+                  ]
+                },
+                "title": "信息表项目明细"
+              },
+              "lzTdyslxDm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "蓝字发票特定要素类型代码"
+              },
+              "lrfsf": {
+                "type": "string",
+                "title": "录入方身份",
+                "description": "0：销方，1：购方"
+              },
+              "pdfUrl": {
+                "type": "string",
+                "title": "红字确认单PDF文件地址",
+                "examples": [
+                  "https://qxy-oss-invoice.oss-cn-beijing.aliyuncs.com/red/....."
+                ],
+                "description": "企享云oss链接"
+              },
+              "lrrq": {
+                "type": "string",
+                "title": "录入日期",
+                "description": "yyyy-MM-dd HH:mm:ss"
+              },
+              "hzJshj": {
+                "type": "number",
+                "title": "红字价税合计"
+              },
+              "pdf_url": {
+                "type": "string",
+                "title": "红字发票pdf链接",
+                "description": "税局原始链接",
+                "examples": [
+                  "https://dppt.zhejiang.chinatax.gov.cn:8443......"
+                ]
+              },
+              "ofd_url": {
+                "type": "string",
+                "title": "红字发票ofd链接",
+                "description": "税局原始链接",
+                "examples": [
+                  "https://dppt.zhejiang.chinatax.gov.cn:8443......"
+                ]
+              },
+              "ewm_url": {
+                "type": "string",
+                "title": "红字发票二维码链接",
+                "description": "税局原始链接",
+                "examples": [
+                  "https://dppt.zhejiang.chinatax.gov.cn:8443......"
+                ]
+              },
+              "xml_url": {
+                "type": "string",
+                "title": "红字发票xml链接",
+                "description": "税局原始链接",
+                "examples": [
+                  "https://dppt.zhejiang.chinatax.gov.cn:8443......"
+                ]
+              },
+              "xgrq": {
+                "type": "string",
+                "description": "yyyy-MM-dd HH:mm:ss",
+                "title": "修改日期"
+              }
+            },
+            "required": [
+              "hzuuid",
+              "xsfNsrsbh",
+              "xsfNsrmc",
+              "gmfNsrsbh",
+              "gmfNsrmc",
+              "hzqrdbh",
+              "hzqrztDm",
+              "hzkjBz",
+              "hcyydm",
+              "lzFpdm",
+              "lzFphm",
+              "lzKprq",
+              "lzHjje",
+              "lzHjse",
+              "lzFplxdm",
+              "qrjkp",
+              "lrfsf",
+              "xgrq"
+            ],
+            "x-apifox-orders": [
+              "hzuuid",
+              "hzqrdbh",
+              "hzqrztDm",
+              "lrfsf",
+              "xsfNsrsbh",
+              "xsfNsrmc",
+              "gmfNsrsbh",
+              "gmfNsrmc",
+              "qrrq",
+              "lrrq",
+              "xgrq",
+              "qrjkp",
+              "hzkjBz",
+              "hcyydm",
+              "lzFplxdm",
+              "lzFpdm",
+              "lzFphm",
+              "lzKprq",
+              "lzHjje",
+              "lzHjse",
+              "lzTdyslxDm",
+              "hzFpdm",
+              "hzFphm",
+              "hzKprq",
+              "hzHjje",
+              "hzHjse",
+              "hzJshj",
+              "pdfUrl",
+              "pdf_url",
+              "ofd_url",
+              "xml_url",
+              "ewm_url",
+              "bz",
+              "ydkse",
+              "yjjdkncpse",
+              "rzzt",
+              "zzsYtzt",
+              "xfsYtZt",
+              "xmmx"
+            ],
+            "$ref": "#/definitions/222204647"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947681,
+      "data": "{\n    \"reqId\": \"4dc1834846cf45ae9658eb01bfd60ae5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"lzTdyslxDm\": \"04\",\n        \"gxflx\": \"销售方\",\n        \"hzKprq\": \"2024-09-23 15:05:11\",\n        \"hcyydm\": \"01\",\n        \"hzkjBz\": \"Y\",\n        \"lzFplxdm\": \"030\",\n        \"ydkse\": 0,\n        \"sfzzfpbz\": \"N\",\n        \"zzsYtzt\": \"03\",\n        \"lzHjje\": 0.1,\n        \"hzFphm\": \"2451*****************000\",\n        \"xsfNsrmc\": \"成都****************中心\",\n        \"hzqrztDm\": \"01\",\n        \"lrfsf\": \"0\",\n        \"hzHjse\": 0,\n        \"bz\": \"\",\n        \"xmmx\": [\n            {\n                \"xh\": 1,\n                \"se\": 0,\n                \"spsl\": \"\",\n                \"xmmc\": \"其他货物运输服务\",\n                \"spmc\": \"运输服务\",\n                \"sl\": \"0.0\",\n                \"xmmc2\": \"*运输服务*其他货物运输服务\",\n                \"je\": -0.1,\n                \"spbm\": \"3019902000000000000\",\n                \"uuid\": \"3e4af607abe24cbfb613d8b1f4add026\",\n                \"lzMxxh\": 1\n            }\n        ],\n        \"lzFphm\": \"24**************38\",\n        \"xfsYtZt\": \"00\",\n        \"qrjkp\": \"Y\",\n        \"gmfNsrsbh\": \"91***************38\",\n        \"lzHjse\": 0,\n        \"yjjdkncpse\": 0,\n        \"hzuuid\": \"0cc*******************529\",\n        \"gmfNsrmc\": \"***************有限公司\",\n        \"kpr\": \"罗灿\",\n        \"xsfNsrsbh\": \"9***************9R\",\n        \"lzfppzDm\": \"02\",\n        \"hzqrdbh\": \"51***************96\",\n        \"lzKprq\": \"2024-09-23 14:16:10\",\n        \"lrrq\": \"2024-09-23 15:05:11\",\n        \"rzzt\": \"00\",\n        \"hzHjje\": -0.1\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 427561654
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681470,
+  "ordering": 304,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\nvar responseJson = {\r\n\t\"hcyydm\": \"01\",\r\n\t\"hzkjBz\": \"Y\",\r\n\t\"lzFplxdm\": \"032\",\r\n\t\"ydkse\": 0.0,\r\n\t\"sfzzfpbz\": \"N\",\r\n\t\"zzsYtzt\": \"01\",\r\n\t\"lzHjje\": 2628.56,\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"pdfUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/44040225061000009423_1013.pdf?Expires=1770709404&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=U%2FyFz2TAN6EqUyoxF%2BoRF59NfI0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/44040225061000009423_1013.pdf?Expires=1770709404&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=U%2FyFz2TAN6EqUyoxF%2BoRF59NfI0%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/44040225061000009423_1013.pdf?Expires=1770709404&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=U%2FyFz2TAN6EqUyoxF%2BoRF59NfI0%3D\",\r\n\t\"ewm_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/44040225061000009423_1013.pdf?Expires=1770709404&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=U%2FyFz2TAN6EqUyoxF%2BoRF59NfI0%3D\",\r\n\t\"hzqrztDm\": \"07\",\r\n\t\"lrfsf\": \"0\",\r\n\t\"xgrq\": \"2025-10-13 17:19:21\",\r\n\t\"qrrq\": \"2025-10-13 17:19:21\",\r\n\t\"hzHjse\": -341.71,\r\n\t\"bz\": \"\",\r\n\t\"xmmx\": [{\r\n\t\t\"ggxh\": \"颜色:【大容量+3瓶粉】约12000页-买3送1\",\r\n\t\t\"spsl\": \"-2\",\r\n\t\t\"dj\": \"1314.28\",\r\n\t\t\"spmc\": \"电⼦计算机\",\r\n\t\t\"xmmc2\": \"*电⼦计算机*⼤稻⾕Pad 7 8G+256G\",\r\n\t\t\"uuid\": \"4072cec397374f7ba5c889138c02b81a\",\r\n\t\t\"lzMxxh\": 1,\r\n\t\t\"xh\": 1,\r\n\t\t\"se\": -341.71,\r\n\t\t\"dw\": \"个\",\r\n\t\t\"xmmc\": \"⼤稻⾕Pad 7 8G+256G\",\r\n\t\t\"sl\": \"0.13\",\r\n\t\t\"je\": -2628.56,\r\n\t\t\"spbm\": \"1090512990000000000\"\r\n\t}],\r\n\t\"lzFphm\": \"25952000000193124888\",\r\n\t\"xfsYtZt\": \"00\",\r\n\t\"hzFphm\": \"25952000000193124666\",\r\n\t\"hzKprq\": \"2025-06-05 11:54:37\",\r\n\t\"qrjkp\": \"Y\",\r\n\t\"gmfNsrsbh\": \"9133020614429380X9\",\r\n\t\"lzHjse\": -341.71,\r\n\t\"yjjdkncpse\": 0.0,\r\n\t\"hzuuid\": \"892bf52e21b4417f9f365e970138c0b3\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"kpr\": \"张三\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"hzJshj\": -2970.27,\r\n\t\"lzfppzDm\": \"01\",\r\n\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\"lzKprq\": \"2025-05-30 10:54:55\",\r\n\t\"lrrq\": \"2025-06-05 11:54:37\",\r\n\t\"rzzt\": \"00\",\r\n\t\"hzHjje\": -2628.56\r\n};\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.lrrq = kprq;\r\nresponseJson.hzuuid = uuid;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2024-08-10T08:26:16.000Z",
+  "updatedAt": "2026-04-16T09:33:43.000Z",
+  "creatorId": 887900,
+  "editorId": 3099717,
+  "creatorUserId": 887900,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

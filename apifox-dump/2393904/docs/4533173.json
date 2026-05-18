@@ -1,0 +1,17 @@
+{
+  "id": 4533173,
+  "name": "接入指引",
+  "sidebarTitle": "",
+  "content": "## 业务流程指引\n\n### 接口调用流程\n第一步：调用【订购产品】，根据账号授权的登录模式选择不同的登录方式完成登录\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- | --- |\n| 订购产品 | [订购产品](api-145565464) |订购产品完成后自动创建企业\n| 账号创建 | [账号创建](apifox://link/endpoint/398469975) |\n| 发送短信验证码登录（非小号）|[发送短信验证码](apifox://link/endpoint/398473365)|上传短信验证码登录模式\n| 上传短信验证码登录（非小号）| [上传短信验证码](apifox://link/endpoint/398473366)|上传短信验证码登录模式\n\n第二步：【开票初始配置】，进行开票前的基本配置\n获取企业基本信息：\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- | --- |\n| 企业基本信息 | [获取企业基本信息](apifox://link/endpoint/100012778)  |从局端实时获取，当前登录的企业基本信息\n\n查询当前开票是否需要扫脸：\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- | --- |\n| 扫脸时长查询 | [扫脸时长查询](apifox://link/endpoint/100012774)  |返回扫脸状态和扫脸设置的时长\n| 扫脸时长查询 | [扫脸时长设置](apifox://link/endpoint/142321778)  |设置扫脸二维码的有效时长,登录人的身份必须是财务负责人或法定代表人\n\n如果需要扫脸调用扫脸认证接口：\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- | --- |\n| 税务APP及国家网络身份认证APP扫码 | [获取人脸识别二维码](apifox://link/endpoint/100012772) |税务APP及国家网络身份认证APP扫码，获取二维码\n| 税务APP及国家网络身份认证APP扫码 | [获取人脸识别结果](apifox://link/endpoint/100012773) |税务APP及国家网络身份认证APP扫码，查询扫脸结果\n\n\n第三步：发票开具交付\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- | --- |\n| 蓝字发票开具 | [蓝字发票开具](apifox://link/endpoint/100012782)|返回发票信息及版式文件\n| 发票交付 |[邮件交付](apifox://link/endpoint/135401359)|通过税局配置的邮箱将发票发送到指定邮箱\n| 红字发票开具 |[申请红字信息表](apifox://link/endpoint/100012783)|返回红字发票申请结果，或者[查询红字信息明细](apifox://link/endpoint/100012785) 查询红票结果\n\n第四步：发票查询下载\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- | --- |\n| 已开发票查询 |[已开发票列表查询](apifox://link/endpoint/100012787)|已开的发票信息查询\n| 版式文件下载 |[下载版式文件](apifox://link/endpoint/155759098)|发票版式文件下载\n\n\n### 业务流程概览\n****描述**：** 发票开具前置业务流程指引\n**接口描述**：\n[产品订购](https://openapi.qixiangyun.com/api-145565464)\n[自持登录](https://openapi.qixiangyun.com/api-120385538)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/447286/image-preview)\n\n\n### 蓝字发票开具业务流程\n****描述**：** 通过该接口可以进行蓝字发票开具\n接口地址：[蓝字发票开具](https://openapi.qixiangyun.com/api-100012782\n)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/447277/image-preview)\n\n\n### 红字发票开具业务流程\n****描述**：** 通过该接口可以进行红字发票开具\n**接口地址**：[红字发票开具](https://openapi.qixiangyun.com/api-100012783)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/447284/image-preview)\n\n### 红字发票开具业务流程\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/447296/image-preview)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "folderId": 58669408,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-06-14T07:01:38.000Z",
+  "updatedAt": "2026-04-13T08:33:46.000Z",
+  "creatorId": 1793923,
+  "editorId": 1793923,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

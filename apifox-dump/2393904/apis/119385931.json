@@ -1,0 +1,188 @@
+{
+  "id": 119385931,
+  "name": "修改商品分类",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局重命名指定的商品分类信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/spxxFlrename",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "spxx_flrename"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fluuid": {
+              "type": "string",
+              "title": "商品分类uuid"
+            },
+            "flmc": {
+              "type": "string",
+              "title": "新的商品分类名称"
+            }
+          },
+          "x-apifox-orders": [
+            "fluuid",
+            "flmc"
+          ],
+          "title": "",
+          "required": [
+            "fluuid",
+            "flmc"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8TFAGGYZG6P1SE2E58A0N"
+      ],
+      "x-apifox-refs": {
+        "01HMB8TFAGGYZG6P1SE2E58A0N": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"spxx_flrename\",\r\n    \"nsrsbh\": \"91****************4Y\",\r\n    \"data\": {\r\n        \"fluuid\": \"0b2a48aa88884fd59255891eb86f4fef\",\r\n        \"flmc\": \"测试测试测试\"\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 339981424,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "boolean",
+                "title": "执行结果",
+                "description": "true成功， false失败"
+              }
+            },
+            "x-apifox-orders": [
+              "result"
+            ],
+            "required": [
+              "result"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01HRHAV55Q6F57V71W8YAWGW1W"
+        ],
+        "required": [
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HRHAV55Q6F57V71W8YAWGW1W": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 339981424,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"result\": true\n    },\n    \"success\": true,\n    \"reqId\": \"209ca10c80e74fe7bd5629341f02670c\"\n}",
+      "id": 430866276
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23430606,
+  "ordering": 312,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-10-11T08:56:42.000Z",
+  "updatedAt": "2025-06-10T02:17:17.000Z",
+  "creatorId": 887900,
+  "editorId": 2706439,
+  "creatorUserId": 887900,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.339981424"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

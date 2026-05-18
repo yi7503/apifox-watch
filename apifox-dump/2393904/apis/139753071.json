@@ -1,0 +1,258 @@
+{
+  "id": 139753071,
+  "name": "现有办税人员删除记录任务查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业删除办税人员任务\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/bsrygl/qy/queryBsyDeletedTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "integer"
+        },
+        "taskId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\"aggOrgId\":416757501640768,\"taskId\":\"507836492265536\"}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "4ydHFG09t9",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "w5PEAaz02B",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "7eJE20LaKA",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "5rybCw1X7D",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 382517732,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求ID",
+            "description": "由服务器端生成的唯一标识，对应每次请求。"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskState": {
+                "type": "integer",
+                "title": "任务状态",
+                "description": " 1任务执行中 2执行失败 3执行成功 "
+              },
+              "detail": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "xh": {
+                      "type": "integer",
+                      "title": "序号"
+                    },
+                    "zrrxm": {
+                      "type": "string",
+                      "title": "姓名"
+                    },
+                    "czrq": {
+                      "type": "string",
+                      "title": "操作日期"
+                    },
+                    "sjhm": {
+                      "type": "string",
+                      "title": "手机号"
+                    },
+                    "sflx": {
+                      "type": "string",
+                      "title": "身份类型"
+                    },
+                    "state": {
+                      "type": "string",
+                      "title": "状态说明"
+                    }
+                  },
+                  "required": [
+                    "xh",
+                    "zrrxm",
+                    "czrq",
+                    "sjhm",
+                    "sflx",
+                    "state"
+                  ],
+                  "x-apifox-orders": [
+                    "xh",
+                    "zrrxm",
+                    "czrq",
+                    "sjhm",
+                    "sflx",
+                    "state"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "taskState",
+              "detail"
+            ],
+            "x-apifox-orders": [
+              "taskState",
+              "detail"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "title": "错误码"
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 382517732,
+      "data": "{\n    \"reqId\": \"2c172f60287a4edb90b56665342b9955\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"操作成功\",\n    \"data\": {\n        \"taskState\": 3,\n        \"detail\": [\n            {\n                \"xh\": 0,\n                \"zrrxm\": \"***\",\n                \"czrq\": \"2024-01-08 15:43:47\",\n                \"sjhm\": \"1551**5\",\n                \"sflx\": \"BSY\",\n                \"state\": \"删除成功\"\n            },\n            {\n                \"xh\": 1,\n                \"zrrxm\": \"****\",\n                \"czrq\": \"2024-01-08 15:16:07\",\n                \"sjhm\": \"*********\",\n                \"sflx\": \"BSY\",\n                \"state\": \"删除成功\"\n            }\n        ]\n    }\n}",
+      "id": 382517733
+    },
+    {
+      "name": "异常示例",
+      "responseId": 382517732,
+      "data": "{\n    \"code\": \"8000\",\n    \"data\": {\n        \"taskState\": 2\n    },\n    \"success\": true,\n    \"message\": \"未登录或登录缓存已失效，请重新发起！\",\n    \"reqId\": \"c0a795030f724fc5b76223844a41be3e\"\n}",
+      "id": 382517734
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23937671,
+  "ordering": 208,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-01-08T07:35:57.000Z",
+  "updatedAt": "2024-10-16T12:08:59.000Z",
+  "creatorId": 1442097,
+  "editorId": 493984,
+  "creatorUserId": 1442097,
+  "editorUserId": 493984,
+  "responseChildren": [
+    "BLANK.382517732"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,193 @@
+{
+  "id": 100012779,
+  "name": "开票额度查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "通过本接口获取当前登录的企业发票统计信息。包含开票情况概览模块所有信息、用票情况概览模块、风险提示模块所有信息。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/kptjxxcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：kpjxxcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB937S8FAAXHJ8BZEKZXHBY"
+      ],
+      "x-apifox-refs": {
+        "01HMB937S8FAAXHJ8BZEKZXHBY": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"action\": \"kpjxxcx\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "XxlNmBtxg9",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "2M96tRvF2L",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "dOL96mQ7Z4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": true
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 723463211,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01K0BQWNVBW66N34WS5VB99Z6Q": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/185098581"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01K0BQWNVBW66N34WS5VB99Z6Q"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 723463211,
+      "data": "{\n    \"kpqkgl\": {\n        \"sysxed\": \"499998.30\",\n        \"zsxed\": \"500000.00\",\n        \"syzzfpzs\": \"0\",\n        \"ysyfpzs\": \"0\",\n        \"lzkjje\": \"5.48\",\n        \"lzkjse\": \"0.32\",\n        \"lzfpsl\": \"4\",\n        \"hpkjse\": \"0.22\",\n        \"hpkjje\": \"3.78\",\n        \"hzfpsl\": \"2\"\n    },\n    \"ypqkgl\": {\n        \"dqkgxzzsje\": \"95803.33\",\n        \"zzsse\": \"6853.56\",\n        \"dkpzsl\": \"111\"\n    },\n    \"fxts\": {\n        \"qdycpzjehj\": \"0.00\",\n        \"ycpzse\": \"0.00\",\n        \"qdycpzzs\": \"0\"\n    },\n    \"sysxed\": \"499998.30\",\n    \"ysysxed\": \"1.70\",\n    \"zsxed\": \"500000.00\",\n    \"syzzfpzs\": \"0\",\n    \"fpejse\": \"0.32\",\n    \"ysyfpzs\": \"0\",\n    \"fphjje\": \"5.48\",\n    \"bykjlpzs\": \"4\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 647090493
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681455,
+  "ordering": 348,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-10T03:20:39.000Z",
+  "updatedAt": "2025-12-13T09:20:06.000Z",
+  "creatorId": 2706439,
+  "editorId": 2795319,
+  "creatorUserId": 2706439,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

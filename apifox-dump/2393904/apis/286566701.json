@@ -1,0 +1,624 @@
+{
+  "id": 286566701,
+  "name": "查询算税反馈结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "5PeD2vnuT2n9po7lkoANh3CsDE2klt5C",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询算税反馈结果\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/calculateTax/getASynIndividualIncomeTaxFeedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId",
+        "accountId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"accountId\": \"4711*****1619712\",\n    \"aggOrgId\": \"47114*****665024\",\n    \"taskId\": \"483219073*****893311\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "QC9t2uwmMc",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "HDGNYv524W",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "H0dlkTCZDB",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "m3kJkPvWbv",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 659290804,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "definitions": {
+          "YjnsScjgResp": {
+            "title": "YjnsScjgResp",
+            "type": "object",
+            "properties": {
+              "sscglb": {
+                "type": "array",
+                "description": "算税成功列表",
+                "items": {
+                  "$ref": "#/definitions/YjnsScjgInfoResp"
+                }
+              },
+              "sssblb": {
+                "type": "array",
+                "description": "算税失败列表",
+                "items": {
+                  "$ref": "#/definitions/YjnsScjgInfoResp"
+                }
+              },
+              "sssbyylb": {
+                "type": "array",
+                "description": "算税失败原因列表",
+                "items": {
+                  "$ref": "#/definitions/YjnsSssbResp"
+                }
+              },
+              "sszrs": {
+                "type": "string",
+                "description": "参与算税总人数"
+              },
+              "sssbrs": {
+                "type": "string",
+                "description": "算税失败总人数"
+              },
+              "fpsrze": {
+                "type": "string",
+                "description": "收入总额(按发票开具情况测算)测算结果"
+              }
+            },
+            "x-apifox-orders": [
+              "sscglb",
+              "sssblb",
+              "sssbyylb",
+              "sszrs",
+              "sssbrs",
+              "fpsrze"
+            ]
+          },
+          "YjnsScjgInfoResp": {
+            "title": "YjnsScjgInfoResp",
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "description": "姓名"
+              },
+              "zzlx": {
+                "type": "string",
+                "description": "证件类型"
+              },
+              "zzhm": {
+                "type": "string",
+                "description": "证件号码"
+              },
+              "yssdl": {
+                "type": "number",
+                "description": "应税所得率"
+              },
+              "fpbl": {
+                "type": "number",
+                "description": "分配比例"
+              },
+              "tzzjcfy": {
+                "type": "string",
+                "description": "是否可用投资者减除费用（1：可使用；2：不可使用）"
+              },
+              "sfjcfy": {
+                "type": "string",
+                "description": "是否使用投资者减除费用（1：使用；2：不使用）"
+              },
+              "Jbylaobx": {
+                "type": "number",
+                "description": "基本养老保险费"
+              },
+              "tzzjcfyje ": {
+                "type": "number",
+                "description": "投资者减除费用金额 "
+              },
+              "jbylbx": {
+                "type": "number",
+                "description": "基本医疗保险费"
+              },
+              "sybx": {
+                "type": "number",
+                "description": "失业保险费"
+              },
+              "zfgjj": {
+                "type": "number",
+                "description": "住房公积金"
+              },
+              "syjkbx": {
+                "type": "number",
+                "description": "商业健康保险"
+              },
+              "syylbx": {
+                "type": "number",
+                "description": "税延养老保险"
+              },
+              "qtkc": {
+                "type": "number",
+                "description": "其他扣除"
+              },
+              "zykcdjze": {
+                "type": "number",
+                "description": "准予扣除的捐赠额"
+              },
+              "ynssde": {
+                "type": "number",
+                "description": "应纳税所得额"
+              },
+              "sl": {
+                "type": "number",
+                "description": "税率"
+              },
+              "sskcs": {
+                "type": "number",
+                "description": "速算扣除数"
+              },
+              "ynse": {
+                "type": "number",
+                "description": "应纳税额"
+              },
+              "jmse": {
+                "type": "number",
+                "description": "减免税额"
+              },
+              "yijse": {
+                "type": "number",
+                "description": "已缴税额"
+              },
+              "ybtse": {
+                "type": "number",
+                "description": "应补退税额"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "yssdl",
+              "fpbl",
+              "tzzjcfy",
+              "sfjcfy",
+              "Jbylaobx",
+              "jbylbx",
+              "sybx",
+              "zfgjj",
+              "syjkbx",
+              "syylbx",
+              "qtkc",
+              "zykcdjze",
+              "ynssde",
+              "sl",
+              "sskcs",
+              "ynse",
+              "jmse",
+              "yijse",
+              "ybtse",
+              "tzzjcfyje "
+            ]
+          },
+          "YjnsSssbResp": {
+            "title": "YjnsSssbResp",
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "description": "人员名称"
+              },
+              "zzlx": {
+                "type": "string",
+                "description": "证件类型"
+              },
+              "zzhm": {
+                "type": "string",
+                "description": "证件号码"
+              },
+              "cwm": {
+                "type": "string",
+                "description": "错误码"
+              },
+              "cwxx": {
+                "type": "string",
+                "description": "错误信息"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "cwm",
+              "cwxx"
+            ]
+          },
+          "RybsResp": {
+            "title": "RybsResp",
+            "type": "object",
+            "properties": {
+              "bszrs": {
+                "type": "integer",
+                "description": "参与人员报送总人数"
+              },
+              "bssbrs": {
+                "type": "integer",
+                "description": "人员报送失败总人数"
+              },
+              "bscglb": {
+                "type": "array",
+                "description": "人员报送成功列表",
+                "items": {
+                  "$ref": "#/definitions/RybsJgResp"
+                }
+              },
+              "bssblb": {
+                "type": "array",
+                "description": "人员报送失败列表",
+                "items": {
+                  "$ref": "#/definitions/RybsJgResp"
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "bszrs",
+              "bssbrs",
+              "bscglb",
+              "bssblb"
+            ]
+          },
+          "RybsJgResp": {
+            "title": "RybsJgResp",
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "description": "姓名"
+              },
+              "zzlx": {
+                "type": "string",
+                "description": "证件类型名称"
+              },
+              "zzhm": {
+                "type": "string",
+                "description": "证件号码"
+              },
+              "sbzt": {
+                "type": "string",
+                "description": "报送状态"
+              },
+              "rzzt": {
+                "type": "string",
+                "description": "人员认证状态"
+              },
+              "sbyy": {
+                "type": "string",
+                "description": "失败原因"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm",
+              "sbzt",
+              "rzzt",
+              "sbyy"
+            ]
+          }
+        },
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "AsyncTaskCommonResp",
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "description": "任务ID"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "description": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "description": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "description": "任务执行状态"
+              },
+              "taskStatusName": {
+                "type": "string",
+                "description": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "description": "执行任务code"
+              },
+              "message": {
+                "type": "string",
+                "description": "执行任务信息"
+              },
+              "result": {
+                "$schema": "http://json-schema.org/draft-07/schema#",
+                "title": "ASynIndividualIncomeTaxFeedbackResp",
+                "type": "object",
+                "properties": {
+                  "qymc": {
+                    "type": "string",
+                    "description": "企业名称"
+                  },
+                  "nsrsbh": {
+                    "type": "string",
+                    "description": "税号"
+                  },
+                  "areaid": {
+                    "type": "string",
+                    "description": "地区编号"
+                  },
+                  "bmbh": {
+                    "type": "string",
+                    "description": "部门编号"
+                  },
+                  "bmmc": {
+                    "type": "string",
+                    "description": "部门名称"
+                  },
+                  "skssqq": {
+                    "type": "string",
+                    "description": "税款所属期起"
+                  },
+                  "skssqz": {
+                    "type": "string",
+                    "description": "税款所属期止"
+                  },
+                  "yjns": {
+                    "$ref": "#/definitions/YjnsScjgResp"
+                  },
+                  "ndhj": {
+                    "description": "年度汇缴",
+                    "$ref": "#/definitions/240707814"
+                  },
+                  "rybs": {
+                    "$ref": "#/definitions/RybsResp"
+                  }
+                },
+                "required": [
+                  "qymc",
+                  "nsrsbh",
+                  "areaid",
+                  "bmbh",
+                  "bmmc",
+                  "skssqq",
+                  "skssqz"
+                ],
+                "x-apifox-orders": [
+                  "qymc",
+                  "nsrsbh",
+                  "areaid",
+                  "bmbh",
+                  "bmmc",
+                  "skssqq",
+                  "skssqz",
+                  "yjns",
+                  "ndhj",
+                  "rybs"
+                ]
+              }
+            },
+            "required": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ],
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "异常示例",
+      "responseId": 659290804,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 585430906
+    },
+    {
+      "name": "成功",
+      "responseId": 659290804,
+      "data": "{\r\n    \"reqId\": \"e3db06cf8be34319a7e9b1f8437c6a6c\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"taskStatusName\": \"执行成功\",\r\n        \"code\": \"2000\",\r\n        \"message\": \"算税成功\",\r\n        \"taskTypeName\": \"生产经营异步算税\",\r\n        \"taskTypeCode\": \"gs-scjy-ybss\",\r\n        \"taskId\": \"5150798000058075447\",\r\n        \"taskStatus\": \"3\",\r\n        \"result\": {\r\n            \"areaid\": \"130000\",\r\n            \"nsrsbh\": \"9200002999999W0G50\",\r\n            \"skssqq\": \"20250101\",\r\n            \"skssqz\": \"20251231\",\r\n            \"bmbh\": \"\",\r\n            \"bmmc\": \"\",\r\n            \"ndhj\": {},\r\n            \"qymc\": \"永清县XXXXX养殖场\",\r\n            \"rybs\": {\r\n                \"bszrs\": null,\r\n                \"bssblb\": [],\r\n                \"bssbrs\": null,\r\n                \"bscglb\": []\r\n            },\r\n            \"yjns\": {\r\n                \"sszrs\": \"1\",\r\n                \"sssblb\": [],\r\n                \"sssbrs\": \"0\",\r\n                \"fpsrze\": null,\r\n                \"sscglb\": [\r\n                    {\r\n                        \"fpbl\": 1.000000000000000,\r\n                        \"jmse\": 0.00,\r\n                        \"syjkbx\": 0.00,\r\n                        \"ynssde\": 0.00,\r\n                        \"sybx\": 0.00,\r\n                        \"tzzjcfy\": \"1\",\r\n                        \"ybtse\": 0.00,\r\n                        \"qtkc\": 0.00,\r\n                        \"syylbx\": 0.00,\r\n                        \"sskcs\": 0.00,\r\n                        \"zykcdjze\": 0.00,\r\n                        \"sfjcfy\": \"1\",\r\n                        \"xm\": \"张三\",\r\n                        \"zzlx\": \"居民身份证\",\r\n                        \"jbylaobx\": 0.00,\r\n                        \"yijse\": 0.00,\r\n                        \"sl\": 0.05,\r\n                        \"zfgjj\": 0.00,\r\n                        \"zzhm\": \"131000000102100018\",\r\n                        \"jbylbx\": 0.00,\r\n                        \"yssdl\": 0.000000,\r\n                        \"ynse\": 0.00\r\n                    }\r\n                ],\r\n                \"sssbyylb\": []\r\n            }\r\n        }\r\n    }\r\n}",
+      "id": "019b25d8-9fc7-733f-8e2f-15a8fdea3898"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53476811,
+  "ordering": 12,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-04-20T13:25:35.000Z",
+  "updatedAt": "2026-01-14T06:08:58.000Z",
+  "creatorId": 2661157,
+  "editorId": 1452584,
+  "creatorUserId": 2661157,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,206 @@
+{
+  "id": 372510427,
+  "name": "社保费申报明细查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "Xz5bCLoL_m1q1oBVndB8I",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可查询职工社保费申报明细信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/querySocialSecurityFeeDeclarationDetail",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "fkssqq": {
+          "type": "string",
+          "description": "费款所属期起，格式YYYYMM。若不填写姓名，必须填写费款所属期起"
+        },
+        "fkssqz": {
+          "type": "string",
+          "description": "费款所属期止，格式YYYYMM。若不填写姓名，必须填写费款所属期止"
+        },
+        "xm": {
+          "type": "string",
+          "description": "姓名"
+        },
+        "zjlx": {
+          "type": "string",
+          "description": "证件类型"
+        },
+        "zjhm": {
+          "type": "string",
+          "description": "证件号码"
+        },
+        "sbrqq": {
+          "type": "string",
+          "description": "申报日期起"
+        },
+        "sbrqz": {
+          "type": "string",
+          "description": "申报日期止"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz",
+        "xm",
+        "zjlx",
+        "zjhm",
+        "sbrqq",
+        "sbrqz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 807959197,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/217282099"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 807959197,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"sbfsbmxlb\": [\n            {\n                \"zjlx\": \"201\",\n                \"fkssqz\": \"2025-09\",\n                \"fl\": \"1.0\",\n                \"rybm\": \"10000051\",\n                \"zjhm\": \"41100000054\",\n                \"fkssqq\": \"2025-09\",\n                \"zspm\": \"职工大额医疗互助保险(个人缴纳)\",\n                \"sblsh\": \"c70000000000000000bb\",\n                \"sjly\": \"\",\n                \"jfjs\": \"3.0\",\n                \"xm\": \"XXX\",\n                \"dwbh\": \"301000610\",\n                \"sbjbjg\": \"XXXX社会保险基金管理中心（医保）\",\n                \"zsxm\": \"基本医疗保险费\",\n                \"jflx\": \"正常应缴\",\n                \"sbrq\": \"2025-10-13\",\n                \"jfgz\": \"6326.0\",\n                \"zgswjg\": \"国家税务总局XXXX税务局\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 723851458
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 70383929,
+  "ordering": 25,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-11-06T03:40:26.000Z",
+  "updatedAt": "2025-11-19T07:48:53.000Z",
+  "creatorId": 1910680,
+  "editorId": 3222025,
+  "creatorUserId": 1910680,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 7476601,
+  "name": "2025年9月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年9月发布内容\n\n发布日期：2025-09-29\n发布版本：V2.2025.09\n\n\n## 一、发票开具\n 1.销方信息自动补足逻辑\n 默认自动去税局补全销方信息\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579711/image-preview)\n\n2.开票版式文件下载命名规则调整，取税局返回的版式下载名称\n如果有客户需要，需单独进行配置；\n\n3.开票的版式文件下载，提示优化。\n如遇开票日期错误的，原提示【版式文件下载失败, 文件缺失】，优化后提示【开票日期错误】 \n\n## 二、发票查验\n 1.上传文件查验，排除滴滴行程单查验避免消耗识别资源;\n \n## 三、发票认证\n1.新增接口：不可抵扣发票查询\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579717/image-preview)\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579719/image-preview)\n3.发票认证文档字段梳理,冗余字段剔除；\n\n4.认证的进项发票取数，新增了采集类型：不抵扣未勾选发票，用于不抵扣发票勾选\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579722/image-preview)\n5.进项发票取数，从税局导出的文件中多了一列，【风险状态】\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579723/image-preview)\n\n6.异步接口增加同步参数，后续合并同步及异步文档\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579724/image-preview)\n\n7.不抵扣勾选原因精确到发票\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579726/image-preview)\n## 四、发票归集\n1.发票归集-反向开具的发票需要从销项数据内过滤\n 接口文档无变化，反向开具的发票作为进项票进行采集归类；\n2.适配数电通行费发票\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579727/image-preview)\n3.归集二手车发票特定业务类型-返参兼容正向/反向开具\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579728/image-preview)\n4.优化归集大票量耗时\n5.异步版式获取接口-支持返回二维码地址\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579732/image-preview)\n## 五、发票识别\n1.发票识别增加数电票（机动车销售统一发票）、数电票（二手车统一销售发票）\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/579729/image-preview)\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-10-08T03:12:01.000Z",
+  "updatedAt": "2026-03-04T08:46:43.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

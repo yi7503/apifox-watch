@@ -1,0 +1,361 @@
+{
+  "id": 243110626,
+  "name": "对外投资",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "2MRzM-QwqeAXTEj-_hgGZ",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口可用于获取企业投资相关信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/investmentAbroad",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582563627,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "eid": {
+                "type": "string",
+                "title": "企业唯一标识等"
+              },
+              "name": {
+                "type": "string",
+                "title": "企业名称"
+              },
+              "investmentDetails": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "regNo": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "注册号"
+                    },
+                    "companyName": {
+                      "type": "string",
+                      "title": "被投资企业名称"
+                    },
+                    "companyType": {
+                      "type": "string",
+                      "title": "企业机构类型"
+                    },
+                    "regCapital": {
+                      "type": "string",
+                      "title": "注册资本(企业:万元)"
+                    },
+                    "regCapitalCurrency": {
+                      "type": "string",
+                      "title": "注册资本币种"
+                    },
+                    "companyStatus": {
+                      "type": "string",
+                      "title": "企业状态",
+                      "description": "1：存续；2：注销；3：吊销；4：撤销；5：迁出；6：设立中；7：清算中；8：停业；9：其他 ；10：空；11：歇业；12：责令关闭；13：已取缔非法社会组织；14：涉嫌非法社会组织"
+                    },
+                    "regInstitution": {
+                      "type": "string",
+                      "title": "登记机构"
+                    },
+                    "investmentAmount": {
+                      "type": "string",
+                      "title": "投资数额（万）"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "title": "投资单位"
+                    },
+                    "investmentRatio": {
+                      "type": "string",
+                      "title": "投资比例"
+                    },
+                    "investmentMethod": {
+                      "type": "string",
+                      "title": "投资方式"
+                    },
+                    "ipoFlag": {
+                      "type": "string",
+                      "title": "是否上市",
+                      "description": "0 非上市 1 上市"
+                    },
+                    "busiStartDate": {
+                      "type": "string",
+                      "title": "开业时间",
+                      "description": "yyyy-MM-dd格式"
+                    },
+                    "legalPersonName": {
+                      "type": "string",
+                      "title": "法定代表人姓名"
+                    },
+                    "companyCount": {
+                      "type": "string",
+                      "title": "企业总数量"
+                    },
+                    "cancelDate": {
+                      "type": "string",
+                      "title": "注销日期"
+                    },
+                    "revokeDate": {
+                      "type": "string",
+                      "title": "吊销日期"
+                    },
+                    "regAddrQydm": {
+                      "type": "string",
+                      "title": "注册地址行政区编号",
+                      "description": "见附录-地区码-详细行政区编码"
+                    },
+                    "creditNo": {
+                      "type": "string",
+                      "title": "统一社会信用代码"
+                    },
+                    "historyFlag": {
+                      "type": "string",
+                      "title": "历史标记",
+                      "description": "0 否 1 是"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "regNo",
+                    "companyName",
+                    "companyType",
+                    "regCapital",
+                    "regCapitalCurrency",
+                    "companyStatus",
+                    "regInstitution",
+                    "investmentAmount",
+                    "currency",
+                    "investmentRatio",
+                    "investmentMethod",
+                    "ipoFlag",
+                    "busiStartDate",
+                    "legalPersonName",
+                    "companyCount",
+                    "cancelDate",
+                    "revokeDate",
+                    "regAddrQydm",
+                    "creditNo",
+                    "historyFlag"
+                  ],
+                  "required": [
+                    "regNo",
+                    "companyName",
+                    "companyType",
+                    "regCapital",
+                    "regCapitalCurrency",
+                    "companyStatus",
+                    "regInstitution",
+                    "investmentAmount",
+                    "currency",
+                    "investmentRatio",
+                    "investmentMethod",
+                    "ipoFlag",
+                    "busiStartDate",
+                    "legalPersonName",
+                    "companyCount",
+                    "cancelDate",
+                    "revokeDate",
+                    "regAddrQydm",
+                    "creditNo",
+                    "historyFlag"
+                  ]
+                },
+                "title": "具体对外投资明细"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "eid",
+              "name",
+              "investmentDetails"
+            ],
+            "required": [
+              "eid",
+              "name",
+              "investmentDetails"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582563627,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"eid\": \"91110108xxxx85082Q\",\n        \"name\": \"xx科技有限责任公司\",\n        \"investmentDetails\": [\n            {\n                \"regNo\": \"310115003676247\",\n                \"cancelDate\": \"\",\n                \"companyCount\": \"53\",\n                \"regCapital\": \"853.7582\",\n                \"companyType\": \"有限责任公司（外商投资企业与内资合资）\",\n                \"investmentAmount\": \"80.8824\",\n                \"regInstitution\": \"自由贸易试验区市场监督管理局\",\n                \"companyName\": \"xxx有限公司\",\n                \"companyStatus\": \"1\",\n                \"investmentRatio\": \"0.0947368939\",\n                \"revokeDate\": \"\",\n                \"regCapitalCurrency\": \"人民币\",\n                \"legalPersonName\": \"王xx\",\n                \"regAddrQydm\": \"310115\",\n                \"busiStartDate\": \"2018-05-11\",\n                \"creditNo\": \"91310115MA1***QA38\",\n                \"ipoFlag\": \"0\",\n                \"historyFlag\": \"1\"\n            },\n            {\n                \"regNo\": \"110108027520190\",\n                \"cancelDate\": \"\",\n                \"companyCount\": \"53\",\n                \"regCapital\": \"130.719\",\n                \"companyType\": \"有限责任公司（中外合资）\",\n                \"investmentAmount\": \"7.843100\",\n                \"regInstitution\": \"北京市海淀区市场监督管理局\",\n                \"companyName\": \"xxx科技有限公司\",\n                \"companyStatus\": \"1\",\n                \"investmentRatio\": \"0.0599996940\",\n                \"revokeDate\": \"\",\n                \"regCapitalCurrency\": \"人民币\",\n                \"legalPersonName\": \"卫xx\",\n                \"regAddrQydm\": \"110108\",\n                \"busiStartDate\": \"2019-07-25\",\n                \"creditNo\": \"91110108MA01***L30\",\n                \"ipoFlag\": \"0\",\n                \"historyFlag\": \"0\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"reqId\": \"e2110df61ccf491ea4fdd043f85a15aa\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454771790
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582563627,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454771791
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 76,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T02:50:23.000Z",
+  "updatedAt": "2025-07-04T08:13:19.000Z",
+  "creatorId": 2400309,
+  "editorId": 887778,
+  "creatorUserId": 2400309,
+  "editorUserId": 887778,
+  "responseChildren": [
+    "BLANK.582563627"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

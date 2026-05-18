@@ -1,0 +1,17 @@
+{
+  "id": 7151343,
+  "name": "出口退税审核进度说明",
+  "sidebarTitle": "",
+  "content": "```xml\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<business comment=\"审核进度查询\" id=\"SHJDCX\">\n  <body yylxdm=\"1\">\n    <output>\n      <returncode>返回code（0为成功，其他为错误）</returncode>\n      <returnmsg>返回信息</returnmsg>\n      <lclist>\n        <lc>\n            <lchjDm>流程环节代码</lchjDm>\n            <lchjmc>流程环节名称</lchjmc>\n            <blrq>办理日期（yyyy-MM-dd HH:mm:ss）</blrq>\n            <slzzstse>受理增值税退税额</slzzstse>\n            <slxfstse>受理消费税退税额</slxfstse>\n            <slmdse>受理免抵税额</slmdse>\n            <fszzstse>复审增值税退税额</fszzstse>\n            <fsxfstse>复审消费税退税额</fsxfstse>\n            <fsmdse>复审免抵税额</fsmdse>\n            <fsbybltmse>复审不予办理退免税额</fsbybltmse>\n            <fsbyblzzstse>复审不予办理增值税退税额</fsbyblzzstse>\n            <fsbyblxfstse>复审不予办理消费税退税额</fsbyblxfstse>\n            <sehzzzstse>核准增值税退税额</sehzzzstse>\n            <sehzxfstse>核准消费税退税额</sehzxfstse>\n            <sehzmdse>核准免抵税额</sehzmdse>\n            <zkzzstse>暂扣增值税退税额</zkzzstse>\n            <zkxfstse>暂扣消费税退税额</zkxfstse>\n        </lc>\n        <lc>\n            <lchjDm>流程环节代码</lchjDm>\n            <lchjmc>流程环节名称</lchjmc>\n            <blrq>办理日期（yyyy-MM-dd HH:mm:ss）</blrq>\n            <slzzstse>受理增值税退税额</slzzstse>\n            <slxfstse>受理消费税退税额</slxfstse>\n            <slmdse>受理免抵税额</slmdse>\n            <fszzstse>复审增值税退税额</fszzstse>\n            <fsxfstse>复审消费税退税额</fsxfstse>\n            <fsmdse>复审免抵税额</fsmdse>\n            <fsbybltmse>复审不予办理退免税额</fsbybltmse>\n            <fsbyblzzstse>复审不予办理增值税退税额</fsbyblzzstse>\n            <fsbyblxfstse>复审不予办理消费税退税额</fsbyblxfstse>\n            <sehzzzstse>核准增值税退税额</sehzzzstse>\n            <sehzxfstse>核准消费税退税额</sehzxfstse>\n            <sehzmdse>核准免抵税额</sehzmdse>\n            <zkzzstse>暂扣增值税退税额</zkzzstse>\n            <zkxfstse>暂扣消费税退税额</zkxfstse>\n        </lc>\n      </lclist>\n    </output>\n  </body>\n</business>\n```\n\n\n\n|序号 | 数据项标识 | 数据项名称 | 字段类型 | 长度 | 必须 | 说明 |\n| --- | --- | --- | --- | --- | --- | --- |\n|1 | returncode | 返回码 | String | 4 | 是 | 返回code（0为成功，其他为错误）|\n|2 | returnmsg | 返回消息 | String | 300 | 是 | \n|3 | lclist | 流程列表 | / | / | 是 | 父节点 |\n|4 | lc | 流程 | / | / | 是 | 父节点 |\n|5 | lchjDm | 流程环节代码 | String | 10 | 是 | 01,02,04,05,06,07 对应流程环节名称 |\n|6 | lchjmc | 流程环节名称 | String | 20 | 是 | 受理,审核,复审,业务核准,税额核准,发放 |\n|7 | blrq | 办理日期 | String | 20 | 否 | yyyy-MM-dd HH:mm:ss |\n|8 | slzzstse | 受理增值税退税额 | String | 30 | 否 | \n|9 | slxfstse | 受理消费税退税额 | String | 30 | 否 | \n|10 | slmdse | 受理免抵税额 | String | 30 | 否 | \n|11 | fszzstse | 复审增值税退税额 | String | 30 | 否 | \n|12 | fsxfstse | 复审消费税退税额 | String | 30 | 否 | \n|13 | fsmdse | 复审免抵税额 | String | 30 | 否 | \n|14 | fsbybltmse | 复审不予办理退免税额 | String | 30 | 否 | \n|15 | fsbyblzzstse | 复审不予办理增值税退税额 | String | 30 | 否 | \n|16 | fsbyblxfstse | 复审不予办理消费税退税额 | String | 30 | 否 | \n|17 | sehzzzstse | 核准增值税退税额 | String | 30 | 否 | \n|18 | sehzxfstse | 核准消费税退税额 | String | 30 | 否 | \n|19 | sehzmdse | 核准免抵税额 | String | 30 | 否 | \n|20 | zkzzstse | 暂扣增值税退税额 | String | 30 | 否 | \n|21 | zkxfstse | 暂扣消费税退税额 | String | 30 | 否 | \n",
+  "folderId": 63427537,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-07-31T07:32:20.000Z",
+  "updatedAt": "2026-01-13T08:00:39.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

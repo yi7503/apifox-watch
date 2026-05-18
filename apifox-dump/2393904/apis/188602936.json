@@ -1,0 +1,251 @@
+{
+  "id": 188602936,
+  "name": "校验税局缓存是否有效",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n该接口用于36个地区的异步登录成功后，缓存的税局cookie是否有效。\n   支持加密参见：[加密说明](doc-3774763)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/ext/checkAsyncLoginSjCache",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "，该值必填"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "四川传值5100，青岛为3702。该值必填"
+        },
+        "gryhm": {
+          "type": "string",
+          "title": "用户名",
+          "description": "可为：居民身份证/手机号/用户名。该值必填"
+        },
+        "gryhmm": {
+          "type": "string",
+          "title": "个人用户密码",
+          "description": "该值必填，当encryptionType=1时该值必须加密"
+        },
+        "sflx": {
+          "type": "string",
+          "title": "身份类型",
+          "description": "参见附录身份类型"
+        },
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码",
+          "description": "除广东、天津、浙江、湖北外，该值必填"
+        },
+        "encryptionType": {
+          "type": "string",
+          "description": " 1表示加密,默认0不加密",
+          "title": "加密类型"
+        },
+        "isOnlyCheckCache": {
+          "type": "integer",
+          "title": "只检测缓存标识",
+          "description": "1表示只检查缓存不再尝试登录"
+        },
+        "proxyNsrsbh": {
+          "type": "string",
+          "title": "代理机构税号，如果是代理企业该字段必传"
+        }
+      },
+      "x-apifox-orders": [
+        "encryptionType",
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sflx",
+        "sjhm",
+        "isOnlyCheckCache",
+        "proxyNsrsbh"
+      ],
+      "required": [
+        "encryptionType",
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sflx",
+        "sjhm"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "//方式一：传参为指定登录信息\r\n{\r\n    \"nsrsbh\":\"9151xxxxxxxxxxxxxx\",\r\n    \"areaCode\":\"5100\",\r\n    \"gryhm\":\"131xxxxxxxx\",\r\n    \"grymm\":\"xxxxxx\",\r\n    \"sflx\":\"BSY\",\r\n    \"sjhm\":\"131xxxxxxxx\"\r\n}\r\n\r\n ",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "SMZY1iTN7W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "Zt75lxLyjs",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "ZAjVwbTLEP",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 479410284,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "返回结果",
+                "description": "true为缓存有效；false缓存失效"
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "错误码",
+                "description": "2000：接口成功；4xxx;登录信息有误；5xxx:系统错误"
+              },
+              "success": {
+                "description": "接口是否成功（是否发生业务异常）",
+                "type": "boolean",
+                "title": "是否成功标记"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              }
+            },
+            "required": [
+              "code",
+              "success"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 479410284,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": true,\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"d8e97e6e88514e329f28386d2d07f6f0\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 415258108
+    },
+    {
+      "name": "异常示例",
+      "responseId": 479410284,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": true,\n    \"message\": \"参数gryhm不能为空！\",\n    \"reqId\": \"8b2991d73f924e85994670564975aa42\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 415258109
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841717,
+  "ordering": 93,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-08-23T08:16:29.000Z",
+  "updatedAt": "2025-12-05T07:48:41.000Z",
+  "creatorId": 1442097,
+  "editorId": 2400309,
+  "creatorUserId": 1442097,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

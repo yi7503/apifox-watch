@@ -1,0 +1,188 @@
+{
+  "id": 362703729,
+  "name": "三方协议缴款",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "三方缴款",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/thirdPay",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "sfxywysbh": {
+          "type": "string",
+          "description": "三方协议号"
+        },
+        "njsfwysbh": {
+          "type": "string",
+          "description": "年金三方协议号"
+        },
+        "yzpzxhlb": {
+          "type": "array",
+          "description": "应征凭证序号列表",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzxh": {
+                "type": "string",
+                "description": "应征凭证序号"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzxh"
+            ],
+            "required": [
+              "yzpzxh"
+            ]
+          }
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "yzpzxhlb",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "sfxywysbh",
+        "njsfwysbh",
+        "yzpzxhlb"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790204790,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/210327195"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 790204790,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"jglb\": {\n            \"zt\": 1,\n            \"sbyy\": \"查询成功\",\n            \"jkjglb\": [\n                {\n                    \"jfzt\": \"1\",\n                    \"jfje\": 100.50,\n                    \"jkmxlb\": [\n                        {\n                            \"yzpzxh\": \"PZ001\",\n                            \"yzpzmxxh\": \"MX001\",\n                            \"ybtse\": 50.00,\n                            \"jfzt\": \"已缴费\",\n                            \"zsxmdm\": \"XS001\",\n                            \"zspmdm\": \"PM001\",\n                            \"fkssqq\": \"2023-01-01\",\n                            \"fkssqz\": \"2023-01-31\"\n                        },\n                        {\n                            \"yzpzxh\": \"PZ001\",\n                            \"yzpzmxxh\": \"MX002\",\n                            \"ybtse\": 25.50,\n                            \"jfzt\": \"已缴费\",\n                            \"zsxmdm\": \"XS002\",\n                            \"zspmdm\": \"PM002\",\n                            \"fkssqq\": \"2023-02-01\",\n                            \"fkssqz\": \"2023-02-28\"\n                        }\n                    ],\n                    \"sbyy\": \"无\"\n                },\n                {\n                    \"jfzt\": \"0\",\n                    \"jfje\": null,\n                    \"jkmxlb\": [],\n                    \"sbyy\": \"缴费金额不足\"\n                }\n            ]\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715399352
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 70383524,
+  "ordering": 31,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-17T09:07:07.000Z",
+  "updatedAt": "2025-12-03T02:29:16.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

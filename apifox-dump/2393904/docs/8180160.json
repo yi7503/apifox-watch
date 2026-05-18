@@ -1,0 +1,17 @@
+{
+  "id": 8180160,
+  "name": "2026年1月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 申报查询需要返回被更正申报表记录\n2. 企业数据采集支持多账号登录场景\n3. 企业数据采集需要增加返回总分机构信息页签\n4. 企业数据采集-支持新的税种【水资源税税源明细表】\n5. 企业数据采集--违法违章信息需要按照现在税局最新的字段返回\n:::\n## 接口变化\n### 一、申报查询需要返回被更正申报表记录\n1. 接口无变化调整，只是申报查询返回结果的时候同时将被更正的申报表记录进行返回\n2. 业务场景：申报查询节点返回的数据根据更正类型进行判断\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623643/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623642/image-preview)\n\n### 二、企业数据采集支持多账号登录场景\n1. 涉及接口：发起企业数据采集接口\n2. 新增accountId账户id，如果一个税号下面多个账号需要先创建多账号后根据创建完的账户id发起任务\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623644/image-preview)\n\n### 三、 企业数据采集需要增加返回总分机构信息页签\n1. 涉及接口：基础信息（jcxx）节点中的taxCompanyEnterpriseInfoDtoPageResult --基础信息中增加一个字段，总分机构类型（zfjglx）\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623645/image-preview)\n对应税局界面的截图：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623646/image-preview)\n\n### 四、 企业数据采集-支持新的税种【水资源税税源明细表】\n1. 2024年12月税局实行新的政策，申报表发生变化，水资源税不区分A类和B类了。\n2. 属期止大于等于2024-12-31判断成新水资源税，小于2024-12-31则是旧版水资源税税种代码\n3. 延用现在水资源税A类 BDA0610987\n水资源税明细新的报文结构：\n![企业微信截图_17699981922036.png](https://api.apifox.com/api/v1/projects/2393904/resources/623648/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623647/image-preview)\n\n### 五、 企业数据采集--违法违章信息需要按照现在税局最新的字段返回\n1. 涉及接口：基础信息（jcxx）-taxCompanyEnterpriseIllegalDtoPageResult企业涉税违法违章信息 节点新增4个字段：处理状态、是否社保违法、违法所属期起、违法所属期止\n2. 由于目前没有这类账号的数据，新增的4个字段暂时rpa未适配，可以先进行接口对接，后期有税号的时候可以及时适配调整\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623649/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623650/image-preview)\n\n### 六、 其他\n1. 企业数据采集对汇算清缴主表优惠事项码表按照税局全局进行预置\n2. 企业数据采集发票大票量时需要做采集任务分流，避免影响线上正常任务执行\n",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-02-10T13:34:00.000Z",
+  "updatedAt": "2026-02-10T13:40:26.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

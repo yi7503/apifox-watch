@@ -1,0 +1,17 @@
+{
+  "id": 7157789,
+  "name": "2025年7月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年7月发布内容\n\n发布日期：2025-07-29\n发布版本：V1.0.18\n\n## 个税申报新版，升级啦 \n:::\n\n****《代扣代缴》-更新：** \n  1.企业登记及查询服务，新增外管证编号查询(跨区域涉税事项报验管理编号)；\n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/551518/image-preview)\n  2.企业注册，返回对应的纳税人状态字段\n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/551519/image-preview)\n \n  3.算税能力，新增全年一次性奖金个税筹划接口；\n  ?\n  4.申报报送，申报数据报送支持使用本地人员报送，无需客户传入；\n  \n  5.消息查询及处理\n  1）查询信息及反馈（包含员工申诉、争议诉讼风险、线上询证、企业所得税核查等）\n  2）查询异议申诉属实记录人员\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/551680/image-preview)\n  3）发送扣缴确认申报申请\n  ?\n  \n****《生产经营所得》-更新**\n1.新增欠费查询及获取欠费查询反馈\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/551729/image-preview)\n2.新增缴税记录查询\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/551730/image-preview)\n ",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-08-01T07:33:48.000Z",
+  "updatedAt": "2025-08-02T09:45:24.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

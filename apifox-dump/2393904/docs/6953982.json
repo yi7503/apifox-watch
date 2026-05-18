@@ -1,0 +1,17 @@
+{
+  "id": 6953982,
+  "name": "2025年6月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1.excel解析能力补充：支持环保税抽样测算、噪声、固体废物计算减免表解析\n2.简易申报增加税局初始化数据返回\n3.出口退税申研发测试，计划7月产品整体上线\n4.更正申报增加兼容尾差字段\n:::\n\n## 接口变化\n### 一、查询企业信息增加申报期限字段\n1. 涉及接口：查询企业信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540553/image-preview)\n### 二、更正申报增加兼容尾差字段\n1. 涉及接口：发起更正申报任务接口\n2. 运用场景：与申报功能能力一致，复用在更正能力\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540549/image-preview)\n\n### 三、企业所得税优惠\n1. 涉及调整接口：企业所得税上传报文以及excel模版\n2. 具体事项：第7栏优惠事项【其他】、第8栏的优惠事项【其他：减计收入类未列明优惠】、【其他：免税收入类未列明优惠】都增加增加减免税代码jmsdm字段 \n\n- 税局截图：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540545/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540544/image-preview)\n\n### 三、简易申报增值税一般人增加税局初始化数据返回\n1. 涉及接口：发起简易申报任务\n2. 运用场景：通过请求sbInit=Y获取税局带出来的部分初始化数据，进行数据核对以及填写\n3. 支持税种：当前只支持增值税一般人，7月会实现增值税小规模和企业所得税\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540579/image-preview)\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-06-30T12:11:43.000Z",
+  "updatedAt": "2025-06-30T12:11:45.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

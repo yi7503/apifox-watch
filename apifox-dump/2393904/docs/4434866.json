@@ -1,0 +1,17 @@
+{
+  "id": 4434866,
+  "name": "调用模式",
+  "sidebarTitle": "",
+  "content": "## 对接建议\n如果ISV的应用场景涉及到批量的操作，业务并发量大，为了确保系统不会出现堵塞，让用户有良好的使用体验，建议使用异步任务模式进行对接。\n\n**以发票归集为例**\n为一个办税人员名下多个主体发起发票归集，则ISV系统发起多个主体的任务，批量提交之后，系统会判断要处理的主体是否有相同的办税人员，进行任务调度，逐个执行。这样处理的好处是最小程度消耗登录短信，实现一次登录之后，批量税号处理，且不再消耗短信。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/444740/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/444741/image-preview)\n\n**以发票查验为例**\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/444739/image-preview)",
+  "folderId": 13476167,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-05-31T08:29:03.000Z",
+  "updatedAt": "2024-05-31T08:56:26.000Z",
+  "creatorId": 537256,
+  "editorId": 537256,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

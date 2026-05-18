@@ -1,0 +1,17 @@
+{
+  "id": 2228019,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n\n接口支持各税种申报表数据上传，可根据参数(isDirectDeclare)控制是否直接申报。另外也支持通过excel文件上传数据。\n\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372891/image-preview)\n\n\n\n\n第一步：上传各税种的报表数据/上传各税种申报表excel数据。\n| 接口 |  地址|  说明 | \n| --- | --- |--- |\n| 上传各税种申报表数据 | v2/tax/qys/writeTaxData |上传各税种整表数据（每次只能上传一个税种），需要整表数据。 |\n\n第二步：根据上传各税种的报表数据成功后的taskID查询查询上传各税种申报表数据任务结果。\n| 接口 |  地址|  说明 | \n| --- | --- |--- |\n| 查询上传各税种申报表数据任务结果 | v2/tax/qys/queryTaskInfo| 该接口用于根据taskId查询异步申报任务执行进度信息|\n",
+  "folderId": 13282000,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-23T12:41:35.000Z",
+  "updatedAt": "2025-12-04T07:30:13.000Z",
+  "creatorId": 1485992,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

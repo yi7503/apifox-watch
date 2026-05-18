@@ -1,0 +1,155 @@
+{
+  "id": 386738300,
+  "name": "企业变更信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/alterInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {},
+      "x-apifox-orders": [
+        "01KBPH3DGM3XSJMZA90Y1S9E0M"
+      ],
+      "x-apifox-refs": {
+        "01KBPH3DGM3XSJMZA90Y1S9E0M": {
+          "$ref": "#/definitions/226132661"
+        }
+      },
+      "required": []
+    },
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"name\":\"xxx信息技术有限公司\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 756724463,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [
+                    "01KBP5SZ3Z2AQ7VE07A3KPWMH2"
+                  ],
+                  "required": [],
+                  "x-apifox-refs": {
+                    "01KBP5SZ3Z2AQ7VE07A3KPWMH2": {
+                      "$ref": "#/definitions/226035246"
+                    }
+                  }
+                },
+                "title": "数据内容"
+              }
+            },
+            "x-apifox-orders": [
+              "01KBP4638NCHKWFNS6NY4WR3ER",
+              "list"
+            ],
+            "x-apifox-refs": {
+              "01KBP4638NCHKWFNS6NY4WR3ER": {
+                "$ref": "#/definitions/226018507"
+              }
+            },
+            "title": "业务数据",
+            "required": [
+              "list"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01KBP50AE88HGXZ4B60FF0TCR8"
+        ],
+        "x-apifox-refs": {
+          "01KBP50AE88HGXZ4B60FF0TCR8": {
+            "$ref": "#/definitions/226032752"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 756724463,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"page\": {\n            \"totalRecords\": 4,\n            \"pageIndex\": 1,\n            \"pageSize\": 10\n        },\n        \"list\": [\n            {\n                \"afterContent\": \"手机技术开发；手机生产、手机服务。技术开发；货物进出口、技术进出口、代理进出口；销售通讯设备；维修仪器仪表；维修办公设备；承办展览展示活动；会议服务；筹备、策划、组织大型庆典。 （未取得行政许可的项目除外）\",\n                \"changeType\": \"经营范围变更\",\n                \"changeDate\": \"2012-08-29\",\n                \"changeItem\": \"经营范围\",\n                \"beforeContent\": \"手机技术开发；手机生产、手机服务。技术开发；货物进出口、技术进出口、代理进出口。\"\n            },\n            {\n                \"afterContent\": \"1 ** 董事长；2 ** 董事；3 ** 董事；4 ** 经理；5 ** 监事\",\n                \"changeType\": \"主要人员\",\n                \"changeDate\": \"2010-07-28\",\n                \"changeItem\": \"董事（理事）、经理、监事\",\n                \"beforeContent\": \"1 ** 执行董事；2 ** 经理；3 ** 监事\"\n            },\n            {\n                \"afterContent\": \"2343243.5989万元\",\n                \"changeType\": \"注册资金变更\",\n                \"changeDate\": \"2017-05-24\",\n                \"changeItem\": \"注册资本\",\n                \"beforeContent\": \"263734.4978万元\"\n            },\n            {\n                \"afterContent\": \"2691.5989\",\n                \"changeType\": \"实收资本变更\",\n                \"changeDate\": \"2014-08-24\",\n                \"changeItem\": \"实收资本（金）\",\n                \"beforeContent\": \"263734.4978\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"成功\",\n    \"timestamp\": \"2025-12-05 09:46:50\",\n    \"reqId\": \"2e86bf8923a2192d0af1aa04be0df470\"\n}",
+      "id": 672748785
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 288,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-12-05T01:51:40.000Z",
+  "updatedAt": "2025-12-05T05:52:45.000Z",
+  "creatorId": 887900,
+  "editorId": 887900,
+  "creatorUserId": 887900,
+  "editorUserId": 887900,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

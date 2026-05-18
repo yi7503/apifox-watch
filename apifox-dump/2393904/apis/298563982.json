@@ -1,0 +1,313 @@
+{
+  "id": 298563982,
+  "name": "企业申报数据明细查询 ",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "wE4dJAilctFZFrbCkd58h",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口，用于查询企业申报明细数据。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/report/queryDeclareDetailsInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssq": {
+          "type": "string",
+          "title": "所属期",
+          "description": "格式：YYYYMM"
+        },
+        "reportType": {
+          "type": "string",
+          "title": "报表类型",
+          "description": "传入数值：\n1：综合所得\n2: 分类所得\n3：非居民所得\n4: 限售股所得\n"
+        },
+        "pageNo": {
+          "type": "string",
+          "title": "页码",
+          "description": "页码大于0，"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页的数量",
+          "description": "数量大于0，建议每页数量小于5000\n\n"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "pageSize",
+        "pageNo",
+        "reportType"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "reportType",
+        "pageNo",
+        "pageSize"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4660490224698496\",\r\n    \"accountId\": \"4660623092389760\",\r\n    \"skssq\": \"202505\",\r\n    \"reportType\": \"1\",\r\n    \"pageNo\": \"1\",\r\n    \"pageSize\": \"5\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 680117134,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "pageNo": {
+                "type": "string",
+                "title": "页码"
+              },
+              "01JVRCXXDVAR6T11MH6YS92TFS": {
+                "x-tmp-pending-properties": true
+              },
+              "pageSize": {
+                "type": "string",
+                "title": "每页的数量"
+              },
+              "sfhj": {
+                "$ref": "#/definitions/169787917",
+                "title": "合计"
+              },
+              "sfmx": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/169759157"
+                },
+                "title": "明细数据"
+              }
+            },
+            "x-apifox-orders": [
+              "total",
+              "pageNo",
+              "pageSize",
+              "sfhj",
+              "sfmx",
+              "01JVRCXXDVAR6T11MH6YS92TFS"
+            ],
+            "title": "响应数据",
+            "required": [
+              "total",
+              "pageSize",
+              "pageNo",
+              "01JVRCXXDVAR6T11MH6YS92TFS",
+              "sfmx",
+              "sfhj"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 680117134,
+      "data": "{\n    \"reqId\": \"dbdddae7962e42118d007e8ac42ed387\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"data\": {\n        \"total\": 2,\n        \"pageNo\": 1,\n        \"pageSize\": 5,\n        \"sfhj\": {\n            \"jmsehj\": 36,\n            \"ljsylrzchj\": 58,\n            \"ljyyezhzchj\": 60,\n            \"syylbxhj\": 28,\n            \"ljzykcjzehj\": 0,\n            \"njhj\": 24,\n            \"ljqtkcehj\": 0,\n            \"qthj\": 30,\n            \"ljgryljhj\": 62,\n            \"syjkbxhj\": 26,\n            \"jbylaobxfhj\": 16,\n            \"yxkcsfhj\": 0,\n            \"tzdkhj\": 0,\n            \"ynsehj\": 0,\n            \"ccyzhj\": 0,\n            \"ykjsehj\": 66,\n            \"zfgjjhj\": 22,\n            \"ljzfdklxzchj\": 56,\n            \"ljzfzjzchj\": 54,\n            \"jbylbxfhj\": 18,\n            \"ynssdehj\": 0,\n            \"zykcjzehj\": 34,\n            \"ljsrehj\": 0,\n            \"sybxfhj\": 20,\n            \"mssdhj\": 14,\n            \"ljzxkcehj\": 0,\n            \"ybtsehj\": 68,\n            \"ljjxjyzchj\": 52,\n            \"ljznjyzchj\": 50\n        },\n        \"sfmx\": [\n            {\n                \"sfmxsb\": \"0\",\n                \"njcfy\": 0,\n                \"ljjxjyzc\": 26,\n                \"ljsre\": 0,\n                \"yxkcsf\": 0,\n                \"syylbx\": 14,\n                \"kcjjcxmhj\": 0,\n                \"zykcjze\": 17,\n                \"zrgs\": 0,\n                \"ynse\": 0,\n                \"ljzxkce\": 0,\n                \"qt\": 15,\n                \"syjkbx\": 13,\n                \"ljfxljxjyzc\": 0,\n                \"sybxf\": 10,\n                \"ljznjyzc\": 25,\n                \"ccyz\": 0,\n                \"sskcs\": 0,\n                \"ykjse\": 33,\n                \"nsrsbh\": \"QXY000000000000000\",\n                \"sdxm\": \"正常工资薪金\",\n                \"jjbl\": 100,\n                \"tzdk\": 0,\n                \"ftnds\": 1,\n                \"nj\": 12,\n                \"ljqtkce\": 0,\n                \"mgjsjg\": 0,\n                \"xsgyz\": 0,\n                \"ljzykcjze\": 0,\n                \"mssd\": 7,\n                \"jbylaobxf\": 8,\n                \"ynssde\": 0,\n                \"ybtse\": 34,\n                \"ljgrylj\": 31,\n                \"jbylbxf\": 9,\n                \"yingkjse\": 0,\n                \"ljxljxjyzc\": 0,\n                \"bz\": \"16\",\n                \"sl\": 0,\n                \"ljzfzjzc\": 27,\n                \"zfgjj\": 11,\n                \"ljjcfye\": 0,\n                \"jmse\": 18,\n                \"hlsf\": 0,\n                \"sre\": 1,\n                \"ljyyezhzc\": 30,\n                \"xm\": \"张三\",\n                \"zzlx\": \"外国护照\",\n                \"zzhm\": \"142222199901111111\",\n                \"jcfy\": 0,\n                \"xdsl\": 0,\n                \"ljzfdklxzc\": 28,\n                \"ljsylrzc\": 29\n            },\n            {\n                \"sfmxsb\": \"0\",\n                \"njcfy\": 0,\n                \"ljjxjyzc\": 26,\n                \"ljsre\": 0,\n                \"yxkcsf\": 0,\n                \"syylbx\": 14,\n                \"kcjjcxmhj\": 0,\n                \"zykcjze\": 17,\n                \"zrgs\": 0,\n                \"ynse\": 0,\n                \"ljzxkce\": 0,\n                \"qt\": 15,\n                \"syjkbx\": 13,\n                \"ljfxljxjyzc\": 0,\n                \"sybxf\": 10,\n                \"ljznjyzc\": 25,\n                \"ccyz\": 0,\n                \"sskcs\": 0,\n                \"ykjse\": 33,\n                \"nsrsbh\": \"QXY000000000000000\",\n                \"sdxm\": \"正常工资薪金\",\n                \"jjbl\": 100,\n                \"tzdk\": 0,\n                \"ftnds\": 1,\n                \"nj\": 12,\n                \"ljqtkce\": 0,\n                \"mgjsjg\": 0,\n                \"xsgyz\": 0,\n                \"ljzykcjze\": 0,\n                \"mssd\": 7,\n                \"jbylaobxf\": 8,\n                \"ynssde\": 0,\n                \"ybtse\": 34,\n                \"ljgrylj\": 31,\n                \"jbylbxf\": 9,\n                \"yingkjse\": 0,\n                \"ljxljxjyzc\": 0,\n                \"bz\": \"16\",\n                \"sl\": 0,\n                \"ljzfzjzc\": 27,\n                \"zfgjj\": 11,\n                \"ljjcfye\": 0,\n                \"jmse\": 18,\n                \"hlsf\": 0,\n                \"sre\": 1,\n                \"ljyyezhzc\": 30,\n                \"xm\": \"李四\",\n                \"zzlx\": \"外国护照\",\n                \"zzhm\": \"142222199901111111\",\n                \"jcfy\": 0,\n                \"xdsl\": 0,\n                \"ljzfdklxzc\": 28,\n                \"ljsylrzc\": 29\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 593213254
+    },
+    {
+      "name": "异常示例",
+      "responseId": 680117134,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 593213255
+    },
+    {
+      "name": "查询失败",
+      "responseId": 680117134,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 593213256
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153106,
+  "ordering": 79,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-21T02:01:00.000Z",
+  "updatedAt": "2026-01-08T08:22:43.000Z",
+  "creatorId": 1452584,
+  "editorId": 2795319,
+  "creatorUserId": 1452584,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

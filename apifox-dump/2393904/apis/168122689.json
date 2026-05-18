@@ -1,0 +1,335 @@
+{
+  "id": 168122689,
+  "name": "查询已勾选归集任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：\n1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)\n2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态\"status\"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)\n3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/collectCheckedInvoiceStatus",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "required": [
+        "taskId",
+        "nsrsbh",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "nsrsbh",
+        "taskId"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"913101*****1ADDDDL2G\",\r\n    \"taskId\": \"278ae26be2*****41fe4fb4784714\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "ZCfLUQfYds",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "uyCYmAnsKP",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "hOlnAcnrjx",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 438797981,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id",
+            "description": "每次请求生成的唯一标识，建议保存，接口异常时方便排查"
+          },
+          "code": {
+            "type": "string",
+            "description": "返回2000成功，其他表示失败",
+            "title": "任务状态"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "null",
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "appKey": {
+                "type": "integer",
+                "title": "appkey"
+              },
+              "collectType": {
+                "type": "string",
+                "description": "忽略此字段"
+              },
+              "createTime": {
+                "type": "string",
+                "title": "创建时间",
+                "description": "YYYY-MM-DD HH:MM:SS"
+              },
+              "failCode": {
+                "type": "string",
+                "title": "失败code"
+              },
+              "failMsg": {
+                "type": "string",
+                "title": "失败提示信息"
+              },
+              "fplxStr": {
+                "type": "string",
+                "title": "发票类型",
+                "description": "见「发票归集-附录-发票类型代码」"
+              },
+              "jsonUrl": {
+                "type": "string",
+                "title": "采集到发票存储到的ossUrl"
+              },
+              "jxxbz": {
+                "type": "string",
+                "title": "进销项标志",
+                "enum": [
+                  "xx-销项",
+                  "jx-进项"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "xx-销项",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "jx-进项",
+                    "name": "",
+                    "description": ""
+                  }
+                ]
+              },
+              "kpyfq": {
+                "type": "integer",
+                "title": "所属期起",
+                "description": "YYYYMMDD"
+              },
+              "kpyfz": {
+                "type": "integer",
+                "title": "所属期止",
+                "description": "YYYYMMDD"
+              },
+              "nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "status": {
+                "type": "string",
+                "title": "任务状态",
+                "enum": [
+                  "0-待执行",
+                  "1-进行中",
+                  "2-失败",
+                  "3-成功"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0-待执行",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "1-进行中",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "2-失败",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "3-成功",
+                    "name": "",
+                    "description": ""
+                  }
+                ]
+              },
+              "updateTime": {
+                "type": "string",
+                "title": "更新时间",
+                "description": "YYYY-MM-DD HH:MM:SS"
+              }
+            },
+            "required": [
+              "appKey",
+              "collectType",
+              "createTime",
+              "failCode",
+              "failMsg",
+              "fplxStr",
+              "jsonUrl",
+              "jxxbz",
+              "kpyfq",
+              "kpyfz",
+              "nsrsbh",
+              "status",
+              "updateTime"
+            ],
+            "x-apifox-orders": [
+              "status",
+              "failCode",
+              "failMsg",
+              "appKey",
+              "nsrsbh",
+              "fplxStr",
+              "jxxbz",
+              "kpyfq",
+              "kpyfz",
+              "createTime",
+              "updateTime",
+              "jsonUrl",
+              "collectType"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 438797981,
+      "data": "{\n    \"reqId\": \"278ae26be2004e9ea641fe4fb4784714\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"appKey\": 10001999,\n        \"collectType\": \"1\",\n        \"createTime\": \"2024-01-30 17:18:36\",\n        \"failCode\": \"2000\",\n        \"failMsg\": \"操作成功\",\n        \"fplxStr\": \"01,03,04,08,10,11,14,15,17,81,82,84,85\",\n        \"jsonUrl\": \"\",\n        \"jxxbz\": \"jx,xx\",\n        \"kpyfq\": 202312,\n        \"kpyfz\": 202312,\n        \"nsrsbh\": \"91310118MA1ADDDDL2G\",\n        \"status\": \"3\",\n        \"updateTime\": \"2024-01-30 17:18:54\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 406523510
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58690949,
+  "ordering": 203,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-03T02:31:51.000Z",
+  "updatedAt": "2025-07-29T03:09:19.000Z",
+  "creatorId": 2118003,
+  "editorId": 2706439,
+  "creatorUserId": 2118003,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.438797981"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

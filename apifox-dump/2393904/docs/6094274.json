@@ -1,0 +1,17 @@
+{
+  "id": 6094274,
+  "name": "业务指引",
+  "sidebarTitle": "",
+  "content": "## 概述\n构建标准、扩展性强、可运营的在线申报平台，以服务公司企业端为中心，并对第三方企业信息、 财税业务数据进行标准化处理。打通企业与个人所得税扣缴客户端的数据传输通道，支持各企业的个人所得税的申报表数据报送到局端并完成人员报送、申报、税款缴纳、查询及下载和完税证明下载等相关业务，负责搭建公司内部企业端与外部系统间的开放桥梁。\n\n## 代扣代缴业务-调用流程示例\n\n \n\n\n\n\n\n![企业微信截图_17434785355727.png](https://api.apifox.com/api/v1/projects/2393904/resources/508880/image-preview)\n\n\n",
+  "folderId": 47732261,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-02-27T02:26:10.000Z",
+  "updatedAt": "2025-04-01T03:36:21.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

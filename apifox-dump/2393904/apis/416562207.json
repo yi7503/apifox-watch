@@ -1,0 +1,289 @@
+{
+  "id": 416562207,
+  "name": "公益慈善捐赠信息采集",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "当前接口用于发起相关人员的公益捐赠信息采集任务",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/dkdj/gycsjzxxcj",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        },
+        "kcnd": {
+          "type": "string",
+          "title": "扣除年度"
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "title": "姓名"
+              },
+              "zzhm": {
+                "type": "string",
+                "title": "证照号码"
+              },
+              "jzpzh": {
+                "type": "string",
+                "title": "捐赠凭证号"
+              },
+              "sfyqdjzpz": {
+                "type": "string",
+                "title": "是否已取得捐赠凭证"
+              },
+              "kcbl": {
+                "type": "number",
+                "title": "扣除比例",
+                "description": "可填：0.3 或 1"
+              },
+              "jzje": {
+                "type": "number",
+                "title": "捐赠金额",
+                "description": "大于＞0且保留两位小数"
+              },
+              "pjkjlx": {
+                "type": "string",
+                "title": "票据开具类型",
+                "description": "可填：汇总票据 或 单人票据"
+              },
+              "jzrq": {
+                "type": "string",
+                "title": "捐赠日期"
+              },
+              "jzlx": {
+                "type": "string",
+                "title": "捐赠类型",
+                "description": "可填：向红十字事业的捐赠；向福利性、非营利性的老年服务；向农村义务教育的捐赠；向教育事业的捐赠；捐赠住房作为公租房；其他公益救济性的捐赠"
+              },
+              "zzlx": {
+                "type": "string",
+                "title": "证件类型"
+              },
+              "zmcl": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "wjmc": {
+                      "type": "string",
+                      "title": "文件名称",
+                      "description": "需带上文件的扩展名，如：xxx.pdf、xxx.png等"
+                    },
+                    "wjurl": {
+                      "type": "string",
+                      "title": "文件URL",
+                      "description": "证明材料的文件上传的url（文件上传参考 [文件上传](apifox://link/pages/8334504) ）"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "wjmc",
+                    "wjurl"
+                  ],
+                  "required": [
+                    "wjmc",
+                    "wjurl"
+                  ]
+                },
+                "title": "证明材料列表",
+                "description": "上传捐赠票据等证明材料，最多可上传10个文件，单个文件大小不超过4M，支持BMP、PNG、JPG、JPEG、PDF格式。"
+              },
+              "szdwtyshxydm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "受赠单位统一社会信用代码"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzhm",
+              "jzpzh",
+              "szdwtyshxydm",
+              "sfyqdjzpz",
+              "kcbl",
+              "jzje",
+              "pjkjlx",
+              "jzrq",
+              "jzlx",
+              "zzlx",
+              "zmcl"
+            ],
+            "required": [
+              "xm",
+              "zzhm",
+              "jzpzh",
+              "sfyqdjzpz",
+              "kcbl",
+              "jzje",
+              "pjkjlx",
+              "jzrq",
+              "jzlx",
+              "zzlx",
+              "zmcl"
+            ]
+          },
+          "title": "人员列表"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "kcnd",
+        "rylb"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "kcnd",
+        "rylb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\n    \"aggOrgId\": \"53547492576****\",\n    \"accountId\": \"45625882512****\",\n    \"kcnd\": \"2026\",\n    \"rylb\": [\n        {\n            \"xm\": \"王**\",\n            \"zzhm\": \"12****\",\n            \"jzpzh\": \"12****\",\n            \"sfyqdjzpz\": \"是\",\n            \"kcbl\": \"0.3\",\n            \"jzje\": 30,\n            \"pjkjlx\": \"票据开具类型\",\n            \"jzrq\": \"2025-01-01\",\n            \"jzlx\": \"捐赠类型\",\n            \"zzlx\": \"证照类型\",\n            \"zmcl\": [\n                {\n                    \"wjmc\": \"证明材料名称.pdf\",\n                    \"wjurl\": \"http://qxy.com\"\n                }\n            ]\n        }\n    ]\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 126688662,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "返回是否成功"
+          },
+          "message": {
+            "type": "null",
+            "title": "返回信息描述"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务id"
+              }
+            },
+            "required": [
+              "taskId"
+            ],
+            "x-apifox-orders": [
+              "taskId"
+            ],
+            "title": "返回业务数据"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 126688662,
+      "data": "{\r\n    \"reqId\": \"35bea694695f4dfdba7d423f0081d244\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"taskId\": \"5255666027446264897\"\r\n    }\r\n}",
+      "id": "019c35f4-6f85-77ba-bf20-451da79d77db"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 78249522,
+  "ordering": 10,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-06T09:44:27.000Z",
+  "updatedAt": "2026-03-17T08:38:38.000Z",
+  "creatorId": 887778,
+  "editorId": 493303,
+  "creatorUserId": 887778,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

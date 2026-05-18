@@ -1,0 +1,316 @@
+{
+  "id": 362059298,
+  "name": "特殊缴款申报提交反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "oRUknXF0T0ks8EcgnQfyA",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "特殊缴款申报提交反馈",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/specPayDeclarationFk",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId",
+        "accountId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 788944181,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "title": "请求id"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务Id"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态"
+              },
+              "taskStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "sbjglb": {
+                    "type": "object",
+                    "title": "申报结果对象",
+                    "properties": {
+                      "yzpzxh": {
+                        "type": "string",
+                        "title": "应征凭证序号"
+                      },
+                      "sjyjfe": {
+                        "type": "string",
+                        "title": "实际应缴费额合计"
+                      },
+                      "yclsl": {
+                        "type": "string",
+                        "title": "预处理数量"
+                      },
+                      "mxlb": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "zgswjgmc": {
+                              "type": "string",
+                              "title": "主管税务机关名称"
+                            },
+                            "ssqq": {
+                              "type": "string",
+                              "title": "所属期起"
+                            },
+                            "ssqz": {
+                              "type": "string",
+                              "title": "所属期止"
+                            },
+                            "sjly": {
+                              "type": "string",
+                              "title": "数据来源"
+                            },
+                            "sbjbjg": {
+                              "type": "string",
+                              "title": "社保经办机构"
+                            },
+                            "dwbh": {
+                              "type": "string",
+                              "title": "单位编号"
+                            },
+                            "zjtzlsh": {
+                              "type": "string",
+                              "title": "征集通知流水号"
+                            }
+                          },
+                          "required": [
+                            "zgswjgmc",
+                            "zjtzlsh",
+                            "ssqq",
+                            "ssqz",
+                            "sjly",
+                            "sbjbjg",
+                            "dwbh"
+                          ],
+                          "x-apifox-orders": [
+                            "zgswjgmc",
+                            "zjtzlsh",
+                            "ssqq",
+                            "ssqz",
+                            "sjly",
+                            "sbjbjg",
+                            "dwbh"
+                          ]
+                        },
+                        "title": "明细列表"
+                      },
+                      "yjfe": {
+                        "type": "string",
+                        "title": "应缴费额合计"
+                      }
+                    },
+                    "required": [
+                      "sjyjfe",
+                      "yclsl",
+                      "mxlb",
+                      "yjfe",
+                      "yzpzxh"
+                    ],
+                    "x-apifox-orders": [
+                      "yzpzxh",
+                      "yjfe",
+                      "sjyjfe",
+                      "yclsl",
+                      "mxlb"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "sbjglb"
+                ],
+                "title": "任务返回业务结果"
+              }
+            },
+            "required": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message"
+            ],
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "reqId",
+          "success",
+          "data",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "reqId",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 788944181,
+      "data": "{\r\n  \"code\": \"2000\",\r\n  \"reqId\": \"53ae1981bb6d4a4a8300ac35eacf85fc\",\r\n  \"success\": true,\r\n  \"data\": {\r\n    \"taskId\": \"1000000000000001102\",\r\n    \"taskTypeCode\": \"gs-rybs\",\r\n    \"taskTypeName\": \"人员报送\",\r\n    \"taskStatus\": \"3\",\r\n    \"taskStatusName\": \"执行成功\",\r\n    \"code\": \"2000\",\r\n    \"message\": \"人员报送成功\",\r\n    \"result\": {\r\n      \"sbjglb\": {\r\n        \"yzpzxh\": \"YP202310001\",\r\n        \"yjfy\": \"15000.00\",\r\n        \"sjyjfe\": \"13000.00\",\r\n        \"yclsl\": \"150\",\r\n        \"mxlb\": [\r\n          {\r\n            \"zgswjgmc\": \"北京市海淀区税务局\",\r\n            \"zjtzlsh\": \"TZ2023100001\",\r\n            \"ssqq\": \"20231001\",\r\n            \"ssqz\": \"20231031\",\r\n            \"sjly\": \"社保系统\",\r\n            \"sbjbjg\": \"北京市海淀区社保中心\",\r\n            \"dwbh\": \"DWD2023001\"\r\n          },\r\n          {\r\n            \"zgswjgmc\": \"北京市海淀区税务局\",\r\n            \"zjtzlsh\": \"TZ2023100002\",\r\n            \"ssqq\": \"20231001\",\r\n            \"ssqz\": \"20231031\",\r\n            \"sjly\": \"医保系统\",\r\n            \"sbjbjg\": \"北京市海淀区医保中心\",\r\n            \"dwbh\": \"DWD2023001\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "id": 714039592
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68408456,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-16T08:13:36.000Z",
+  "updatedAt": "2025-11-19T06:59:38.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

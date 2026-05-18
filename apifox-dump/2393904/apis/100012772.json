@@ -1,0 +1,199 @@
+{
+  "id": 100012772,
+  "name": "获取人脸识别二维码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "1.通过本接口可获取需要税务APP扫脸认证的二维码信息；\n2.接口调用成功后需请求「获取人脸识别结果」接口，方可完成整个扫脸认证流程；\n3.二维码有效期5分钟左右，如调用异常可重新调接口获取。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/rzewm",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：rzewm"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB908EP882D1QNKZBXX8FNE"
+      ],
+      "x-apifox-refs": {
+        "01HMB908EP882D1QNKZBXX8FNE": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"rzewm\",\r\n    \"nsrsbh\": \"**********1J34556\",\r\n    \"accountId\": \"**********92777\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847706,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "nsrssbh": {
+                "type": "string",
+                "title": "纳税人识别号",
+                "description": "请求参数原样返回"
+              },
+              "ewm": {
+                "type": "string",
+                "title": "电子税务局APP扫脸二维码内容",
+                "description": "3分钟缓存"
+              },
+              "rzid": {
+                "type": "string",
+                "title": "电子税务局APP扫脸认证ID，通过该ID可查询是否已刷脸状态"
+              },
+              "kpr": {
+                "type": "string",
+                "title": "开票员姓名",
+                "description": "请求参数原样返回"
+              },
+              "gwEwm": {
+                "type": "string",
+                "title": "国家网络身份认证APP扫脸二维码内容",
+                "description": "3分钟缓存"
+              },
+              "gwRzid": {
+                "type": "string",
+                "title": "国家网络身份认证APP扫脸认证ID，通过该ID可查询是否已刷脸状态"
+              }
+            },
+            "required": [
+              "ewm",
+              "rzid",
+              "gwEwm",
+              "gwRzid"
+            ],
+            "x-apifox-orders": [
+              "nsrssbh",
+              "ewm",
+              "rzid",
+              "gwEwm",
+              "gwRzid",
+              "kpr"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRE3PPMPACPWXX3XG5W4SX80"
+        ],
+        "x-apifox-refs": {
+          "01HRE3PPMPACPWXX3XG5W4SX80": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "获取成功",
+      "responseId": 248847706,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"gwRzid\": \"NNIAabe************1493a\",\n        \"nsrssbh\": \"91************FT5G\",\n        \"rzid\": \"5e950eee***********69389ed\",\n        \"gwEwm\": \"V1ECA*********************+9s6tVdzhtifrtN\",\n        \"ewm\": \"qrcode_id=by9N***************Yobk7zzkNM&areaPrefix=4403&interfaceCode=0004\",\n        \"kpr\": null\n    },\n    \"timestamp\": \"2026-01-23 09:39:21\",\n    \"reqId\": \"ecb3c034ac012b8567e5c20cd1a685a2\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400130247
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58654707,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-10T02:31:28.000Z",
+  "updatedAt": "2026-01-23T01:53:58.000Z",
+  "creatorId": 2706439,
+  "editorId": 3099717,
+  "creatorUserId": 2706439,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

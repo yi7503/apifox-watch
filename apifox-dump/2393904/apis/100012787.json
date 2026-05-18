@@ -1,0 +1,426 @@
+{
+  "id": 100012787,
+  "name": "已开发票列表查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "从局端查询符合指定条件的发票列表。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/fpcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：fpcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer",
+              "title": "当前页码"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页行数",
+              "description": "10 、 20、50、100"
+            },
+            "params": {
+              "type": "object",
+              "properties": {
+                "fphm": {
+                  "type": "string",
+                  "title": "指定数电发票号码查询"
+                },
+                "dfnsrsbh": {
+                  "type": "string",
+                  "title": "对方税号"
+                },
+                "dfnsrmc": {
+                  "type": "string",
+                  "title": "对方纳税人名称"
+                },
+                "kprqq": {
+                  "type": "string",
+                  "title": "开票起始日期",
+                  "description": "yyyy-MM-dd 起止日期必传且为一年内"
+                },
+                "kprqz": {
+                  "type": "string",
+                  "title": "开票结束日期",
+                  "description": "yyyy-MM-dd 起止日期必传且为一年内"
+                },
+                "zz_fpdm": {
+                  "type": "string",
+                  "title": "增值税发票代码"
+                },
+                "zz_fphm": {
+                  "type": "string",
+                  "title": "增值税发票号码"
+                },
+                "gjbq": {
+                  "type": "string",
+                  "title": "归集标签(1 开具发票 2 取得发票  默认开具发票)"
+                },
+                "fpztDm": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "发票状态代码",
+                  "description": "默认查询全部 01-正常 02-已作废 03-已红冲-全额 04-已红冲-部分 "
+                },
+                "fplxDm": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "发票类型代码",
+                  "description": "默认查询全部 032:电子专用发票;030:电子普通发票;004:增值税纸质专用发票;007:增值税纸质普通发票;025:增值税纸质普通发票（卷式发票）;026:增值税电子普通发票;028:增值税电子专用发票;005:机动车发票;015:二手车发票;51:数电发票（铁路电子客票）;61:数电发票（航空运输电子客票行程单）;87:数电纸质发票（机动车销售统一发票）;88:数电纸质发票（二手车销售统一发票）;83：数电发票（机动车销售统一发票）;70:数电发票（二手车销售统一发票）;84：数电纸质发票（增值税专用发票）;85：数电纸质发票（普通发票）;8208：数电发票（通行费发票）"
+                }
+              },
+              "x-apifox-orders": [
+                "fphm",
+                "fpztDm",
+                "fplxDm",
+                "dfnsrsbh",
+                "dfnsrmc",
+                "kprqq",
+                "kprqz",
+                "zz_fpdm",
+                "zz_fphm",
+                "gjbq"
+              ],
+              "title": "查询参数",
+              "required": [
+                "kprqq",
+                "kprqz"
+              ]
+            }
+          },
+          "required": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "x-apifox-orders": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB9E9PSSC5GWM1888RBJ4HT"
+      ],
+      "x-apifox-refs": {
+        "01HMB9E9PSSC5GWM1888RBJ4HT": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"fpcx\",\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"data\": {\r\n        \"pageIndex\": 0,\r\n        \"pageSize\": 10,\r\n        \"params\": {\r\n            \"kprqq\": \"2023-01-01\",\r\n            \"kprqz\": \"2023-09-18\",\r\n            \"fpztDm\": [\"01\",\"02\"],\r\n            \"dfnsrsbh\": \"\",\r\n            \"dfnsrmc\": \"\",\r\n            \"fphm\": \"\"\r\n        }\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847721,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "pageIndex": {
+                "type": "integer",
+                "title": "当前页码"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "每页条数"
+              },
+              "records": {
+                "type": "integer",
+                "title": "总记录数"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fplxdm": {
+                      "type": "string",
+                      "title": "发票类型代码",
+                      "description": "增值税纸质专用发票： \"004\";\n增值税纸质普通发票：\"007\";\n增值税纸质普通发票（卷式发票）：\"025\";\n增值税电子普通发票：\"026\";\n增值税电子专用发票：\"028\";\n全面数字化电子普通发票：\"030\";\n全面数字化电子专用发票：\"032\";\n机动车发票：\"005\"\n数电发票（铁路电子客票）: \"51\";\n数电发票（航空运输电子客票行程单）: \"61\";\n数电发票（机动车销售统一发票）: \"83\";\n数电发票（二手车销售统一发票）: \"70\";\n数电纸质发票（机动车销售统一发票）: \"87\";\n数电纸质发票（二手车销售统一发票）: \"88\";\n数电纸质发票（增值税专用发票）: \"84\";\n数电纸质发票（普通发票）: \"85\";\n数电发票（通行费发票）: \"8208\""
+                    },
+                    "kplx": {
+                      "type": "string",
+                      "description": "开票类型 0：正常票，1：红冲票",
+                      "title": "开票类型"
+                    },
+                    "xsf_nsrsbh": {
+                      "type": "string",
+                      "title": "销方税号"
+                    },
+                    "xsf_nsrmc": {
+                      "type": "string",
+                      "title": "销方名称"
+                    },
+                    "gmf_nsrsbh": {
+                      "type": "string",
+                      "title": "购方税号"
+                    },
+                    "gmf_nsrmc": {
+                      "type": "string",
+                      "title": "购方名称"
+                    },
+                    "hjje": {
+                      "type": "number",
+                      "title": "合计金额"
+                    },
+                    "hjse": {
+                      "type": "number",
+                      "title": "合计税额"
+                    },
+                    "jshj": {
+                      "type": "number",
+                      "title": "价税合计"
+                    },
+                    "kpr": {
+                      "type": "string",
+                      "title": "开票员姓名"
+                    },
+                    "fphm": {
+                      "type": "string",
+                      "title": "发票号码",
+                      "description": "数电为20位数电号码"
+                    },
+                    "kprq": {
+                      "type": "string",
+                      "title": "开票日期",
+                      "description": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "fpztdm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "发票状态代码",
+                      "description": "01：正常\n02：已作废(电票无此状态)\n03:   已全额红冲\n04:   已部份红冲",
+                      "enum": [
+                        "01",
+                        "02",
+                        "03",
+                        "04"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "name": "",
+                          "value": "01",
+                          "description": "正常"
+                        },
+                        {
+                          "name": "",
+                          "value": "02",
+                          "description": "已作废(电票无此状态)"
+                        },
+                        {
+                          "name": "",
+                          "value": "03",
+                          "description": "已全额红冲"
+                        },
+                        {
+                          "name": "",
+                          "value": "04",
+                          "description": "部分红冲"
+                        }
+                      ]
+                    },
+                    "lpFphm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "原发票号码",
+                      "description": "仅负数发票有值，代表原蓝字发票的号码"
+                    },
+                    "kpf_nsrsbh": {
+                      "type": "string",
+                      "title": "开票方纳税人识别号"
+                    },
+                    "zz_fpdm": {
+                      "type": "string",
+                      "title": "纸质发票代码"
+                    },
+                    "zz_fphm": {
+                      "type": "string",
+                      "title": "纸质发票号码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fplxdm",
+                    "kplx",
+                    "fphm",
+                    "zz_fpdm",
+                    "zz_fphm",
+                    "kprq",
+                    "kpf_nsrsbh",
+                    "xsf_nsrsbh",
+                    "xsf_nsrmc",
+                    "gmf_nsrsbh",
+                    "gmf_nsrmc",
+                    "hjje",
+                    "hjse",
+                    "jshj",
+                    "kpr",
+                    "fpztdm",
+                    "lpFphm"
+                  ],
+                  "required": [
+                    "fplxdm",
+                    "kplx",
+                    "xsf_nsrsbh",
+                    "xsf_nsrmc",
+                    "gmf_nsrmc",
+                    "fphm",
+                    "kprq",
+                    "hjje",
+                    "hjse",
+                    "jshj",
+                    "kpr",
+                    "kpf_nsrsbh"
+                  ]
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "pageIndex",
+              "pageSize",
+              "records",
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRH6MV9FYTSKECF34K69PF1D"
+        ],
+        "x-apifox-refs": {
+          "01HRH6MV9FYTSKECF34K69PF1D": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847721,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageIndex\": 1,\n        \"records\": 16,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"fphm\": \"************77370805\",\n                \"fplxdm\": \"030\",\n                \"fpztdm\": \"03\",\n                \"gmf_nsrmc\": \"**********术有限公司\",\n                \"gmf_nsrsbh\": \"************BDRR90\",\n                \"hjje\": 3,\n                \"hjse\": 0.18,\n                \"jshj\": 3.18,\n                \"kpf_nsrsbh\": \"************PDDL2G\",\n                \"kplx\": \"0\",\n                \"kpr\": \"**飞\",\n                \"kprq\": \"2023-09-13 15:10:13\",\n                \"lpFpdm\": null,\n                \"lpFphm\": null,\n                \"xsf_nsrmc\": \"********信息有限公司\",\n                \"xsf_nsrsbh\": \"************PDDL2G\",\n                \"zz_fpdm\": \"\",\n                \"zz_fphm\": \"\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400269428
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681480,
+  "ordering": 3,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar responseJson = {\r\n\t\"pageIndex\": 1,\r\n\t\"records\": 1,\r\n\t\"pageSize\": 50,\r\n\t\"list\": [{\r\n\t\t\"fphm\": \"25952000000193124888\",\r\n\t\t\"fplxdm\": \"032\",\r\n\t\t\"fpztdm\": \"01\",\r\n\t\t\"gmf_nsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"gmf_nsrsbh\": \"913717247242887403\",\r\n\t\t\"hjje\": 573.21,\r\n\t\t\"hjse\": 74.52,\r\n\t\t\"jshj\": 647.73,\r\n\t\t\"kpf_nsrsbh\": \"91110103445668409Q\",\r\n\t\t\"kplx\": \"0\",\r\n\t\t\"kpr\": \"张三\",\r\n\t\t\"kprq\": \"2025-10-13 11:20:17\",\r\n\t\t\"lpFpdm\": null,\r\n\t\t\"lpFphm\": null,\r\n\t\t\"xsf_nsrmc\": \"华夏测试有限公司\",\r\n\t\t\"xsf_nsrsbh\": \"91110103445668409Q\",\r\n\t\t\"zz_fpdm\": \"\",\r\n\t\t\"zz_fphm\": \"\"\r\n\t}]\r\n};\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2024-11-11T08:41:47.000Z",
+  "updatedAt": "2025-12-13T09:21:07.000Z",
+  "creatorId": 2400309,
+  "editorId": 2795319,
+  "creatorUserId": 2400309,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

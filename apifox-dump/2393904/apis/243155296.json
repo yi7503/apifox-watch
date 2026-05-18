@@ -1,0 +1,267 @@
+{
+  "id": 243155296,
+  "name": "税务重大违法",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "4sQ58P2iZQzqqPhG0rUCW",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可通过该接口获取企业违法违规相关信息。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/taxBigIllegal",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582634581,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总数量"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "illegalType": {
+                      "type": "string",
+                      "title": "违法类型"
+                    },
+                    "name": {
+                      "type": "string",
+                      "title": "公司名"
+                    },
+                    "operInfo": {
+                      "type": "string",
+                      "title": "法人信息"
+                    },
+                    "illegalFact": {
+                      "type": "string",
+                      "title": "违法事实"
+                    },
+                    "eid": {
+                      "type": "string",
+                      "title": "企业"
+                    },
+                    "punishmentContent": {
+                      "type": "string",
+                      "title": "惩罚内容"
+                    },
+                    "taxNumber": {
+                      "type": "string",
+                      "title": "税号"
+                    },
+                    "taxOrgan": {
+                      "type": "string",
+                      "title": "公示税务机关"
+                    },
+                    "checkOrgan": {
+                      "type": "string",
+                      "title": "检查机关"
+                    },
+                    "police": {
+                      "type": "string",
+                      "title": "移送公安情况"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "name",
+                    "taxNumber",
+                    "eid",
+                    "operInfo",
+                    "taxOrgan",
+                    "illegalType",
+                    "illegalFact",
+                    "punishmentContent",
+                    "checkOrgan",
+                    "police"
+                  ]
+                },
+                "title": "明细"
+              }
+            },
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据",
+            "x-apifox-refs": {},
+            "required": [
+              "total",
+              "items"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582634581,
+      "data": "{\n    \"reqId\": \"823a66ba96a34a769c72356494eb0011\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": \"2\",\n        \"items\": [\n            {\n                \"illegalType\": \"虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票\",\n                \"checkOrgan\": \"原北京市平谷区国家税务局\",\n                \"police\": \"\",\n                \"name\": \"*******办公服务有限公司\",\n                \"taxNumber\": \"91110117358348626D\",\n                \"illegalFact\": \"经原北京市平谷区国家税务局检查，发现其在2017年01月至2018年07月期间，主要存在以下问题：非法取得增值税进项发票3份,金额23.59万元，税额4.01万元;\",\n                \"punishmentContent\": \"依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款20万元的行政处罚。\",\n                \"taxOrgan\": \"国家税务总局北京市税务局\"\n            },\n            {\n                \"illegalType\": \"虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票\",\n                \"checkOrgan\": \"原北京市平谷区国家税务局\",\n                \"police\": \"\",\n                \"name\": \"******办公服务有限公司\",\n                \"taxNumber\": \"9111************\",\n                \"illegalFact\": \"经原北京市平谷区国家税务局检查，发现其在2017年01月至2018年07月期间，主要存在以下问题：非法取得增值税进项发票3份,金额23.59万元，税额4.01万元;\",\n                \"punishmentContent\": \"依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款20万元的行政处罚。\",\n                \"taxOrgan\": \"国家税务总局北京市税务局\"\n            }\n        ]\n    }\n}",
+      "id": 454796407
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582634581,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454796408
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 106,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T03:38:56.000Z",
+  "updatedAt": "2025-02-20T08:48:34.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582634581"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

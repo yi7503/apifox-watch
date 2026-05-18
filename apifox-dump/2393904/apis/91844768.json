@@ -1,0 +1,206 @@
+{
+  "id": 91844768,
+  "name": "配置小号短信通知地址",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n  此接口用于客户配置短信接受地址\n\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sjhm/editPushSmsConfig",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "callbackUrl": {
+          "type": "string",
+          "title": "短信接受地址"
+        },
+        "hqnr": {
+          "type": "string",
+          "description": "1-验证码信息， 2-全量短信信息，默认为1",
+          "title": "获取内容"
+        }
+      },
+      "x-apifox-orders": [
+        "callbackUrl",
+        "hqnr"
+      ],
+      "required": [
+        "callbackUrl"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\"callbackUrl\":\"https://xxx.com/\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947020,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息",
+            "description": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "data": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "true成功/false失败",
+            "title": "配置结果"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947020,
+      "data": "{\n    \"req_id\": \"5b0694c6f3af4771b88f76f31bf954fb\",\n    \"success\": true,\n    \"code\": \"SUCCESS\",\n    \"data\": true\n}",
+      "id": 42947021
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843727,
+  "ordering": 275,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-06-28T09:52:10.000Z",
+  "updatedAt": "2025-12-09T12:38:19.000Z",
+  "creatorId": 1659553,
+  "editorId": 1452584,
+  "creatorUserId": 1659553,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

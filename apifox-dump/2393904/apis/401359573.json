@@ -1,0 +1,181 @@
+{
+  "id": 401359573,
+  "name": "购销蓝字发票列表查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "购销蓝字发票列表查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryLzfpList",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：hzqrxx_list",
+          "const": "hzqrxx_list"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [
+            "01KE967ZZXSQTTWPW2RKCQ1MJP"
+          ],
+          "title": "",
+          "x-apifox-refs": {
+            "01KE967ZZXSQTTWPW2RKCQ1MJP": {
+              "$ref": "#/definitions/235854759"
+            }
+          }
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB980FQM6MJAXSSMAD180A4",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HMB980FQM6MJAXSSMAD180A4": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"async\": false,\r\n\t\"nsrsbh\": \"91*************QY4Y\",\r\n\t\"data\": {\r\n\t\t\"kprqq\": \"2025-01-01\",\r\n\t\t\"kprqz\": \"2025-12-31\",\r\n\t\t\"pageNumber\": 1,\r\n\t\t\"pageSize\": 15\r\n\t}\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 265472036,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KE982H8GH3861226KN0RQ4J6"
+            ],
+            "required": [],
+            "x-apifox-refs": {
+              "01KE982H8GH3861226KN0RQ4J6": {
+                "$ref": "#/definitions/235881381"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HRH07HX2XM946R1C5KCPX4KC",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HRH07HX2XM946R1C5KCPX4KC": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 265472036,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"total\": 97,\n        \"pageNumber\": 1,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"xsfnsrsbh\": \"91************QY4Y\",\n                \"hjse\": \"0.12\",\n                \"zzfpDm\": \"\",\n                \"gmfmc\": \"**********有限公司\",\n                \"hjje\": \"2\",\n                \"gmfnsrsbh\": \"91************DL2G\",\n                \"xsfmc\": \"**********有限公司\",\n                \"kprq\": \"2025-12-19 16:11:02\",\n                \"zzfphm\": \"\",\n                \"jshj\": \"2.12\",\n                \"fphm\": \"25****************9264\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": null,\n    \"timestamp\": \"2026-01-06 16:26:32\",\n    \"reqId\": \"\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400264192
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681470,
+  "ordering": 188,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\nvar responseJson = {\r\n\t\"pageIndex\": 1,\r\n\t\"records\": 1,\r\n\t\"pageSize\": 10,\r\n\t\"list\": [{\r\n\t\t\"bz\": \"\",\r\n\t\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\t\"gxflx\": \"销售方\",\r\n\t\t\"hcyydm\": \"01\",\r\n\t\t\"hzFpdm\": null,\r\n\t\t\"hzFphm\": null,\r\n\t\t\"hzHjje\": -24380.54,\r\n\t\t\"hzHjse\": -3169.46,\r\n\t\t\"hzKprq\": null,\r\n\t\t\"hzkjBz\": \"N\",\r\n\t\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\t\"hzqrztDm\": \"01\",\r\n\t\t\"hzuuid\": \"8ce2e471219d4219a18e6f4984e70c3f\",\r\n\t\t\"kpr\": \"张三\",\r\n\t\t\"lrfsf\": \"0\",\r\n\t\t\"lrrq\": \"2025-10-13 18:58:06\",\r\n\t\t\"lzFpdm\": null,\r\n\t\t\"lzFphm\": \"25952000000193124888\",\r\n\t\t\"lzFplxdm\": \"030\",\r\n\t\t\"lzHjje\": 24380.54,\r\n\t\t\"lzHjse\": 3169.46,\r\n\t\t\"lzKprq\": \"2025-10-13 16:43:41\",\r\n\t\t\"lzTdyslxDm\": null,\r\n\t\t\"lzfppzDm\": \"02\",\r\n\t\t\"qrjkp\": null,\r\n\t\t\"qrrq\": null,\r\n\t\t\"rzzt\": \"00\",\r\n\t\t\"xfsYtZt\": \"00\",\r\n\t\t\"xgrq\": \"2025-10-13 18:58:06\",\r\n\t\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\t\"ydkse\": null,\r\n\t\t\"yjjdkncpse\": null,\r\n\t\t\"zzsYtzt\": \"03\"\r\n\t}]\r\n};\r\nif(uuid !== null && uuid !== undefined && uuid !== \"\"){\r\n  responseJson.list[0].hzuuid = uuid;\r\n}\r\n\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2026-01-06T08:11:58.000Z",
+  "updatedAt": "2026-04-16T09:34:30.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

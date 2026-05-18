@@ -1,0 +1,289 @@
+{
+  "id": 67645165,
+  "name": "发起下载当期PDF任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n根据税费种的yzpzzlDm和年月发起从税局获取申报的PDF数据进行归档。支持单税种，多税种同时下载。\n\n仅支持发起获取当期的各税种的PDF文件。\n\n下载PDF任务执行完后，可以通过【[查询下载PDF任务结果](api-67969858)】接口进行查询，节点screenshot获取文件地址。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n|PARAMETER_ERROR   | 请求参数year或period不能为空！   |\n|PARAMETER_ERROR|请求参数year或period不合法！ |\n|PARAMETER_ERROR |应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |\n| BUSINESS_ERROR | 任务不支持待上线 |\n\n\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadPdfTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "year": {
+          "type": "integer",
+          "description": "年 （当前年度）"
+        },
+        "period": {
+          "type": "integer",
+          "description": "月（当前申报月份）"
+        },
+        "zsxmList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzzlDm": {
+                "type": "string",
+                "description": "应征凭证种类代码"
+              },
+              "ssqQ": {
+                "type": "string",
+                "description": "所属期起，格式yyyy-MM-dd"
+              },
+              "ssqZ": {
+                "type": "string",
+                "description": "所属期止，格式yyyy-MM-dd"
+              },
+              "zspmDm": {
+                "type": "string",
+                "description": "征收品目代码，文化事业建设费时必传字段，用来区分文化业还是娱乐业，302170100娱乐业文化事业建设费、302170200广告业文化事业建设费。（税报）"
+              },
+              "zlbsxlDm": {
+                "type": "string",
+                "description": "资料报送小类（财报必须传）ZL1001001:一般企业会计准则、\nZL1001002:企业会计制度、\nZL1001003:小企业会计准则"
+              },
+              "templateCode": {
+                "type": "string",
+                "description": "资料报送子类（【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业）"
+              },
+              "zsxmDm": {
+                "type": "string",
+                "description": "征收项目代码工会经费=39900/水利建设专项收入=30221 合并下载则可以为空"
+              },
+              "bsswjg": {
+                "type": "string",
+                "description": "跨区域上传税务机关名称（上传格式 省|市|区 如“湖南省|湘潭市|岳塘区”）"
+              },
+              "kqyswjgmc": {
+                "type": "string",
+                "description": "跨区域税局机关名称"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "zspmDm",
+              "zlbsxlDm",
+              "templateCode",
+              "zsxmDm",
+              "bsswjg",
+              "kqyswjgmc"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ"
+            ]
+          },
+          "description": "税种明细列表"
+        },
+        "analysisPdf": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "解析pdf Y-解析 N-不解析；支持解析税种：增值税小规模 、增值税一般人、企业所得税预缴（月季报）、财务报表月季报/年报、印花税、房产税、土地、房土合并 （财行税21年6月实行之前的报表不支持解析）"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "description": "特定主体税务机关名称"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "tdztswjgmc",
+        "year",
+        "period",
+        "analysisPdf",
+        "zsxmList"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\": 452681066557441,\r\n  \"year\": 2023,\r\n  \"period\": 3,\r\n  \"analysisPdf\": \"Y\",\r\n  \"zsxmList\": [\r\n    {\r\n      \"yzpzzlDm\": \"BDA0610606\",\r\n      \"ssqQ\": \"2023-02-01\",\r\n      \"ssqZ\": \"2023-02-28\",\r\n      \"zspmDm\": \"\",\r\n      \"zlbsxlDm\": \"\",\r\n      \"templateCode\": \"\"\r\n    }\r\n  ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171890874,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3XAY42VF7GNA018JNV0P1Z": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "x-apifox-refs": {
+                  "01JE5V2GNZTNMYQJVKJMJ5HW6Q": {
+                    "$ref": "#/definitions/37416321",
+                    "x-apifox-overrides": {
+                      "aggOrgId": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "企业id "
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01JE5V2GNZTNMYQJVKJMJ5HW6Q"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3XAY42VF7GNA018JNV0P1Z"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 171890874,
+      "data": "{\r\n    \"reqId\": \"f24cf53b202741cb8662184639aa2c7d\",\r\n    \"code\": \"PARAMETER_ERROR\",\r\n    \"success\": true,\r\n    \"message\": \"没有找到对应的企业！\",\r\n    \"data\": null\r\n}",
+      "id": 17301158
+    },
+    {
+      "name": "任务发起成功",
+      "responseId": 171890874,
+      "data": "{\n    \"reqId\": \"44c213e3364847c4a1ebd6d021fd371d\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 452681066557440,\n        \"taskId\": \"454624899269376\",\n        \"taskIds\": [\n            {\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"ssqQ\": \"2023-02-01\",\n                \"ssqZ\": \"2023-02-28\",\n                \"taskId\": \"454624899269376\"\n            }\n        ]\n    }\n}",
+      "id": 17300742
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531082,
+  "ordering": 61,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-06T05:57:10.000Z",
+  "updatedAt": "2026-03-30T02:24:12.000Z",
+  "creatorId": 1452584,
+  "editorId": 1476015,
+  "creatorUserId": 1452584,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

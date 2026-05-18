@@ -1,0 +1,207 @@
+{
+  "id": 353454192,
+  "name": "查询未开票收入算税任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   该接口用于根据aggOrgId和taskId查询异步任务执行进度信息。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR | 企业不存在 ||\n|BUSINESS_ERROR| 任务不存在 ||\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR | 请求参数taskId不能为空！| |\n| PARAMETER_ERROR |参数格式不合法,不是有效的json格式!||\n| BUSINESS_ERROR | 查询任务结果失败，请联系管理员！ |  |\n| BUSINESS_ERROR | 没有找到对应的任务信息 |  |\n| BUSINESS_ERROR | 暂不支持此任务类型查询 |  |\n| INTERFACE_ERROR | 接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaxUnbilledCalculate",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"taskId\": 454929202926591\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "mPH8s4NZdy",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "j6qOlcln6N",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "iefGteu4co",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "SFRTRchhnS",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 774544153,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1ZMXRKBN3706ZDK6ZVQEM1": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "description": "返回报文结构与申报上传一致，可参考相应的报表上传报文结构"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1ZMXRKBN3706ZDK6ZVQEM1"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 774544153,
+      "data": "{\"reqId\":\"8e999ee2268247158b311ab8752d8206\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707948615
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 774544153,
+      "data": "{\"reqId\":\"af5ea919e74d4d9c9346d2906da4127b\",\"code\":\"BUSINESS_ERROR\",\"success\":true,\"message\":\"没有找到对应的任务信息\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707948616
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 774544153,
+      "data": "{\r\n    \"reqId\": \"46aafee604e142ea92441b82b2847cce\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"businessStatusName\": \"未开始\",\r\n        \"serviceCode\": \"tax-check\",\r\n        \"businessStatus\": 0,\r\n        \"detail\": null,\r\n        \"aggOrgId\": 452681066557440,\r\n        \"serviceName\": \"漏报检查\",\r\n        \"taskId\": 455810342154240\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707948617
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 774544153,
+      "data": "{\n    \"reqId\": \"83480f400221d918f\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"tax-unbilled-calculate\",\n        \"businessStatus\": 3,\n        \"screenshot\": \"http://qxy-oss-robot....\",\n        \"serviceName\": \"未开票收入算税\",\n        \"resultMessage\": null,\n        \"message\": \"算税成功\",\n        \"result\": \"{}\", // json字符串的报文数据\n        \"yzpzzlDm\": \"BDA0610611\",\n        \"videoUrl\": \"\",\n        \"fcsType\": null,\n        \"detail\": null,\n        \"aggOrgId\": 480100000008,\n        \"taskId\": 621475000000928\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707948618
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13530188,
+  "ordering": 70,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-09-22T03:01:40.000Z",
+  "updatedAt": "2026-01-06T14:08:39.000Z",
+  "creatorId": 1910680,
+  "editorId": 1476015,
+  "creatorUserId": 1910680,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

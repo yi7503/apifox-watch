@@ -1,0 +1,17 @@
+{
+  "id": 6604512,
+  "name": "2025年4月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年4月发布内容\n\n发布日期：2025-04-29\n发布版本：V1.0.16\n\n## 个税申报（新） \n:::\n****《订购》-更新：**\n使用个税产品必须进行产品订购\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/521107/image-preview)\n****《代扣代缴》-更新：**\n****综合所得-新增支持能力**\n1. 解除劳动合同一次性补偿金\n2. 内退一次性补偿金\n3. 特许权使用费所得\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/521203/image-preview)\n**分类所得-新增支持能力**\n1. 偶然所得-其他偶然所得\n2. 偶然所得-随机赠送礼品\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/521204/image-preview)\n**非居民所得-新增支持能力**\n1. 无住所个人数月奖金\n2. 解除劳动合同一次性补偿金\n3. 非居民所得-稿酬所得\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/521205/image-preview)\n**代扣代缴-辅助缴款**\n1.缴税记录查询\n\n2.欠费查询及获取欠费查询反馈\n\n****《生产经营所得》-更新**\n1.企业登记及查询服务\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/520964/image-preview)\n2.投资这信息报送服务\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/520965/image-preview)\n3.个税精准算税服务\n支持征收方式（1查账征收据实预缴、2查账征收上年应纳税所得额、 4核定征收核定应税所得额（能准确核算收入总额的）、5核定征收核定应税所得额（能准确核算成本费用的） ）\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/520966/image-preview)\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/520969/image-preview)\n4.个税辅助申报服务\n支持征收方式（1查账征收据实预缴、2查账征收上年应纳税所得额、 4核定征收核定应税所得额（能准确核算收入总额的）、5核定征收核定应税所得额（能准确核算成本费用的） ）\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/520970/image-preview)\n5.个税辅助缴款服务\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/520972/image-preview)",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-05-07T06:44:06.000Z",
+  "updatedAt": "2025-05-07T13:28:30.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

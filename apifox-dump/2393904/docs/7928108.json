@@ -1,0 +1,17 @@
+{
+  "id": 7928108,
+  "name": "A101010-一般企业收入明细表 ",
+  "sidebarTitle": "",
+  "content": "\n\n## 概述\n\n**报文名称**: 061015010《一般企业收入明细表》（A101010）业务报文\n**文件说明**: 本报文用于申报一般企业的收入明细情况，包含营业收入、主营业务收入、其他业务收入、营业外收入等详细信息。\n\n---\n\n## 数据结构\n\n```json\n{\n  \"A101010\": {\n    \"ybqysrmxbForm\": {\n      // 各字段值，见下文详细说明\n    }\n  }\n}\n```\n\n---\n\n## 字段说明\n\n### 一、营业收入部分\n\n| 字段名 | 行号 | 字段描述 | 数据类型 | 格式说明 |\n|--------|------|----------|----------|----------|\n| yysr | 1 | 营业收入 | string | 空字符串或数字格式，2位小数 |\n| zyywsr | 2 | 主营业务收入 | string | 空字符串或数字格式，2位小数 |\n| xsspsr | 3 | 销售商品收入 | string | 空字符串或数字格式，2位小数 |\n| zyywsrfhbxzcjhsr | 4 | 其中：非货币性资产交换收入 | string | 空字符串或数字格式，2位小数 |\n| tglwsr | 5 | 提供劳务收入 | string | 空字符串或数字格式，2位小数 |\n| jzhtsr | 6 | 建造合同收入 | string | 空字符串或数字格式，2位小数 |\n| rdzcsyqsr | 7 | 让渡资产使用权收入 | string | 空字符串或数字格式，2位小数 |\n| zyywsrqt | 8 | 其他 | string | 空字符串或数字格式，2位小数 |\n| qtywsr | 9 | 其他业务收入 | string | 空字符串或数字格式，2位小数 |\n| xsclsr | 10 | 销售材料收入 | string | 空字符串或数字格式，2位小数 |\n| qtywsrfhbxzcjhsr | 11 | 其中：非货币性资产交换收入 | string | 空字符串或数字格式，2位小数 |\n| czgdzcsr | 12 | 出租固定资产收入 | string | 空字符串或数字格式，2位小数 |\n| czwxzcsr | 13 | 出租无形资产收入 | string | 空字符串或数字格式，2位小数 |\n| czbzwhspsr | 14 | 出租包装物和商品收入 | string | 空字符串或数字格式，2位小数 |\n| qtywsrqt | 15 | 其他 | string | 空字符串或数字格式，2位小数 |\n| yywsr | 16 | 营业外收入 | string | 空字符串或数字格式，2位小数 |\n| fldzcczld | 17 | 非流动资产处置利得 | string | 空字符串或数字格式，2位小数 |\n| fhbxzcjhld | 18 | 非货币性资产交换利得 | string | 空字符串或数字格式，2位小数 |\n| zwczld | 19 | 债务重组利得 | string | 空字符串或数字格式，2位小数 |\n| zfbzld | 20 | 政府补助利得 | string | 空字符串或数字格式，2位小数 |\n| pyld | 21 | 盘盈利得 | string | 空字符串或数字格式，2位小数 |\n| jzld | 22 | 捐赠利得 | string | 空字符串或数字格式，2位小数 |\n| fmld | 23 | 罚没利得 | string | 空字符串或数字格式，2位小数 |\n| qswfbcdyfkx | 24 | 确实无法偿付的应付款项 | string | 空字符串或数字格式，2位小数 |\n| hzly | 25 | 汇兑收益 | string | 空字符串或数字格式，2位小数 |\n| yywsrqt | 26 | 其他 | string | 空字符串或数字格式，2位小数 |\n\n---\n\n\n## 样例数据\n\n### 样例1\n\n```json\n{\n  \"A101010\": {\n    \"ybqysrmxbForm\": {\n      \"yysr\": \"12500000.00\",\n      \"zyywsr\": \"10000000.00\",\n      \"xsspsr\": \"8500000.00\",\n      \"zyywsrfhbxzcjhsr\": \"0.00\",\n      \"tglwsr\": \"1000000.00\",\n      \"jzhtsr\": \"0.00\",\n      \"rdzcsyqsr\": \"500000.00\",\n      \"zyywsrqt\": \"0.00\",\n      \"qtywsr\": \"2000000.00\",\n      \"xsclsr\": \"1500000.00\",\n      \"qtywsrfhbxzcjhsr\": \"0.00\",\n      \"czgdzcsr\": \"300000.00\",\n      \"czwxzcsr\": \"0.00\",\n      \"czbzwhspsr\": \"200000.00\",\n      \"qtywsrqt\": \"0.00\",\n      \"yywsr\": \"500000.00\",\n      \"fldzcczld\": \"100000.00\",\n      \"fhbxzcjhld\": \"0.00\",\n      \"zwczld\": \"0.00\",\n      \"zfbzld\": \"300000.00\",\n      \"pyld\": \"50000.00\",\n      \"jzld\": \"0.00\",\n      \"fmld\": \"30000.00\",\n      \"qswfbcdyfkx\": \"0.00\",\n      \"hzly\": \"20000.00\",\n      \"yywsrqt\": \"0.00\"\n    }\n  }\n}\n```\n",
+  "folderId": 74110741,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-26T09:34:47.000Z",
+  "updatedAt": "2026-02-02T09:01:41.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

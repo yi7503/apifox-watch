@@ -1,0 +1,530 @@
+{
+  "id": 174168816,
+  "name": "发票入账",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可调用此接口完成发票入账或将调整已入账发票的入账类型",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/fpruz/fprzbc",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "fprz_save"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "params": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "gmf_nsrsbh": {
+                    "type": "string",
+                    "title": "购买方纳税人识别号"
+                  },
+                  "kprq": {
+                    "type": "string",
+                    "title": "开票日期（yyyy-MM-dd HH:mm:ss）"
+                  },
+                  "xsf_nsrsbh": {
+                    "type": "string",
+                    "title": "销售方纳税人识别号"
+                  },
+                  "rzytDm": {
+                    "type": "string",
+                    "title": "入账用途代码",
+                    "enum": [
+                      "02",
+                      "03",
+                      "06",
+                      "04",
+                      "05"
+                    ],
+                    "x-apifox-enum": [
+                      {
+                        "value": "02",
+                        "name": "",
+                        "description": "已入账（企业所得税税前扣除）"
+                      },
+                      {
+                        "value": "03",
+                        "name": "",
+                        "description": "已入账（企业所得税不扣除）"
+                      },
+                      {
+                        "value": "06",
+                        "name": "",
+                        "description": "入账撤销"
+                      },
+                      {
+                        "value": "04",
+                        "name": "",
+                        "description": "已入账(个体工商企业所得税税前扣除)"
+                      },
+                      {
+                        "value": "05",
+                        "name": "",
+                        "description": "已入账(个体工商所得税不扣除)"
+                      }
+                    ]
+                  },
+                  "rzsj": {
+                    "type": "string",
+                    "title": "入账时间（yyyy-MM-dd）"
+                  },
+                  "zz_fpdm": {
+                    "type": "string",
+                    "title": "发票代码",
+                    "description": "增值税发票必传"
+                  },
+                  "fphm": {
+                    "type": "string",
+                    "title": "数电票号码",
+                    "description": "数电票必传"
+                  },
+                  "zz_fphm": {
+                    "type": "string",
+                    "title": "发票号码",
+                    "description": "增值税发票必传"
+                  },
+                  "fplxDm": {
+                    "type": "string",
+                    "title": "发票类型代码",
+                    "enum": [
+                      "01",
+                      "03",
+                      "04",
+                      "08",
+                      "10",
+                      "11",
+                      "14",
+                      "15",
+                      "17",
+                      "81",
+                      "82",
+                      "84",
+                      "85",
+                      "83",
+                      "87",
+                      "70",
+                      "88",
+                      "51",
+                      "61",
+                      "8208"
+                    ],
+                    "x-apifox-enum": [
+                      {
+                        "value": "01",
+                        "name": "",
+                        "description": "增值税专用发票"
+                      },
+                      {
+                        "value": "03",
+                        "name": "",
+                        "description": "机动车销售统一发票"
+                      },
+                      {
+                        "value": "04",
+                        "name": "",
+                        "description": "增值税普通发票"
+                      },
+                      {
+                        "value": "08",
+                        "name": "",
+                        "description": "增值税专用发票（电子）"
+                      },
+                      {
+                        "value": "10",
+                        "name": "",
+                        "description": "增值税普通发票（电子）"
+                      },
+                      {
+                        "value": "11",
+                        "name": "",
+                        "description": "增值税普通发票（卷票）"
+                      },
+                      {
+                        "value": "14",
+                        "name": "",
+                        "description": "通行费发票"
+                      },
+                      {
+                        "value": "15",
+                        "name": "",
+                        "description": "二手车统一销售发票"
+                      },
+                      {
+                        "value": "17",
+                        "name": "",
+                        "description": "海关缴款书"
+                      },
+                      {
+                        "value": "81",
+                        "name": "",
+                        "description": "电子发票(增值税专用发票)"
+                      },
+                      {
+                        "value": "82",
+                        "name": "",
+                        "description": "电子发票(增值税普通发票)"
+                      },
+                      {
+                        "value": "84",
+                        "name": "",
+                        "description": "纸质发票(增值税专用发票)"
+                      },
+                      {
+                        "value": "85",
+                        "name": "",
+                        "description": "纸质发票(增值税普通发票)"
+                      },
+                      {
+                        "value": "83",
+                        "name": "",
+                        "description": "数电票（机动车销售统一发票）"
+                      },
+                      {
+                        "value": "87",
+                        "name": "",
+                        "description": "数电纸质发票（机动车销售统一发票）"
+                      },
+                      {
+                        "value": "70",
+                        "name": "",
+                        "description": "数电票（二手车销售统一发票）"
+                      },
+                      {
+                        "value": "88",
+                        "name": "",
+                        "description": "数电纸质发票（二手车销售统一发票）"
+                      },
+                      {
+                        "value": "51",
+                        "name": "",
+                        "description": "数电票(铁路)"
+                      },
+                      {
+                        "value": "61",
+                        "name": "",
+                        "description": "数电票(航空)"
+                      },
+                      {
+                        "value": "8208",
+                        "name": "",
+                        "description": "数电发票（通行费发票）"
+                      }
+                    ]
+                  },
+                  "fpkjztDm": {
+                    "type": "string",
+                    "title": "发票状态代码",
+                    "enum": [
+                      "0",
+                      "2",
+                      "8",
+                      "7"
+                    ],
+                    "x-apifox-enum": [
+                      {
+                        "value": "0",
+                        "name": "",
+                        "description": "正常"
+                      },
+                      {
+                        "value": "2",
+                        "name": "",
+                        "description": "已作废"
+                      },
+                      {
+                        "value": "8",
+                        "name": "",
+                        "description": "已红冲-全额"
+                      },
+                      {
+                        "value": "7",
+                        "name": "",
+                        "description": "已红冲-部分"
+                      }
+                    ]
+                  },
+                  "fplyDm": {
+                    "type": "string",
+                    "title": "发票来源 （\"1\":增值税发票管理系统; \"2\":电子发票服务平台）"
+                  }
+                },
+                "x-apifox-orders": [
+                  "fphm",
+                  "zz_fpdm",
+                  "zz_fphm",
+                  "kprq",
+                  "rzytDm",
+                  "rzsj",
+                  "fplxDm",
+                  "fpkjztDm",
+                  "fplyDm",
+                  "xsf_nsrsbh",
+                  "gmf_nsrsbh"
+                ],
+                "title": "",
+                "required": [
+                  "rzytDm",
+                  "rzsj",
+                  "kprq"
+                ]
+              }
+            },
+            "rzType": {
+              "type": "string",
+              "title": "提交类型",
+              "description": "不传默认为0",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "0",
+                  "name": "",
+                  "description": "税局未查询到入账信息后中断提交"
+                },
+                {
+                  "value": "1",
+                  "name": "",
+                  "description": "税局未查询到的以列表返回，查到的继续提交"
+                }
+              ]
+            }
+          },
+          "x-apifox-orders": [
+            "params",
+            "rzType"
+          ],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8R28AJ016ZAJY9RQHAJ0S"
+      ],
+      "x-apifox-refs": {
+        "01HMB8R28AJ016ZAJY9RQHAJ0S": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "XsHVoWaFbR",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "sR4TrXLDWT",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "nc7w0fqGMb",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 451074672,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "rzuuid": {
+                "type": "string",
+                "title": "入账uuid"
+              },
+              "errorList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "zz_fpdm": {
+                      "type": "string",
+                      "title": "发票代码"
+                    },
+                    "zz_fphm": {
+                      "type": "string",
+                      "title": "发票号码"
+                    },
+                    "fphm": {
+                      "type": "string",
+                      "title": "数电票号码",
+                      "description": ""
+                    },
+                    "kprq": {
+                      "type": "string",
+                      "title": "开票日期"
+                    },
+                    "errorCode": {
+                      "type": "string",
+                      "title": "错误码"
+                    },
+                    "errorMsg": {
+                      "type": "string",
+                      "title": "提示信息"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "zz_fpdm",
+                    "zz_fphm",
+                    "fphm",
+                    "kprq",
+                    "errorCode",
+                    "errorMsg"
+                  ],
+                  "required": [
+                    "errorMsg",
+                    "errorCode",
+                    "kprq",
+                    "fphm",
+                    "zz_fphm",
+                    "zz_fpdm"
+                  ]
+                },
+                "description": "入参中rzType为1时返回"
+              }
+            },
+            "x-apifox-orders": [
+              "rzuuid",
+              "errorList"
+            ],
+            "required": [
+              "rzuuid"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01HRHAQWRQQ62CVGPG5BX1TWHZ"
+        ],
+        "required": [
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HRHAQWRQQ62CVGPG5BX1TWHZ": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 451074672,
+      "data": "{\n    \"reqId\": \"23f8b9b8de834e1aa96f86f0fe67d1b5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"rzuuid\": \"bcb87699dfd94478a462e2ad0c09ad17\"\n    }\n}",
+      "id": 410435905
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58688167,
+  "ordering": 99,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-12T11:18:06.000Z",
+  "updatedAt": "2026-04-08T03:55:55.000Z",
+  "creatorId": 887900,
+  "editorId": 2118003,
+  "creatorUserId": 887900,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

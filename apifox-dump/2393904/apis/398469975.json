@@ -1,0 +1,326 @@
+{
+  "id": 398469975,
+  "name": "账号创建",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n 该接口用于税局已注册的登录账号信息在平台侧进行创建维护和修改。支持单账号和多账号场景。\n1. 使用多账号的场景, 多账号典型场景例如“多开票员”, 以及同一个用户账号多身份类型, 既有“开票员”又有“办税员”两个角色, 其中办税员身份可以做申报、发票勾选认证等, 开票员只可做开票业务;\n2. 如果您的应用场景明确有多种角色, 或者一个人有多个手机号码，请使用此接口进行账号的创建;\n\n\n:::info[]\n#### 「登录方式」9：企业业务登录（需使用办税小号） 14：企业业务登录（自传验证码/扫二维码）15：代理业务登录（办税小号或自传验证码） 17：自然人登录 ；13 扫码登录\n  **以下每种登录方式字段均为必填：**\n9：企业id，登录方式，个人用户名（需传办税小号）， [身份类型](doc-4553802)，个人用户密码，手机号码（需传办税小号）；\n14：企业id，登录方式，个人用户名， [身份类型](doc-4553802)，个人用户密码，手机号码；\n15：企业id（被代理企业），登录方式，代理机构税号，个人用户名， [身份类型](doc-4553802)，个人用户密码，手机号码\n       **代理登录的账密是指登录代理机构的账密**\n17：地区,个人用户名，个人用户密码\n13：地区，税号\n:::\n\n\n\n\n #### 「对照税局登录页面」\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/573261/image-preview)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/account/create",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "gryhm": {
+          "type": "string",
+          "title": "个人用户名",
+          "description": "dlfs=9时需传办税小号；dlfs=14或15时，可为身份证号/手机号码/用户名，建议统一用手机号码；"
+        },
+        "dlmm": {
+          "type": "string",
+          "title": "登录密码",
+          "description": "RSA加密",
+          "deprecated": true
+        },
+        "gryhmm": {
+          "type": "string",
+          "title": "个人用户密码",
+          "description": "需RSA加密，[加密说明](apifox://link/pages/3774763)"
+        },
+        "dlzh": {
+          "type": "string",
+          "title": "登录账户",
+          "deprecated": true
+        },
+        "dlfs": {
+          "type": "integer",
+          "title": "登录方式",
+          "enum": [
+            9,
+            14,
+            15
+          ],
+          "x-apifox-enum": [
+            {
+              "value": 9,
+              "name": "企业业务登录",
+              "description": "需使用办税小号"
+            },
+            {
+              "value": 14,
+              "name": "企业业务登录",
+              "description": "自传验证码"
+            },
+            {
+              "value": 15,
+              "name": "代理业务登录",
+              "description": "办税小号或自传验证码"
+            }
+          ]
+        },
+        "sflx": {
+          "type": "string",
+          "title": "身份类型",
+          "description": "见附录：[身份类型](apifox://link/pages/4553802)"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业id"
+        },
+        "dq": {
+          "type": "integer",
+          "title": "地区",
+          "description": "税号所在地区，见附录：[地区代码](apifox://link/pages/2246773)",
+          "examples": [
+            11
+          ]
+        },
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码",
+          "description": "dlfs=9时需传办税小号；dlfs=14,15非必填；9和14,15混用必填。"
+        },
+        "loginType": {
+          "type": "integer",
+          "title": "特定主体标识",
+          "description": "1表示特定主体"
+        },
+        "specType": {
+          "type": "integer",
+          "description": "2 跨区税源登记纳税人 「当前只支持2」",
+          "title": "特定主体类型"
+        },
+        "proxyNsrsbh": {
+          "type": "string",
+          "title": "代理机构税号",
+          "description": "代理登录 dlfs=15时，必填"
+        }
+      },
+      "required": [
+        "dlfs",
+        "aggOrgId",
+        "dq",
+        "gryhm",
+        "gryhmm",
+        "sflx"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "dq",
+        "dlfs",
+        "gryhm",
+        "gryhmm",
+        "sflx",
+        "sjhm",
+        "proxyNsrsbh",
+        "loginType",
+        "specType",
+        "dlmm",
+        "dlzh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "TLjWYyFhLS",
+        "name": "Content-Type",
+        "required": "true",
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "EEB33jnCKK",
+        "name": "access_token",
+        "required": "true",
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "UOC6McUQPG",
+        "name": "req_date",
+        "required": "true",
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Ea8RPo5fUm",
+        "name": "req_sign",
+        "required": "true",
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42946927,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "accountId": {
+                "type": "integer",
+                "title": "账户ID"
+              }
+            },
+            "x-apifox-orders": [
+              "accountId"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42946927,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"dlmm\": \"+mjI3liekvY=\",\n        \"sflx\": \"KPY\",\n        \"dq\": \"11\",\n        \"accountId\": 504325035988992,\n        \"gryhm\": \"13466759052\",\n        \"nsrsbh\": \"91110108MA01BW7XXU\",\n        \"createTime\": \"2023-12-19 14:24:24\",\n        \"gryhmm\": \"G1I7fmzpN7qrlfFDGc71Vw==\",\n        \"dlzh\": \"dlzh1004\",\n        \"appKey\": 10001999,\n        \"dlfs\": 9,\n        \"aggOrgId\": 7583454730897015,\n        \"state\": 1\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"1f4bf3651c734b94b08daaed42408ef0\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42946928
+    },
+    {
+      "name": "异常示例",
+      "responseId": 42946927,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"没有找到对应的企业！\",\n    \"reqId\": \"3dc1baad8e424bb29af85e1a364c7e74\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42946929
+    },
+    {
+      "name": "未登录",
+      "responseId": 42946927,
+      "data": "{\n    \"reqId\": \"0516f06b781b4590a23de8b7b148a853\",\n    \"code\": \"40100\",\n    \"success\": false,\n    \"message\": \"未登录!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42946930
+    },
+    {
+      "name": "已存在",
+      "responseId": 42946927,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"data\": {\n        \"accountId\": 4767615399936384\n    },\n    \"success\": true,\n    \"message\": \"账户已经存在\",\n    \"reqId\": \"97b7dad00e80430d9641c49af8e882a6\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 593165245
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75021807,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-12-29T10:03:52.000Z",
+  "updatedAt": "2026-05-14T05:49:02.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "creatorUserId": 2795319,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,532 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 平台基础服务
+  version: latest
+  description: 'Split from full spec, module: 平台基础服务'
+tags:
+- name: 平台基础服务 / 平台公共回调
+- name: 平台基础服务 / 平台通知预警
+paths:
+  /v2/subscribe/sysmessage/getNoticeMessage:
+    post:
+      summary: 服务异常通知
+      operationId: api-145706545
+      tags:
+      - 平台基础服务 / 平台通知预警
+      description: |-
+        该接口通过订阅消息，可以支持服务异常通知、税局变化通知、税局升级通知的获取，方便客户系统集成和实时提醒。
+        - 接口调用方式：客户定时轮询接口获取消息。
+        - 本接口支持增量数据拉取，支持获取一个月内全量数据
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  title: 操作类型
+                  default: notice
+                data:
+                  type: object
+                  properties:
+                    noticeType:
+                      type: integer
+                      title: 通知类型
+                      description: 不填写：所有类型通知
+                      enum:
+                      - 10
+                      - 20
+                      - 30
+                      - 31
+                      - 40
+                      - 41
+                      x-apifox-enum:
+                      - value: 10
+                        name: 平台维护通知
+                        description: ''
+                      - value: 20
+                        name: 税局维护通知
+                        description: ''
+                      - value: 30
+                        name: 税局异常通知
+                        description: ''
+                      - value: 31
+                        name: 税局恢复通知
+                        description: ''
+                      - value: 40
+                        name: 查验异常通知
+                        description: ''
+                      - value: 41
+                        name: 查验恢复通知
+                        description: ''
+                    area:
+                      type: string
+                      title: 地区
+                      description: 见附录：[地区代码](apifox://link/pages/2246773)
+                    contentType:
+                      type: string
+                      title: 平台类型
+                      description: 默认全部
+                      enum:
+                      - '0'
+                      - '1'
+                      x-apifox-enum:
+                      - value: '0'
+                        name: '电子税局 '
+                        description: ''
+                      - value: '1'
+                        name: ' 电票平台 '
+                        description: ''
+                    acceptType:
+                      type: string
+                      title: 增量全量标志
+                      description: 默认是1-增量
+                      enum:
+                      - '0'
+                      - '1'
+                      x-apifox-enum:
+                      - value: '0'
+                        name: 全量
+                        description: 一个月时间内
+                      - value: '1'
+                        name: 增量
+                        description: 已读的不再发送
+                  x-apifox-orders:
+                  - noticeType
+                  - area
+                  - contentType
+                  - acceptType
+              x-apifox-orders:
+              - action
+              - data
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+                x-apifox-orders:
+                - 01J8KGKEQTAY1FD99N7QEMBGJR
+                x-apifox-refs:
+                  01J8KGKEQTAY1FD99N7QEMBGJR:
+                    $ref: '#/definitions/35327531'
+                    x-apifox-overrides:
+                      data:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type: object
+                          properties:
+                            area:
+                              type: string
+                              title: 地区
+                              description: 见附录：[地区代码](apifox://link/pages/2246773)
+                            contentType:
+                              type: integer
+                              title: 平台类型
+                              description: 默认全部
+                              enum:
+                              - 0
+                              - 1
+                              x-apifox-enum:
+                              - value: 0
+                                name: '电子税局 '
+                                description: ''
+                              - value: 1
+                                name: '电票平台 '
+                                description: ''
+                            message:
+                              type: string
+                              title: 消息内容
+                            module:
+                              type: string
+                              title: 业务模块
+                            noticeType:
+                              type: integer
+                              title: 通知类别
+                              enum:
+                              - 10
+                              - 20
+                              - 30
+                              - 31
+                              - 40
+                              - 41
+                              x-apifox-enum:
+                              - value: 10
+                                name: 平台维护通知
+                                description: ''
+                              - value: 20
+                                name: 税局维护通知
+                                description: ''
+                              - value: 30
+                                name: 税局异常通知
+                                description: ''
+                              - value: 31
+                                name: 税局恢复通知
+                                description: ''
+                              - value: 40
+                                name: 查验异常通知
+                                description: ''
+                              - value: 41
+                                name: 查验恢复通知
+                                description: ''
+                            threshold:
+                              type: string
+                              title: 失败阈值百分比
+                            title:
+                              type: string
+                              title: 标题
+                            createTime:
+                              type: string
+                              title: 创建时间
+                              description: yyyy-MM-dd HH:mm:ss
+                            publishTime:
+                              type: string
+                              title: 局端发布时间
+                              description: yyyy-MM-dd HH:mm:ss
+                          x-apifox-orders:
+                          - area
+                          - contentType
+                          - message
+                          - module
+                          - noticeType
+                          - threshold
+                          - title
+                          - createTime
+                          - publishTime
+                          required:
+                          - publishTime
+                          - createTime
+                        title: 业务数据
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: d94960e14fee4fab82696501b72151e9
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                    - area: '3300'
+                      contentType: 0
+                      createTime: '2024-09-24 16:33:10'
+                      message: |-
+                        尊敬的纳税人缴费人：
+                        为保障业务可靠性，国家税务总局广东省税务局将于9月25日23:00至次日03:00、9月27日23:00至次日03:00 更新网络设备。更新期间网络可能会中断，影响门户网站、电子发票、电子税务局等相关互联网业务办理，请各位纳税人缴费人合理安排办税（费）、开票时间。
+                        感谢广大纳税人缴费人对税收工作的理解与支持，给您带来不便，敬请谅解。
+                         
+                        国家税务总局广东省税务局
+                        2024年9月24日
+                      module: ''
+                      noticeType: 20
+                      threshold: ''
+                      title: 平台维护通知
+                    - area: '3300'
+                      contentType: 0
+                      createTime: '2024-09-23 17:06:14'
+                      message: |-
+                        尊敬的缴费人：
+                        为进一步提升社保费缴费服务水平，提高系统运行效率，国家税务总局山东省税务局将于2024年9月23日（周一）20:00至9月24日（周二）7:00进行社保费相关系统停机升级工作。期间，山东省电子税务局、社保费管理客户端、微信社保费缴纳小程序、支付宝社保费缴纳、自助办税终端、银行各缴费渠道、“爱山东”移动端等社保费缴纳相关功能暂停使用。
+                        感谢广大缴费人的理解和支持，对此带来的不便敬请谅解。
+                        国家税务总局山东省税务局
+                        2024年9月23日
+                      module: ''
+                      noticeType: 20
+                      threshold: ''
+                      title: 平台维护通知
+                查验异常通知示例:
+                  summary: 查验异常通知示例
+                  value:
+                    reqId: d46686f25cc6476aa90e95c839a3ee52
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                    - createTime: '2024-03-22T15:45:07'
+                      message: 【企享云发票查验预警】  【企享云】尊敬的合作伙伴，您好，目前我们监测到增值税查验平台深圳、辽宁等地区查验不稳定，可能会造成查验超时、批量查验概率性失败等情况，请您做好相关应对，给您带来的不便敬请谅解。
+                      noticeType: 40
+                      title: 查验异常通知
+                      area: ''
+                      contentType: '0'
+                      module: ''
+                      threshold: ''
+                查验恢复通知示例:
+                  summary: 查验恢复通知示例
+                  value:
+                    reqId: 0e83dc0abc584f3795f67bd0130f1bc4
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                    - createTime: '2024-03-22T16:30:02'
+                      message: 【企享云发票查验预警】  【企享云】尊敬的合作伙伴，您好，目前我们监测到增值税查验平台深圳地区查验已恢复正常。我们将继续努力，为您提供更加优质的服务。
+                      noticeType: 41
+                      title: 查验恢复通知
+                      area: ''
+                      contentType: '0'
+                      module: ''
+                      threshold: ''
+  /服务商CallbackURL地址#194804016:
+    post:
+      summary: 税局维护、停机消息推送接口说明
+      operationId: api-194804016
+      tags:
+      - 平台基础服务 / 平台通知预警
+      description: |2-
+
+        :::highlight red 💡
+        注意：忽略上面api.qixiangyun.com企享云的域名，这个接口文档是客户提供给企享云的回调接口说明！！！
+        :::
+
+        本接口需要客户自行设计实现，发布后把接口访问地址发给企享云，企享云进行配置，将税局维护、停机消息调用此接口通知到客户。
+        调用方式: HTTP POST。
+        报文格式：application/json; utf-8。
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                        title: 标题
+                      area:
+                        type: string
+                        title: 地区
+                        description: 见附录：[地区代码](apifox://link/pages/2246773)
+                      contentType:
+                        type: integer
+                        title: 平台类型
+                        enum:
+                        - 0
+                        - 1
+                        x-apifox-enum:
+                        - value: 0
+                          name: '电子税局 '
+                          description: ''
+                        - value: 1
+                          name: ' 电票平台 '
+                          description: ''
+                      message:
+                        type: string
+                        title: 消息内容
+                      module:
+                        type: string
+                        title: 业务模块
+                      noticeType:
+                        type: integer
+                        title: 通知类别
+                        enum:
+                        - 10
+                        - 20
+                        - 30
+                        - 31
+                        - 40
+                        - 41
+                        x-apifox-enum:
+                        - value: 10
+                          name: 平台维护通知
+                          description: ''
+                        - value: 20
+                          name: 税局维护通知
+                          description: ''
+                        - value: 30
+                          name: 税局异常通知
+                          description: ''
+                        - value: 31
+                          name: 税局恢复通知
+                          description: ''
+                        - value: 40
+                          name: 查验异常通知
+                          description: ''
+                        - value: 41
+                          name: 查验恢复通知
+                          description: ''
+                      threshold:
+                        type: string
+                        title: 失败阈值百分比
+                      createTime:
+                        type: string
+                        title: 创建时间
+                        description: yyyy-MM-dd HH:mm:ss
+                      publishTime:
+                        type: string
+                        title: 局端发布时间
+                        description: yyyy-MM-dd HH:mm:ss
+                    x-apifox-orders:
+                    - area
+                    - contentType
+                    - message
+                    - module
+                    - noticeType
+                    - threshold
+                    - title
+                    - createTime
+                    - publishTime
+                    required:
+                    - publishTime
+                    - createTime
+              x-apifox-orders:
+              - data
+              required:
+              - data
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    title: 回调返回结果
+                    description: 默认2000为成功，9999为失败
+                  msg:
+                    type: string
+                    title: 成功或失败原因
+                    description: 具体原因
+                x-apifox-orders:
+                - code
+                - msg
+                required:
+                - code
+                - msg
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    msg: 成功
+  /CALLBACKURL:
+    post:
+      summary: 配置公共回调地址
+      operationId: api-430772849
+      tags:
+      - 平台基础服务 / 平台公共回调
+      description: |-
+        发起业务后需要回调拿到结果的，目前通过联系技术支持配置回调地址。
+        目前是每个产品可以配置一个回调地址
+        回调策略：
+        1.第一次回调成功后不再发起回调
+        2.第一次不成功，10s后再发起一次回调，不成功则30s后再发起回调，目前是重试3次，加上第一次回调失败一共会推送4次
+
+        个税/社保产品回调报文
+        {
+            "msg":"success",
+            "taskStatus":3,
+            "taskId":"5151471684213235391"
+        }
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    title: 一定要返回字符串2000
+                    description: 返回字符串2000的会认为是成功
+                  msg:
+                    type: string
+                    title: 返回消息说明
+                    description: '"成功"'
+                x-apifox-orders:
+                - code
+                - msg
+                required:
+                - code
+                - msg
+              examples:
+                示例 1:
+                  summary: 示例 1
+                  value:
+                    code: '2000'
+                    msg: 成功

@@ -1,0 +1,201 @@
+{
+  "id": 249897521,
+  "name": "发起获取我的提醒",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述:\n发起获取我的提醒任务。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadTaxMyRemind",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "fromDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "起始时间"
+        },
+        "toDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "终止时间"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）",
+          "title": "账号ID"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fromDate",
+        "toDate"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"fromDate\": \"2022-01-01\",\r\n    \"toDate\": \"2025-01-01\",\r\n    \"aggOrgId\": \"550600000336\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 594772709,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01GW664NTG8DAA40CQ3926Y530": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/33757676"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW664NTG8DAA40CQ3926Y530"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 594772709,
+      "data": "{\"reqId\":\"bc8d1c6a828a49978bdde83dec543c20\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 466271596
+    },
+    {
+      "name": "成功示例",
+      "responseId": 594772709,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"msg\": \"发起成功\",\n        \"code\": 2000,\n        \"taskId\": 549116569307392\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"d6aa593da3194c47a8651de8e9efb598\"\n}",
+      "id": 466271597
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48191782,
+  "ordering": 30,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-30T09:39:10.000Z",
+  "updatedAt": "2025-02-27T12:53:58.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.594772709"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

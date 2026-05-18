@@ -1,0 +1,17 @@
+{
+  "id": 5267817,
+  "name": "2024年9月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年9月发布内容\n\n发布日期：2024-09-30\n发布版本：V1.0.9\n\n- 小客影响：\n1)目前新版税局全国已基本全部升级；只剩下宁波、江苏、浙江有10%没有升级新版\n2)通用申报工会经费和水利建设基金支持分开申报\n\n- 大客影响：\n1)新增车船税税源获取、申报\n2)税源获取支持跨区域获取\n3)印花税申报支持新增未认定税源\n4)通用申报工会经费和水利建设基金支持分开申报\n\n## 企业税\n1.接口变化\n1)新增简易申报接口，目前支持的是小规模增值税申报\n涉及接口：[发起简易申报任务](api-209615709)\n主要能力：只需要上传部分发票数据，可以返回需要申报税额，再发起申报，也可以直接申报\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470111/image-preview)\n\n2)申报新增支持车船税申报\n涉及接口：[上传各税种申报表数据](api-67298736)\n主要能力：支持上传报文发起申报、PDF下载、完税证明下载。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470112/image-preview)\n\n3)企业所得税主表13栏优惠事项营业收入占比增加判断\n涉及区域：36个区域\n调整点：\n1)主营业务收入占比上传必须是大于等于60小于等于100的数值，允许保留两位小数；\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470113/image-preview)\n\n4)税源获取优化\n涉及接口：\n[税源信息获取接口](api-87521820)\n[查询税源获取任务结果接口](api-87525549)\n调整点：\n1)环保税源获取增加噪声、固体废物的能力\n2)增加环保、房产、土地、跨区域税源获取,新增参数bbswjg\n3)增加车船税税源获取\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470117/image-preview)\n\n5)财报企业会计制度报文增加附注节点\n调整点：\n财报申报报文 企业会计制度报文增加附注节点。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470118/image-preview)\n\n6)印花税支持未认定税源新增\n涉及接口：[上传各税种申报表数据](api-67298736)\n调整点：\n新增字段：sfxzyhssm是否新增印花税税目（税局没有认定也可新增税源）\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470119/image-preview)\n\n7)通用申报优化\n调整点：\n1.支持工会经费半年报申报\n2.水利建设基金需要通过非税收入申报  区域：内蒙、吉林、福建\n3.通用申报工会经费、水利建设基金支持按照zsxmDm请求,并且申报、缴款、完税凭证、pdf下载接口都新增该参数入参；\n\n\n2.自身产品能力优化\n1)优化申报流程稳定性\n2)办税助手支持社保功能跳转；支持区域：山东、贵州、云南、广东；\n3)办税助手新增一键修复按钮，解决偶尔出现跳不成功的情况；\n\n## 企业数据采集\n1.专业版支持能力更新：（仅新版税局）\n新增能力：\n1)增加财务报表企业会计制度月季报和年报\n2)增加财产行为税（房产、土地、环保）的申报表解析\n3)税源获取环保税源获取增加噪声、固体废物的能力\n4)调整大票量的查询方式和口径（单月进项+销项大于10万认为是大票量）\n\n\n:::highlight orange 📌\n以下是当前企业数据采集报表解析所有支持的能力，标记橙色为本月新增\n:::\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/470121/image-preview)\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-10-13T03:41:22.000Z",
+  "updatedAt": "2024-10-13T04:30:01.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -1,0 +1,255 @@
+{
+  "id": 92020134,
+  "name": "查询小号订单详情",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n   此接口用于创建小号订单后，查询小号订单详情。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sjhm/queryBsxhOrder",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "uniCode": {
+          "type": "string",
+          "title": "客户传入订单的唯一标识"
+        }
+      },
+      "x-apifox-orders": [
+        "uniCode"
+      ],
+      "required": [
+        "uniCode"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"uniCode\": \"a123456789\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947017,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息",
+            "description": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "createTime": {
+                "type": "string",
+                "title": "订单创建成功时间"
+              },
+              "id": {
+                "type": "integer",
+                "title": "客户系统的订单唯一标识"
+              },
+              "uniCode": {
+                "type": "string",
+                "title": "客户系统的订单唯一标识"
+              },
+              "appKey": {
+                "type": "integer",
+                "title": "客户的appkey"
+              },
+              "bsxhNum": {
+                "type": "string",
+                "title": "订单小号数量"
+              },
+              "effectiveBsxhList": {
+                "type": "string",
+                "title": "办税小号明细"
+              }
+            },
+            "x-apifox-orders": [
+              "id",
+              "uniCode",
+              "appKey",
+              "createTime",
+              "bsxhNum",
+              "effectiveBsxhList"
+            ],
+            "required": [
+              "createTime",
+              "id",
+              "uniCode",
+              "appKey",
+              "bsxhNum",
+              "effectiveBsxhList"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947017,
+      "data": "{\n    \"reqId\": \"2fc*******464e9639906\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"appKey\": 10****2,\n        \"bsxhNum\": 1,\n        \"createTime\": \"2024-02-02 16:05:16\",\n        \"effectiveBsxhList\": [\n            \"17*****618\"\n        ],\n        \"id\": 5123****45792,\n        \"uniCode\": \"1203******43392\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947018
+    },
+    {
+      "name": "失败示例",
+      "responseId": 42947017,
+      "data": "{\n    \"req_id\": \"d0cbb450aa6e478d9c9a7a881b3a3979\",\n    \"success\": false,\n    \"code\": \"INTERFACE_ERROR\",\n    \"message\": \"参数uniCode不能为空\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947019
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843702,
+  "ordering": 275,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-06-29T06:02:45.000Z",
+  "updatedAt": "2025-04-09T07:56:15.000Z",
+  "creatorId": 1659553,
+  "editorId": 1452584,
+  "creatorUserId": 1659553,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.42947017"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

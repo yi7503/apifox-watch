@@ -1,0 +1,17 @@
+{
+  "id": 7948550,
+  "name": "10412R1_跨地区经营汇总纳税企业的分支机构年度纳税申报表（2021年版）",
+  "sidebarTitle": "",
+  "content": "## 跨地区经营汇总纳税企业的分支机构年度纳税申报表（2021年版）\n\n## 文档概述\n10412R1 为分支机构必填表。\n本文档用于描述跨地区经营汇总纳税企业的分支机构年度纳税申报表（2021年版）的数据结构。该报文包含纳税人信息、分支机构在年度纳税申报中的各项税额分配、分摊及优惠等相关数据。\n\n## 数据结构\n\n```jsonc\n{\n     \"skssqq\": \"2025-01-01\",\n     \"skssqz\": \"2025-12-31\",\n     \"10412R1\": { // 跨地区经营汇总纳税企业的分支机构年度纳税申报表（2021年版）\n        \"nsrxxForm\": { // 纳税人信息表单\n            // ... 具体字段\n        },\n        \"sbbxxForm\": { // 申报表基本信息表单\n            // ... 具体字段\n        }\n    }\n}\n```\n\n### nsrxxForm 字段说明\n\n| 字段名 | 字段类型 | 是否必填 | 字段描述 | 示例值 |\n|--------|----------|----------|----------|--------|\n| skssqq | String | 是 | 所属期起yyyy-mm-dd | 2025-09-01 |\n| skssqz | String | 是 | 所属期止yyyy-mm-dd | 2025-09-30 |\n| nsrmc | String | 是 | 纳税人名称 | 纳税人名称 |\n| nsrsbh | String | 是 | 纳税人识别号 | 914XXXXXXXX |\n| yjfs | String | 是 | 预缴方式：0\\|按照实际利润额预缴 1\\|按照上一纳税年度应纳税所得额平均额预缴 2\\|按照税务机关确定的其他方法预缴 | 1 |\n| sbqylx | String | 是 | 企业类型：1\\|一般企业 2\\|跨地区经营汇总纳税企业总机构 3\\|跨地区经营汇总纳税企业分支机构 | 1 |\n| xzqhszDm | String | 是 | 跨省总机构行政区划代码（省级行政区划代码），当总机构在外省的分支机构申报时需要传入，要求6位，参考附录中地区代码，例如北京：110000 | 110000 |\n\n#### 地区代码枚举说明\n> 参考附录中地区代码\n\n### sbbxxForm 字段说明\n\n| 字段名 | 字段类型 | 是否必填 | 字段描述 | 示例值 |\n|--------|----------|----------|----------|--------|\n| fzjgbqftbl | String | 否 | 分支机构本期分摊比例，保留10位小数 | 0.0000000000 |\n| fzjgbqftybsdse | String | 否 | 分支机构本期分摊应补（退）所得税额，保留2位小数 | 0.00 |\n| zyjsrjjynse | String | 否 | 中央级收入实际应纳税额，本期：16行×60%或(18行+20行)×60%+19或22行×60%，保留2位小数 | 0.00 |\n| dfjsrynse | String | 否 | 地方级收入应纳税额，本期：16行×40%或(18行+20行)×40%或22行×40%，保留2位小数 | 0.00 |\n| fzjgqnljfpsdse | String | 否 | 分支机构全年累计分配所得税额，保留2位小数 | 0.00 |\n| fzjgxsmzdfyhfd | String | 否 | 分支机构享受民族地方优惠幅度，保留8位小数，0为不享受，100%为免征 | 0.00000000 |\n| fzjgqnljyxsmzdfyhje | String | 否 | 分支机构全年累计应享受民族地方优惠金额，计算公式：23行×24行×40%，保留2位小数 | 0.00 |\n| fzjgqnljyixsmzdfyhje | String | 否 | 分支机构全年累计已享受民族地方优惠金额，保留2位小数 | 0.00 |\n| fzjgymzdfyhtzfpje | String | 否 | 分支机构因民族地方优惠调整分配金额，本期：24.1行-24.2行，保留2位小数 | 0.00 |\n| dfjsrsjynse | String | 否 | 地方级收入实际应纳税额，本期：FZ2-24.3行，保留2位小数 | 0.00 |\n| sjybtsdse | String | 否 | 实际应补（退）所得税额，本期：FZ1+FZ3，保留2位小数 | 0.00 |\n\n\n## 标准样例\n\n```json\n{\n  \"10412R1\": {\n    \"nsrxxForm\": {\n      \"skssqq\": \"2025-09-01\",\n      \"skssqz\": \"2025-09-30\",\n      \"nsrmc\": \"纳税人名称\",\n      \"nsrsbh\": \"914XXXXXXXX\",\n      \"yjfs\": \"1\",\n      \"sbqylx\": \"1\",\n      \"xzqhszDm\": \"110000\"\n    },\n    \"sbbxxForm\": {\n      \"fzjgbqftbl\": \"0.0000000000\",\n      \"fzjgbqftybsdse\": \"0.00\",\n      \"zyjsrjjynse\": \"0.00\",\n      \"dfjsrynse\": \"0.00\",\n      \"fzjgqnljfpsdse\": \"0.00\",\n      \"fzjgxsmzdfyhfd\": \"0.00000000\",\n      \"fzjgqnljyxsmzdfyhje\": \"0.00\",\n      \"fzjgqnljyixsmzdfyhje\": \"0.00\",\n      \"fzjgymzdfyhtzfpje\": \"0.00\",\n      \"dfjsrsjynse\": \"0.00\",\n      \"sjybtsdse\": \"0.00\"\n    }\n  }\n}\n```\n",
+  "folderId": 74117413,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-30T05:47:55.000Z",
+  "updatedAt": "2026-04-28T10:17:34.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

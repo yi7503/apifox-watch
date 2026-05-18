@@ -1,0 +1,17 @@
+{
+  "id": 8427373,
+  "name": "2026年3月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 企业数据采集-欠税信息，补充【申报表种类】\n2. 采集发票节点集成发票数据新增一个进项税额转出的节点\n:::\n## 接口变化\n### 一、企业数据采集-欠税信息，新增申报表种类\n1. 涉及调整：基础信息节点-欠税信息节点新增一个申报表种类字段，与税局界面保持一致\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/637696/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/637697/image-preview)\n\n### 二、采集发票节点集成发票数据新增一个进项税额转出的节点\n1. 涉及接口：发票节点新增进项税额转出的节点，返回文件链接是txt格式，详情查看示例。\n2. 采集权限：考虑到这个采集配置后会增加任务的时效，没有默认给配置，有需求客户群里进行沟通\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/637700/image-preview)",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-03-31T10:02:21.000Z",
+  "updatedAt": "2026-03-31T10:02:34.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

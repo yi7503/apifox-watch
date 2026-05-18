@@ -1,0 +1,315 @@
+{
+  "id": 247982159,
+  "name": "缴款状态查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "KL2uTNMzCNkHgos_tdkFz",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n通过该接口可以查询到不同缴款方式的实际缴款状态。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/payment/getSyncWithholdingFeedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssq": {
+          "type": "string",
+          "title": "所属期",
+          "description": "格式：YYYYMM"
+        },
+        "bblx": {
+          "type": "string",
+          "title": "报表类型",
+          "description": "1:综合所得;2:分类所得;3:非居民所得;4:限售股所得\n"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "bblx"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "bblx"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4552900726228096\",\r\n    \"skssq\": \"202412\",\r\n    \"bblx\": \"1\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 591457507,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "jkzt": {
+                "type": "string",
+                "title": "缴款查询状态",
+                "description": "0 缴款查询成功 1 信息校验失败 2 无缴款结果明细 3 缴款请求失败"
+              },
+              "sbzt": {
+                "type": "string",
+                "title": "申报状态",
+                "description": "参考申报状态字典"
+              },
+              "jksbyy": {
+                "type": "string",
+                "title": "缴款失败原因"
+              },
+              "kkfhlb": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "kkfhDm": {
+                      "type": "string",
+                      "title": "扣款返回代码"
+                    },
+                    "kkfhmc": {
+                      "type": "string",
+                      "title": "扣款返回名称"
+                    },
+                    "sjse": {
+                      "type": "string",
+                      "title": "实缴税额"
+                    },
+                    "jkrq": {
+                      "type": "string",
+                      "title": "缴款日期"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "kkfhDm",
+                    "kkfhmc",
+                    "sjse",
+                    "jkrq"
+                  ],
+                  "required": [
+                    "kkfhDm",
+                    "sjse",
+                    "kkfhmc",
+                    "jkrq"
+                  ]
+                },
+                "title": "缴款返回明细列表"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "jkzt",
+              "sbzt",
+              "jksbyy",
+              "kkfhlb"
+            ],
+            "required": [
+              "jkzt",
+              "sbzt",
+              "kkfhlb",
+              "jksbyy"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 591457507,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"8afc14e4384a49b7b0e587224c746d06\",\n    \"data\": {\n        \"jkzt\": \"0\",\n        \"sbzt\": \"0\",\n        \"jksbyy\": \"\",\n        \"kkfhlb\": [\n            {\n                \"kkfhDm\": \"扣款返回代码\",\n                \"kkfhmc\": \"扣款返回名称\",\n                \"sjse\": \"1.00\"\n            }\n        ]\n    }\n}",
+      "id": 464172719
+    },
+    {
+      "name": "异常示例",
+      "responseId": 591457507,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 464172720
+    },
+    {
+      "name": "查询失败",
+      "responseId": 591457507,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
+      "id": 464172721
+    },
+    {
+      "name": "成功请求示例",
+      "responseId": 591457507,
+      "data": "示例一：\r\n{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"reqId\": \"8afc14e4384a49b7b0e587224c746d06\",\r\n    \"data\": {\r\n        \"kkfhlb\": [],\r\n        \"jkzt\": 2,\r\n        \"jksbyy\": \"无缴款结果\",\r\n        \"sbzt\": 6\r\n    }\r\n}\r\n\r\n示例二：\r\n{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"reqId\": \"8afc14e4384a49b7b0e587224c746d06\",\r\n    \"data\": {\r\n        \"kkfhlb\": [],\r\n        \"jkzt\": 0,\r\n        \"jksbyy\": \"申报成功, 无需缴款\",\r\n        \"sbzt\": 5\r\n    }\r\n}\r\n\r\n示例三：\r\n{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"reqId\": \"8afc14e4384a49b7b0e587224c746d06\",\r\n    \"data\": {\r\n        \"kkfhlb\": [\r\n            {\r\n                \"kkfhDm\": \"A1\",\r\n                \"kkfhmc\": \"申报成功但未缴税成功\",\r\n                \"sjse\": \"1240.360000\"\r\n            }\r\n        ],\r\n        \"jkzt\": 2,\r\n        \"jksbyy\": \"无缴款结果\",\r\n        \"sbzt\": 6\r\n    }\r\n}\r\n\r\n\r\n示例四：\r\n{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"reqId\": \"8afc14e4384a49b7b0e587224c746d06\",\r\n    \"data\": {\r\n        \"kkfhlb\": [\r\n            {\r\n                \"kkfhDm\": \"A2\",\r\n                \"kkfhmc\": \"缴税成功\",\r\n                \"sjse\": \"287.470000\"\r\n            }\r\n        ],\r\n        \"jkzt\": 0,\r\n        \"jksbyy\": \"缴款成功\",\r\n        \"sbzt\": 7\r\n    }\r\n}",
+      "id": 537782747
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153113,
+  "ordering": 83,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-24T10:26:43.000Z",
+  "updatedAt": "2026-01-23T09:54:05.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

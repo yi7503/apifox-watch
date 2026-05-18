@@ -1,0 +1,399 @@
+{
+  "id": 310307823,
+  "name": "政策列表分页接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "政策法规库文章列表查询接口，支持分页，多条件搜索，可排序",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/legislation/listPage",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "pageNo": {
+          "type": "integer",
+          "title": "分页页码",
+          "description": "页码最高不超过20"
+        },
+        "pageSize": {
+          "type": "integer",
+          "title": "分页-单页数量",
+          "description": "单页数量不超过30"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "政策分类：支持多选\n示例值：[\"4\", \"5\"]\n可选值：\n【政策分类查询接口】返回参数中【分类ID】"
+        },
+        "industries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "行业：支持多选\n示例值：[\"制造业\", \"金融业\"]\n可选值：\n【政策属性查询接口】返回参数中属性名称为【行业】的【属性值名称】"
+        },
+        "areas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "地区/地域：支持多选\n示例值：[\"江苏省\", \"北京市\"]\n可选值：\n【政策属性查询接口】返回参数中属性名称为【地域】的【属性值名称】"
+        },
+        "taxes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "税种范围：支持多选\n示例值：[\"增值税\", \"企业所得税\"]\n可选值：\n【时效性：支持多选\n\n示例值：[\"现行有效\", \"部分失效\"]\n\n可选值：\n\n【政策属性查询接口】返回参数中属性名称为【时效】的【属性值名称】政策属性查询接口】返回参数中属性名称为【税种】的【属性值名称】"
+        },
+        "effectives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "时效性：支持多选\n示例值：[\"现行有效\", \"部分失效\"]\n可选值：\n【政策属性查询接口】返回参数中属性名称为【时效】的【属性值名称】"
+        },
+        "agencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "发文机关：支持多选\n示例值：[\"国家税务总局\", \"财政部\"]\n可选值：\n【政策属性查询接口】返回参数中属性名称为【发文机关】的【属性值名称】"
+        },
+        "appPolicyKeywordDTOs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "integer",
+                "title": "关键字类型",
+                "description": "当appPolicyKeyword不为空的时候，必填，单个不可多选\n示例值：4\n可选值：\n4：标题文号\n2：全文内容"
+              },
+              "text": {
+                "type": "string",
+                "title": "关键字",
+                "description": "当appPolicyKeyword不为空的时候，必填，单个不可多选\n示例值：\"营改增\""
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ],
+            "x-apifox-orders": [
+              "type",
+              "text"
+            ]
+          },
+          "description": "关键字搜索，支持多组（多组条件之间为【或】的关系）"
+        },
+        "sortPropertyDTO": {
+          "type": "object",
+          "properties": {
+            "sortType": {
+              "type": "string",
+              "title": "排序方向",
+              "description": "默认降序\n示例值：\"desc\"\n可选值：\n\"asc\"：升序\n\"desc\"：降序"
+            },
+            "property": {
+              "type": "string",
+              "title": "排序字段",
+              "description": "当sortPropertyDTO不为空的时候，必填\n示例值：\"publicationTime\"\n可选值：\n\"publicationTime\"：发文日期，目前仅支持该字段。"
+            }
+          },
+          "required": [
+            "sortType",
+            "property"
+          ],
+          "x-apifox-orders": [
+            "sortType",
+            "property"
+          ],
+          "title": "排序方式",
+          "description": "非必填，为空时默认按搜索结果相关度降序"
+        }
+      },
+      "required": [
+        "pageNo",
+        "pageSize",
+        "appPolicyKeywordDTOs",
+        "categories",
+        "industries",
+        "areas",
+        "taxes",
+        "effectives",
+        "agencies",
+        "sortPropertyDTO"
+      ],
+      "x-apifox-orders": [
+        "pageNo",
+        "pageSize",
+        "appPolicyKeywordDTOs",
+        "categories",
+        "industries",
+        "areas",
+        "taxes",
+        "effectives",
+        "agencies",
+        "sortPropertyDTO"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"pageNo\": 1,\n    \"pageSize\": 20,\n    \"appPolicyKeywordDTOs\": [\n        {\n            \"type\": 2,\n            \"text\": \"营改增\"\n        },\n        {\n            \"type\": 2,\n            \"text\": \"财政部\"\n        }\n    ],\n    \"categories\": [\n        \"4\",\n        \"5\"\n    ],\n    \"industries\": [\n        \"农、林、牧、渔业\",\n        \"金融业\"\n    ],\n    \"areas\": [\n        \"全国适用\"\n    ],\n    \"taxes\": [\n        \"增值税\"\n    ],\n    \"effectives\": [\n        \"现行有效\"\n    ],\n    \"agencies\": [\n        \"国家税务总局\"\n    ],\n    \"sortPropertyDTO\": {\n        \"sortType\": \"asc\",\n        \"property\": \"publicationTime\"\n    }\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "mediaType": "application/xml",
+        "value": "{\n    \"accessKey\": \"71YM8jobd84Fi70r\",\n    \"timestamp\": 1655793000163,\n    \"sign\": \"6f731bbb4868b809c2671b409e2c65b4bd09a0741c060e5afeb78fcb6143a267\",\n    \"pageNo\": 1,\n    \"pageSize\": 20,\n    \"appPolicyKeyword\": [\n        {\n            \"type\": 2,\n            \"text\": \"营改增\"\n        },\n        {\n            \"type\": 2,\n            \"text\": \"财政部\"\n        }\n    ],\n    \"categories\": [\n        \"4\",\n        \"5\"\n    ],\n    \"industries\": [\n        \"农、林、牧、渔业\",\n        \"金融业\"\n    ],\n    \"areas\": [\n        \"全国适用\"\n    ],\n    \"taxes\": [\n        \"增值税\"\n    ],\n    \"effectives\": [\n        \"现行有效\"\n    ],\n    \"agencies\": [\n        \"国家税务总局\"\n    ],\n    \"sortProperty\": {\n        \"sortType\": \"asc\",\n        \"property\": \"publicationTime\"\n    }\n}",
+        "name": "示例 1"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Ud5k1foWPO",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "kgnQevy54Y",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "zemiLse7y2",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 700360171,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "相应返回信息"
+          },
+          "code": {
+            "type": "string",
+            "title": "响应返回码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "政策列表总记录数"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "title": "政策主键ID"
+                    },
+                    "title": {
+                      "type": "string",
+                      "title": "标题"
+                    },
+                    "summary": {
+                      "type": "string",
+                      "title": "摘要"
+                    },
+                    "categoryId": {
+                      "type": "string",
+                      "title": "分类ID，当前子级分类的ID"
+                    },
+                    "categoryName": {
+                      "type": "string",
+                      "title": "分类名称，父级分类-子级分类"
+                    },
+                    "documentNumber": {
+                      "type": "string",
+                      "title": "文号"
+                    },
+                    "publicationTime": {
+                      "type": "string",
+                      "title": "发文日期，日期格式：yyyy-MM-dd"
+                    },
+                    "periodStartDate": {
+                      "type": "string",
+                      "title": "有效期开始日期，格式：yyyy/MM/dd"
+                    },
+                    "periodEndDate": {
+                      "type": "string",
+                      "title": "有效期结束日期，格式：yyyy/MM/dd"
+                    },
+                    "documentIssuingAgency": {
+                      "type": "string",
+                      "title": "发文机关，多条使用逗号拼接"
+                    },
+                    "effective": {
+                      "type": "string",
+                      "title": "时效状态"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "summary",
+                    "categoryId",
+                    "categoryName",
+                    "documentNumber",
+                    "publicationTime",
+                    "periodStartDate",
+                    "periodEndDate",
+                    "documentIssuingAgency",
+                    "effective"
+                  ],
+                  "x-apifox-orders": [
+                    "id",
+                    "title",
+                    "summary",
+                    "categoryId",
+                    "categoryName",
+                    "documentNumber",
+                    "publicationTime",
+                    "periodStartDate",
+                    "periodEndDate",
+                    "documentIssuingAgency",
+                    "effective"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "total",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "list"
+            ],
+            "title": "响应数据"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一ID"
+          }
+        },
+        "required": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 700360171,
+      "data": "{\n    \"data\": {\n        \"total\": \"2\",\n        \"list\": [\n            {\n                \"id\": \"1204336209929963777\",\n                \"title\": \"财政部、国家税务总局关于建筑服务等营改增试点政策的通知\",\n                \"summary\": \"2017.08.14 国家税务总局发布《关于跨境应税行为免税备案等增值税问题的公告》，规定自2018年1月1日起，金融机构开展贴现、转贴现业务需要就贴现利息开具发票的，由贴现机构按照票据贴现利息全额向贴现人开具增值税普通发票，转贴现机构按照转贴现利息全额向贴现机构开具增值税普通发票。详见：国家税务总局公告2017年第30号。\",\n                \"categoryId\": \"4\",\n                \"categoryName\": \"税务法规-中央税法\",\n                \"documentNumber\": \"财税〔2017〕58号\",\n                \"publicationTime\": \"2017-07-11\",\n                \"periodStartDate\": \"2017/07/11\",\n                \"periodEndDate\": \"2099/12/31\",\n                \"documentIssuingAgency\": \"财政部,国家税务总局\",\n                \"effective\": \"现行有效\"\n            },\n            {\n                \"id\": \"1213187274859350272\",\n                \"title\": \"财政部 税务总局关于明确国有农用地出租等增值税政策的公告[条款废止]\",\n                \"summary\": \"房地产开发企业中的一般纳税人购入未完工的房地产老项目继续开发后，以自己名义立项销售的不动产，属于房地产老项目，可以选择适用简易计税方法按照5%的征收率计算缴纳增值税。\",\n                \"categoryId\": \"4\",\n                \"categoryName\": \"税务法规-中央税法\",\n                \"documentNumber\": \"财政部 税务总局公告2020年第2号\",\n                \"publicationTime\": \"2020-01-22\",\n                \"periodStartDate\": \"2020/01/22\",\n                \"periodEndDate\": \"2099/12/31\",\n                \"documentIssuingAgency\": \"国家税务总局,财政部\",\n                \"effective\": \"部分失效\"\n            }\n        ]\n    },\n    \"message\": \"成功\",\n    \"code\": \"0\",\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 607287027
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59359025,
+  "ordering": 12,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-18T03:45:17.000Z",
+  "updatedAt": "2025-09-03T03:19:40.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.700360171"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

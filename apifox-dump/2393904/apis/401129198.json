@@ -1,0 +1,226 @@
+{
+  "id": 401129198,
+  "name": "查询退付手续费",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "9EhUcgLbxXx13NBcDNKY5",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口\n查询退付手续费数据\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/tfsxfhd/queryWithdrawFee",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"36\",\r\n    \"accountId\": \"13\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 590497285,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码 2000标识成功"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "description": "数据",
+            "$ref": "#/definitions/235716055"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "异常示例",
+      "responseId": 590497285,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 463936455
+    },
+    {
+      "name": "成功数据",
+      "responseId": 590497285,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"kjywr\": \"北京XX科技有限公司\",\r\n        \"jbdlb\": [\r\n            {\r\n                \"kjywr\": \"北京XX科技有限公司\",\r\n                \"jbdbh\": \"JBD20240501001\",\r\n                \"dhhdqclb\": [\r\n                    {\r\n                        \"sftf\": \"是\",\r\n                        \"zspmmc\": \"信息技术服务\",\r\n                        \"rtkrq\": \"2024-04-28\",\r\n                        \"zgswskfjmc\": \"海淀税务所第一分局\",\r\n                        \"skssswjgmc\": \"国家税务总局北京市海淀区税务局\",\r\n                        \"dzsphm\": \"011002400123456789\",\r\n                        \"sjtje\": 85600.5,\r\n                        \"zsxmmc\": \"增值税\"\r\n                    },\r\n                    {\r\n                        \"sftf\": \"是\",\r\n                        \"zspmmc\": \"居民企业所得税\",\r\n                        \"rtkrq\": \"2024-04-29\",\r\n                        \"zgswskfjmc\": \"海淀税务所第一分局\",\r\n                        \"skssswjgmc\": \"国家税务总局北京市海淀区税务局\",\r\n                        \"dzsphm\": \"011002400987654321\",\r\n                        \"sjtje\": 40000.39,\r\n                        \"zsxmmc\": \"企业所得税\"\r\n                    }\r\n                ],\r\n                \"nsrsbh\": \"91110108XXXXXXXXXX\",\r\n                \"jbdzt\": \"已审核\",\r\n                \"skssswjgdm\": \"110108000000\",\r\n                \"dkdjzsjbdlb\": [\r\n                    {\r\n                        \"xh\": \"001\",\r\n                        \"pzmc\": \"电子缴款书\",\r\n                        \"sz\": \"增值税\",\r\n                        \"je\": \"85600.50\"\r\n                    },\r\n                    {\r\n                        \"xh\": \"002\",\r\n                        \"pzmc\": \"电子缴款书\",\r\n                        \"sz\": \"企业所得税\",\r\n                        \"je\": \"40000.39\"\r\n                    }\r\n                ],\r\n                \"tfsxfje\": \"2512.02\",\r\n                \"skssswjgmc\": \"国家税务总局北京市海淀区税务局\",\r\n                \"sqzt\": \"Y\",\r\n                \"sjtje\": \"125600.89\",\r\n                \"jbnd\": \"2024\"\r\n            },\r\n            {\r\n                \"kjywr\": \"北京XX科技有限公司\",\r\n                \"jbdbh\": \"JBD20240501002\",\r\n                \"dhhdqclb\": [\r\n                    {\r\n                        \"sftf\": \"是\",\r\n                        \"zspmmc\": \"增值税附征\",\r\n                        \"rtkrq\": \"2024-05-01\",\r\n                        \"zgswskfjmc\": \"海淀税务所第二分局\",\r\n                        \"skssswjgmc\": \"国家税务总局北京市海淀区税务局\",\r\n                        \"dzsphm\": \"011002400112233445\",\r\n                        \"sjtje\": 50000,\r\n                        \"zsxmmc\": \"城市维护建设税\"\r\n                    }\r\n                ],\r\n                \"nsrsbh\": \"91110108XXXXXXXXXX\",\r\n                \"jbdzt\": \"已审核\",\r\n                \"skssswjgdm\": \"110108000000\",\r\n                \"dkdjzsjbdlb\": [\r\n                    {\r\n                        \"xh\": \"001\",\r\n                        \"pzmc\": \"电子缴款书\",\r\n                        \"sz\": \"城市维护建设税\",\r\n                        \"je\": \"50000.00\"\r\n                    }\r\n                ],\r\n                \"tfsxfje\": \"1000.00\",\r\n                \"skssswjgmc\": \"国家税务总局北京市海淀区税务局\",\r\n                \"sqzt\": \"Y\",\r\n                \"sjtje\": \"50000.00\",\r\n                \"jbnd\": \"2024\"\r\n            }\r\n        ],\r\n        \"nsrsbh\": \"91110108XXXXXXXXXX\",\r\n        \"yhzhlb\": [\r\n            {\r\n                \"khyhwddm\": \"102100001234\",\r\n                \"yhzh\": \"62220802000XXXXXXXX\",\r\n                \"skrmc\": \"北京XX科技有限公司\",\r\n                \"khyhmc\": \"中国工商银行\",\r\n                \"khyhdm\": \"102100000009\",\r\n                \"khyhwdmc\": \"中国工商银行北京海淀支行\"\r\n            }\r\n        ]\r\n    },\r\n    \"success\": true,\r\n    \"reqId\": \"282778e497dc465d9bdcbf453fd0b4b5\"\r\n}",
+      "id": "019b922c-5e4e-763d-8917-e07f1a7e2f3b"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75501171,
+  "ordering": 96,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-01-06T03:39:51.000Z",
+  "updatedAt": "2026-01-27T08:29:42.000Z",
+  "creatorId": 1442097,
+  "editorId": 3222025,
+  "creatorUserId": 1442097,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

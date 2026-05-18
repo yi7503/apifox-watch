@@ -1,0 +1,411 @@
+{
+  "id": 67585521,
+  "name": "上传财报数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n上传财报信息（每次只能上传一个税种）。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| PARAMETER_ERROR | 申报年不能为空！ |\n| PARAMETER_ERROR | 申报月不能为空！ |\n| PARAMETER_ERROR | 请求参数year或period不合法！ |\n| PARAMETER_ERROR | 请求参数duration不能小于30 |\n| PARAMETERCheck | 请求参数isDirectDeclare=true和exAction=1参数非法！ |\n| PARAMETERCheck | 【cbData】或者【cbnbData】必传不能为空 |\n| PARAMETERCheck | 上传报文，校验异常，请联系管理员！ |\n| PARAMETERCheck | 上传报文，参数校验失败，请检查！ |\n| PARAMETERCheck | 上传报文，业务校验失败，请检查！|\n| BUSINESS_ERROR | 任务不支持待上线 |\n| PARAMETERCheck | 参数业务校验异常 |\n| INTERFACE_ERROR | 接口异常,请联系管理员!|\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/writeFiData",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "year",
+        "period",
+        "duration",
+        "exAction",
+        "isDirectDeclare",
+        "jrwc",
+        "gzDeclare",
+        "allowRepeatDeclare",
+        "overloadKjzdzz",
+        "waitResult",
+        "sfjxbdjy",
+        "attachName",
+        "attachEncode",
+        "cbData",
+        "jthbData",
+        "cbnbData",
+        "optionCodeList"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id",
+          "description": "创建企业返回的 id"
+        },
+        "year": {
+          "type": "integer",
+          "description": " 格式yyyy",
+          "title": "申报年份"
+        },
+        "period": {
+          "type": "integer",
+          "description": "自然月（1-12）",
+          "title": "申报月份 "
+        },
+        "exAction": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "新版税局不支持此能力，即将下线。0 上传不发起税局暂存任务；1 上传发起税局暂存任务 ",
+          "title": "发起税局暂存任务"
+        },
+        "isDirectDeclare": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "是否上传数据直接申报",
+          "description": "默认false"
+        },
+        "gzDeclare": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "title": "财报覆盖申报",
+          "description": "1表示覆盖申报；0表示不覆盖。默认及空为0； 当isDirectDeclare为true 时生效。此参数针对税局财报已申报，是否继续覆盖申报\t"
+        },
+        "allowRepeatDeclare": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "是否允许重复申报",
+          "description": "V1版本客户使用，现对接无需使用。true 表示不校验清册申报状态，即使清册已申报，允许重复发起申报；false 表示校验清册申报状态，如果清册状态显示已申报，则不允许重复申报"
+        },
+        "overloadKjzdzz": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "是否重置会计制度准则",
+          "description": "传入true，重置清册和企业信息的财报备案设置，以上传报文的准则为准"
+        },
+        "cbData": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {},
+          "description": "当上传月季度报文时，该字段不允许为空，报文结构参考申报附录中的报文结构相应报文",
+          "x-apifox-orders": [],
+          "title": "财报月季度报文"
+        },
+        "cbnbData": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {},
+          "description": "上传财报年报时，该字段不为空，报文结构参考申报附录中的报文结构相应报文",
+          "x-apifox-orders": [],
+          "title": "财报年度申报报文"
+        },
+        "optionCodeList": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "optionCode": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "选项code"
+              },
+              "memoJson": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "备注信息"
+              },
+              "fileCode": {
+                "type": "string",
+                "title": "文件编码",
+                "description": "base64加密后的串，非必传。只有optionCode为强制申报使用"
+              },
+              "fileName": {
+                "type": "string",
+                "title": "文件名称"
+              }
+            },
+            "x-apifox-orders": [
+              "optionCode",
+              "memoJson",
+              "fileCode",
+              "fileName"
+            ],
+            "required": [
+              "fileCode",
+              "fileName"
+            ]
+          },
+          "title": "多条弹窗设置明细"
+        },
+        "duration": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "title": "任务时长",
+          "description": "（必须大于30），单位分钟"
+        },
+        "attachName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "财报附注excel文件名称",
+          "description": "财报附注使用，即将下线新版税局不支持"
+        },
+        "attachEncode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "财报附注excelbase64加密后的串，必传；EXCEL模板",
+          "description": "财报附注使用，即将下线新版税局不支持"
+        },
+        "waitResult": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "是否等待结果",
+          "description": "（仅针对浙江、云南、海南地区）\t即将下线，新版税局无此功能"
+        },
+        "jthbData": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {},
+          "title": "企业集团合并财务报表",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文",
+          "x-apifox-orders": []
+        },
+        "jrwc": {
+          "type": "string",
+          "title": "是否兼容一分钱尾差",
+          "description": "Y兼容，N不兼容。默认不兼容。"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "多账号场景"
+        },
+        "sfjxbdjy": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "是否进行表单校验",
+          "description": "财报专用，Y=是/N=否 ；备注：非必传字段，请求Y则会对请求的表单节点与税局报表列表进行比对是否一致，税局要求申报的表单未请求则失败返回。默认传空，或者传N则是维持现状只校验必填表单（资产、利润），其他表单不上传默认以税局带出申报"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "year",
+        "period"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"period\": 3,\r\n    \"year\": 2023,\r\n    \"aggOrgId\": 452681066557440,\r\n    \"isDirectDeclare\": true,\r\n    \"cbData\": object\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947947,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1PM4854FB146P8Q3Y5G2G0": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "上传成功！ 上传成功，并发起申报！isDirectDeclare是true时",
+                    "title": "信息"
+                  },
+                  "aggOrgId": {
+                    "type": "string",
+                    "title": "企业Id",
+                    "description": "企业Id"
+                  },
+                  "taskId": {
+                    "type": "string",
+                    "title": "任务ID",
+                    "description": "isDirectDeclare是true时，申报任务id，可以通过查询任务状态接口来查询任务执行的情况"
+                  }
+                },
+                "x-apifox-orders": [
+                  "message",
+                  "aggOrgId",
+                  "taskId"
+                ],
+                "required": [
+                  "aggOrgId"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1PM4854FB146P8Q3Y5G2G0"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 42947947,
+      "data": "{\"reqId\":\"b142197f34734eae9c06e4b8360f134b\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 42947948
+    },
+    {
+      "name": "任务不支持",
+      "responseId": 42947947,
+      "data": "{\"reqId\":\"5e37a3aa0c524a79ba08bada9d6b6172\",\"code\":\"BUSINESS_ERROR\",\"success\":true,\"message\":\"财务报表月季报当前不支持操作，敬请期待上线！\",\"data\":null}",
+      "id": 42947949
+    },
+    {
+      "name": "参数或业务校验失败",
+      "responseId": 42947947,
+      "data": "{\n    \"reqId\": \"32eb5a6faaec443b8bb391f8dc459647\",\n    \"code\": \"PARAMETERCheck\",\n    \"success\": true,\n    \"message\": \"参数校验失败，请检查\",\n    \"data\": {\n        \"checkMessage\": [\n            \"$.cbData[2].body[0].销售产成品、商品、提供劳务收到的现金.value2: 必须保留两位小数\"\n        ]\n    }\n}",
+      "id": 42947950
+    },
+    {
+      "name": "上传成功",
+      "responseId": 42947947,
+      "data": "{\n    \"reqId\": \"ff307b7bfd1146758e22d211ee25f5af\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"checkMessage\": null,\n        \"aggOrgId\": 452681066557440,\n        \"message\": \"上传成功，并发起申报！\",\n        \"taskId\": \"456558580774144\"\n    }\n}",
+      "id": 42947951
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13593929,
+  "ordering": 67,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T02:58:13.000Z",
+  "updatedAt": "2026-04-24T03:11:06.000Z",
+  "creatorId": 2122743,
+  "editorId": 1476015,
+  "creatorUserId": 2122743,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

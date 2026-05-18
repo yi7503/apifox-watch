@@ -1,0 +1,318 @@
+{
+  "id": 319645816,
+  "name": "查询税源变更任务结果接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于根据taskId查询异步任务执行进度信息,可以通过该接口来查询任务执行的情况。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\nPARAMETER_ERROR\t| 企业Id(aggOrgId)不能为空！\t\t\t\t|参数错误 |\nPARAMETER_ERROR\t| 请求参数不能为空\t\t\t\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 参数格式不正确，请参考文档!\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 当前已存在申报任务执行中，请稍后再试！  \t|业务错误 |\nBUSINESS_ERROR\t| 当前不支持操作，敬请期待上线！\t\t\t|业务错误 |\nINTERFACE_ERROR\t| 接口异常，请联系技术人员\t\t\t\t\t|程序错误 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaxFundChangeTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "x-apifox-overrides": {},
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "title": "任务id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "taskId",
+        "aggOrgId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\":361676547*****4,\r\n  \"taskId\":\"362243293*****8\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 716954495,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "aggOrgId",
+              "taskId",
+              "businessStatus",
+              "businessStatusName",
+              "serviceCode",
+              "serviceName",
+              "code",
+              "yzpzzlDm",
+              "result",
+              "message",
+              "screenshot",
+              "fcsType",
+              "videoUrl"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "申报任务id，可以通过查询任务状态接口来查询任务执行的情况"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业aggOrgId"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "任务类型"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "message": {
+                "type": "string",
+                "title": "异常信息"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "fcsType": {
+                "type": "string",
+                "title": "房产税类型 0=从价 1=从租"
+              },
+              "videoUrl": {
+                "type": "string",
+                "title": "视频链接"
+              },
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码"
+              },
+              "result": {
+                "type": "string",
+                "title": "成功信息"
+              },
+              "screenshot": {
+                "type": "string",
+                "title": "截图"
+              }
+            },
+            "required": [
+              "businessStatus",
+              "businessStatusName",
+              "taskId",
+              "serviceCode",
+              "aggOrgId",
+              "serviceName",
+              "code",
+              "yzpzzlDm",
+              "result"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "不支持示例",
+      "responseId": 716954495,
+      "data": "{\n    \"req_id\": \"20affbd9851a4f3fbbd31bfa7198634c\",\n    \"code\": \"BUSINESS_ERROR\",\n    \"success\": false,\n    \"aggOrgId\": 464528606622016,\n    \"message\": \"没有找到对应的任务信息\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 632962458
+    },
+    {
+      "name": "成功示例",
+      "responseId": 716954495,
+      "data": "{\n    \"req_id\": \"55f7808aeb0f466eb7f110d89db85845\",\n    \"success\": true,\n    \"code\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 464528606622016,\n        \"taskId\": 468224438862336,\n        \"businessStatus\": 3,\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-fund-gain-change\",\n        \"serviceName\": \"税源信息变更\",\n        \"code\": \"2000\",\n        \"message\": \"税源信息变更成功\",\n        \"result\": \"税源信息变更成功\",\n        \"fcsType\": \"0\",\n        \"yzpzzlDm\": \"BDA0610791\",\n        \"screenshot\": \"截图链接地址\",\n        \"videoUrl\": \"视频链接地址\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 632962459
+    },
+    {
+      "name": "任务进行中",
+      "responseId": 716954495,
+      "data": "{\n    \"reqId\": \"e2794b46bcd549b48d39f85cb1b3dbc6\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"执行中\",\n        \"serviceCode\": \"tax-fund-change\",\n        \"businessStatus\": 1,\n        \"serviceName\": \"税源变更\",\n        \"fcsType\": \"0\",\n        \"aggOrgId\": 482734358988800,\n        \"taskId\": 604836240104704\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 633164031
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 61157278,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-09T06:19:50.000Z",
+  "updatedAt": "2025-07-30T14:00:50.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.716954495"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,254 @@
+{
+  "id": 146705335,
+  "name": "上传Cookie接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n用于用户自行登录获取税局Cookie后，通过该接口直接上传税局有效Cookie进行登录。\n2,3 类型只支持办税员管理业务",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/ext/uploadToken",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "类型",
+          "description": "1:电票cookie；2 ：税局的tpass ;3 自然人tpass；"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "4位，如：1100，必填"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "type等于0或者1 ，必填"
+        },
+        "cookie": {
+          "type": "string",
+          "title": "cookie值"
+        }
+      },
+      "x-apifox-orders": [
+        "type",
+        "areaCode",
+        "nsrsbh",
+        "cookie"
+      ],
+      "required": [
+        "type",
+        "cookie"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "gidkLSQL6x",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "TnbNI99Y36",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "uLFDyDU339",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "grquKzxZO0",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42946920,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "valid": {
+                "type": "boolean",
+                "title": "cookie是否有效",
+                "description": "cookie是否有效，true有效，false无效"
+              },
+              "errorCode": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "cookie无效时的错误编码",
+                "description": "cookie无效时的错误编码"
+              },
+              "errorMsg": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "cookie无效时的错误信息",
+                "description": "cookie无效时的错误编码"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业ID",
+                "description": "如果type=2 ，返回"
+              },
+              "zrrId": {
+                "type": "string",
+                "title": "自然人ID",
+                "description": "如果type=3，返回"
+              }
+            },
+            "title": "cookie有效性校验结果",
+            "description": "cookie有效性校验结果",
+            "x-apifox-orders": [
+              "valid",
+              "errorCode",
+              "errorMsg",
+              "aggOrgId",
+              "zrrId"
+            ],
+            "required": [
+              "valid"
+            ]
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42946920,
+      "data": "{\n    \"code\": \"2000\",\n    \"message\": \"成功\",\n    \"data\": {\n        \"valid\": true,\n        \"errorCode\": \"2000\",\n        \"errorMsg\": \"\"\n    }\n}",
+      "id": 42946921
+    },
+    {
+      "name": "成功 cookie无效示例",
+      "responseId": 42946920,
+      "data": "{\n    \"reqId\": \"0707d9e9fba84a48909ef08f3fa8d1b3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": false\n}",
+      "id": 42946922
+    },
+    {
+      "name": "成功 Cookie有效示例",
+      "responseId": 42946920,
+      "data": "{\n    \"reqId\": \"0707d9e9fba84a48909ef08f3fa8d1b3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": true\n}",
+      "id": 42946923
+    },
+    {
+      "name": "异常示例",
+      "responseId": 42946920,
+      "data": "{\n    \"reqId\": \"d002568bcd9c4daa82fb6d07b41cf26d\",\n    \"code\": \"40101\",\n    \"success\": false,\n    \"message\": \"登录信息过期!\"\n}",
+      "id": 42946924
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841722,
+  "ordering": 212,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-07-18T06:40:09.000Z",
+  "updatedAt": "2024-10-31T02:13:51.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.42946920"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

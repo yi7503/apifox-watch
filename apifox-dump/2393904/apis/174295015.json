@@ -1,0 +1,171 @@
+{
+  "id": 174295015,
+  "name": "场景模版编辑",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于编辑附加信息维护-场景模版列表。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/cjmbUpdate",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01HY04FM7E4CAVX28MMXZJ9H6Q": {
+          "$ref": "#/definitions/97816215",
+          "x-apifox-overrides": {
+            "data": {
+              "title": "业务参数",
+              "$ref": "#/definitions/97852754"
+            }
+          },
+          "required": [
+            "data"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "01HY04FM7E4CAVX28MMXZJ9H6Q"
+      ],
+      "properties": {}
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"cjmb_update\",\r\n    \"data\": {\r\n        \"jcxxFpfjysxxList\": [\r\n            {\r\n                \"uuid\": \"319970ca132c404c94d83a923f0c3c41\"\r\n            }\r\n        ],\r\n        \"cjmbmc\": \"测试1Test\",\r\n        \"uuid\": \"8d181e62f4424320bc5a18cc15c19594\"\r\n    },\r\n    \"nsrsbh\": \"91**************2G\",\r\n    \"accountId\": \"\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "8GGz6ClMXv",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HEmSRYX3hX",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "NYv7oExMRK",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 451369692,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HY04G6JP1AQY15F0D0EYN1QA": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "title": "编辑成功的场景模板uuid"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "result"
+                ],
+                "required": [
+                  "result"
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HY04G6JP1AQY15F0D0EYN1QA"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 451369692,
+      "data": "{\n    \"code\": \"2000\",\n    \"message\": null,\n    \"success\": true,\n    \"reqId\": \"75e20c4a7eec4ac0b42f9b3cdf2233303\",\n    \"data\": {\n        \"result\": \"8d181e62f4424320bc5a18cc15c19594\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409295683
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 34128321,
+  "ordering": 36,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-05-16T06:02:29.000Z",
+  "updatedAt": "2025-06-10T02:29:01.000Z",
+  "creatorId": 1426961,
+  "editorId": 2706439,
+  "creatorUserId": 1426961,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.451369692"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

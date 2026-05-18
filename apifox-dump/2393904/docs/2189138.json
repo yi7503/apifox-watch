@@ -1,0 +1,17 @@
+{
+  "id": 2189138,
+  "name": "业务流程",
+  "sidebarTitle": "",
+  "content": " ## 发票认证业务流程\n\n\n### 税局系统操作流程\n\n![抵扣认证流程-税局.gif](https://api.apifox.cn/api/v1/projects/2393904/resources/372809/image-preview)\n\n### 税务数字证书认证业务流程\n\n> 第一步，需要发票认证的企业授权，向税局申请证书  \n> 第二步，导入证书，同步企业当前档案信息、申报信息  \n> 第三步，开始具体的发票认证业务流程  \n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/371411/image-preview)\n\n\n\n### 发票云认证业务流程\n\n>第一步，产品订购\n>第二步，开始具体的发票认证业务流程  \n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/371412/image-preview)\n\n\n\n\n## 发票勾选参考流程\n\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/371413/image-preview)\n\n进项发票、海关缴款书勾选接口是异步接口，申请勾选之后需要通过查询勾选结果接口获取结果  \n\n\n\n\n\n\n## 申请统计确认参考流程\n\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/371414/image-preview)\n\n申请统计确认接口是异步接口，申请之后需要通过查询申请结果接口获取结果  \n\n",
+  "folderId": 13281906,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-16T02:59:53.000Z",
+  "updatedAt": "2024-09-30T07:03:38.000Z",
+  "creatorId": 1426961,
+  "editorId": 1455560,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

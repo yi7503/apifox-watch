@@ -1,0 +1,355 @@
+{
+  "id": 91408718,
+  "name": "办税小号通话清单查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n    此接口用于用户通过办税小号查询通话清单。\n\n## 错误码\n| 错误代码  | 错误信息   | \n| -------- | --------- |\n| PARAMETER_ERROR | 参数secret_no不能为空 |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sjhm/querySecretReportPageList",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "phone_no": {
+          "type": "string",
+          "title": "实名手机号",
+          "description": "A号码"
+        },
+        "secret_no": {
+          "type": "string",
+          "title": "办税小号",
+          "description": "X号码"
+        },
+        "peer_no": {
+          "type": "string",
+          "title": "验证码短信内容",
+          "description": "验证码短信内容"
+        },
+        "call_type": {
+          "type": "string",
+          "title": "呼叫类型",
+          "description": "取值：0：主叫，即phone_no打给peer_no。1：被叫，即peer_no打给phone_no。4：呼叫拦截。"
+        },
+        "starttime": {
+          "type": "string",
+          "title": "查询通话的开始时间",
+          "description": "格式为：yyyy-MM-dd HH:mm:ss,默认当天0点0分0秒"
+        },
+        "endtime": {
+          "type": "string",
+          "title": "查询通话的结束时间",
+          "description": "格式为：yyyy-MM-dd HH:mm:ss，默认当天23点59分59秒"
+        },
+        "page": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": "分页信息",
+          "description": "可选，不传默认返回第 1 页，分页大小 100"
+        }
+      },
+      "x-apifox-orders": [
+        "phone_no",
+        "secret_no",
+        "peer_no",
+        "call_type",
+        "starttime",
+        "endtime",
+        "page"
+      ],
+      "required": [
+        "secret_no"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"secret_no\":\"18xxxxxxxxx\",\r\n    \"starttime\":\"2023-03-20 00:00:00\",\r\n    \"endtime\":\"2023-03-29 23:59:59\",\r\n    \"page\":{\r\n        \"currentPage\":1,\r\n        \"pageSize\":100\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947051,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息",
+            "description": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "object",
+                "properties": {
+                  "totalPage": {
+                    "type": "integer",
+                    "title": "总页数"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "title": "每页显示数量"
+                  },
+                  "currentPage": {
+                    "type": "integer",
+                    "title": "当前页"
+                  },
+                  "totalCount": {
+                    "type": "integer",
+                    "title": "总数量"
+                  }
+                },
+                "required": [
+                  "totalPage",
+                  "pageSize",
+                  "currentPage",
+                  "totalCount"
+                ],
+                "x-apifox-orders": [
+                  "totalPage",
+                  "pageSize",
+                  "currentPage",
+                  "totalCount"
+                ],
+                "title": "分页信息"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "phone_no": {
+                      "type": "string",
+                      "title": "实名手机号,即A号码"
+                    },
+                    "unconnected_cause": {
+                      "type": "string",
+                      "title": "未接通通话的原因归类",
+                      "description": "取值：0：正常通话。1：黑名单拦截。2：无绑定关系。3：呼叫限制。4：其他"
+                    },
+                    "call_time": {
+                      "type": "string",
+                      "title": "主叫拨打时间",
+                      "description": "格式为：yyyy-MM-dd HH:mm:ss"
+                    },
+                    "peer_no": {
+                      "type": "string",
+                      "title": "AXB中的B号码或者N号码"
+                    },
+                    "release_dir": {
+                      "type": "integer",
+                      "title": "通话释放方向",
+                      "description": "取值：0：平台释放。1：主叫挂断。2：被叫挂断"
+                    },
+                    "start_time": {
+                      "type": "string",
+                      "title": "查询通话的开始时间",
+                      "description": "格式为：yyyy-MM-dd HH:mm:ss"
+                    },
+                    "talktime": {
+                      "type": "string",
+                      "title": "通话时间，单位毫秒"
+                    },
+                    "id": {
+                      "type": "string",
+                      "title": "唯一id"
+                    },
+                    "secret_no": {
+                      "type": "string",
+                      "title": "办税小号,即X号码"
+                    },
+                    "call_type": {
+                      "type": "integer",
+                      "title": "呼叫类型",
+                      "description": "取值：0：主叫，即phone_no打给peer_no。1：被叫，即peer_no打给phone_no。4：呼叫拦截"
+                    },
+                    "release_time": {
+                      "type": "string",
+                      "title": "查询通话的结束时间",
+                      "description": "格式为：yyyy-MM-dd HH:mm:ss"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "phone_no",
+                    "call_time",
+                    "peer_no",
+                    "start_time",
+                    "secret_no",
+                    "release_time",
+                    "unconnected_cause",
+                    "release_dir",
+                    "talktime",
+                    "id",
+                    "call_type"
+                  ],
+                  "required": [
+                    "phone_no",
+                    "call_time",
+                    "peer_no",
+                    "start_time",
+                    "secret_no",
+                    "id",
+                    "call_type",
+                    "talktime"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "page",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "page",
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947051,
+      "data": "{\n    \"req_id\": \"f180a18300d048b190876e20a03a2ac8\",\n    \"success\": true,\n    \"data\": {\n        \"page\": {\n            \"totalPage\": 1,\n            \"pageSize\": 100,\n            \"currentPage\": 1,\n            \"totalCount\": 1\n        },\n        \"list\": [\n            {\n                \"phone_no\": \"18xxxxxxxxx\",\n                \"unconnected_cause\": 0,\n                \"call_time\": \"2023-03-29 09:08:58\",\n                \"peer_no\": \"106xxxxxxx9999999\",\n                \"release_dir\": 0,\n                \"start_time\": \"2023-03-29 09:08:58\",\n                \"talktime\": 0,\n                \"id\": 1038886104699,\n                \"secret_no\": \"1xxxxxxxxxx\",\n                \"call_type\": 1,\n                \"release_time\": \"2023-03-29 09:08:58\"\n            }\n        ]\n    }\n}",
+      "id": 42947052
+    },
+    {
+      "name": "失败示例",
+      "responseId": 42947051,
+      "data": "{\n    \"req_id\": \"859aa47f22a4482f96e17a3968d7ecbb\",\n    \"success\": false,\n    \"code\": \"600001\",\n    \"message\": \"参数secret_no不能为空！\"\n}",
+      "id": 42947053
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843705,
+  "ordering": 403,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-06-27T05:54:17.000Z",
+  "updatedAt": "2024-07-12T02:13:48.000Z",
+  "creatorId": 1659553,
+  "editorId": 493984,
+  "creatorUserId": 1659553,
+  "editorUserId": 493984,
+  "responseChildren": [
+    "BLANK.42947051"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

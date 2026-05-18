@@ -1,0 +1,464 @@
+{
+  "id": 361558351,
+  "name": "日常待申报信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "用于查询日常待申报信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/queryDailyUnDeclare",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "dwbh": {
+          "type": "string",
+          "description": "单位编号"
+        },
+        "fkssq": {
+          "type": "string",
+          "description": "费款所属期，格式：YYYYMM\n若传输，返回对应属期的待申报数据；若不传则返回所有的待申报数据",
+          "pattern": "^\\d{6}$",
+          "minLength": 6,
+          "maxLength": 6
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "dwbh",
+        "fkssq"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 788217274,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "ossUrl": {
+                "type": "string",
+                "title": "结果链接",
+                "description": "压缩后的json数组，参考本节点下ossUrl内容结构"
+              },
+              "ossUrl内容结构": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dwbh": {
+                      "type": "string",
+                      "title": "单位编号"
+                    },
+                    "zjtzlsh": {
+                      "type": "string",
+                      "title": "征集通知流水号"
+                    },
+                    "jfrs": {
+                      "type": "string",
+                      "title": "缴费人数"
+                    },
+                    "jfgzhj": {
+                      "type": "integer",
+                      "title": "缴费工资合计"
+                    },
+                    "jfjs": {
+                      "type": "string",
+                      "title": "缴费基数"
+                    },
+                    "fl": {
+                      "type": "string",
+                      "title": "费率"
+                    },
+                    "yjfe": {
+                      "type": "integer",
+                      "title": "应缴费额"
+                    },
+                    "jmje": {
+                      "type": "integer",
+                      "title": "减免金额"
+                    },
+                    "ybtfe": {
+                      "type": "integer",
+                      "title": "应补退费额"
+                    },
+                    "djje": {
+                      "type": "integer",
+                      "title": "抵缴金额"
+                    },
+                    "sjyjnfe": {
+                      "type": "integer",
+                      "description": "实际应缴纳费额",
+                      "title": "实际应缴纳费额"
+                    },
+                    "sjly": {
+                      "type": "string",
+                      "title": "数据来源"
+                    },
+                    "jflx": {
+                      "type": "string",
+                      "description": "缴费类型，如'正常缴费'、'补缴'、'预缴'等",
+                      "title": "缴费类型"
+                    },
+                    "zgswjg": {
+                      "type": "string",
+                      "description": "主管税务机关，负责该单位税费征管的税务机构（如'杭州市税务局西湖分局'）",
+                      "title": "主管税务机关"
+                    },
+                    "sbjbjg": {
+                      "type": "string",
+                      "description": "社保经办机构，负责该单位社保业务办理的机构（如'杭州市社保中心西湖分中心'）",
+                      "title": "社保经办机构"
+                    },
+                    "sblsh": {
+                      "type": "string",
+                      "description": "社保流水号，社保系统中记录该业务的唯一流水编号",
+                      "title": "社保流水号"
+                    },
+                    "rymx": {
+                      "type": "array",
+                      "description": "人员明细，当前单位该所属期内的具体缴费人员列表",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "xm": {
+                            "type": "string",
+                            "description": "姓名，缴费人员的真实姓名",
+                            "title": "姓名"
+                          },
+                          "zzlx": {
+                            "type": "string",
+                            "description": "证件类型，如'身份证'、'护照'等",
+                            "title": "证件类型"
+                          },
+                          "zzhm": {
+                            "type": "string",
+                            "description": "证件号码，对应证件类型的唯一编号（如身份证号）",
+                            "title": "证件号码"
+                          },
+                          "jfgz": {
+                            "type": "integer",
+                            "description": "缴费工资，该人员计算缴费基数的基础工资数额",
+                            "title": "缴费工资"
+                          },
+                          "jfjs": {
+                            "type": "integer",
+                            "description": "缴费基数，该人员计算缴费金额的基准数值",
+                            "title": "缴费基数"
+                          },
+                          "fl": {
+                            "type": "number",
+                            "description": "费率，该人员缴费金额的计算比例（如0.20表示20%）",
+                            "title": "费率"
+                          },
+                          "yjfe": {
+                            "type": "integer",
+                            "description": "应缴费额，该人员根据基数和费率计算的应缴金额",
+                            "title": "应缴费额"
+                          },
+                          "jmfe": {
+                            "type": "integer",
+                            "description": "减免费额，该人员可享受的减免费用金额",
+                            "title": "减免费额"
+                          },
+                          "ybtfe": {
+                            "type": "integer",
+                            "description": "应补(退)费额，该人员需要补缴或退还的费用金额",
+                            "title": "应补(退)费额"
+                          },
+                          "rybh": {
+                            "type": "string",
+                            "description": "人员编号，唯一标识该缴费人员的内部编号",
+                            "title": "人员编号"
+                          },
+                          "zsxmdm": {
+                            "type": "string",
+                            "description": "征收项目，该人员缴费对应的项目（如'基本养老保险'）",
+                            "title": "征收项目"
+                          },
+                          "zspmdm": {
+                            "type": "string",
+                            "description": "征收品目，该人员缴费对应的细分品类",
+                            "title": "征收品目"
+                          },
+                          "zszmdm": {
+                            "type": "string",
+                            "description": "征收子目，该人员缴费对应的更细分类别",
+                            "title": "征收子目"
+                          },
+                          "zsxmmc": {
+                            "type": "string",
+                            "title": "征收项目名称"
+                          },
+                          "zspmmc": {
+                            "type": "string",
+                            "title": "征收品目 名称"
+                          },
+                          "zszmmc": {
+                            "type": "string",
+                            "title": "征收子目名称"
+                          },
+                          "zjlxmc": {
+                            "type": "string",
+                            "title": "证件类型名称"
+                          },
+                          "flbfb": {
+                            "type": "string",
+                            "title": "费率百分比"
+                          }
+                        },
+                        "required": [
+                          "xm",
+                          "zzlx",
+                          "zzhm",
+                          "jfgz",
+                          "jfjs",
+                          "fl",
+                          "yjfe",
+                          "jmfe",
+                          "ybtfe",
+                          "zsxmdm",
+                          "zspmdm",
+                          "zszmdm",
+                          "rybh"
+                        ],
+                        "x-apifox-orders": [
+                          "xm",
+                          "zzlx",
+                          "zzhm",
+                          "jfgz",
+                          "jfjs",
+                          "fl",
+                          "flbfb",
+                          "yjfe",
+                          "jmfe",
+                          "ybtfe",
+                          "zsxmdm",
+                          "zspmdm",
+                          "zszmdm",
+                          "zsxmmc",
+                          "zspmmc",
+                          "zszmmc",
+                          "zjlxmc",
+                          "rybh"
+                        ]
+                      }
+                    },
+                    "fkssqq": {
+                      "type": "string",
+                      "description": "费款所属期起，格式为YYYYMM（如202405），表示费款对应的起始月份",
+                      "title": "费款所属期起"
+                    },
+                    "fkssqz": {
+                      "type": "string",
+                      "description": "费款所属期止，格式为YYYYMM（如202405），表示费款对应的结束月份",
+                      "title": "费款所属期止"
+                    },
+                    "zsxmdm": {
+                      "type": "string",
+                      "description": "征收项目",
+                      "title": "征收项目"
+                    },
+                    "zspmdm": {
+                      "type": "string",
+                      "description": "征收品目",
+                      "title": "征收品目"
+                    },
+                    "zszmdm": {
+                      "type": "string",
+                      "description": "征收子目",
+                      "title": "征收子目"
+                    },
+                    "flbfb": {
+                      "type": "string",
+                      "title": "费率百分比"
+                    },
+                    "zsxmmc": {
+                      "type": "string",
+                      "title": "征收项目名称"
+                    },
+                    "zspmmc": {
+                      "type": "string",
+                      "title": "征收品目 名称"
+                    },
+                    "zszmmc": {
+                      "type": "string",
+                      "title": "征收子目名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "dwbh",
+                    "zjtzlsh",
+                    "fkssqq",
+                    "fkssqz",
+                    "jfrs",
+                    "jfgzhj",
+                    "jfjs",
+                    "fl",
+                    "flbfb",
+                    "yjfe",
+                    "jmje",
+                    "ybtfe",
+                    "djje",
+                    "sjyjnfe",
+                    "zsxmdm",
+                    "zsxmmc",
+                    "zspmdm",
+                    "zspmmc",
+                    "zszmdm",
+                    "zszmmc",
+                    "sjly",
+                    "jflx",
+                    "zgswjg",
+                    "sbjbjg",
+                    "sblsh",
+                    "rymx"
+                  ]
+                },
+                "title": "参考节点",
+                "description": "ossUrl链接内容的参考节点"
+              }
+            },
+            "required": [
+              "ossUrl内容结构",
+              "ossUrl"
+            ],
+            "x-apifox-orders": [
+              "ossUrl",
+              "ossUrl内容结构"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 788217274,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"ossUrl\": [ // 内容示例，实际是链接\n            {\n                \"djje\": null,\n                \"dwbh\": \"2020000000302\",\n                \"fkssqq\": \"2025-10\",\n                \"fkssqz\": \"2025-10\",\n                \"fl\": \"0.16\",\n                \"jfgzhj\": 167542,\n                \"jfjs\": \"200098\",\n                \"jflx\": \"\",\n                \"jfrs\": \"29\",\n                \"jmje\": 0,\n                \"rymx\": [],\n                \"sbjbjg\": \"XXXX社会保险基金管理中心（人社）\",\n                \"sblsh\": \"b31000000520d00001\",\n                \"sjly\": \"01\",\n                \"sjyjnfe\": 33231.68,\n                \"tslbxx\": \"\",\n                \"ybtfe\": 33231.68,\n                \"yjfe\": 33231.68,\n                \"zgswjg\": \"国家税务总局XXXX税务局\",\n                \"zjtzlsh\": \"b31e21000023660000002d1\",\n                \"zspmdm\": \"1000001\",\n                \"zsxmdm\": \"102001\",\n                \"zszmdm\": null\n            }\n        ]\n    },\n    \"timestamp\": \"2025-11-10 14:14:29\",\n    \"reqId\": \"T2700000000007d\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 712579101
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68408456,
+  "ordering": 10,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-15T09:20:33.000Z",
+  "updatedAt": "2026-04-18T09:05:04.000Z",
+  "creatorId": 1442097,
+  "editorId": 3222025,
+  "creatorUserId": 1442097,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

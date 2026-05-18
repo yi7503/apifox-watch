@@ -1,0 +1,181 @@
+{
+  "id": 379944171,
+  "name": "月度缴费工资查询 ",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "NLbWzXqM8ZSkg8mRxkgC-",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "存在新入职员工需要申报缴费工资的，在人社部做过参保登记审核通过的，可以查询到人员信息\n四川、浙江、宁波、深圳、山西、福建、内蒙古、西藏地区的可用月底缴费工资查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/queryMonthlyPaymentSalary",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "sfjcxxcb": {
+          "type": "string",
+          "title": "是否仅查询新参保",
+          "description": "是否仅查询新参保，Y：仅查询新参保人员，N：查询全部数据"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "sfjcxxcb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"496736\",\r\n    \"accountId\": \"5066653\",\r\n    \"sfjcxxcb\": \"Y\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 807846689,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/217259715"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 807846689,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"xzsblb\": [\n            {\n                \"xz\": [\n                    \"职工基本医疗保险\",\n                    \"失业保险\",\n                    \"职工基本养老保险\",\n                    \"职工大额医疗互助保险\",\n                    \"工伤保险\"\n                ],\n                \"yjfgz\": 6326,\n                \"zjlxdm\": \"201\",\n                \"xm\": \"XXXXX\",\n                \"zjhm\": \"14051112435000011\"\n            },\n            {\n                \"xz\": [\n                    \"职工基本医疗保险\",\n                    \"失业保险\",\n                    \"职工基本养老保险\",\n                    \"职工大额医疗互助保险\",\n                    \"工伤保险\"\n                ],\n                \"yjfgz\": 6326,\n                \"zjlxdm\": \"201\",\n                \"xm\": \"XXXX\",\n                \"zjhm\": \"41272000000000078\"\n            }\n        ],\n        \"rysblb\": [\n            {\n                \"yjfgz\": 6326,\n                \"zjlxdm\": \"201\",\n                \"xm\": \"XXXX\",\n                \"zjhm\": \"14050000000000001\"\n            },\n            {\n                \"yjfgz\": 6326,\n                \"zjlxdm\": \"201\",\n                \"xm\": \"XXXX\",\n                \"zjhm\": \"41000000000000008\"\n            }\n        ]\n    },\n    \"timestamp\": \"2025-11-11 14:47:57\",\n    \"reqId\": \"T836d63a959dc1\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 723834056
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 71473594,
+  "ordering": 79,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-11-21T02:06:10.000Z",
+  "updatedAt": "2026-04-24T06:24:21.000Z",
+  "creatorId": 1442097,
+  "editorId": 3222025,
+  "creatorUserId": 1442097,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

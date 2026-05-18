@@ -1,0 +1,478 @@
+{
+  "id": 78182955,
+  "name": "上传各税种申报表EXCEL数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n上传各税种整表的EXCEL数据（每次只能上传一个税种），需要整表数据。\n目前支持以下excel上传：\nBDA0610606增值税及附加税(适用于一般纳税人)\nBDA0610611增值税及附加税(适用于小规模纳税人)\nBDA0000000财产行为税合并纳税申报（房土）\nBDA0610005车船税\nBDA0610036资源税\nBDA0610100通用申报\nBDA0610334文化事业建设费\nBDA0610794印花税\nBDA0610980环境保护税纳税申报表\nBDA0610987水资源税\nBDA0611054非税收入通用申报表\nBDA0611111消费税及附加税费申报表\nBDA0611159企业所得税A类\nBDA0610790SYCJ城镇土地使用税税源采集\nBDA0610791SYCJ房产税税源采集\nCWBBSB财务报表申报（月季报）：小企业、企业会计准则未执行/已执行、企业会计制度、金融类企业会计准则已执行\nCWBBNDSB财务报表年度申报（年报）：小企业、企业会计准则未执行/已执行、企业会计制度、金融类企业会计准则已执行\nBDA0610865增值税预缴\nBDA0610857 残保金\nZDSY 重点税源\nBDA0610791房产税\nBDA0610790城镇土地使用税\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 请求参数不能为空! |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| PARAMETER_ERROR | 请求参数zsxmList不能为空！ |\n| PARAMETER_ERROR | 请求参数year或period不能为空！ |\n| BUSINESS_ERROR | 增值税主表错误，请检查数据！ |确认主表sheet页存在且名称“主表”\n| INTERFACE_ERROR | 接口异常,请联系管理员 |\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|\n| BUSINESS_ERROR|预约扣款情况，预约扣款日期必填并且是yyyy-MM-dd格式，当前错误值：XXX |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/writeTaxExcelData",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "optionCodeList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "optionCode": {
+                "type": "string",
+                "title": "选项code"
+              },
+              "memoJson": {
+                "type": "string",
+                "title": "备注信息"
+              },
+              "fileCode": {
+                "type": "string",
+                "title": "文件编码",
+                "description": "base64加密后的串，非必传。只有optionCode为强制申报使用"
+              },
+              "fileName": {
+                "type": "string",
+                "title": "文件名称"
+              }
+            },
+            "x-apifox-orders": [
+              "optionCode",
+              "memoJson",
+              "fileCode",
+              "fileName"
+            ],
+            "required": [
+              "fileName",
+              "fileCode"
+            ]
+          },
+          "title": "多条弹窗设置明细"
+        },
+        "year": {
+          "type": "integer",
+          "title": "税款所属期年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "税款所属期月",
+          "description": "自然月；例如：10月份申报增值税2021-09-01到2021-09-30，period传10"
+        },
+        "zsxmList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码",
+                "description": "参考申报附录：yzpzzlDm应征凭证种类代码"
+              },
+              "ssqQ": {
+                "type": "string",
+                "title": "所属期起",
+                "description": "格式yyyy-MM-dd"
+              },
+              "ssqZ": {
+                "type": "string",
+                "title": "所属期止",
+                "description": "格式yyyy-MM-dd"
+              },
+              "zspmDm": {
+                "type": "string",
+                "title": "征收品目代码",
+                "description": "文化事业建设费时必传字段，用来区分文化业还是娱乐业，302170100娱乐业文化事业建设费、302170200广告业文化事业建设费。（税报）"
+              },
+              "zlbsxlDm": {
+                "type": "string",
+                "title": "资料报送小类代码",
+                "description": "财报必须传,ZL1001001:一般企业会计准则、ZL1001002企业会计制度、ZL1001003:小企业会计准则、ZL1001050企业会计准则金融企业"
+              },
+              "templateCode": {
+                "type": "string",
+                "title": "资料报送子类代码",
+                "description": "【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业；其他准则传0"
+              },
+              "isDirectDeclare": {
+                "type": "boolean",
+                "title": "是否上传后直接申报",
+                "description": "默认false"
+              },
+              "attachEncode": {
+                "type": "string",
+                "title": "税表excelbase64加密后的串，必传"
+              },
+              "attachName": {
+                "type": "string",
+                "title": "税表excel文件名称 必传"
+              },
+              "gzDeclare": {
+                "type": "integer",
+                "description": "1表示覆盖申报；0表示不覆盖。默认及空为0； 当isDirectDeclare为true 时生效。",
+                "title": "财报覆盖申报"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "zspmDm",
+              "zlbsxlDm",
+              "templateCode",
+              "attachEncode",
+              "attachName",
+              "isDirectDeclare",
+              "gzDeclare"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "isDirectDeclare",
+              "attachEncode",
+              "attachName",
+              "gzDeclare"
+            ]
+          },
+          "title": "征收项目列表"
+        },
+        "usePresetDialog": {
+          "type": "boolean",
+          "title": "使用预置弹窗信息",
+          "description": "true=使用 flase = 不使用（以当期上传弹窗为准，未上传则认定为未预置）默认tru"
+        },
+        "kkfs": {
+          "type": "integer",
+          "title": "扣款方式",
+          "description": "1：手动扣款，2：预约扣款。仅浙江、海南、云南需要，其它地区忽略该字段"
+        },
+        "yykkrq": {
+          "type": "string",
+          "title": "预约扣款日期",
+          "description": "yyyy-MM-dd格式，如2023-12-13，仅当扣款方式(kkfs)为2时必传"
+        },
+        "bsswjg": {
+          "type": "string",
+          "title": "税务机关名称跨区域上传省市区(只针对房产税，城镇土地使用税，环保税)",
+          "description": "上传格式 省|市|区 如“湖南省|湘潭市|岳塘区”"
+        },
+        "jrwc": {
+          "type": "string",
+          "title": "是否兼容一分钱尾差",
+          "description": "Y兼容，N不兼容。默认不兼容。"
+        },
+        "sfxzyhssm": {
+          "type": "boolean",
+          "title": "是否新增印花税税目",
+          "description": "按期申报税局未认定仍需要新增税目 (true新增/false不新增)"
+        },
+        "zsxmDm": {
+          "type": "string",
+          "title": "征收项目代码",
+          "description": "工会经费=39900/水利建设专项收入=30221 合并申报则可以为空"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "多账号场景使用"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称"
+        },
+        "kqyswjgmc": {
+          "type": "string",
+          "title": "跨区域税局机关名称(只针对房产税，城镇土地使用税，环保税)",
+          "description": "上传格式 如“国家税务总局鞍山高新技术产业开发区税务局税源管理一股”,正确上传值可以以企业信息-跨区域信息节点返回进行参考"
+        },
+        "zdsysfsh": {
+          "type": "string",
+          "title": "重点税源是否审核",
+          "description": "1=审核 不传或者传空则是申报"
+        },
+        "sfjxbdjy": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "财报专用，Y=是/N=否 ；备注：非必传字段，请求Y则会对请求的表单节点与税局报表列表进行比对是否一致，税局要求申报的表单未请求则失败返回。默认传空，或者传N则是维持现状只校验必填表单（资产、利润），其他表单不上传默认以税种申报",
+          "title": "是否进行表单校验"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "tdztswjgmc",
+        "year",
+        "period",
+        "kkfs",
+        "yykkrq",
+        "jrwc",
+        "zdsysfsh",
+        "usePresetDialog",
+        "bsswjg",
+        "kqyswjgmc",
+        "sfxzyhssm",
+        "sfjxbdjy",
+        "zsxmDm",
+        "zsxmList",
+        "optionCodeList"
+      ],
+      "required": [
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList",
+        "usePresetDialog",
+        "zsxmDm"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 276924188282944,\r\n    \"year\": 2023,\r\n    \"period\": 4,\r\n    \"kkfs\": 2,\r\n    \"yykkrq\": \"2023-12-13\",\r\n    \"zsxmList\": [\r\n        {\r\n            \"yzpzzlDm\": \"BDA0610606\",\r\n            \"ssqQ\": \"2023-02-01\",\r\n            \"ssqZ\": \"2023-02-28\",\r\n            \"zspmDm\": \"\",\r\n            \"zlbsxlDm\": \"\",\r\n            \"templateCode\": \"\",\r\n            \"attachEncode\": \"aa\",\r\n            \"attachName\": \"增值税申报表.xlsx\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947935,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "上传成功，并发起申报！isDirectDeclare是true时",
+                "title": "提示信息"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业Id"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "申报任务id",
+                "description": "isDirectDeclare是true时，申报任务id，可以通过查询任务状态接口来查询任务执行的情况"
+              },
+              "isDeclared": {
+                "type": "boolean",
+                "title": "是否申报",
+                "description": "是否上传后直接申报标志"
+              },
+              "checkMessage": {
+                "type": "string",
+                "title": "参数校验失败信息"
+              }
+            },
+            "x-apifox-orders": [
+              "message",
+              "aggOrgId",
+              "taskId",
+              "isDeclared",
+              "checkMessage"
+            ],
+            "title": "数据",
+            "required": [
+              "message",
+              "aggOrgId",
+              "taskId",
+              "isDeclared",
+              "checkMessage"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 42947935,
+      "data": "{\"reqId\":\"662dd4a0e01d41daac21ef5c7da69402\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947936
+    },
+    {
+      "name": "不支持示例",
+      "responseId": 42947935,
+      "data": "{\"reqId\":\"df59d41b3840416abca13b121c39d45f\",\"code\":\"BUSINESS_ERROR\",\"success\":true,\"message\":\"增值税及附加税(适用于一般纳税人)当前不支持操作，敬请期待上线！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947937
+    },
+    {
+      "name": "参数或业务校验失败",
+      "responseId": 42947935,
+      "data": "{\"reqId\":\"c52d185931964271947e9e07c1b88996\",\"code\":\"PARAMETERCheck\",\"success\":true,\"message\":\"参数校验失败，请检查\",\"data\":{\"checkMessage\":[\"$.fjssbb: 必传不能为空\",\"$.zzssyyybnsr01bqxsqkmxb: 必传不能为空\",\"$.zzssyyybnsrzb: 必传不能为空\",\"$.zzssyyybnsr02bqjxsemxb: 必传不能为空\"]}}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947938
+    },
+    {
+      "name": "上传并发起申报",
+      "responseId": 42947935,
+      "data": "{\n    \"reqId\": \"09ec4f397daa41549866363b1762c372\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"checkMessage\": null,\n        \"isDeclared\": false,\n        \"aggOrgId\": 452681066557440,\n        \"message\": \"上传成功，并发起申报！\",\n        \"taskId\": \"456556632005888\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947939
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13282000,
+  "ordering": 101,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T02:00:18.000Z",
+  "updatedAt": "2026-05-08T13:24:02.000Z",
+  "creatorId": 2122743,
+  "editorId": 1476015,
+  "creatorUserId": 2122743,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

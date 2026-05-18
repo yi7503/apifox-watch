@@ -1,0 +1,277 @@
+{
+  "id": 329683187,
+  "name": "出口退税文库查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "t5IkWQAQxLzVYcoCW70cd",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {
+    "eXMsSMX5Htvcx3glOq-BJ": {
+      "defaultEnable": true
+    }
+  },
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/syncRefundTaxLibraryQuery",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "海关编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "海关商品名称"
+        },
+        "rqtj": {
+          "type": "string",
+          "description": "格式（yyyy-MM-dd）",
+          "title": "日期条件"
+        },
+        "pageNumber": {
+          "type": "string",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页数量"
+        }
+      },
+      "x-apifox-orders": [
+        "code",
+        "name",
+        "rqtj",
+        "pageNumber",
+        "pageSize"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "UsXnn1TOaZ",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "9aqoA4DvBW",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "S2s4h9Uh1C",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "nPOHi1hpUh",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 734212056,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "page": {
+                "type": "object",
+                "properties": {
+                  "pageSize": {
+                    "type": "string",
+                    "title": "每页数量"
+                  },
+                  "pageNum": {
+                    "type": "string",
+                    "title": "页号"
+                  },
+                  "totalCount": {
+                    "type": "string",
+                    "title": "总条数"
+                  },
+                  "totalPage": {
+                    "type": "string",
+                    "title": "总页数"
+                  }
+                },
+                "x-apifox-orders": [
+                  "pageSize",
+                  "pageNum",
+                  "totalCount",
+                  "totalPage"
+                ]
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/189029371"
+                },
+                "title": "分页结果"
+              }
+            },
+            "x-apifox-orders": [
+              "page",
+              "list"
+            ],
+            "title": "结果",
+            "required": [
+              "page"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 734212056,
+      "data": "{\n    \"reqId\": \"0717fe97aae3751a6f85c06d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"list\": [\n            {\n                \"bcflag\": null,\n                \"cjdl\": 0,\n                \"clde\": 0,\n                \"code\": \"01011010\",\n                \"dwcode\": \"01\",\n                \"dwflag\": 0,\n                \"endDate\": \"2004-12-31 00:00:00\",\n                \"name\": \"改良种用的马\",\n                \"note\": null,\n                \"splb\": null,\n                \"stDate\": \"2004-01-01 00:00:00\",\n                \"stdflag\": 1,\n                \"sz\": \"V\",\n                \"tsflag\": null,\n                \"tsl\": 5,\n                \"unit\": \"头\",\n                \"zhcmcode\": null,\n                \"zzslSet\": \"13\"\n            },\n            {\n                \"bcflag\": \"*\",\n                \"cjdl\": 0,\n                \"clde\": 0,\n                \"code\": \"0101101010\",\n                \"dwcode\": \"01\",\n                \"dwflag\": 0,\n                \"endDate\": \"2004-12-31 00:00:00\",\n                \"name\": \"改良种用野马\",\n                \"note\": null,\n                \"splb\": null,\n                \"stDate\": \"2004-01-01 00:00:00\",\n                \"stdflag\": 1,\n                \"sz\": \"V\",\n                \"tsflag\": null,\n                \"tsl\": 5,\n                \"unit\": \"头\",\n                \"zhcmcode\": null,\n                \"zzslSet\": \"13\"\n            }\n        ],\n        \"page\": {\n            \"pageNum\": 1,\n            \"pageSize\": 2,\n            \"totalCount\": 119750,\n            \"totalPage\": 59875\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650777806
+    },
+    {
+      "name": "失败",
+      "responseId": 734212056,
+      "data": "{\n    \"code\": \"4708\",\n    \"success\": true,\n    \"message\": \"请先进行自检申请上传申报表相关数据，再进行附列资料上传\",\n    \"reqId\": \"c2f9201cdaaf46f8a4a13efed1528e45\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650777807
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63427579,
+  "ordering": 36,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-31T07:26:28.000Z",
+  "updatedAt": "2025-08-06T06:08:39.000Z",
+  "creatorId": 1910680,
+  "editorId": 1476015,
+  "creatorUserId": 1910680,
+  "editorUserId": 1476015,
+  "responseChildren": [
+    "BLANK.734212056"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

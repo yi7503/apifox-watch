@@ -1,0 +1,177 @@
+{
+  "id": 98395622,
+  "name": "注销勾选结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询企业电子发票服务平台（发票云）注销勾选/撤销注销勾选申请结果。\n\n## 错误码\n\n| **错误代码**       | **错误消息**             | **解决方案**                             |\n| -------------- | -------------------- | -------------------------------- |\n| FprzSbxxIsNull | 企业申报信息为空     | 没有获取到企业当前的申报信息     |\n| FprzTjqrIsNull | 企业统计确认数据为空 | 没有获取到企业最新的统计确认数据 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/zxgxjg",
+  "tags": [
+    "发票认证",
+    "发票云认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/53298986"
+    },
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"91***************3N\",\r\n  \"reqId\": 477604473489600\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "4XXv8W9ljG",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "korBUgaB05",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "lvpX8DDGcs",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 245277313,
+      "name": "成功响应 ",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H68N1RMMJEPJS2CNP52NS9EZ": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/54051820"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01H68N1RMMJEPJS2CNP52NS9EZ"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 245277313,
+      "data": "{\n    \"reqId\": \"1accd95fefc343319163afcc2bb5879c\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"nsrsbh\": \"91****************3N\",\n        \"skssq\": \"202307\",\n        \"cljg\": \"1\",\n        \"zt\": 1,\n        \"zxgxlx\": \"1\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 24985220
+    },
+    {
+      "name": "撤销注销勾选成功示例",
+      "responseId": 245277313,
+      "data": "{\r\n    \"reqId\": \"673cf133bc0440edafa29af6751c7326\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"cljg\": \"1\",\r\n        \"code\": null,\r\n        \"message\": null,\r\n        \"nsrsbh\": \"91310113342290888U\",\r\n        \"skssq\": \"202309\",\r\n        \"zt\": 3,\r\n        \"zxgxlx\": \"2\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 29768827
+    },
+    {
+      "name": "注销勾选成功示例",
+      "responseId": 245277313,
+      "data": "{\r\n    \"reqId\": \"7b633c0c075544caa2b687c74e7845ec\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"cljg\": \"1\",\r\n        \"code\": null,\r\n        \"message\": null,\r\n        \"nsrsbh\": \"91310113342290888U\",\r\n        \"skssq\": \"202309\",\r\n        \"zt\": 3,\r\n        \"zxgxlx\": \"2\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 29768875
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58718502,
+  "ordering": 711,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-07-26T06:08:01.000Z",
+  "updatedAt": "2025-06-10T09:11:58.000Z",
+  "creatorId": 1689151,
+  "editorId": 2706439,
+  "creatorUserId": 1689151,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.245277313"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

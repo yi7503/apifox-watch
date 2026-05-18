@@ -1,0 +1,157 @@
+{
+  "id": 93911862,
+  "name": "停用账号启用",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n  税号连续登录失败超过4次以上，平台会停用该税号的登录调用。如需要继续使用登录，需要将该税号登录信息调整正确后，调用该接口解除登录锁定。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/recoveryLogin",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业Id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户 Id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 396503027,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "业务数据",
+                "description": "true为启用成功"
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "错误码",
+                "description": "2000：接口成功；4xxx;登录信息有误；5xxx:系统错误"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 396503027,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": true,\n    \"success\": true,\n    \"message\": \"启用成功\",\n    \"reqId\": \"f587280558964ef9855d33894e51a3e7\"\n}",
+      "id": 396503028
+    },
+    {
+      "name": "异常示例",
+      "responseId": 396503027,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"code\": \"4006\",\n    \"success\": true,\n    \"message\": \"企业不存在！\"\n}",
+      "id": 396503029
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13630702,
+  "ordering": 58,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-13T09:26:10.000Z",
+  "updatedAt": "2024-09-13T09:26:10.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.396503027"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,238 @@
+{
+  "id": 310307822,
+  "name": "政策属性查询接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "政策法规文章的其他属性查询接口，包括发文机关、时效性、所属行业、地区、税种等",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/legislation/attrList",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/xml",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {},
+      "xml": {
+        "name": "business"
+      },
+      "x-apifox-orders": [],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"needInvoices\": true,\r\n    \"taxNo\": \"546848545\",\r\n    \"statisticsType\": \"1\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "mediaType": "application/xml",
+        "value": "{}",
+        "name": "示例 1"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Ud5k1foWPO",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "kgnQevy54Y",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "zemiLse7y2",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 700360170,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "相应返回信息"
+          },
+          "code": {
+            "type": "string",
+            "title": "响应返回码",
+            "description": "如：0"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "attrId": {
+                  "type": "integer",
+                  "title": "属性id"
+                },
+                "attrName": {
+                  "type": "string",
+                  "title": "属性名称"
+                },
+                "attrValues": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "valueId": {
+                        "type": "integer",
+                        "title": "属性值ID"
+                      },
+                      "valueName": {
+                        "type": "string",
+                        "title": "属性值名称"
+                      },
+                      "updateTime": {
+                        "type": "string",
+                        "title": "属性值更新日期",
+                        "description": "yyyy/mm/dd hh:mm:ss"
+                      }
+                    },
+                    "required": [
+                      "valueId",
+                      "valueName",
+                      "updateTime"
+                    ],
+                    "x-apifox-orders": [
+                      "valueId",
+                      "valueName",
+                      "updateTime"
+                    ]
+                  },
+                  "title": "属性值列表"
+                }
+              },
+              "required": [
+                "attrId",
+                "attrName",
+                "attrValues"
+              ],
+              "x-apifox-orders": [
+                "attrId",
+                "attrName",
+                "attrValues"
+              ]
+            },
+            "title": "响应数据"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一ID"
+          }
+        },
+        "required": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 700360170,
+      "data": "{\n    \"data\": [\n        {\n            \"attrId\": 5,\n            \"attrName\": \"税种\",\n            \"attrValues\": [\n                {\n                    \"valueId\": 34,\n                    \"valueName\": \"增值税\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 45,\n                    \"valueName\": \"消费税\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                }\n            ]\n        },\n        {\n            \"attrId\": 8,\n            \"attrName\": \"地域\",\n            \"attrValues\": [\n                {\n                    \"valueId\": 231,\n                    \"valueName\": \"全国适用\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 232,\n                    \"valueName\": \"北京市\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                }\n            ]\n        },\n        {\n            \"attrId\": 2,\n            \"attrName\": \"发文机关\",\n            \"attrValues\": [\n                {\n                    \"valueId\": 452,\n                    \"valueName\": \"国家税务总局\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 454,\n                    \"valueName\": \"财政部\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                }\n            ]\n        },\n        {\n            \"attrId\": 5,\n            \"attrName\": \"时效\",\n            \"attrValues\": [\n                {\n                    \"valueId\": 556,\n                    \"valueName\": \"现行有效\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 555,\n                    \"valueName\": \"部分失效\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 553,\n                    \"valueName\": \"失效/废止\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 554,\n                    \"valueName\": \"尚未生效\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 553,\n                    \"valueName\": \"草案/征求意见稿\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                }\n            ]\n        },\n        {\n            \"attrId\": 7,\n            \"attrName\": \"行业\",\n            \"attrValues\": [\n                {\n                    \"valueId\": 763,\n                    \"valueName\": \"农、林、牧、渔业\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                },\n                {\n                    \"valueId\": 754,\n                    \"valueName\": \"采矿业\",\n                    \"updateTime\": \"2025-05-13 12:00:34\"\n                }\n            ]\n        }\n    ],\n    \"message\": \"成功\",\n    \"code\": \"0\",\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 607287026
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59359025,
+  "ordering": 6,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-18T03:45:17.000Z",
+  "updatedAt": "2025-07-08T03:17:39.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.700360170"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

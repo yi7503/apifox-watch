@@ -1,0 +1,187 @@
+{
+  "id": 415083843,
+  "name": "已开具发票的合格证台账信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "机动车业务-已开具发票的合格证台账信息查询。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryYkjfpHgztz",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：queryJdcxx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "jdcclsbdh": {
+              "type": "string",
+              "title": "车辆识别代号/车架号码"
+            },
+            "pageNumber": {
+              "type": "integer",
+              "title": "页码",
+              "description": "默认：1"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页记录数",
+              "description": "默认：10，最大：50"
+            }
+          },
+          "x-apifox-orders": [
+            "jdcclsbdh",
+            "pageNumber",
+            "pageSize"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01JAA099QH73978DKKD71TW15M"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**********QY4Y\",\r\n    \"data\": {\r\n        \"jdcclsbdh\": \"\",\r\n        \"pageNumber\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KGKCTM2J0D98G1PP06HHJG2F"
+            ],
+            "x-apifox-refs": {
+              "01KGKCTM2J0D98G1PP06HHJG2F": {
+                "$ref": "#/definitions/245021383"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"pageNumber\": 1,\n        \"pageSize\": 1,\n        \"total\": 43680,\n        \"list\": [\n            {\n                \"jdcclsbdh\": \"LK**********6714\",\n                \"wzhgzbh\": \"WD*********6136\",\n                \"fplxDm\": \"083\",\n                \"fplxMc\": \"电子发票（机动车销售统一发票）\",\n                \"fphm\": \"25132************4767\",\n                \"zzfpDm\": null,\n                \"zzfphm\": null,\n                \"kprq\": \"2025-12-23 17:21:32\",\n                \"fpzt\": \"正数发票\",\n                \"xsfnsrsbh\": \"91***************531N\",\n                \"xsfmc\": \"邯郸市*********有限公司\",\n                \"gmfnsrsbh\": \"91***************C095\",\n                \"gmfmc\": \"邱县******有限公司\",\n                \"je\": 78584.07,\n                \"czsj\": \"2025-12-23 17:21:34\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": null,\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 77968968,
+  "ordering": 67,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-04T03:43:11.000Z",
+  "updatedAt": "2026-02-12T03:30:31.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

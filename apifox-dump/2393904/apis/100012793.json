@@ -1,0 +1,304 @@
+{
+  "id": 100012793,
+  "name": "异步请求结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "获取异步请求下的业务处理结果。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/asynResult",
+  "tags": [
+    "本地化"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "asynresult"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "异步任务id",
+              "description": "所有开票相关接口异步模式发起或同步转异步会对应返回此任务ID"
+            },
+            "ly_ddbh": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "来源订单编号",
+              "description": "requestId和ly_ddbh 可二选一作为查询条件"
+            }
+          },
+          "x-apifox-orders": [
+            "requestId",
+            "ly_ddbh"
+          ],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01J6RMY4ZJGWW4SVBB7QAE1ZHE"
+      ],
+      "x-apifox-refs": {
+        "01J6RMY4ZJGWW4SVBB7QAE1ZHE": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"data\": {\r\n        \"requestId\": \"2**************************9\"\r\n    },\r\n    \"nsrsbh\": \"9********************Y\",\r\n    \"action\": \"asynresult\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947697,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "returnCode": {
+                "type": "string",
+                "title": "业务返回结果代码",
+                "description": "“0”表示成功，否则为执行失败，详见统一报文格式中的错误代码说明"
+              },
+              "returnMsg": {
+                "type": "string",
+                "title": "业务返回结果信息",
+                "description": "当returnCode不为0时的错误信息"
+              },
+              "execStatus": {
+                "type": "integer",
+                "title": "执行状态",
+                "description": "0:执行中，1:待下一次执行, 2:已完成，3:执行失败",
+                "enum": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "x-apifox": {
+                  "enumDescriptions": {
+                    "0": "正在执行中",
+                    "1": "等待下一轮执行",
+                    "2": "已执行成功",
+                    "3": "已执行失败"
+                  }
+                }
+              },
+              "notify": {
+                "type": "object",
+                "properties": {
+                  "notifyCode": {
+                    "type": "string",
+                    "title": "回调结果",
+                    "description": "“0”表示成功，否则为执行失败"
+                  },
+                  "notifyMsg": {
+                    "type": "string",
+                    "title": "回调结果信息"
+                  }
+                },
+                "title": "回调结果",
+                "x-apifox-orders": [
+                  "notifyCode",
+                  "notifyMsg"
+                ],
+                "required": [
+                  "notifyMsg",
+                  "notifyCode"
+                ]
+              },
+              "request": {
+                "type": "object",
+                "properties": {
+                  "requestTime": {
+                    "type": "integer",
+                    "title": "请求时的时间戳"
+                  },
+                  "bizType": {
+                    "type": "string",
+                    "title": "请求业务类型"
+                  },
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "请求税号"
+                  },
+                  "requestId": {
+                    "type": "string",
+                    "title": "请求ID"
+                  },
+                  "action": {
+                    "type": "string",
+                    "title": "请求Action"
+                  },
+                  "ly_ddbh": {
+                    "type": "string",
+                    "title": "来源订单编号"
+                  }
+                },
+                "required": [
+                  "requestTime",
+                  "bizType",
+                  "nsrsbh",
+                  "action",
+                  "ly_ddbh",
+                  "requestId"
+                ],
+                "x-apifox-orders": [
+                  "requestId",
+                  "requestTime",
+                  "bizType",
+                  "action",
+                  "nsrsbh",
+                  "ly_ddbh"
+                ],
+                "title": "源请求信息"
+              },
+              "returnBody": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "title": "业务返回结果",
+                "description": "JSON格式，具体内容请参考每个业务接口的回应消息说明"
+              }
+            },
+            "required": [
+              "returnCode",
+              "returnMsg",
+              "request",
+              "execStatus"
+            ],
+            "x-apifox-orders": [
+              "execStatus",
+              "returnCode",
+              "returnMsg",
+              "returnBody",
+              "notify",
+              "request"
+            ],
+            "title": "返回的内容结构"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947697,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"request\": {\n            \"requestTime\": 1727255095000,\n            \"bizType\": \"invoice\",\n            \"nsrsbh\": \"9****************Y\",\n            \"requestId\": \"2*****************9\",\n            \"action\": \"fpkj_zzs\",\n            \"ly_ddbh\": \"2************3\"\n        },\n        \"returnCode\": \"0\",\n        \"returnMsg\": \"任务执行成功\",\n        \"execStatus\": 2,\n        \"returnBody\": {\n            \"xsfNsrmc\": \"**************有限公司\",\n            \"kplx\": \"0\",\n            \"fplxdm\": \"030\",\n            \"gmfNsrsbh\": \"9**************G\",\n            \"kplsh\": \"2************************9\",\n            \"kprq\": \"2024-09-25 17:04:56\",\n            \"jshj\": 2,\n            \"gmfNsrmc\": \"************有限公司\",\n            \"xsfNsrsbh\": \"9****************Y\",\n            \"fphm\": \"2******************1\"\n        }\n    },\n    \"success\": true,\n    \"reqId\": \"c1aebbc7517846b8a89d4cfb3120f00f\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 579761240
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 19773348,
+  "ordering": 12,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-02T05:57:29.000Z",
+  "updatedAt": "2025-11-28T03:01:19.000Z",
+  "creatorId": 887900,
+  "editorId": 3099717,
+  "creatorUserId": 887900,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

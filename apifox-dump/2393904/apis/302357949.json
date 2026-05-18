@@ -1,0 +1,209 @@
+{
+  "id": 302357949,
+  "name": "失信被执行对象",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业执行人的相关信息，司法执行中的责任主体情况",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/enforceObj",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "两个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686613411,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "enforceObj": {
+                      "type": "string",
+                      "title": "被执行人名称"
+                    },
+                    "caseDate": {
+                      "type": "string",
+                      "title": "立案日期"
+                    },
+                    "province": {
+                      "type": "string",
+                      "title": "省份"
+                    },
+                    "city": {
+                      "type": "string",
+                      "title": "城市"
+                    },
+                    "district": {
+                      "type": "string",
+                      "title": "区县"
+                    },
+                    "entLicenseNumber": {
+                      "type": "string",
+                      "title": "企业证照号"
+                    },
+                    "executionBasisNo": {
+                      "type": "string",
+                      "title": "执行依据文号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "enforceObj",
+                    "caseDate",
+                    "province",
+                    "city",
+                    "district",
+                    "entLicenseNumber",
+                    "executionBasisNo"
+                  ]
+                },
+                "title": "被执行对象列表"
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 686613411,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"total\": \"2\",\r\n        \"items\": [\r\n            {\r\n                \"enforceObj\": \"宁波xx餐饮管理有限公司\",\r\n                \"caseDate\": \"2017-11-27\",\r\n                \"province\": \"浙江省\",\r\n                \"city\": \"330203\",\r\n                \"district\": \"海曙区\",\r\n                \"entLicenseNumber\": \"580523xxx\",\r\n                \"executionBasisNo\": \"（2016）浙xxx号\"\r\n            },\r\n            {\r\n                \"enforceObj\": \"宁波xx餐饮管理有限公司\",\r\n                \"caseDate\": \"2020-06-22\",\r\n                \"province\": \"浙江省\",\r\n                \"city\": \"330203\",\r\n                \"district\": \"海曙区\",\r\n                \"entLicenseNumber\": \"\",\r\n                \"executionBasisNo\": \"（2019）浙xxx号\"\r\n            }\r\n        ]\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"成功\",\r\n    \"reqId\": \"41bdcc8129ff4a87ab05935165d7c450\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596415777
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 212,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T05:50:26.000Z",
+  "updatedAt": "2025-06-11T03:24:26.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.686613411"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,305 @@
+{
+  "id": 295388337,
+  "name": "一月多次算薪清空数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "TQFDC7GBDp6uc2CcJb0uE",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n清除已填写数据，以便用最新申报表数据进行申报\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/calculateTax/batchClearSalaryData",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "skssq": {
+          "type": "string",
+          "title": "skssq",
+          "description": "格式YYYYMM年月"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户ID"
+        },
+        "qktj": {
+          "type": "object",
+          "properties": {
+            "pch": {
+              "type": "number",
+              "title": "批次号",
+              "description": "当sfdpc为1时必填"
+            },
+            "rylb": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "zzlx": {
+                    "type": "string",
+                    "title": "证件类型"
+                  },
+                  "zzhm": {
+                    "type": "string",
+                    "title": "证件号码"
+                  },
+                  "xm": {
+                    "type": "string",
+                    "title": "姓名"
+                  }
+                },
+                "x-apifox-orders": [
+                  "zzlx",
+                  "zzhm",
+                  "xm"
+                ],
+                "required": [
+                  "xm",
+                  "zzhm",
+                  "zzlx"
+                ]
+              },
+              "title": "人员列表",
+              "description": "如果rylb为空，则结合批次号、算薪类型字段清空所有人员的薪金数据；如果rylb传了数据，则结合批次号、算薪类型字段清空rylb对应的数据"
+            },
+            "sxlx": {
+              "type": "string",
+              "title": "所得项目",
+              "description": "如果sxlx为空，则结合批次号、人员列表字段清空所有人员的薪金数据；如果sxlx传了数据，则结合批次号、人员列表字段清空sxlx对应的数据；枚举见个税附录所得项目"
+            },
+            "sfdpc": {
+              "type": "string",
+              "title": "是否多批次",
+              "description": "0：非多批次\n1：多批次"
+            }
+          },
+          "x-apifox-orders": [
+            "sfdpc",
+            "pch",
+            "rylb",
+            "sxlx"
+          ],
+          "title": "清空数据条件",
+          "required": [
+            "sfdpc"
+          ]
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "skssq",
+        "accountId",
+        "qktj"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "qktj"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"string\",\n    \"accountId\": \"string\",\n    \"skssq\": \"202505\",\n    \"qktj\": {\n        \"pch\":1\n    }\n  \n}\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 674629996,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "boolean",
+            "title": "任务信息",
+            "description": "true/清空成功"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 674629996,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": true\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 589460798
+    },
+    {
+      "name": "异常示例",
+      "responseId": 674629996,
+      "data": "{\n    \"reqId\": \"5eccb0ee972f40d697d5b746f77d05b9\",\n    \"code\": \"4001\",\n    \"success\": false,\n    \"message\": \"传入批次号为：(22)大于最大批次号(1)!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 589460799
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 68,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2025-05-13T11:37:54.000Z",
+  "updatedAt": "2026-05-09T09:14:40.000Z",
+  "creatorId": 1452584,
+  "editorId": 493303,
+  "creatorUserId": 1452584,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

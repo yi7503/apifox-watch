@@ -1,0 +1,17 @@
+{
+  "id": 8660417,
+  "name": "  2026年4月发版内容",
+  "sidebarTitle": "",
+  "content": "2026年4月发布内容\n发布日期：2026-04-29\n发布版本：V2.2026.04\n\n# 功能优化\n\n## 代扣代缴优化\n1.完善所有所得项目算税、申报的入参数据，所有支持备注的所得项入参支持上传备注字段，并在算税反馈时返回备注信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649480/image-preview)\n\n2.算税、申报增加针对累计专项附加扣除数据、累计个人养老金的校验，不允许超过政策规定最大值，算税失败信息会统一返回到【综合算税失败原因列表】\n①个税算税服务\n针对异步算税场景下【综合所得 - 正常工资薪金】维度，优化累计专项附加扣除、累计个人养老金数据校验规则，入参的累计数据不允许大于政策规定的数据。\n\n若校验失败，异步算税反馈接口将返回错误码：code4000，提示信息为：算税失败，请查询算税失败原因\n\n本次涉及校验字段：\n累计子女教育支出、累计继续教育支出、累计住房租金支出、累计房屋贷款支出、累计赡养老人支出、累计 3 岁以下婴幼儿照护支出、累计个人养老金\n\n②个税辅助申报服务\n在申报数据报送环节，同步优化累计专项附加扣除、累计个人养老金校验规则，入参的累计数据不允许大于政策规定的数据。\n\n若校验不通过，申报接口返回申报状态sbzt为申报失败，fknr反馈内容将提示具体校验异常原因，请查询失败原因。\n\n3.增加批量一月多次算薪清空数据。主要针对多批次算税，可以批量清空不同所得项目下的批次数据，可清空所传所得项目批次及该批次后面的所有批次\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649483/image-preview)\n\n4.优化分批次算税逻辑，允许最新一批次数据重复算税，以最后一次传输的数据为准。涉及所得项目：正常工资薪金、保险营销员、证券经纪人、其他连续劳务报酬\n\n5.优化6万扣除名单，没有返回失败的人员列表数据。针对6万扣除名单确认，不论扣除成功还是失败，都会在对应的成功列表、失败列表返回人员明细\n\n6.优化算税、申报，传入累计专附扣数据逻辑。zcgzxjsfcrlj当前算税月正常工资薪金是否传入专项附加累计数据，为0时从税局下载数据，不论是否传入累计专附扣数据，都不使用，都使用从税局获取数据进行算税。\n涉及到的累计专附扣数据：累计子女教育支出、累计继续教育支出、累计住房租金支出、累计房屋贷款支出、累计赡养老人支出、累计 3 岁以下婴幼儿照护支出、累计个人养老金\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649488/image-preview)\n\n7.新增，非居民所得-其他偶然所得，算税、申报接口\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649490/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649491/image-preview)\n\n\n8.新增，综合所得，特许权使用费，算税、申报接口\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649492/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649494/image-preview)\n\n9.个税测试环境，支持更正申报、以及更正后的欠费查询和更正后的缴款\n\n10.多批次算税，返回参数新增：本月总个税\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649515/image-preview)\n\n11.新增个人代开发票查询接口\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649524/image-preview)\n\n12.新增，分类所得-持有创新企业境内发行存托凭证算税、申报\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649527/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649529/image-preview)\n\n13.个税，支持修改税局的临时密码\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649531/image-preview)\n\n14.代扣代缴-欠费查询调整为非必填，不传所属期则查所有欠费数据。传所属期则只查询该所属期的欠费数据\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649534/image-preview)\n\n\n## 生产经营优化\n\n1.获取企业及投资者信息，返回参数增加开业日期\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649520/image-preview)\n\n\n\n\n\n",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-29T08:54:44.000Z",
+  "updatedAt": "2026-04-29T09:12:25.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

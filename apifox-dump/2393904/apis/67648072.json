@@ -1,0 +1,166 @@
+{
+  "id": 67648072,
+  "name": "发起下载完税证明任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   根据税费种的yzpzzlDm、年月和起止日期发起从税局获完税证明数据进行归档。支持单税种，多税种同时下载。\n\n下载完税证明任务执行完后，可以通过查询下载完税证明接口进行查询，节点完税证明Url获取文件地址。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| PARAMETER_ERROR | 请求参数year和month不为空！ |\n| 5001 | 税款所属期 最早起+最晚止 不可跨自然年! |\n| 5003 | 应征凭证种类代码不支持超过20条！ |\n| 5002 | 应征凭证种类代码+税款所属期起止入参不可多条重复！ |\n| 5002 | 财报不支持下载完税证明！ |\n| 5002 | 税款所属期起止不能为空！|\n| 5002 | 应征凭证种类代码不能为空！ |\n| 5002 | 应征凭证种类代码为文化事业建设费时，征收品目代码不能为空！|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadWszmTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/37317067",
+      "x-apifox-overrides": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"year\":2023,\r\n    \"period\":3,\r\n    \"zsxmDtos\":[\r\n        {\r\n            \"ssqQ\": \"2023-02-01\",\r\n            \"ssqZ\": \"2023-02-28\",\r\n            \"yzpzzlDm\": \"BDA0610606\",\r\n            \"zspmDm\":\"\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": ""
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171895151,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3E5ATTZFMYYJBSTKHNX45K": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "$ref": "#/definitions/37317334"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3E5ATTZFMYYJBSTKHNX45K"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 171895151,
+      "data": "{\"reqId\":\"7f1dbfb3adbd46589b3d9c203458fe75\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17300443
+    },
+    {
+      "name": "发起任务成功",
+      "responseId": 171895151,
+      "data": "{\n    \"reqId\": \"5489479058a94f1c9430a13fa40057c0\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 548930000775232,\n        \"taskIds\": [\n            {\n                \"yzpzzlDm\": \"BDA0610794\",\n                \"ssqQ\": \"2025-07-01\",\n                \"zspmDm\": null,\n                \"taskId\": \"637212600000848\",\n                \"ssqZ\": \"2025-09-30\"\n            }\n        ],\n        \"taskId\": \"637212600000848\"\n    }\n}",
+      "id": 17188002
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531071,
+  "ordering": 67,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2023-03-11T03:27:16.000Z",
+  "updatedAt": "2026-01-08T06:55:45.000Z",
+  "creatorId": 798265,
+  "editorId": 493303,
+  "creatorUserId": 798265,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,285 @@
+{
+  "id": 253169268,
+  "name": "发起代扣代缴初始化数据任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n支持代扣代缴增值税、企业所得税根据合同系统编号获取申报表初始化数据\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n|PARAMETER_ERROR   | 请求参数year或period不能为空！   |\n|PARAMETER_ERROR|请求参数year或period不合法！ |\n|PARAMETER_ERROR |参数yzpzzlDms和zsxmList不能都为空！ |\n| PARAMETER_ERROR|参数yzpzzlDms和zsxmList不能都存在！ |\n|PARAMETER_ERROR |应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadInitDataTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "title": "税局取数入参",
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "year": {
+          "type": "integer",
+          "title": "税款所属期年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "税款所属期月",
+          "description": "自然月；例如：10月份申报增值税2021-09-01到2021-09-30，period传10"
+        },
+        "zsxmList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码",
+                "description": "参考申报附录：yzpzzlDm应征凭证种类代码"
+              },
+              "ssqQ": {
+                "type": "string",
+                "title": "所属期起",
+                "description": "格式yyyy-MM-dd"
+              },
+              "ssqZ": {
+                "type": "string",
+                "title": "所属期止",
+                "description": "格式yyyy-MM-dd"
+              },
+              "sfwQFII": {
+                "type": "string",
+                "description": "Y=是/N=否(企业所得税代扣代缴初始化必传)",
+                "title": "是否为QFII、RQFII等申报企业所得税"
+              },
+              "kjywlx": {
+                "type": "string",
+                "description": "1 法定源泉扣缴  (企业所得税代扣代缴初始化必传)/2指定扣缴申报",
+                "title": "扣缴义务类型"
+              },
+              "xthtbh": {
+                "type": "string",
+                "description": "文本 ，不支持多个编号请求(增值税代扣代缴，企业所得税代扣代缴初始化必传)",
+                "title": "系统合同编号"
+              },
+              "htbh": {
+                "type": "string",
+                "title": "合同编号",
+                "description": "文本 ，不支持多个编号请求(增值税代扣代缴，企业所得税代扣代缴初始化必传)"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "sfwQFII",
+              "kjywlx",
+              "xthtbh",
+              "htbh"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ"
+            ]
+          },
+          "title": "征收项目列表"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList"
+      ],
+      "required": [
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"orgId\": 482734358988800,\r\n    \"year\": \"2025\",\r\n    \"month\": \"1\",\r\n    \"zsxmList\": [\r\n        {\r\n            \"ssqQ\": \"2024-12-01\",\r\n            \"ssqZ\": \"2024-12-31\",\r\n            \"yzpzzlDm\": \"BDA0610069\",\r\n            \"sfwQFII\": \"Y\",\r\n            \"kjywlx\": \"1\",\r\n            \"xthtbh\": \"xthtbh\",\r\n            \"xthtbhList\": [\r\n                \"xthtbhList\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 600612501,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GVYWTYHE2RSH17WNZBGCPJXF": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "x-apifox-refs": {
+                  "01JGNDTSCMBSYM89GPMW0M63CN": {
+                    "$ref": "#/definitions/36731660",
+                    "x-apifox-overrides": {
+                      "aggOrgId": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "企业id"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01JGNDTSCMBSYM89GPMW0M63CN"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GVYWTYHE2RSH17WNZBGCPJXF"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 600612501,
+      "data": "{\"reqId\":\"5c79abd5e9c54d5a8dbd6c5139c536bc\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 469971223
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 600612501,
+      "data": "{\"reqId\":\"b7360144920942dca729ed3f440bc943\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"aggOrgId\":452681066557440,\"taskIds\":[{\"yzpzzlDm\":\"BDA0610606\",\"ssqQ\":\"2023-02-01\",\"taskId\":\"456559479825664\",\"ssqZ\":\"2023-02-28\"}],\"taskId\":\"456559479825664\"}}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 469971224
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48788968,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-10T02:23:14.000Z",
+  "updatedAt": "2025-09-19T03:35:03.000Z",
+  "creatorId": 1452584,
+  "editorId": 1476015,
+  "creatorUserId": 1452584,
+  "editorUserId": 1476015,
+  "responseChildren": [
+    "BLANK.600612501"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

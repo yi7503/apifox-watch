@@ -1,0 +1,236 @@
+{
+  "id": 172483885,
+  "name": "获取登录税局二维码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "ULfvNLoyG_uhlI5p2WJiH",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n该接口用于获取登录税局二维码，用户可以通过扫描该二维码进行税局登录。\n二维码有效时长为300s,请在到期前生成并扫码登录",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/scanLogin/getQrcode",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "areaCode": {
+          "type": "string"
+        },
+        "nsrsbh": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "areaCode"
+      ],
+      "x-apifox-orders": [
+        "areaCode",
+        "nsrsbh"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"areaCode\": \"3100\",\r\n    \"nsrsbh\": \"XXXXXXXXXXXX\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "EHl6oONAJx",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "0IjOHjpFUP",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "id": "khv3lq67G6",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 447738707,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "2000：登录成功；4xxx;登录信息有误;8xxx短信发送频繁；5xxx:系统错误"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "qrcode": {
+                "type": "string",
+                "title": "二维码字符串",
+                "description": "二维码有效时长为300s,请在到期前生成并扫码登录"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "任务id",
+                "description": "扫码获取成功的任务id，推送短信接口的传参"
+              },
+              "qrcodeId": {
+                "type": "string",
+                "title": "二维码id"
+              }
+            },
+            "required": [
+              "qrcode",
+              "taskId",
+              "qrcodeId"
+            ],
+            "x-apifox-orders": [
+              "qrcode",
+              "taskId",
+              "qrcodeId"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "title": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功结果示例",
+      "responseId": 447738707,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"qrcode\": \"qrcode_id=GdNBgdu+m19PQ/b6uzodwMXUKF4PhpaEXBUCuRU8rLoFAdAvmDp7i7Yobk7zzkNM&areaPrefix=5100&interfaceCode=0003\",\n        \"taskId\": 1762794678531752000,\n        \"qrcodeId\": \"be2ba2a0d8444fabbec65a43486cc5ed\"\n    },\n    \"success\": true,\n    \"message\": \"获取二维码成功\",\n    \"reqId\": \"e3b34e6154d248f6b713d7fdb3377a4a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 408299065
+    },
+    {
+      "name": "异常示例",
+      "responseId": 447738707,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数nsrsbh不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 408299066
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841732,
+  "ordering": 105,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-30T01:38:28.000Z",
+  "updatedAt": "2025-08-11T06:23:47.000Z",
+  "creatorId": 1442097,
+  "editorId": 2400309,
+  "creatorUserId": 1442097,
+  "editorUserId": 2400309,
+  "responseChildren": [
+    "BLANK.447738707"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

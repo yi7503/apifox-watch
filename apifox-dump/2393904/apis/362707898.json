@@ -1,0 +1,209 @@
+{
+  "id": 362707898,
+  "name": "缴费记录查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "ePeYZ6bbWW-YKorlRocsp",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "缴费记录查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/queryPayRecord",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "fkssqq": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "查询时间区间最多支持3个月，格式：YYYYMM，当以缴费日期查询时，该字段可不传",
+          "title": "费款所属期起"
+        },
+        "fkssqz": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "查询时间区间最多支持3个月，格式：YYYYMM，当以缴费日期查询时，该字段可不传",
+          "title": "费款所属期止"
+        },
+        "jfrqq": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "缴费日期起",
+          "description": "查询时间区间最多支持3个月，格式：YYYYMM，当以费款所属期查询时，该字段可不传"
+        },
+        "jfrqz": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "缴费日期止",
+          "description": "查询时间区间最多支持3个月，格式：YYYYMM，当以费款所属期查询时，该字段可不传"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz",
+        "jfrqq",
+        "jfrqz"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\n    \"aggOrgId\": \"4987245897876736\",\n    \"accountId\": \"5066521766583914847\",\n    \"yzpzxh\": \"10014125000031030225\",\n\n    \"fkssqq\": \"202509\",\n    \"fkssqz\": \"202509\"\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790201391,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/210327284"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 790201391,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"jfjlmx\": [\n            {\n                \"jnfs\": \"51\",\n                \"skgkMC\": \"国家XXXX支库\",\n                \"fkssqz\": \"2025-12-31 00:00:00.0\",\n                \"jfzt\": \"缴费成功\",\n                \"sjje\": 130,\n                \"zspmdm\": \"100000002\",\n                \"dzsphm\": \"4400000000003\",\n                \"yzpzmxxh\": \"1\",\n                \"jfrq\": \"2025-01-24 11:21:38.0\",\n                \"zsxmdm\": \"10203\",\n                \"fkssqq\": \"2025-01-01 00:00:00.0\",\n                \"sbmx\": [\n                    {\n                        \"fkssqz\": \"2025-12\",\n                        \"fl\": 1.0,\n                        \"zspmdm\": \"1020002\",\n                        \"yjfe\": 130.0,\n                        \"zszmdm\": \"\",\n                        \"sgswjg\": \"国家税务总局XXXX税务局\",\n                        \"jfrs\": 0,\n                        \"sjyjnfe\": 130.0,\n                        \"zsxmdm\": \"10203\",\n                        \"dkje\": \"\",\n                        \"fkssqq\": \"2025-01\",\n                        \"jmje\": 0.0,\n                        \"sblsh\": \"78b000000000000807\",\n                        \"xh\": \"1\",\n                        \"sjly\": \"02\",\n                        \"jfjs\": 130.0,\n                        \"dwbh\": \"400000000\",\n                        \"sbjbjg\": \"XXXXX市本级医疗局\",\n                        \"jflx\": \"正常应缴\",\n                        \"ybtfe\": 130.0\n                    }\n                ],\n                \"jkqx\": \"2099-12-31 00:00:00.0\",\n                \"yzpzxh\": \"100000000000004\",\n                \"jkzh\": \"30000000001\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715400706
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 70383524,
+  "ordering": 16,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-17T09:08:08.000Z",
+  "updatedAt": "2026-02-11T02:10:02.000Z",
+  "creatorId": 1910680,
+  "editorId": 887778,
+  "creatorUserId": 1910680,
+  "editorUserId": 887778,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

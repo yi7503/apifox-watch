@@ -1,0 +1,216 @@
+{
+  "id": 88243989,
+  "name": "解除实名手机号与办税小号绑定",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n该接口用于解除实名手机号与办税小号的绑定关系，呼叫办税小号时不再呼叫转移至实名手机号。\n\n## 错误码\n| 错误代码            | 错误消息                                                     | 状态码 |\n| ------------------- | ------------------------------------------------------------ | ------ |\n| PARAMETER_ERROR    | 无效的办税小号phoneNoX ，请检查办税小号格式是否正确！        | 无     |\n| PARAMETER_ERROR    | 号码池key为poolKey的办税小号phoneNoX尚未绑定！               | 无     |\n| PARAMETER_ERROR    | 号码池key为 poolKey绑定关系id为 subsId的办税小号phoneNoX解除绑定关系失败！ | 无     |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sjhm/unbind",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "phoneNoA": {
+          "type": "string",
+          "title": "实名手机号",
+          "description": "要解除绑定的实名手机号（可设置为手机号码或固定电话，固定电话需要加区号，区号和号码中间不需要加连字符。）"
+        },
+        "phoneNoX": {
+          "type": "string",
+          "title": "办税小号",
+          "description": "办税小号 "
+        }
+      },
+      "x-apifox-orders": [
+        "phoneNoA",
+        "phoneNoX"
+      ],
+      "required": [
+        "phoneNoA",
+        "phoneNoX"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n\t\"phoneNoA\":\"157xxxxxxxx\",\r\n    \"phoneNoX\":\"170xxxxxxxx\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947042,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息",
+            "description": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {},
+            "description": "解除绑定结果，true成功，false失败",
+            "x-apifox-orders": []
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947042,
+      "data": "{\n    \"reqId\": \"55a0b9c64e3c4792a9b026b306dd53a1\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": true\n}",
+      "id": 42947043
+    },
+    {
+      "name": "失败示例",
+      "responseId": 42947042,
+      "data": "{\n    \"reqId\": \"8fc4454f42354ec2956517c3f4a5bde9\",\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": false,\n    \"message\": \"传入参数不能为空！\"\n}",
+      "id": 42947044
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843705,
+  "ordering": 295,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-06-12T06:44:02.000Z",
+  "updatedAt": "2024-07-12T02:13:47.000Z",
+  "creatorId": 1659553,
+  "editorId": 493984,
+  "creatorUserId": 1659553,
+  "editorUserId": 493984,
+  "responseChildren": [
+    "BLANK.42947042"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

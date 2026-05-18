@@ -1,0 +1,244 @@
+{
+  "id": 242522284,
+  "name": "代理登录获取企业列表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n代理登录获取企业列表",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/agent/login/proxyOrgList",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "多账号id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n \r\n    \"aggOrgId\":\"123456xxxxx\"\r\n\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "M9p43DU1T1",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "4R8TPN3AxK",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "pVgXmsJzVY",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Isa8Et6oLB",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 581534477,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "title": "企业数量"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "nsrsbh": {
+                      "type": "string",
+                      "title": "纳税人识别号"
+                    },
+                    "name": {
+                      "type": "string",
+                      "title": "纳税人名称"
+                    }
+                  },
+                  "required": [
+                    "nsrsbh",
+                    "name"
+                  ],
+                  "x-apifox-orders": [
+                    "nsrsbh",
+                    "name"
+                  ]
+                },
+                "title": "明细"
+              }
+            },
+            "required": [
+              "total",
+              "details"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "details"
+            ]
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误 信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "登录成功示例",
+      "responseId": 581534477,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"total\": 15,\n        \"details\": [\n            {\n                \"nsrsbh\": \"9999*****\",\n                \"name\": \"****\"\n            },\n            {\n                \"nsrsbh\": \"***\",\n                \"name\": \"***\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"查询成功\",\n    \"reqId\": \"dc5ead3635244a0498c878906cb499b7\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 445674336
+    },
+    {
+      "name": "异常示例",
+      "responseId": 581534477,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数aggOrgId不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 445674337
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841620,
+  "ordering": 170,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-18T02:38:02.000Z",
+  "updatedAt": "2025-12-26T06:40:26.000Z",
+  "creatorId": 1442097,
+  "editorId": 2400309,
+  "creatorUserId": 1442097,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

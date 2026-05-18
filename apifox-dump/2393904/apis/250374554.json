@@ -1,0 +1,362 @@
+{
+  "id": 250374554,
+  "name": "获取我的提醒结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述:\n发起获取我的提醒任务。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaxMyRemind",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID",
+          "description": "发起时的任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\": \"234567\",\r\n    \"aggOrgId\": \"550600000336\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 595586066,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01JGJC0EJE8BRW6Z1WPGQH5QJ7": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "detail": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "tzgg": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "title": "标题"
+                              },
+                              "contentDescription": {
+                                "type": "string",
+                                "title": "内容"
+                              },
+                              "receptionTime": {
+                                "type": "string",
+                                "title": "时间"
+                              },
+                              "status": {
+                                "type": "string",
+                                "title": "状态"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "title",
+                              "contentDescription",
+                              "receptionTime",
+                              "status"
+                            ]
+                          },
+                          "title": "通知公告",
+                          "description": "通知公告"
+                        },
+                        "fxts": {
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "title": "标题"
+                              },
+                              "contentDescription": {
+                                "type": "string",
+                                "title": "内容"
+                              },
+                              "receptionTime": {
+                                "type": "string",
+                                "title": "时间"
+                              },
+                              "status": {
+                                "type": "string",
+                                "title": "状态"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "title",
+                              "contentDescription",
+                              "receptionTime",
+                              "status"
+                            ]
+                          },
+                          "title": "风险提示",
+                          "description": "风险提示"
+                        },
+                        "zcsd": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "title": "标题"
+                              },
+                              "contentDescription": {
+                                "type": "string",
+                                "title": "内容"
+                              },
+                              "receptionTime": {
+                                "type": "string",
+                                "title": "时间"
+                              },
+                              "status": {
+                                "type": "string",
+                                "title": "状态"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "title",
+                              "contentDescription",
+                              "receptionTime",
+                              "status"
+                            ]
+                          },
+                          "title": "政策速递",
+                          "description": "政策速递"
+                        },
+                        "fwtx": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "title": "标题"
+                              },
+                              "contentDescription": {
+                                "type": "string",
+                                "title": "内容"
+                              },
+                              "receptionTime": {
+                                "type": "string",
+                                "title": "时间"
+                              },
+                              "status": {
+                                "type": "string",
+                                "title": "状态"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "title",
+                              "contentDescription",
+                              "receptionTime",
+                              "status"
+                            ]
+                          },
+                          "title": "服务提醒",
+                          "description": "服务提醒"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "tzgg",
+                        "fxts",
+                        "zcsd",
+                        "fwtx"
+                      ]
+                    },
+                    "title": "数据详情"
+                  },
+                  "businessStatus": {
+                    "type": "string",
+                    "title": "任务状态",
+                    "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+                  }
+                },
+                "x-apifox-orders": [
+                  "businessStatus",
+                  "detail"
+                ],
+                "required": [
+                  "businessStatus"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01JGJC0EJE8BRW6Z1WPGQH5QJ7"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 595586066,
+      "data": "{\"reqId\":\"bc8d1c6a828a49978bdde83dec543c20\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 466506430
+    },
+    {
+      "name": "成功示例",
+      "responseId": 595586066,
+      "data": "{\n    \"reqId\": \"894525ad9c404b4399ee9fcedcddc19e\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-my-remind\",\n        \"businessStatus\": 3,\n        \"screenshot\": null,\n        \"detail\": [\n            {\n                \"tzgg\": [],\n                \"fxts\": [],\n                \"zcsd\": [],\n                \"fwtx\": []\n            }\n        ],\n        \"aggOrgId\": 535667143409793,\n        \"serviceName\": null,\n        \"resultMessage\": null,\n        \"message\": null,\n        \"taskId\": 571106648258048\n    }\n}",
+      "id": 466506431
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48191782,
+  "ordering": 42,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-02T01:46:16.000Z",
+  "updatedAt": "2025-01-02T11:31:30.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.595586066"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,260 @@
+{
+  "id": 302383369,
+  "name": "立案公告信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业立案后对应的公告信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/caseInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页显示条数",
+          "description": "最大20"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "页码"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageSize",
+        "pageIndex"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686658660,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "courtDate": {
+                      "type": "string",
+                      "title": "开庭日期"
+                    },
+                    "entName": {
+                      "type": "string",
+                      "title": "企业名称"
+                    },
+                    "city": {
+                      "type": "string",
+                      "title": "城市"
+                    },
+                    "caseStatus": {
+                      "type": "string",
+                      "title": "案件状态"
+                    },
+                    "relatedEntity": {
+                      "type": "string",
+                      "title": "关联企业/个人"
+                    },
+                    "assistingJudger": {
+                      "type": "string",
+                      "title": "助理法官"
+                    },
+                    "roleType": {
+                      "type": "string",
+                      "title": "涉诉类型"
+                    },
+                    "caseNo": {
+                      "type": "string",
+                      "title": "案号"
+                    },
+                    "judgerName": {
+                      "type": "string",
+                      "title": "承办人"
+                    },
+                    "caseCause": {
+                      "type": "string",
+                      "title": "案由"
+                    },
+                    "courtName": {
+                      "type": "string",
+                      "title": "法院"
+                    },
+                    "province": {
+                      "type": "string",
+                      "title": "省份"
+                    },
+                    "district": {
+                      "type": "string",
+                      "title": "区县"
+                    },
+                    "startTime": {
+                      "type": "string",
+                      "title": "立案时间"
+                    },
+                    "endTime": {
+                      "type": "string",
+                      "title": "结束时间"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "courtDate",
+                    "entName",
+                    "city",
+                    "caseStatus",
+                    "relatedEntity",
+                    "assistingJudger",
+                    "roleType",
+                    "caseNo",
+                    "judgerName",
+                    "caseCause",
+                    "courtName",
+                    "province",
+                    "district",
+                    "startTime",
+                    "endTime"
+                  ]
+                },
+                "title": "立案列表"
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 686658660,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"total\": \"5140\",\r\n        \"items\": [\r\n            {\r\n                \"courtDate\": \"\",\r\n                \"entName\": \"xx科技有限责任公司\",\r\n                \"city\": \"广州市\",\r\n                \"caseStatus\": \"立案\",\r\n                \"relatedEntity\": \"[{\\\"name\\\":\\\"xx科技有限责任公司\\\",\\\"item\\\":\\\"230115464\\\",\\\"role\\\":\\\"当事人\\\",\\\"type\\\":\\\"E\\\",\\\"clean_role\\\":\\\"其他\\\"},{\\\"name\\\":\\\"Y某某\\\",\\\"item\\\":\\\"\\\",\\\"role\\\":\\\"当事人\\\",\\\"type\\\":\\\"P\\\",\\\"clean_role\\\":\\\"其他\\\"}]\",\r\n                \"assistingJudger\": \"\",\r\n                \"roleType\": \"E\",\r\n                \"caseNo\": \"（2025）粤xxx号\",\r\n                \"judgerName\": \"\",\r\n                \"caseCause\": \"[{\\\"standard_case_reason\\\": \\\"侵害商标权纠纷\\\", \\\"case_reason_code\\\": \\\"D11040202\\\"}]\",\r\n                \"courtName\": \"广州市白云区人民法院\",\r\n                \"province\": \"广东省\",\r\n                \"district\": \"白云区\",\r\n                \"startTime\": \"2025-04-15\",\r\n                \"endTime\": \"\"\r\n            },\r\n            {\r\n                \"courtDate\": \"2025-06-11 10:30:00\",\r\n                \"entName\": \"xx科技有限责任公司\",\r\n                \"city\": \"南平市\",\r\n                \"caseStatus\": \"-\",\r\n                \"relatedEntity\": \"[{\\\"role\\\":\\\"被告\\\",\\\"name\\\":\\\"Z某某\\\",\\\"item\\\":\\\"\\\",\\\"type\\\":\\\"P\\\",\\\"clean_role\\\":\\\"被告\\\"},{\\\"role\\\":\\\"被告\\\",\\\"name\\\":\\\"W某某\\\",\\\"item\\\":\\\"\\\",\\\"type\\\":\\\"P\\\",\\\"clean_role\\\":\\\"被告\\\"},{\\\"role\\\":\\\"被告\\\",\\\"name\\\":\\\"深圳市xx商贸有限公司\\\",\\\"item\\\":\\\"154294086\\\",\\\"type\\\":\\\"E\\\",\\\"clean_role\\\":\\\"被告\\\"},{\\\"role\\\":\\\"原告\\\",\\\"name\\\":\\\"xx科技有限责任公司\\\",\\\"item\\\":\\\"230115464\\\",\\\"type\\\":\\\"E\\\",\\\"clean_role\\\":\\\"原告\\\"}]\",\r\n                \"assistingJudger\": \"\",\r\n                \"roleType\": \"E\",\r\n                \"caseNo\": \"（2025）闽xxx号\",\r\n                \"judgerName\": \"\",\r\n                \"caseCause\": \"[{\\\"standard_case_reason\\\": \\\"侵害商标权纠纷\\\", \\\"case_reason_code\\\": \\\"D11040202\\\"}]\",\r\n                \"courtName\": \"武夷山市人民法院\",\r\n                \"province\": \"福建省\",\r\n                \"district\": \"武夷山市\",\r\n                \"startTime\": \"2025-04-15\",\r\n                \"endTime\": \"2025-06-11\"\r\n            }\r\n        ]\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"成功\",\r\n    \"reqId\": \"b79393cc125948959228847896cbb563\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596439683
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 232,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T06:16:42.000Z",
+  "updatedAt": "2025-05-30T10:10:37.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.686658660"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

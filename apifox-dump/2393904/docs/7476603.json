@@ -1,0 +1,17 @@
+{
+  "id": 7476603,
+  "name": "2025年9月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年9月发布内容\n发布日期：2025-09-230\n发布版本：V1.0.20\n\n## **《代扣代缴》-更新：\n\n### 1.欠税信息反馈增加增加字段：\njkqx（缴款期限）、skssswjgmc（税款所属税务机构名称）、skgkmc（收款国库名称）、djzclxmc（登记注册类型名称）\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/579712/image-preview)\n### 2.异步算税，综合所得增加附表\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/579713/image-preview)\n### 3.一月多次算税清空数据，增加sfdpc（是否多批次），用于区分清空数据是多批次清空还是非多批次清空\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/579714/image-preview)\n支持清空批次号下的人员信息，支持清空整个批次；支持根据算薪类型清空人员信息\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/579853/image-preview)\n### 4.代扣代缴漏报检查-漏报漏缴查询优化，接口文档无变化\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/579718/image-preview)\n### 5.正常工资薪金、连续劳务支持多批次算税。包含上月未申报多批次算税、上月已申报多批次算税\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/579849/image-preview)",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-10-08T03:16:51.000Z",
+  "updatedAt": "2025-10-08T09:56:03.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

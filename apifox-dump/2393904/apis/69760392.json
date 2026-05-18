@@ -1,0 +1,193 @@
+{
+  "id": 69760392,
+  "name": "获取助手客户端下载地址",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n获取助手客户端下载地址。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| SUCCESS| 成功 | |\n| BUSINESS_ERROR| 未获取到客户端信息 | |\n| BUSINESS_ERROR| 未获取到客户端版本号 | |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/bszs/getZsClientUrl",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "01GWRKH496ABCVP9YCJFD3Y8Z5": {
+          "x-tmp-pending-properties": true
+        }
+      },
+      "x-apifox-orders": [
+        "01GWRKH496ABCVP9YCJFD3Y8Z5"
+      ],
+      "required": [
+        "01GWRKH496ABCVP9YCJFD3Y8Z5"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "responses": [
+    {
+      "id": 177067239,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "description": "错误码",
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "zsurl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "办税助手客户端下载地址"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "zsurl"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 177067239,
+      "data": "{\n    \"reqId\": \"3f8eb0c0c17a46a48279ef494d8c25f5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"zsurl\": \"https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/tool/TaxAssistant-windows-1.1.5.exe\"\n    }\n}",
+      "id": 17635597
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13945512,
+  "ordering": 80,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-03-21T06:34:58.000Z",
+  "updatedAt": "2024-07-12T02:13:47.000Z",
+  "creatorId": 791813,
+  "editorId": 791813,
+  "creatorUserId": 791813,
+  "editorUserId": 791813,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

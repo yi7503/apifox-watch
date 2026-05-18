@@ -1,0 +1,255 @@
+{
+  "id": 280664069,
+  "name": "获取企业及投资者信息（生产经营）",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "USAgacEsDkN_WT0s2p3Gw",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n用于获取企业征收方式、投资者姓名、证件类型、证件号码等信息\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |\n\n\n#### 查询返回的征收方式中文和实际请求参数对应参考 \n\n| 征收方式 | 计税标志 | 异步算税服务-请求参数 |\n|----------|----------|----------------------|\n| 查账征收 | 无 | 1查账征收据实预缴 |\n| 查账征收 | 无 | 2查账征收上年应纳税所得 |\n| 定期定额 | 无 | 3定期定额 |\n| 核定征收 | 应税所得率 | 4核定征收核定应税所得率（能准确核算收入总额的） |\n| 核定征收 | 应税所得率 | 5核定征收核定应税所得率（能准确核算成本费用的） |\n| 核定征收 | 无 | 6核定征收核定应纳税所得额 |\n| 核定征收 | 所得率 | 7核定征收税务机关认可的其他方式（所得率） |\n| 核定征收 | 征收率 | 8核定征收税务机关认可的其他方式（征收率） |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/basic/getEnterpriseAndInvestorInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssqq": {
+          "type": "string",
+          "title": "税款所属期起",
+          "description": "税款所属期起，格式YYYYMMDD"
+        },
+        "skssqz": {
+          "type": "string",
+          "description": "税款所属期止，格式YYYYMMDD",
+          "title": "税款所属期止"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"535474925760832\",\n    \"accountId\": \"4643350751792512\",\n    \"skssqq\": \"20250101\",\n    \"skssqz\": \"20250331\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 649202013,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "$ref": "#/definitions/160060877"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 649202013,
+      "data": "{\n    \"reqId\": \"7409e5d0eacf41c7ba67b56594b2b44d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"sdxm\": \"所得项目\",\n        \"hdsl\": \"核定税率\",\n        \"hdqxq\": \"核定期限起\",\n        \"hdrq\": \"核定日期\",\n        \"jsbs\": \"计税标识\",\n        \"tzzxxlb\": [\n            {\n                \"nsrsbh\": \"纳税人识别号\",\n                \"xm\": \"员工姓名\",\n                \"zzlx\": \"证件类型\",\n                \"zzhm\": \"证件号码\"\n            }\n        ],\n        \"hdqxz\": \"核定期限止\",\n        \"nsqx\": \"纳税期限\",\n        \"zsfs\": \"征收方式\",\n        \"kyrq\": \"开业日期\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 573071451
+    },
+    {
+      "name": "异常示例",
+      "responseId": 649202013,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 573071452
+    },
+    {
+      "name": "查询失败",
+      "responseId": 649202013,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 573071453
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53476796,
+  "ordering": 82,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2025-04-07T06:03:24.000Z",
+  "updatedAt": "2026-04-09T06:32:12.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

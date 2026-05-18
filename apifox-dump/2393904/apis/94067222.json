@@ -1,0 +1,202 @@
+{
+  "id": 94067222,
+  "name": "小号订单开通通知回调",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "### 前提条件\n1、客户添加应用时需设置小号开通接收地址，并确保提供的地址能够正常处理平台发送的通知消息。如果需要开小号开通成功通知功能，请通过配置小号开通通知地址配置开通的小号接受地址。\n\n### 接口描述  POST请求\n此接口向客户推送开通小号的通知。 客户收到通知后返回HTTP状态码为200的 返回体为json格式{“code”:2000}。\n### 返回结果\n客户服务器接收到事件通知后，返回无消息体的200响应\n\n响应示例：\nHTTP/1.1 200 OK",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/客户提供的订单开通通知地址",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "title": "企享云系统的订单id"
+        },
+        "uniCode": {
+          "type": "string",
+          "title": "客户系统的订单唯一标识"
+        },
+        "appKey": {
+          "type": "integer",
+          "title": "客户的appkey"
+        },
+        "bsxhNum": {
+          "type": "integer",
+          "title": "订单购买的小号总数"
+        },
+        "effectiveNum": {
+          "type": "string",
+          "title": "所有有效的小号数量"
+        },
+        "effectiveBsxhList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "所有有效的小号"
+        },
+        "pushTime": {
+          "type": "string",
+          "title": "订单最新的推送时间"
+        }
+      },
+      "x-apifox-orders": [
+        "id",
+        "uniCode",
+        "appKey",
+        "bsxhNum",
+        "effectiveNum",
+        "effectiveBsxhList",
+        "pushTime"
+      ],
+      "required": [
+        "id",
+        "uniCode",
+        "appKey",
+        "bsxhNum",
+        "effectiveNum",
+        "effectiveBsxhList",
+        "pushTime"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"id\":465623822463680,\r\n    \"uniCode\":\"a123456789\",\r\n    \"appKey\":1xxxxxx,\r\n    \"effectiveNum\":8,\r\n    \"bsxhNum\":10,\r\n    \"pushTime\":\"2023-05-13 14:03:25\",\r\n    \"effectiveBsxhList\":[\"170xxxxxxxx\",\"170xxxxxxxx\",\"170xxxxxxxx\",\"170xxxxxxxx\",\"170xxxxxxxx\",\"170xxxxxxxx\",\"170xxxxxxxx\",\"170xxxxxxxx\"]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 234809088,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "2000"
+          },
+          "message": {
+            "type": "string",
+            "description": "SUCCESS"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "message"
+        ],
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843702,
+  "ordering": 86,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2023-07-07T09:12:09.000Z",
+  "updatedAt": "2025-11-11T06:31:02.000Z",
+  "creatorId": 1659553,
+  "editorId": 2400309,
+  "creatorUserId": 1659553,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

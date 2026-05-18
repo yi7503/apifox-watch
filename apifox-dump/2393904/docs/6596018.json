@@ -1,0 +1,17 @@
+{
+  "id": 6596018,
+  "name": "2025年4月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年4月发布内容\n\n发布日期：2025-04-30\n发布版本：V1.2025.04\n\n## 一. 发票查验\n\n1. 财政票据明细查验-新增支持地区\n- 新增地区：江西、大连、宁波\n- 接口文档：[财政票据查验（明细版）](apifox://link/endpoint/241358209)\n\n2. 支持查验一年以前的财政票据（仅返回PDF）\n- 接口描述：开票日期为一年以前的票据。查验成功后仅返回PDF链接；部分地区查验一年以前的财政票据需要传缴款人、身份证号，详见接口传参说明\n- 接口文档：[财政票据查验（明细版）](apifox://link/endpoint/241358209)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/521041/image-preview)\n\n\n3. 电票平台支持查验数电通行费发票\n- 接口文档：[数电票查验](apifox://link/endpoint/193188103)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520580/image-preview)\n\n4. 电票平台查验支持返回发票风险等级字段\n- 涉及字段：发票风险等级-fpfxdj\n- 接口文档：[数电票查验](apifox://link/endpoint/193188103)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520585/image-preview)\n\n## 二. 发票开具\n1. 差额开票校验项调整\n- 接口描述：差额开票时，需要根据凭证类型来判断传参，以下为各类发票必传字段：\n    - 1、数电发票：数电票号码、开票日期、凭证合计金额、本次扣除金额\n    - 2、增值税发票&营业税发票：发票代码、发票号码、开具日期、凭证合计金额、本次扣除金额\n    - 3、财政票据&法院裁决书&契税完税凭证：凭证合计金额、本次扣除金额\n    - 4、其它发票类&其他扣除凭证：凭证合计金额、本次扣除金额、备注\n- 接口文档：[数电发票开具接口](apifox://link/endpoint/100012782)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520878/image-preview)\n\n2. 跨区域涉税事项查询接口-新增传参\n- 涉及字段：报告开具时间起-cjsjq、报告开具时间止-cjsjz\n- 接口文档：[跨区域涉税事项报验管理编号信息查询](apifox://link/endpoint/217038654)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520665/image-preview)\n\n3. 红字确认单列表查询接口-新增传参\n- 涉及字段：纸质发票代码-zzFpdm、纸质发票号码-zzFphm\n- 接口描述：可通过上述字段获取税控发票红冲后的确认单信息\n- 接口文档：[红字确认单列表查询](apifox://link/endpoint/107636830)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520667/image-preview)\n\n4. 已开发票列表查询接口-新增传参\n- 涉及字段：发票类型代码-fplxDm\n- 接口文档：[已开发票列表查询](apifox://link/endpoint/100012787)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520681/image-preview)\n\n## 三. 发票认证\n1. 电票平台-海关缴款书支持-退税勾选和撤销退税勾选\n- 涉及字段：勾选类型-gxlx-2&13\n- 接口文档：[海关缴款书勾选](apifox://link/endpoint/181820155)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520677/image-preview)",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-05-06T06:15:16.000Z",
+  "updatedAt": "2026-03-04T08:46:32.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

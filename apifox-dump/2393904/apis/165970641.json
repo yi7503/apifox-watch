@@ -1,0 +1,254 @@
+{
+  "id": 165970641,
+  "name": "查询车架号信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "车架号查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryJdcxx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "clsbdh": {
+              "type": "string",
+              "title": "\"车辆识别代号/车架号码"
+            },
+            "fplxdm": {
+              "type": "string",
+              "title": "发票票种代码",
+              "description": "默认为 01-数电专票；03-机动车发票",
+              "deprecated": true
+            }
+          },
+          "x-apifox-orders": [
+            "clsbdh",
+            "fplxdm"
+          ],
+          "x-apifox-refs": {},
+          "required": [
+            "clsbdh"
+          ]
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：queryJdcxx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"data\": {},\r\n    \"nsrsbh\": \"91****************2C\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "cd": {
+                "type": "string",
+                "title": "产地"
+              },
+              "cldw": {
+                "type": "string",
+                "title": "车辆吨位"
+              },
+              "cllx": {
+                "type": "string",
+                "title": "车辆类型"
+              },
+              "clsbdh": {
+                "type": "string",
+                "title": "车辆识别代号/车架号码"
+              },
+              "cpxh": {
+                "type": "string",
+                "title": "厂牌型号"
+              },
+              "fdjhm": {
+                "type": "string",
+                "title": "发动机号码"
+              },
+              "hgzh": {
+                "type": "string",
+                "title": "合格证号"
+              },
+              "jkzmsh": {
+                "type": "string",
+                "title": "进口证明书号"
+              },
+              "scqymc": {
+                "type": "string",
+                "title": "上传企业名称"
+              },
+              "sjdh": {
+                "type": "string",
+                "title": "商检单号"
+              },
+              "wspzhm": {
+                "type": "string",
+                "title": "完税凭证号码"
+              },
+              "xcrs": {
+                "type": "string",
+                "title": "限乘人数"
+              }
+            },
+            "required": [
+              "cd",
+              "cldw",
+              "cllx",
+              "clsbdh",
+              "cpxh",
+              "fdjhm",
+              "hgzh",
+              "jkzmsh",
+              "scqymc",
+              "sjdh",
+              "wspzhm",
+              "xcrs"
+            ],
+            "x-apifox-orders": [
+              "cd",
+              "cldw",
+              "cllx",
+              "clsbdh",
+              "cpxh",
+              "fdjhm",
+              "hgzh",
+              "jkzmsh",
+              "scqymc",
+              "sjdh",
+              "wspzhm",
+              "xcrs"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HVKDS7N9RXXVA81489RZ05WM"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cd\": \"产地\",\n        \"cldw\": \"车辆吨位\",\n        \"cllx\": \"车辆类型\",\n        \"clsbdh\": \"车辆识别代号/车架号码\",\n        \"cpxh\": \"厂牌型号\",\n        \"fdjhm\": \"发动机号码\",\n        \"hgzh\": \"合格证号\",\n        \"jkzmsh\": \"进口证明书号\",\n        \"scqymc\": \"上传企业名称\",\n        \"sjdh\": \"商检单号\",\n        \"wspzhm\": \"完税凭证号码\",\n        \"xcrs\": \"限乘人数\"\n    }\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32547127,
+  "ordering": 43,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-30T08:24:12.000Z",
+  "updatedAt": "2025-12-16T06:42:33.000Z",
+  "creatorId": 887900,
+  "editorId": 3099717,
+  "creatorUserId": 887900,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

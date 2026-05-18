@@ -1,0 +1,247 @@
+{
+  "id": 92013219,
+  "name": "申请小号订单",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n   此接口用于用户购买小号，创建订单使用。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sjhm/createBsxhOrder",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "uniCode": {
+          "type": "string",
+          "title": "客户传入订单的唯一标识"
+        },
+        "bsxhNum": {
+          "type": "string",
+          "title": "购买办税小号的数量"
+        },
+        "useType": {
+          "type": "string",
+          "title": "使用类型",
+          "description": "0=测试 1=正式使用，默认为1"
+        }
+      },
+      "x-apifox-orders": [
+        "uniCode",
+        "bsxhNum",
+        "useType"
+      ],
+      "required": [
+        "uniCode",
+        "bsxhNum"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"uniCode\": \"a123456789\",\r\n    \"bsxhNum\": 10\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947014,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息",
+            "description": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "createTime": {
+                "type": "string",
+                "title": "订单创建成功时间"
+              },
+              "id": {
+                "type": "integer",
+                "title": "客户系统的订单唯一标识"
+              },
+              "uniCode": {
+                "type": "string",
+                "title": "客户系统的订单唯一标识"
+              },
+              "appKey": {
+                "type": "integer",
+                "title": "客户的appkey"
+              }
+            },
+            "x-apifox-orders": [
+              "id",
+              "uniCode",
+              "appKey",
+              "createTime"
+            ],
+            "required": [
+              "createTime",
+              "id",
+              "uniCode",
+              "appKey"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947014,
+      "data": "{\n    \"req_id\": \"41fbefcd894d4a21a83730bf013382e4\",\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"createTime\": \"2023-05-13 21:13:07\",\n        \"uniCode\": \"a123456789\",\n        \"appKey\": 10001000,\n        \"id\": 465623822463680,\n        \"bsxhNum\": 10\n    },\n    \"success\": true,\n    \"message\": \"\"\n}",
+      "id": 42947015
+    },
+    {
+      "name": "失败示例",
+      "responseId": 42947014,
+      "data": "{\n    \"req_id\": \"d0cbb450aa6e478d9c9a7a881b3a3979\",\n    \"success\": false,\n    \"code\": \"INTERFACE_ERROR\",\n    \"message\": \"uniCode=a123456789的订单已存在\"\n}",
+      "id": 42947016
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843702,
+  "ordering": 121,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-06-29T05:46:59.000Z",
+  "updatedAt": "2024-10-28T08:24:14.000Z",
+  "creatorId": 1659553,
+  "editorId": 1452584,
+  "creatorUserId": 1659553,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.42947014"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

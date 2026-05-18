@@ -1,0 +1,263 @@
+{
+  "id": 145742882,
+  "name": "订购取消",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n 订购取消是订购产品的反向操作，可通过该接口取消税号主体使用产品权限。\n\n## 产品码\n请参考附录产品码列表>>> [产品码](apifox://link/pages/5110490)\n\n## 错误码\n| **错误代码** | **错误信息**  | **示例** | **解决方案** |\n| --- | --- | --- | --- |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ | | |\n| PARAMETER_ERROR | 产品列表(productCodeList)不能为空！ | | |\n| 601005 | 企业不存在，请先调用创建！ | | |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/productCancel",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "productCodeList": {
+          "type": "string",
+          "title": "产品码列表(英文逗号分割)",
+          "examples": [
+            "0002,0003,0020"
+          ],
+          "description": "见附录：[产品码](apifox://link/pages/5110490)"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "productCodeList"
+      ],
+      "required": [
+        "aggOrgId",
+        "productCodeList"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\": 5013943893789056,\r\n  \"productCodeList\": \"0053\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "b2HFgIPJxQ",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "5ovtpQcjKS",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "eyhz9DMYOg",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "wLZW0UQYA4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42486939,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "examples": [
+              "SUCCESS"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "aggOrgId": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "企业id"
+              },
+              "cancelDetailList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productCode": {
+                      "type": "string",
+                      "title": "产品码"
+                    },
+                    "success": {
+                      "type": "boolean",
+                      "title": "取消成功标识"
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "取消返回描述",
+                      "description": "取消成功、取消失败、取消成功(无此订购产品)"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "productCode",
+                    "success",
+                    "message"
+                  ],
+                  "required": [
+                    "productCode",
+                    "success",
+                    "message"
+                  ]
+                },
+                "title": "取消详情"
+              }
+            },
+            "x-apifox-orders": [
+              "aggOrgId",
+              "cancelDetailList"
+            ],
+            "title": "业务数据",
+            "required": [
+              "aggOrgId",
+              "cancelDetailList"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "reqId",
+          "success",
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "订购返回示例",
+      "responseId": 42486939,
+      "data": "{\n  \"reqId\": \"c835d3478de34f17b479e269fe96c826\",\n  \"code\": \"SUCCESS\",\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"aggOrgId\": 5107*******5344,\n    \"cancelDetailList\": [\n      {\n        \"productCode\": \"0002\",\n        \"success\": true,\n        \"message\": \"取消成功\"\n      },\n      {\n        \"productCode\": \"0003\",\n        \"success\": false,\n        \"message\": \"取消失败\"\n      },\n      {\n        \"productCode\": \"0020\",\n        \"success\": true,\n        \"message\": \"取消成功(无此订购产品)\"\n      }\n    ]\n  }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42486940
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28539131,
+  "ordering": 128,
+  "responsibleId": 2122743,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-26T08:30:43.000Z",
+  "updatedAt": "2026-05-07T01:48:24.000Z",
+  "creatorId": 2122743,
+  "editorId": 3612160,
+  "creatorUserId": 2122743,
+  "editorUserId": 3612160,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

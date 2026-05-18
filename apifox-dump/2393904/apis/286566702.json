@@ -1,0 +1,1226 @@
+{
+  "id": 286566702,
+  "name": "申报数据报送",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "kDREacPl92RLF5r0sdWqMvzhRTt5JDEi",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n场景说明:1.用于将申报表数据导入扣缴客户端进行报送。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/report/send",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "title": "ReportSendReq",
+      "type": "object",
+      "properties": {
+        "skssqq": {
+          "type": "string",
+          "description": "首年税款所属期起应在企业开业设立日期所在月份， 次年及之后应为每年1月。税款所属期起，格式YYYYMMDD"
+        },
+        "skssqz": {
+          "type": "string",
+          "description": "税款所属期止，格式YYYYMMDD"
+        },
+        "yjns": {
+          "type": "object",
+          "properties": {
+            "yjnssb": {
+              "type": "object",
+              "properties": {
+                "zsfs": {
+                  "type": "string",
+                  "title": "征收方式",
+                  "description": "1查账征收据实预缴；2查账征收按上年应纳税所得额；3定期定额；4核定征收核定应税所得额（能准确核算收入总额的）；5核定征收核定应税所得额（能准确核算成本费用的）；6核定征收核定应纳税所得额）、7核定征收税务机关认可的其他方式（所得率）、8核定征收税务机关认可的其他方式（征收率）"
+                },
+                "srze": {
+                  "type": "number",
+                  "title": "收入总额",
+                  "description": "1、当征收方式为1查账征收据实预缴时，必填；\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填；\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），必填；\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），必填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率），必填"
+                },
+                "cbfy": {
+                  "type": "number",
+                  "title": "成本费用",
+                  "description": "1、当征收方式为1查账征收据实预缴时，必填；\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填；\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填；\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），必填；\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                },
+                "mbyqndks": {
+                  "type": "number",
+                  "title": "弥补以前年度亏损",
+                  "description": "1、当征收方式为1查账征收据实预缴时，必填；\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填；\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填；\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                },
+                "bz": {
+                  "type": "string",
+                  "title": "备注"
+                },
+                "tzzxxlb": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "xm": {
+                        "type": "string",
+                        "title": "投资者信息-姓名"
+                      },
+                      "zzlx": {
+                        "type": "string",
+                        "title": "投资者信息-证件类型"
+                      },
+                      "fpbl": {
+                        "type": "string",
+                        "title": "投资者信息-分配比例"
+                      },
+                      "sfjcfy": {
+                        "type": "string",
+                        "title": "投资者信息-是否使用投资者减除费用",
+                        "enum": [
+                          "1",
+                          "2"
+                        ],
+                        "x-apifox-enum": [
+                          {
+                            "value": "1",
+                            "name": "使用",
+                            "description": ""
+                          },
+                          {
+                            "value": "2",
+                            "name": "不使用",
+                            "description": ""
+                          }
+                        ],
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），必填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）必填"
+                      },
+                      "jbylaobx": {
+                        "type": "number",
+                        "title": "基本养老保险费",
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                      },
+                      "jbylbx": {
+                        "type": "number",
+                        "title": "基本医疗保险费",
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                      },
+                      "sybx": {
+                        "type": "number",
+                        "title": "失业保险费",
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                      },
+                      "syjkbx": {
+                        "type": "number",
+                        "title": "商业健康保险",
+                        "description": "只有在第四季度或12月所属期才可以填写，其他所属期填写不生效"
+                      },
+                      "syylbx": {
+                        "type": "number",
+                        "description": "只有在第四季度或12月所属期才可以填写，其他所属期填写不生效",
+                        "title": "税延养老保险"
+                      },
+                      "qtkc": {
+                        "type": "number",
+                        "title": "其他扣除",
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填\n7、26年之前入参无则填0\n8、26年开始入参不允许传入其他数据"
+                      },
+                      "zykcdjze": {
+                        "type": "number",
+                        "title": "准予扣除的捐赠额",
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                      },
+                      "ynssde": {
+                        "type": "number",
+                        "title": "应纳税所得额",
+                        "description": "1、当征收方式为1查账征收据实预缴时，不可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，必填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                      },
+                      "jmse": {
+                        "type": "number",
+                        "title": "减免税额"
+                      },
+                      "jmsxfb": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "jmsx": {
+                              "type": "string",
+                              "title": "减免事项"
+                            },
+                            "jmxz": {
+                              "type": "string",
+                              "title": "减免性质"
+                            },
+                            "sjkcje": {
+                              "type": "string",
+                              "title": "扣除金额"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "jmsx",
+                            "jmxz",
+                            "sjkcje"
+                          ],
+                          "required": [
+                            "jmsx",
+                            "jmxz",
+                            "sjkcje"
+                          ]
+                        },
+                        "title": "减免税额附表",
+                        "description": "当减免税额＞0，必填"
+                      },
+                      "jzfb": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "szdwmc": {
+                              "type": "string",
+                              "title": "受增单位名称"
+                            },
+                            "szdwnsrsbh": {
+                              "type": "string",
+                              "title": "受赠单位纳税人税号"
+                            },
+                            "jzpzh": {
+                              "type": "string",
+                              "title": "捐赠凭证号"
+                            },
+                            "jzrq": {
+                              "type": "string",
+                              "title": "捐赠日期",
+                              "description": "非必填，默认为空，若填写则校验捐赠日期必须在当前税款所属期内YYYY-MM-dd\n"
+                            },
+                            "jzje": {
+                              "type": "string",
+                              "title": "捐赠金额",
+                              "description": "必填，默认为空，且必须是大于0的数字\n"
+                            },
+                            "kcbl": {
+                              "type": "string",
+                              "description": " “0.3”和“1”\n",
+                              "title": "扣除比例"
+                            },
+                            "sjkcje": {
+                              "type": "string",
+                              "title": "实际扣除金额"
+                            },
+                            "bz": {
+                              "type": "string",
+                              "title": "备注"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "szdwmc",
+                            "szdwnsrsbh",
+                            "jzpzh",
+                            "jzrq",
+                            "jzje",
+                            "kcbl",
+                            "sjkcje",
+                            "bz"
+                          ],
+                          "required": [
+                            "kcbl",
+                            "jzje",
+                            "sjkcje"
+                          ]
+                        },
+                        "title": "准予扣除的捐赠额附表"
+                      },
+                      "zfgjj": {
+                        "type": "number",
+                        "title": "住房公积金",
+                        "description": "1、当征收方式为1查账征收据实预缴时，可填;\n2、当征收方式为2查账征收按上年应纳税所得额时，不可填;\n3、当征收方式4为核定征收核定应税所得额（能准确核算收入总额的），不可填;\n4、当征收方式为5核定征收核定应税所得额（能准确核算成本费用的），不可填\n5、当征收方式为7核定征收税务机关认可的其他方式（所得率），不可填\n6.、当征收方式8为核定征收税务机关认可的其他方式（征收率）不可填"
+                      },
+                      "ybtse": {
+                        "type": "number",
+                        "title": "应补退税额",
+                        "description": "若用于申报前校验，\n传值则会校验与申报计算出的应补退税额是否一致，不一致则进行阻断\n不传值则不校验\n"
+                      },
+                      "zzhm": {
+                        "type": "string",
+                        "title": "投资者信息-证件号码"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "xm",
+                      "zzlx",
+                      "zzhm",
+                      "fpbl",
+                      "sfjcfy",
+                      "jbylaobx",
+                      "jbylbx",
+                      "zfgjj",
+                      "sybx",
+                      "syjkbx",
+                      "syylbx",
+                      "qtkc",
+                      "zykcdjze",
+                      "ynssde",
+                      "jmse",
+                      "ybtse",
+                      "jmsxfb",
+                      "jzfb"
+                    ],
+                    "required": [
+                      "xm",
+                      "zykcdjze",
+                      "sfjcfy",
+                      "fpbl",
+                      "zzlx",
+                      "qtkc",
+                      "syylbx",
+                      "syjkbx",
+                      "ynssde",
+                      "zzhm"
+                    ]
+                  }
+                }
+              },
+              "x-apifox-orders": [
+                "zsfs",
+                "srze",
+                "cbfy",
+                "mbyqndks",
+                "bz",
+                "tzzxxlb"
+              ],
+              "required": [
+                "zsfs",
+                "tzzxxlb"
+              ],
+              "title": "预缴纳税或年度汇缴不能同时为空,且只能选其一"
+            },
+            "sfrysb": {
+              "type": "string",
+              "title": "(暂不支持)是否同时人员报送"
+            },
+            "rylb": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/138834666"
+              }
+            }
+          },
+          "x-apifox-orders": [
+            "yjnssb",
+            "sfrysb",
+            "rylb"
+          ],
+          "required": [
+            "yjnssb"
+          ],
+          "title": "预缴纳税",
+          "description": "预缴纳税或年度汇缴不能同时为空,且只能选其一"
+        },
+        "ndhj": {
+          "type": "object",
+          "properties": {
+            "ndhjsb": {
+              "$ref": "#/definitions/240726115"
+            },
+            "sfrysb": {
+              "type": "string",
+              "title": "(暂不支持)是否同时人员报送"
+            },
+            "rylb": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/138834666"
+              }
+            }
+          },
+          "x-apifox-orders": [
+            "ndhjsb",
+            "rylb",
+            "sfrysb"
+          ],
+          "required": [
+            "ndhjsb"
+          ],
+          "title": "年度汇缴",
+          "description": "预缴纳税或年度汇缴不能同时为空,且只能选其一"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "description": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账户ID"
+        }
+      },
+      "required": [
+        "skssqq",
+        "skssqz",
+        "accountId",
+        "aggOrgId"
+      ],
+      "definitions": {
+        "ReportSendZykcjzefbReq": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "title": "ReportSendZykcjzefbReq",
+          "description": "申报数据推送-准予扣除捐赠额附表",
+          "properties": {
+            "szdwmc": {
+              "type": "string",
+              "description": "受赠单位名称"
+            },
+            "szdwnsrsbh": {
+              "type": "string",
+              "description": "受赠单位纳税人税号"
+            },
+            "jzpzh": {
+              "type": "string",
+              "description": "捐赠凭证号"
+            },
+            "jzrq": {
+              "type": "string",
+              "description": "捐赠日期（格式建议为 yyyy-MM-dd）"
+            },
+            "jzje": {
+              "type": "number",
+              "description": "捐赠金额"
+            },
+            "kcbl": {
+              "type": "number",
+              "description": "扣除比例"
+            },
+            "sjkcje": {
+              "type": "number",
+              "description": "实际扣除金额"
+            },
+            "bz": {
+              "type": "string",
+              "description": "备注"
+            }
+          },
+          "required": [
+            "szdwmc",
+            "szdwnsrsbh",
+            "jzpzh",
+            "jzrq",
+            "jzje",
+            "kcbl",
+            "sjkcje"
+          ],
+          "additionalProperties": false,
+          "x-apifox-orders": [
+            "szdwmc",
+            "szdwnsrsbh",
+            "jzpzh",
+            "jzrq",
+            "jzje",
+            "kcbl",
+            "sjkcje",
+            "bz"
+          ]
+        },
+        "TaxJmxxReq": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "TaxJmxxReq",
+          "type": "object",
+          "properties": {
+            "jmsx": {
+              "type": "string",
+              "description": "减免事项"
+            },
+            "jmxz": {
+              "type": "string",
+              "description": "减免性质"
+            },
+            "sjkcje": {
+              "type": "string",
+              "description": "实际扣除金额"
+            }
+          },
+          "x-apifox-orders": [
+            "jmsx",
+            "jmxz",
+            "sjkcje"
+          ]
+        },
+        "TaxPrepaymentReq": {
+          "type": "object",
+          "properties": {
+            "yjnssb": {
+              "$ref": "#/definitions/TaxPrepaymentListReq"
+            },
+            "rylb": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RylbRequest"
+              }
+            },
+            "sfrysb": {
+              "type": "string",
+              "description": "(暂不支持)是否同时人员报送(0:人员不报送；1:人员报送)"
+            }
+          },
+          "required": [
+            "yjnssb"
+          ],
+          "x-apifox-orders": [
+            "yjnssb",
+            "rylb",
+            "sfrysb"
+          ]
+        },
+        "TaxPrepaymentListReq": {
+          "type": "object",
+          "properties": {
+            "zsfs": {
+              "type": "string",
+              "description": "征收方式（1查账征收据实预缴、2查账征收上年应纳税所得额、3定期定额、4核定征收核定应税所得额（能准确核算收入总额的）、5核定征收核定应税所得额（能准确核算成本费用的）、6核定征收核定应纳税所得额）"
+            },
+            "srze": {
+              "type": "number",
+              "description": "收入总额1、当征收方式为查账征收据实预缴时，必填2、当征收方式为查账征收按上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），必填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填"
+            },
+            "cbfy": {
+              "type": "number",
+              "description": "成本费用1、当征收方式为查账征收据实预缴时，必填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），必填"
+            },
+            "mbyqndks": {
+              "type": "number",
+              "description": "弥补以前年度亏损1、当征收方式为查账征收据实预缴时，必填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填"
+            },
+            "bz": {
+              "type": "string",
+              "description": "备注"
+            },
+            "tzzxxlb": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IndividualInvestorReq"
+              }
+            }
+          },
+          "required": [
+            "zsfs",
+            "tzzxxlb"
+          ],
+          "x-apifox-orders": [
+            "zsfs",
+            "srze",
+            "cbfy",
+            "mbyqndks",
+            "bz",
+            "tzzxxlb"
+          ]
+        },
+        "AnnualTaxSettlementReq": {
+          "type": "object",
+          "properties": {
+            "ndhjsb": {
+              "$ref": "#/definitions/AnnualTaxSettlementListReq"
+            },
+            "rylb": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RylbRequest"
+              }
+            },
+            "sfrysb": {
+              "type": "string",
+              "description": "(暂不支持)是否同时人员报送(0:人员不报送；1:人员报送)"
+            }
+          },
+          "required": [
+            "ndhjsb"
+          ],
+          "x-apifox-orders": [
+            "ndhjsb",
+            "rylb",
+            "sfrysb"
+          ]
+        },
+        "AnnualTaxSettlementListReq": {
+          "type": "object",
+          "properties": {
+            "zsfs": {
+              "type": "string",
+              "description": "征收方式（1查账征收据实预缴、2查账征收上年应纳税所得额、3定期定额、4核定征收核定应税所得额（能准确核算收入总额的）、5核定征收核定应税所得额（能准确核算成本费用的）、6核定征收核定应纳税所得额）"
+            },
+            "srze": {
+              "type": "number",
+              "description": "收入总额"
+            },
+            "gzlxsr": {
+              "type": "number",
+              "description": "国债利息收入"
+            },
+            "yycb": {
+              "type": "number",
+              "description": "营业成本"
+            },
+            "yyfy": {
+              "type": "number",
+              "description": "营业费用"
+            },
+            "glfy": {
+              "type": "number",
+              "description": "管理费用"
+            },
+            "cwfy": {
+              "type": "number",
+              "description": "财务费用"
+            },
+            "sj": {
+              "type": "number",
+              "description": "税金"
+            },
+            "ss": {
+              "type": "number",
+              "description": "损失"
+            },
+            "qtzc": {
+              "type": "number",
+              "description": "其他支出"
+            },
+            "mbyqndks": {
+              "type": "number",
+              "description": "弥补以前年度亏损"
+            },
+            "bz": {
+              "type": "string",
+              "description": "备注"
+            },
+            "tzzxxlb": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/IndividualInvestorReq"
+              }
+            }
+          },
+          "required": [
+            "zsfs",
+            "srze",
+            "gzlxsr",
+            "yycb",
+            "yyfy",
+            "glfy",
+            "cwfy",
+            "sj",
+            "ss",
+            "qtzc",
+            "mbyqndks",
+            "tzzxxlb"
+          ],
+          "x-apifox-orders": [
+            "zsfs",
+            "srze",
+            "gzlxsr",
+            "yycb",
+            "yyfy",
+            "glfy",
+            "cwfy",
+            "sj",
+            "ss",
+            "qtzc",
+            "mbyqndks",
+            "bz",
+            "tzzxxlb"
+          ]
+        },
+        "RylbRequest": {
+          "type": "object",
+          "properties": {
+            "xm": {
+              "type": "string",
+              "description": "姓名"
+            },
+            "zzlx": {
+              "type": "string",
+              "description": "证件类型"
+            },
+            "zzhm": {
+              "type": "string",
+              "description": "证件号码"
+            },
+            "qtzzlx": {
+              "type": "string",
+              "description": "其他证件类型"
+            },
+            "qtzzhm": {
+              "type": "string",
+              "description": "其他证件号码"
+            },
+            "bmbh": {
+              "type": "string",
+              "description": "部门编号"
+            },
+            "rybscl": {
+              "type": "string",
+              "description": "人员报送策略"
+            },
+            "gh": {
+              "type": "string",
+              "description": "工号"
+            },
+            "lxdh": {
+              "type": "string",
+              "description": "电话号码"
+            },
+            "nsrzt": {
+              "type": "string",
+              "description": "人员状态"
+            },
+            "sfgy": {
+              "type": "string",
+              "description": "任职受雇类型"
+            },
+            "rzndjyqk": {
+              "type": "string",
+              "description": "入职年度就业情形"
+            },
+            "rzsgrq": {
+              "type": "string",
+              "description": "受雇日期"
+            },
+            "xb": {
+              "type": "string",
+              "description": "性别"
+            },
+            "csny": {
+              "type": "string",
+              "description": "出生日期"
+            },
+            "gj": {
+              "type": "string",
+              "description": "国籍"
+            },
+            "rydq": {
+              "type": "string",
+              "description": "人员地区"
+            },
+            "lzrq": {
+              "type": "string",
+              "description": "离职日期"
+            },
+            "grgbze": {
+              "type": "number",
+              "description": "个人投资总额"
+            },
+            "grgbbl": {
+              "type": "number",
+              "description": "个人投资比例"
+            },
+            "sfcj": {
+              "type": "string",
+              "description": "是否残疾"
+            },
+            "sfls": {
+              "type": "string",
+              "description": "是否烈属"
+            },
+            "sfgl": {
+              "type": "string",
+              "description": "是否孤老"
+            },
+            "sfzdw": {
+              "type": "string",
+              "description": "是否扣除减除费用"
+            },
+            "cjzjlx": {
+              "type": "string",
+              "description": "残疾证件类型"
+            },
+            "cjzh": {
+              "type": "string",
+              "description": "残疾证号"
+            },
+            "lszh": {
+              "type": "string",
+              "description": "烈属证号"
+            },
+            "dzyx": {
+              "type": "string",
+              "description": "邮箱"
+            },
+            "xl": {
+              "type": "string",
+              "description": "学历"
+            },
+            "zw": {
+              "type": "string",
+              "description": "职务"
+            },
+            "khyh": {
+              "type": "string",
+              "description": "开户银行"
+            },
+            "khyhsfmz": {
+              "type": "string",
+              "description": "开户银行省份"
+            },
+            "yhzh": {
+              "type": "string",
+              "description": "银行账号"
+            },
+            "lxdz_sheng": {
+              "type": "string",
+              "description": "居住省份"
+            },
+            "lxdz_shi": {
+              "type": "string",
+              "description": "居住城市"
+            },
+            "lxdz_qx": {
+              "type": "string",
+              "description": "居住区县"
+            },
+            "lxdz_jd": {
+              "type": "string",
+              "description": "居住街道"
+            },
+            "lxdz": {
+              "type": "string",
+              "description": "居住详细地址"
+            },
+            "hjszd_sheng": {
+              "type": "string",
+              "description": "户籍省份"
+            },
+            "hjszd_shi": {
+              "type": "string",
+              "description": "户籍城市"
+            },
+            "hjszd_qx": {
+              "type": "string",
+              "description": "户籍区县"
+            },
+            "hjszd_jd": {
+              "type": "string",
+              "description": "户籍街道"
+            },
+            "hjszd_xxdz": {
+              "type": "string",
+              "description": "户籍详细地址"
+            },
+            "bz": {
+              "type": "string",
+              "description": "备注"
+            },
+            "csd": {
+              "type": "string",
+              "description": "出生地"
+            },
+            "sssx": {
+              "type": "string",
+              "description": "涉税事由"
+            },
+            "scrjsj": {
+              "type": "string",
+              "description": "首次入境时间"
+            },
+            "yjljsj": {
+              "type": "string",
+              "description": "预计离境时间"
+            },
+            "wjrlxdz_sheng": {
+              "type": "string",
+              "description": "联系地省份"
+            },
+            "wjrlxdz_shi": {
+              "type": "string",
+              "description": "联系地城市"
+            },
+            "wjrlxdz_qx": {
+              "type": "string",
+              "description": "联系地区县"
+            },
+            "wjrlxdz_jd": {
+              "type": "string",
+              "description": "联系地街道"
+            },
+            "wjrlxdz_xxdz": {
+              "type": "string",
+              "description": "联系地详细地址"
+            },
+            "xmzw": {
+              "type": "string",
+              "description": "中文名"
+            }
+          },
+          "required": [
+            "xm",
+            "zzlx",
+            "zzhm",
+            "lxdh",
+            "nsrzt",
+            "sfgy",
+            "xb",
+            "csny",
+            "gj",
+            "rydq"
+          ],
+          "x-apifox-orders": [
+            "xm",
+            "zzlx",
+            "zzhm",
+            "qtzzlx",
+            "qtzzhm",
+            "bmbh",
+            "rybscl",
+            "gh",
+            "lxdh",
+            "nsrzt",
+            "sfgy",
+            "rzndjyqk",
+            "rzsgrq",
+            "xb",
+            "csny",
+            "gj",
+            "rydq",
+            "lzrq",
+            "grgbze",
+            "grgbbl",
+            "sfcj",
+            "sfls",
+            "sfgl",
+            "sfzdw",
+            "cjzjlx",
+            "cjzh",
+            "lszh",
+            "dzyx",
+            "xl",
+            "zw",
+            "khyh",
+            "khyhsfmz",
+            "yhzh",
+            "lxdz_sheng",
+            "lxdz_shi",
+            "lxdz_qx",
+            "lxdz_jd",
+            "lxdz",
+            "hjszd_sheng",
+            "hjszd_shi",
+            "hjszd_qx",
+            "hjszd_jd",
+            "hjszd_xxdz",
+            "bz",
+            "csd",
+            "sssx",
+            "scrjsj",
+            "yjljsj",
+            "wjrlxdz_sheng",
+            "wjrlxdz_shi",
+            "wjrlxdz_qx",
+            "wjrlxdz_jd",
+            "wjrlxdz_xxdz",
+            "xmzw"
+          ]
+        },
+        "IndividualInvestorReq": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "IndividualInvestorReq",
+          "type": "object",
+          "properties": {
+            "xm": {
+              "type": "string",
+              "description": "投资者信息-姓名"
+            },
+            "zzlx": {
+              "type": "string",
+              "description": "投资者信息-证件类型"
+            },
+            "zzhm": {
+              "type": "string",
+              "description": "投资者信息-证件号码"
+            },
+            "fpbl": {
+              "type": "string",
+              "description": "投资者信息-分配比例 各投资者分配比例合计必须=1且各投资者的分配比例必须大于0"
+            },
+            "sfjcfy": {
+              "type": "string",
+              "description": "投资者信息-是否使用投资者减除费用(可填写1、使用；2、不使用1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "jbylaobx": {
+              "type": "number",
+              "description": "基本养老保险费(1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "jbylbx": {
+              "type": "number",
+              "description": "基本医疗保险费(1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "sybx": {
+              "type": "number",
+              "description": "失业保险费(1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "zfgjj": {
+              "type": "number",
+              "description": "住房公积金(1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "syjkbx": {
+              "type": "number",
+              "description": "商业健康保险(只有在第四季度或12月所属期才可以填写，其他所属期填写不生效)"
+            },
+            "syylbx": {
+              "type": "number",
+              "description": "税延养老保险(只有在第四季度或12月所属期才可以填写，其他所属期填写不生效)"
+            },
+            "qtkc": {
+              "type": "number",
+              "description": "其他扣除(1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "zykcdjze": {
+              "type": "number",
+              "description": "准予扣除的捐赠额(1、当征收方式为查账征收据实预缴时，可填2、当征收方式为按查账征收上年应纳税所得额时，不可填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "ynssde": {
+              "type": "number",
+              "description": "应纳税所得额(1、当征收方式为查账征收据实预缴时，不可填2、当征收方式为按查账征收上年应纳税所得额时，必填3、当征收方式为核定征收核定应税所得额（能准确核算收入总额的），不可填4、当征收方式为核定征收核定应税所得额（能准确核算成本费用的），不可填)"
+            },
+            "jmse": {
+              "type": "number",
+              "description": "减免税额"
+            },
+            "ybtse": {
+              "type": "number",
+              "description": "应补退税额"
+            },
+            "jmsxfb": {
+              "type": "array",
+              "description": "减免税额附表，当减免税额＞0，必填",
+              "items": {
+                "$ref": "#/definitions/TaxJmxxReq"
+              }
+            },
+            "jzfb": {
+              "type": "array",
+              "description": "准予扣除的捐赠额附表，当减免税额＞0，必填",
+              "items": {
+                "$ref": "#/definitions/ReportSendZykcjzefbReq"
+              }
+            }
+          },
+          "required": [
+            "xm",
+            "zzlx",
+            "zzhm",
+            "fpbl",
+            "sfjcfy"
+          ],
+          "x-apifox-orders": [
+            "xm",
+            "zzlx",
+            "zzhm",
+            "fpbl",
+            "sfjcfy",
+            "jbylaobx",
+            "jbylbx",
+            "sybx",
+            "zfgjj",
+            "syjkbx",
+            "syylbx",
+            "qtkc",
+            "zykcdjze",
+            "ynssde",
+            "jmse",
+            "ybtse",
+            "jmsxfb",
+            "jzfb"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz",
+        "yjns",
+        "ndhj"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"472110******42880\",\n    \"accountId\": \"47211*******05312\",\n    \"skssqq\": \"20250301\",\n    \"skssqz\": \"20250331\",\n    \"yjns\": {\n        \"rylb\": [\n            {\n                \"xm\": \"张**\",\n                \"zzlx\": \"居民身份证\",\n                \"zzhm\": \"622429*******51029\",\n                \"rybscl\": \"否\",\n                \"gh\": \"\",\n                \"lxdh\": \"18547721784\",\n                \"nsrzt\": \"正常\",\n                \"sfgy\": \"雇员\",\n                \"rzsgrq\": \"2025-03-21\",\n                \"xb\": \"男\",\n                \"csny\": \"1994-04-25\",\n                \"gj\": \"中国\",\n                \"rydq\": \"境内\",\n                \"grgbze\": \"\",\n                \"grgbbl\": \"\",\n                \"sfcj\": \"否\",\n                \"sfls\": \"否\",\n                \"sfgl\": \"否\",\n                \"sfzdw\": \"是\",\n                \"xl\": \"\",\n                \"zw\": \"\",\n                \"bz\": \"\"\n            }\n        ],\n        \"sfrysb\": \"0\",\n        \"yjnssb\": {\n            \"zsfs\": \"4\",\n            \"bz\": \"测试\",\n            \"srze\": 284158.42,\n            \"tzzxxlb\": [\n                {\n                    \"xm\": \"张**\",\n                    \"zzlx\": \"居民身份证\",\n                    \"zzhm\": \"6224*******4251029\",\n                    \"fpbl\": \"1\",\n                    \"jbylaobx\": 0,\n                    \"jbylbx\": 0,\n                    \"jmse\": 710.4,\n                    \"jmsxfb\": [\n                        {\n                            \"jmsx\": \"个体工商户减半征收经营所得个人所得税\",\n                            \"jmxz\": \"《财政部 税务总局关于小微企业和个体工商户所得税优惠政策的公告》 财政部 税务总局公告2023年第6号\",\n                            \"sjkcje\": \"710.4\"\n                        }\n                    ],\n                    \"qtkc\": 0,\n                    \"sfjcfy\": \"2\",\n                    \"sybx\": 0,\n                    \"syjkbx\": 0,\n                    \"syylbx\": 0,\n                    \"ybtse\": 720.39,\n                    \"ynssde\": 28415.84,\n                    \"zfgjj\": 0,\n                    \"zykcdjze\": 0\n                }\n            ]\n        }\n    }\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "QC9t2uwmMc",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "HDGNYv524W",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "H0dlkTCZDB",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "m3kJkPvWbv",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 659290805,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JH51ZWF4J5NMSD6DTGADM92A": {
+            "$ref": "#/definitions/141932940"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JH51ZWF4J5NMSD6DTGADM92A"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 659290805,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1000000000000001304\"\n    }\n}",
+      "id": 585430907
+    },
+    {
+      "name": "异常示例",
+      "responseId": 659290805,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 585430908
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53477009,
+  "ordering": 18,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-04-20T13:25:35.000Z",
+  "updatedAt": "2026-02-26T03:15:17.000Z",
+  "creatorId": 2661157,
+  "editorId": 3222025,
+  "creatorUserId": 2661157,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

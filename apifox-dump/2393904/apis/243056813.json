@@ -1,0 +1,645 @@
+{
+  "id": 243056813,
+  "name": "工商基本信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于获取企业登记注册相关信息，包括基本信息、经营信息、状态信息等，可通过该接口获取企业从注册成立到经营存续等各方面的详细信息，辅助进行业务决策、风险评估等工作。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/info",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582468663,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "checkDate": {
+                "type": "string",
+                "title": "核准日期",
+                "description": "例：2024-04-19"
+              },
+              "cancelDate": {
+                "type": "string",
+                "title": "注销日期",
+                "description": "例：2024-04-19"
+              },
+              "cancelReason": {
+                "type": "string",
+                "title": "注销原因"
+              },
+              "registerAddress": {
+                "type": "string",
+                "title": "注册地址"
+              },
+              "entityName": {
+                "type": "string",
+                "title": "企业名称"
+              },
+              "entstatus": {
+                "type": "string",
+                "title": "登记状态",
+                "enum": [
+                  "1：存续",
+                  "2：注销",
+                  "3：吊销",
+                  "4：撤销",
+                  "5：迁出",
+                  "6：设立中",
+                  "7：清算中",
+                  "8：停业",
+                  "9：其他",
+                  "10：空",
+                  "11：歇业",
+                  "12：责令关闭",
+                  "13：已取缔非法社会组织",
+                  "14：涉嫌非法社会组织"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "name": "",
+                    "value": "1：存续",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "2：注销",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "3：吊销",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "4：撤销",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "5：迁出",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "6：设立中",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "7：清算中",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "8：停业",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "9：其他",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "10：空",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "11：歇业",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "12：责令关闭",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "13：已取缔非法社会组织",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "14：涉嫌非法社会组织",
+                    "description": ""
+                  }
+                ]
+              },
+              "organizationTypeCode": {
+                "type": "string",
+                "title": "机构类型码",
+                "enum": [
+                  "1560101 机关",
+                  "1560102 事业单位",
+                  "1560103 中央编办直接管理机构编制的群众团体",
+                  "1560201 律师执业机构",
+                  "1560202 公证处",
+                  "1560203 基层法律服务所",
+                  "1560204 司法鉴定机构",
+                  "1560205 仲裁委员会",
+                  "1560301 社会团体",
+                  "1560302 民办非企业单位",
+                  "1560303 基金会",
+                  "1560304 村民委员会",
+                  "1560305 居民委员会",
+                  "1560401 基层工会",
+                  "1560501 企业",
+                  "1560502 个体工商户",
+                  "1560503 农民专业合作社",
+                  "1560601 组级集体经济组织",
+                  "1560602 村级集体经济组织",
+                  "1560603 乡镇级集体经济组织",
+                  "1569999 其他",
+                  "3440101 香港",
+                  "4660101 澳门",
+                  "1580101 台湾"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "name": "",
+                    "value": "1560101 机关",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560102 事业单位",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560103 中央编办直接管理机构编制的群众团体",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560201 律师执业机构",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560202 公证处",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560203 基层法律服务所",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560204 司法鉴定机构",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560205 仲裁委员会",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560301 社会团体",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560302 民办非企业单位",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560303 基金会",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560304 村民委员会",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560305 居民委员会",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560401 基层工会",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560501 企业",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560502 个体工商户",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560503 农民专业合作社",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560601 组级集体经济组织",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560602 村级集体经济组织",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1560603 乡镇级集体经济组织",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1569999 其他",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "3440101 香港",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "4660101 澳门",
+                    "description": ""
+                  },
+                  {
+                    "name": "",
+                    "value": "1580101 台湾",
+                    "description": ""
+                  }
+                ]
+              },
+              "organizationType": {
+                "type": "string",
+                "title": "企业类型",
+                "description": "例：其他有限责任公司"
+              },
+              "registerDate": {
+                "type": "string",
+                "title": "成立日期",
+                "description": "例：2024-04-19"
+              },
+              "oneLevelCode": {
+                "type": "string",
+                "title": "所属一级行业（编码）"
+              },
+              "twoLevelCode": {
+                "type": "string",
+                "title": "所属二级行业（编码）"
+              },
+              "threeLevelCode": {
+                "type": "string",
+                "title": "三级行业"
+              },
+              "oneLevelName": {
+                "type": "string",
+                "title": "所属一级行业名称"
+              },
+              "twoLevelName": {
+                "type": "string",
+                "title": "所属二级行业名称"
+              },
+              "threeLevelName": {
+                "type": "string",
+                "title": "所属三级行业名称"
+              },
+              "legalPerson": {
+                "type": "string",
+                "title": "代表人名称"
+              },
+              "legalPersonType": {
+                "type": "string",
+                "title": "代表人类型",
+                "description": "P-个人，E-企业"
+              },
+              "businessStartTime": {
+                "type": "string",
+                "title": "营业期限自",
+                "description": "例：2024-04-19"
+              },
+              "businessAddress": {
+                "type": "string",
+                "title": "经营场所"
+              },
+              "businessScope": {
+                "type": "string",
+                "title": "经营范围"
+              },
+              "businessEndTime": {
+                "type": "string",
+                "title": "营业期限至",
+                "description": "例：2024-04-19"
+              },
+              "organizationCode": {
+                "type": "string",
+                "title": "组织机构代码"
+              },
+              "eid": {
+                "type": "string",
+                "title": "企业唯一标识"
+              },
+              "actualCapital": {
+                "type": "string",
+                "title": "实缴金额"
+              },
+              "registerCapital": {
+                "type": "string",
+                "title": "注册资本",
+                "description": "没有特殊标注的，单位默认都是万元"
+              },
+              "registerCapitalUnite": {
+                "type": "string",
+                "title": "注册资本（单位）",
+                "deprecated": true
+              },
+              "registerCode": {
+                "type": "string",
+                "title": "注册号"
+              },
+              "registerDepartmentCode": {
+                "type": "string",
+                "title": "登记机关（编码）"
+              },
+              "registerDepartment": {
+                "type": "string",
+                "title": "登记机关"
+              },
+              "revokeDate": {
+                "type": "string",
+                "title": "吊销日期"
+              },
+              "revokeReason": {
+                "type": "string",
+                "title": "吊销原因"
+              },
+              "from": {
+                "type": "string",
+                "title": "组成形式"
+              },
+              "creditCode": {
+                "type": "string",
+                "title": "统一社会信用代码"
+              },
+              "insuranceEmployeeCnt": {
+                "type": "string",
+                "title": "参保人数"
+              },
+              "province": {
+                "type": "string",
+                "title": "所属省份"
+              },
+              "city": {
+                "type": "string",
+                "title": "所属城市"
+              },
+              "region": {
+                "type": "string",
+                "title": "所属地区"
+              },
+              "totalAssets": {
+                "type": "string",
+                "title": "资产总额"
+              },
+              "taxpayerType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "纳税人类型"
+              },
+              "entityType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "checkDate",
+              "cancelDate",
+              "cancelReason",
+              "registerAddress",
+              "entityName",
+              "entstatus",
+              "organizationTypeCode",
+              "organizationType",
+              "registerDate",
+              "oneLevelCode",
+              "twoLevelCode",
+              "threeLevelCode",
+              "oneLevelName",
+              "twoLevelName",
+              "threeLevelName",
+              "legalPerson",
+              "legalPersonType",
+              "businessStartTime",
+              "businessAddress",
+              "businessScope",
+              "businessEndTime",
+              "organizationCode",
+              "eid",
+              "actualCapital",
+              "registerCapital",
+              "registerCapitalUnite",
+              "registerCode",
+              "registerDepartmentCode",
+              "registerDepartment",
+              "revokeDate",
+              "revokeReason",
+              "from",
+              "creditCode",
+              "taxpayerType",
+              "insuranceEmployeeCnt",
+              "province",
+              "city",
+              "region",
+              "totalAssets",
+              "entityType"
+            ],
+            "x-apifox-refs": {}
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582468663,
+      "data": "{\n    \"reqId\": \"cbf9964769c142b483492bd1ce9a493d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cancelDate\": \"\",\n        \"totalAssets\": \"\",\n        \"city\": \"北京市\",\n        \"businessEndTime\": \"2041-06-07\",\n        \"revokeDate\": \"\",\n        \"revokeReason\": \"\",\n        \"legalPersonType\": \"P\",\n        \"creditCode\": \"9111********90\",\n        \"taxpayerType\": \"一般纳税人\",\n        \"province\": \"北京\",\n        \"oneLevelName\": \"科学研究和技术服务业\",\n        \"entityName\": \"企享云（北京）信息技术有限公司\",\n        \"legalPerson\": \"崔**\",\n        \"businessAddress\": \"北京市海淀区彩和坊路********\",\n        \"cancelReason\": \"\",\n        \"registerCode\": \"110105031220840\",\n        \"twoLevelName\": \"科技推广和应用服务业\",\n        \"registerDate\": \"2021-06-08\",\n        \"actualCapital\": \"\",\n        \"businessScope\": \"一般项目：技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广；计算机系统服务；数据处理服务；人工智能基础软件开发；软件开发；软件销售；网络与信息安全软件开发；广告发布；广告设计、代理；广告制作；企业管理咨询；税务服务；咨询策划服务；计算机软硬件及辅助设备零售；计算机软硬件及辅助设备批发；通讯设备销售；人工智能应用软件开发。（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）许可项目：代理记账；互联网信息服务。（依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以相关部门批准文件或许可证件为准）（不得从事国家和本市产业政策禁止和限制类项目的经营活动。）\",\n        \"checkDate\": \"2024-10-21\",\n        \"insuranceEmployeeCnt\": \"**人\",\n        \"registerDepartment\": \"北京市海淀区市场监督管理局\",\n        \"threeLevelCode\": \"M7590\",\n        \"organizationType\": \"企业\",\n        \"threeLevelName\": \"其他科技推广服务业\",\n        \"businessStartTime\": \"2021-06-08\",\n        \"registerAddress\": \"北京市海淀区彩和坊路********\",\n        \"registerCapital\": \"1008.0\",\n        \"organizationCode\": \"ma*****9\",\n        \"organizationTypeCode\": \"1560501\",\n        \"oneLevelCode\": \"M0000\",\n        \"twoLevelCode\": \"M7500\",\n        \"entityType\": \"有限责任公司（自然人投资或控股）\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454743438
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582468663,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454743439
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 10,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-11T01:41:34.000Z",
+  "updatedAt": "2026-05-13T07:41:15.000Z",
+  "creatorId": 2400309,
+  "editorId": 493303,
+  "creatorUserId": 2400309,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

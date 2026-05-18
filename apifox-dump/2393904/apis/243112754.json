@@ -1,0 +1,217 @@
+{
+  "id": 243112754,
+  "name": "裁判文书",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "ZDAk5Pjv_kklG305uWMbR",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "接口可用于获取企业或相关主体涉诉案件的详细信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/judgmentDoc",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "当前页码",
+          "description": "从1开始"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页数量",
+          "description": "10，30，50"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo",
+        "pageIndex",
+        "pageSize"
+      ],
+      "required": [
+        "pageIndex",
+        "pageSize"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582561257,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {},
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "01JEST3ZQGSNBZV1SAP27Y1BY6"
+            ],
+            "x-apifox-refs": {
+              "01JEST3ZQGSNBZV1SAP27Y1BY6": {
+                "$ref": "#/definitions/135634550"
+              }
+            },
+            "required": []
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582561257,
+      "data": "{\n    \"reqId\": \"27fa50030c1c44e29bab8c3cbe34d67f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": \"38\",\n        \"items\": [\n            {\n                \"judgmentDate\": \"2023-05-26\",\n                \"country\": \"海淀区\",\n                \"city\": \"北京市\",\n                \"lawRule\": \"[{\\\"fgid\\\": \\\"1273963\\\", \\\"fgmc\\\": \\\"《中华人民共和国消费者权益保护法（2013年）》\\\", \\\"tkx\\\": \\\"第五十五条第一款\\\"}, {\\\"fgid\\\": \\\"1273963\\\", \\\"fgmc\\\": \\\"《中华人民共和国消费者权益保护法（2013年）》\\\", \\\"tkx\\\": \\\"第五十五条第二款\\\"}, {\\\"fgid\\\": \\\"1315715\\\", \\\"fgmc\\\": \\\"《中华人民共和国消费者权益保护法（2009年）》\\\", \\\"tkx\\\": \\\"第五十五条\\\"}]\",\n                \"litigant\": \"[{\\\"represent\\\": [\\\"**\\\"], \\\"name\\\": \\\"*******科技有限公司\\\", \\\"lawer\\\": [\\\"Y某某\\\"], \\\"law_firm\\\": [[\\\"Y某某\\\", \\\"\\\"]], \\\"role\\\": \\\"被告\\\", \\\"lawfirm\\\": [], \\\"leader\\\": []}, {\\\"represent\\\": [], \\\"name\\\": \\\"H某某\\\", \\\"lawer\\\": [], \\\"law_firm\\\": [], \\\"role\\\": \\\"原告\\\", \\\"lawfirm\\\": [], \\\"leader\\\": []}]\",\n                \"releaseDate\": \"2023-09-02\",\n                \"lawBasis\": \"[\\\"《中华人民共和国民法典》第五百零九条\\\", \\\"《中华人民共和国民法典》第五百六十二条\\\", \\\"《中华人民共和国民法典》第五百六十三条\\\", \\\"《中华人民共和国民法典》第五百七十七条\\\", \\\"《中华人民共和国消费者权益保护法》第五十五条\\\", \\\"《中华人民共和国民事诉讼法》第二百六十条\\\"]\",\n                \"caseYear\": \"2023\",\n                \"courtLevel\": \"基层人民法院\",\n                \"oriVerdictContent\": \"一**********************************\",\n                \"court\": \"北京市海淀区人民法院\",\n                \"caseNo\": \"（2022）京0108民初********号\",\n                \"bookId\": \"UHl8EZ5mYkbFUfsxDFZ73Rtvwo6U5pk5OzJj/YY+Ni0jbxi7bucGt0Tnt2bFq0wQKTeY0bozhCO5EkMhl3J0Hw==\",\n                \"caseType\": \"C0000\",\n                \"judgmentRes\": \"<a name='doc_head' class='lawsuit_tag'>文书首部</a><div style=\\\"TEXT-ALIGN: center;    \\\">北京市海淀区人民法院</div><div style=\\\"TEXT-ALIGN: center;    \\\">民 事 判 决 书</div><div id=\\\"1\\\" style=\\\"TEXT-ALIGN: right;     \\\">\",\n                \"relatingType\": \"民事案件\",\n                \"province\": \"北京\",\n                \"trialProcedures\": \"C0100\",\n                \"caseOfAction\": \"\",\n                \"caseName\": \"H某某与***********科技有限公司教育培训合同纠纷一审民事判决书\",\n                \"bookType\": \"判决书\"\n            }\n        ]\n    }\n}",
+      "id": 454764206
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582561257,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454764207
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 82,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T02:52:17.000Z",
+  "updatedAt": "2025-02-20T08:49:24.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582561257"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,235 @@
+{
+  "id": 67296976,
+  "name": "重大税收违法风险接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "vIEMCPtUdVMv87tBJBthK",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n​ 企业业重大税收违法信息，包括案件性质、主要违法事实等。\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|\n| NO_RESULT| 查询无结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/risk/hmd/zdsswf",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "qyName": {
+          "type": "string",
+          "title": "企业全名/统一社会信用代码，必填"
+        }
+      },
+      "x-apifox-orders": [
+        "qyName"
+      ],
+      "required": [
+        "qyName"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"qyName\": \"湖南长沙XX有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "vznslDbHl5",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "yVyU11VvmK",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LakIIJZkun",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "OsVFBkhNxg",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171102406,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "错误码",
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "qyName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业名称/纳税识别号企业名称/纳税识别号"
+              },
+              "zdsswfFlag": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "重大税收违法风险标志，(0：无重大税收违法；1:有重大税收违法)有重大税收违法则为1，否则为0"
+              },
+              "zdsswfList": {
+                "title": "\t重大税收违法列表",
+                "$ref": "#/definitions/37486518"
+              },
+              "zdsswfError": {
+                "type": "string",
+                "title": "异常信息"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "qyName",
+              "zdsswfFlag",
+              "zdsswfList",
+              "zdsswfError"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 171102406,
+      "data": "{\n    \"reqId\": \"e5c3e852df134750891cf77b110a155f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"qyName\": \"湖南长沙XX有限公司\",\n        \"zdsswfFlag\": 1,\n        \"zdsswfList\": {\n            \"total\": 1,\n            \"items\": [\n                {\n                    \"created_time\": \"2019-04-09\",\n                    \"updated_time\": \"2019-04-09\",\n                    \"agent\": \"-\",\n                    \"address\": \"湖南省经济技术开发区承德南333室\",\n                    \"illegal_fact\": \"经江苏省淮安市国家税务局稽查局检查，发现其在2015年12月01日至2016年05月31日期间，主要存在以下问题：对外虚开增值税销项发票150份，金额1408.00万元，税额239.00万元。\",\n                    \"url\": \"http://hd.chinatax.gov.cn/xxk/action/GetArticleView1.do?op=xxkweb&id=234642\",\n                    \"result\": \"依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款0.01万元的行政处罚，并依法移送司法机关。\",\n                    \"credit_no\": \"XXXXXXXXXXXXXX\",\n                    \"name\": \"湖南长沙XX有限公司\",\n                    \"property\": \"虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票\",\n                    \"oper\": \"史臻桂,男\",\n                    \"time\": \"2017-03-01\",\n                    \"org_no\": \"A1MC2069\",\n                    \"finance_officer\": \"-\",\n                    \"u_tags\": 0\n                }\n            ]\n        }\n    }\n}",
+      "id": 17743221
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13475934,
+  "ordering": 105,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-24T08:47:16.000Z",
+  "updatedAt": "2025-02-08T03:41:12.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.171102406"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,162 @@
+{
+  "id": 457481169,
+  "name": "异步任务结果回调",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "注意：忽略上面api.qixiangyun.com企享云的域名，这个接口文档是客户提供给企享云的回调接口说明！！！\n本接口需要客户自行设计实现，发布后把接口访问地址发给企享云，企享云进行配置，异步处理结果将通过回调地址通知到ISV。\n调用方式: HTTP POST。\n报文格式：application/json; utf-8。\n重试逻辑：\n第一步：任务成功或失败立马回调一次；\n第二步：若第一步回调失败，每30秒重试一次，最多重试3次",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/服务商CallbackURL地址",
+  "tags": [],
+  "status": -2,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务id",
+          "description": "定位一个任务的唯一值，不能重复"
+        },
+        "status": {
+          "type": "integer",
+          "title": "任务执行结果",
+          "description": "2 ：失败；3：成功"
+        },
+        "errorMsg": {
+          "type": "string",
+          "title": "失败原因",
+          "description": "失败原因"
+        },
+        "code": {
+          "type": "string",
+          "title": "错误码",
+          "description": "错误码"
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "status",
+        "code",
+        "errorMsg"
+      ],
+      "required": [
+        "taskId",
+        "status",
+        "errorMsg"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\": \"12345abcde\",\r\n    \"status\": 3,\r\n    \"code\": 2000,\r\n    \"errorMsg\": \"成功\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 488063214,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "回调返回结果",
+            "description": "默认2000为成功，9999为失败"
+          },
+          "msg": {
+            "type": "string",
+            "title": "成功或失败原因",
+            "description": "具体原因"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 488063214,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417078155
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81235447,
+  "ordering": 86,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-05-14T01:54:00.000Z",
+  "updatedAt": "2026-05-14T02:57:04.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

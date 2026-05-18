@@ -1,0 +1,2882 @@
+{
+  "id": 66365912,
+  "name": "普通票据识别",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于票据识别。目前支持：\n 01-增值税专用发票 \n 03-机动车销售统一发票\n 04-增值税普通发票 \n 08-增值税专用发票（电子）\n 10-增值税普通发票（电子）\n 11-增值税普通发票（卷票）\n 14-通行费发票\n 15-二手车统一销售发票 \n 17-海关缴款书\n 0910-电子发票（普通发票）\n 0920-电子发票（增值税专用发票）\n 0901-全电纸质发票（增值税专用发票）\n 0904-全电纸质发票（增值税普通发票）\n 61-电子发票（航空运输电子客票行程单）\n 83-电子发票（铁路电子客票）\n 8208-数电发票（通行费发票）\n 100-区块链发票\n 101-财政票据（目前仅支持财政类型01-**非税收入票据**、财政类型03-**电子医疗票据**） \n 102-通用（电子）发票\n 801-定额发票\n 900-出租车发票\n 901-火车票\n 902-航空运输电子客票行程单\n 903-机打发票\n 904-过路费发票(通行费)\n 905-客运汽车\n 906-购物小票\n 907-行程单（支持滴滴出行、T3、高德地图打车、花小猪打车，**仅支持pdf原件识别**）\n 908-完税证明\n 909-船票（目前**仅支持深圳地区**）\n 910-可报销其他发票（无法识别为其他类型的票据统一归类为该类型）\n 911-海关出口货物报关单\n 912-海关进口货物报关单\n 0930-电子发票(机动车销售统一发票)\n 0940-电子发票(二手车统一销售发票)\n0903-全电纸质发票（机动车销售统一发票）\n0915-全电纸质发票（二手车统一销售发票）\n103-车辆通行费发票\n \n\n\n::: highlight red 💡\n发票图片信息相关参数**imageUrl**、**imageData**、**imageFile**只需传入一项，任选一项上传即可\n支持识别的文件类型：jpg、pdf、ofd、png、xml、jpeg、tiff、bmp\n:::\n\n\n#### 错误码\n\n| **错误代码**    | **错误信息**                                      | **解决方案**             |\n| --------------- | ------------------------------------------------- | ------------------------ |\n| ParameterIsNull | 发票识别参数不能为空                              | 传入不为空的发票识别参数 |\n| ImageIsNull     | 发票图片信息不能全部为空（图片链接、Base64 数据） | 传入不为空的发票识别参数 |\n| ImageIsInvalid  | 发票图片信息无效                                  | 传入有效的发票图片       |\n| NotSupport      | 暂不支持的发票类型                                | 传入支持的发票类型文件                 |\n| Failed          | 发票识别失败，请联系管理员                        | 联系管理员               |\n| ServerError     | 服务器异常，请稍后重试                            | 稍后重试                 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/ocr/sb",
+  "tags": [
+    "发票识别"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [
+      {
+        "id": "CW82gbr10A",
+        "name": "imageFile",
+        "description": "",
+        "type": "file",
+        "enable": true
+      }
+    ],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01KPM8PJVTJ4KZGHC20PWJ6EB3": {
+          "$ref": "#/definitions/52810777",
+          "x-apifox-overrides": {
+            "single": null
+          }
+        }
+      },
+      "x-apifox-orders": [
+        "01KPM8PJVTJ4KZGHC20PWJ6EB3"
+      ],
+      "properties": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"customReqId\": \"100019953790cccf01c45ce1b744e14ec46384eb\",\r\n    \"imageUrl\": \"https://image.**********************33f.png\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "t1kms37LaN",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "GBdv143RTX",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "TjuJGNj0nP",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 168710144,
+      "name": "单张发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GWP0BED1ST63CN2QHMGZ87P6": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GWP0C0XNTVFT4Q98Z0WHGD6G": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/33038902"
+                        },
+                        "title": "多张发票识别成功数据",
+                        "description": "仅多张发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GWP0C0XNTVFT4Q98Z0WHGD6G"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GWP0BED1ST63CN2QHMGZ87P6"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 168710145,
+      "name": "多张发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GWP0DTG4VJFSBNKTDZ9ARV84": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GWP0EC4NKHVFAQM0ZRBA2P9G": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GWP0EC4NKHVFAQM0ZRBA2P9G"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GWP0DTG4VJFSBNKTDZ9ARV84"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 177722744,
+      "name": "增值税专用发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GWNP06NA56XFVN1JYQ8DX4PM": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GWNP0Z8SBJBXFQBK9HQQ9CQD": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/33038902"
+                        },
+                        "title": "多张发票识别成功数据",
+                        "description": "仅多张发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GWNP0Z8SBJBXFQBK9HQQ9CQD"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GWNP06NA56XFVN1JYQ8DX4PM"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 177723775,
+      "name": "增值税普通发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXTNGVDDBTYQYGA17KJ8J1BH": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01J469PP4T3GKX0CD5XD1T89D0": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/33068237"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01J469PP4T3GKX0CD5XD1T89D0"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXTNGVDDBTYQYGA17KJ8J1BH"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 189455251,
+      "name": "增值税电子专用发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXT8MW6C8R90B9MWQY6QX0BW": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXTNHZSJ97H2X1CVRP1FW2YG": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/33110495"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXTNHZSJ97H2X1CVRP1FW2YG"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXT8MW6C8R90B9MWQY6QX0BW"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 189455252,
+      "name": "增值税电子普通发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXTDFZ6A2VMDAY42XRRRYWFX": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXTNKD29VD15QXN9HAD6GXQS": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/33158671"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXTNKD29VD15QXN9HAD6GXQS"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXTDFZ6A2VMDAY42XRRRYWFX"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 189688132,
+      "name": "电子发票（普通发票）成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXW9PY9SDDMP22TZWB1J2KR8": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXW9QGGA6SQGHF0JN6EM26XJ": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152280"
+                        },
+                        "title": "多张发票识别成功数据",
+                        "description": "仅多张发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXW9QGGA6SQGHF0JN6EM26XJ"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXW9PY9SDDMP22TZWB1J2KR8"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190985218,
+      "name": "电子发票（增值税专用发票）识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1R3H4F9FYYNF7A9RFV6WJF": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1R4QZ5M94RNEENRHM3785W": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/34061211"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1R4QZ5M94RNEENRHM3785W"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1R3H4F9FYYNF7A9RFV6WJF"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 189921914,
+      "name": "通行费发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWPEMBR2GWQPPTK93DH8TGC": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWPF4Z8D7HG7T1XFK70473X": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152543"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWPF4Z8D7HG7T1XFK70473X"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWPEMBR2GWQPPTK93DH8TGC"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190984516,
+      "name": "增值税普通发票（卷票）识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1QT3KYM0AH73ZRGZJ1CFWF": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1QTEE4FF9ZW9EGTG94WCVW": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152292"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1QTEE4FF9ZW9EGTG94WCVW"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1QT3KYM0AH73ZRGZJ1CFWF"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190978433,
+      "name": "机动车销售统一发票识别成功（税控、数电纸质、数电电子）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1PCJS0EZ9ENGKHG8JNK8HM": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1PD8YA58R6STCF38WHT6EC": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152551"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1PD8YA58R6STCF38WHT6EC"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1PCJS0EZ9ENGKHG8JNK8HM"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 189950604,
+      "name": "二手车统一销售发票识别成功（税控、数电纸质、数电电子）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWQGWRX1YWWF2JWMHZB4QF7": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWQHA9R82H9KV992KB9VHBS": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152559"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWQHA9R82H9KV992KB9VHBS"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWQGWRX1YWWF2JWMHZB4QF7"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190948066,
+      "name": "区块链电子发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1DAAJ2NM570F7X6RYYWPFQ": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1DAN3S7NKGNW3WNG1S6CE2": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152563"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1DAN3S7NKGNW3WNG1S6CE2"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1DAAJ2NM570F7X6RYYWPFQ"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190011534,
+      "name": "定额发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "success",
+              "single",
+              "imageUrl",
+              "data",
+              "datas",
+              "customReqId"
+            ],
+            "properties": {
+              "single": {
+                "description": "入参未传或传true是为true，入参为false则为false",
+                "type": "boolean",
+                "title": "是否单张发票识别"
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "xfsbh": {
+                    "type": "string",
+                    "title": "销方识别号"
+                  },
+                  "company_seal": {
+                    "type": "string",
+                    "title": "是否有公司印章"
+                  },
+                  "fpdm": {
+                    "type": "string",
+                    "title": "发票代码"
+                  },
+                  "city": {
+                    "type": "string",
+                    "title": "市"
+                  },
+                  "fplx": {
+                    "type": "string",
+                    "title": "发票类型"
+                  },
+                  "title": {
+                    "type": "string",
+                    "title": "标题"
+                  },
+                  "province": {
+                    "type": "string",
+                    "title": "省"
+                  },
+                  "fpxflx": {
+                    "type": "string",
+                    "title": "发票消费类型"
+                  },
+                  "jd": {
+                    "type": "integer",
+                    "title": "顺时针旋转角度"
+                  },
+                  "je": {
+                    "type": "integer",
+                    "title": "金额"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "title": "页码"
+                  },
+                  "imageSize": {
+                    "type": "string",
+                    "title": "图片分辨率"
+                  },
+                  "xfmc": {
+                    "type": "string",
+                    "title": "销方名称"
+                  },
+                  "fphm": {
+                    "type": "string",
+                    "title": "发票号码"
+                  },
+                  "wz": {
+                    "type": "string",
+                    "title": "位置"
+                  }
+                },
+                "x-apifox-orders": [
+                  "xfmc",
+                  "xfsbh",
+                  "fpdm",
+                  "fphm",
+                  "je",
+                  "fplx",
+                  "fpxflx",
+                  "company_seal",
+                  "title",
+                  "city",
+                  "province",
+                  "imageSize",
+                  "jd",
+                  "wz",
+                  "page"
+                ],
+                "title": "发票识别成功数据",
+                "description": "发票识别时返回",
+                "x-apifox-refs": {},
+                "required": [
+                  "xfsbh",
+                  "company_seal",
+                  "fpdm",
+                  "city",
+                  "fplx",
+                  "title",
+                  "province",
+                  "fpxflx",
+                  "jd",
+                  "je",
+                  "page",
+                  "imageSize",
+                  "xfmc",
+                  "fphm",
+                  "wz"
+                ],
+                "deprecated": true
+              },
+              "datas": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/definitions/39152572"
+                },
+                "title": "发票识别成功数据"
+              },
+              "success": {
+                "description": "识别是否成功，true成功，false失败",
+                "type": "boolean"
+              },
+              "imageUrl": {
+                "description": "用于查看识别图片",
+                "type": "string",
+                "title": "图片地址"
+              },
+              "customReqId": {
+                "type": "string",
+                "title": "传入或系统生成的请求ID",
+                "description": "用于标识一次调用，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+              }
+            },
+            "required": [
+              "single",
+              "imageUrl",
+              "success",
+              "customReqId"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190015951,
+      "name": "火车票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWT9WF6XEDX889KSM0GMPPY": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWTA4ZRXHJBNE00HR847R1X": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152607"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWTA4ZRXHJBNE00HR847R1X"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWT9WF6XEDX889KSM0GMPPY"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190028612,
+      "name": "机打发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWTWWT9WYDXFB878VFAT91S": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWTXAP05F6BVD4A93J0QY8Y": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152618"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWTXAP05F6BVD4A93J0QY8Y"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWTWWT9WYDXFB878VFAT91S"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190092180,
+      "name": "客运汽车识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWXF54H39HJZYMM0TZEAZV0": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWXFE3GYBXDRSEF1FEZ163G": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152858"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWXFE3GYBXDRSEF1FEZ163G"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWXF54H39HJZYMM0TZEAZV0"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190104242,
+      "name": "滴滴出行行程单识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWY2W6XDZHTY4PSW45K3VG9": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWY3A1GXVKBC29W13QXMPNA": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152882"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWY3A1GXVKBC29W13QXMPNA"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWY2W6XDZHTY4PSW45K3VG9"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 265584294,
+      "name": "完税证明识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H9AKSRR4A7RQFW842MR3X8G4": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01J8EX7V88P2QBAZ26YKV3EKCA"
+                ],
+                "x-apifox-refs": {
+                  "01J8EX7V88P2QBAZ26YKV3EKCA": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/59262310"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H9AKSRR4A7RQFW842MR3X8G4"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190934782,
+      "name": "船票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1BTN9SHZ4VBEP4A737BDP1": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1BZBJE4K10KX8FASH2Q0HF": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "data": {
+                        "title": "单张发票识别成功数据",
+                        "description": "仅单张发票识别时返回",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "x-apifox-refs": {
+                          "01JEATRT49DTJFM2J2PMGFXMH2": {
+                            "$ref": "#/definitions/39152883",
+                            "x-apifox-overrides": {
+                              "fphm": {
+                                "type": "string",
+                                "description": "发票号码"
+                              },
+                              "page": {
+                                "type": "integer",
+                                "description": "页码"
+                              }
+                            },
+                            "required": [
+                              "fphm",
+                              "page"
+                            ]
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01JEATRT49DTJFM2J2PMGFXMH2"
+                        ],
+                        "properties": {}
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1BZBJE4K10KX8FASH2Q0HF"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1BTN9SHZ4VBEP4A737BDP1"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190118952,
+      "name": "其他识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXWYKW3A4WN3VW5MBSDB7CRF": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GXWYM72G7BNQ87R40BARJ6DV": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152888"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GXWYM72G7BNQ87R40BARJ6DV"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXWYKW3A4WN3VW5MBSDB7CRF"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190936311,
+      "name": "购物小票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1CD56A9Y206MQEXYWS0ARJ": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1CDMSB7VPPXYWPR50WGPR7": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152859"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1CDMSB7VPPXYWPR50WGPR7"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1CD56A9Y206MQEXYWS0ARJ"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190942348,
+      "name": "过路费识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1CNRAHZ9S3KMDB59C04HDJ": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1CPDMBRHSRCY8S08V7VVK5": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152619"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1CPDMBRHSRCY8S08V7VVK5"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1CNRAHZ9S3KMDB59C04HDJ"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190947604,
+      "name": "航空运输电子客票行程单识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1CZ9GC023TC84GTYKPASQ7": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1CZNQJ9P7RF1NCRSFF29C1": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152608"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1CZNQJ9P7RF1NCRSFF29C1"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1CZ9GC023TC84GTYKPASQ7"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 190947720,
+      "name": "出租车发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GY1D4BT1QCBBVDQ19BHPQGHV": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01GY1D4QMH5SP7BFPEEA1C6KKB": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/39152590"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GY1D4QMH5SP7BFPEEA1C6KKB"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GY1D4BT1QCBBVDQ19BHPQGHV"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 177750920,
+      "name": "图片信息无效",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "appKey": {
+                "type": "integer"
+              },
+              "code": {
+                "type": "string"
+              },
+              "data": {
+                "type": "null"
+              },
+              "datas": {
+                "type": "null"
+              },
+              "fkBz": {
+                "type": "null"
+              },
+              "imageUrl": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "sbtd": {
+                "type": "string"
+              },
+              "single": {
+                "type": "boolean"
+              },
+              "success": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "null"
+              },
+              "wyBz": {
+                "type": "null"
+              },
+              "ylpj": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "appKey",
+              "code",
+              "data",
+              "datas",
+              "fkBz",
+              "imageUrl",
+              "message",
+              "sbtd",
+              "single",
+              "success",
+              "type",
+              "wyBz",
+              "ylpj"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 388923562,
+      "name": "17海关缴款书识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HMGG5ZSXFR5GRZQFHRBH4NE9": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HMGG6FWWVCHESEDJ30T1V993": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/79732595"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HMGG6FWWVCHESEDJ30T1V993"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HMGG5ZSXFR5GRZQFHRBH4NE9"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 388927887,
+      "name": "电子发票(铁路电子客票)识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HZEA9JBEEGKS0N33WCMTDRG5": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HZEAA0REXZPD3Y3EPD5TG5K9": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/62112717"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HZEAA0REXZPD3Y3EPD5TG5K9"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HZEA9JBEEGKS0N33WCMTDRG5"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 388927888,
+      "name": "电子发票（航空运输电子客票行程单）识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HY2H6ANXEYECREVARJXH36QX": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HY2H6MFWVYXM8SV7CQD11B4X": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/98009367"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HY2H6MFWVYXM8SV7CQD11B4X"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HY2H6ANXEYECREVARJXH36QX"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 388927889,
+      "name": "102通用(电子)发票识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HZEABB4A37E0Y0269KHRSMP6": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HZEABKXEJBMBRMQNJMHCBNYN": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/50287424"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HZEABKXEJBMBRMQNJMHCBNYN"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HZEABB4A37E0Y0269KHRSMP6"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 388929532,
+      "name": "0904全电纸质发票(增值税普通发票)成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HZEBYE51P7RYXC77VE1CT681": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HZEBYQ222C3MKTNP7JXH2CFV": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/49681732"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HZEBYQ222C3MKTNP7JXH2CFV"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HZEBYE51P7RYXC77VE1CT681"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 577004095,
+      "name": "0901全电纸质发票（增值税专用发票）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "single": {
+                "description": "入参未传或传true是为true，入参为false则为false",
+                "type": "boolean",
+                "title": "是否单张发票识别"
+              },
+              "data": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [
+                  "01JE3B2Y68VR9FNRBHF7JQBX8Q"
+                ],
+                "title": "发票识别成功数据",
+                "description": "发票识别时返回",
+                "x-apifox-refs": {
+                  "01JE3B2Y68VR9FNRBHF7JQBX8Q": {
+                    "$ref": "#/definitions/134528281"
+                  }
+                },
+                "deprecated": true
+              },
+              "datas": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/definitions/134528281"
+                },
+                "title": "发票识别成功数据",
+                "description": "发票识别时返回"
+              },
+              "success": {
+                "description": "识别是否成功，true成功，false失败",
+                "type": "boolean"
+              },
+              "imageUrl": {
+                "description": "用于查看识别图片",
+                "type": "string",
+                "title": "图片地址"
+              },
+              "customReqId": {
+                "type": "string",
+                "title": "传入或系统生成的请求ID",
+                "description": "用于标识一次调用，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "success",
+              "single",
+              "imageUrl",
+              "data",
+              "datas",
+              "customReqId"
+            ],
+            "required": [
+              "single",
+              "imageUrl",
+              "success",
+              "customReqId"
+            ],
+            "x-apifox-refs": {}
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 460462490,
+      "name": "101电子医疗票据识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HZ1DQDJ72YS1FK2J10ZGA5C9": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HZ1DQTDETDPCWGW3T9VMM2R9": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/99807792"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HZ1DQTDETDPCWGW3T9VMM2R9"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HZ1DQDJ72YS1FK2J10ZGA5C9"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 460453510,
+      "name": "101非税收入票据识别成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HZ1DT928D1W708Y3MMEA28TT": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HZ1DTJ0P5VM4WX3WB6THZ49V": {
+                    "$ref": "#/definitions/33996577",
+                    "x-apifox-overrides": {
+                      "datas": {
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "$ref": "#/definitions/100104747"
+                        },
+                        "title": "发票识别成功数据",
+                        "description": "发票识别时返回"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HZ1DTJ0P5VM4WX3WB6THZ49V"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HZ1DT928D1W708Y3MMEA28TT"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 575332261,
+      "name": "912海关进口货物报关单",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {},
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "01JDTTY4RE4RXDH64SS4Z8C5T5"
+            ],
+            "x-apifox-refs": {
+              "01JDTTY4RE4RXDH64SS4Z8C5T5": {
+                "$ref": "#/definitions/33996577",
+                "x-apifox-overrides": {
+                  "datas": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "$ref": "#/definitions/130734612"
+                    },
+                    "title": "发票识别成功数据",
+                    "description": "发票识别时返回"
+                  }
+                },
+                "required": []
+              }
+            }
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 575348261,
+      "name": "911海关出口货物报关单",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "single": {
+                "description": "入参未传或传true是为true，入参为false则为false",
+                "type": "boolean",
+                "title": "是否单张发票识别"
+              },
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "x-apifox-orders": [
+                  "01JDTVAND97VJ589MVXJHEKC0B"
+                ],
+                "title": "单张发票识别成功数据",
+                "description": "仅单张发票识别时返回",
+                "x-apifox-refs": {
+                  "01JDTVAND97VJ589MVXJHEKC0B": {
+                    "$ref": "#/definitions/130912393"
+                  }
+                },
+                "deprecated": true
+              },
+              "datas": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/definitions/130912393"
+                },
+                "title": "发票识别成功数据",
+                "description": "发票识别时返回"
+              },
+              "success": {
+                "description": "识别是否成功，true成功，false失败",
+                "type": "boolean"
+              },
+              "imageUrl": {
+                "description": "用于查看识别图片",
+                "type": "string",
+                "title": "图片地址"
+              },
+              "customReqId": {
+                "type": "string",
+                "title": "传入或系统生成的请求ID",
+                "description": "用于标识一次调用，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "success",
+              "single",
+              "imageUrl",
+              "data",
+              "datas",
+              "customReqId"
+            ],
+            "required": [
+              "single",
+              "imageUrl",
+              "success",
+              "customReqId"
+            ],
+            "x-apifox-refs": {}
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "单张发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"4fc638d8d817417c868edb2f8704dc4f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"10***************************************3d\",\n        \"imageUrl\": \"http://***************/400x400\",\n        \"type\": null,\n        \"ylpj\": null,\n        \"success\": true,\n        \"fkBz\": \"Ut laboris\",\n        \"code\": null,\n        \"message\": null,\n        \"datas\": [\n            {\n                \"fplx\": \"0910\",\n                \"jd\": 94,\n                \"fpxflx\": \"服务\",\n                \"fwlx\": \"信息技术服务\",\n                \"company_seal\": 1,\n                \"imageSize\": \"http://**********400x400\",\n                \"page\": 25,\n                \"title\": \"上海增值税专用发票\",\n                \"jzdw\": \"上海\",\n                \"province\": \"上海市\",\n                \"city\": \"\",\n                \"qrcode\": [\n                    \"82\",\n                    \"33\",\n                    \"32\",\n                    \"22\",\n                    \"87\"\n                ],\n                \"fpdm\": \"340****160\",\n                \"fphm\": \"00****07\",\n                \"kprq\": \"2023-05-29 00:00:00\",\n                \"jym\": \"2394*************52351\",\n                \"xfsbh\": \"91**********281A\",\n                \"xfmc\": \"上海********有限公司\",\n                \"xsfdzdh\": \"上海市********路***号*层*****号\",\n                \"xsfyhzh\": \"中国**银行股份有限公司****支行***********\",\n                \"gfsbh\": \"91**********0000\",\n                \"gfmc\": \"北京********有限公司\",\n                \"gmfdzdh\": \"北京市********路***号*层*****号\",\n                \"gmfyhzh\": \"中国**银行股份有限公司****支行***********\",\n                \"skm\": \"6<9/915*******-7-4985/>-1>,+1-*******2/*******-,>-/><9+/*****2//>-7-4480/,>>********3*/254*2\",\n                \"je\": 92,\n                \"se\": 23,\n                \"jshj\": 16,\n                \"jshjcn\": \"玖万叁仟圆整\",\n                \"bz\": \"代开企业税号:92**********07 代开企业名称:上海市*******有限公司 个人所得税应在经营管理地税务机关自行申报\",\n                \"kpr\": \"开票人\",\n                \"skr\": \"收款人\",\n                \"fhr\": \"复核人\",\n                \"sbbh\": \"\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"V9.3\",\n                        \"slv\": 32,\n                        \"ysslv\": \"6%\",\n                        \"je\": 21,\n                        \"ysse\": \"42.28\",\n                        \"se\": 60,\n                        \"dj\": \"1400.433\",\n                        \"sl\": \"0.5\",\n                        \"jldw\": \"套\",\n                        \"mc\": \"*信息技术服务*\"\n                    },\n                    {\n                        \"jldw\": \"个\",\n                        \"je\": 77,\n                        \"slv\": 44,\n                        \"ggxh\": \"V1.0\",\n                        \"dj\": \"10.88\",\n                        \"mc\": \"*信息技术服务*\",\n                        \"sl\": \"20\",\n                        \"ysslv\": \"13%\",\n                        \"ysse\": \"20.13\",\n                        \"se\": 76\n                    }\n                ]\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16815121
+    },
+    {
+      "name": "多张定额发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"4fc638d8d817417c868edb2f8704dc4f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"10***************************************3d\",\n        \"imageUrl\": \"https://**********************61e0f1f0531b2e1a2fb19be4.jpg\",\n        \"type\": null,\n        \"ylpj\": null,\n        \"success\": true,\n        \"fkBz\": \"5d09b4be0c2842069ffa4e39a80a0e78\",\n        \"code\": null,\n        \"message\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"xfsbh\": \"92**************1R\",\n                \"company_seal\": \"1\",\n                \"fpdm\": \"15********01\",\n                \"wz\": \"0,1583,3024,4032\",\n                \"city\": \"成都市\",\n                \"fplx\": \"801\",\n                \"title\": \"四川通用定额发票\",\n                \"province\": \"四川省\",\n                \"fpxflx\": \"餐饮\",\n                \"jd\": 0,\n                \"je\": 20,\n                \"page\": 0,\n                \"imageSize\": \"3024,4032\",\n                \"xfmc\": \"北京***********饮店\",\n                \"fphm\": \"04****52\"\n            },\n            {\n                \"xfsbh\": \"92**************1R\",\n                \"company_seal\": \"1\",\n                \"fpdm\": \"15********01\",\n                \"wz\": \"0,229,2773,1964\",\n                \"city\": \"成都市\",\n                \"fplx\": \"801\",\n                \"title\": \"四川通用定额发票\",\n                \"province\": \"四川省\",\n                \"fpxflx\": \"餐饮\",\n                \"jd\": 0,\n                \"je\": 20,\n                \"page\": 0,\n                \"imageSize\": \"3024,4032\",\n                \"xfmc\": \"都江堰******饮店\",\n                \"fphm\": \"04****02\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16815122
+    },
+    {
+      "name": "增值税专用发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"4fc638d8d817417c868edb2f8704dc4f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"10***************************************3d\",\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"1\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"管理员\",\n                \"fpdm\": \"11******30\",\n                \"fphm\": \"51369340\",\n                \"fplc\": \"抵扣联\",\n                \"fplcNum\": \"第二联\",\n                \"fplx\": \"01\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"\",\n                \"gfmc\": \"同心*******公司\",\n                \"gfsbh\": \"11***********31\",\n                \"gmfdzdh\": \"北京市海淀区**********************层\",\n                \"gmfyhzh\": \"招商银行\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"28301.8867924\",\n                        \"ggxh\": \"\",\n                        \"je\": 28301.89,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"其他现代服务\",\n                        \"mxxh\": null,\n                        \"se\": 1698.11,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"1698.11\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"1279,786\",\n                \"jd\": 0,\n                \"jdfpdm\": \"11******30\",\n                \"jdfphm\": \"51****40\",\n                \"je\": 28301.89,\n                \"jshj\": 30000,\n                \"jshjcn\": \"叁万圆整\",\n                \"jym\": \"\",\n                \"jzdw\": \"北京\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"管理员\",\n                \"kprq\": \"2016-11-01 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"北京市\",\n                \"qrcode\": null,\n                \"sbbh\": \"499922291823\",\n                \"se\": 1698.11,\n                \"skm\": \"0390-1010+2/0*7-39-+87079*94,797+<2*8-466+19>3<5/19745207,2*0-+38>8-<5/*0471><4974+127,+/>710670601--8203618281-198\",\n                \"skr\": \"管理员\",\n                \"slv\": null,\n                \"title\": \"北京增值税专用发票\",\n                \"tspzDm\": null,\n                \"wz\": \"0,0,1279,786\",\n                \"xfmc\": \"北京*****公司\",\n                \"xfsbh\": \"91**************XR\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"北京市东城区*****4层\",\n                \"xsfyhzh\": \"建行北京市************营业部\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"fkBz\": \"9b113c88d7394e4aa968d2f9220f54ec\",\n        \"imageUrl\": \"https://*******************oo4.png\",\n        \"message\": null,\n        \"sbtd\": \"RQ**20\",\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"wyBz\": \"26a7d42434114e4fc7b07003146fb46de1711114\",\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17701455
+    },
+    {
+      "name": "增值税专用发票",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"f86d8a0297c848079da74b48691b74bd\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"1\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"管理员\",\n                \"fpdm\": \"11******30\",\n                \"fphm\": \"51****40\",\n                \"fplc\": \"抵扣联\",\n                \"fplcNum\": \"第二联\",\n                \"fplx\": \"01\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"\",\n                \"gfmc\": \"同心*********公司\",\n                \"gfsbh\": \"11************31\",\n                \"gmfdzdh\": \"北京市海淀区*****************九层\",\n                \"gmfyhzh\": \"招商银行11**********02\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"28301.8867924\",\n                        \"ggxh\": \"\",\n                        \"je\": 28301.89,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"其他现代服务\",\n                        \"mxxh\": null,\n                        \"se\": 1698.11,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"1698.11\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"1279,786\",\n                \"jd\": 0,\n                \"jdfpdm\": \"11******30\",\n                \"jdfphm\": \"51****40\",\n                \"je\": 28301.89,\n                \"jshj\": 30000,\n                \"jshjcn\": \"叁万圆整\",\n                \"jym\": \"\",\n                \"jzdw\": \"北京\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"管理员\",\n                \"kprq\": \"2016-11-01 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"北京市\",\n                \"qrcode\": null,\n                \"sbbh\": \"499922291823\",\n                \"se\": 1698.11,\n                \"skm\": \"0390-1010+2/0*7-39-+87079*94,797+<2*8-466+19>3<5/19745207,2*0-+38>8-<5/*0471><4974+127,+/>710670601--8203618281-198\",\n                \"skr\": \"管理员\",\n                \"slv\": null,\n                \"title\": \"北京增值税专用发票\",\n                \"tspzDm\": null,\n                \"wz\": \"0,0,1279,786\",\n                \"xfmc\": \"北京**********公司\",\n                \"xfsbh\": \"91**************XR\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"北京市东城区*************层\",\n                \"xsfyhzh\": \"建行**********营业部\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://**************.png\",\n        \"message\": null,\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 18852171
+    },
+    {
+      "name": "增值税普通发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"7ffd9fffa15b451aae0968fd3b502e46\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"appKey\": 10001999,\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"王龙\",\n                \"fpdm\": \"13******20\",\n                \"fphm\": \"04****55\",\n                \"fplc\": \"发票联\",\n                \"fplcNum\": \"第二联\",\n                \"fplx\": \"04\",\n                \"fpxflx\": \"邮寄\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"\",\n                \"gfmc\": \"河北******公司\",\n                \"gfsbh\": \"91**************5R\",\n                \"gmfdzdh\": \"黄骅港******路东\",\n                \"gmfyhzh\": \"13************88\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"\",\n                        \"ggxh\": \"\",\n                        \"je\": 1456.31,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"运费\",\n                        \"mxxh\": null,\n                        \"se\": 43.69,\n                        \"sl\": \"\",\n                        \"slv\": 0.03,\n                        \"spbm\": null,\n                        \"ysse\": \"43.69\",\n                        \"ysslv\": \"3%\"\n                    }\n                ],\n                \"imageSize\": \"1403,955\",\n                \"jd\": 0,\n                \"jdfpdm\": \"13******20\",\n                \"jdfphm\": \"04****55\",\n                \"je\": 1456.31,\n                \"jshj\": 1500,\n                \"jshjcn\": \"壹仟伍佰圆整\",\n                \"jym\": \"15****************18\",\n                \"jzdw\": \"河北\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"管理员\",\n                \"kprq\": \"2017-08-24 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"河北省\",\n                \"qrcode\": null,\n                \"sbbh\": \"92************26\",\n                \"se\": 43.69,\n                \"skm\": \"036>*3+1475*+4<0+*8*01462629,2<29/5/-2+>8893/2>/3/--/5386,5916>-22+677-003<9</1*59+<1<,0-69002+0/01/+><0611*0<+6406\",\n                \"skr\": \"王龙\",\n                \"slv\": null,\n                \"title\": \"河北增值税普通发票\",\n                \"tspzDm\": null,\n                \"wz\": \"0,0,1403,955\",\n                \"xfmc\": \"邢台*******中心\",\n                \"xfsbh\": \"92**********2R\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"河北邢台************路口\",\n                \"xsfyhzh\": \"邢台****************支行\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"fkBz\": \"b6c9216293ad40ad93ce54e960588c86\",\n        \"imageUrl\": \"https://s1.ax1x.com/2023/03/22/ppaTzwD.jpg\",\n        \"message\": null,\n        \"sbtd\": \"RQ**20\",\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"wyBz\": \"26273d077c136d7ffd94b904cc5a3a06278c919b\",\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16815124
+    },
+    {
+      "name": "增值税专用发票(电子)识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"26ffbd7ccc3f4b2e8fc2e0a78c02b19f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"青岛市\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"吕林霖\",\n                \"fpdm\": \"03********13\",\n                \"fphm\": \"00****72\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"08\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"经纪代理服务\",\n                \"gfmc\": \"青岛***************公司\",\n                \"gfsbh\": \"91**************5R\",\n                \"gmfdzdh\": \"青岛市城阳区***********号\",\n                \"gmfyhzh\": \"中国银行************支行\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"2970.29702970297\",\n                        \"ggxh\": \"\",\n                        \"je\": 2970.3,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*经纪代理服务*知识产权服务费\",\n                        \"mxxh\": null,\n                        \"se\": 29.7,\n                        \"sl\": \"1\",\n                        \"slv\": 0.01,\n                        \"spbm\": null,\n                        \"ysse\": \"29.70\",\n                        \"ysslv\": \"1%\"\n                    }\n                ],\n                \"imageSize\": \"1212,818\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 2970.3,\n                \"jshj\": 3000,\n                \"jshjcn\": \"叁仟圆整\",\n                \"jym\": \"03****************92\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"曲翔\",\n                \"kprq\": \"2021-12-17 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"山东省\",\n                \"purl\": null,\n                \"qrcode\": [\n                    \"01,20,037022000213,00057172,2970.3,20211217,03273920014881344792,BDF1,\"\n                ],\n                \"sbbh\": \"917009338248\",\n                \"se\": 29.7,\n                \"skm\": \"0060-98-6<+++*-/-819930*7358,>4*1724+07688>0-8>-335+*2/8-,5+4496>*3755*623-+70166451/0,*+0-/98<5+6>>10110571+3983>/\",\n                \"skr\": \"高春红\",\n                \"slv\": null,\n                \"title\": \"青岛增值税电子专用发票\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": null,\n                \"xfmc\": \"青岛*************公司\",\n                \"xfsbh\": \"91**************80\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"青岛市崂山区****************室\",\n                \"xsfyhzh\": \"青岛*********支行\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/iraznk.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16820939
+    },
+    {
+      "name": "增值税普通发票(电子)识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"7d5417f3bd024ba08d70b4fd4b1bb1c7\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"1\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"香婉君\",\n                \"fpdm\": \"01********11\",\n                \"fphm\": \"84****11\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"10\",\n                \"fpxflx\": \"餐饮\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"餐饮服务\",\n                \"gfmc\": \"北京*****公司\",\n                \"gfsbh\": \"91**************09\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"23.58\",\n                        \"ggxh\": \"\",\n                        \"je\": 23.58,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*餐饮服务*餐饮服务\",\n                        \"mxxh\": null,\n                        \"se\": 1.42,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"1.42\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"1000,651\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 23.58,\n                \"jshj\": 25,\n                \"jshjcn\": \"贰拾伍圆整\",\n                \"jym\": \"76*****************38\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"李秀玲\",\n                \"kprq\": \"2021-08-06 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"北京市\",\n                \"qrcode\": [\n                    \"01,10,011002100211,84809211,23.58,20210806,76567459763828703438,139E,\"\n                ],\n                \"sbbh\": \"66********32\",\n                \"se\": 1.42,\n                \"skm\": \"67>7/-1>4616*</+<+186-/>697,63710>2/+7788>761/4-4689/79,*-017359*+<3+01-*</*<+186-8,<61-5153064/873/3-34594//*+\",\n                \"skr\": \"志贤0139\",\n                \"slv\": null,\n                \"title\": \"北京增值税电子普通发票\",\n                \"tspzDm\": null,\n                \"wz\": null,\n                \"xfmc\": \"北京******公司\",\n                \"xfsbh\": \"91**************37\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"北京市东城区************************室\",\n                \"xsfyhzh\": \"中国工商****************支行\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/irwrnm.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16833748
+    },
+    {
+      "name": "电子发票（普通发票）识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"73ff2c9b65fe4a1bae7f2855b5cb5e5a\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"21********************64\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0910\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"信息技术服务\",\n                \"gfmc\": \"上海*******公司\",\n                \"gfsbh\": \"91**************9Q\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"943.39622642\",\n                        \"ggxh\": \"\",\n                        \"je\": 943.4,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*信息技术服务*技术服务费\",\n                        \"mxxh\": null,\n                        \"se\": 56.6,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"56.60\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"595,842\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 943.4,\n                \"jshj\": 1000,\n                \"jshjcn\": \"壹仟元整\",\n                \"jym\": \"\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"祝敏\",\n                \"kprq\": \"2021-12-20 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,32,,213110000000**000064,1000.00,20211220,,D413\"\n                ],\n                \"sbbh\": null,\n                \"se\": 56.6,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(普通发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,842\",\n                \"xfmc\": \"企享云服（上海）信息有限公司\",\n                \"xfsbh\": \"91**************2G\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/it*45b.pdf\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16986853
+    },
+    {
+      "name": "电子发票（增值税专用发票）识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"133398fcdc114f72a851ef0f1de167b4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"2**************3\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0920\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"信息技术服务\",\n                \"gfmc\": \"上***********司\",\n                \"gfsbh\": \"9****************Q\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"943.39622642\",\n                        \"ggxh\": \"\",\n                        \"je\": 943.4,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*信息技术服务*技术服务费\",\n                        \"mxxh\": null,\n                        \"se\": 56.6,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"56.60\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"595,842\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 943.4,\n                \"jshj\": 1000,\n                \"jshjcn\": \"壹仟元整\",\n                \"jym\": \"\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"****\",\n                \"kprq\": \"2021-12-20 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,31,,21311000000000000063,1000.00,20211220,,64A1\"\n                ],\n                \"sbbh\": null,\n                \"se\": 56.6,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(增值税专用发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,842\",\n                \"xfmc\": \"企************司\",\n                \"xfsbh\": \"9**************G\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/isi6yf.pdf\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16986854
+    },
+    {
+      "name": "电子发票（增值税专用发票）-不动产经营租赁服务识别",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"10f56c4970f84a40939b27691c97b4ac\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"不动产地址:福建省厦门市翔安区新店镇洪钟大道5116-104号105号;    租赁期起止:2022-11-01 2023-01-31;    跨地（市）标志:否;   \\n 202211-202301月租金\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"23942000000000028827\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0920\",\n                \"fpxflx\": \"其他\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"经营租赁\",\n                \"gfmc\": \"瑞幸咖啡（厦门）有限公司\",\n                \"gfsbh\": \"91350203MA31GDR406\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"cqzh\": null,\n                        \"cxr\": null,\n                        \"cxrq\": null,\n                        \"ddad\": null,\n                        \"dej\": null,\n                        \"dj\": \"19047.619047619\",\n                        \"ggxh\": null,\n                        \"je\": 57142.86,\n                        \"jldw\": null,\n                        \"jzfwfsd\": null,\n                        \"jzxmmc\": null,\n                        \"lslbs\": null,\n                        \"mc\": \"*经营租赁*租金\",\n                        \"mjdw\": null,\n                        \"mxxh\": null,\n                        \"qsd\": null,\n                        \"se\": 2857.14,\n                        \"sl\": \"3\",\n                        \"slv\": 0.05,\n                        \"spbm\": null,\n                        \"ysgjlx\": null,\n                        \"ysgjph\": null,\n                        \"yshwmc\": null,\n                        \"ysse\": \"2857.14\",\n                        \"ysslv\": \"5%\",\n                        \"yxsfzjh\": null\n                    }\n                ],\n                \"imageSize\": \"595,397\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 57142.86,\n                \"jshj\": 60000,\n                \"jshjcn\": \"陆万圆整\",\n                \"jym\": \"\",\n                \"jzbz\": null,\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"孙雪金\",\n                \"kprq\": \"2023-01-05 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"pageCount\": null,\n                \"pageNumber\": null,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdbq\": \"不动产经营租赁服务\",\n                \"qdfphm\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,31, ,23942000000000028827,60000.00,20230105, ,D736\"\n                ],\n                \"sbbh\": null,\n                \"se\": 2857.14,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(增值税专用发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,397\",\n                \"xfmc\": \"厦门承瑞研商业管理服务有限公司\",\n                \"xfsbh\": \"91350203MAC3JCWM11\",\n                \"xhqdBz\": null,\n                \"xjje\": null,\n                \"xjse\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/07/25/s9tcpj.pdf\",\n        \"message\": null,\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 24928408
+    },
+    {
+      "name": "电子发票(增值税专用发票)成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"68232090e03c45eb8c0655e644fd9493\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"21****************63\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0920\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"信息技术服务\",\n                \"gfmc\": \"上海*************公司\",\n                \"gfsbh\": \"91**************9Q\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"943.39622642\",\n                        \"ggxh\": \"\",\n                        \"je\": 943.4,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*信息技术服务*技术服务费\",\n                        \"mxxh\": null,\n                        \"se\": 56.6,\n                        \"sl\": \"1\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"56.60\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"595,842\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 943.4,\n                \"jshj\": 1000,\n                \"jshjcn\": \"壹仟元整\",\n                \"jym\": \"\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"祝敏\",\n                \"kprq\": \"2021-12-20 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,31,,21311000000000000063,1000.00,20211220,,64A1\"\n                ],\n                \"sbbh\": null,\n                \"se\": 56.6,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(增值税专用发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,842\",\n                \"xfmc\": \"企享*****公司\",\n                \"xfsbh\": \"91**************2G\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/**/28/isi6yf.pdf\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 18942739
+    },
+    {
+      "name": "电子发票（增值税专用发票）-建筑服务识别",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"4b0718b5867a41bea2a372ad67078c5d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"跨地（市）标志:否;\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"23442000000000687004\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0920\",\n                \"fpxflx\": \"服务\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"建筑服务\",\n                \"gfmc\": \"广州公路工程集团有限公司\",\n                \"gfsbh\": \"91440101190435178U\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"cqzh\": null,\n                        \"cxr\": null,\n                        \"cxrq\": null,\n                        \"ddad\": null,\n                        \"dej\": null,\n                        \"dj\": null,\n                        \"ggxh\": null,\n                        \"je\": 18682.46,\n                        \"jldw\": null,\n                        \"jzfwfsd\": \"广东省广州市黄埔区\",\n                        \"jzxmmc\": \"广佛肇高速公路广州市凤凰山隧道混凝土路面抗滑降噪加铺沥青工程-劳务施工\",\n                        \"lslbs\": null,\n                        \"mc\": \"*建筑服务*安全生产措施费\",\n                        \"mjdw\": null,\n                        \"mxxh\": null,\n                        \"qsd\": null,\n                        \"se\": 1681.42,\n                        \"sl\": null,\n                        \"slv\": 0.09,\n                        \"spbm\": null,\n                        \"ysgjlx\": null,\n                        \"ysgjph\": null,\n                        \"yshwmc\": null,\n                        \"ysse\": \"1681.42\",\n                        \"ysslv\": \"9%\",\n                        \"yxsfzjh\": null\n                    }\n                ],\n                \"imageSize\": \"595,397\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 18682.46,\n                \"jshj\": 20363.88,\n                \"jshjcn\": \"贰万零叁佰陆拾叁圆捌角捌分\",\n                \"jym\": \"\",\n                \"jzbz\": \"1\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"李杏意\",\n                \"kprq\": \"2023-01-04 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"pageCount\": null,\n                \"pageNumber\": null,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdbq\": \"建筑服务\",\n                \"qdfphm\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,31, ,23442000000000687004,20363.88,20230104, ,FDE7\"\n                ],\n                \"sbbh\": null,\n                \"se\": 1681.42,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(增值税专用发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,397\",\n                \"xfmc\": \"广州市华贤路桥工程有限公司\",\n                \"xfsbh\": \"914401115566872824\",\n                \"xhqdBz\": null,\n                \"xjje\": null,\n                \"xjse\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/07/25/sn9mkx.pdf\\r\\n\",\n        \"message\": null,\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 24929195
+    },
+    {
+      "name": "电子发票（增值税专用发票）-货物运输服务识别",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"412b041d885e4386a5631a84876f6517\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"22312000000001940246\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0920\",\n                \"fpxflx\": \"其他\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"运输服务\",\n                \"gfmc\": \"世邦工业科技集团股份有限公司\",\n                \"gfsbh\": \"913101157732980993\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"cqzh\": null,\n                        \"dj\": \"8.214511150118\",\n                        \"ggxh\": null,\n                        \"je\": 8715.6,\n                        \"jldw\": \"公里\",\n                        \"jzfwfsd\": null,\n                        \"jzxmmc\": null,\n                        \"lslbs\": null,\n                        \"mc\": \"*运输服务*国内道路货物运输服务\",\n                        \"mjdw\": null,\n                        \"mxxh\": null,\n                        \"se\": 784.4,\n                        \"sl\": \"1061\",\n                        \"slv\": 0.09,\n                        \"spbm\": null,\n                        \"ysse\": \"784.40\",\n                        \"ysslv\": \"9%\"\n                    }\n                ],\n                \"imageSize\": \"595,510\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 8715.6,\n                \"jshj\": 9500,\n                \"jshjcn\": \"玖仟伍佰圆整\",\n                \"jym\": \"\",\n                \"jzbz\": null,\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"瓮美佳\",\n                \"kprq\": \"2022-11-16 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"pageCount\": null,\n                \"pageNumber\": null,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdbq\": \"货物运输服务\",\n                \"qdfphm\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,31, ,22312000000001940246,9500.00,20221116, ,EAD7\"\n                ],\n                \"sbbh\": null,\n                \"se\": 784.4,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(增值税专用发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,510\",\n                \"xfmc\": \"世邦工业科技集团上海物流有限公司\",\n                \"xfsbh\": \"91310116MA1JB22N2T\",\n                \"xhqdBz\": null,\n                \"xjje\": null,\n                \"xjse\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null,\n                \"ysxx\": [\n                    {\n                        \"ddd\": \"河南省焦作市修武县\",\n                        \"qsd\": \"上海市浦东新区\",\n                        \"ysgjlx\": \"公路运输\",\n                        \"ysgjph\": \"豫HR5815\",\n                        \"yshwmc\": \"配件、钢板\"\n                    }\n                ]\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/07/25/sq6qe1.pdf\",\n        \"message\": null,\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 25000381
+    },
+    {
+      "name": "电子发票(增值税专用发票)-旅客运输服务",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"a775fd1acfb24f1a9f5ec6f62c2885cc\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"\",\n                \"fphm\": \"23942000000000047463\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"0920\",\n                \"fpxflx\": \"其他\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"运输服务\",\n                \"gfmc\": \"通达(厦门)科技有限公司\",\n                \"gfsbh\": \"91350200612051597J\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"cqzh\": null,\n                        \"dj\": \"81.0275229357798\",\n                        \"ggxh\": null,\n                        \"je\": 10209.47,\n                        \"jldw\": null,\n                        \"jzfwfsd\": null,\n                        \"jzxmmc\": null,\n                        \"lslbs\": null,\n                        \"mc\": \"*运输服务*租车费\",\n                        \"mjdw\": null,\n                        \"mxxh\": null,\n                        \"se\": 918.85,\n                        \"sl\": \"126\",\n                        \"slv\": 0.09,\n                        \"spbm\": null,\n                        \"ysse\": \"918.85\",\n                        \"ysslv\": \"9%\"\n                    },\n                    {\n                        \"cqzh\": null,\n                        \"dj\": \"\",\n                        \"ggxh\": null,\n                        \"je\": -0.29,\n                        \"jldw\": null,\n                        \"jzfwfsd\": null,\n                        \"jzxmmc\": null,\n                        \"lslbs\": null,\n                        \"mc\": \"*运输服务*租车费\",\n                        \"mjdw\": null,\n                        \"mxxh\": null,\n                        \"se\": -0.03,\n                        \"sl\": \"\",\n                        \"slv\": 0.09,\n                        \"spbm\": null,\n                        \"ysse\": \"-0.03\",\n                        \"ysslv\": \"9%\"\n                    }\n                ],\n                \"imageSize\": \"595,510\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 10209.18,\n                \"jshj\": 11128,\n                \"jshjcn\": \"壹万壹仟壹佰贰拾捌圆整\",\n                \"jym\": \"\",\n                \"jzbz\": null,\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"段小燕\",\n                \"kprq\": \"2023-01-06 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"pageCount\": null,\n                \"pageNumber\": null,\n                \"province\": \"\",\n                \"purl\": null,\n                \"qdbq\": \"旅客运输服务\",\n                \"qdfphm\": null,\n                \"qdlx\": null,\n                \"qrcode\": [\n                    \"01,31, ,23942000000000047463,11128.00,20230106, ,9711\"\n                ],\n                \"sbbh\": null,\n                \"se\": 918.82,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"电子发票(增值税专用发票)\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": \"0,0,595,510\",\n                \"xfmc\": \"厦门市海沧交通服务有限公司\",\n                \"xfsbh\": \"913502051551914626\",\n                \"xhqdBz\": null,\n                \"xjje\": null,\n                \"xjse\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null,\n                \"ysxx\": [\n                    {\n                        \"cfd\": \"福建省厦门市海沧区\",\n                        \"cxr\": \"叶乌\",\n                        \"cxrq\": \"2022-12-01\",\n                        \"ddd\": \"福建省厦门市海沧区\",\n                        \"dj\": \"\",\n                        \"jtgjlx\": \"公共交通\",\n                        \"yxsfzjh\": \"350221********5010\"\n                    }\n                ]\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/07/26/pggl8r.pdf\",\n        \"message\": null,\n        \"single\": false,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 26257995
+    },
+    {
+      "name": "通行费发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"e817c01f15464148b00cee4e9fb76049\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"汇总开具\",\n                \"city\": \"\",\n                \"company_seal\": \"1\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"黄绍芬\",\n                \"fpdm\": \"04********12\",\n                \"fphm\": \"12842129\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"14\",\n                \"fpxflx\": \"交通\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"经营租赁\",\n                \"gfmc\": \"西陇*******公司\",\n                \"gfsbh\": \"91**************8R\",\n                \"gmfdzdh\": \"汕头市***********号\",\n                \"gmfyhzh\": \"中国建设银行股份有限公司***分行\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"20220106\",\n                        \"ggxh\": \"粤A2D26V\",\n                        \"je\": 6.42,\n                        \"jldw\": \"客车\",\n                        \"lslbs\": null,\n                        \"mc\": \"*经营租赁*通行费\",\n                        \"mxxh\": null,\n                        \"se\": 0.19,\n                        \"sl\": \"20220106\",\n                        \"slv\": 0.03,\n                        \"spbm\": null,\n                        \"txrqq\": \"20220106\",\n                        \"txrqz\": \"20220106\",\n                        \"ysse\": \"0.19\",\n                        \"ysslv\": \"3%\"\n                    }\n                ],\n                \"imageSize\": \"797,517\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 6.42,\n                \"jshj\": 6.61,\n                \"jshjcn\": \"陆元陆角壹分\",\n                \"jym\": \"17****************29\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"徐晓丹\",\n                \"kprq\": \"2022-01-11 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"广东省\",\n                \"qrcode\": [\n                    \"01,10,04********12,12****29,6.42,20220111,17*****************29,5AD1,\"\n                ],\n                \"sbbh\": \"49********81\",\n                \"se\": 0.19,\n                \"skm\": \"037>9544/365*-0<>21/3>8116<8,302*6<*>0*-<405+3752762+085-,-4-7222++656<8*0/49*9079*<1+,9<50*37/--0156681913/5<+8551\",\n                \"skr\": \"黄绍芬\",\n                \"slv\": null,\n                \"title\": \"广东增值税电子普通发票\",\n                \"tspzDm\": \"06\",\n                \"txfbz\": null,\n                \"wz\": null,\n                \"xfmc\": \"广深珠高速公路有限公司\",\n                \"xfsbh\": \"91******************84\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"广东省广州市*****号\",\n                \"xsfyhzh\": \"中国银行******支行\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/ix***kh.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16986856
+    },
+    {
+      "name": "增值税普票发票（卷票）识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"3f4027409ad24f869d6736d1e3f87d8e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": null,\n                \"city\": \"\",\n                \"company_seal\": \"0\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": null,\n                \"fpdm\": \"01*******17\",\n                \"fphm\": \"21****16\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"11\",\n                \"fpxflx\": \"数码电器\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": null,\n                \"gfmc\": \"\",\n                \"gfsbh\": \"\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"4299\",\n                        \"ggxh\": null,\n                        \"hsdj\": null,\n                        \"hsje\": null,\n                        \"je\": 4299,\n                        \"jldw\": null,\n                        \"lslbs\": null,\n                        \"mc\": \"格力空调K-500W/050B56)-Ba3\",\n                        \"mxxh\": null,\n                        \"se\": null,\n                        \"sl\": null,\n                        \"slv\": null,\n                        \"spbm\": null,\n                        \"ysse\": null,\n                        \"ysslv\": null\n                    }\n                ],\n                \"imageSize\": \"222,503\",\n                \"jd\": 0,\n                \"jdfpdm\": \"01********17\",\n                \"jdfphm\": \"21****16\",\n                \"je\": 4299,\n                \"jshj\": 4299,\n                \"jshjcn\": null,\n                \"jym\": \"\",\n                \"jzdw\": \"广东\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": null,\n                \"kprq\": null,\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"广东省\",\n                \"qrcode\": null,\n                \"sbbh\": null,\n                \"se\": null,\n                \"skm\": null,\n                \"skr\": null,\n                \"slv\": null,\n                \"title\": \"广东增值税普通发票(卷票)\",\n                \"tspzDm\": null,\n                \"wz\": null,\n                \"xfmc\": \"中********司\",\n                \"xfsbh\": \"\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": null,\n                \"xsfyhzh\": null,\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/iu**c1.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16986855
+    },
+    {
+      "name": "机动车销售统一发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"b584fddc19b34551b60a7e84b6ad3d13\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bsNsrsbh\": null,\n                \"cd\": \"天津\",\n                \"city\": \"\",\n                \"cjhm\": \"LG*************83\",\n                \"cllx\": \"轿车\",\n                \"company_seal\": \"1\",\n                \"cpxh\": \"哈弗牌CC7150FM02\",\n                \"dh\": \"021-34153948\",\n                \"dkdwdm\": null,\n                \"dkdwmc\": null,\n                \"dq\": null,\n                \"dw\": null,\n                \"dz\": \"上海***********4幢\",\n                \"fdjhm\": \"1********9\",\n                \"fpdm\": \"1**********1\",\n                \"fphm\": \"0******6\",\n                \"qdfphm\": \"111**********3\",\n                \"fplc\": \"发票联\",\n                \"fplcNum\": \"第二联\",\n                \"fplx\": \"03\",\n                \"fpxflx\": \"用车\",\n                \"fpztDm\": null,\n                \"fwlx\": null,\n                \"gfmc\": \"王涛\",\n                \"gfsbh\": null,\n                \"hgzh\": \"WAN047150228327\",\n                \"imageSize\": \"700,525\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 88290.6,\n                \"jkzmsh\": null,\n                \"jshj\": 103300,\n                \"jzdw\": null,\n                \"khyh\": \"农行********支行\",\n                \"kjlx\": null,\n                \"kpr\": \"管理员\",\n                \"kprq\": \"2015-04-27 00:00:00\",\n                \"kpyf\": null,\n                \"lslbs\": null,\n                \"page\": 0,\n                \"province\": \"上海市\",\n                \"qrcode\": null,\n                \"sbbh\": null,\n                \"sfzhm\": \"6***************3\",\n                \"sjdh\": null,\n                \"skm\": null,\n                \"slv\": 0.17,\n                \"spbm\": null,\n                \"swjgDm\": \"1**********0\",\n                \"swjgMc\": \"闵行********务所\",\n                \"title\": \"机动车销售统一发票\",\n                \"wspzhm\": \"\",\n                \"wz\": null,\n                \"xcrs\": \"5\",\n                \"xhdwmc\": \"上海********公司\",\n                \"xhdwsbh\": \"3************4\",\n                \"yfpdm\": null,\n                \"yfphm\": null,\n                \"ysslv\": null,\n                \"yszzsse\": null,\n                \"zh\": \"0**********2\",\n                \"zzsse\": 15009.4\n            }\n        ],\n        \"imageUrl\": \"http://*********/i/2023/03/28/ixccuo.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16987893
+    },
+    {
+      "name": "二手车统一销售发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"d3e79f1ce8ef42c0b132ac2a2115c50f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bsNsrsbh\": null,\n                \"bz\": null,\n                \"city\": \"\",\n                \"cjhj\": 38000,\n                \"cllx\": \"小型轿车\",\n                \"clsbdm\": \"LS*************63\",\n                \"company_seal\": \"1\",\n                \"completed\": null,\n                \"cpxh\": \"长安牌SC7169GA4\",\n                \"cpzh\": \"川AW36T3\",\n                \"djzh\": \"51********16\",\n                \"dq\": null,\n                \"escDh\": \"028-83556889\",\n                \"escDz\": \"成都市金牛区凤凰山街道金韦社区86号\",\n                \"escMc\": \"成都龙区鲜501路31管理有限公司\",\n                \"escSbh\": \"91**************73\",\n                \"escYhzh\": \"中国工商****************分理处\",\n                \"fpdm\": \"05********17\",\n                \"fphm\": \"00****66\",\n                \"fplc\": \"叁验白记联\",\n                \"fplcNum\": \"第二联\",\n                \"fplx\": \"15\",\n                \"fpxflx\": \"用车\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": null,\n                \"gfDh\": null,\n                \"gfDm\": \"50**************10\",\n                \"gfDz\": \"重庆市**************46号\",\n                \"gfMc\": \"钟井永\",\n                \"imageSize\": \"877,750\",\n                \"isCompleted\": null,\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"jyPmDh\": null,\n                \"jyPmDz\": null,\n                \"jyPmMc\": null,\n                \"jyPmSbh\": null,\n                \"jyPmYhzh\": null,\n                \"jzdw\": null,\n                \"kjlx\": null,\n                \"kpfLx\": null,\n                \"kpfNsrsbh\": null,\n                \"kpr\": null,\n                \"kprq\": \"2018-10-26 00:00:00\",\n                \"kpyf\": null,\n                \"needCompleted\": null,\n                \"page\": 0,\n                \"province\": \"四川省\",\n                \"qrcode\": null,\n                \"sbbh\": \"929910823797\",\n                \"skm\": null,\n                \"spbm\": null,\n                \"title\": \"二手车销售统一发票\",\n                \"wz\": null,\n                \"xfDh\": null,\n                \"xfDm\": \"51**************39\",\n                \"xfDz\": \"成都市******************号\",\n                \"xfMc\": \"王*\",\n                \"yfpdm\": null,\n                \"yfphm\": null,\n                \"zfr\": null,\n                \"zfrq\": null,\n                \"zrdclglsMc\": null,\n                \"zxbm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/ix**i0.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988278
+    },
+    {
+      "name": "区块链电子发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"6dd29473d6404de5a82c75b64ab9baac\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"city\": \"\",\n                \"company_seal\": \"1\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"钟*美\",\n                \"fpdm\": \"11*******10\",\n                \"fphm\": \"01****11\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"100\",\n                \"fpxflx\": \"餐饮\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"餐饮服务\",\n                \"gfmc\": \"西双**********公司\",\n                \"gfsbh\": \"92***********60\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"1199.01000000\",\n                        \"ggxh\": \"\",\n                        \"je\": 1199.01,\n                        \"jldw\": \"桌\",\n                        \"lslbs\": null,\n                        \"mc\": \"*餐饮服务*餐饮服务\",\n                        \"mxxh\": null,\n                        \"se\": 11.99,\n                        \"sl\": \"1\",\n                        \"slv\": 0.01,\n                        \"spbm\": null,\n                        \"ysse\": \"11.99\",\n                        \"ysslv\": \"1%\"\n                    }\n                ],\n                \"imageSize\": \"1035,667\",\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 1199.01,\n                \"jshj\": 1211,\n                \"jshjcn\": \"壹仟贰佰壹拾壹元整\",\n                \"jym\": \"4e1a8\",\n                \"jzdw\": \"国家税务总局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"钟*\",\n                \"kprq\": \"2021-08-16 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"province\": \"云南省\",\n                \"qrcode\": [\n                    \"01,10,153002109100,03262651,92532800MA6M3NU755,1199.01,20210816,009ccc6d70b7b99f31ba245c089b1f16b9becaf5fde063c184fa8f8ba87444e1a8\"\n                ],\n                \"sbbh\": null,\n                \"se\": 11.99,\n                \"skm\": \"00*********************a8\",\n                \"skr\": \"钟玉\",\n                \"slv\": null,\n                \"title\": \"云南省通用电子发票\",\n                \"tspzDm\": null,\n                \"wz\": null,\n                \"xfmc\": \"曼弄****鱼馆\",\n                \"xfsbh\": \"92532800MA6M3NU755\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"云南*********************民点 1********2\",\n                \"xsfyhzh\": \"中国*********支行 6****************7\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://*********/i/2023/03/28/iy0v2e.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988279
+    },
+    {
+      "name": "定额发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"45b41690232f4e2b9efed9533fe8e4ee\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"xfsbh\": \"91**************3J\",\n                \"company_seal\": \"1\",\n                \"fpdm\": \"13********53\",\n                \"city\": \"\",\n                \"fplx\": \"801\",\n                \"title\": \"上海市国家税务局通用定额发票\",\n                \"province\": \"上海市\",\n                \"fpxflx\": \"交通\",\n                \"jd\": 0,\n                \"je\": 10,\n                \"page\": 0,\n                \"imageSize\": \"1023,768\",\n                \"xfmc\": \"上海市*********税务局\",\n                \"fphm\": \"02589572\"\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/iy**pa.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988280
+    },
+    {
+      "name": "火车票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\r\n    \"reqId\": \"d7d0a4a5b0584279b5396c6dafb628ae\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"datas\": [\r\n            {\r\n                \"barcode\": null,\r\n                \"cc\": \"G7399\",\r\n                \"ccsj\": \"2023-07-06 20:53:00\",\r\n                \"cfz\": \"上海虹桥\",\r\n                \"city\": null,\r\n                \"company_seal\": null,\r\n                \"ddz\": \"杭州东\",\r\n                \"dq\": null,\r\n                \"dzbz\": null,\r\n                \"dzpzbj\": null,\r\n                \"fplx\": \"901\",\r\n                \"fpxflx\": \"交通\",\r\n                \"fwlx\": null,\r\n                \"hcphm\": \"19B012277\",\r\n                \"imageSize\": \"614,419\",\r\n                \"jd\": 0,\r\n                \"je\": \"12.00\",\r\n                \"jpk\": null,\r\n                \"jzdw\": null,\r\n                \"page\": 0,\r\n                \"province\": null,\r\n                \"qpdz\": \"JM\",\r\n                \"qrcode\": [\r\n                    \"010122770772937273731631077324311695865927882397027104242961824297700389103471674580768548284253750182205510186990830256249338593996923358124182\"\r\n                ],\r\n                \"sfzh\": \"3302821982****4694\",\r\n                \"swlx\": \"退\",\r\n                \"title\": \"火车票\",\r\n                \"txfbz\": null,\r\n                \"wz\": null,\r\n                \"xlh\": \"66100010190707B012277\",\r\n                \"xm\": \"徐迪科\",\r\n                \"zwh\": \"09车02F号\",\r\n                \"zwlx\": \"特等座\"\r\n            }\r\n        ],\r\n        \"imageUrl\": \"http://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SHARE/0/CY_10001999_1695017620453_274.png?Expires=1697644180&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=SJupcpgR8Doa5T3hvvQ4HdTkjaQ%3D\",\r\n        \"message\": null,\r\n        \"single\": true,\r\n        \"success\": true,\r\n        \"type\": null,\r\n        \"ylpj\": null\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988282
+    },
+    {
+      "name": "机打发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"473978b980a34f5ba0c42b5e80c685ce\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"xfsbh\": \"92**************8D\",\n                \"company_seal\": \"1\",\n                \"city\": \"\",\n                \"gfmc\": \"白云******公司\",\n                \"gmfyhzh\": \"中国农业********************支行\",\n                \"qrcode\": [\n                    \"01,20,14********10,09****41,2970.30,20****17,00****************01,8DC3\"\n                ],\n                \"title\": \"广东通用机打发票(电子)\",\n                \"xsfdzdh\": \"广州市************房\",\n                \"jzdw\": \"国家税务总局\",\n                \"jshjcn\": \"叁仟圆整\",\n                \"se\": null,\n                \"province\": \"广东省\",\n                \"skm\": null,\n                \"kprq\": \"2022-01-17 00:00:00\",\n                \"bz\": null,\n                \"jdfphm\": null,\n                \"skr\": null,\n                \"imageSize\": \"994,672\",\n                \"barcode\": null,\n                \"jdfpdm\": null,\n                \"sbbh\": null,\n                \"gfsbh\": \"91**************9E\",\n                \"fpdm\": \"14********10\",\n                \"fplx\": \"903\",\n                \"kpr\": null,\n                \"fwlx\": null,\n                \"fhr\": null,\n                \"fpxflx\": \"日用\",\n                \"gmfdzdh\": \"广州市**************号\",\n                \"xsfyhzh\": \"广发********************支行\",\n                \"jshj\": 3000,\n                \"jd\": 0,\n                \"je\": 2970.3,\n                \"page\": 0,\n                \"xfmc\": \"广州市******************店\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"lslbs\": null,\n                        \"se\": 29.7,\n                        \"jldw\": \"项\",\n                        \"ysse\": \"29.70\",\n                        \"mc\": \"*非金属矿物制品*广告物料\",\n                        \"dj\": \"2970.2970297\",\n                        \"sl\": \"1\",\n                        \"je\": 2970.3,\n                        \"ysslv\": \"1%\",\n                        \"slv\": 0.01\n                    }\n                ],\n                \"fphm\": \"09****41\",\n                \"jym\": \"00****************01\"\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/j2**gj.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988284
+    },
+    {
+      "name": "客运汽车识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"cccd3d7f9d3a40d6ae6437f9e46a6794\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"fpdm\": \"14********41\",\n                \"fplx\": \"905\",\n                \"title\": \"湖北省道路客运发票\",\n                \"kpsj\": \"19:20\",\n                \"fpxflx\": \"交通\",\n                \"cfcz\": \"付家坡\",\n                \"sfzh\": \"420238********009X\",\n                \"kprq\": \"2018年12月14日\",\n                \"name\": \"甘\",\n                \"ddcz\": \"黄石\",\n                \"jshj\": \"30.00\",\n                \"jd\": 0,\n                \"page\": 0,\n                \"imageSize\": \"790,317\",\n                \"fphm\": \"35****86\",\n                \"cc\": \"KK6666\"\n            }\n        ],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/j3***vf.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988286
+    },
+    {
+      "name": "滴滴出行行程单识别成功示例",
+      "responseId": 168710144,
+      "data": "{\r\n    \"reqId\": \"b74d0c5c46084570a6a42bb108a480a6\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"datas\": [\r\n            {\r\n                \"xckssj\": \"2022年02月24日\",\r\n                \"xcxxList\": [\r\n                    {\r\n                        \"scsj\": \"02-24 21:06 周四\",\r\n                        \"qd\": \"颖秀路|三庆·齐盛广场-东北门\",\r\n                        \"cx\": \"滴滴快车\",\r\n                        \"city\": \"济南市\",\r\n                        \"lc\": \"4.3\",\r\n                        \"zd\": \"历城区|中铁奥体26方\",\r\n                        \"jshj\": \"12.51\"\r\n                    }\r\n                ],\r\n                \"fpxflx\": \"交通\",\r\n                \"xcrsjh\": \"18663721004\",\r\n                \"fplx\": \"907\",\r\n                \"xcjesj\": \"2022年02月24日\",\r\n                \"sqrq\": \"2022年02月25日\",\r\n                \"jshj\": \"12.51\",\r\n                \"jd\": 0,\r\n                \"page\": 0,\r\n                \"title\": \"滴滴出行—行程单\"\r\n            }\r\n        ],\r\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/j4bh04.pdf\",\r\n        \"message\": null,\r\n        \"single\": true,\r\n        \"success\": true,\r\n        \"type\": null,\r\n        \"ylpj\": null\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988288
+    },
+    {
+      "name": "完税证明识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"47664bdc36194bc38c0ffd0e950ffca6\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"gfmc\": \"林*芳\",\n                \"fplx\": \"908\",\n                \"jsxxList\": [\n                    {\n                        \"kssl\": null,\n                        \"yjje\": null,\n                        \"sz\": \"\",\n                        \"pmmc\": \"其它服务业-其它\",\n                        \"sjje\": \"495.16\",\n                        \"slv\": null,\n                        \"ypzh\": \"营业税\",\n                        \"rkrq\": \"2014年03月17日\",\n                        \"skssq\": \"201403-201403\",\n                        \"zsjg\": null\n                    },\n                    {\n                        \"kssl\": null,\n                        \"yjje\": null,\n                        \"sz\": \"\",\n                        \"pmmc\": \"营业税附征(7%)\",\n                        \"sjje\": \"148.55\",\n                        \"slv\": null,\n                        \"ypzh\": \"个人所得税\",\n                        \"rkrq\": \"\",\n                        \"skssq\": \"梅01403-201403\",\n                        \"zsjg\": null\n                    },\n                    {\n                        \"kssl\": null,\n                        \"yjje\": null,\n                        \"sz\": \"\",\n                        \"pmmc\": \"营业税附征(3%)\",\n                        \"sjje\": \"34.66\",\n                        \"slv\": null,\n                        \"ypzh\": \"城市维护建设税\",\n                        \"rkrq\": \"\",\n                        \"skssq\": \"201403-201403\",\n                        \"zsjg\": null\n                    },\n                    {\n                        \"kssl\": null,\n                        \"yjje\": null,\n                        \"sz\": \"\",\n                        \"pmmc\": \"营业税附征(2%)\",\n                        \"sjje\": \"14.85\",\n                        \"slv\": null,\n                        \"ypzh\": \"教育费附加\",\n                        \"rkrq\": \"\",\n                        \"skssq\": \"201403-201403\",\n                        \"zsjg\": null\n                    },\n                    {\n                        \"kssl\": null,\n                        \"yjje\": null,\n                        \"sz\": \"\",\n                        \"pmmc\": \"\",\n                        \"sjje\": \"9.90\",\n                        \"slv\": null,\n                        \"ypzh\": \"地方教育附加\",\n                        \"rkrq\": \"\",\n                        \"skssq\": \"201403-201403\",\n                        \"zsjg\": null\n                    }\n                ],\n                \"title\": \"中华人民共和国税收完税证明\",\n                \"jshjcn\": \"柒佰零叁圆壹角贰分\",\n                \"fpxflx\": null,\n                \"swjg\": \"**省**市地方税务局纳税服务管理厦\",\n                \"gfnsrsbh\": \"L2******************09\",\n                \"bz\": \"2014100458027零散税收24*************84\",\n                \"jshj\": \"703.12\",\n                \"jd\": 0,\n                \"page\": 0,\n                \"imageSize\": \"850,584\",\n                \"fphm\": \"0******7\",\n                \"rq\": \"2014年03月17日\"\n            }\n        ],\n        \"imageUrl\": \"http://********/i/2023/09/02/rb9j4y.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 27867526
+    },
+    {
+      "name": "船票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\r\n    \"reqId\": \"9681fd7884f14150ab025015c7b6790f\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"datas\": [\r\n            {\r\n                \"fpdm\": \"14********38\",\r\n                \"city\": null,\r\n                \"fplx\": \"909\",\r\n                \"qrcode\": [\r\n                    \"1164762157131088035091^^^^^^^^SK-ZH^^201812111600田浩\"\r\n                ],\r\n                \"title\": null,\r\n                \"kpsj\": \"16:00\",\r\n                \"currency_code\": \"CNY\",\r\n                \"fpxflx\": \"交通\",\r\n                \"province\": null,\r\n                \"cfcz\": \"蛇口\",\r\n                \"kprq\": \"2018年12月11日\",\r\n                \"name\": \"\",\r\n                \"ddcz\": \"珠海\",\r\n                \"jshj\": \"60.00\",\r\n                \"jd\": 0,\r\n                \"page\": 0,\r\n                \"imageSize\": \"1200,942\",\r\n                \"barcode\": null,\r\n                \"fphm\": \"01****87\"\r\n            }\r\n        ],\r\n        \"imageUrl\": \"http://tu.92086.top/i/2023/03/28/j*****3.jpeg\",\r\n        \"message\": null,\r\n        \"single\": true,\r\n        \"success\": true,\r\n        \"type\": null,\r\n        \"ylpj\": null\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988289
+    },
+    {
+      "name": "船票识别成功",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"30bb541f4ef54c12a8fa84ad50152e1f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"fpdm\": \"11*********18\",\n                \"city\": null,\n                \"fplx\": \"909\",\n                \"qrcode\": [\n                    \"1*******************1^^^^^^^^SK-ZH^^201812111600田*\"\n                ],\n                \"title\": null,\n                \"kpsj\": \"16:00\",\n                \"currency_code\": \"CNY\",\n                \"fpxflx\": \"交通\",\n                \"province\": null,\n                \"cfcz\": \"蛇口\",\n                \"kprq\": \"2018年12月11日\",\n                \"name\": \"\",\n                \"ddcz\": \"珠海\",\n                \"jshj\": \"60.00\",\n                \"jd\": 0,\n                \"page\": 0,\n                \"imageSize\": \"1200,942\",\n                \"barcode\": null,\n                \"fphm\": \"01****87\"\n            }\n        ],\n        \"imageUrl\": \"http://**********/i/2023/03/28/j4vwx3.jpeg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 19103182
+    },
+    {
+      "name": "其他发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"7b2f344b2bc347c78e223eba9e91a23f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"fpdm\": null,\n                \"wz\": \"38,0,1080,542\",\n                \"fpxflx\": \"其他\",\n                \"fplx\": \"910\",\n                \"kprq\": null,\n                \"jshj\": null,\n                \"jd\": 0,\n                \"page\": 0,\n                \"imageSize\": \"1080,1092\",\n                \"title\": \"格力电器售后收款凭据\",\n                \"fphm\": \"0708***\"\n            }\n        ],\n        \"imageUrl\": \"https://image.fenbeitong.com/invoice/2022/01/**/61249dcb6f933a7e7109d8e9/61e0f1************.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988290
+    },
+    {
+      "name": "购物小票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"38ce8213f86849498cad06de862e9794\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"xflx\": \"Other\",\n                \"fplx\": \"906\",\n                \"discount\": \"0.00\",\n                \"title\": null,\n                \"kpsj\": \"13:18:10\",\n                \"tips\": \"0.00\",\n                \"currency_code\": \"\",\n                \"se\": \"0.00\",\n                \"fpxflx\": null,\n                \"kprq\": \"2019年12月01日\",\n                \"store_name\": \"\",\n                \"jshj\": \"30.00\",\n                \"jd\": 0,\n                \"je\": \"30.00\",\n                \"page\": 0,\n                \"imageSize\": \"297,561\"\n            }\n        ],\n        \"imageUrl\": \"http://*******/i/2023/03/28/j3vxpv.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988287
+    },
+    {
+      "name": "过路费识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"a833d76d365a4fc881b51c27c0133522\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"fpdm\": \"21********10\",\n                \"city\": null,\n                \"fplx\": \"904\",\n                \"title\": \"河南省车辆通行费统一发票\",\n                \"kpsj\": \"01:10:48\",\n                \"exit\": \"焦作南\",\n                \"fpxflx\": \"交通\",\n                \"province\": null,\n                \"gsbz\": \"0\",\n                \"kprq\": \"2013年11月05日\",\n                \"jshj\": \"1335.00\",\n                \"jd\": 0,\n                \"page\": 0,\n                \"imageSize\": \"371,459\",\n                \"entrance\": \"焦铜豫鄂界\",\n                \"fphm\": \"6******6\"\n            }\n        ],\n        \"imageUrl\": \"http://********/i/2023/03/28/j386uf.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988285
+    },
+    {
+      "name": "航空运输电子客票行程单识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"fae57a03eeaa48dbb8f836c2f97362f1\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"insurance\": \"XXX\",\n                \"fare\": \"940.00\",\n                \"serialNumber\": \"4*********5\",\n                \"fplx\": \"902\",\n                \"eTicketNo\": \"7*********4\",\n                \"agentCode\": \"SJ**********66\",\n                \"caacDevelopmentFund\": \"50.00\",\n                \"issuedBy\": \"海东********公司\",\n                \"otherTaxes\": \"\",\n                \"title\": \"航空运输电子客票行程单\",\n                \"dateOfIssue\": \"2009年06月15日\",\n                \"idNo\": \"1*************2\",\n                \"checkCode\": \"3354\",\n                \"total\": \"990.00\",\n                \"fpxflx\": \"交通\",\n                \"endorsements\": \"不得签转\",\n                \"name\": \"刘*军\",\n                \"jd\": 0,\n                \"page\": 0,\n                \"imageSize\": \"638,308\",\n                \"flights\": [\n                    {\n                        \"date\": \"2009年06月15日\",\n                        \"allow\": \"20K\",\n                        \"flight\": \"C****2\",\n                        \"carrier\": \"CZ\",\n                        \"from\": \"石家庄\",\n                        \"to\": \"广州\",\n                        \"time\": \"\",\n                        \"class\": \"L\",\n                        \"className\": \"经济舱\",\n                        \"fareBasis\": \"R\",\n                        \"flightSegment\": \"1\",\n                        \"notValidBefore\": \"2020年03月07日\",\n                        \"notValidAfter\": \"2020年03月07日\"\n                    }\n                ],\n                \"fuelSurcharge\": \"0.00\",\n                \"typeOfBusiness\": \"售\"\n            }\n        ],\n        \"imageUrl\": \"http://********/i/2023/03/28/j0wl9s.png\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988283
+    },
+    {
+      "name": "出租车发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"fe0b5b43a45343bda3f412f6f8be7a4b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"fpdm\": \"11*******14\",\n                \"city\": \"武汉市\",\n                \"fplx\": \"900\",\n                \"title\": null,\n                \"scsj\": \"23:17\",\n                \"fpxflx\": \"交通\",\n                \"province\": \"湖北省\",\n                \"kprq\": \"2019-08-02 00:00:00\",\n                \"lc\": \"25.38\",\n                \"xcsj\": \"23:49\",\n                \"cph\": \"A-***89\",\n                \"jd\": 0,\n                \"je\": 66,\n                \"page\": 0,\n                \"imageSize\": \"640,856\",\n                \"fphm\": \"11****28\"\n            }\n        ],\n        \"imageUrl\": \"http://********/i/2023/03/28/j07x5o.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 16988281
+    },
+    {
+      "name": "异常",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"375e168641dc4024a8837d46b3c60ec0\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"appKey\": 10001999,\n        \"code\": \"ImageIsInvalid\",\n        \"data\": null,\n        \"datas\": null,\n        \"fkBz\": null,\n        \"imageUrl\": \"https://imgse.com/i/ppaToo4\",\n        \"message\": \"发票图片信息无效\",\n        \"sbtd\": \"RQSB20\",\n        \"single\": false,\n        \"success\": false,\n        \"type\": null,\n        \"wyBz\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17702907
+    },
+    {
+      "name": "海关缴款书识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"93e7cb5938d64d339f4f9d3cf82bed4d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bgdbh\": \"01********************83\",\n                \"bzbz\": \"EUR\",\n                \"bzjshlv\": \"6.8928\",\n                \"city\": null,\n                \"company_seal\": null,\n                \"dq\": null,\n                \"dzbz\": null,\n                \"fplx\": \"17\",\n                \"fpxflx\": \"其他\",\n                \"fwlx\": null,\n                \"hgkadm\": \"0101\",\n                \"hgmc\": \"**机场\",\n                \"hjje\": \"3972.48\",\n                \"hjjecn\": \"叁仟玖佰柒拾贰圆肆角捌分\",\n                \"htpwh\": \"AS********-91\",\n                \"imageSize\": \"995,685\",\n                \"jd\": 0,\n                \"jkdwkhyh\": \"**银行\",\n                \"jkdwmc\": \"江苏****公司\",\n                \"jkdwzh\": \"48********99\",\n                \"jkqx\": \"2022年6月15日前\",\n                \"jkshm\": \"01***************-A01\",\n                \"jksxx\": [\n                    {\n                        \"hwmc\": \"橡胶密封环\",\n                        \"jldw\": \"千克\",\n                        \"sh\": \"1.4016931000\",\n                        \"skje\": \"1679.66\",\n                        \"sl\": \"4.00\",\n                        \"slv\": \"8.0000\",\n                        \"wsjg\": \"20996.00\"\n                    },\n                    {\n                        \"hwmc\": \"\",\n                        \"jldw\": \"千克\",\n                        \"sh\": \"2.3926901000\",\n                        \"skje\": \"2292.82\",\n                        \"sl\": \"2.50\",\n                        \"slv\": \"10.0000\",\n                        \"wsjg\": \"22928.00\"\n                    }\n                ],\n                \"jzdw\": null,\n                \"km\": \"进口关税\",\n                \"page\": 0,\n                \"province\": null,\n                \"qrcode\": null,\n                \"skgk\": \"中国***********支行20*****63\",\n                \"sqdwbh\": \"11******9Y\",\n                \"srjg\": \"中**库\",\n                \"srxt\": \"海关系统\",\n                \"tfrq\": \"2022年05月31日\",\n                \"title\": \"海关进口关税 专用缴款书\",\n                \"txfbz\": null,\n                \"tzdw\": \"首都**海关\",\n                \"tzhdh\": \"02******_STRA********68\",\n                \"wz\": \"0,0,995,685\",\n                \"ysgj\": \"\",\n                \"ysjc\": \"中央\"\n            }\n        ],\n        \"imageUrl\": \"http://**********************y5BvXpCk%2B4k%3D\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 388923563
+    },
+    {
+      "name": "电子发票铁路电子客票)识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"3e8655627df74312a9f44137f8f67591\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"\",\n                \"cc\": \"G7101\",\n                \"ccrq\": \"2022-03-01\",\n                \"cfsj\": \"06:23\",\n                \"cfz\": \"南京\",\n                \"cfzpy\": \"Nanjing\",\n                \"city\": null,\n                \"company_seal\": null,\n                \"cxxw\": \"01车05C号\",\n                \"ddz\": \"上海虹桥\",\n                \"ddzpy\": \"Shanghaihongqiao\",\n                \"dq\": null,\n                \"dzbz\": \"1\",\n                \"dzkph\": \"306712A086012090014302022\",\n                \"dzpzbj\": \"1\",\n                \"fphm\": \"22119130671000000048\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"83\",\n                \"fpxflx\": \"交通\",\n                \"fwlx\": null,\n                \"gfmc\": \"铁路客票电子发票测试单位\",\n                \"gfsbh\": \"91110001110AE35858\",\n                \"imageSize\": null,\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 166.05,\n                \"jshj\": 181,\n                \"jzdw\": null,\n                \"kprq\": \"2022-03-17 00:00:00\",\n                \"kttz\": \"新空调\",\n                \"name\": \"梁某某\",\n                \"page\": null,\n                \"province\": null,\n                \"qdfphm\": \"22119130671000000048\",\n                \"qrcode\": null,\n                \"se\": 14.95,\n                \"slv\": 0.09,\n                \"swlx\": \"售\",\n                \"title\": \"电子发票(铁路电子客票)\",\n                \"txfbz\": null,\n                \"wz\": null,\n                \"xb\": \"软卧\",\n                \"xlh\": \"306712A086012090014302022\",\n                \"yfphm\": \"\",\n                \"zjh\": \"1427241988****1627\"\n            }\n        ],\n        \"imageUrl\": \"http://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SHARE/0/CY_10001999_1693970454219_725.ofd?Expires=1696597015&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=724OE/yJTc3%2BYm0O7xZjBGEuqeM%3D\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 388934150
+    },
+    {
+      "name": "电子发票（航空运输电子客票行程单）识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"bdbc9733732c43e192eb7c5c539fc371\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bxf\": 0,\n                \"city\": null,\n                \"company_seal\": null,\n                \"dq\": null,\n                \"dzbz\": \"1\",\n                \"dzkphm\": \"7842164694294\",\n                \"dzpzbj\": \"1\",\n                \"fphm\": \"23448784110000000660\",\n                \"fplc\": null,\n                \"fplcNum\": null,\n                \"fplx\": \"61\",\n                \"fpxflx\": \"交通\",\n                \"fwlx\": null,\n                \"gfmc\": \"厦门航空有限公司\",\n                \"gfsbh\": \"9135020015499233XE\",\n                \"gngjbz\": \"国内\",\n                \"gpdh\": null,\n                \"hwxx\": [\n                    {\n                        \"cyr\": \"南航\",\n                        \"cyrq\": \"2022-06-15\",\n                        \"hbh\": \"CZ6927\",\n                        \"hdxh\": \"1\",\n                        \"kpjb\": \"NRE0WNNP\",\n                        \"kpsxrq\": \"2022-06-15\",\n                        \"mdz\": \"NKG 南京\",\n                        \"mfxl\": \"20K\",\n                        \"qfsj\": \"09:25\",\n                        \"sfz\": \"URC 乌鲁木齐\",\n                        \"yxjzrq\": \"2022-06-15\",\n                        \"zwdj\": \"N\"\n                    }\n                ],\n                \"imageSize\": null,\n                \"jd\": 0,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"jshj\": 1080,\n                \"jzdw\": null,\n                \"kjzt\": \"正常\",\n                \"kprq\": \"2023-03-15 00:00:00\",\n                \"lkxm\": \"徐爱明\",\n                \"mhfzjj\": 50,\n                \"page\": null,\n                \"pj\": 816.51,\n                \"province\": null,\n                \"qdfphm\": null,\n                \"qrcode\": [\n                    1,\n                    61,\n                    23448784110000000000,\n                    994.95,\n                    20230315,\n                    790\n                ],\n                \"qtsf\": 0,\n                \"qz\": \"BUDEQIANZHUAN不得签转/BIANGENGTUIPIAOSHOUFEI变更退票收费\",\n                \"ryfjf\": 128.44,\n                \"se\": 85.05,\n                \"sfzjhm\": \"654126******242311\",\n                \"slv\": \"9%\",\n                \"title\": \"航空运输电子客票行程单\",\n                \"tkdw\": \"中国南方航空股份有限公司\",\n                \"tsxx\": \"\",\n                \"txfbz\": null,\n                \"wz\": null,\n                \"xfmc\": \"中国南方航空股份有限公司\",\n                \"xswddh\": \"CAN011/00001704\",\n                \"yzm\": \"0660\"\n            }\n        ],\n        \"imageUrl\": \"http://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SHARE/0/CY_10001999_1693988584377_968.ofd?Expires=1696615144&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=g88rzL8NuPV/AcWu09DHzYT%2B33s%3D\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 388931704
+    },
+    {
+      "name": "浙江通用（电子）发票识别成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"87bbfdb759624a50ba853830dbe2a5af\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [{\n            \"xfsbh\": \"92330110MA2KLT3H0F\",\n            \"company_seal\": \"1\",\n            \"city\": \"\",\n            \"gfmc\": \"杭州几何品物文化创意有限责任公司\",\n            \"gmfyhzh\": null,\n            \"title\": \"浙江通用(电)发票\",\n            \"xsfdzdh\": \"浙江省杭州市余杭区五常街道杭州市余杭区五常街道五常大道3号1幢02层P3-02-15号商铺13575732953\",\n            \"jzdw\": \"国家税务总局\",\n            \"jshjcn\": \"肆佰伍拾肆元整\",\n            \"se\": 0,\n            \"province\": \"浙江省\",\n            \"skm\": null,\n            \"kprq\": \"2022-07-28 00:00:00\",\n            \"bz\": null,\n            \"skr\": null,\n            \"imageSize\": \"4032,3024\",\n            \"sbbh\": null,\n            \"gfsbh\": \"91330101MA2GLW3R76\",\n            \"fpdm\": \"233002230111\",\n            \"fplx\": \"102\",\n            \"kpr\": null,\n            \"fwlx\": null,\n            \"fhr\": null,\n            \"fpxflx\": \"餐饮\",\n            \"gmfdzdh\": null,\n            \"xsfyhzh\": null,\n            \"jshj\": 454,\n            \"jd\": 180,\n            \"je\": 454,\n            \"page\": 0,\n            \"xfmc\": \"杭州余杭区五常街道肥柚餐饮店\",\n            \"hwxx\": [\n                {\n                    \"ggxh\": \"\",\n                    \"lslbs\": null,\n                    \"se\": null,\n                    \"jldw\": \"\",\n                    \"ysse\": \"***\",\n                    \"mc\": \"*餐饮服务*餐饮\",\n                    \"dj\": \"454.00\",\n                    \"sl\": \"1.0\",\n                    \"je\": 454,\n                    \"ysslv\": \"***\",\n                    \"slv\": null\n                }\n            ],\n            \"fphm\": \"63973363\",\n            \"jym\": \"16590105379259677588\"\n        }],\n        \"imageUrl\": \"http://tu.92086.top/i/2023/06/27/tznt3w.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 388930595
+    },
+    {
+      "name": "0904全电纸质发票(增值税普通发票)成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"09c3fe7b8a1b4fad9f1d203add820556\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bz\": \"交****************************************87\",\n                \"city\": \"**市\",\n                \"company_seal\": \"1\",\n                \"dkXsfmc\": null,\n                \"dkXsfsbh\": null,\n                \"dq\": null,\n                \"fhr\": \"\",\n                \"fpdm\": \"03******04\",\n                \"fphm\": \"05****00\",\n                \"fplc\": \"发票联\",\n                \"fplcNum\": \"第二联\",\n                \"fplx\": \"0904\",\n                \"fpxflx\": \"餐饮\",\n                \"fpztBz\": null,\n                \"fpztDm\": null,\n                \"fwlx\": \"餐饮服务\",\n                \"gfmc\": \"厦*********************司\",\n                \"gfsbh\": \"91*************63\",\n                \"gmfdzdh\": null,\n                \"gmfyhzh\": null,\n                \"hwxx\": [\n                    {\n                        \"dj\": \"\",\n                        \"ggxh\": \"\",\n                        \"je\": 3000,\n                        \"jldw\": \"\",\n                        \"lslbs\": null,\n                        \"mc\": \"*餐饮服务*餐费\",\n                        \"mxxh\": null,\n                        \"se\": 180,\n                        \"sl\": \"\",\n                        \"slv\": 0.06,\n                        \"spbm\": null,\n                        \"ysse\": \"180.00\",\n                        \"ysslv\": \"6%\"\n                    }\n                ],\n                \"imageSize\": \"3024,4032\",\n                \"jd\": 90,\n                \"jdfpdm\": null,\n                \"jdfphm\": null,\n                \"je\": 3000,\n                \"jshj\": 3180,\n                \"jshjcn\": \"叁仟壹佰捌拾圆整\",\n                \"jym\": \"23************51\",\n                \"jzdw\": \"国******局\",\n                \"kjlx\": null,\n                \"kpjh\": null,\n                \"kpr\": \"郭*蓉\",\n                \"kprq\": \"2023-05-29 00:00:00\",\n                \"kpyf\": null,\n                \"mxts\": null,\n                \"page\": 0,\n                \"pageCount\": null,\n                \"pageNumber\": null,\n                \"province\": \"**省\",\n                \"purl\": null,\n                \"qdfphm\": \"23****************51\",\n                \"qdlx\": null,\n                \"qrcode\": null,\n                \"sbbh\": null,\n                \"se\": 180,\n                \"skm\": null,\n                \"skr\": \"\",\n                \"slv\": null,\n                \"title\": \"厦门增值税普通发票\",\n                \"tspzDm\": null,\n                \"url\": null,\n                \"wz\": null,\n                \"xfmc\": \"厦******************司\",\n                \"xfsbh\": \"91**************1A\",\n                \"xhqdBz\": null,\n                \"xsfdzdh\": \"厦*********************0\",\n                \"xsfyhzh\": \"中**************************6\",\n                \"yfpdm\": null,\n                \"yfphm\": null\n            }\n        ],\n        \"imageUrl\": \"http://tu**********************.jpg\",\n        \"message\": null,\n        \"single\": true,\n        \"success\": true,\n        \"type\": null,\n        \"ylpj\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 388929533
+    },
+    {
+      "name": "成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"kpyf\": null,\n    \"xfsbh\": \"911************\",\n    \"pageNumber\": null,\n    \"gfmc\": \"北京*******有限公司\",\n    \"xhqdBz\": null,\n    \"dq\": null,\n    \"fpztBz\": null,\n    \"xsfdzdh\": \"北京市东城区********号*******-******\",\n    \"yfphm\": null,\n    \"ccs\": null,\n    \"province\": \"北京市\",\n    \"skm\": null,\n    \"xjje\": null,\n    \"yfpdm\": null,\n    \"qdbq\": null,\n    \"kjlx\": null,\n    \"jzbz\": null,\n    \"jdfphm\": null,\n    \"skr\": \"小明\",\n    \"barcode\": null,\n    \"jdfpdm\": null,\n    \"txfbz\": \"0\",\n    \"ysxx\": null,\n    \"kpr\": \"李华\",\n    \"fwlx\": \"塑料制品\",\n    \"fpxflx\": \"其他\",\n    \"gmfdzdh\": \"北京市大兴区************* 010-**********\",\n    \"xsfyhzh\": \"中信银行****支行***************\",\n    \"jd\": 90,\n    \"jshj\": 479571.51,\n    \"je\": 424399.57,\n    \"page\": 0,\n    \"slv\": null,\n    \"xfmc\": \"北京********有限公司\",\n    \"dzbz\": \"0\",\n    \"company_seal\": \"1\",\n    \"city\": \"\",\n    \"gmfyhzh\": \"交通银行****支行110**************\",\n    \"qrcode\": [\n        \"01,31,11123232,777655,424399.57,8765555,88888,F62B,\"\n    ],\n    \"dkXsfmc\": null,\n    \"tspzDm\": null,\n    \"purl\": null,\n    \"title\": \"北京增值税专用发票\",\n    \"jshjcn\": \"肆拾柒万玖仟伍佰柒拾壹圆伍角壹分\",\n    \"jzdw\": \"北京\",\n    \"kpjh\": null,\n    \"se\": 55171.94,\n    \"kprq\": \"2024-02-20 00:00:00\",\n    \"bz\": \"2024.1.1-2024.1.25\",\n    \"mxts\": null,\n    \"yzxx\": \"北京**********有限公司,911***********\",\n    \"imageSize\": \"2480,3508\",\n    \"fpztDm\": null,\n    \"sbbh\": null,\n    \"gfsbh\": \"911***********\",\n    \"pageCount\": null,\n    \"fpdm\": \"11*******\",\n    \"wz\": \"0,0,2088,3172\",\n    \"fplx\": \"0901\",\n    \"qdfphm\": \"24112************\",\n    \"dkXsfsbh\": null,\n    \"qdlx\": null,\n    \"url\": null,\n    \"fhr\": \"张三\",\n    \"fplc\": \"发票联\",\n    \"xjse\": null,\n    \"hwxx\": [\n        {\n            \"ggxh\": \"ROHBJ******\",\n            \"mjdw\": null,\n            \"jldw\": \"千克\",\n            \"dj\": \"23.818342\",\n            \"mxxh\": null,\n            \"jzxmmc\": null,\n            \"ysje\": \"1191.71\",\n            \"jzfwfsd\": null,\n            \"lslbs\": null,\n            \"cqzh\": null,\n            \"se\": 15481.92,\n            \"ysse\": \"15481.92\",\n            \"mc\": \"*塑料制品*塑料粒子*********\",\n            \"sl\": \"50\",\n            \"je\": 119.71,\n            \"slv\": 0.13,\n            \"ysslv\": \"13%\",\n            \"spbm\": null\n        },\n        {\n            \"ggxh\": \"ROHBJ2000023\",\n            \"mjdw\": null,\n            \"jldw\": \"千克\",\n            \"dj\": \"20.353857\",\n            \"mxxh\": null,\n            \"jzxmmc\": null,\n            \"ysje\": \"\",\n            \"jzfwfsd\": null,\n            \"lslbs\": null,\n            \"cqzh\": null,\n            \"se\": 0,\n            \"ysse\": \"0.00\",\n            \"mc\": \"*塑料制品*塑料粒子*****\",\n            \"sl\": \"15000\",\n            \"je\": null,\n            \"slv\": null,\n            \"ysslv\": \"\",\n            \"spbm\": null\n        }\n    ],\n    \"fphm\": \"115*******\",\n    \"fplcNum\": \"第三联\",\n    \"jym\": \"24112**************\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 444204048
+    },
+    {
+      "name": "成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"21494f13bd3e4a10bdfb0f97c8725c32\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"100019994235c14d62a340708643f9a34ded4289\",\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"blh\": \"\",\n                \"city\": null,\n                \"company_seal\": null,\n                \"cyrq\": \"\",\n                \"czlx\": \"03\",\n                \"dq\": null,\n                \"dzbz\": \"1\",\n                \"fpdm\": \"36****21\",\n                \"fphm\": \"07******55\",\n                \"fplx\": \"101\",\n                \"fpxflx\": \"其他\",\n                \"fwlx\": null,\n                \"grxjzf\": \"4600.70\",\n                \"grzf\": \"0.00\",\n                \"grzfei\": \"4600.70\",\n                \"grzhzf\": \"0.00\",\n                \"imageSize\": \"2000,1337\",\n                \"jd\": 0,\n                \"jehj\": \"4600.70\",\n                \"jehjcn\": \"肆仟陆佰圆零柒角\",\n                \"jkr\": \"杜*星\",\n                \"jkrid\": \"36****************\",\n                \"jym\": \"d092f1\",\n                \"jzdw\": null,\n                \"jzrq\": \"20210705\",\n                \"kprq\": \"2021年07月05日\",\n                \"mzh\": \"9449726\",\n                \"page\": 0,\n                \"province\": null,\n                \"qrcode\": [\n                    \"CZ-EI-36,1.1.0,36****21,07******55,d092f1,20210705,4600.70\"\n                ],\n                \"qtzf\": \"0.00\",\n                \"ryrq\": \"\",\n                \"skdw\": \"南*************院\",\n                \"tcje\": \"0.00\",\n                \"title\": \"江西省医疗门诊收费票据(电子)\",\n                \"txfbz\": null,\n                \"wz\": \"0,0,2000,1337\",\n                \"xb\": \"男\",\n                \"xmqd\": [\n                    {\n                        \"bz\": \"\",\n                        \"dw\": \"项\",\n                        \"je\": \"8.00\",\n                        \"sl\": \"1\",\n                        \"xmbh\": \"\",\n                        \"xmmc\": \"治疗费\"\n                    },\n                    {\n                        \"bz\": \"\",\n                        \"dw\": \"项\",\n                        \"je\": \"4587.00\",\n                        \"sl\": \"1\",\n                        \"xmbh\": \"\",\n                        \"xmmc\": \"西药费\"\n                    },\n                    {\n                        \"bz\": \"\",\n                        \"dw\": \"项\",\n                        \"je\": \"5.70\",\n                        \"sl\": \"1\",\n                        \"xmbh\": \"\",\n                        \"xmmc\": \"卫生材料费\"\n                    }\n                ],\n                \"ybbh\": \"\",\n                \"yblx\": \"自费\",\n                \"yljglx\": \"综合医院\",\n                \"zyh\": \"\",\n                \"zykb\": \"\"\n            }\n        ],\n        \"imageUrl\": \"http://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SHARE/0/CY_***************6ipKaVeQc%3D\",\n        \"single\": true,\n        \"success\": true\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 411045418
+    },
+    {
+      "name": "成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"ebfcff9ea4464e6ba395ba5960800bd6\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"100019998f77e9cc0bb04e149aaa1eeee00a8c38\",\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"city\": null,\n                \"company_seal\": null,\n                \"czlx\": \"01\",\n                \"dq\": null,\n                \"dzbz\": \"1\",\n                \"fhr\": \"306\",\n                \"fpdm\": \"00****21\",\n                \"fphm\": \"00******17\",\n                \"fplx\": \"101\",\n                \"fpxflx\": \"其他\",\n                \"fwlx\": null,\n                \"imageSize\": \"773,519\",\n                \"jbr\": null,\n                \"jd\": 0,\n                \"jehj\": \"3375.00\",\n                \"jehjcn\": \"叁仟叁佰柒拾伍圆整\",\n                \"jkm\": \"\",\n                \"jkr\": \"四***************************司\",\n                \"jkrkhyh\": \"\",\n                \"jkrnsrsbh\": \"\",\n                \"jkrzh\": \"\",\n                \"jym\": \"5H760K\",\n                \"jzdw\": null,\n                \"kprq\": \"2022年02月03日\",\n                \"page\": 0,\n                \"province\": null,\n                \"qrcode\": [\n                    \"CZ-EI-00,1.1.0,00****21,00******17,5H76OK,20220203,3375.00\"\n                ],\n                \"qtxx\": \"\",\n                \"skdw\": \"国************局\",\n                \"skr\": \"306\",\n                \"skrkhyh\": \"\",\n                \"skrzh\": \"\",\n                \"title\": \"中央非税收入统一票据(电子)\",\n                \"txfbz\": null,\n                \"wz\": \"0,0,773,519\",\n                \"xmqd\": [\n                    {\n                        \"bz\": \"\",\n                        \"dw\": \"元\",\n                        \"je\": \"2700.00\",\n                        \"sfbz\": \"270.00\",\n                        \"sl\": \"10\",\n                        \"xmbm\": \"067010\",\n                        \"xmmc\": \"受理商标注册费\"\n                    },\n                    {\n                        \"bz\": \"\",\n                        \"dw\": \"元\",\n                        \"je\": \"675.00\",\n                        \"sfbz\": \"675.00\",\n                        \"sl\": \"1\",\n                        \"xmbm\": \"067060\",\n                        \"xmmc\": \"受理商标评审费\"\n                    }\n                ],\n                \"zsdwbm\": \"\",\n                \"zsdwmc\": \"\"\n            }\n        ],\n        \"imageUrl\": \"http://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SHARE/0/CY_*******6ipKaVeQc%3D\",\n        \"single\": false,\n        \"success\": true\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 411045675
+    },
+    {
+      "name": "成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"324c90c9c7264a288123f63e2971d349\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"10001995422c86cb338542b5ba1df2535cfc51a3\",\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bgdbh\": \"1201**************\",\n                \"bjbz\": null,\n                \"city\": null,\n                \"cjfsbh\": null,\n                \"cjfsmc\": \"CIE\",\n                \"company_seal\": null,\n                \"contractNumber\": \"SP******\",\n                \"deliveryNumber\": \"奥******\",\n                \"dq\": null,\n                \"dzbz\": null,\n                \"fjdzbh\": null,\n                \"fplx\": \"912\",\n                \"fpxflx\": \"其他\",\n                \"freight\": null,\n                \"fwlx\": null,\n                \"grossWeight\": \"1100\",\n                \"hwxx\": [\n                    {\n                        \"cjjlsldw\": \"美元\",\n                        \"currency\": null,\n                        \"dj\": null,\n                        \"firstUom\": \"(502)全免\",\n                        \"ggxh\": \"电商货牧\",\n                        \"jnmdd\": null,\n                        \"kindOfTax\": null,\n                        \"secondUom\": null,\n                        \"spbh\": \"20*******\",\n                        \"spmc\": \"护肤类化妆品等\",\n                        \"total\": null,\n                        \"xh\": \"1\",\n                        \"ycg\": null,\n                        \"zhmdg\": null\n                    }\n                ],\n                \"imageSize\": \"1358,1920\",\n                \"insurancePremium\": null,\n                \"jd\": 0,\n                \"jgfsbh\": null,\n                \"jgfsmc\": null,\n                \"jkrq\": \"2016年04月02日\",\n                \"jnshrbh\": null,\n                \"jnshrmc\": null,\n                \"jwfhrbh\": null,\n                \"jwfhrmc\": null,\n                \"jzdw\": null,\n                \"mygbh\": null,\n                \"mygmc\": null,\n                \"mzxzbh\": \"101\",\n                \"mzxzmc\": \"一般征税\",\n                \"netWeight\": \"1046.3\",\n                \"numberOfPackages\": \"5\",\n                \"page\": 0,\n                \"province\": null,\n                \"qrcode\": null,\n                \"qygdqbh\": null,\n                \"qygdqmc\": null,\n                \"rjgbbh\": null,\n                \"rjgbmc\": \"皇岗海关\",\n                \"sbdw\": null,\n                \"sbrq\": \"2016年04月02日\",\n                \"title\": \"海关进口货物报关单\",\n                \"tsgxqr\": null,\n                \"txfbz\": null,\n                \"wz\": \"0,0,1358,1920\",\n                \"xfdwbh\": null,\n                \"xfdwmc\": null,\n                \"ylrbh\": null,\n                \"ysfsbh\": null,\n                \"ysfsmc\": \"公路运输\",\n                \"ysgj\": \"011*****90\",\n                \"zf\": null,\n                \"zftxqsyfqr\": null\n            }\n        ],\n        \"imageUrl\": \"https://www.example.com/1.jpg\",\n        \"single\": false,\n        \"success\": true\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 443818995
+    },
+    {
+      "name": "成功示例",
+      "responseId": 168710144,
+      "data": "{\n    \"reqId\": \"58c57e3311464b1d80f82b2d1cae0c20\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"customReqId\": \"10001995fe7851111a404b1288a58a9207479da2\",\n        \"data\": null,\n        \"datas\": [\n            {\n                \"barcode\": null,\n                \"bgdbh\": \"533********7584\",\n                \"bjbz\": \"备注:********************\",\n                \"city\": null,\n                \"cjfsbh\": \"3\",\n                \"cjfsmc\": \"FCB\",\n                \"ckrq\": \"2021年12月29日\",\n                \"company_seal\": null,\n                \"contractNumber\": \"C*********-JET\",\n                \"deliveryNumber\": \"02*******227\",\n                \"dq\": null,\n                \"dzbz\": null,\n                \"fplx\": \"911\",\n                \"fpxflx\": \"其他\",\n                \"freight\": null,\n                \"fwlx\": null,\n                \"grossWeight\": \"24500000\",\n                \"hwxx\": [\n                    {\n                        \"commodity_number\": \"27*****00\",\n                        \"currency\": \"美元\",\n                        \"description_of_commodity\": \"航空煤油\",\n                        \"domestic_destination_place\": null,\n                        \"final_destination_country\": \"¿m\",\n                        \"item_number\": \"1\",\n                        \"kind_of_tax\": \"M章征院()\",\n                        \"original_country\": \"申国(CN)\",\n                        \"quantity_of_2_uom\": \"30527000月\",\n                        \"quantity_of_uom\": \"24500000千克\",\n                        \"specification\": \"010|155.7-239.4℃|公式定价|需要二次结算[20211215|计价日期:2021年12月6\",\n                        \"total_price\": \"16.30\",\n                        \"transaction_uom_and_quantity\": \"19****5桶\",\n                        \"unit_price\": \"8.09%\"\n                    }\n                ],\n                \"imageSize\": \"699,500\",\n                \"insurancePremium\": null,\n                \"jd\": 0,\n                \"jnshrbh\": \"91*********459\",\n                \"jnshrmc\": \"*********有限责任公司\",\n                \"jwfhrbh\": null,\n                \"jwfhrmc\": null,\n                \"jzdw\": null,\n                \"mygbh\": \"SGP\",\n                \"mygmc\": \"新加坡\",\n                \"mzxzbh\": null,\n                \"mzxzmc\": null,\n                \"netWeight\": null,\n                \"numberOfPackages\": null,\n                \"page\": 0,\n                \"province\": null,\n                \"qrcode\": [\n                    \"*533820*****7584*\"\n                ],\n                \"qygdqbh\": null,\n                \"qygdqmc\": null,\n                \"rjgbbh\": null,\n                \"rjgbmc\": null,\n                \"sbrq\": \"2021年12月28日\",\n                \"title\": \"海关出口货物报关单\",\n                \"tsgxqr\": \"是\",\n                \"txfbz\": null,\n                \"wz\": \"0,0,699,500\",\n                \"xfdwbh\": null,\n                \"xfdwmc\": null,\n                \"ylrbh\": \"533*******584\",\n                \"ysfsbh\": \"2\",\n                \"ysfsmc\": \"水路运输\",\n                \"ysgj\": \"UN9***/2102\",\n                \"zf\": null,\n                \"zftxqsyfqr\": \"否\"\n            }\n        ],\n        \"imageUrl\": \"https://www.example.com/it/1.jpg\",\n        \"single\": false,\n        \"success\": true\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 443805914
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13283948,
+  "ordering": 12,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T07:59:49.000Z",
+  "updatedAt": "2026-04-28T12:50:53.000Z",
+  "creatorId": 1426961,
+  "editorId": 2118003,
+  "creatorUserId": 1426961,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

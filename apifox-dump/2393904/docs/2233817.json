@@ -1,0 +1,17 @@
+{
+  "id": 2233817,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n支持获取当前客户当期在电子税务局未申报和已申报未缴款的税种以及相关截图。来源于电子税务局未申报查询、未缴款两个模块数据整合。\n\n- 未申报返回税局申报期限年度是本年度的，非本年度的不返回\n- 未缴款返回是税局未缴款记录表中缴款期限是本年的，非本年的不返回\n\n建议征期最后几天发起漏报检查以便漏报、错报、忘缴款。\n\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372922/image-preview)\n## 接口列表\n第一步：发起漏报检查任务。\n| 接口 | 地址 |说明|\n| --- | --- |--- |\n|发起漏报检查任务  |v2/tax/qys/loadTaxCheckTask  |该接口用于发起漏报检查任务，是异步接口。|\n\n第二步：根据发起漏报检查任务调取成功后的taskID调用查询查询漏报检查结果。\n| 接口 | 地址 |说明|\n| --- | --- |--- |\n|查询漏报检查  |v2/tax/qys/queryTaskTaxInfo  |该接口用于查询漏报检查任务结果。|\n\n",
+  "folderId": 13530960,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-24T08:59:02.000Z",
+  "updatedAt": "2025-12-16T07:18:43.000Z",
+  "creatorId": 1441586,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

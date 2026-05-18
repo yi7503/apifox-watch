@@ -1,0 +1,476 @@
+{
+  "id": 288184564,
+  "name": "企业申报数据明细查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "FqY_4ZE5884pHt_WwwCdM",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n场景说明:\n用于查询企业申报过的明细数据。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/report/getCompanyIncomes",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户ID"
+        },
+        "skssqq": {
+          "type": "string",
+          "title": "所属期起",
+          "description": "格式YYYYMMDD"
+        },
+        "skssqz": {
+          "type": "string",
+          "title": "所属期止",
+          "description": "格式YYYYMMDD"
+        },
+        "bbmc": {
+          "type": "string",
+          "title": "报表名称",
+          "description": "1:预缴纳税;2:年度汇缴"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "skssqz",
+        "skssqq",
+        "accountId",
+        "bbmc"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz",
+        "bbmc"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"accountId\": \"4711*****1619712\",\n    \"aggOrgId\": \"47114*****665024\",\n    \"skssqq\": \"20250101\",\n    \"skssqz\": \"20250331\",\n    \"bbmc\": \"1\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "QC9t2uwmMc",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "HDGNYv524W",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "H0dlkTCZDB",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "m3kJkPvWbv",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 662323486,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "zsfs": {
+                "type": "string",
+                "title": "征收方式"
+              },
+              "srze": {
+                "type": "number",
+                "title": "收入总额"
+              },
+              "cbfy": {
+                "type": "number",
+                "title": "成本费用"
+              },
+              "mbyqndks": {
+                "type": "number",
+                "title": "弥补以前年度亏损"
+              },
+              "bz": {
+                "type": "string",
+                "title": "备注"
+              },
+              "tzzxxlb": {
+                "type": "array",
+                "items": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "xm": {
+                      "type": "string",
+                      "description": "姓名",
+                      "examples": [
+                        "李四"
+                      ]
+                    },
+                    "zzlx": {
+                      "type": "string",
+                      "description": "证件类型（见证件类型字典）",
+                      "examples": [
+                        "身份证"
+                      ]
+                    },
+                    "zzhm": {
+                      "type": "string",
+                      "description": "证件号码",
+                      "examples": [
+                        "110101199003072345"
+                      ]
+                    },
+                    "yssdl": {
+                      "type": "number",
+                      "description": "应税所得率",
+                      "examples": [
+                        0.2
+                      ]
+                    },
+                    "fpbl": {
+                      "type": "string",
+                      "description": "分配比例",
+                      "examples": [
+                        "0.50"
+                      ]
+                    },
+                    "sfjcfy": {
+                      "type": "string",
+                      "description": "是否使用投资者减除费用（1、使用；2、不使用）",
+                      "enum": [
+                        "1",
+                        "2"
+                      ],
+                      "examples": [
+                        "1"
+                      ]
+                    },
+                    "jbylaobx": {
+                      "type": "number",
+                      "description": "基本养老保险费",
+                      "examples": [
+                        5000
+                      ]
+                    },
+                    "jbylbx": {
+                      "type": "number",
+                      "description": "基本医疗保险费",
+                      "examples": [
+                        3000
+                      ]
+                    },
+                    "sybx": {
+                      "type": "number",
+                      "description": "失业保险费",
+                      "examples": [
+                        500
+                      ]
+                    },
+                    "zfgjj": {
+                      "type": "number",
+                      "description": "住房公积金",
+                      "examples": [
+                        6000
+                      ]
+                    },
+                    "syjkbx": {
+                      "type": "number",
+                      "description": "商业健康保险",
+                      "examples": [
+                        2000
+                      ]
+                    },
+                    "syylbx": {
+                      "type": "number",
+                      "description": "税延养老保险",
+                      "examples": [
+                        1000
+                      ]
+                    },
+                    "qtkc": {
+                      "type": "number",
+                      "description": "其他扣除",
+                      "examples": [
+                        500
+                      ]
+                    },
+                    "zykcdjze": {
+                      "type": "number",
+                      "description": "准予扣除的捐赠额",
+                      "examples": [
+                        2000
+                      ]
+                    },
+                    "ynssde": {
+                      "type": "number",
+                      "description": "应纳税所得额",
+                      "examples": [
+                        150000
+                      ]
+                    },
+                    "sl": {
+                      "type": "number",
+                      "description": "税率",
+                      "examples": [
+                        0.2
+                      ]
+                    },
+                    "sskcs": {
+                      "type": "number",
+                      "description": "速算扣除数",
+                      "examples": [
+                        10500
+                      ]
+                    },
+                    "ynse": {
+                      "type": "number",
+                      "description": "应纳税额",
+                      "examples": [
+                        19500
+                      ]
+                    },
+                    "jmse": {
+                      "type": "number",
+                      "description": "减免税额",
+                      "examples": [
+                        0
+                      ]
+                    },
+                    "yijse": {
+                      "type": "number",
+                      "description": "已缴税额",
+                      "examples": [
+                        10000
+                      ]
+                    },
+                    "ybtse": {
+                      "type": "number",
+                      "description": "应补退税额",
+                      "examples": [
+                        9500
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "x-apifox-orders": [
+                    "xm",
+                    "zzlx",
+                    "zzhm",
+                    "yssdl",
+                    "fpbl",
+                    "sfjcfy",
+                    "jbylaobx",
+                    "jbylbx",
+                    "sybx",
+                    "zfgjj",
+                    "syjkbx",
+                    "syylbx",
+                    "qtkc",
+                    "zykcdjze",
+                    "ynssde",
+                    "sl",
+                    "sskcs",
+                    "ynse",
+                    "jmse",
+                    "yijse",
+                    "ybtse"
+                  ]
+                },
+                "title": "投资者信息列表"
+              }
+            },
+            "x-apifox-orders": [
+              "zsfs",
+              "srze",
+              "cbfy",
+              "mbyqndks",
+              "bz",
+              "tzzxxlb"
+            ],
+            "title": "任务信息",
+            "required": [
+              "zsfs",
+              "tzzxxlb",
+              "bz",
+              "mbyqndks",
+              "cbfy",
+              "srze"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 662323486,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"bz\": \"测试\",\n        \"cbfy\": 0,\n        \"mbyqndks\": 2,\n        \"srze\": 1,\n        \"tzzxxlb\": [\n            {\n                \"fpbl\": \"1.00\",\n                \"jbylaobx\": 0,\n                \"jbylbx\": 0,\n                \"jmse\": 0,\n                \"qtkc\": 0,\n                \"sfjcfy\": \"\",\n                \"sl\": 0.05,\n                \"sskcs\": 0,\n                \"sybx\": 0,\n                \"syjkbx\": 0,\n                \"syylbx\": 0,\n                \"xm\": \"张*丽\",\n                \"ybtse\": 0,\n                \"yijse\": 0,\n                \"ynse\": 0,\n                \"ynssde\": 0,\n                \"yssdl\": 0.1,\n                \"zfgjj\": 0,\n                \"zykcdjze\": 0,\n                \"zzhm\": \"62242*******4251029\",\n                \"zzlx\": \"居民身份证\"\n            }\n        ],\n        \"zsfs\": \"5\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 586114153
+    },
+    {
+      "name": "异常示例",
+      "responseId": 662323486,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 586114154
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53477009,
+  "ordering": 45,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-04-23T08:21:33.000Z",
+  "updatedAt": "2025-05-08T02:49:44.000Z",
+  "creatorId": 2661157,
+  "editorId": 493303,
+  "creatorUserId": 2661157,
+  "editorUserId": 493303,
+  "responseChildren": [
+    "BLANK.662323486"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

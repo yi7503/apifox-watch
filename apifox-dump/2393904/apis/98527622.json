@@ -1,0 +1,399 @@
+{
+  "id": 98527622,
+  "name": "发起获取数电版式任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于申请数电发票版式文件，可通过该接口批量申请已开具和取得的数电发票 xml、 pdf 、ofd、版式文件和ewm链接",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/sdfile/applyLayoutFile",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "kpyf": {
+          "type": "integer",
+          "title": "开票月份",
+          "description": "日期类型(dateType)不传或为0时必填，格式YYYYMM"
+        },
+        "kprqq": {
+          "type": "string",
+          "title": "开票日期起",
+          "description": "按日下载，日期类型(dateType)为1时必填，格式YYYYMMdd"
+        },
+        "kprqz": {
+          "type": "string",
+          "title": "开票日期止",
+          "description": "按日下载，日期类型(dateType)为1时必填，格式YYYYMMdd"
+        },
+        "dateType": {
+          "type": "string",
+          "title": "日期类型",
+          "description": "根据开票月份/开票日期起止判断此字段传参（不传默认按月）：\n1、如传值为开票月份(kpyf)时，此字段传0-月\n2、如传值为开票日期(kprqq&kprqz)时，此字段传1-天(日期起止不允许跨月，必需是同月份)",
+          "enum": [
+            "0",
+            "1"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "0",
+              "name": "月",
+              "description": ""
+            },
+            {
+              "value": "1",
+              "name": "天",
+              "description": ""
+            }
+          ]
+        },
+        "jxxbzs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "jx",
+              "xx"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "jx",
+                "name": "进项",
+                "description": ""
+              },
+              {
+                "value": "xx",
+                "name": "销项",
+                "description": ""
+              }
+            ]
+          },
+          "title": "进销项标志",
+          "description": "不传默认全部"
+        },
+        "fplxs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "51-数电票(铁路电子客票)",
+              "61-数电票(航空运输电子客票行程单)",
+              "70-数电票(二手车销售统一发票)",
+              "81-数电专票",
+              "82-数电普票",
+              "83-数电票(机动车销售统一发票)",
+              "8208-数电票（通行费发票）"
+            ],
+            "x-apifox-enum": [
+              {
+                "value": "51-数电票(铁路电子客票)",
+                "name": "",
+                "description": ""
+              },
+              {
+                "value": "61-数电票(航空运输电子客票行程单)",
+                "name": "",
+                "description": ""
+              },
+              {
+                "value": "70-数电票(二手车销售统一发票)",
+                "name": "",
+                "description": ""
+              },
+              {
+                "value": "81-数电专票",
+                "name": "",
+                "description": ""
+              },
+              {
+                "value": "82-数电普票",
+                "name": "",
+                "description": ""
+              },
+              {
+                "value": "83-数电票(机动车销售统一发票)",
+                "name": "",
+                "description": ""
+              },
+              {
+                "value": "8208-数电票（通行费发票）",
+                "name": "",
+                "description": ""
+              }
+            ]
+          },
+          "title": "发票类型",
+          "description": "不传默认全部"
+        },
+        "addJob": {
+          "type": "boolean",
+          "title": "发起任务类型",
+          "description": "true-发起获取版式任务；false-获取版式任务结果\n此字段用于发起任务及任务结果查询：\n1、传true发起任务\n2、传false获取任务结果，返回成功则调用「获取数电票版式文件」获取版式文件"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "addJob"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01HMB9H0G6QMVS6KKGMGDFNS6R",
+        "addJob",
+        "dateType",
+        "kpyf",
+        "kprqq",
+        "kprqz",
+        "jxxbzs",
+        "fplxs"
+      ],
+      "x-apifox-refs": {
+        "01HMB9H0G6QMVS6KKGMGDFNS6R": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": {
+              "type": "boolean",
+              "title": "是否为异步方式（默认同步)",
+              "default": "false"
+            }
+          },
+          "required": [
+            "aggOrgId",
+            "async"
+          ]
+        }
+      }
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947904,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null",
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "createTime": {
+                  "type": "null",
+                  "title": "创建时间"
+                },
+                "errorCode": {
+                  "type": "null",
+                  "title": "错误code"
+                },
+                "errorMsg": {
+                  "type": "null",
+                  "title": "错误信息描述"
+                },
+                "fplx": {
+                  "type": "string",
+                  "title": "发票类型"
+                },
+                "id": {
+                  "type": "null"
+                },
+                "jxxbz": {
+                  "type": "string",
+                  "title": "进销项标志"
+                },
+                "kpyf": {
+                  "type": "integer",
+                  "title": "开票月份"
+                },
+                "nsrsbh": {
+                  "type": "string",
+                  "title": "纳税人识别号"
+                },
+                "skssq": {
+                  "type": "null",
+                  "title": "税款所属期"
+                },
+                "status": {
+                  "type": "string",
+                  "title": "任务状态",
+                  "enum": [
+                    "processing-处理中",
+                    "processed-完成",
+                    "failed-失败"
+                  ],
+                  "x-apifox-enum": [
+                    {
+                      "value": "processing-处理中",
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": "processed-完成",
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": "failed-失败",
+                      "name": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "ts": {
+                  "type": "null"
+                },
+                "taskId": {
+                  "type": "string",
+                  "title": "任务ID"
+                }
+              },
+              "required": [
+                "createTime",
+                "errorCode",
+                "errorMsg",
+                "fplx",
+                "id",
+                "jxxbz",
+                "kpyf",
+                "nsrsbh",
+                "skssq",
+                "status",
+                "ts"
+              ],
+              "x-apifox-orders": [
+                "taskId",
+                "status",
+                "createTime",
+                "errorCode",
+                "errorMsg",
+                "nsrsbh",
+                "fplx",
+                "skssq",
+                "jxxbz",
+                "kpyf",
+                "id",
+                "ts"
+              ]
+            }
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947904,
+      "data": "{\n    \"reqId\": \"f65df7f7cedf49e68f72adc505499013\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"createTime\": null,\n            \"data\": null,\n            \"downloadUrl\": null,\n            \"errorCode\": null,\n            \"errorMsg\": null,\n            \"fplx\": \"81\",\n            \"fpxzId\": null,\n            \"fpxzResult\": null,\n            \"id\": null,\n            \"jxxbz\": \"jx\",\n            \"kpyf\": 202401,\n            \"lastProcessed\": null,\n            \"msg\": null,\n            \"nsrsbh\": \"913101******JPDDL2G\",\n            \"screenshots\": null,\n            \"sjlyDm\": null,\n            \"skssq\": null,\n            \"status\": \"processing\",\n            \"time\": null,\n            \"ts\": null\n        },\n        {\n            \"createTime\": null,\n            \"data\": null,\n            \"downloadUrl\": null,\n            \"errorCode\": null,\n            \"errorMsg\": null,\n            \"fplx\": \"82\",\n            \"fpxzId\": null,\n            \"fpxzResult\": null,\n            \"id\": null,\n            \"jxxbz\": \"jx\",\n            \"kpyf\": 202401,\n            \"lastProcessed\": null,\n            \"msg\": null,\n            \"nsrsbh\": \"91310118MA1JPDDL2G\",\n            \"screenshots\": null,\n            \"sjlyDm\": null,\n            \"skssq\": null,\n            \"status\": \"processing\",\n            \"time\": null,\n            \"ts\": null\n        },\n        {\n            \"createTime\": null,\n            \"data\": null,\n            \"downloadUrl\": null,\n            \"errorCode\": null,\n            \"errorMsg\": null,\n            \"fplx\": \"81\",\n            \"fpxzId\": null,\n            \"fpxzResult\": null,\n            \"id\": null,\n            \"jxxbz\": \"xx\",\n            \"kpyf\": 202401,\n            \"lastProcessed\": null,\n            \"msg\": null,\n            \"nsrsbh\": \"913101******JPDDL2G\",\n            \"screenshots\": null,\n            \"sjlyDm\": null,\n            \"skssq\": null,\n            \"status\": \"processing\",\n            \"time\": null,\n            \"ts\": null\n        },\n        {\n            \"createTime\": null,\n            \"data\": null,\n            \"downloadUrl\": null,\n            \"errorCode\": null,\n            \"errorMsg\": null,\n            \"fplx\": \"82\",\n            \"fpxzId\": null,\n            \"fpxzResult\": null,\n            \"id\": null,\n            \"jxxbz\": \"xx\",\n            \"kpyf\": 202401,\n            \"lastProcessed\": null,\n            \"msg\": null,\n            \"nsrsbh\": \"913101******JPDDL2G\",\n            \"screenshots\": null,\n            \"sjlyDm\": null,\n            \"skssq\": null,\n            \"status\": \"processing\",\n            \"time\": null,\n            \"ts\": null\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947905
+    },
+    {
+      "name": "异常示例",
+      "responseId": 42947904,
+      "data": "{\n    \"result\": {\n        \"req_id\": \"f7005a7d9351462e8d5c569d4f36124c\",\n        \"success\": false,\n        \"time\": 41,\n        \"timestamp\": 1670323665906\n    },\n    \"error\": {\n        \"code\": \"xxxx\",\n        \"message\": \"xxx\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947906
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 19486202,
+  "ordering": 17,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-01-03T08:49:09.000Z",
+  "updatedAt": "2025-12-17T02:14:26.000Z",
+  "creatorId": 2118003,
+  "editorId": 1564651,
+  "creatorUserId": 2118003,
+  "editorUserId": 1564651,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

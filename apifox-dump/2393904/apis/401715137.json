@@ -1,0 +1,245 @@
+{
+  "id": 401715137,
+  "name": "线上征询回复",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "1bn9dtMBA05D2GgkgdFqE",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口为同步接口\n线上征询回复处理",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/message/xszxhf",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账户ID"
+        },
+        "xxxh": {
+          "type": "string",
+          "description": "消息序号"
+        },
+        "rwxh": {
+          "type": "string",
+          "description": "任务序号"
+        },
+        "nsrdah": {
+          "type": "string",
+          "description": "纳税人档案号"
+        },
+        "fxmxxh": {
+          "type": "string",
+          "description": "风险明细序号"
+        },
+        "ssrdah": {
+          "type": "string",
+          "description": "申诉人档案号"
+        },
+        "bz": {
+          "type": "string",
+          "description": "备注"
+        },
+        "wjlb": {
+          "type": "array",
+          "description": "文件列表",
+          "items": {
+            "type": "object",
+            "properties": {
+              "wjbm": {
+                "type": "string",
+                "description": "文件编码"
+              },
+              "wjmc": {
+                "type": "string",
+                "description": "文件名称"
+              }
+            },
+            "required": [
+              "wjbm",
+              "wjmc"
+            ],
+            "x-apifox-orders": [
+              "wjbm",
+              "wjmc"
+            ]
+          }
+        }
+      },
+      "required": [
+        "rwxh",
+        "nsrdah",
+        "fxmxxh",
+        "ssrdah",
+        "aggOrgId",
+        "accountId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "xxxh",
+        "rwxh",
+        "nsrdah",
+        "fxmxxh",
+        "ssrdah",
+        "bz",
+        "wjlb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"123456789\",\r\n    \"accountId\": \"987654321\",\r\n    \"xxxh\": \"xxxh123456\",\r\n    \"rwxh\": \"rwxh789012\",\r\n    \"nsrdah\": \"nsrdah345678\",\r\n    \"fxmxxh\": \"fxmxxh901234\",\r\n    \"ssrdah\": \"ssrdah567890\",\r\n    \"bz\": \"申诉备注说明\",\r\n    \"wjlb\": [\r\n        {\r\n            \"wjbm\": \"wjbm111\",\r\n            \"wjmc\": \"证明材料.jpg\"\r\n        },\r\n        {\r\n            \"wjbm\": \"wjbm222\",\r\n            \"wjmc\": \"附件.png\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "fkzt": {
+                "type": "string",
+                "description": "业务办理状态: 1成功 2失败"
+              },
+              "sbyy": {
+                "type": "string",
+                "description": "失败原因"
+              }
+            },
+            "x-apifox-orders": [
+              "fkzt",
+              "sbyy"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"fkzt\": \"1\",\n        \"sbyy\": \"\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59992942,
+  "ordering": 43,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-01-07T03:12:06.000Z",
+  "updatedAt": "2026-05-11T07:48:50.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,251 @@
+{
+  "id": 416663407,
+  "name": "公益慈善捐赠信息采集反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "WXJkqS6Ef75ITx_-O4MYO",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "当前接口用于发起相关人员的公益捐赠信息采集任务",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/dkdj/gycsjzxxcjfk",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\n    \"aggOrgId\": \"535474925760832\",\n    \"accountId\": \"4562588251259072\",\n    \"taskId\": \"5255666027446264881\"\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 126688662,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "xm": {
+                      "type": "string",
+                      "title": "姓名"
+                    },
+                    "zzlx": {
+                      "type": "string",
+                      "title": "证件类型"
+                    },
+                    "sbyy": {
+                      "type": "string",
+                      "title": "失败原因"
+                    },
+                    "zzhm": {
+                      "type": "string",
+                      "title": "证件号码"
+                    },
+                    "cjzt": {
+                      "type": "string",
+                      "title": "采集状态",
+                      "description": "报送成功/报送失败"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "xm",
+                    "zzlx",
+                    "sbyy",
+                    "zzhm",
+                    "cjzt"
+                  ]
+                },
+                "title": "业务办理结果"
+              },
+              "taskStatusName": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "taskTypeName": {
+                "type": "string"
+              },
+              "taskTypeCode": {
+                "type": "string"
+              },
+              "taskId": {
+                "type": "string"
+              },
+              "taskStatus": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "result",
+              "taskStatusName",
+              "code",
+              "message",
+              "taskTypeName",
+              "taskTypeCode",
+              "taskId",
+              "taskStatus"
+            ],
+            "x-apifox-orders": [
+              "result",
+              "taskStatusName",
+              "code",
+              "message",
+              "taskTypeName",
+              "taskTypeCode",
+              "taskId",
+              "taskStatus"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "失败示例",
+      "responseId": 126688662,
+      "data": "{\n    \"reqId\": \"017bf8af85a44246bcec31b043cce417\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"result\": {},\n        \"taskStatusName\": \"执行失败\",\n        \"code\": \"9999\",\n        \"message\": \"暂不支持该业务类型\",\n        \"taskTypeName\": \"代扣代缴-公益慈善捐赠信息采集\",\n        \"taskTypeCode\": \"gs-gycsjzcj\",\n        \"taskId\": \"5255666027446264881\",\n        \"taskStatus\": \"2\"\n    }\n}",
+      "id": "019c35f4-6f85-77ba-bf20-451da79d77db"
+    },
+    {
+      "name": "成功示例",
+      "responseId": 126688662,
+      "data": "{\n    \"reqId\": \"5f7863e47b954ed2bc41112612b8031f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"result\": [\n            {\n                \"xm\": \"邵xx\",\n                \"zzlx\": \"居民身份证\",\n                \"sbyy\": \"\",\n                \"zzhm\": \"3201051993xxxx812\",\n                \"cjzt\": \"报送成功\"\n            }\n        ],\n        \"taskStatusName\": \"执行成功\",\n        \"code\": \"2000\",\n        \"message\": \"操作成功\",\n        \"taskTypeName\": \"代扣代缴-公益慈善捐赠信息采集\",\n        \"taskTypeCode\": \"gs-gycsjzcj\",\n        \"taskId\": \"5255721363804911092\",\n        \"taskStatus\": \"3\"\n    }\n}",
+      "id": "019c8f34-61c8-729b-9ae9-23419922b21a"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 78249522,
+  "ordering": 16,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-07T02:39:45.000Z",
+  "updatedAt": "2026-03-02T01:21:02.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

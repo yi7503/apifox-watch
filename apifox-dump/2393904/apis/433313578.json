@@ -1,0 +1,243 @@
+{
+  "id": 433313578,
+  "name": "账密登录",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "u3JbJn6_f6lkqgGeGetaX",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "工商年报账密登录",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/gsnb/login/pwdLogin",
+  "tags": [],
+  "status": -2,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string",
+          "title": "密码"
+        },
+        "loginType": {
+          "type": "string",
+          "title": "登录方式",
+          "enum": [
+            "1",
+            "2"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "1",
+              "name": "企业联络员",
+              "description": ""
+            },
+            {
+              "value": "2",
+              "name": "个体工商户",
+              "description": ""
+            }
+          ]
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "cityCode": {
+          "type": "string",
+          "title": "城市编码",
+          "description": "格式：四位数字字符串"
+        },
+        "zjhm": {
+          "type": "string",
+          "title": "证件号码",
+          "description": "个体户登录"
+        }
+      },
+      "if": {
+        "properties": {
+          "bsywsx": {
+            "const": "01"
+          }
+        },
+        "required": [
+          "bsywsx"
+        ],
+        "x-apifox-orders": [
+          "bsywsx"
+        ]
+      },
+      "then": {
+        "required": [
+          "xkzbh",
+          "ywzl1",
+          "xkzyxqq",
+          "xkzyxqz"
+        ]
+      },
+      "else": {
+        "if": {
+          "properties": {
+            "bsywsx": {
+              "const": "02"
+            }
+          },
+          "required": [
+            "bsywsx"
+          ],
+          "x-apifox-orders": [
+            "bsywsx"
+          ]
+        },
+        "then": {
+          "required": [
+            "pthyycxmc",
+            "yykssj",
+            "ywlxdmjh"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "loginType",
+        "password",
+        "cityCode",
+        "zjhm"
+      ],
+      "x-apifox-refs": {},
+      "required": [
+        "password",
+        "loginType",
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"52142782*******\",\r\n    \"loginType\": \"1\",\r\n    \"password\": \"s*****\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790300683,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "x-apifox-orders": [
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS"
+        ],
+        "x-apifox-refs": {
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01KMJJJ8FHC68EG5PFYBX8YDYZ"
+                ],
+                "required": []
+              }
+            }
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "异常示例",
+      "responseId": 790300683,
+      "data": "{\n\t\"code\": \"4000\",\n\t\"success\": false,\n\t\"message\": \"登录失败:用户名或密码错误，请核对后重新登录\",\n\t\"data\": null,\n\t\"timestamp\": \"2026-04-28 18:39:52\",\n\t\"reqId\": \"fa48785e523d2fbc6bd9fb6b9e078f8a\"\n}",
+      "id": "019dd3eb-2734-74f8-a506-38e277a70068"
+    },
+    {
+      "name": "成功示例",
+      "responseId": 790300683,
+      "data": "{\n\t\"code\": \"2000\",\n\t\"success\": true,\n\t\"message\": \"登录成功\",\n\t\"data\": null,\n\t\"timestamp\": \"2026-04-28 18:39:52\",\n\t\"reqId\": \"fa48785e523d2fbc6bd9fb6b9e078f8a\"\n}",
+      "id": "019dd3eb-7e4a-7620-b840-0913ebc7b166"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81308383,
+  "ordering": 68,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2026-03-25T07:00:57.000Z",
+  "updatedAt": "2026-05-07T07:53:12.000Z",
+  "creatorId": 3099717,
+  "editorId": 3250192,
+  "creatorUserId": 3099717,
+  "editorUserId": 3250192,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

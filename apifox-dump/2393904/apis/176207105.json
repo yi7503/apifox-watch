@@ -1,0 +1,212 @@
+{
+  "id": 176207105,
+  "name": "查验版式下载任务结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于数电发票查验版式文件下载结果查询。可用过查验时返回的bswjxzTaskId进行结果查询，也可通过单个或多个全电发票号码进行结果查询。\n\n::: highlight red 💡\n注意：taskId在获取过三次结果成功后即失效。\n使用qdfphm或qdfphmList查询结果成功一次对应的最近一条任务记录的taskId也失效。\ntaskId失效后无法再次通过本结果获取版式文件记录！如需获取，需要重新发起查验+版式文件下载任务。\n:::\n\n## 错误码\n\n| **错误代码**               | **错误信息**                                                 | **说明**                                    |\n| -------------------------- | ------------------------------------------------------------ | ------------------------------------------- |\n| BusinessVerification       | 未查询到对应的发票查验版式文件下载记录<br>发票查验版式文件已过期，请重新下载！<br>发票查验版式文件已取走，请重新下载！ | 请重新发起下载任务！                        |\n| CheckBswjxzException       | 任务执行超时<br/>获取版式文件失败，请重试<br/>获取版式文件超时，请重试 | 请联系管理员                                |\n| CheckAuthorityVerification | 无权限错误码                                                 | 请检查购方税号是否已订购查验扩展版产品 |\n| CheckTaxLoginInfoError     | 登录信息有误错误码                                           | 请检查购方税号登录信息是否正确         |\n| CheckTaxLoginFailed        | 登录失败错误码                                               | 请重新发起下载任务！                        |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/bsxzJgCx",
+  "tags": [
+    "发票查验",
+    "版式文件下载"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/99667779"
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "//通过taskId查询版式文件下载结果\r\n{\r\n    \"taskId\": 531928300933248\r\n}\r\n// 通过taskIdList查询版式文件下载结果\r\n{\r\n    \"taskIdList\": [\r\n        544284508953347,\r\n        544284508945152,\r\n        544284508953344\r\n    ]\r\n}\r\n//通过全电发票号码查询版式文件下载结果\r\n{\r\n    \"qdfphm\": \"24****************04\"\r\n}\r\n//通过全电发票号码列表查询版式文件下载结果\r\n{\r\n    \"qdfphmList\": [\r\n        \"24****************04\",\r\n        \"24****************05\",\r\n        \"24****************06\"\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "4IuwleT4W9",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "n5qbfFNJd5",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "hlgLZ1NBay",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 455029168,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HYCWTRJYFC9P301Y8XNP4V6W": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/definitions/98557271"
+                },
+                "title": "业务数据"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HYCWTRJYFC9P301Y8XNP4V6W"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 497707802,
+      "name": "失败",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$ref": "#/definitions/35327531"
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "未查询到对应的发票查验版式文件下载记录",
+      "responseId": 497707802,
+      "data": "{\n    \"reqId\": \"19ca9336059a45198fdc37fb5e1c2018\",\n    \"code\": \"BusinessVerification\",\n    \"success\": false,\n    \"message\": \"未查询到对应的发票查验版式文件下载记录\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 419206222
+    },
+    {
+      "name": "成功示例",
+      "responseId": 455029168,
+      "data": "{\n    \"reqId\": \"df46cccec9cb4b3db93c6f266d71c25d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"qdfphm\": \"24********************04\",\n            \"zt\": \"3\",\n            \"code\": null,\n            \"message\": null,\n            \"ofdUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/0708872f7d0892a86ac409f5380e0d24.ofd?***************\",\n            \"pdfUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/b8a3b049dedeea9e43d332add31a7b52.pdf?***************\",\n            \"xmlUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/dzfp_24332000000122959604_20240520171423.xml?***************\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417143446
+    },
+    {
+      "name": "发票查验版式文件已过期",
+      "responseId": 455029168,
+      "data": "{\n    \"reqId\": \"7dc1ba09c71c468491f2f08973cda6d2\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": \"BusinessVerification\",\n            \"message\": \"发票查验版式文件已过期，请重新下载！\",\n            \"ofdUrl\": null,\n            \"pdfUrl\": null,\n            \"qdfphm\": \"22*****************30\",\n            \"xmlUrl\": null,\n            \"zt\": \"2\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417142948
+    },
+    {
+      "name": "发票查验版式文件已取走",
+      "responseId": 455029168,
+      "data": "{\n    \"reqId\": \"b579c4934fcf4121bb76b24d3f58f7ff\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": \"BusinessVerification\",\n            \"message\": \"发票查验版式文件已取走，请重新下载！\",\n            \"ofdUrl\": null,\n            \"pdfUrl\": null,\n            \"qdfphm\": \"23****************05\",\n            \"xmlUrl\": null,\n            \"zt\": \"2\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417139807
+    },
+    {
+      "name": "新增kprq、fplx、jshj返回示例",
+      "responseId": 455029168,
+      "data": "{\r\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"code\": null,\r\n            \"fplx\": \"0910\",\r\n            \"jshj\": 32814.07,\r\n            \"kprq\": \"2024-06-30 12:37:07\",\r\n            \"message\": null,\r\n            \"ofdUrl\": null,\r\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\r\n            \"qdfphm\": \"24****************39\",\r\n            \"xmlUrl\": null,\r\n            \"zt\": \"3\"\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 427890110
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 40380725,
+  "ordering": 141,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-07-26T03:32:08.000Z",
+  "updatedAt": "2025-06-10T06:27:43.000Z",
+  "creatorId": 1426961,
+  "editorId": 2706439,
+  "creatorUserId": 1426961,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.455029168",
+    "BLANK.497707802"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

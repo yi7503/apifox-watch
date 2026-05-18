@@ -1,0 +1,234 @@
+{
+  "id": 302354703,
+  "name": "失信执行信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可根据企业信息查询司法执行阶段的相关信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/executeInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "两个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686620144,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "caseDate": {
+                      "type": "string",
+                      "title": "立案日期"
+                    },
+                    "goal": {
+                      "type": "string",
+                      "title": "标的"
+                    },
+                    "executeCourtName": {
+                      "type": "string",
+                      "title": "执行法院"
+                    },
+                    "province": {
+                      "type": "string",
+                      "title": "省份"
+                    },
+                    "city": {
+                      "type": "string",
+                      "title": "城市"
+                    },
+                    "performAmount": {
+                      "type": "string",
+                      "title": "已履行金额"
+                    },
+                    "district": {
+                      "type": "string",
+                      "title": "地区"
+                    },
+                    "performInfo": {
+                      "type": "string",
+                      "title": "被执行人的履行情况"
+                    },
+                    "lawBookObligation": {
+                      "type": "string",
+                      "title": "生效法律文书确定的义务"
+                    },
+                    "caseNo": {
+                      "type": "string",
+                      "title": "执行案号"
+                    },
+                    "unPerformAmount": {
+                      "type": "string",
+                      "title": "未履行金额"
+                    },
+                    "executionBasisNo": {
+                      "type": "string",
+                      "title": "执行依据文号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "caseDate",
+                    "goal",
+                    "executeCourtName",
+                    "province",
+                    "city",
+                    "performAmount",
+                    "district",
+                    "performInfo",
+                    "lawBookObligation",
+                    "caseNo",
+                    "unPerformAmount",
+                    "executionBasisNo"
+                  ]
+                },
+                "title": "执行信息列表"
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "message",
+          "reqId",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 686620144,
+      "data": "{\r\n\t\"code\": \"2000\",\r\n\t\"data\": {\r\n\t\t\"total\": \"2\",\r\n\t\t\"items\": [\r\n\t\t\t{\r\n\t\t\t\t\"caseDate\": \"2017-11-27\",\r\n\t\t\t\t\"goal\": \"\",\r\n\t\t\t\t\"executeCourtName\": \"宁波市海曙区人民法院\",\r\n\t\t\t\t\"province\": \"浙江省\",\r\n\t\t\t\t\"city\": \"330203\",\r\n\t\t\t\t\"performAmount\": \"\",\r\n\t\t\t\t\"district\": \"海曙区\",\r\n\t\t\t\t\"performInfo\": \"全部未履行\",\r\n\t\t\t\t\"lawBookObligation\": \"(2017)浙xxx号\",\r\n\t\t\t\t\"caseNo\": \"（2017）浙xx号\",\r\n\t\t\t\t\"unPerformAmount\": \"\",\r\n\t\t\t\t\"executionBasisNo\": \"（2016）浙xxx号\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"caseDate\": \"2020-06-22\",\r\n\t\t\t\t\"goal\": \"2077183.89\",\r\n\t\t\t\t\"executeCourtName\": \"宁波市海曙区人民法院\",\r\n\t\t\t\t\"province\": \"浙江省\",\r\n\t\t\t\t\"city\": \"330203\",\r\n\t\t\t\t\"performAmount\": \"\",\r\n\t\t\t\t\"district\": \"海曙区\",\r\n\t\t\t\t\"performInfo\": \"全部未履行\",\r\n\t\t\t\t\"lawBookObligation\": \"xxxxxxx\",\r\n\t\t\t\t\"caseNo\": \"（2020）浙xxx号\",\r\n\t\t\t\t\"unPerformAmount\": \"\",\r\n\t\t\t\t\"executionBasisNo\": \"（2019）浙xxx号\"\r\n\t\t\t}\r\n\t\t]\r\n\t},\r\n\t\"success\": true,\r\n\t\"message\": \"成功\",\r\n\t\"reqId\": \"20e908df87fd4010b90b1fc819b25677\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596340203
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 202,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T05:46:55.000Z",
+  "updatedAt": "2025-06-11T03:24:16.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.686620144"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

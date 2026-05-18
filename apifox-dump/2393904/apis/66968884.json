@@ -1,0 +1,191 @@
+{
+  "id": 66968884,
+  "name": "发起漏报检查任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   支持查询当期应申报未申报的和当期应缴款未缴款的税种，返回未申报未缴款的结果集。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业不存在 | |\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR | 请求参数year或period不能为空！ |  |\n| PARAMETER_ERROR | 请求参数年份year不是当前年份！ |  |\n| PARAMETER_ERROR | 请求参数月份period不是当前月份！ |  |\n| PARAMETER_ERROR | 参数格式不合法,不是有效的json格式!||\n| INTERFACE_ERROR | 接口异常,请联系管理员! |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadTaxCheckTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "year": {
+          "type": "integer",
+          "description": "年"
+        },
+        "period": {
+          "type": "integer",
+          "description": "月"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "year",
+        "period"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "year",
+        "period"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"year\": 2023,\r\n    \"period\":3\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "GCpLUdfOpR",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "4vfBSRqStk",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "4PqYP5f1p5",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "S9gcpX2jrW",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 170253240,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW65P5XF8YGM9J9GCYKY9NYM": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/33772007"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW65P5XF8YGM9J9GCYKY9NYM"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 170253240,
+      "data": "{\"reqId\":\"bc221db4220840b4b4574d94d205f975\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17298824
+    },
+    {
+      "name": "任务发起成功",
+      "responseId": 170253240,
+      "data": "{\"reqId\":\"741b383acc0d49ae8aca4b48fa15623b\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"aggOrgId\":452681066557440,\"taskId\":\"455810342154240\"}}",
+      "id": 17225277
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13530960,
+  "ordering": 26,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:36:54.000Z",
+  "updatedAt": "2025-02-27T12:48:26.000Z",
+  "creatorId": 1452584,
+  "editorId": 1910680,
+  "creatorUserId": 1452584,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.170253240"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

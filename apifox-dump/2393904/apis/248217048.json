@@ -1,0 +1,435 @@
+{
+  "id": 248217048,
+  "name": "申报数据报送反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "7kGCqvg8w7HuuBCtShwMD",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/report/getFeedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"accountId\": \"4552900726228096\",\r\n\t\"taskId\": \"1000000000000001304\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 591808321,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "description": "数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
+              },
+              "taskStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "bbmc": {
+                    "type": "string",
+                    "title": "申报表名称"
+                  },
+                  "sbztbj": {
+                    "type": "string",
+                    "title": "申报状态标记"
+                  },
+                  "sbzt": {
+                    "type": "string",
+                    "title": "申报状态描述"
+                  },
+                  "fkztbj": {
+                    "type": "string",
+                    "title": "反馈状态标记"
+                  },
+                  "fkzt": {
+                    "type": "string",
+                    "title": "反馈状态描述"
+                  },
+                  "nsrc": {
+                    "type": "number",
+                    "title": "纳税人次"
+                  },
+                  "ykjse": {
+                    "type": "number",
+                    "title": "应扣缴税额"
+                  },
+                  "fknr": {
+                    "type": "string",
+                    "title": "反馈内容"
+                  },
+                  "ybtse": {
+                    "type": "number",
+                    "title": "应补退税额"
+                  },
+                  "sbrylb": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xm": {
+                          "type": "string",
+                          "title": "姓名"
+                        },
+                        "zzlx": {
+                          "type": "string",
+                          "title": "证件类型"
+                        },
+                        "zzhm": {
+                          "type": "string",
+                          "title": "证件号码"
+                        },
+                        "cwxx": {
+                          "type": "string",
+                          "title": "错误信息"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xm",
+                        "zzlx",
+                        "zzhm",
+                        "cwxx"
+                      ]
+                    },
+                    "title": "失败人员列表"
+                  }
+                },
+                "x-apifox-orders": [
+                  "bbmc",
+                  "sbztbj",
+                  "sbzt",
+                  "fkztbj",
+                  "fkzt",
+                  "nsrc",
+                  "ykjse",
+                  "fknr",
+                  "ybtse",
+                  "sbrylb"
+                ],
+                "title": "任务返回业务结果",
+                "required": [
+                  "bbmc"
+                ]
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ],
+            "required": [
+              "taskId",
+              "result",
+              "message",
+              "code",
+              "taskStatusName",
+              "taskStatus",
+              "taskTypeName",
+              "taskTypeCode"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 591808321,
+      "data": "{\n    \"reqId\": \"b42130332c7446a69bdf52a25b61aff7\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"taskStatusName\": \"执行成功\",\n        \"code\": \"2000\",\n        \"message\": \"success\",\n        \"taskTypeName\": \"申报数据报送\",\n        \"taskTypeCode\": \"gs-sbsjbs\",\n        \"taskId\": \"49358341111118704121\",\n        \"taskStatus\": \"3\",\n        \"result\": {\n            \"fkzt\": \"申报成功,无需缴款\",\n            \"ykjse\": 0.0,\n            \"nsrc\": 1,\n            \"fknr\": \"{\\\"sblsh\\\": \\\"2000005222279494\\\", \\\"sbxh\\\": \\\"100000222227486\\\", \\\"sbjg\\\": \\\"1\\\", \\\"fkxx\\\": \\\"申报成功\\\", \\\"skssqq\\\": \\\"2025-07-01\\\", \\\"skssqz\\\": \\\"2025-07-31\\\", \\\"sfxyjk\\\": \\\"N\\\", \\\"ywlxDm\\\": \\\"A061005019\\\"}\",\n            \"bbmc\": \"综合所得预扣预缴\",\n            \"sbztbj\": \"5\",\n            \"ybtse\": 0.0,\n            \"fkztbj\": \"1\",\n            \"sbzt\": \"申报成功,无需缴款\"\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 464275098
+    },
+    {
+      "name": "异常示例",
+      "responseId": 591808321,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 464275099
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 591808321,
+      "data": "{\n    \"code\": \"4001\",\n    \"success\": false,\n    \"message\": \"1000000000000001304：当前任务执行中！\",\n    \"reqId\": \"238e301d9d8342bfa54ea0c8ced83fca\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 464275100
+    },
+    {
+      "name": "失败示例",
+      "responseId": 591808321,
+      "data": "{\n    \"reqId\": \"de42409d110a413a94bd16e46ae5fd12\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"taskStatusName\": \"执行失败\",\n        \"code\": \"4000\",\n        \"message\": \"申报失败\",\n        \"taskTypeName\": \"申报数据报送\",\n        \"taskTypeCode\": \"gs-sbsjbs\",\n        \"taskId\": \"49358372222224324\",\n        \"taskStatus\": \"2\",\n        \"result\": {\n            \"fkzt\": \"申报失败\",\n            \"ykjse\": null,\n            \"nsrc\": 10,\n            \"fknr\": \"申报失败，当前税款所属期已申报，请勿重复申报\",\n            \"bbmc\": \"综合所得预扣预缴\",\n            \"sbztbj\": \"3\",\n            \"ybtse\": null,\n            \"fkztbj\": \"4\",\n            \"sbzt\": \"申报失败\"\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 670580859
+    },
+    {
+      "name": "比对不一致",
+      "responseId": 591808321,
+      "data": "{\n    \"reqId\": \"2d63598209444138b26e8d92729f8283\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"result\": {\n            \"fkzt\": \"申报失败\",\n            \"ykjse\": null,\n            \"nsrc\": 0,\n            \"fknr\": \"正常工资薪金 杨群 511022197310212340 应扣缴税额不一致税局是494.40 、报文是0.0\\n正常工资薪金 胡文 511022196811123409 应扣缴税额不一致税局是494.40 、报文是0.0\\n\",\n            \"bbmc\": \"综合所得预扣预缴\",\n            \"sbztbj\": \"3\",\n            \"ybtse\": null,\n            \"fkztbj\": \"4\",\n            \"sbzt\": \"申报失败\"\n        },\n        \"taskStatusName\": \"执行失败\",\n        \"code\": \"4000\",\n        \"message\": \"正常工资薪金 杨群 511022197310212340 应扣缴税额不一致税局是494.40 、报文是0.0\\n正常工资薪金 胡文 511022196811123409 应扣缴税额不一致税局是494.40 、报文是0.0\\n\",\n        \"taskTypeName\": \"申报数据报送\",\n        \"taskTypeCode\": \"gs-sbsjbs\",\n        \"taskId\": \"4935837001234961595\",\n        \"taskStatus\": \"2\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 670580864
+    },
+    {
+      "name": "人员申报失败",
+      "responseId": 591808321,
+      "data": "{\r\n    \"reqId\": \"61ced00005000009605b\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"result\": {\r\n            \"fkzt\": \"申报失败\",\r\n            \"ykjse\": null,\r\n            \"nsrc\": null,\r\n            \"fknr\": \"\",\r\n            \"bbmc\": \"\",\r\n            \"sbztbj\": \"3\",\r\n            \"ybtse\": null,\r\n            \"sbrylb\": [\r\n                {\r\n                    \"xm\": \"王忠\",\r\n                    \"zzlx\": \"居民身份证\",\r\n                    \"cwxx\": \"当前人员未报送或报送失败，请检查人员是否报送成功\",\r\n                    \"zzhm\": \"410000000000006\"\r\n                },\r\n                {\r\n                    \"xm\": \"王\",\r\n                    \"zzlx\": \"居民身份证\",\r\n                    \"cwxx\": \"当前人员未报送或报送失败，请检查人员是否报送成功\",\r\n                    \"zzhm\": \"410100000000020\"\r\n                }\r\n            ],\r\n            \"fkztbj\": \"4\",\r\n            \"sbzt\": \"申报失败\"\r\n        },\r\n        \"taskStatusName\": \"执行失败\",\r\n        \"code\": \"4000\",\r\n        \"message\": \"存在未报送或报送失败人员，请检查人员是否报送成功！\",\r\n        \"taskTypeName\": \"申报数据报送\",\r\n        \"taskTypeCode\": \"gs-sbsjbs\",\r\n        \"taskId\": \"5255782567\",\r\n        \"taskStatus\": \"2\"\r\n    }\r\n}",
+      "id": "019cf62a-7b18-71bc-a85d-867c39053694"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153106,
+  "ordering": 54,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-25T03:31:23.000Z",
+  "updatedAt": "2026-04-08T03:27:49.000Z",
+  "creatorId": 1452584,
+  "editorId": 3222025,
+  "creatorUserId": 1452584,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

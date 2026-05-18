@@ -1,0 +1,329 @@
+{
+  "id": 426566216,
+  "name": "查询进项税额转出任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/collectCheckedInvoiceStatus",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "required": [
+        "taskId",
+        "nsrsbh",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "nsrsbh",
+        "taskId"
+      ],
+      "x-apifox-refs": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"913101*****1ADDDDL2G\",\r\n    \"taskId\": \"2783453454784714\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "ZCfLUQfYds",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "uyCYmAnsKP",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "hOlnAcnrjx",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 438797981,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id",
+            "description": "每次请求生成的唯一标识，建议保存，接口异常时方便排查"
+          },
+          "code": {
+            "type": "string",
+            "description": "返回2000成功，其他表示失败",
+            "title": "任务状态"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "null",
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "appKey": {
+                "type": "integer",
+                "title": "appkey"
+              },
+              "createTime": {
+                "type": "string",
+                "title": "创建时间",
+                "description": "YYYY-MM-DD HH:MM:SS"
+              },
+              "failCode": {
+                "type": "string",
+                "title": "失败code"
+              },
+              "failMsg": {
+                "type": "string",
+                "title": "失败提示信息"
+              },
+              "fplxStr": {
+                "type": "string",
+                "title": "发票类型",
+                "description": "见「发票归集-附录-发票类型代码」"
+              },
+              "jsonUrl": {
+                "type": "string",
+                "title": "采集到发票存储到的ossUrl",
+                "description": "具体报文查看同步接口中【应税凭证进项税额转出】返回值"
+              },
+              "jxxbz": {
+                "type": "string",
+                "title": "进销项标志",
+                "enum": [
+                  "xx-销项",
+                  "jx-进项"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "xx-销项",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "jx-进项",
+                    "name": "",
+                    "description": ""
+                  }
+                ]
+              },
+              "kpyfq": {
+                "type": "integer",
+                "title": "所属期起",
+                "description": "YYYYMMDD"
+              },
+              "kpyfz": {
+                "type": "integer",
+                "title": "所属期止",
+                "description": "YYYYMMDD"
+              },
+              "nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "status": {
+                "type": "string",
+                "title": "任务状态",
+                "enum": [
+                  "0-待执行",
+                  "1-进行中",
+                  "2-失败",
+                  "3-成功"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0-待执行",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "1-进行中",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "2-失败",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "3-成功",
+                    "name": "",
+                    "description": ""
+                  }
+                ]
+              },
+              "updateTime": {
+                "type": "string",
+                "title": "更新时间",
+                "description": "YYYY-MM-DD HH:MM:SS"
+              }
+            },
+            "required": [
+              "appKey",
+              "createTime",
+              "failCode",
+              "failMsg",
+              "fplxStr",
+              "jsonUrl",
+              "jxxbz",
+              "kpyfq",
+              "kpyfz",
+              "nsrsbh",
+              "status",
+              "updateTime"
+            ],
+            "x-apifox-orders": [
+              "status",
+              "failCode",
+              "failMsg",
+              "appKey",
+              "nsrsbh",
+              "fplxStr",
+              "jxxbz",
+              "kpyfq",
+              "kpyfz",
+              "createTime",
+              "updateTime",
+              "jsonUrl"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 438797981,
+      "data": "{\n    \"reqId\": \"278ae26be2004e9ea641fe4fb4784714\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"appKey\": 1000****,\n        \"collectType\": \"1\",\n        \"createTime\": \"2026-01-30 17:18:36\",\n        \"failCode\": \"2000\",\n        \"failMsg\": \"操作成功\",\n        \"fplxStr\": null,\n        \"jsonUrl\": \"\"http: //qxy-oss-robot-product.qixiangyun.com/91370000********/26548675294********_jxseZccx.txt?Expires=1804735480&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=i6MLuPgNPEXbe4********\"\",\n        \"jxxbz\": \"jx\",\n        \"kpyfq\": 202312,\n        \"kpyfz\": 202312,\n        \"nsrsbh\": \"91310118M*******\",\n        \"status\": \"3\",\n        \"updateTime\": \"2026-01-30 17:18:54\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 406523510
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 80020650,
+  "ordering": 230,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-12T02:02:55.000Z",
+  "updatedAt": "2026-03-12T03:54:51.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

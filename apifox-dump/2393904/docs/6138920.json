@@ -1,0 +1,17 @@
+{
+  "id": 6138920,
+  "name": "2025年2月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年2月发布内容\n\n发布日期：2025-02-28\n发布版本：V1.0.14\n\n\n## 企业数据采集\n\n:::highlight orange 💡\n新增支持能力\n1.新增未申报查询\n2.新增发票额度查询\n3.发起企业数据采集支持自定义采集\n:::\n\n1.基础信息：新增未申报查询\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500248/image-preview)\n\n2.发票节点：新增发票额度查询\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500249/image-preview)\n\n3.发起企业数据采集支持自定义采集，根据申报、基础信息、发票都可以自定义请求。\n示例：假如客户想发票只要已勾选，申报和基础信息都需要，那请求的格式就是:\nFp：YGXFP\nSb和jcxx这两个节点不传，客户权限配置能力为所有\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500250/image-preview)\n4.自定义采集用户自定义采集代码\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500251/image-preview)\n",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-03-04T12:09:30.000Z",
+  "updatedAt": "2025-03-04T12:16:50.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

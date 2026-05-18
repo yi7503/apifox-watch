@@ -1,0 +1,17 @@
+{
+  "id": 8438950,
+  "name": "2026年3月发布内容",
+  "sidebarTitle": "",
+  "content": "2026年3月发布内容\n发布日期：2026-03-30\n发布版本：V1.2026.03\n\n功能优化\n1.新增社保漏报检查功能\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/638485/image-preview)\n\n2.优化社保年度缴费工资调整、月度缴费工资调整。\n- 若提交月缴费工资调整，当前自然月是新年度1月，费款所属期为上年12月，则先查询税款所属期是否已缴款，若已缴费，则提示：x年x月已申报已缴款，不支持调整缴费工资，若要调整请到税务大厅处理。\n- 四川、浙江、宁波、深圳、山西、福建这几个地区限制不允许调整往年的工资，其余地区均不限制\n",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-02T07:34:21.000Z",
+  "updatedAt": "2026-04-29T09:14:16.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

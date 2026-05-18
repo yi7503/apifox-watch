@@ -1,0 +1,226 @@
+{
+  "id": 273533255,
+  "name": "客户信息新增",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局新增客户信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/khxxAdd",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "gmfmc": {
+              "type": "string",
+              "title": "客户名称"
+            },
+            "gmfnsrsbh": {
+              "type": "string",
+              "title": "客户识别号"
+            },
+            "khfluuid": {
+              "type": "string",
+              "title": "客户分类uuid"
+            },
+            "dzxxList": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "dz": {
+                    "type": "string",
+                    "title": "地址"
+                  },
+                  "email": {
+                    "type": "string",
+                    "title": "邮箱"
+                  },
+                  "lxdh": {
+                    "type": "string",
+                    "title": "联系电话"
+                  },
+                  "sfmrdz": {
+                    "type": "string",
+                    "title": "是否默认地址",
+                    "description": "Y是 /  N否"
+                  },
+                  "yhyywdmc": {
+                    "type": "string",
+                    "title": "开户行名称"
+                  },
+                  "yhzh": {
+                    "type": "string",
+                    "title": "银行账号"
+                  }
+                },
+                "x-apifox-orders": [
+                  "dz",
+                  "email",
+                  "lxdh",
+                  "sfmrdz",
+                  "yhyywdmc",
+                  "yhzh"
+                ]
+              },
+              "title": "地址信息"
+            },
+            "jm": {
+              "type": "string",
+              "title": "简码"
+            }
+          },
+          "required": [
+            "gmfmc",
+            "khfluuid"
+          ],
+          "x-apifox-orders": [
+            "gmfmc",
+            "gmfnsrsbh",
+            "jm",
+            "khfluuid",
+            "dzxxList"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "title": "操作类型",
+          "const": "khxx_add"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8WF4VYKDK31QWYCYJ2SG7"
+      ],
+      "x-apifox-refs": {
+        "01HMB8WF4VYKDK31QWYCYJ2SG7": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 636669790,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "boolean",
+                "title": "执行结果",
+                "description": "true成功， false失败"
+              }
+            },
+            "x-apifox-orders": [
+              "result"
+            ],
+            "required": [
+              "result"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01HRHAYXAXVZP1DEVVTPB20H60"
+        ],
+        "required": [
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HRHAYXAXVZP1DEVVTPB20H60": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 52619809,
+  "ordering": 30,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-03-19T07:05:40.000Z",
+  "updatedAt": "2025-07-15T11:44:16.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.636669790"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,170 @@
+{
+  "id": 362637888,
+  "name": "社保申报记录查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "社保申报记录查询\n人员明细信息需配合【社保费申报记录人员明细查询】使用，https://openapi.qixiangyun.com/api-364743248",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/queryDeclareRecord",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "sbrqq": {
+          "type": "string",
+          "description": "申报日期起，格式为YYYY-MM-DD ，查询支持三个月"
+        },
+        "sbrqz": {
+          "type": "string",
+          "description": "申报日期止，格式为YYYY-MM-DD，查询支持三个月"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "sbrqq",
+        "sbrqz",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "sbrqq",
+        "sbrqz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790064753,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/210248323"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 790064753,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"sbjglb\": [\n            {\n                \"sjly\": \"税务生成\",\n                \"yjfehj\": 33.0,\n                \"sbsj\": \"2025-10-09\",\n                \"yzbzxh\": \"100100000\",\n                \"sbjlmx\": [\n                    {\n                        \"zggzze\": 33.0,\n                        \"fl\": 1.0,\n                        \"zgswjgmc\": \"国家税务总局XXXX税务局\",\n                        \"zsxmdm\": \"10203\",\n                        \"jmje\": 0.0,\n                        \"sbjbjgdm\": \"41019921\",\n                        \"sblsh\": \"9a77dc1ec2\",\n                        \"sjly\": \"税务生成\",\n                        \"sbjbjgmc\": \"XXXX市本级医疗保障局\",\n                        \"ybtfe\": 33.0,\n                        \"fkssqz\": \"2025-12\",\n                        \"yjfe\": 33.0,\n                        \"sjyjnfe\": 33.0,\n                        \"fkssqq\": \"2025-10\",\n                        \"jfjs\": 33.0,\n                        \"dwbh\": \"40000080\",\n                        \"jflx\": \"正常应缴\",\n                        \"zgswjgdm\": \"1000000000\",\n                        \"zsbmdm\": \"100000602\"\n                    }\n                ],\n                \"zgswjgmc\": \"国家税务总局XXXX税务局\",\n                \"jkzt\": \"未缴费\",\n                \"sjyjnfehj\": 33.0,\n                \"sbzt\": \"申报成功\",\n                \"dkjfehj\": 0.0\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715379548
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68408456,
+  "ordering": 55,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-17T08:05:47.000Z",
+  "updatedAt": "2026-01-09T08:46:37.000Z",
+  "creatorId": 1910680,
+  "editorId": 493303,
+  "creatorUserId": 1910680,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

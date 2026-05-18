@@ -1,0 +1,343 @@
+{
+  "id": 448852993,
+  "name": "代理登录发送验证码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "XJO_ZV1Uxw9Rp7zJSBoNs",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n代理登录，敏感信息需RSA加密，详见body参数说明，加密参见：[加密说明](doc-3774763)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/475891/image-preview)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/agent/login/etaxCookie",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码",
+          "description": "手机号码",
+          "x-apifox-mock": "13242343234"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "见附录：[地区代码](apifox://link/pages/2246773)",
+          "x-apifox-mock": "3100",
+          "examples": [
+            "1100"
+          ]
+        },
+        "gryhm": {
+          "type": "string",
+          "title": "个人用户名"
+        },
+        "gryhmm": {
+          "type": "string",
+          "title": "个人用户名密码",
+          "description": "需RSA加密，[加密说明](apifox://link/pages/3774763)"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "代理机构税号"
+        },
+        "targetNsrsbh": {
+          "type": "string",
+          "title": "被代理税号"
+        },
+        "type": {
+          "type": "string",
+          "title": "登录cookie类型",
+          "description": "默认全部，支持多个组合：如1,2,3",
+          "enum": [
+            "1",
+            "2",
+            "3"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "1",
+              "name": "tpass",
+              "description": "账户中心"
+            },
+            {
+              "value": "2",
+              "name": "etax",
+              "description": "电子税局"
+            },
+            {
+              "value": "3",
+              "name": "dppt",
+              "description": "电票平台"
+            }
+          ],
+          "examples": [
+            "1,2,3"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "targetNsrsbh",
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sjhm",
+        "type"
+      ],
+      "required": [
+        "areaCode",
+        "gryhm",
+        "gryhmm",
+        "sjhm",
+        "targetNsrsbh",
+        "nsrsbh"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"********\",\r\n    \"targetNsrsbh\": \"*********\",\r\n    \"areaCode\": \"4400\",\r\n    \"gryhm\": \"******\", \r\n    \"gryhmm\": \"d3GEwMB4nMegcSh2gFQuzLmkkcJlp2N/p8Wgq3E+IhUeh0nezc0XHGdyG6dVbbaMI6UeM6CAhodyiR/Ul9WL+KUBlsBjbvTU/1x4Fyb4A9XALu+ZiL++zlpx0cE6hQew6knWYmPicSnps0dh5VYT9sJFR6Rng1bY0JUtVphqZ8U=\",\r\n    \"sjhm\": \"*******\"\r\n    \r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "ia4q8vDhNz",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "ZGWOUN3rvl",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "DIAAQ2gxIc",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 550606851,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "dppt": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "登录税局成功的cookie值"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "required": [
+                      "cookie"
+                    ],
+                    "title": "电票平台"
+                  },
+                  "taskId": {
+                    "type": "string",
+                    "title": "发送短信成功的id，推送短信接口的传参"
+                  },
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "登录成功后的纳税人识别号"
+                  },
+                  "nsrsbh_name": {
+                    "type": "string",
+                    "title": "登录成功后的纳税人名称"
+                  },
+                  "etax": {
+                    "type": "object",
+                    "properties": {},
+                    "x-apifox-orders": [],
+                    "title": "电子税局"
+                  },
+                  "tpass": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "title": "账户中心"
+                  }
+                },
+                "title": "业务数据",
+                "description": "当code为2000，从data获取任务id或者登录结果",
+                "x-apifox-orders": [
+                  "dppt",
+                  "etax",
+                  "tpass",
+                  "nsrsbh",
+                  "nsrsbh_name",
+                  "taskId"
+                ]
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "登录返回的code",
+                "description": "2000：登录成功；4xxx;登录信息有误;8xxx短信发送频繁；5xxx:系统错误"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 550606851,
+      "data": "{\n    \"reqId\": \"0f1fe24daa164e95b0191f80a2bf11fc\",\n    \"success\": true,\n    \"code\": \"2000\",\n    \"data\": {\n        \"tpass\": {}\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 437722657
+    },
+    {
+      "name": "异常示例",
+      "responseId": 550606851,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"code\": \"4006\",\n    \"success\": true,\n    \"message\": \"登录方式不正确！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 437722658
+    },
+    {
+      "name": "成功示例",
+      "responseId": 550606851,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"taskId\": 1804053744766218200\n    },\n    \"success\": true,\n    \"reqId\": \"32082494e0874abf96973c38b23d970b\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 530116868
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 84021674,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2026-04-24T02:08:06.000Z",
+  "updatedAt": "2026-04-24T02:08:42.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "creatorUserId": 2795319,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.550606851"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

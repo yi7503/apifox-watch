@@ -1,0 +1,130 @@
+{
+  "id": 428543325,
+  "name": "获取税局登录二维码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "获取局端登录二维码",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/remote/getQrcode",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id",
+          "description": "订购接口返回的"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户id",
+          "description": "多账号id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"1245125622355\",\r\n    \"accountId\": \"1245125622359\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 145240943,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01KKV20JMECQAGV1FH0XA1XBP6"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01KKV20JMECQAGV1FH0XA1XBP6": {
+            "$ref": "#/definitions/35327531"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 145240943,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"qrcode\": \"qrcode_id=wbBFiz/thedWRzXl6Q5+yYvE0mqh7l7dLrBh5pkIpUUFAdAvmDp7i7Yobk7zzkNM&areaPrefix=3100&interfaceCode=0003\",\r\n        \"taskId\": \"1019083456093785332\"\r\n    },\r\n    \"timestamp\": \"2026-03-17 17:54:21\",\r\n    \"reqId\": \"7011538d2e2a16c54232fcf4ab96c5ec\"\r\n}",
+      "id": "019cfead-3104-75d3-a83b-a55e01882b73"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 80554335,
+  "ordering": 109,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-16T10:10:51.000Z",
+  "updatedAt": "2026-04-13T06:08:01.000Z",
+  "creatorId": 2400309,
+  "editorId": 2795319,
+  "creatorUserId": 2400309,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,259 @@
+{
+  "id": 432835674,
+  "name": "发起税局申报状态汇总查询任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n发起税局申报状态汇总查询任务\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n| INTERFACE_ERROR | 接口异常,请联系管理员!|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadSjsbzthzTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称"
+        },
+        "kqyswjgmc": {
+          "type": "string",
+          "title": "跨区域税局机关名称"
+        },
+        "cxlbList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "查询类别",
+          "description": "sfzrd（税费种认定节点）\nbqysb（本期应申报）\nsbcx（申报查询）\njkxxcx（缴款信息查询）\nwsbxxcx（未申报信息查询）\nqsxxcx（欠税信息查询）\ncwbbxxcx（财务报表信息查询）"
+        },
+        "cxny": {
+          "type": "string",
+          "title": "查询年月",
+          "description": "年月--202603，只能单月查询，不支持跨月查询。仅支持查询本年及上一年的数据"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "cxny",
+        "cxlbList",
+        "tdztswjgmc",
+        "kqyswjgmc"
+      ],
+      "required": [
+        "aggOrgId",
+        "cxny"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\": 482734358xxxxx,\r\n  \"cxlbList\": [\r\n    \"sfzrd\",\r\n    \"bqysb\",\r\n    \"sbcx\",\r\n    \"jkxxcx\",\r\n    \"wsbxxcx\",\r\n    \"qsxxcx\",\r\n    \"cwbbxxcx\"\r\n  ],\r\n  \"cxny\": \"202603\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171877431,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "aggOrgId",
+              "taskId"
+            ],
+            "properties": {
+              "aggOrgId": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "企业Id"
+              },
+              "taskId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务id"
+              }
+            }
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 171877431,
+      "data": "{\"reqId\":\"1918ffb33f6749b4b3c8170772ac22f7\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17664560
+    },
+    {
+      "name": "任务成功发起",
+      "responseId": 171877431,
+      "data": "{\r\n    \"reqId\": \"3343c050fc9b472ca0285a253bb74408\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"aggOrgId\": \"482734358988800\",\r\n        \"taskId\": 650509607755264\r\n    }\r\n}",
+      "id": 17230301
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81161874,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-24T09:47:00.000Z",
+  "updatedAt": "2026-04-22T09:53:57.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

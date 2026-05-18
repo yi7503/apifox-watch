@@ -1,0 +1,973 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 法规库
+  version: latest
+  description: 'Split from full spec, module: 法规库'
+tags:
+- name: 法规库
+paths:
+  /v2/legislation/category:
+    post:
+      summary: 政策分类查询接口
+      operationId: api-310307821
+      tags:
+      - 法规库
+      description: 政策法规库文章分类枚举查询接口，以树形层级返回
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+              xml:
+                name: business
+              x-apifox-orders: []
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+              示例 1:
+                summary: 示例 1
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: 相应返回信息
+                  code:
+                    type: string
+                    description: 响应返回码 如：0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          title: 分类ID
+                        categoryName:
+                          type: string
+                          title: 分类名称
+                        parentId:
+                          type: string
+                          title: 父分类ID，当分类的parentId=0表示当前分类为一级分类
+                        children:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                title: 分类ID
+                              categoryName:
+                                type: string
+                                title: 分类名称
+                              updateTime:
+                                type: string
+                                title: 更新日期
+                                description: yyyy/mm/dd hh:mm:ss
+                            required:
+                            - id
+                            - categoryName
+                            - updateTime
+                            x-apifox-orders:
+                            - id
+                            - categoryName
+                            - updateTime
+                          description: 子节点-递归
+                      required:
+                      - id
+                      - categoryName
+                      - parentId
+                      - children
+                      x-apifox-orders:
+                      - id
+                      - categoryName
+                      - parentId
+                      - children
+                    title: 响应数据
+                  reqId:
+                    type: string
+                    title: 请求唯一ID
+                required:
+                - data
+                - message
+                - code
+                - reqId
+                x-apifox-orders:
+                - data
+                - message
+                - code
+                - reqId
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    data:
+                    - id: '1'
+                      categoryName: 税务法规
+                      parentId: '0'
+                      children:
+                      - id: '4'
+                        categoryName: 中央税法
+                        updateTime: '2025-05-15 12:34:56'
+                      - id: '5'
+                        categoryName: 地方税法
+                        updateTime: '2025-05-15 12:34:56'
+                    - id: '24'
+                      categoryName: 财经法规
+                      parentId: '0'
+                      children:
+                      - id: '25'
+                        categoryName: 金融证券
+                        updateTime: '2025-05-15 12:34:56'
+                      - id: '26'
+                        categoryName: 财政法规
+                        updateTime: '2025-05-15 12:34:56'
+                    reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+                    message: 成功
+                    code: '0'
+  /v2/legislation/attrList:
+    post:
+      summary: 政策属性查询接口
+      operationId: api-310307822
+      tags:
+      - 法规库
+      description: 政策法规文章的其他属性查询接口，包括发文机关、时效性、所属行业、地区、税种等
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+              xml:
+                name: business
+              x-apifox-orders: []
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+              示例 1:
+                summary: 示例 1
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: 相应返回信息
+                  code:
+                    type: string
+                    title: 响应返回码
+                    description: 如：0
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        attrId:
+                          type: integer
+                          title: 属性id
+                        attrName:
+                          type: string
+                          title: 属性名称
+                        attrValues:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              valueId:
+                                type: integer
+                                title: 属性值ID
+                              valueName:
+                                type: string
+                                title: 属性值名称
+                              updateTime:
+                                type: string
+                                title: 属性值更新日期
+                                description: yyyy/mm/dd hh:mm:ss
+                            required:
+                            - valueId
+                            - valueName
+                            - updateTime
+                            x-apifox-orders:
+                            - valueId
+                            - valueName
+                            - updateTime
+                          title: 属性值列表
+                      required:
+                      - attrId
+                      - attrName
+                      - attrValues
+                      x-apifox-orders:
+                      - attrId
+                      - attrName
+                      - attrValues
+                    title: 响应数据
+                  reqId:
+                    type: string
+                    title: 请求唯一ID
+                required:
+                - data
+                - message
+                - code
+                - reqId
+                x-apifox-orders:
+                - data
+                - message
+                - code
+                - reqId
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    data:
+                    - attrId: 5
+                      attrName: 税种
+                      attrValues:
+                      - valueId: 34
+                        valueName: 增值税
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 45
+                        valueName: 消费税
+                        updateTime: '2025-05-13 12:00:34'
+                    - attrId: 8
+                      attrName: 地域
+                      attrValues:
+                      - valueId: 231
+                        valueName: 全国适用
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 232
+                        valueName: 北京市
+                        updateTime: '2025-05-13 12:00:34'
+                    - attrId: 2
+                      attrName: 发文机关
+                      attrValues:
+                      - valueId: 452
+                        valueName: 国家税务总局
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 454
+                        valueName: 财政部
+                        updateTime: '2025-05-13 12:00:34'
+                    - attrId: 5
+                      attrName: 时效
+                      attrValues:
+                      - valueId: 556
+                        valueName: 现行有效
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 555
+                        valueName: 部分失效
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 553
+                        valueName: 失效/废止
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 554
+                        valueName: 尚未生效
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 553
+                        valueName: 草案/征求意见稿
+                        updateTime: '2025-05-13 12:00:34'
+                    - attrId: 7
+                      attrName: 行业
+                      attrValues:
+                      - valueId: 763
+                        valueName: 农、林、牧、渔业
+                        updateTime: '2025-05-13 12:00:34'
+                      - valueId: 754
+                        valueName: 采矿业
+                        updateTime: '2025-05-13 12:00:34'
+                    message: 成功
+                    code: '0'
+                    reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+  /v2/legislation/listPage:
+    post:
+      summary: 政策列表分页接口
+      operationId: api-310307823
+      tags:
+      - 法规库
+      description: 政策法规库文章列表查询接口，支持分页，多条件搜索，可排序
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pageNo:
+                  type: integer
+                  title: 分页页码
+                  description: 页码最高不超过20
+                pageSize:
+                  type: integer
+                  title: 分页-单页数量
+                  description: 单页数量不超过30
+                categories:
+                  type: array
+                  items:
+                    type: string
+                  description: |-
+                    政策分类：支持多选
+                    示例值：["4", "5"]
+                    可选值：
+                    【政策分类查询接口】返回参数中【分类ID】
+                industries:
+                  type: array
+                  items:
+                    type: string
+                  description: |-
+                    行业：支持多选
+                    示例值：["制造业", "金融业"]
+                    可选值：
+                    【政策属性查询接口】返回参数中属性名称为【行业】的【属性值名称】
+                areas:
+                  type: array
+                  items:
+                    type: string
+                  description: |-
+                    地区/地域：支持多选
+                    示例值：["江苏省", "北京市"]
+                    可选值：
+                    【政策属性查询接口】返回参数中属性名称为【地域】的【属性值名称】
+                taxes:
+                  type: array
+                  items:
+                    type: string
+                  description: |-
+                    税种范围：支持多选
+                    示例值：["增值税", "企业所得税"]
+                    可选值：
+                    【时效性：支持多选
+
+                    示例值：["现行有效", "部分失效"]
+
+                    可选值：
+
+                    【政策属性查询接口】返回参数中属性名称为【时效】的【属性值名称】政策属性查询接口】返回参数中属性名称为【税种】的【属性值名称】
+                effectives:
+                  type: array
+                  items:
+                    type: string
+                  description: |-
+                    时效性：支持多选
+                    示例值：["现行有效", "部分失效"]
+                    可选值：
+                    【政策属性查询接口】返回参数中属性名称为【时效】的【属性值名称】
+                agencies:
+                  type: array
+                  items:
+                    type: string
+                  description: |-
+                    发文机关：支持多选
+                    示例值：["国家税务总局", "财政部"]
+                    可选值：
+                    【政策属性查询接口】返回参数中属性名称为【发文机关】的【属性值名称】
+                appPolicyKeywordDTOs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: integer
+                        title: 关键字类型
+                        description: |-
+                          当appPolicyKeyword不为空的时候，必填，单个不可多选
+                          示例值：4
+                          可选值：
+                          4：标题文号
+                          2：全文内容
+                      text:
+                        type: string
+                        title: 关键字
+                        description: |-
+                          当appPolicyKeyword不为空的时候，必填，单个不可多选
+                          示例值："营改增"
+                    required:
+                    - type
+                    - text
+                    x-apifox-orders:
+                    - type
+                    - text
+                  description: 关键字搜索，支持多组（多组条件之间为【或】的关系）
+                sortPropertyDTO:
+                  type: object
+                  properties:
+                    sortType:
+                      type: string
+                      title: 排序方向
+                      description: |-
+                        默认降序
+                        示例值："desc"
+                        可选值：
+                        "asc"：升序
+                        "desc"：降序
+                    property:
+                      type: string
+                      title: 排序字段
+                      description: |-
+                        当sortPropertyDTO不为空的时候，必填
+                        示例值："publicationTime"
+                        可选值：
+                        "publicationTime"：发文日期，目前仅支持该字段。
+                  required:
+                  - sortType
+                  - property
+                  x-apifox-orders:
+                  - sortType
+                  - property
+                  title: 排序方式
+                  description: 非必填，为空时默认按搜索结果相关度降序
+              required:
+              - pageNo
+              - pageSize
+              - appPolicyKeywordDTOs
+              - categories
+              - industries
+              - areas
+              - taxes
+              - effectives
+              - agencies
+              - sortPropertyDTO
+              x-apifox-orders:
+              - pageNo
+              - pageSize
+              - appPolicyKeywordDTOs
+              - categories
+              - industries
+              - areas
+              - taxes
+              - effectives
+              - agencies
+              - sortPropertyDTO
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+              示例 1:
+                summary: 示例 1
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: 相应返回信息
+                  code:
+                    type: string
+                    title: 响应返回码
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: string
+                        title: 政策列表总记录数
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              title: 政策主键ID
+                            title:
+                              type: string
+                              title: 标题
+                            summary:
+                              type: string
+                              title: 摘要
+                            categoryId:
+                              type: string
+                              title: 分类ID，当前子级分类的ID
+                            categoryName:
+                              type: string
+                              title: 分类名称，父级分类-子级分类
+                            documentNumber:
+                              type: string
+                              title: 文号
+                            publicationTime:
+                              type: string
+                              title: 发文日期，日期格式：yyyy-MM-dd
+                            periodStartDate:
+                              type: string
+                              title: 有效期开始日期，格式：yyyy/MM/dd
+                            periodEndDate:
+                              type: string
+                              title: 有效期结束日期，格式：yyyy/MM/dd
+                            documentIssuingAgency:
+                              type: string
+                              title: 发文机关，多条使用逗号拼接
+                            effective:
+                              type: string
+                              title: 时效状态
+                          required:
+                          - id
+                          - title
+                          - summary
+                          - categoryId
+                          - categoryName
+                          - documentNumber
+                          - publicationTime
+                          - periodStartDate
+                          - periodEndDate
+                          - documentIssuingAgency
+                          - effective
+                          x-apifox-orders:
+                          - id
+                          - title
+                          - summary
+                          - categoryId
+                          - categoryName
+                          - documentNumber
+                          - publicationTime
+                          - periodStartDate
+                          - periodEndDate
+                          - documentIssuingAgency
+                          - effective
+                    required:
+                    - total
+                    - list
+                    x-apifox-orders:
+                    - total
+                    - list
+                    title: 响应数据
+                  reqId:
+                    type: string
+                    title: 请求唯一ID
+                required:
+                - data
+                - message
+                - code
+                - reqId
+                x-apifox-orders:
+                - data
+                - message
+                - code
+                - reqId
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    data:
+                      total: '2'
+                      list:
+                      - id: '1204336209929963777'
+                        title: 财政部、国家税务总局关于建筑服务等营改增试点政策的通知
+                        summary: 2017.08.14 国家税务总局发布《关于跨境应税行为免税备案等增值税问题的公告》，规定自2018年1月1日起，金融机构开展贴现、转贴现业务需要就贴现利息开具发票的，由贴现机构按照票据贴现利息全额向贴现人开具增值税普通发票，转贴现机构按照转贴现利息全额向贴现机构开具增值税普通发票。详见：国家税务总局公告2017年第30号。
+                        categoryId: '4'
+                        categoryName: 税务法规-中央税法
+                        documentNumber: 财税〔2017〕58号
+                        publicationTime: '2017-07-11'
+                        periodStartDate: 2017/07/11
+                        periodEndDate: 2099/12/31
+                        documentIssuingAgency: 财政部,国家税务总局
+                        effective: 现行有效
+                      - id: '1213187274859350272'
+                        title: 财政部 税务总局关于明确国有农用地出租等增值税政策的公告[条款废止]
+                        summary: 房地产开发企业中的一般纳税人购入未完工的房地产老项目继续开发后，以自己名义立项销售的不动产，属于房地产老项目，可以选择适用简易计税方法按照5%的征收率计算缴纳增值税。
+                        categoryId: '4'
+                        categoryName: 税务法规-中央税法
+                        documentNumber: 财政部 税务总局公告2020年第2号
+                        publicationTime: '2020-01-22'
+                        periodStartDate: 2020/01/22
+                        periodEndDate: 2099/12/31
+                        documentIssuingAgency: 国家税务总局,财政部
+                        effective: 部分失效
+                    message: 成功
+                    code: '0'
+                    reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+  /v2/legislation/detail:
+    post:
+      summary: 政策详情查询接口
+      operationId: api-310307824
+      tags:
+      - 法规库
+      description: 政策法规库文章详情页查询接口，支持根据政策的id或者文号查询
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                documentNumber:
+                  type: string
+                  description: |-
+                    在详情页中链接到其他文章时，无id场景使用文号查询
+
+                    示例值："财税〔2017〕58号"
+                  title: 政策文号
+                id:
+                  type: string
+                  description: |-
+                    政策主键ID
+                    示例值：1204336209929963777
+                  title: 主键ID
+              x-apifox-orders:
+              - documentNumber
+              - id
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+              示例 1:
+                summary: 示例 1
+                value: null
+              示例 2:
+                summary: 示例 2
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: 相应返回信息
+                  code:
+                    type: string
+                    description: 响应返回码
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: 政策主键ID
+                      title:
+                        type: string
+                        description: 标题
+                      summary:
+                        type: string
+                        description: 摘要
+                      categoryId:
+                        type: string
+                        description: 分类ID，当前子级分类ID
+                      categoryName:
+                        type: string
+                        description: 分类名称，父级分类-子级分类
+                      documentNumber:
+                        type: string
+                        description: 文号
+                      documentIssuingAgency:
+                        type: string
+                        description: 发文机关，多条使用逗号拼接
+                      publicationTime:
+                        type: string
+                        description: 发文日期，日期格式：yyyy-MM-dd
+                      periodStartDate:
+                        type: string
+                        description: 有效期开始日期，格式：yyyy/MM/dd
+                      periodEndDate:
+                        type: string
+                        description: 有效期结束日期，格式：yyyy/MM/dd
+                      effective:
+                        type: string
+                        description: 时效
+                      tax:
+                        type: string
+                        description: 税种，多条使用逗号拼接
+                      industry:
+                        type: string
+                        description: 行业，多条使用逗号拼接
+                      area:
+                        type: string
+                        description: 地区，多条使用逗号拼接
+                      content:
+                        type: string
+                        description: 正文内容，HTML格式
+                      attachmentInfo:
+                        type: string
+                        description: 附件，json格式，用key和filename调用【获取政策附件下载地址】，可生成下载地址。
+                    required:
+                    - id
+                    - title
+                    - summary
+                    - categoryId
+                    - categoryName
+                    - documentNumber
+                    - documentIssuingAgency
+                    - publicationTime
+                    - periodStartDate
+                    - periodEndDate
+                    - effective
+                    - tax
+                    - industry
+                    - area
+                    - content
+                    - attachmentInfo
+                    x-apifox-orders:
+                    - id
+                    - title
+                    - summary
+                    - categoryId
+                    - categoryName
+                    - documentNumber
+                    - documentIssuingAgency
+                    - publicationTime
+                    - periodStartDate
+                    - periodEndDate
+                    - effective
+                    - tax
+                    - industry
+                    - area
+                    - content
+                    - attachmentInfo
+                    description: 响应数据
+                  reqId:
+                    type: string
+                    description: 请求唯一ID
+                required:
+                - data
+                - message
+                - code
+                - reqId
+                x-apifox-orders:
+                - data
+                - message
+                - code
+                - reqId
+              examples:
+                示例 1:
+                  summary: 示例 1
+                  value:
+                    data:
+                      id: '1354569356436642304'
+                      title: 国家税务总局关于中国华融资产管理股份有限公司和中国东方资产管理公司企业所得税征管问题的公告
+                      summary: 根据2025.03.24 国家税务总局令第59号《国家税务总局关于公布废止和修改的部分税务部门规章及规范性文件目录的决定》，本文第三条及附件自2025年3月24日起废止。
+                      categoryId: '4'
+                      categoryName: 税务法规-中央税法
+                      documentNumber: 国家税务总局公告2013年第38号
+                      documentIssuingAgency: 国家税务总局
+                      publicationTime: '2013-07-09'
+                      periodStartDate: 2013/07/09
+                      periodEndDate: 2099/12/31
+                      effective: 部分失效
+                      tax: 企业所得税
+                      industry: 全部行业
+                      area: 全国适用
+                      content: |
+                        <font color="red">　　注释：根据2025.03.24 <a href="workbench/policy/detail?docNum=国家税务总局令第59号">国家税务总局令第59号</a>《国家税务总局关于公布废止和修改的部分税务部门规章及规范性文件目录的决定》，本文第三条及附件自2025年3月24日起废止。<hr style="height:1px;border:none;border-top:1px dashed #0066cc;"><br></font>　　《财政部、国家税务总局、中国人民银行关于明确中国邮政储蓄银行等企业所得税收入归属的通知》（财预〔2013〕34号）规定，中国华融资产管理股份有限公司、中国东方资产管理公司缴纳的企业所得税为中央收入，全部缴入中央国库。根据《国家税务总局关于中国工商银行股份有限公司等企业企业所得税有关征管问题的通知》（<a href="workbench/policy/detail?docNum=国税函〔2010〕184号">国税函〔2010〕184号</a>）精神，现将中国华融资产管理股份有限公司和中国东方资产管理公司企业所得税征管问题公告如下： <p></p>　　一、中国华融资产管理股份有限公司、中国东方资产管理公司应缴纳的企业所得税，由企业总机构统一汇总计算后，向总机构所在地主管税务机关申报预缴，年终进行汇算清缴。上述企业所属二级分支机构应按照企业所得税的有关规定，向其当地主管税务机关报送企业所得税预缴申报表和其他相关资料，各分支机构不就地预缴企业所得税。 <p></p>　　二、中国华融资产管理股份有限公司、中国东方资产管理公司及其所属分支机构发生的资产损失，按照《国家税务总局关于发布〈企业资产损失所得税税前扣除管理办法〉的公告》（<a href="workbench/policy/detail?docNum=国家税务总局公告2011年第25号">国家税务总局公告2011年第25号</a>）的规定办理。 <p></p>　　<font color="#666666">三、中国华融资产管理股份有限公司、中国东方资产管理公司所属二级分支机构名单由国家税务总局公布。上述企业所属二级以下（不含）分支机构名单，由二级分支机构向所在地主管税务机关提供，经所在地省税务机关审核后公布。企业分支机构发生增减变化的，应及时上报国家税务总局及二级分支机构所在地主管税务机关，由国家税务总局和二级分支机构所在地省税务机关重新公布所属分支机构名单。</font><br><font color="red">　　【注释：根据2025.03.24 <a href="workbench/policy/detail?docNum=国家税务总局令第59号">国家税务总局令第59号</a>《国家税务总局关于公布废止和修改的部分税务部门规章及规范性文件目录的决定》，本条规定自2025年3月24日起废止。】</font><br>
+                         <p></p>　　四、本公告自2013年1月1日起执行。 <p></p>　　特此公告。 <p></p><font color="blue">　　<b>附：国家税务总局关于《中国华融资产管理股份有限公司和中国东方资产管理公司企业所得税征管问题的公告》的解读</b></font><p></p>　　根据《国家税务总局关于印发〈跨地区经营汇总纳税企业所得税征收管理暂行办法〉的通知》（<a href="workbench/policy/detail?docNum=国税发〔2008〕28号">国税发〔2008〕28号</a>）规定，《国家税务总局关于中国工商银行股份有限公司等企业企业所得税有关征管问题的通知》（<a href="workbench/policy/detail?docNum=国税函〔2010〕184号">国税函〔2010〕184号</a>）明确了中国工商银行股份有限公司等企业所得税收入全额归属中央的企业由总机构统一计算并缴纳企业所得税，分支机构不实行就地预缴的征管办法，并由总局发布各企业所属二级分支机构名单。《财政部 国家税务总局 中国人民银行关于明确中国邮政储蓄银行等企业所得税收入归属的通知》（财预[2013]34号）明确，中国华融资产管理股份有限公司和中国东方资产管理公司缴纳的企业所得税为中央收入，全部缴入中央国库。为保持企业所得税收入全额归属中央的企业征管政策的一致性，便于中国华融资产管理股份有限公司和中国东方资产管理公司所属二级分支机构所在地税务机关对其所属二级分支机构的管理，参照<a href="workbench/policy/detail?docNum=国税函〔2010〕184号">国税函〔2010〕184号</a>文件的规定，明确了这两户企业的所得税征管办法。同时公布其所属二级分支机构名单。<p></p>
+                      attachmentInfo: '[{"filename":"中国东方资产管理公司所属二级分支机构名单.doc","key":"policy/409b14e13a0249f58c8dcae1399adab5"},{"filename":"中国华融资产管理股份有限公司所属二级分支机构名单.doc","key":"policy/763dc554f49942c9a0f6a1fd1f16a650"}]'
+                    message: 成功
+                    code: '0'
+                    reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+  /v2/legislation/getFileUrl:
+    post:
+      summary: 获取政策附件文件下载地址
+      operationId: api-310307825
+      tags:
+      - 法规库
+      description: 根据附件的key和名称，实时获取附件文件的下载地址
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+                  title: 文件key
+                  description: |-
+                    参数取数来源为政策详情接口返回参数中的attachmentInfo字段
+                    示例值："policy/409b14e13a0249f58c8dcae1399adab5"
+                fileName:
+                  type: string
+                  title: 文件名称
+                  description: |-
+                    参数取数来源为政策详情接口返回参数中的attachmentInfo字段
+                    示例值："中国东方资产管理公司所属二级分支机构名单.doc"
+              required:
+              - key
+              - fileName
+              x-apifox-orders:
+              - key
+              - fileName
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: 相应返回信息
+                  code:
+                    type: string
+                    title: '响应返回码 '
+                  data:
+                    type: string
+                    description: 文件下载地址
+                    title: 文件下载地址
+                  reqId:
+                    type: string
+                    title: 请求唯一ID
+                required:
+                - data
+                - message
+                - code
+                - reqId
+                x-apifox-orders:
+                - data
+                - message
+                - code
+                - reqId
+              examples:
+                示例 1:
+                  summary: 示例 1
+                  value:
+                    data: http://prd-cabinet-1257122416.cos.ap-shanghai.myqcloud.com/policy/409b14e13a0249f58c8dcae1399adab5?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDkT5ZwBPOILzqtq9VdJ4lHcljYBg7OXTM%26q-sign-time%3D1747307846%3B1747309646%26q-key-time%3D1747307846%3B1747309646%26q-header-list%3D%26q-url-param-list%3Dresponse-content-disposition%26q-signature%3D31f166f7472076f830913216c4ec01c80092afd0&response-content-disposition=filename%3D%E4%B8%AD%E5%9B%BD%E4%B8%9C%E6%96%B9%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E5%85%AC%E5%8F%B8%E6%89%80%E5%B1%9E%E4%BA%8C%E7%BA%A7%E5%88%86%E6%94%AF%E6%9C%BA%E6%9E%84%E5%90%8D%E5%8D%95.doc
+                    message: 成功
+                    code: '0'
+                    reqId: 7eeae4c409ec404eab3d7908c64e9fd3

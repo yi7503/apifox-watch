@@ -1,0 +1,352 @@
+{
+  "id": 217038654,
+  "name": "跨区域涉税事项报验管理编号信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "开票-建筑服务-跨区域涉税事项报验管理编号信息查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryKqysssxbyglbhcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "gcxmmc": {
+              "type": "string",
+              "title": "工程项目名称",
+              "description": "工程项目名称"
+            },
+            "htdfnsrmc": {
+              "type": "string",
+              "title": "合同对方纳税人名称",
+              "description": "合同对方纳税人名称"
+            },
+            "htdfnsrsbh": {
+              "type": "string",
+              "title": "合同对方纳税人识别号",
+              "description": "合同对方纳税人识别号"
+            },
+            "kqyjydxzqh": {
+              "type": "string",
+              "title": "跨区域经营地行政区划",
+              "description": "跨区域经营地行政区划"
+            },
+            "wcjyhdssglzmbh": {
+              "type": "string",
+              "title": "跨区域涉税事项报验管理编号",
+              "description": "跨区域涉税事项报验管理编号"
+            },
+            "zmyxqxq": {
+              "type": "string",
+              "title": "跨区域涉税事项有效期起",
+              "description": "格式：yyyy-MM-dd"
+            },
+            "zmyxqxz": {
+              "type": "string",
+              "title": "跨区域涉税事项有效期止",
+              "description": "格式：yyyy-MM-dd"
+            },
+            "cjsjq": {
+              "type": "string",
+              "title": "报告开具时间起",
+              "description": "格式：yyyy-MM-dd"
+            },
+            "cjsjz": {
+              "type": "string",
+              "description": "格式：yyyy-MM-dd",
+              "title": "报告开具时间止"
+            },
+            "wcjyhdssglzmbhq": {
+              "type": "string",
+              "title": "跨税报起"
+            },
+            "wcjyhdssglzmbhy": {
+              "type": "string",
+              "title": "跨税报止"
+            }
+          },
+          "x-apifox-orders": [
+            "01HVNG5GM4P39XZHBAS4TE4TDW",
+            "gcxmmc",
+            "htdfnsrmc",
+            "htdfnsrsbh",
+            "kqyjydxzqh",
+            "wcjyhdssglzmbh",
+            "zmyxqxq",
+            "zmyxqxz",
+            "cjsjq",
+            "cjsjz",
+            "wcjyhdssglzmbhq",
+            "wcjyhdssglzmbhy"
+          ],
+          "x-apifox-refs": {
+            "01HVNG5GM4P39XZHBAS4TE4TDW": {
+              "$ref": "#/definitions/92664906",
+              "x-apifox-overrides": {
+                "pageSize": {
+                  "type": "integer",
+                  "title": "每页条数",
+                  "enum": [
+                    5,
+                    10,
+                    20,
+                    50,
+                    100
+                  ],
+                  "x-apifox": {
+                    "enumDescriptions": {
+                      "5": "",
+                      "10": "",
+                      "20": "",
+                      "50": "",
+                      "100": ""
+                    }
+                  }
+                },
+                "pageIndex": {
+                  "type": "integer",
+                  "title": "当前页码"
+                }
+              },
+              "required": [
+                "pageIndex",
+                "pageSize"
+              ]
+            }
+          },
+          "required": [
+            "cjsjq",
+            "cjsjz"
+          ]
+        },
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：queryKqysssxbyglbhcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01J4V7BSSETKN72WHGHPHJTW4M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01J4V7BSSETKN72WHGHPHJTW4M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"data\": {},\n    \"nsrsbh\": \"9115**********6W2C\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 533491697,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "djxh": {
+                      "type": "string",
+                      "title": "序号",
+                      "description": "序号"
+                    },
+                    "gcxmmc": {
+                      "type": "string",
+                      "title": "工程项目名称",
+                      "description": "工程项目名称"
+                    },
+                    "jdxzdm": {
+                      "type": "string",
+                      "title": "跨区域经营乡镇街道行政区域代码",
+                      "description": "跨区域经营乡镇街道行政区域代码"
+                    },
+                    "jdxzmc": {
+                      "type": "string",
+                      "title": "跨区域经营乡镇街道",
+                      "description": "跨区域经营乡镇街道"
+                    },
+                    "wcjyd": {
+                      "type": "string",
+                      "title": "跨区域经营地区详细地址",
+                      "description": "跨区域经营地区详细地址"
+                    },
+                    "wcjydxzqhszdm": {
+                      "type": "string",
+                      "title": "跨区域经营地区行政区域代码",
+                      "description": "跨区域经营地区行政区域代码"
+                    },
+                    "wcjyhdssglzmbh": {
+                      "type": "string",
+                      "title": "跨区域涉税事项报验管理编号",
+                      "description": "跨区域涉税事项报验管理编号"
+                    },
+                    "xgrq": {
+                      "type": "string",
+                      "title": "修改日期",
+                      "description": "格式：yyyy-MM-dd HH:mm:ss"
+                    },
+                    "wcjydxzqhsz": {
+                      "type": "string",
+                      "title": "跨区域经营地区行政区域",
+                      "description": "跨区域经营地区行政区域"
+                    }
+                  },
+                  "required": [
+                    "djxh",
+                    "wcjydxzqhszdm",
+                    "wcjyd",
+                    "wcjyhdssglzmbh"
+                  ],
+                  "x-apifox-orders": [
+                    "djxh",
+                    "gcxmmc",
+                    "jdxzdm",
+                    "jdxzmc",
+                    "wcjyd",
+                    "wcjydxzqhszdm",
+                    "wcjydxzqhsz",
+                    "wcjyhdssglzmbh",
+                    "xgrq"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "list"
+            ],
+            "x-apifox-orders": [
+              "list",
+              "01HVKDSZE7ZSW05257JHYDXVRC"
+            ],
+            "x-apifox-refs": {
+              "01HVKDSZE7ZSW05257JHYDXVRC": {
+                "$ref": "#/definitions/92664510"
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HVKDS7N9RXXVA81489RZ05WM"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 533491697,
+      "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageIndex\": 1,\n        \"records\": 1,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"djxh\": \"101111**********0000\",\n                \"gcxmmc\": \"工程项目名称\",\n                \"jdxzdm\": \"跨区域经营乡镇街道行政区域代码\",\n                \"jdxzmc\": \"跨区域经营乡镇街道\",\n                \"wcjyd\": \"甘肃省嘉峪关市\",\n                \"wcjydxzqhszdm\": \"110116\",\n                \"wcjydxzqhsz\": \"北京市怀柔区\",\n                \"wcjyhdssglzmbh\": \"海地税外证〔2000〕0000号\",\n                \"xgrq\": \"2018-09-18 09:00:00\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 427121367
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 42130418,
+  "ordering": 43,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-20T08:56:07.000Z",
+  "updatedAt": "2025-12-16T02:22:22.000Z",
+  "creatorId": 2400309,
+  "editorId": 3099717,
+  "creatorUserId": 2400309,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

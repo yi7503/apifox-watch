@@ -1,0 +1,17 @@
+{
+  "id": 8660637,
+  "name": "  2026年4月发布内容",
+  "sidebarTitle": "",
+  "content": "2026年4月发布内容\n发布日期：2026-04-29\n发布版本：V1.2026.04\n\n功能优化\n1.月度缴费工资调整，按险种申报支持护理险申报\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649550/image-preview)\n\n2.社保，优化缴款反馈，不同地区反馈的jfzt缴费状态不一样，导致客户无法判断缴款结果，统一适配，返给客户 jfzt：缴款成功\n\n3.企业登记和查询接口需要返回登记日期字段\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649558/image-preview)\n\n4.新增，社保漏报检查接口，可查询所属月申报状态、缴款状态\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649563/image-preview)\n",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-29T09:21:08.000Z",
+  "updatedAt": "2026-04-29T09:21:12.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

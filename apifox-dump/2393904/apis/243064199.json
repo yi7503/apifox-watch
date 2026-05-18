@@ -1,0 +1,217 @@
+{
+  "id": 243064199,
+  "name": "资质证书信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "Rekzr3Pc2-dnlH3Y3wNku",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口可用于获取企业相关资质证书的详细信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/certificateInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "当前页码",
+          "description": "从1开始"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页数量",
+          "description": "10，30，50"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo",
+        "pageIndex",
+        "pageSize"
+      ],
+      "required": [
+        "pageIndex",
+        "pageSize"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582485700,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {},
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "01JESPY4Z1NE4YTX4KST1MKJ94"
+            ],
+            "x-apifox-refs": {
+              "01JESPY4Z1NE4YTX4KST1MKJ94": {
+                "$ref": "#/definitions/135626138"
+              }
+            },
+            "required": []
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582485700,
+      "data": "{\n    \"reqId\": \"d7821bc297dd416ea0b2ec19020213c8\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"items\": [\n            {\n                \"licenseDetail\": [\n                    {\n                        \"title\": \"公司名称\",\n                        \"content\": \"企享云（北京）信息技术有限公司\"\n                    },\n                    {\n                        \"title\": \"所在地区\",\n                        \"content\": \"北京市\"\n                    },\n                    {\n                        \"title\": \"区域代码\",\n                        \"content\": \"110108\"\n                    },\n                    {\n                        \"title\": \"许可证号\",\n                        \"content\": \"202311010808005139\"\n                    },\n                    {\n                        \"title\": \"类型\",\n                        \"content\": \"科技型中小企业\"\n                    },\n                    {\n                        \"title\": \"年份\",\n                        \"content\": \"2023\"\n                    },\n                    {\n                        \"title\": \"网站公布状态\",\n                        \"content\": \"2\"\n                    },\n                    {\n                        \"title\": \"发布日期\",\n                        \"content\": \"2023-04-14\"\n                    },\n                    {\n                        \"title\": \"级别\",\n                        \"content\": \"01\"\n                    },\n                    {\n                        \"title\": \"入库登记日期/有效期起\",\n                        \"content\": \"2023-04-14\"\n                    },\n                    {\n                        \"title\": \"有效期至\",\n                        \"content\": \"2023-12-31\"\n                    },\n                    {\n                        \"title\": \"复核日期\",\n                        \"content\": \"\"\n                    },\n                    {\n                        \"title\": \"资质终止日期/撤销日期\",\n                        \"content\": \"\"\n                    },\n                    {\n                        \"title\": \"许可证状态\",\n                        \"content\": \"过期\"\n                    },\n                    {\n                        \"title\": \"许可证状态码\",\n                        \"content\": \"3\"\n                    },\n                    {\n                        \"title\": \"是否历史\",\n                        \"content\": \"1\"\n                    }\n                ],\n                \"licenseState\": \"过期\",\n                \"endDate\": \"2023-12-31\",\n                \"licenseNumber\": \"202311010808005139\",\n                \"isHistory\": \"1\",\n                \"licenseName\": \"科技型中小企业\",\n                \"startDate\": \"2023-04-14\"\n            }\n        ]\n    }\n}",
+      "id": 454749152
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582485700,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454749499
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 22,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T01:56:34.000Z",
+  "updatedAt": "2025-02-20T08:48:42.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582485700"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

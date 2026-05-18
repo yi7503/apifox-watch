@@ -1,0 +1,222 @@
+{
+  "id": 134755644,
+  "name": "托管账号删除",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "托管账号删除\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/account/delete",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "integer",
+          "title": "账户ID"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业ID"
+        }
+      },
+      "required": [
+        "accountId",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "TLjWYyFhLS",
+        "name": "Content-Type",
+        "required": "true",
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "EEB33jnCKK",
+        "name": "access_token",
+        "required": "true",
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "UOC6McUQPG",
+        "name": "req_date",
+        "required": "true",
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Ea8RPo5fUm",
+        "name": "req_sign",
+        "required": "true",
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 37791452,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "boolean",
+            "title": "数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "接口是否成功"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 37791452,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": true,\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"fe8f9204890146718cefe5c33ac85a5a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 37791453
+    },
+    {
+      "name": "异常示例",
+      "responseId": 37791452,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"没有找到对应的企业！\",\n    \"reqId\": \"83d7802f3fb3403d853e0651577319f8\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 37791454
+    },
+    {
+      "name": "未登录",
+      "responseId": 37791452,
+      "data": "{\n    \"reqId\": \"0516f06b781b4590a23de8b7b148a853\",\n    \"code\": \"40100\",\n    \"success\": false,\n    \"message\": \"未登录!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 37791455
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841702,
+  "ordering": 153,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2023-12-19T06:31:51.000Z",
+  "updatedAt": "2025-09-15T09:52:27.000Z",
+  "creatorId": 1442097,
+  "editorId": 1564651,
+  "creatorUserId": 1442097,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.37791452"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

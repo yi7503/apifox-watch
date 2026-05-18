@@ -1,0 +1,201 @@
+{
+  "id": 164577760,
+  "name": "税务APP登录上传短信验证码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "88QptkpVmE-JVkfgllR1P",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n该接口用于用户手机接收到税局下发的验证码，进行上传完成最终登录。\n- 说明\n1. 登录发送短信验证码后返回taskid，并且发送短信到用户手机号上，2分钟内不允许重复登录发送验证码，重复发送会提示「短信频繁」；\n2. 上传短信验证码，5分钟内上传短信有效，超出时限会提示「登录任务已过期」，此时需要重新登录发送验证码；",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/remote/pushsms",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "异步登录税局【发送短信验证码】的返回值"
+        },
+        "smsCode": {
+          "type": "string",
+          "title": "税短信验证码"
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "smsCode"
+      ],
+      "required": [
+        "taskId",
+        "smsCode"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\":1780486852186337281,\r\n    \"smsCode\": \"787452\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "0uWveFxeyY",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "Svq3w47jsU",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "YxGCjjmtMY",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 431859726,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "登录返回的code",
+            "description": "2000：登录成功；4xxx;登录信息有误;8xxx短信发送频繁；5xxx:系统错误"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "登录成功示例",
+      "responseId": 431859726,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"登录成功\",\n    \"reqId\": \"309eaeb955ba48cfa85fa083553e5d40\"\n}",
+      "id": 405015806
+    },
+    {
+      "name": "异常示例",
+      "responseId": 431859726,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"code\": \"4006\",\n    \"success\": true,\n    \"message\": \"登录方式不正确！\"\n}",
+      "id": 405015807
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841700,
+  "ordering": 142,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-04-24T05:52:39.000Z",
+  "updatedAt": "2025-12-18T06:39:16.000Z",
+  "creatorId": 1442097,
+  "editorId": 887900,
+  "creatorUserId": 1442097,
+  "editorUserId": 887900,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

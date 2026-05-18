@@ -1,0 +1,331 @@
+{
+  "id": 322067265,
+  "name": "生产经营-缴税记录查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "nkt_5zm_GNy-Wl9SV3Ogd",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n注意: \n税局大厅缴款的渠道不可查询\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/payment/queryTaxPayment",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "ssqq": {
+          "type": "string",
+          "title": "所属期起",
+          "description": "所属期起，格式YYYYMM"
+        },
+        "ssqz": {
+          "type": "string",
+          "description": "所属期止，格式YYYYMM",
+          "title": "所属期止"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "ssqq",
+        "ssqz"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "ssqq",
+        "ssqz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"535474925760832\",\n    \"accountId\": \"4643350751792512\",\n    \"ssqq\": \"202506\",\n    \"ssqz\": \"202506\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 721125671,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dzsphm": {
+                  "type": "string",
+                  "title": "电子税票号码",
+                  "description": "电子税票号码"
+                },
+                "sjje": {
+                  "type": "string",
+                  "title": "缴税金额\t",
+                  "description": "缴税金额\t"
+                },
+                "ssqz": {
+                  "type": "string",
+                  "description": "税款所属期止",
+                  "title": "税款所属期止"
+                },
+                "ssqq": {
+                  "type": "string",
+                  "title": "税款所属期起",
+                  "description": "税款所属期起"
+                },
+                "bbmc": {
+                  "type": "string",
+                  "title": "报表类型\t",
+                  "description": "报表类型\t"
+                },
+                "jsrq": {
+                  "type": "string",
+                  "title": "缴税日期\t",
+                  "description": "缴税日期\t"
+                },
+                "jszl": {
+                  "type": "string",
+                  "title": "税款种类",
+                  "description": "10-正税 20-滞纳金 50-利息"
+                },
+                "jsfs": {
+                  "type": "string",
+                  "description": "缴税方式\t",
+                  "title": "缴税方式\t"
+                },
+                "xm": {
+                  "type": "string",
+                  "title": "姓名\t"
+                },
+                "ybtse": {
+                  "type": "string",
+                  "title": "应/补退税额\t"
+                },
+                "znj": {
+                  "type": "string",
+                  "title": "滞纳金\t"
+                },
+                "jszt": {
+                  "type": "string",
+                  "title": "缴税状态\t",
+                  "description": "缴税状态\t"
+                },
+                "zzlx": {
+                  "type": "string",
+                  "title": "证件类型\t"
+                },
+                "zzhm": {
+                  "type": "string",
+                  "title": "证件号码\t"
+                }
+              },
+              "x-apifox-refs": {},
+              "x-apifox-orders": [
+                "xm",
+                "zzlx",
+                "zzhm",
+                "ssqq",
+                "ssqz",
+                "bbmc",
+                "ybtse",
+                "znj",
+                "dzsphm",
+                "sjje",
+                "jszt",
+                "jsfs",
+                "jsrq",
+                "jszl"
+              ]
+            }
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 721125671,
+      "data": "{\n    \"reqId\": \"6090f28dfbb78c3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"ssqq\": \"202503\",\n            \"jsfs\": \"扫码支付\",\n            \"sjje\": 1383.67,\n            \"bbmc\": \"预缴纳税申报\",\n            \"dzsphm\": \"62500000007000\",\n            \"jsrq\": \"2025-07-10\",\n            \"jszl\": \"10\",\n            \"ssqz\": \"202506\"\n        },\n        {\n            \"ssqq\": \"202503\",\n            \"jsfs\": \"扫码支付\",\n            \"sjje\": 710.39,\n            \"bbmc\": \"预缴纳税申报\",\n            \"dzsphm\": \"62500000000054\",\n            \"jsrq\": \"2025-04-24\",\n            \"jszl\": \"10\",\n            \"ssqz\": \"202503\"\n        }\n    ]\n}",
+      "id": 646425808
+    },
+    {
+      "name": "异常示例",
+      "responseId": 721125671,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 646425809
+    },
+    {
+      "name": "查询失败",
+      "responseId": 721125671,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
+      "id": 646425810
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53477172,
+  "ordering": 107,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-15T04:00:32.000Z",
+  "updatedAt": "2026-05-08T03:34:57.000Z",
+  "creatorId": 1910680,
+  "editorId": 493303,
+  "creatorUserId": 1910680,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

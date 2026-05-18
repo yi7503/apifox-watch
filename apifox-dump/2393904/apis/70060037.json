@@ -1,0 +1,240 @@
+{
+  "id": 70060037,
+  "name": "保存申报辅助设置弹窗选项信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   保存申报辅助（弹窗）的相关设置选项，以及企业当前对弹窗的设置。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR | 参数格式不合法,不是有效的json格式!||\n| PARAMETER_ERROR | 选项节点对象数组optionCodeList不能包含非叶子节点数据！ | |\n| PARAMETER_ERROR | 同一个弹窗不能选择两个选项，请重新选择！ | |\n| PARAMETER_ERROR | 选项节点对象数组optionCodeList没有匹配到对应弹窗! |  |\n| PARAMETER_ERROR | 保存失败：optionCodeList节点不得为空！ |  |\n| INTERFACE_ERROR | 接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/saveDialogInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "optionCodeList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "optionCode": {
+                "type": "string",
+                "title": "选项code"
+              },
+              "memoJson": {
+                "type": "string",
+                "title": "备注信息"
+              },
+              "fileCode": {
+                "type": "string",
+                "title": "文件编码",
+                "description": "base64加密后的串，非必传。只有optionCode为强制申报使用"
+              },
+              "fileName": {
+                "type": "string",
+                "title": "文件名称"
+              }
+            },
+            "x-apifox-orders": [
+              "optionCode",
+              "memoJson",
+              "fileCode",
+              "fileName"
+            ],
+            "required": [
+              "optionCode",
+              "memoJson",
+              "fileName",
+              "fileCode"
+            ]
+          },
+          "title": "多条弹窗设置明细"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "optionCodeList"
+      ],
+      "required": [
+        "optionCodeList"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 455320626256640,\r\n    \"optionCodeList\": [\r\n        {\r\n            \"optionCode\": \"104002005\",\r\n            \"memoJson\": \"测试数据\",\r\n            \"fileCode\":\"UEsDBBQABgAIAAAAIQBKvAJxbQEAACgGAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooA...\",\r\n            \"fileName\":\"强制申报文件名称\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42948189,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "description": "错误码",
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "integer",
+            "title": "保存成功条数"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42948189,
+      "data": "{\n    \"reqId\": \"fade42d902694066be61057e59fbb88e\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": 1\n}",
+      "id": 42948190
+    },
+    {
+      "name": "异常示例",
+      "responseId": 42948189,
+      "data": "{\n    \"reqId\": \"ed22d60cb3614bc5915b445fea0aa0dd\",\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"选项节点对象数组optionCodeList不能包含非叶子节点数据！\",\n    \"data\": null\n}",
+      "id": 42948191
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 14015021,
+  "ordering": 56,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:38:46.000Z",
+  "updatedAt": "2025-01-03T06:38:47.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.42948189"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

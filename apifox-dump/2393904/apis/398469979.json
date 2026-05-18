@@ -1,0 +1,323 @@
+{
+  "id": 398469979,
+  "name": "账号查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "托管账号查询\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/account/queryAccount",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "integer",
+          "title": "账户ID"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业ID"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "TLjWYyFhLS",
+        "name": "Content-Type",
+        "required": "true",
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "EEB33jnCKK",
+        "name": "access_token",
+        "required": "true",
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "UOC6McUQPG",
+        "name": "req_date",
+        "required": "true",
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Ea8RPo5fUm",
+        "name": "req_sign",
+        "required": "true",
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 372439226,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "x-apifox-mock": "错误码"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "newEtaxFlag": {
+                  "type": "integer",
+                  "title": "新旧版标识"
+                },
+                "sflx": {
+                  "type": "string",
+                  "title": "身份类型"
+                },
+                "dq": {
+                  "type": "string",
+                  "title": "地区"
+                },
+                "accountId": {
+                  "type": "integer",
+                  "title": "账号id"
+                },
+                "zhzt": {
+                  "type": "string",
+                  "title": "账号状态",
+                  "description": "\"\" 未验证，0 验证通过，1 未通过'"
+                },
+                "gryhm": {
+                  "type": "string",
+                  "title": "个人用户名"
+                },
+                "nsrsbh": {
+                  "type": "string",
+                  "title": "纳税人识别号"
+                },
+                "productCode": {
+                  "type": "string",
+                  "title": "产品码"
+                },
+                "createTime": {
+                  "type": "string",
+                  "title": "创建时间"
+                },
+                "isDefaut": {
+                  "type": "boolean",
+                  "title": "是否默认账户"
+                },
+                "appKey": {
+                  "type": "integer",
+                  "title": "appKey"
+                },
+                "dlfs": {
+                  "type": "integer",
+                  "title": "登录方式"
+                },
+                "aggOrgId": {
+                  "type": "integer",
+                  "title": "企业ID"
+                },
+                "state": {
+                  "type": "integer",
+                  "title": "数据状态"
+                },
+                "dlzh": {
+                  "type": "string",
+                  "title": "登录账户"
+                },
+                "loginType": {
+                  "type": "integer",
+                  "title": " 特定主体标识"
+                },
+                "specType": {
+                  "type": "integer",
+                  "title": "特定主体类型"
+                },
+                "proxyNsrsbh": {
+                  "type": "string",
+                  "title": "代理机构税号"
+                }
+              },
+              "required": [
+                "newEtaxFlag",
+                "sflx",
+                "dq",
+                "accountId",
+                "zhzt",
+                "gryhm",
+                "nsrsbh",
+                "createTime",
+                "appKey",
+                "dlfs",
+                "aggOrgId",
+                "state"
+              ],
+              "x-apifox-orders": [
+                "newEtaxFlag",
+                "sflx",
+                "dq",
+                "accountId",
+                "zhzt",
+                "gryhm",
+                "nsrsbh",
+                "proxyNsrsbh",
+                "productCode",
+                "createTime",
+                "isDefaut",
+                "appKey",
+                "dlfs",
+                "aggOrgId",
+                "state",
+                "dlzh",
+                "loginType",
+                "specType"
+              ]
+            }
+          },
+          "success": {
+            "type": "boolean",
+            "x-apifox-mock": "接口是否成功"
+          },
+          "message": {
+            "type": "string",
+            "x-apifox-mock": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "x-apifox-mock": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 372439226,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": [\n        {\n            \"newEtaxFlag\": -1,\n            \"sflx\": \"KPY\",\n            \"dq\": \"1100\",\n            \"accountId\": 501319884953664,\n            \"zhzt\": \"\",\n            \"gryhm\": \"13466759059\",\n            \"nsrsbh\": \"9111*******W7XXU\",\n            \"productCode\": \"004\",\n            \"createTime\": \"2023-12-02 14:48:26\",\n            \"isDefaut\": false,\n            \"appKey\": 10001999,\n            \"dlfs\": 14,\n            \"aggOrgId\": 7583454730897015,\n            \"state\": 1\n        },\n        {\n            \"newEtaxFlag\": -1,\n            \"sflx\": \"KPY\",\n            \"dq\": \"1100\",\n            \"accountId\": 504325035988992,\n            \"zhzt\": \"\",\n            \"gryhm\": \"13466759052\",\n            \"nsrsbh\": \"91110108MA01BW7XXU\",\n            \"proxyNsrsbh\": \"9111*********XHH\",\n            \"createTime\": \"2023-12-19 14:24:24\",\n            \"dlzh\": \"dlzh1004\",\n            \"appKey\": 10001999,\n            \"dlfs\": 15,\n            \"aggOrgId\": 7583454730897015,\n            \"state\": 1\n        }\n    ],\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"cb156062d05944d4bb10b2be18233028\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 372439227
+    },
+    {
+      "name": "异常示例",
+      "responseId": 372439226,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"没有找到对应的企业！\",\n    \"reqId\": \"83d7802f3fb3403d853e0651577319f8\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 372439228
+    },
+    {
+      "name": "未登录",
+      "responseId": 372439226,
+      "data": "{\n    \"reqId\": \"0516f06b781b4590a23de8b7b148a853\",\n    \"code\": \"40100\",\n    \"success\": false,\n    \"message\": \"未登录!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 372439229
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75021807,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-12-29T10:03:52.000Z",
+  "updatedAt": "2026-03-06T02:02:49.000Z",
+  "creatorId": 2795319,
+  "editorId": 2400309,
+  "creatorUserId": 2795319,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

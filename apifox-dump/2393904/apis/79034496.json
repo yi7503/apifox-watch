@@ -1,0 +1,168 @@
+{
+  "id": 79034496,
+  "name": "海关缴款书勾选结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询企业电子发票服务平台（发票云）海关缴款书勾选结果。\n\n## 错误码\n\n| 错误代码 | 错误消息        | 状态码                     |\n| -------- | --------------- | -------------------------- |\n| 50001    | reqId 不能为空  | 请求参数中的reqId不能为空  |\n| 50002    | nsrsbh 不能为空 | 请求参数中的nsrsbh不能为空 |\n| 50008    | 参数不能为空    | 整个请求参数不能为空       |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/hgjksgxjg",
+  "tags": [
+    "发票认证",
+    "数字证书认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/34563808"
+    },
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"91****************90\",\r\n  \"reqId\": 459937506283840\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "IrOy3425V0",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "VIQHxkFIlt",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "l565XKHMqt",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 199398874,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXTK9AVNV52PMFWZKJ66H4EX": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HXE5STYSZJ50761CMT1P9E0Y": {
+                    "$ref": "#/definitions/54191278",
+                    "x-apifox-overrides": {
+                      "page": null
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HXE5STYSZJ50761CMT1P9E0Y"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXTK9AVNV52PMFWZKJ66H4EX"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 199398874,
+      "data": "{\n    \"reqId\": \"a1ced94a044748eea2b3c601a3944ed5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"customReqId\": \"1000199942e88d10e4f44d148656f48b7ae3b3eb\",\n        \"list\": [\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"cljg\": \"1\",\n                \"code\": null,\n                \"fplx\": \"17\",\n                \"gfsbh\": \"91***************7E\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2024-02-27 22:58:18\",\n                \"gxzt\": \"1\",\n                \"jkshm\": \"22***************39-L02\",\n                \"kprq\": \"2024-01-26 00:00:00\",\n                \"message\": null,\n                \"se\": 1945.01,\n                \"skssq\": \"202403\",\n                \"yskssq\": null,\n                \"yxse\": 1945.01,\n                \"zt\": \"3\"\n            }\n        ],\n        \"message\": null,\n        \"zt\": \"3\"\n    }\n}",
+      "id": 19999175
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58718956,
+  "ordering": 291,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-10-30T06:57:03.000Z",
+  "updatedAt": "2025-06-10T09:14:50.000Z",
+  "creatorId": 1426961,
+  "editorId": 2706439,
+  "creatorUserId": 1426961,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.199398874"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

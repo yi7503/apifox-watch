@@ -1,0 +1,284 @@
+{
+  "id": 239363004,
+  "name": "订购修改",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于修改已订购信息中的「企业名称」和「地区」。\n\n:::tip\n税号不支持修改，税号错误需调用 [企业取消授权](api-66706482) ，再重新调用 [订购产品](api-145565464)。\n:::\n\n\n\n## 错误码\n| **错误代码** | **错误信息**  | **示例** | **解决方案** |\n| --- | --- | --- | --- |\n| PARAMETER_ERROR |企业Id(aggOrgId)不能为空！ | | |\n| PARAMETER_ERROR | 纳税人识别号(nsrsbh)不能为空！ | | |\n| PARAMETER_ERROR | 纳税人识别号只能包含数字和字母！ | | |\n| PARAMETER_ERROR | 纳税人识别号只能为15位、17位、18位或20位！ | | |\n| PARAMETER_ERROR | 企业纳税人识别号重复! | | |\n| PARAMETER_ERROR | 企业名称(aggOrgName)不能为空！ | | |\n| PARAMETER_ERROR | 企业名称重复! | | |\n| PARAMETER_ERROR | 地区编码有误，请根据地区编码附录中限定的编码传参 | | |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/productPurchaseModify",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "税号",
+          "description": "税号不支持修改，税号错误需调用「企业取消授权」再重新订购",
+          "deprecated": true
+        },
+        "aggOrgName": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "dq": {
+          "type": "string",
+          "title": "地区",
+          "examples": [
+            "31"
+          ],
+          "description": "见附录：[地区代码](apifox://link/pages/2246773)"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "aggOrgName",
+        "dq",
+        "nsrsbh"
+      ],
+      "required": [
+        "aggOrgName",
+        "dq",
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "b2HFgIPJxQ",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "5ovtpQcjKS",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "eyhz9DMYOg",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "wLZW0UQYA4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 575808264,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "examples": [
+              "SUCCESS"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "aggOrgId": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "企业id"
+              },
+              "purchaseDetailList": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "productCode": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "产品码"
+                    },
+                    "success": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ],
+                      "title": "订购成功标识"
+                    },
+                    "message": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "订购返回描述",
+                      "description": "订购成功、订购失败、订购成功(已订购)"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "productCode",
+                    "success",
+                    "message"
+                  ]
+                },
+                "title": "订购详情"
+              }
+            },
+            "x-apifox-orders": [
+              "aggOrgId",
+              "purchaseDetailList"
+            ],
+            "title": "业务数据"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "reqId",
+          "success",
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "订购返回示例",
+      "responseId": 575808264,
+      "data": "{\n    \"reqId\": \"c835d3478de34f17b479e269fe96c826\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 443937037
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28539131,
+  "ordering": 86,
+  "responsibleId": 887778,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-11-29T09:07:58.000Z",
+  "updatedAt": "2026-05-11T01:34:07.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

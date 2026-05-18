@@ -1,0 +1,505 @@
+{
+  "id": 329126162,
+  "name": "退税报关单",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "获取退税报关单",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/customs/imex/dzh/getHQTSBGD2",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "jsonData": {
+          "type": "object",
+          "properties": {
+            "body": {
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "object",
+                  "properties": {
+                    "rqq": {
+                      "type": "string",
+                      "title": "日期起",
+                      "description": "格式yyyymmdd"
+                    },
+                    "rqz": {
+                      "type": "string",
+                      "title": "日期止",
+                      "description": "格式yyyymmdd"
+                    },
+                    "nsrsbh": {
+                      "type": "string",
+                      "title": "纳税人识别号"
+                    },
+                    "entryId": {
+                      "type": "string",
+                      "title": "报关单号",
+                      "description": "给值后，日期给空"
+                    },
+                    "decType": {
+                      "type": "string",
+                      "title": "报关类型",
+                      "enum": [
+                        "1",
+                        "2",
+                        "3"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "1",
+                          "name": "结关报关单",
+                          "description": ""
+                        },
+                        {
+                          "value": "2",
+                          "name": "启运港退税报关单",
+                          "description": ""
+                        },
+                        {
+                          "value": "3",
+                          "name": "报关单退税联",
+                          "description": ""
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "nsrsbh",
+                    "rqq",
+                    "rqz"
+                  ],
+                  "x-apifox-orders": [
+                    "rqq",
+                    "rqz",
+                    "nsrsbh",
+                    "entryId",
+                    "decType"
+                  ]
+                }
+              },
+              "x-apifox-orders": [
+                "input"
+              ],
+              "required": [
+                "input"
+              ],
+              "description": "此处为xml内的节点"
+            }
+          },
+          "x-apifox-orders": [
+            "body"
+          ],
+          "required": [
+            "body"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "jsonData"
+      ],
+      "required": [
+        "jsonData"
+      ],
+      "xml": {
+        "name": "business"
+      }
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<business comment=\"获取退税报关单2\" id=\"HQTSBGD2\">\r\n <body yylxdm=\"1\">\r\n  <input>\r\n    <nsrsbh>纳税人识别号</nsrsbh>\r\n    <rqq>日期起（格式yyyymmdd）</rqq>\r\n    <rqz>日期止（格式yyyymmdd）</rqz>\r\n    <entryId>报关单号（给值后，日期给空）</entryId>\r\n    <decType>1结关报关单,2启运港退税报关单,3报关单退税联</decType>\r\n  </input>\r\n </body>\r\n</business>",
+        "mediaType": "application/xml",
+        "description": ""
+      },
+      {
+        "name": "示例 1",
+        "value": "{\r\n  \"jsonData\": \"\r\n    <?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\n\r\n    <business comment=\\\"获取退税报关单2\\\" id=\\\"HQTSBGD2\\\">\\n    \r\n      <body yylxdm=\\\"1\\\">\\n        \r\n        <input>\\n            \r\n          <nsrsbh>9144030076*******</nsrsbh>\\n\r\n          <rqq>20250702</rqq>\\n\r\n          <rqz>20250708</rqz>\\n\r\n          <entryId></entryId>\\n\r\n          <decType>1</decType>\\n\r\n        </input>\\n\r\n      </body>\\n\r\n    </business>\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "lQa3I8Bz4S",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "S2S1t4qK1N",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "PImKOuxSLV",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      },
+      {
+        "id": "cpBgB8hg6A",
+        "name": "Content-Type",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "application/json"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 733195787,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "description": "返回报文是已XML字符串形式返回，具体样式参考示例",
+            "x-apifox-orders": [
+              "RtxMessage"
+            ],
+            "properties": {
+              "RtxMessage": {
+                "type": "object",
+                "properties": {
+                  "Dec": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "DecHead": {
+                          "type": "object",
+                          "properties": {
+                            "bgd_no": {
+                              "type": "string",
+                              "title": "报关单编号"
+                            },
+                            "lj_date": {
+                              "type": "string",
+                              "title": "出口日期",
+                              "description": "格式：yyyyMMdd，例如：20250702"
+                            },
+                            "ht_no": {
+                              "type": "string",
+                              "title": "合同编号"
+                            },
+                            "cj_type": {
+                              "type": "string",
+                              "title": "成交方式",
+                              "examples": [
+                                "FOB"
+                              ],
+                              "description": "参考名称：CIF;C&F;FOB;C&I;市场价;垫仓;EXW"
+                            },
+                            "yf": {
+                              "type": "string",
+                              "title": "运费",
+                              "description": "单位（分），如果要转成元需要除以100"
+                            },
+                            "bf": {
+                              "type": "string",
+                              "title": "保费"
+                            },
+                            "zf": {
+                              "type": "string",
+                              "title": "杂费"
+                            },
+                            "my_type": {
+                              "type": "string",
+                              "title": "贸易类型",
+                              "description": "详见附录-交易方式代码"
+                            },
+                            "traf_name": {
+                              "type": "string",
+                              "title": "运输工具名称"
+                            },
+                            "yf_type": {
+                              "type": "string",
+                              "title": "运费类型",
+                              "description": "1-运费率，2-每吨货物运费单价（根据毛总计算运费），3-运费总价"
+                            },
+                            "Yf_bz": {
+                              "type": "string",
+                              "title": "运费币制",
+                              "description": "详见附录-货币代码"
+                            },
+                            "Bf_type": {
+                              "type": "string",
+                              "title": "保费类型",
+                              "description": "1-保险费率，3-保险费总价"
+                            },
+                            "Bf_bz": {
+                              "type": "string",
+                              "description": "详见附录-货币代码",
+                              "title": "保费币制"
+                            },
+                            "Zf_type": {
+                              "type": "string",
+                              "title": "杂费类型"
+                            },
+                            "Zf_bz": {
+                              "type": "string",
+                              "description": "详见附录-货币代码",
+                              "title": "杂费标志"
+                            }
+                          },
+                          "yf_type": {
+                            "type": "string"
+                          },
+                          "Yf_bz": {
+                            "type": "string"
+                          },
+                          "Bf_type": {
+                            "type": "string"
+                          },
+                          "Bf_bz": {
+                            "type": "string"
+                          },
+                          "Zf_type": {
+                            "type": "string"
+                          },
+                          "Zf_bz": {
+                            "type": "string"
+                          },
+                          "x-apifox-orders": [
+                            "bgd_no",
+                            "lj_date",
+                            "ht_no",
+                            "cj_type",
+                            "yf",
+                            "yf_type",
+                            "Yf_bz",
+                            "bf",
+                            "Bf_type",
+                            "Bf_bz",
+                            "zf",
+                            "Zf_type",
+                            "Zf_bz",
+                            "my_type",
+                            "traf_name"
+                          ]
+                        },
+                        "DecLists": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "spxh": {
+                                "type": "string",
+                                "title": "商品序号"
+                              },
+                              "cmcode": {
+                                "type": "string",
+                                "title": "海关编码"
+                              },
+                              "cm_name": {
+                                "type": "string",
+                                "title": "商品名称"
+                              },
+                              "Yb_bz": {
+                                "type": "string",
+                                "title": "成交币制",
+                                "description": "详见附录-货币代码"
+                              },
+                              "yb_amt": {
+                                "type": "string",
+                                "title": "成交金额"
+                              },
+                              "Fd_unit": {
+                                "type": "string",
+                                "title": "法定单位ID"
+                              },
+                              "Fd_qnt": {
+                                "type": "string",
+                                "title": "法定数量"
+                              },
+                              "No2_Fd_qnt": {
+                                "type": "string",
+                                "title": "第二法定数量"
+                              },
+                              "Cj_unit": {
+                                "type": "string",
+                                "title": "成交单位ID"
+                              },
+                              "Cj_qnt": {
+                                "type": "string",
+                                "title": "成交单位数量"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "spxh",
+                              "cmcode",
+                              "cm_name",
+                              "Yb_bz",
+                              "yb_amt",
+                              "Fd_unit",
+                              "Fd_qnt",
+                              "No2_Fd_qnt",
+                              "Cj_unit",
+                              "Cj_qnt"
+                            ],
+                            "description": "XML节点名称：DecList"
+                          }
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "DecHead",
+                        "DecLists"
+                      ]
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "Dec"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 733195787,
+      "data": "{\r\n  \"reqId\": \"b79a96e3c51640c9b12ce46cd0fa8f03\",\r\n  \"code\": \"2000\",\r\n  \"success\": true,\r\n  \"message\": null,\r\n  \"data\":\"\r\n    <?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n    <business comment=\"获取退税报关单\" id=\"HQTSBGD2\">\r\n      <body yylxdm=\"1\">\r\n        <output>\r\n          <returncode>返回code</returncode>\r\n          <returnmsg>返回信息</returnmsg>\r\n          <data><![CDATA[\r\n          <?xml version=\"1.0\" encoding=\"gb2312\"?>\r\n          <RtxMessage>\r\n              <Dec>\r\n                  <DecHead>\r\n                      <bgd_no>4258202100009*****</bgd_no>\r\n                      <hgdjc_no></hgdjc_no>\r\n                      <Hxd_no></Hxd_no>\r\n                      <lj_date>202*****</lj_date>\r\n                      <ht_no>*****1446A</ht_no>\r\n                      <cj_type>FOB</cj_type>\r\n                      <yf>0</yf>\r\n                      <yf_type></yf_type>\r\n                      <Yf_bz></Yf_bz>\r\n                      <bf>0</bf>\r\n                      <Bf_type></Bf_type>\r\n                      <Bf_bz></Bf_bz>\r\n                      <zf>0</zf>\r\n                      <Zf_type></Zf_type>\r\n                      <Zf_bz></Zf_bz>\r\n                      <my_type>0110</my_type>\r\n                      <traf_name>***** CHENG</traf_name>\r\n                  </DecHead>\r\n                  <DecLists>\r\n                      <DecList>\r\n                          <spxh>1</spxh>\r\n                          <cmcode>390410*****</cmcode>\r\n                          <cm_name>聚氯乙烯树脂</cm_name>\r\n                          <Yb_bz>*****</Yb_bz>\r\n                          <yb_amt>90*****.75</yb_amt>\r\n                          <Fd_unit>035</Fd_unit>\r\n                          <Fd_qnt>59*****</Fd_qnt>\r\n                          <No2_Fd_unit></No2_Fd_unit>\r\n                          <No2_Fd_qnt>0</No2_Fd_qnt>\r\n                          <Cj_unit>035</Cj_unit>\r\n                          <Cj_qnt>59*****</Cj_qnt>\r\n                      </DecList>\r\n                  </DecLists>\r\n              </Dec>\r\n          </RtxMessage>\r\n              ]\r\n            ]>\r\n          </data>\r\n        </output>\r\n      <head>\r\n      <cardNo>口岸卡编号</cardNo>\r\n    <corpName>企业名称</corpName>\r\n    <zzjgDm>企业组织机构代码证</zzjgDm>\r\n    <certNo>证书编号</certNo>\r\n    </head>\r\n\r\n      </body>\r\n\r\n    </business> \r\n    \"   \r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650513372
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63682248,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-30T08:20:00.000Z",
+  "updatedAt": "2025-12-11T10:35:55.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

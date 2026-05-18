@@ -1,0 +1,17 @@
+{
+  "id": 3726002,
+  "name": "数电票号码规则",
+  "sidebarTitle": "",
+  "content": "### 数电票号码规则\n\n号码编码规则：\n1、前两位代表年度；\n2、三四位代表区域，省级税务机关沿用行政区划代码前2位，计划单列市单独的编码而不是原来用4位的行政区划代码；\n3、计划单列市区域编码分别是大连（91）、青岛（92）、宁波（93）、厦门（94）、深圳（95），规律是91到95从北到南；\n\n![kaipiao_yfm](https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/apiimage/kaipiao_yfm.png)",
+  "folderId": 14486016,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-02-18T01:46:25.000Z",
+  "updatedAt": "2024-02-19T09:07:34.000Z",
+  "creatorId": 493984,
+  "editorId": 493984,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

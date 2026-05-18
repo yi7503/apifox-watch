@@ -1,0 +1,249 @@
+{
+  "id": 243141331,
+  "name": "限制高消费关联企业",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "QfPWh8FU0wW2Q1SAPzpwy",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "用于获取企业涉诉相关基础信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/limitHighConsumerRelationEn",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582611103,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "relatingCaseId": {
+                  "type": "string",
+                  "title": "涉诉事件ID"
+                },
+                "city": {
+                  "type": "string",
+                  "title": "城市"
+                },
+                "country": {
+                  "type": "string",
+                  "title": "区县"
+                },
+                "caseDate": {
+                  "type": "string",
+                  "title": "立案日期"
+                },
+                "name": {
+                  "type": "string",
+                  "title": "企业名称"
+                },
+                "type": {
+                  "type": "string",
+                  "title": "企业类型"
+                },
+                "typeName": {
+                  "type": "string",
+                  "title": "企业类型映射"
+                },
+                "limitConsumerName": {
+                  "type": "string",
+                  "title": "姓名"
+                },
+                "eid": {
+                  "type": "string",
+                  "title": "企业唯一代码"
+                },
+                "province": {
+                  "type": "string",
+                  "title": "省份"
+                }
+              },
+              "x-apifox-orders": [
+                "name",
+                "eid",
+                "type",
+                "typeName",
+                "relatingCaseId",
+                "caseDate",
+                "limitConsumerName",
+                "province",
+                "city",
+                "country"
+              ],
+              "x-apifox-refs": {}
+            },
+            "title": "业务数据"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582611103,
+      "data": "{\n    \"reqId\": \"01dcfeac7221471491b602b057c2cc7e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"country\": \"海淀区\",\n            \"eid\": \"911*********Y\",\n            \"caseDate\": \"2023-08-22\",\n            \"province\": \"北京\",\n            \"city\": \"北京市\",\n            \"limitConsumerName\": \"张三*\",\n            \"name\": \"*******科技有限公司\",\n            \"type\": \"有限责任公司（自然人投资或控股）\",\n            \"relatingCaseId\": \"（2023）京0108执*******号\"\n        }\n    ]\n}",
+      "id": 454776814
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582611103,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "id": 454776815
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 94,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T03:21:10.000Z",
+  "updatedAt": "2025-02-20T08:49:19.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582611103"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

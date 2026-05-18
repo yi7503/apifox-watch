@@ -1,0 +1,235 @@
+{
+  "id": 268511099,
+  "name": "发起企业基本信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "ku6COsKfYqtn6zFNvuiTJ",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于发起企业基本信息（需区分自持和托管）：\n1. 自持账号模式下：自行异步登录后再调用该接口；\n2. 托管模式下：传入账号必要信息直接调用。\n\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| 2000 | 成功 | |\n| 4xxx| 获取失败 | |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/beginOrgInfoTask",
+  "tags": [
+    "企业信息采集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "nsrsbh",
+        "areaCode"
+      ],
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "纳税人识别号"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "见附录：[地区代码](apifox://link/pages/2246773)地区编码（二位或四位地区编码）",
+          "examples": [
+            "11"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "areaCode"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91************0\",\r\n    \"areaCode\": \"二位或四位地区编码\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "qdkYrvK1jv",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "Hw32Fiw2tC",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "uabTZYTAQj",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 627658848,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "x-apifox-mock": "1695797461872951298"
+          },
+          "code": {
+            "type": "string",
+            "title": "请求code",
+            "description": "请求code(2000 成功,其他失败)",
+            "x-apifox-mock": "2000"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息描述",
+            "description": "错误信息描述",
+            "x-apifox-mock": "接口调用成功"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "description": "主任务ID"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId"
+            ],
+            "description": "数据结果",
+            "required": [
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "success",
+          "code"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "message",
+          "success",
+          "data"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功返回结果",
+      "responseId": 627658848,
+      "data": "{\n    \"reqId\": \"19399fbf85694c71bc5448a392ad8dd0\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"taskId\": \"12345678\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 527990476
+    },
+    {
+      "name": "异常返回结果",
+      "responseId": 627658848,
+      "data": "{\n    \"code\": \"5000\",\n    \"success\": false,\n    \"message\": \"异常信息\",\n    \"reqId\": \"d56999744734437eb10f3369d52efc15\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 527990477
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 51694530,
+  "ordering": 217,
+  "responsibleId": 1910680,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-07T02:57:33.000Z",
+  "updatedAt": "2026-02-05T06:16:52.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

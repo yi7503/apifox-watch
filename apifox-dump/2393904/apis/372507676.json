@@ -1,0 +1,186 @@
+{
+  "id": 372507676,
+  "name": "缴费工资申报记录查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "g2xseWmc85ww1jHIvMLNd",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "缴费工资申报后，在本模块查询以往缴费工资申报记录以及申报状态",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/queryPaymentSalaryDeclarationRecord",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "sbsjq": {
+          "type": "string",
+          "description": "申报时间起，格式：YYYY-MM-DD"
+        },
+        "sbsjz": {
+          "type": "string",
+          "description": "申报时间止，格式：YYYY-MM-DD"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "sbsjq",
+        "sbsjz",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "sbsjq",
+        "sbsjz"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n   \"aggOrgId\": \"369165632266624\",\r\n    \"accountId\": \"5066521766583914271\",\r\n    \"sbsjq\": \"2025-10-01\",\r\n    \"sbsjz\": \"2025-11-31\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 807895830,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "$ref": "#/definitions/217260735"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 807895830,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jfgzsblb\": [\n            {\n                \"sbsj\": \"2025-10-01 17:10:59\",\n                \"sbjlmx\": [\n                    {\n                        \"xm\": \"XX\",\n                        \"ysbgz\": \"\",\n                        \"zjlx\": \"201\",\n                        \"sxnyz\": \"2026-06\",\n                        \"sbyy\": \"\",\n                        \"zt\": \"\",\n                        \"xjfgz\": \"6326\",\n                        \"zjhm\": \"142000000000032\",\n                        \"sxnyq\": \"2025-07\"\n                    }\n                ],\n                \"qysj\": \"\",\n                \"zt\": \"\",\n                \"sblx\": \"01\",\n                \"zgzs\": \"1\"\n            }\n        ]\n    },\n    \"timestamp\": \"2025-11-11 14:45:28\",\n    \"reqId\": \"T56d9a52d65ff4433ba56a9836d9b17bd\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 723852002
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 71473594,
+  "ordering": 61,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-11-06T03:35:36.000Z",
+  "updatedAt": "2025-11-27T09:03:29.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

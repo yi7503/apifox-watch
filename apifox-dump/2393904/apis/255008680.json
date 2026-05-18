@@ -1,0 +1,259 @@
+{
+  "id": 255008680,
+  "name": "撤销归集待执行任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可通过此接口撤销未执行的归集任务，执行中(status=1)的任务无法撤销。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/terminateCollectionTask",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/xml",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "企业纳税人识别号，必填"
+        },
+        "taskIds": {
+          "type": "string",
+          "title": "任务ID",
+          "description": "多个id之间用逗号（,）分隔"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号唯一标识",
+          "description": "多账号下的账号唯一标识"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "nsrsbh",
+        "taskIds"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"taskIds\": \"2350423640388468736,2349917926637240320,2349917887084953600,2349917850082803712\"\r\n}",
+        "mediaType": "application/xml",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "S4CQ6aHueY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "c2c8mNZDgi",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "491JAzxqeH",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 603752676,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "description": " 返回code(2000成功，其他失败)"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "taskId": {
+                      "type": "string",
+                      "title": "任务id"
+                    },
+                    "status": {
+                      "type": "string",
+                      "title": "执行状态",
+                      "enum": [
+                        "0-任务不存在",
+                        "1-执行中",
+                        "2-撤销成功",
+                        "3-已完成"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "0-任务不存在",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "1-执行中",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "2-撤销成功",
+                          "name": " ",
+                          "description": ""
+                        },
+                        {
+                          "value": "3-已完成",
+                          "name": "",
+                          "description": ""
+                        }
+                      ],
+                      "description": "执行中的任务无法撤销"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "taskId",
+                    "status"
+                  ]
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "list"
+            ],
+            "x-apifox-refs": {}
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 603752676,
+      "data": "{\n    \"reqId\": \"7eeae4c409ec404eab3d7908134467843\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"list\": [\n            {\n                \"taskId\": \"2350423640388468736\",\n                \"status\": \"0\"\n            },\n            {\n                \"taskId\": \"2349917926637240320\",\n                \"status\": \"1\"\n            },\n            {\n                \"taskId\": \"2349917887084953600\",\n                \"status\": \"2\"\n            },\n            {\n                \"taskId\": \"2349917850082803712\",\n                \"status\": \"3\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 470799088
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13475569,
+  "ordering": 122,
+  "responsibleId": 2118003,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-01-16T02:06:40.000Z",
+  "updatedAt": "2025-07-30T02:38:10.000Z",
+  "creatorId": 2118003,
+  "editorId": 2706439,
+  "creatorUserId": 2118003,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.603752676"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

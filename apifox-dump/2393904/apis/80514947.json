@@ -1,0 +1,278 @@
+{
+  "id": 80514947,
+  "name": "税源信息采集接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n上传各税种整表数据（每次只能上传一个税种），需要整表数据。只支持房产税和土地使用税发起税源信息采集的新增、修改、作废\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\nPARAMETER_ERROR\t| 企业Id(aggOrgId)不能为空！\t\t\t\t|参数错误 |\nPARAMETER_ERROR\t| 请求参数不能为空\t\t\t\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 参数格式不正确，请参考文档!\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 当前已存在税源明细任务执行中，请稍后再试!\t|业务错误 |\nBUSINESS_ERROR\t| 当前已存在申报任务执行中，请稍后再试！\t|业务错误 |\nBUSINESS_ERROR\t| 当前不支持操作，敬请期待上线！\t\t\t|业务错误 |\nINTERFACE_ERROR\t| 接口异常，请联系技术人员\t\t\t\t\t|程序错误 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadTaxFundTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "x-apifox-overrides": {},
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "year",
+        "period",
+        "bsswjg",
+        "fcsSycjData",
+        "cztdsSycjData"
+      ],
+      "properties": {
+        "year": {
+          "type": "integer",
+          "title": "年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "月"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "fcsSycjData": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "01H4FXQWDVN0ZJ57C2FXTVR5PB": {
+              "x-tmp-pending-properties": true
+            }
+          },
+          "title": "房产税税源采集报文",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文",
+          "x-apifox-orders": [
+            "01H4FXQWDVN0ZJ57C2FXTVR5PB"
+          ],
+          "required": [
+            "01H4FXQWDVN0ZJ57C2FXTVR5PB"
+          ]
+        },
+        "cztdsSycjData": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {},
+          "title": "城镇土地使用税税源采集报文",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文",
+          "x-apifox-orders": []
+        },
+        "bsswjg": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "税务机关名称"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "账号ID（多账号场景使用）"
+        }
+      },
+      "required": [
+        "year",
+        "period",
+        "aggOrgId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"orgId\": 452681066557440,\r\n    \"period\": 5,\r\n    \"year\": 2023,\r\n    \"fcsSycjData\":\"fcsSycjData字符串\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 202756017,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1AZAA24M8WA0SKCX52NNY4": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "fromDate": {
+                    "type": "string",
+                    "title": "所属期起"
+                  },
+                  "toDate": {
+                    "type": "string",
+                    "title": "所属期止"
+                  },
+                  "yzpzzlDm": {
+                    "type": "string",
+                    "title": "应征凭证种类代码"
+                  },
+                  "taskId": {
+                    "type": "string",
+                    "description": "申报任务id，可以通过查询任务状态接口来查询任务执行的情况",
+                    "title": "申报任务id"
+                  }
+                },
+                "x-apifox-orders": [
+                  "fromDate",
+                  "toDate",
+                  "yzpzzlDm",
+                  "taskId"
+                ],
+                "required": [
+                  "fromDate",
+                  "toDate",
+                  "yzpzzlDm",
+                  "taskId"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1AZAA24M8WA0SKCX52NNY4"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 202756017,
+      "data": "{\"reqId\":\"662dd4a0e01d41daac21ef5c7da69402\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 20365610
+    },
+    {
+      "name": "不支持示例",
+      "responseId": 202756017,
+      "data": "{\n    \"req_id\": \"fc09ab9f6335461087cad7b16c8fa9a2\",\n    \"code\": \"BUSINESS_ERROR\",\n    \"success\": true,\n    \"message\": \"当前不支持操作，敬请期待上线！\",\n    \"data\": null\n}",
+      "id": 20365611
+    },
+    {
+      "name": "参数或业务校验失败",
+      "responseId": 202756017,
+      "data": "{\n    \"reqId\": \"c52d185931964271947e9e07c1b88996\",\n    \"code\": \"PARAMETERCheck\",\n    \"success\": true,\n    \"message\": \"参数校验失败，请检查\",\n    \"data\": {\n        \"checkMessage\": [\n            \"$.fjssbb: 必传不能为空\",\n            \"$.zzssyyybnsr01bqxsqkmxb: 必传不能为空\",\n            \"$.zzssyyybnsrzb: 必传不能为空\",\n            \"$.zzssyyybnsr02bqjxsemxb: 必传不能为空\"\n        ]\n    }\n}",
+      "id": 20365612
+    },
+    {
+      "name": "成功示例",
+      "responseId": 202756017,
+      "data": "{\n    \"req_id\": \"4ae0d9d28f11414b8a1ed19d82d758d3\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"yzpzzlDm\": \"BDA0610791SYCJ\",\n        \"fromDate\": \"2023-04-01\",\n        \"toDate\": \"2023-04-30\",\n        \"taskId\": \"464713454135296\"\n    }\n}",
+      "id": 20367002
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 20506084,
+  "ordering": 56,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:37:58.000Z",
+  "updatedAt": "2025-02-27T12:49:41.000Z",
+  "creatorId": 1452584,
+  "editorId": 1910680,
+  "creatorUserId": 1452584,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.202756017"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

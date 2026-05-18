@@ -1,0 +1,232 @@
+{
+  "id": 286958492,
+  "name": "获取自持业务缓存 登录cookie ",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n获取缓存中指定类型的cookie,适用对象针对业务在企享云且登录增强的客户，目前支持etax ，tpass，dppt",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/zc/getCacheCookie",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "四川传值5100，青岛为3702。"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "type": {
+          "type": "string",
+          "title": "cookie类型",
+          "description": "1表示tpass ，2表示etax，3表示dppt.支持多个组合：如1,2,3"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户id",
+          "description": "登录接口返回accountid"
+        }
+      },
+      "x-apifox-orders": [
+        "areaCode",
+        "nsrsbh",
+        "accountId",
+        "type"
+      ],
+      "required": [
+        "areaCode",
+        "nsrsbh"
+      ]
+    },
+    "mediaType": "",
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "gidkLSQL6x",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "TnbNI99Y36",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "uLFDyDU339",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "grquKzxZO0",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 659972624,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "tpass": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [],
+                "title": "cookie "
+              },
+              "etax": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": []
+              },
+              "dppt": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": []
+              }
+            },
+            "description": " ",
+            "x-apifox-orders": [
+              "tpass",
+              "etax",
+              "dppt"
+            ],
+            "required": [
+              "dppt"
+            ]
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功 Cookie有效示例",
+      "responseId": 659972624,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"tpass\": {\n            \"cookie\": \"token=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY4NzQxZjk1NDM0ZjQ3YmJhYmJjM2M1ZDVkYjI5ZDIzIn0.TGM6MXU6Bqy_PSBIi80oLhCIJuOr6dqHj8fIqM0GP_liL2DzrA2bLIYhPhW-MmLoog1N_sV310AqeN2YAdc-3g\",\n            \"localStorage\": {\n                \"naturepublicKey\": \"04C0B7C084000B88D74239F937BE3FC5F453B085C0F255D4BCCE6D04C9F4CB32942528DA9CE461A372FF226890050BEADBDECE8F6C638187A4EC93034147411F3B\",\n                \"access_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY4NzQxZjk1NDM0ZjQ3YmJhYmJjM2M1ZDVkYjI5ZDIzIn0.TGM6MXU6Bqy_PSBIi80oLhCIJuOr6dqHj8fIqM0GP_liL2DzrA2bLIYhPhW-MmLoog1N_sV310AqeN2YAdc-3g\",\n                \"code\": \"1B896663FE3C4F5AA2C1991B04BE2C59\",\n                \"clientId\": \"xdf6a5cd4cx74bfca46x3bbfcxa4c4xf\",\n                \"areaPrefix\": \"3300\",\n                \"new_key16\": \"MtNOiEIpdt!Ppb9t\",\n                \"natureuuid\": \"51341b95c3494e538ef5ebb287e13669\",\n                \"userinfo\": \"JTdCJTIyY2xpZW50X2lkJTIyJTNBJTIwJTIydGVmZTU1ZDYzYjVrNDg3MzlldDNlZTRkYjUzOTkyZjMlMjIlMkMlMjAlMjJjbGllbnRfdHlwZSUyMiUzQSUyMCUyMjAyJTIyJTJDJTIwJTIydXNlcl90eXBlJTIyJTNBJTIwJTIyMiUyMiUyQyUyMCUyMnVzZXJfbmFtZSUyMiUzQSUyMCUyMjMzMDQyMTE5OTcxMDA0NDcyMCUyMiUyQyUyMCUyMmZ1bGxfbmFtZSUyMiUzQSUyMCUyMiU1Q3U4ZGVmJTVDdTY4YTYlNUN1NmQwMSUyMiUyQyUyMCUyMnRydXN0ZWRfbGV2ZWwlMjIlM0ElMjAlMjIlNUN1NTZkYiU1Q3U3ZWE3JTIyJTJDJTIwJTIybmV3RXRheEZsYWclMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIyb3ZlcnNlYXMlMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIycmVnaXN0cmF0aW9uVHlwZU9mTGV2eVN1YmplY3QlMjIlM0ElMjAlMjIxMTEwJTIyJTJDJTIwJTIyZnVuY3Rpb25NZW51ZSUyMiUzQSUyMCU1QiUyMkkwMDAwMDAwMDA5JTIyJTJDJTIwJTIySTAwMDAwMDAwMTAlMjIlMkMlMjAlMjJJMDAwMDAwMDAxMSUyMiUyQyUyMCUyMkkwMDAwMDAwMDEyJTIyJTJDJTIwJTIySTMzMDAwMDAwMDElMjIlMkMlMjAlMjJJMzMwMDAwMDAwMiUyMiU1RCUyQyUyMCUyMmFncmVlbWVudE51bWJlciUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmV4cGlyZXNfaW4lMjIlM0ElMjAzNjAwJTJDJTIwJTIydGF4U3RhdHVzJTIyJTNBJTIwJTIyMCUyMiUyQyUyMCUyMmJ1c2luZXNzQWRkcmVzcyUyMiUzQSUyMCUyMiU1Q3U2ZDU5JTVDdTZjNWYlNUN1NzcwMSU1Q3U1NjA5JTVDdTUxNzQlNUN1NWUwMiU1Q3U1NjA5JTVDdTU1ODQlNUN1NTNiZiU1Q3U3ZjU3JTVDdTY2MWYlNUN1ODg1NyU1Q3U5MDUzJTVDdTcwNzUlNUN1NzljMCU1Q3U4ZGVmMTExJTVDdTUzZjclMjIlMkMlMjAlMjJyZWxvY2F0aW9uJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIybG9naW5fbGV2ZWwlMjIlM0ElMjAlMjIlNUN1NGUwMCU1Q3U3ZWE3JTIyJTJDJTIwJTIybGFzdF90cnVzdGVkX2RhdGElMjIlM0ElMjAlMjIyMDI0LTA4LTI5JTIwMTklM0E0MCUzQTQ5JTIyJTJDJTIwJTIybGFzdF90cnVzdGVkX2RhdGUlMjIlM0ElMjAlMjIyMDI0LTA4LTI5JTIwMTklM0E0MCUzQTQ5JTIyJTJDJTIwJTIybGFzdExvZ2luVGltZSUyMiUzQSUyMCUyMjIwMjQtMDgtMjklMjAxOSUzQTM4JTNBMDMlMjIlMkMlMjAlMjJ1c2VyX2lkJTIyJTNBJTIwJTIyMTAwMDIwOTJmNWViMmNkNDRkNDVhYmE2NWIxM2RjNjBmZjMzJTIyJTJDJTIwJTIyZW50ZXJwcmlzZV9pZCUyMiUzQSUyMCUyMjMzMDBjNmQzMGU2N2VmMGM0OWYwYmI2OTkwZjM4NTYwNjNjOCUyMiUyQyUyMCUyMmFnZW5jeV9lbnRlcnByaXNlX2lkJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIydGF4X2F1dGhvcml0eV9jb2RlJTIyJTNBJTIwJTIyMTMzMDQyMTMxMDAlMjIlMkMlMjAlMjJ0YXhfYXV0aG9yaXR5X2xldmVsJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIydGF4X2F1dGhvcml0eV9uYW1lJTIyJTNBJTIwJTIyJTVDdTU2ZmQlNUN1NWJiNiU1Q3U3YTBlJTVDdTUyYTElNUN1NjAzYiU1Q3U1YzQwJTVDdTU2MDklNUN1NTU4NCU1Q3U1M2JmJTVDdTdhMGUlNUN1NTJhMSU1Q3U1YzQwJTVDdTdmNTclNUN1NjYxZiU1Q3U3YTBlJTVDdTUyYTElNUN1NjI0MCUyMiUyQyUyMCUyMnRheHBheWVyX2lkJTIyJTNBJTIwJTIyOTEzMzA0MjE2OTgyNjc5MTBRJTIyJTJDJTIwJTIyY29tcGFueV9uYW1lJTIyJTNBJTIwJTIyJTVDdTZkNTklNUN1NmM1ZiU1Q3U0ZWJmJTVDdTUyOWIlNUN1NjczYSU1Q3U3NTM1JTVDdTgwYTElNUN1NGVmZCU1Q3U2NzA5JTVDdTk2NTAlNUN1NTE2YyU1Q3U1M2Y4JTIyJTJDJTIwJTIybGFzdF9mYWNlX3ZlcmlmeV9kYXRlJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyaWRfY2FyZCUyMiUzQSUyMCUyMjMzMDQyMTE5OTcxMDA0NDcyMCUyMiUyQyUyMCUyMmNhcmRfdHlwZSUyMiUzQSUyMCUyMjIwMSUyMiUyQyUyMCUyMnJlZ19udW1iZXIlMjIlM0ElMjAlMjIxMDExMzMwNDAwMDA0Nzk0MTkyMCUyMiUyQyUyMCUyMnRydXN0X2NvZGUlMjIlM0ElMjAlMjI5MTMzMDQyMTY5ODI2NzkxMFElMjIlMkMlMjAlMjJwaG9uZSUyMiUzQSUyMCUyMjE4MjY3MzA1NzEwJTIyJTJDJTIwJTIybW9iaWxlJTIyJTNBJTIwJTIyMTgyNjczMDU3MTAlMjIlMkMlMjAlMjJ0YXhfZmlsZV9ubyUyMiUzQSUyMCUyMjEwMTIzMzA0MDAyMTAwMDU5OTg1JTIyJTJDJTIwJTIycG9zaXRpb24lMjIlM0ElMjAlMjIwMyUyMiUyQyUyMCUyMmxvZ2luX3R5cGUlMjIlM0ElMjAlMjIxJTIyJTJDJTIwJTIycmVsYXRlZFR5cGUlMjIlM0ElMjAlMjIwMyUyMiUyQyUyMCUyMmNyZWRpdENvZGUlMjIlM0ElMjAlMjI5MTMzMDQyMTY5ODI2NzkxMFElMjIlMkMlMjAlMjJzcHJvbGVfbGlzdCUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnRheGVyX2NvZGUlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJ0YXhlcl9uYW1lJTIyJTNBJTIwJTIyJTVDdThkZWYlNUN1NjhhNiU1Q3U2ZDAxJTIyJTJDJTIwJTIydGF4X2lkJTIyJTNBJTIwJTIyMTAwMDIwOTJmNWViMmNkNDRkNDVhYmE2NWIxM2RjNjBmZjMzJTIyJTJDJTIwJTIydGF4ZXJfc3RhdHVzX2NvZGUlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJ0YXhlcl9zdGF0dXNfbmFtZSUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmFnZW5jeUNyZWRpdENvZGUlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJhZ2VuY3lOYW1lJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyYWdlbmN5UmVnX251bWJlciUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmFyZWFQcmVmaXglMjIlM0ElMjAlMjIzMzAwJTIyJTJDJTIwJTIyYXJlYVByZU5hbWUlMjIlM0ElMjAlMjIlNUN1NmQ1OSU1Q3U2YzVmJTVDdTc3MDElMjIlMkMlMjAlMjJlbnRlcnByaXNlX3R5cGUlMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIyaW5pdGlhbF9lbnRlcnByaXNlX3R5cGUlMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIyY3Jvc3NJbnNwZWN0aW9uTnVtYmVyJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIycHJvamVjdE5hbWUlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJjcm9zc1JlZ2lvbmFsUHJvcGVydHlUYXhTdWJqZWN0UmVnaXN0cmF0aW9uTWFyayUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmdlbmRlciUyMiUzQSUyMCUyMjAlMjIlMkMlMjAlMjJuYXRpb25hbGl0eSUyMiUzQSUyMCUyMjE1NiUyMiUyQyUyMCUyMnN0YXJ0RGF0ZSUyMiUzQSUyMCUyMjIwMjAwMTE5JTIyJTJDJTIwJTIyZW5kRGF0ZSUyMiUzQSUyMCUyMjIwMzAwMTE5JTIyJTJDJTIwJTIyYmlydGhkYXRlJTIyJTNBJTIwJTIyMTk5NzEwMDQlMjIlMkMlMjAlMjJhZGRyZXNzJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyZW1haWwlMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJlbnRlcnByaXNlU3RhdHVzJTIyJTNBJTIwJTIyMDElMjIlMkMlMjAlMjJhZ2VuY3lUYXhwYXllcl9pZCUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMmFnZW5jeVRheHBheWVyU3RhdHVzQ29kZSUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnRheHBheWVyU3RhdHVzQ29kZSUyMiUzQSUyMCUyMjAzJTIyJTJDJTIwJTIycmVnaXN0ZXJfdGltZSUyMiUzQSUyMCUyMjIwMjItMDUtMTUlMjAwMCUzQTM2JTNBNTAlMjIlMkMlMjAlMjJhZ2VuY3lUeXBlJTIyJTNBJTIwJTIyJTIyJTJDJTIwJTIyaXNIYXZlUHN3JTIyJTNBJTIwJTIyMSUyMiUyQyUyMCUyMmNvbXBldGVudF90YXhfYnVyZWF1X2NvZGUlMjIlM0ElMjAlMjIxMzMwNDIxMDAwMCUyMiUyQyUyMCUyMmNvbXBldGVudF90YXhfYnVyZWF1X25hbWUlMjIlM0ElMjAlMjIlNUN1NTZmZCU1Q3U1YmI2JTVDdTdhMGUlNUN1NTJhMSU1Q3U2MDNiJTVDdTVjNDAlNUN1NTYwOSU1Q3U1NTg0JTVDdTUzYmYlNUN1N2EwZSU1Q3U1MmExJTVDdTVjNDAlMjIlMkMlMjAlMjJtYWluSWRlbnRpdHklMjIlM0ElMjAlMjIxJTIyJTJDJTIwJTIyb3V0Z29pbmdCdXNpbmVzc0NlcnRpZmljYXRlVVVJRCUyMiUzQSUyMCUyMiUyMiUyQyUyMCUyMnRheF9hdXRob3JpdHlfYWJicmV2aWF0aW9uJTIyJTNBJTIwJTIyJTVDdTU2MDklNUN1NTU4NCU1Q3U1M2JmJTVDdTdmNTclNUN1NjYxZiU1Q3U3YTBlJTVDdTUyYTElNUN1NjI0MCUyMiUyQyUyMCUyMmNvbXBldGVudF90YXhfYnVyZWF1X2FiYnJldmlhdGlvbiUyMiUzQSUyMCUyMiU1Q3U1NjA5JTVDdTU1ODQlNUN1NTNiZiU1Q3U3YTBlJTVDdTUyYTElNUN1NWM0MCUyMiUyQyUyMCUyMmxhbmclMjIlM0ElMjAlMjIlMjIlMkMlMjAlMjJyYXJlbHklMjIlM0ElMjAlMjIwJTIyJTJDJTIwJTIyYXJlYU5hbWUlMjIlM0ElMjAlMjIlNUN1NmQ1OSU1Q3U2YzVmJTIyJTdE\",\n                \"key\": \"MtNOiEIp5ZU2mzWl\",\n                \"timestamp\": \"20240829194049\",\n                \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY4NzQxZjk1NDM0ZjQ3YmJhYmJjM2M1ZDVkYjI5ZDIzIn0.TGM6MXU6Bqy_PSBIi80oLhCIJuOr6dqHj8fIqM0GP_liL2DzrA2bLIYhPhW-MmLoog1N_sV310AqeN2YAdc-3g\"\n            }\n        },\n        \"etax\": {\n            \"access_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY4NzQxZjk1NDM0ZjQ3YmJhYmJjM2M1ZDVkYjI5ZDIzIn0.TGM6MXU6Bqy_PSBIi80oLhCIJuOr6dqHj8fIqM0GP_liL2DzrA2bLIYhPhW-MmLoog1N_sV310AqeN2YAdc-3g\",\n            \"cookie\": \"token=1B896663FE3C4F5AA2C1991B04BE2C59-0784590a-2ec9-403e-a334-a1096010df02; DTL_SESSION_ID=9d7de7bb-6c39-4e1a-a081-ba985074c40b; \",\n            \"localStorage\": \"\"\n        }\n    },\n    \"success\": true,\n    \"reqId\": \"aaf15077660e426b8ee13dbbb60ff3ef\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 585605762
+    },
+    {
+      "name": "异常示例",
+      "responseId": 659972624,
+      "data": "{\n    \"reqId\": \"d002568bcd9c4daa82fb6d07b41cf26d\",\n    \"code\": \"40101\",\n    \"success\": false,\n    \"message\": \"登录信息过期!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 585605763
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841713,
+  "ordering": 233,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-04-21T08:57:47.000Z",
+  "updatedAt": "2025-04-30T01:35:33.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.659972624"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 2146778,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n\n发票识别是基于发票图像或扫描件进行数字化处理和分析自动识别和提取发票信息的过程，企享云识别平台基于业界领先的人工智能深度学习技术，针对各类国内、国际发票适配处理，提取出发票中的关键信息，如开票单位、开票日期、发票金额等。\n适用于各种企业和机构的财务管理、商业资料管理等领域，减少人工识别出错的概率。\n\n\n## 流程示例\n\n\n![识别-业务 数据.jpg](https://api.apifox.cn/api/v1/projects/2393904/resources/375242/image-preview)\n\n## 业务示例\n\n![识别-业务 业务流程图.jpg](https://api.apifox.cn/api/v1/projects/2393904/resources/375243/image-preview)",
+  "folderId": 13283948,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-06T08:21:17.000Z",
+  "updatedAt": "2023-04-03T02:55:12.000Z",
+  "creatorId": 1380138,
+  "editorId": 1442607,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

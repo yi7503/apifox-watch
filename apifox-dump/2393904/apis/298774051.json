@@ -1,0 +1,412 @@
+{
+  "id": 298774051,
+  "name": "代扣代缴入账信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/fpruz/queryDkdjrzxx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "params": {
+              "type": "object",
+              "properties": {
+                "rzyts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "01",
+                      "02",
+                      "03",
+                      "06"
+                    ],
+                    "x-apifox-enum": [
+                      {
+                        "name": "",
+                        "value": "01",
+                        "description": "未入账"
+                      },
+                      {
+                        "name": "",
+                        "value": "02",
+                        "description": "已入账（企业所得税税前扣除）"
+                      },
+                      {
+                        "name": "",
+                        "value": "03",
+                        "description": "已入账（企业所得税不扣除）"
+                      },
+                      {
+                        "name": "",
+                        "value": "06",
+                        "description": "入账撤销"
+                      }
+                    ]
+                  },
+                  "title": "入账用途代码",
+                  "description": "不传默认全部 01 未入账 02 已入账（企业所得税税前扣除）03 已入账（企业所得税不扣除）06 入账撤销"
+                },
+                "kprqq": {
+                  "type": "string",
+                  "title": "开票起始日期",
+                  "description": "yyyy-MM-dd，时间范围不超出3个月"
+                },
+                "kprqz": {
+                  "type": "string",
+                  "title": "开票结束日期",
+                  "description": "yyyy-MM-dd，时间范围不超出3个月"
+                },
+                "pzhm": {
+                  "type": "string",
+                  "title": "凭证号码"
+                }
+              },
+              "x-apifox-orders": [
+                "kprqq",
+                "kprqz",
+                "pzhm",
+                "rzyts"
+              ],
+              "x-apifox-refs": {},
+              "required": [
+                "kprqq",
+                "kprqz"
+              ]
+            },
+            "pageIndex": {
+              "type": "integer",
+              "title": "当前页码"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页条数",
+              "enum": [
+                5,
+                10,
+                20,
+                50,
+                100
+              ],
+              "x-apifox-enum": [
+                {
+                  "name": "",
+                  "value": 5,
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": 10,
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": 20,
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": 50,
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": 100,
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "x-apifox-orders": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "required": [
+            "params",
+            "pageIndex",
+            "pageSize"
+          ],
+          "x-apifox-refs": {}
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01HYAGMSTVS0SYXXV3WPRFNGM0",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HYAGMSTVS0SYXXV3WPRFNGM0": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "data",
+        "nsrsbh"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "请求示例",
+        "value": "{\n    \"aggOrgId\": 451678202380672,\n    \"nsrsbh\": \"9144011155441xxxxx\",\n    \"data\": {\n        \"pageIndex\": 1,\n        \"pageSize\": 10,\n        \"params\": {\n            \"kprqq\": \"2025-04-01\",\n            \"kprqz\": \"2025-05-30\",\n            \"hgjkshm\": \"xxxxxxxx\",\n            \"rzyts\": [\n                \"01\",\n                \"02\"\n            ]\n        }\n    }\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 680468398,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "状态码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "pageIndex": {
+                "type": "integer",
+                "title": "页码"
+              },
+              "records": {
+                "type": "integer",
+                "title": "总条数"
+              },
+              "totalPages": {
+                "type": "integer",
+                "title": "总页数"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "每页显示条数"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "se": {
+                      "type": "number",
+                      "title": "税额",
+                      "description": "最多两位小数"
+                    },
+                    "mxuuid": {
+                      "type": "string",
+                      "title": "入账明细uuid"
+                    },
+                    "rzuuid": {
+                      "type": "string",
+                      "title": "入账uuid"
+                    },
+                    "kprq": {
+                      "type": "string",
+                      "title": "开票日期",
+                      "description": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "lrrq": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "录入日期",
+                      "description": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "rzsj": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "入账日期",
+                      "description": "yyyy-MM-dd"
+                    },
+                    "je": {
+                      "type": "number",
+                      "title": "金额",
+                      "description": "最多两位小数"
+                    },
+                    "pzhm": {
+                      "type": "string",
+                      "title": "凭证号码"
+                    },
+                    "bkjywrsbh": {
+                      "type": "string",
+                      "title": "被扣缴义务人识别号"
+                    },
+                    "bkjywrmc": {
+                      "type": "string",
+                      "title": "被扣缴义务人名称"
+                    },
+                    "kjywrsbh": {
+                      "type": "string",
+                      "title": "扣缴义务人识别号"
+                    },
+                    "fprzztDm": {
+                      "type": "string",
+                      "title": "入账状态代码",
+                      "description": "00 未入账 01 已入账"
+                    },
+                    "rzytDm": {
+                      "type": "string",
+                      "title": "入账用途代码",
+                      "description": "01 未入账 02 已入账（企业所得税税前扣除）03 已入账（企业所得税不扣除）06 入账撤销"
+                    }
+                  },
+                  "required": [
+                    "se",
+                    "pzhm",
+                    "bkjywrsbh",
+                    "bkjywrmc",
+                    "kprq",
+                    "je",
+                    "kjywrsbh",
+                    "fprzztDm",
+                    "rzytDm"
+                  ],
+                  "x-apifox-orders": [
+                    "se",
+                    "mxuuid",
+                    "rzuuid",
+                    "kprq",
+                    "lrrq",
+                    "rzsj",
+                    "pzhm",
+                    "bkjywrsbh",
+                    "bkjywrmc",
+                    "je",
+                    "kjywrsbh",
+                    "fprzztDm",
+                    "rzytDm"
+                  ]
+                },
+                "title": "海关缴款书列表"
+              }
+            },
+            "required": [
+              "pageIndex",
+              "records",
+              "totalPages",
+              "pageSize",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "pageIndex",
+              "records",
+              "totalPages",
+              "pageSize",
+              "list"
+            ],
+            "title": "业务报文"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "请求是否成功"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 680468398,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"pageIndex\": 1,\n        \"records\": 2,\n        \"totalPages\": 1,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"bkjywrsbh\": \"F3101158401xxxx\",\n                \"rzsj\": \"\",\n                \"kjywrsbh\": \"91310115736203xxxx\",\n                \"se\": 6809.34,\n                \"kprq\": \"2025-03-17 00:00:00\",\n                \"lrrq\": \"\",\n                \"bkjywrmc\": \"xxxxxxxxx\",\n                \"pzhm\": \"33101625030047xxxx\",\n                \"je\": 113488.96,\n                \"fprzztDm\": \"00\",\n                \"rzytDm\": \"01\"\n            },\n            {\n                \"bkjywrsbh\": \"F3101158260xxxx\",\n                \"rzsj\": \"2025-05-01\",\n                \"kjywrsbh\": \"91310115736203xxxx\",\n                \"se\": 302.73,\n                \"mxuuid\": \"a6bccc0e52c44d7c888edbce44a3ba88\",\n                \"rzuuid\": \"73f62e27a9bd4955a99dce56d9bee499\",\n                \"kprq\": \"2025-02-17 00:00:00\",\n                \"lrrq\": \"2025-05-01 00:00:00\",\n                \"bkjywrmc\": \"xxxx\",\n                \"pzhm\": \"33101625020035xxxx\",\n                \"je\": 5045.51,\n                \"fprzztDm\": \"00\",\n                \"rzytDm\": \"06\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"reqId\": \"44382012b99142a18f62adfc0e2d041c\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 593324370
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58688208,
+  "ordering": 151,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-21T06:35:04.000Z",
+  "updatedAt": "2025-12-13T10:02:42.000Z",
+  "creatorId": 887778,
+  "editorId": 2795319,
+  "creatorUserId": 887778,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.680468398"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

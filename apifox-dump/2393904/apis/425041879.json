@@ -1,0 +1,249 @@
+{
+  "id": 425041879,
+  "name": "获取企业列表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        407297
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "jQFLcnMISxQUWu870kPyN",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n托管用户登录成功后获取企业列表,这里可能会增加切换次数。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/queryOrglist",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "title": "多账户id"
+        },
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业id"
+        }
+      },
+      "x-apifox-orders": [
+        "accountId",
+        "aggOrgId"
+      ],
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"accountId\": \"4816058257476920\",\r\n    \"aggOrgId\": \"4816058257476332\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "u1slctp3vb",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "41xydSKviP",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "UvYzra3HQ8",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 393426619,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "xh": {
+                  "type": "integer",
+                  "title": "序号"
+                },
+                "nsrsbh": {
+                  "type": "string",
+                  "title": "纳税人识别号"
+                },
+                "nsrmc": {
+                  "type": "string",
+                  "title": "纳税人名称"
+                },
+                "sflx": {
+                  "type": "string",
+                  "title": "身份类型"
+                },
+                "glzt": {
+                  "type": "string",
+                  "title": "关联状态 ",
+                  "description": "00：已启用"
+                },
+                "dqbm": {
+                  "type": "string",
+                  "title": "地区编码",
+                  "description": "参考附录-地区代码"
+                }
+              },
+              "x-apifox-orders": [
+                "xh",
+                "nsrsbh",
+                "nsrmc",
+                "sflx",
+                "glzt",
+                "dqbm"
+              ],
+              "x-apifox-refs": {},
+              "required": [
+                "xh",
+                "nsrsbh",
+                "nsrmc",
+                "sflx",
+                "glzt",
+                "dqbm"
+              ]
+            }
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 393426619,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": [\n        {\n            \"xh\": 0,\n            \"nsrsbh\": \"*******\",\n            \"nsrmc\": \"******\",\n            \"sflx\": \"BSY\",\n            \"glzt\": \"00\",\n            \"dqbm\": \"31\"\n        },\n        {\n            \"xh\": 1,\n            \"nsrsbh\": \"*****\",\n            \"nsrmc\": \"******\",\n            \"sflx\": \"BSY\",\n            \"glzt\": \"00\",\n            \"dqbm\": \"31\"\n        },\n        {\n            \"xh\": 2,\n            \"nsrsbh\": \"********\",\n            \"nsrmc\": \"******\",\n            \"sflx\": \"BSY\",\n            \"glzt\": \"00\",\n            \"dqbm\": \"31\"\n        }\n    ],\n    \"success\": true,\n    \"message\": \"成功\",\n    \"reqId\": \"abab0a8351b04524b79a335ed3eee5dc\"\n}",
+      "id": 393426620
+    },
+    {
+      "name": "异常示例",
+      "responseId": 393426619,
+      "data": "{\n    \"reqId\": \"3cc98d2a962047799eb4d10235d2158e\",\n    \"code\": \"8000\",\n    \"success\": true,\n    \"message\": \"未登录或登录缓存已失效，登录后重新发起\",\n    \"data\": null\n}",
+      "id": 393426621
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 85822843,
+  "ordering": 35,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-09T11:55:35.000Z",
+  "updatedAt": "2026-05-16T06:45:47.000Z",
+  "creatorId": 2400309,
+  "editorId": 2795319,
+  "creatorUserId": 2400309,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

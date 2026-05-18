@@ -1,0 +1,249 @@
+{
+  "id": 448852997,
+  "name": "代理登录上传短信验证码 ",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n该接口用于用户手机接收到税局下发的验证码，进行上传完成最终登录。\n- 说明\n1. 登录发送短信验证码后返回taskid，并且发送短信到用户手机号上，2分钟内不允许重复登录发送验证码，重复发送会提示「短信频繁」；\n2. 上传短信验证码，5分钟内上传短信有效，超出时限会提示「登录任务已过期」，此时需要重新登录发送验证码；",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/agent/login/etaxpushsms",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "异步登录税局【发送短信验证码】的返回值"
+        },
+        "smsCode": {
+          "type": "string",
+          "title": "短信验证码",
+          "examples": [
+            "002100"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "smsCode"
+      ],
+      "required": [
+        "taskId",
+        "smsCode"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n \r\n    \"taskId\":\"123456xxxxx\",\r\n    \"smsCode\":\"002100\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 550695089,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "dppt": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "登录税局成功的cookie值"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "required": [
+                      "cookie"
+                    ],
+                    "title": "电票平台"
+                  },
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "纳税人识别号"
+                  },
+                  "nsrsbh_name": {
+                    "type": "string",
+                    "title": "纳税人名称"
+                  },
+                  "tpass": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "cookie"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "required": [
+                      "cookie"
+                    ],
+                    "title": "账户中心"
+                  },
+                  "etax": {
+                    "type": "object",
+                    "properties": {
+                      "cookie": {
+                        "type": "string",
+                        "title": "cookie"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "cookie"
+                    ],
+                    "required": [
+                      "cookie"
+                    ],
+                    "title": "电子税局"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "dppt",
+                  "etax",
+                  "tpass",
+                  "nsrsbh",
+                  "nsrsbh_name"
+                ],
+                "required": [
+                  "dppt",
+                  "tpass",
+                  "etax"
+                ],
+                "description": "当code为2000，从data获取登录结果"
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "错误码",
+                "description": "2000：登录成功；4xxx：登录信息有误；5xxx：系统错误；8xxx：短信发送频繁；"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "登录成功示例",
+      "responseId": 550695089,
+      "data": "{\n    \"req_id\": \"76bf6b8d897f4ef5ae6a63b15cb27795\",\n    \"success\": true,\n    \"code\": \"2000\",\n    \"data\": {\n        \"dppt\": {\n            \"cookie\": \"DZSWJ_TGC=75c278c9ba32859321ca9; SSO_LOGIN_TGC=ded21069ef41ea848; expire=1800; session_expire=180000016869180; oauth2_referer=etax.sichuan.chinatax.gov.cn; x_host_key=188c3bf28c8-3e90d386f0e13; SSO_SECURITY_CHECK_TOKEN=37727c8eb5; dzfp-ssotoken=287cde5c2d; \"\n        }\n    },\n    \"message\": \"税务数字账户登录成功\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 437739509
+    },
+    {
+      "name": "异常示例",
+      "responseId": 550695089,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数nsrsbh不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 437739510
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 84021674,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-04-24T02:08:07.000Z",
+  "updatedAt": "2026-04-24T02:08:42.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "creatorUserId": 2795319,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.550695089"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,294 @@
+{
+  "id": 361766431,
+  "name": "特殊缴款待申报信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "查询历史欠费清缴、退休补收、政策性补缴等特殊缴费待申报的数据",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/querySpecialPayUnDeclare",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "dwbh": {
+          "type": "string",
+          "description": "单位编号"
+        },
+        "fkssq": {
+          "type": "string",
+          "description": "费款所属期，格式：YYYYMM",
+          "pattern": "^\\d{6}$",
+          "minLength": 6,
+          "maxLength": 6
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "dwbh",
+        "fkssq"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 788586805,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "jglb": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dwbh": {
+                      "type": "string",
+                      "title": "单位编号"
+                    },
+                    "zjtzlsh": {
+                      "type": "string",
+                      "title": "征集通知流水号"
+                    },
+                    "jfgzhj": {
+                      "type": "number",
+                      "title": "缴费工资合计"
+                    },
+                    "jfjs": {
+                      "type": "string",
+                      "title": "缴费基数"
+                    },
+                    "fl": {
+                      "type": "string",
+                      "title": "费率"
+                    },
+                    "yjfe": {
+                      "type": "number",
+                      "title": "应缴费额"
+                    },
+                    "sjly": {
+                      "type": "string",
+                      "title": "数据来源"
+                    },
+                    "jflx": {
+                      "type": "string",
+                      "description": "缴费类型，如'正常缴费'、'补缴'、'预缴'等",
+                      "title": "缴费类型"
+                    },
+                    "zgswjg": {
+                      "type": "string",
+                      "description": "主管税务机关，负责该单位税费征管的税务机构（如'杭州市税务局西湖分局'）",
+                      "title": "主管税务机关"
+                    },
+                    "sbjbjg": {
+                      "type": "string",
+                      "description": "社保经办机构，负责该单位社保业务办理的机构（如'杭州市社保中心西湖分中心'）",
+                      "title": "社保经办机构"
+                    },
+                    "sblsh": {
+                      "type": "string",
+                      "description": "社保流水号，社保系统中记录该业务的唯一流水编号",
+                      "title": "社保流水号"
+                    },
+                    "zsxmdm": {
+                      "type": "string",
+                      "description": "征收项目",
+                      "title": "征收项目"
+                    },
+                    "zspmdm": {
+                      "type": "string",
+                      "description": "征收品目",
+                      "title": "征收品目"
+                    },
+                    "zszmdm": {
+                      "type": "string",
+                      "description": "征收子目",
+                      "title": "征收子目"
+                    },
+                    "zsxmmc": {
+                      "type": "string",
+                      "title": "征收项目名称"
+                    },
+                    "zspmmc": {
+                      "type": "string",
+                      "title": "征收品目 名称"
+                    },
+                    "zszmmc": {
+                      "type": "string",
+                      "title": "征收子目名称"
+                    },
+                    "fkssqq": {
+                      "type": "string",
+                      "description": "费款所属期起，格式为YYYYMM（如202405），表示费款对应的起始月份",
+                      "title": "费款所属期起"
+                    },
+                    "fkssqz": {
+                      "type": "string",
+                      "description": "费款所属期止，格式为YYYYMM（如202405），表示费款对应的结束月份",
+                      "title": "费款所属期止"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "dwbh",
+                    "zjtzlsh",
+                    "fkssqq",
+                    "fkssqz",
+                    "jfgzhj",
+                    "jfjs",
+                    "fl",
+                    "yjfe",
+                    "zsxmdm",
+                    "zsxmmc",
+                    "zspmdm",
+                    "zspmmc",
+                    "zszmdm",
+                    "zszmmc",
+                    "sjly",
+                    "jflx",
+                    "zgswjg",
+                    "sbjbjg",
+                    "sblsh"
+                  ]
+                },
+                "title": "结果列表"
+              }
+            },
+            "required": [
+              "jglb"
+            ],
+            "x-apifox-orders": [
+              "jglb"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 788586805,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae1981bb6d4a4a8300ac35eacf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"jglb\": [\n            {\n                \"dwbh\": \"DWD001\",\n                \"zjtzlsh\": \"TZ20230001\",\n                \"skssqq\": \"202301\",\n                \"skssqz\": \"202301\",\n                \"jfgzhj\": \"50000.00\",\n                \"jfjs\": \"6000.00\",\n                \"fl\": \"0.20\",\n                \"yjfe\": \"12000.00\",\n                \"zsxmmc\": \"基本养老保险\",\n                \"zspmmc\": \"企业职工基本养老保险\",\n                \"zszmmc\": \"单位缴纳部分\",\n                \"sjly\": \"社保系统\",\n                \"jflx\": \"正常缴费\",\n                \"zgswjg\": \"北京市税务局第一分局\",\n                \"sbjbjg\": \"北京市社保中心\",\n                \"sblsh\": \"SB202300001\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 712629910
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68408456,
+  "ordering": 16,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-16T02:30:18.000Z",
+  "updatedAt": "2026-02-10T03:14:53.000Z",
+  "creatorId": 1442097,
+  "editorId": 1910680,
+  "creatorUserId": 1442097,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

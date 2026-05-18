@@ -1,0 +1,401 @@
+{
+  "id": 342908732,
+  "name": "招投标信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/bidInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "纳税人识别号和企业名称必填一个"
+        },
+        "creditCode": {
+          "type": "string",
+          "title": "税号",
+          "description": "税号和企业名称必填一个"
+        },
+        "pubStartDate": {
+          "type": "string",
+          "title": "公告起始日期",
+          "description": "yyyy-MM-dd格式"
+        },
+        "pubEndDate": {
+          "type": "string",
+          "title": "公告结束日期",
+          "description": "yyyy-MM-dd格式"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "页码",
+          "description": "不传默认第一页"
+        },
+        "pageSize": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "每页条数",
+          "description": "最大20，不传默认20"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditCode",
+        "pubStartDate",
+        "pubEndDate",
+        "pageIndex",
+        "pageSize"
+      ],
+      "required": [
+        "name",
+        "creditCode",
+        "pubStartDate",
+        "pubEndDate",
+        "pageIndex"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"name\":\"xxx信息技术有限公司\",\r\n    \"pubStartDate\":\"2022-01-01\",\r\n    \"pubEndDate\":\"2025-08-01\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 756656609,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "page": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "totalRecords": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "title": "总数量"
+                  },
+                  "pageIndex": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "title": "页码"
+                  },
+                  "pageSize": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "title": "每页条数"
+                  }
+                },
+                "x-apifox-orders": [
+                  "totalRecords",
+                  "pageIndex",
+                  "pageSize"
+                ],
+                "required": [
+                  "totalRecords",
+                  "pageIndex",
+                  "pageSize"
+                ],
+                "title": "分页对象"
+              },
+              "list": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "publishTime": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "发布时间",
+                      "description": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "projectNo": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "项目编号"
+                    },
+                    "bidRole": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "招投标角色"
+                    },
+                    "province": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "省份"
+                    },
+                    "city": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "城市"
+                    },
+                    "announceTypeSub": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "公告类型细类"
+                    },
+                    "projectBidMoney": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "中标金额"
+                    },
+                    "projectSummary": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "项目概要"
+                    },
+                    "announceTitle": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "公告标题"
+                    },
+                    "announceType": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "公告类型"
+                    },
+                    "industryCode": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "行业代码"
+                    },
+                    "bidder": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "投标单位"
+                    },
+                    "bidInvitationAgency": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "代理机构"
+                    },
+                    "bidInvitationParty": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "招标单位"
+                    },
+                    "winningBidder": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "中标单位"
+                    },
+                    "candidateBidder": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "中标候选人"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "publishTime",
+                    "projectNo",
+                    "bidRole",
+                    "province",
+                    "city",
+                    "announceTypeSub",
+                    "projectBidMoney",
+                    "projectSummary",
+                    "announceTitle",
+                    "announceType",
+                    "industryCode",
+                    "bidder",
+                    "bidInvitationAgency",
+                    "bidInvitationParty",
+                    "winningBidder",
+                    "candidateBidder"
+                  ]
+                },
+                "title": "数据列表"
+              }
+            },
+            "x-apifox-orders": [
+              "page",
+              "list"
+            ],
+            "title": "业务数据"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "请求相应时间戳"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "data",
+          "timestamp",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "data",
+          "timestamp",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 756656609,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"成功\",\n    \"data\": {\n        \"page\": {\n            \"totalRecords\": 11,\n            \"pageIndex\": 1,\n            \"pageSize\": 20\n        },\n        \"list\": [\n            {\n                \"publishTime\": \"2025-07-04 00:00:00\",\n                \"projectNo\": \"2025005\",\n                \"bidRole\": \"51\",\n                \"province\": \"xx省\",\n                \"city\": \"xx市\",\n                \"announceTypeSub\": \"3001\",\n                \"projectBidMoney\": \"0.000000\",\n                \"projectSummary\": \"{\\\"软件专业服务\\\": \\\"管理软件\\\"}\",\n                \"announceTitle\": \"xx省通信服务有限公司软件专业服务供应商集中招募合格供应商公示\",\n                \"announceType\": \"30\",\n                \"industryCode\": \"18\"\n            },\n            {\n                \"publishTime\": \"2025-06-24 00:00:00\",\n                \"bidRole\": \"51\",\n                \"bidder\": [\n                    \"xx咨询股份有限公司\",\n                    \"xx科技有限公司\",\n                    \"xx税务师事务所有限公司\",\n                    \"xx企业管理有限公司\",\n                    \"xx信息技术有限公司\",\n                    \"xx有限公司\",\n                    \"xx有限公司\",\n                    \"xx有限公司\",\n                    \"xx有限公司\"\n                ],\n                \"city\": \"xx市\",\n                \"projectBidMoney\": \"0.0\",\n                \"bidInvitationAgency\": [\n                    \"xx有限公司\"\n                ],\n                \"announceType\": \"30\",\n                \"industryCode\": \"18\",\n                \"projectNo\": \"\",\n                \"province\": \"xx省\",\n                \"announceTypeSub\": \"3002\",\n                \"projectSummary\": \"{\\\"智慧税务体系建设\\\": \\\"\\\"}\",\n                \"announceTitle\": \"智慧税务体系建设项目设计及实施服务（第二次）评标流标公示\",\n                \"bidInvitationParty\": [\n                    \"xx有限公司\"\n                ]\n            }\n        ]\n    },\n    \"timestamp\": \"2025-08-28 17:56:08\",\n    \"reqId\": \"T27c734cc0f9f4fc983e576aaa3adaa7f\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 672733355
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 272,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-08-29T03:26:20.000Z",
+  "updatedAt": "2025-09-02T07:51:38.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [
+    "BLANK.756656609"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

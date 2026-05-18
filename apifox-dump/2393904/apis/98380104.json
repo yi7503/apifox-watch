@@ -1,0 +1,292 @@
+{
+  "id": 98380104,
+  "name": "注销勾选",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于申请企业电子发票服务平台（发票云）注销勾选/撤销注销勾选。\n\n## 错误码\n| **错误代码**    | **错误消息**                                                 | **解决方案**                                                 |\n| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| FprzSbxxIsNull  | 企业申报信息为空                                             | 没有获取到企业当前的申报信息                                 |\n| FprzTjqrIsNull  | 企业统计确认数据为空                                         | 没有获取到企业最新的统计确认数据                             |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/zxgx",
+  "tags": [
+    "发票认证",
+    "发票云认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01K5G074C19X12BY9H0RXDH3HS": {
+          "$ref": "#/definitions/53297477",
+          "x-apifox-overrides": {}
+        }
+      },
+      "properties": {},
+      "x-apifox-orders": [
+        "01K5G074C19X12BY9H0RXDH3HS"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"91***************3N\",\r\n  \"sqlx\":\"1\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "name": "同步请求示例",
+        "value": "{\r\n    \"nsrsbh\": \"91***************3N\",\r\n    \"sqlx\": \"1\",\r\n    \"sync\": true\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "4XXv8W9ljG",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "korBUgaB05",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "lvpX8DDGcs",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947343,
+      "name": "成功响应",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H68M8QW97WG0PJKW2W2T8PCT": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "申请注销勾选/撤销注销勾选id",
+                "description": "注销勾选/撤销注销勾选申请结果查询接口使用"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H68M8QW97WG0PJKW2W2T8PCT"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 773284355,
+      "name": "同步请求成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5G08NPRVHTWT535BBA9W7P8"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5G08NPRVHTWT535BBA9W7P8": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5G09DSCH2V3Q1YX09SEYSKM"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5G09DSCH2V3Q1YX09SEYSKM": {
+                    "$ref": "#/definitions/54051820"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 773284356,
+      "name": "同步超时转异步",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5G0B145TMMDYS8W0FNM9F10"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5G0B145TMMDYS8W0FNM9F10": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5G0B9MNBGA3GM5TF6G2QC36"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5G0B9MNBGA3GM5TF6G2QC36": {
+                    "$ref": "#/definitions/104050184"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947343,
+      "data": "{\n    \"reqId\": \"1accd95fefc343319163afcc2bb5879c\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": 475132666845504\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947344
+    },
+    {
+      "name": "同步成功",
+      "responseId": 773284355,
+      "data": "{\r\n    \"reqId\": \"1accd95fefc343319163afcc2bb5879c\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"nsrsbh\": \"91****************3N\",\r\n        \"skssq\": \"202307\",\r\n        \"cljg\": \"1\",\r\n        \"zt\": 1,\r\n        \"zxgxlx\": \"1\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707678578
+    },
+    {
+      "name": "同步超时转异步示例",
+      "responseId": 773284356,
+      "data": "{\r\n    \"reqId\": \"0dd7f306967a44dfbfe251b8c5b5c240\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"action\": \"zxgx\",\r\n        \"code\": \"FprzSyncToAsync\",\r\n        \"message\": \"业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果\",\r\n        \"taskId\": 534457481415296,\r\n        \"nsrsbh\": \"91************2G\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707678579
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58718502,
+  "ordering": 831,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-03T08:44:59.000Z",
+  "updatedAt": "2025-09-19T06:50:04.000Z",
+  "creatorId": 1426961,
+  "editorId": 3099717,
+  "creatorUserId": 1426961,
+  "editorUserId": 3099717,
+  "responseChildren": [
+    "BLANK.42947343",
+    "BLANK.773284355",
+    "BLANK.773284356"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

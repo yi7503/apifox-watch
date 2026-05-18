@@ -1,0 +1,17 @@
+{
+  "id": 4894643,
+  "name": "2024年7月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年7月发布内容\n\n发布日期：2024-07-30\n发布版本：V1.0.7\n\n## 一. 发票查验\n\n1. 查验返回红字清单信息\n- 返回报文新增红字发票信息节点，红字发票代码、红字发票号码、红字发票开票日期、红字发票状态字段\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/457656/image-preview)\n\n2. 新增能力：电票平台查验\n- 不区分部分或全额红冲\n- 不支持非数电票查验\n- 可以返回特定要素类型代码和特殊票种信息（总局查验是获取不到的）\n- 时效比总局查验稍慢\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/457652/image-preview)\n\n3. 新增税号版数电票查验及版式文件下载产品接口\n- appkey需要单独开通税号版查验获取版式文件权限\n- 在原有数电票查验及版式文件下载接口基础上增加入参nsrsbh,作为该次查验加版式文件下载归到哪个税号下计费的标识。\n- 传入的税号必须先订购了税号版发票查验版式文件下载产品（0013-发票查验+版式文件下载（税号版）或0014-发票查验+版式文件下载(实时税号版)）才会发起版式文件下载任务\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/457653/image-preview)\n\n## 二. 数电开票\n\n1. 已开发票明细查询，增加代码，号码字段\n<span style=\"font-size:0.9em;\"> [已开发票明细查询](api-100012790)\n- 入参和出参增加字段zz_fpdm和zz_fphm</span>\n\n\n## 三. 发票入账\n1. 所有接口入参必传精简化，详见文档\n\n## 四. 发票认证\n\n1. 认证支持任务回调机制\n<span style=\"font-size:0.9em;\"> [发票认证异步任务执行结果回调接口说明](api-193036791)</span>\n<span style=\"font-size:0.9em;\"> 可以提供回调地址，联系技术支持配置</span>\n2. 电票平台认证自持和托管支持单张发票采集\n<span style=\"font-size:0.9em;\"> (1)[申请进项发票采集]接口增加入参：fpdm、fphm、qdfphm</span>\n<span style=\"font-size:0.9em;\"> (2)[申请海关缴款书采集]接口增加入参：jkshm</span>\n<span style=\"font-size:0.9em;\"> (3)[申请代扣代缴完税凭证采集]接口增加入参：pzhm、bkjnsrsbh、bkjnsrmc</span>\n3. 代扣代缴完税证明采集结果查询接口返回字段中增加税款所属期\n<span style=\"font-size:0.9em;\"> 税局本身没有该字段，企享云处理增加</span>\n4. 代扣代缴完税证明勾选接口，不抵扣勾选增加不抵扣原因和不抵扣原因描述\n\n## 五. 发票归集 \n1. 发票归集特定要素单独sheet页解析返回\n- <span style=\"font-size:0.9em;\"> 仅针对数电票(增值税专用发票、增值税普通发票)，且特定要素是不动产经营租赁、旅客运输、货物运输、建筑服务 航空电子行程单和铁路电子客票</span>\n- <span style=\"font-size:0.9em;\"> 归集返回报文增加对应列表字段</span>\n2. 归集新增发票类型8208 数电票（通行费发票）\n3. 增加发票归集产品的回调通知\n<span style=\"font-size:0.9em;\"> [发票归集异步任务执行结果回调接口说明](api-193036322)</span>\n<span style=\"font-size:0.9em;\"> 可以提供回调地址，联系技术支持配置</span>\n4. 针对税局导出文件税号错误问题导致实际返回少票的优化\n<span style=\"font-size:0.9em;\"> 不涉及客户调整</span>\n\n## 六. 数电版式文件下载\n1. 版式文件下载部分失败处理优化\n<span style=\"font-size:0.9em;\">因税局无法获取导致部分失败的场景，按照成功返回，并提示具体失败部分信息 ，示例：</span>\n<span style=\"font-size:0.9em;\">\"status\": \"processed\",\n\"msg\": \"下载的版式文件缺失，存在税局无法下载的版式文件:243170*****2502(pdf),24317******042502(ofd),\"</span>\n\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-08-04T07:55:58.000Z",
+  "updatedAt": "2026-03-04T08:46:01.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

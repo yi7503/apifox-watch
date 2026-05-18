@@ -1,0 +1,526 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 平台查询
+  version: latest
+  description: 'Split from full spec, module: 平台查询'
+tags:
+- name: 平台查询
+paths:
+  /v2/public/beginOrgInfoTask:
+    post:
+      summary: 发起企业基本信息
+      operationId: api-268511099
+      tags:
+      - 平台查询
+      description: |-
+        该接口用于发起企业基本信息（需区分自持和托管）：
+        1. 自持账号模式下：自行异步登录后再调用该接口；
+        2. 托管模式下：传入账号必要信息直接调用。
+
+
+        | **错误代码** | **错误信息**  | **解决方案**|
+        | --- | --- |---|
+        | 2000 | 成功 | |
+        | 4xxx| 获取失败 | |
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              x-apifox-refs: {}
+              x-apifox-orders:
+              - nsrsbh
+              - areaCode
+              properties:
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                  description: 纳税人识别号
+                areaCode:
+                  type: string
+                  title: 地区编码
+                  description: 见附录：[地区代码](apifox://link/pages/2246773)地区编码（二位或四位地区编码）
+                  examples:
+                  - '11'
+              required:
+              - nsrsbh
+              - areaCode
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求唯一id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    x-apifox-mock: '1695797461872951298'
+                  code:
+                    type: string
+                    title: 请求code
+                    description: 请求code(2000 成功,其他失败)
+                    x-apifox-mock: '2000'
+                  success:
+                    type: boolean
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息描述
+                    description: 错误信息描述
+                    x-apifox-mock: 接口调用成功
+                  data:
+                    type: object
+                    properties:
+                      taskId:
+                        type: string
+                        description: 主任务ID
+                    x-apifox-orders:
+                    - taskId
+                    description: 数据结果
+                    required:
+                    - taskId
+                required:
+                - reqId
+                - success
+                - code
+                x-apifox-orders:
+                - reqId
+                - code
+                - message
+                - success
+                - data
+                x-apifox-refs: {}
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    reqId: 19399fbf85694c71bc5448a392ad8dd0
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      taskId: '12345678'
+                异常返回结果:
+                  summary: 异常返回结果
+                  value:
+                    code: '5000'
+                    success: false
+                    message: 异常信息
+                    reqId: d56999744734437eb10f3369d52efc15
+  /v2/public/queryOrgInfoTask:
+    post:
+      summary: 获取企业基本信息
+      operationId: api-268524049
+      tags:
+      - 平台查询
+      description: |-
+        描述：该接口用于查询任务状态及获取企业基本信息数据。
+        调用流程：
+        1. 通过发起企业基本信息任务时返回的taskId，轮询该接口的状态；
+        2. 判断任务状态是否完成，获取data节点下的status状态；
+        3. 获取结果，当任务状态为3时采集完成，获取result节点下的数据；
+
+
+        | **错误代码** | **错误信息**  | **解决方案**|
+        | --- | --- |---|
+        | 2000 | 成功 | |
+        | 5000 | 异常 | |
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskId:
+                  type: string
+                  title: 任务id
+                  x-apifox-mock: '1698948417616556034'
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                  description: 纳税人识别号
+                  x-apifox-mock: 91440111MACHRDGB9W
+              x-apifox-orders:
+              - taskId
+              - nsrsbh
+              x-apifox-refs: {}
+              required:
+              - taskId
+              - nsrsbh
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求唯一id
+                    mock:
+                      mock: '1702594054403760130'
+                    description: 请求唯一id
+                  code:
+                    type: string
+                    title: 返回code码
+                    mock:
+                      mock: '2000'
+                    description: 返回code码
+                  success:
+                    type: boolean
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 返回信息描述
+                    description: 返回信息描述
+                    mock:
+                      mock: 成功
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      status:
+                        type: integer
+                        description: -1：任务创建失败，0:无任务，1:进行中，3:完成
+                        title: 任务完成状态
+                      statusMsg:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务完成状态描述
+                        description: 任务完成状态描述
+                      statusDetails:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          main:
+                            type: string
+                            title: 分组总状态
+                            description: 1：进行中，2：失败（任何失败），3：成功
+                          mainStatusCode:
+                            type: string
+                            title: 分组总code
+                            description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                          jcxx:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                title: 分组任务处理状态
+                                description: 1：进行中，2：失败，3：成功
+                              loginCode:
+                                type: string
+                                title: 登录失效状态
+                                description: 登录失效（8000），其他：2000
+                            x-apifox-orders:
+                            - status
+                            - loginCode
+                            required:
+                            - status
+                            - loginCode
+                            title: 分组任务状态详情节点
+                            description: 类型及下节点类型参考上级目录中的《企业数据采集公共附录》
+                        title: 任务状态详情
+                        x-apifox-orders:
+                        - jcxx
+                        - main
+                        - mainStatusCode
+                      jcxx:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          taxCompanyEnterpriseInfoDtoPageResult:
+                            type: object
+                            properties:
+                              nsrsbh:
+                                type: string
+                                title: 纳税识别号
+                                description: 纳税识别号
+                              nsrmc:
+                                type: string
+                                title: 纳税人名称
+                                description: 纳税人名称
+                              nslxmc:
+                                type: string
+                                title: 纳税人类型名称
+                                description: 纳税人类型名称
+                            x-apifox-orders:
+                            - nsrsbh
+                            - nsrmc
+                            - nslxmc
+                            title: 基础信息
+                            description: 基础信息
+                        x-apifox-orders:
+                        - taxCompanyEnterpriseInfoDtoPageResult
+                        x-apifox-refs: {}
+                    x-apifox-orders:
+                    - status
+                    - statusMsg
+                    - statusDetails
+                    - jcxx
+                    required:
+                    - status
+                required:
+                - reqId
+                - code
+                - success
+                x-apifox-orders:
+                - reqId
+                - code
+                - message
+                - success
+                - data
+                x-apifox-refs: {}
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    reqId: 679c89b57c3a4d2
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      statusMsg: 完成
+                      jcxx:
+                        taxCompanyEnterpriseInfoDtoPageResult:
+                          nsrsbh: '9131011000000'
+                          nsrmc: XXXX有限公司
+                          nslxmc: 增值税一般纳税人
+                      statusDetails:
+                        mainStatusCode: '2000'
+                        jcxx:
+                          groupStatusDetail:
+                            BASIC_INFO:
+                              code: '2000'
+                              hasLoginErr: '0'
+                              codeMsg: 执行完成
+                              status: 3
+                          loginCode: '2000'
+                          status: 3
+                        main: 3
+                      status: 3
+                异常返回结果:
+                  summary: 异常返回结果
+                  value:
+                    code: '50002'
+                    success: false
+                    message: 字段nsrsbh的格式不正确
+                    reqId: d56999744734437eb10f3369d52efc15
+                执行中:
+                  summary: 执行中
+                  value:
+                    msg: null
+                    code: '2000'
+                    data:
+                      statusMsg: 执行中
+                      statusDetails:
+                        jcxx:
+                          groupStatusDetail:
+                            BASIC_INFO: 1
+                          status: 1
+                        main: 1
+                      status: 1
+  /地址联系技术支持配置#268558627:
+    post:
+      summary: 回调通知-获取采集状态
+      operationId: api-268558627
+      tags:
+      - 平台查询
+      description: |-
+        描述：采集任务完成时回调通知客户。
+        调用流程：
+        1. 客户提供自己的接口回调地址通过对接群给到技术支持配置；
+        2. 发起企业基本信息，任务完成后会推送数据到回调地址，客户返回成功响应；
+        3. 判断采集状态是否完成，获取status状态；
+        4. 获取结果，当采集状态为3时采集完成，调用获取数据接口获取数据；
+
+        客户回调返回查看响应参数及示例
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  description: -1：任务创建失败，0:无任务，1:进行中，3:完成
+                  title: 任务完成状态
+                statusMsg:
+                  type: string
+                  title: 任务完成状态描述
+                  description: 任务完成状态描述
+                statusDetails:
+                  type: object
+                  properties:
+                    main:
+                      type: string
+                      title: 分组总状态
+                      description: 1：进行中，2：失败（任一失败），3：成功
+                    mainStatusCode:
+                      type: string
+                      title: 分组总code
+                      description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                    jcxx:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        status:
+                          type: string
+                          title: 分组任务处理状态
+                          description: 1：进行中，2：失败，3：成功
+                        loginCode:
+                          type: string
+                          title: 子任务登录失效状态码
+                          description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                      x-apifox-orders:
+                      - status
+                      - loginCode
+                      title: 分组任务状态详情节点
+                  x-apifox-orders:
+                  - jcxx
+                  - main
+                  - mainStatusCode
+                  title: 任务状态详情
+                  required:
+                  - mainStatusCode
+                  - main
+                taskId:
+                  type: string
+                  description: 任务ID
+                  title: 任务ID
+              required:
+              - taskId
+              - status
+              - statusDetails
+              x-apifox-orders:
+              - taskId
+              - status
+              - statusMsg
+              - statusDetails
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 接收响应Code
+                  msg:
+                    type: string
+                    description: 接收响应消息
+                x-apifox-orders:
+                - code
+                - msg
+                required:
+                - code
+                - msg
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    code: '2000'
+                    msg: 已接收

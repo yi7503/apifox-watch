@@ -1,0 +1,263 @@
+{
+  "id": 168122667,
+  "name": "发起已勾选归集任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：\n1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)\n2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态\"status\"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)\n3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/collectCheckedInvoice",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "kpyfq": {
+          "type": "string",
+          "title": "所属期起",
+          "description": "YYYYMM（例：202011）"
+        },
+        "kpyfz": {
+          "type": "string",
+          "title": "所属期止",
+          "description": "YYYYMM（例：202012）"
+        },
+        "dataType": {
+          "type": "string",
+          "title": "数据类型",
+          "description": "默认为空，以报文形式返回",
+          "enum": [
+            "空/不传-报文形式",
+            "zip-压缩包形式"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "空/不传-报文形式",
+              "name": "",
+              "description": ""
+            },
+            {
+              "value": "zip-压缩包形式",
+              "name": "",
+              "description": ""
+            }
+          ]
+        },
+        "tscjbz": {
+          "type": "string",
+          "title": "退税采集标志",
+          "description": "传多个类型时以英文逗号( , )分隔",
+          "enum": [
+            "1-退税用途确认",
+            "2-退税已勾选"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "1-退税用途确认",
+              "name": "",
+              "description": ""
+            },
+            {
+              "value": "2-退税已勾选",
+              "name": "",
+              "description": ""
+            }
+          ]
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "kpyfq",
+        "kpyfz",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "nsrsbh",
+        "kpyfq",
+        "kpyfz",
+        "tscjbz",
+        "dataType"
+      ],
+      "x-apifox-refs": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\n    \"nsrsbh\": \"9131******57LQY4Y\",\n    \"kpyfq\": \"202211\",\n    \"kpyfz\": \"202212\",\n    \"tscjbz\": \"1,2\",\n    \"dataType\": \"zip\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "S4CQ6aHueY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "c2c8mNZDgi",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "491JAzxqeH",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 438830196,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code(2000成功，其他失败)"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务id"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 438830196,
+      "data": "{\n    \"reqId\": \"f650ac40f6914f328aa587116957899e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"taskId\": 1752226411192705000\n    }\n}",
+      "id": 406536632
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58690949,
+  "ordering": 149,
+  "responsibleId": 2118003,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-03T02:31:19.000Z",
+  "updatedAt": "2026-04-01T09:56:19.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

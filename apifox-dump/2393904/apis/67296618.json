@@ -1,0 +1,318 @@
+{
+  "id": 67296618,
+  "name": "经营异常风险接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "K94FKZJ3bh6QtsNVDLlGR",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n 企业经营异常信息，企业被列入或移出的原因和时间，以及做出决定的机关等。\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|\n| NO_RESULT| 查询无结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/risk/hmd/jyyc",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "qyName": {
+          "type": "string",
+          "title": "企业全名/统一社会信用代码，必填"
+        }
+      },
+      "x-apifox-orders": [
+        "qyName"
+      ],
+      "required": [
+        "qyName"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"qyName\": \"湖南长沙XX有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "OUrAXij4zv",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "1jEYr2BM0y",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "AMf3pdnaIn",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "i4L4ZMSXTo",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171101975,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "错误码",
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "qyName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业名称/纳税识别号"
+              },
+              "jyycFlag": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "经营异常风险标志"
+              },
+              "jyycList": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "total": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "title": "返回列表中记录总数"
+                  },
+                  "items": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "regNo": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "注册号"
+                        },
+                        "province": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "省份"
+                        },
+                        "inReason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "列入原因"
+                        },
+                        "inDate": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "列入时间"
+                        },
+                        "outReason": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "移出原因"
+                        },
+                        "outDate": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "移出时间"
+                        },
+                        "department": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "做出决定机关"
+                        },
+                        "disabled": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "title": "0：当前公示信息；1：历史公示信息"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "regNo",
+                        "province",
+                        "inReason",
+                        "inDate",
+                        "outReason",
+                        "outDate",
+                        "department",
+                        "disabled"
+                      ]
+                    },
+                    "title": "企业股东及出资信息列表"
+                  }
+                },
+                "x-apifox-refs": {},
+                "x-apifox-orders": [
+                  "total",
+                  "items"
+                ]
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "qyName",
+              "jyycFlag",
+              "jyycList"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 171101975,
+      "data": "{\n    \"reqId\": \"18d349a72fd243ad9704e51cd1e3dc4a\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"qyName\": \"湖南长沙XX有限公司\",\n        \"jyycFlag\": 1,\n        \"jyycList\": [\n            {\n                \"total\": 2,\n                \"items\": [\n                    {\n                        \"outReason\": \"-\",\n                        \"regNo\": \"430102000312822\",\n                        \"outDate\": \"-\",\n                        \"province\": \"HUNAN\",\n                        \"inDate\": \"2018-07-09\",\n                        \"name\": \"湖南长沙XX有限公司\",\n                        \"disabled\": \"0\",\n                        \"inReason\": \"未按照规定报送年度报告\",\n                        \"department\": \"长沙市工商行政管理局芙蓉分局\"\n                    },\n                    {\n                        \"outReason\": \"-\",\n                        \"regNo\": \"430102000312822\",\n                        \"outDate\": \"-\",\n                        \"province\": \"HUNAN\",\n                        \"inDate\": \"2018-07-08\",\n                        \"name\": \"湖南长沙XX有限公司\",\n                        \"disabled\": \"1\",\n                        \"inReason\": \"未按照规定报送年度报告\",\n                        \"department\": \"长沙市工商行政管理局芙蓉分局\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+      "id": 17742770
+    },
+    {
+      "name": "异常示例",
+      "responseId": 0,
+      "data": "{\n    \"reqId\": \"6c1916ca6e5745529d0bcad5b783d6ef\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"qyName\": \"湖南长沙XX有限公司\",\n        \"jyycFlag\": 0\n    }\n}",
+      "id": 17742829
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13475934,
+  "ordering": 73,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-03-09T09:31:19.000Z",
+  "updatedAt": "2024-07-12T02:13:47.000Z",
+  "creatorId": 1432689,
+  "editorId": 493984,
+  "creatorUserId": 1432689,
+  "editorUserId": 493984,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

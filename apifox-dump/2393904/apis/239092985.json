@@ -1,0 +1,418 @@
+{
+  "id": 239092985,
+  "name": "查询更正申报任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询已发起的更正申报任务的执行结果。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！  |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ |\n|PARAMETER_ERROR |参数格式不合法！ |\n|INTERFACE_ERROR |接口异常,请联系管理员 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454760922049792\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 575339288,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "finishTime": {
+                "type": "string",
+                "title": "任务结束时间"
+              },
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "服务名称"
+              },
+              "resultMessage": {
+                "type": "string",
+                "title": "任务执行明细信息"
+              },
+              "result": {
+                "type": "string",
+                "title": "任务执行结果"
+              },
+              "startTime": {
+                "type": "string",
+                "title": "任务发起时间"
+              },
+              "detail": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "title": "成功信息"
+                    },
+                    "code": {
+                      "type": "string",
+                      "title": "任务code"
+                    },
+                    "bqybtse": {
+                      "type": "string",
+                      "title": "增值税本期应补退税额"
+                    },
+                    "bqybtsejyfj": {
+                      "type": "string",
+                      "title": "教育附加本期应补退税额"
+                    },
+                    "bqybtsecjs": {
+                      "type": "string",
+                      "title": "城建税本期应补退税额"
+                    },
+                    "bqybtsedfjyfj": {
+                      "type": "string",
+                      "title": "地方教育附加本期应补退税额 "
+                    },
+                    "screenshot": {
+                      "type": "string",
+                      "title": "截图或pdf文件地址"
+                    },
+                    "state": {
+                      "type": "string",
+                      "title": "申报状态 (0:未申报，1:已申报)"
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "异常信息"
+                    },
+                    "taxAmount": {
+                      "type": "string",
+                      "title": "税局应补退税额"
+                    },
+                    "yzpzzlDm": {
+                      "type": "string",
+                      "title": "应征凭证种类代码"
+                    },
+                    "tcData": {
+                      "type": "object",
+                      "properties": {
+                        "ckywqksm": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "ewbhxh": {
+                                "type": "string",
+                                "title": "序号"
+                              },
+                              "ssqq": {
+                                "type": "string",
+                                "title": "所属期起"
+                              },
+                              "ssqz": {
+                                "type": "string",
+                                "title": "所属期止"
+                              },
+                              "jxse": {
+                                "type": "string",
+                                "title": "进项税额"
+                              },
+                              "ckywdyjxse": {
+                                "type": "string",
+                                "title": "出口业务对应进项税额"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "ewbhxh",
+                              "ssqq",
+                              "ssqz",
+                              "jxse",
+                              "ckywdyjxse"
+                            ]
+                          },
+                          "title": "出口业务情况说明节点"
+                        },
+                        "cksrcyqkb": {
+                          "title": "企业所得税汇缴出口收入差异表节点",
+                          "type": "object",
+                          "x-apifox-refs": {
+                            "01KRFZYF5DFF6G35P1VV3XV401": {
+                              "$ref": "#/definitions/273427710",
+                              "x-apifox-overrides": {}
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01KRFZYF5DFF6G35P1VV3XV401"
+                          ],
+                          "properties": {}
+                        },
+                        "cksrcyqkb ": {
+                          "$ref": "#/definitions/273428689",
+                          "title": "企业所得税预缴出口收入差异表"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "ckywqksm",
+                        "cksrcyqkb",
+                        "cksrcyqkb "
+                      ],
+                      "title": "弹窗节点"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "yzpzzlDm",
+                    "result",
+                    "state",
+                    "taxAmount",
+                    "bqybtse",
+                    "bqybtsejyfj",
+                    "bqybtsecjs",
+                    "bqybtsedfjyfj",
+                    "screenshot",
+                    "tcData"
+                  ]
+                },
+                "title": "明细"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "任务 id"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "任务信息"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "taskId",
+              "code",
+              "message",
+              "result",
+              "resultMessage",
+              "businessStatus",
+              "businessStatusName",
+              "serviceName",
+              "startTime",
+              "finishTime",
+              "detail"
+            ],
+            "required": [
+              "finishTime",
+              "businessStatusName",
+              "businessStatus",
+              "serviceName",
+              "resultMessage",
+              "result",
+              "startTime",
+              "detail",
+              "taskId",
+              "code",
+              "message"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 575339288,
+      "data": "{\"reqId\":\"807aa626b84b4e49ab0405dee305682d\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 443797911
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 575339288,
+      "data": "{\"reqId\":\"489b28c74c0a4e8e94da5409c67818db\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "id": 443797912
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 575339288,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"message\": \"\",\n    \"reqId\": \"d24f77c11ed84675adcd714a890d5a56\",\n    \"success\": true,\n    \"data\": {\n        \"taskId\": \"565194566893568\",\n        \"code\": 2000,\n        \"message\": \"申报成功\",\n        \"result\": \"更正申报成功\",\n        \"resultMessage\": \"申报成功\",\n        \"businessStatus\": 3,\n        \"businessStatusName\": \"执行成功\",\n        \"serviceName\": \"更正申报\",\n        \"startTime\": \"2024-11-27 14:21:54\",\n        \"finishTime\": \"2024-11-27 15:04:08\",\n        \"detail\": [\n            {\n                \"code\": \"2000\",\n                \"message\": \"申报成功\",\n                \"bqybtse\": \"0.00\",\n                \"bqybtsecjs\": \"0.00\",\n                \"bqybtsedfjyfj\": \"0.00\",\n                \"bqybtsejyfj\": \"0.00\",\n                \"screenshot\": \"http://qxy-oss-robot-product.qixiangyun.com/*******************************\",\n                \"state\": \"1\",\n                \"taxAmount\": \"0.00\"\n            }\n        ]\n    }\n}",
+      "id": 443797913
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 46218331,
+  "ordering": 78,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-11-29T02:10:15.000Z",
+  "updatedAt": "2026-05-13T06:21:57.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

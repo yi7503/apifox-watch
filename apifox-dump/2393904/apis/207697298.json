@@ -1,0 +1,269 @@
+{
+  "id": 207697298,
+  "name": "账号批量绑定产品",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0005\t数电票版式文件下载(企业版)\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/account/bindAccountProducts",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "aggOrgId": {
+          "type": "string"
+        },
+        "productCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "accountId",
+        "aggOrgId",
+        "productCodes"
+      ],
+      "x-apifox-orders": [
+        "accountId",
+        "aggOrgId",
+        "productCodes"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"accountId\": \"**********\",\r\n    \"aggOrgId\": \"********\",\r\n    \"productCodes\": [\r\n        \"0003\",\r\n        \"0004\",\r\n        \"0005\"\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "TLjWYyFhLS",
+        "name": "Content-Type",
+        "required": "true",
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "EEB33jnCKK",
+        "name": "access_token",
+        "required": "true",
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "UOC6McUQPG",
+        "name": "req_date",
+        "required": "true",
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Ea8RPo5fUm",
+        "name": "req_sign",
+        "required": "true",
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 515798626,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "mock": {
+              "mock": "状态码"
+            },
+            "description": "2000表示成功"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "mock": {
+                    "mock": "信息"
+                  }
+                },
+                "code": {
+                  "type": "integer",
+                  "mock": {
+                    "mock": "业务状态码"
+                  },
+                  "description": "2000 表示成功绑定"
+                },
+                "productCode": {
+                  "type": "string",
+                  "mock": {
+                    "mock": "产品码"
+                  }
+                }
+              },
+              "required": [
+                "msg",
+                "code",
+                "productCode"
+              ],
+              "x-apifox-orders": [
+                "msg",
+                "code",
+                "productCode"
+              ]
+            }
+          },
+          "success": {
+            "type": "boolean",
+            "mock": {
+              "mock": "是否成功标记"
+            }
+          },
+          "message": {
+            "type": "string",
+            "mock": {
+              "mock": "错误码"
+            }
+          },
+          "reqId": {
+            "type": "string",
+            "mock": {
+              "mock": "请求id"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 515798626,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": [\n        {\n            \"msg\": \"0004绑定成功\",\n            \"code\": 2000,\n            \"productCode\": \"0004\"\n        },\n        {\n            \"msg\": \"0005绑定成功\",\n            \"code\": 2000,\n            \"productCode\": \"0005\"\n        },\n        {\n            \"msg\": \"0003绑定成功\",\n            \"code\": 2000,\n            \"productCode\": \"0003\"\n        }\n    ],\n    \"success\": true,\n    \"message\": \"绑定成功\",\n    \"reqId\": \"dc8596820d8a44a387db0ce1325d2f50\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423244608
+    },
+    {
+      "name": "异常示例",
+      "responseId": 515798626,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"没有找到对应的企业！\",\n    \"reqId\": \"83d7802f3fb3403d853e0651577319f8\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423244609
+    },
+    {
+      "name": "未登录",
+      "responseId": 515798626,
+      "data": "{\n    \"reqId\": \"0516f06b781b4590a23de8b7b148a853\",\n    \"code\": \"40100\",\n    \"success\": false,\n    \"message\": \"未登录!\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423244610
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841702,
+  "ordering": 247,
+  "responsibleId": 1442097,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-08-30T02:39:10.000Z",
+  "updatedAt": "2025-03-28T06:30:13.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.515798626"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

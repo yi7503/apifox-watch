@@ -1,0 +1,218 @@
+{
+  "id": 400382001,
+  "name": "红字确认单下载",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "红字确认单下载",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/exportHzfpxxqrd",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "xsfNsrsbh": {
+              "type": "string",
+              "title": "销方纳税人识别号"
+            },
+            "hzuuid": {
+              "type": "string",
+              "title": "红字信息UUID"
+            },
+            "hzfpxxqrdbh": {
+              "type": "string",
+              "title": "红字确认单编号"
+            }
+          },
+          "required": [
+            "hzuuid",
+            "xsfNsrsbh",
+            "hzfpxxqrdbh"
+          ],
+          "x-apifox-orders": [
+            "hzuuid",
+            "xsfNsrsbh",
+            "hzfpxxqrdbh"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01HMB98MG6WHA0PY6847DS6ARD",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HMB98MG6WHA0PY6847DS6ARD": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"nsrsbh\": \"91************R\",\r\n\t\"data\": {\r\n\t\t\"hzuuid\": \"0ccfd******************a2529\",\r\n\t\t\"xsfNsrsbh\": \"91************R\",\r\n\t\t\"hzfpxxqrdbh\": \"3301*************0943\"\r\n\t}\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "aufElXORnY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "GPaBfTHl3e",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "x5CKF0wgTT",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947681,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "红字确认单URL"
+              }
+            },
+            "x-apifox-orders": [
+              "url"
+            ],
+            "required": [
+              "url"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01KE5YR1WJH4STVTP407SQ71F1",
+          "data"
+        ],
+        "required": [
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01KE5YR1WJH4STVTP407SQ71F1": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947681,
+      "data": "{\n    \"reqId\": \"4dc1834846cf45ae9658eb01bfd60ae5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"url\": \"红字确认单URL\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 427561654
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681470,
+  "ordering": 323,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\nvar responseJson = {\r\n\t\"hcyydm\": \"01\",\r\n\t\"hzkjBz\": \"N\",\r\n\t\"lzFplxdm\": \"032\",\r\n\t\"ydkse\": 0.0,\r\n\t\"sfzzfpbz\": \"N\",\r\n\t\"zzsYtzt\": \"01\",\r\n\t\"lzHjje\": 2628.56,\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"pdfUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/44040225061000009423_1013.pdf?Expires=1770709404&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=U%2FyFz2TAN6EqUyoxF%2BoRF59NfI0%3D\",\r\n\t\"hzqrztDm\": \"07\",\r\n\t\"lrfsf\": \"0\",\r\n\t\"xgrq\": \"2025-10-13 17:19:21\",\r\n\t\"hzHjse\": -341.71,\r\n\t\"bz\": \"\",\r\n\t\"xmmx\": [{\r\n\t\t\"ggxh\": \"颜色:【大容量+3瓶粉】约12000页-买3送1\",\r\n\t\t\"spsl\": \"-2\",\r\n\t\t\"dj\": \"1314.28\",\r\n\t\t\"spmc\": \"电⼦计算机\",\r\n\t\t\"xmmc2\": \"*电⼦计算机*⼤稻⾕Pad 7 8G+256G\",\r\n\t\t\"uuid\": \"4072cec397374f7ba5c889138c02b81a\",\r\n\t\t\"lzMxxh\": 1,\r\n\t\t\"xh\": 1,\r\n\t\t\"se\": -341.71,\r\n\t\t\"dw\": \"个\",\r\n\t\t\"xmmc\": \"⼤稻⾕Pad 7 8G+256G\",\r\n\t\t\"sl\": \"0.13\",\r\n\t\t\"je\": -2628.56,\r\n\t\t\"spbm\": \"1090512990000000000\"\r\n\t}],\r\n\t\"lzFphm\": \"25952000000193124888\",\r\n\t\"xfsYtZt\": \"00\",\r\n\t\"qrjkp\": \"Y\",\r\n\t\"gmfNsrsbh\": \"9133020614429380X9\",\r\n\t\"lzHjse\": -341.71,\r\n\t\"yjjdkncpse\": 0.0,\r\n\t\"hzuuid\": \"892bf52e21b4417f9f365e970138c0b3\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"kpr\": \"张三\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"hzJshj\": -2970.27,\r\n\t\"lzfppzDm\": \"01\",\r\n\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\"lzKprq\": \"2025-05-30 10:54:55\",\r\n\t\"lrrq\": \"2025-06-05 11:54:37\",\r\n\t\"rzzt\": \"00\",\r\n\t\"hzHjje\": -2628.56\r\n};\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.lrrq = kprq;\r\nresponseJson.hzuuid = uuid;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2026-01-05T02:03:16.000Z",
+  "updatedAt": "2026-04-16T09:34:16.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

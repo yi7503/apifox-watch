@@ -1,0 +1,356 @@
+{
+  "id": 271925231,
+  "name": "商标信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于获取企业的商标信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/trademarkInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "name和creditNo至少一个字段传值"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "name和creditNo至少一个字段传值"
+        },
+        "pageSize": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "分页大小",
+          "description": "最大20"
+        },
+        "pageIndex": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "当前页",
+          "description": ""
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageSize",
+        "pageIndex"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 633690088,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "tradeTagName": {
+                      "type": "string",
+                      "title": "商标名称"
+                    },
+                    "tradeTagStatus": {
+                      "type": "string",
+                      "title": "商标状态"
+                    },
+                    "tradeTagType": {
+                      "type": "string",
+                      "title": "商标类型",
+                      "enum": [
+                        "一般商标",
+                        "特殊商标",
+                        "集体商标",
+                        "证明商标"
+                      ],
+                      "x-apifox": {
+                        "enumDescriptions": {
+                          "一般商标": "",
+                          "特殊商标": "",
+                          "集体商标": "",
+                          "证明商标": ""
+                        }
+                      }
+                    },
+                    "tradeTagStyle": {
+                      "type": "string",
+                      "title": "商标形式"
+                    },
+                    "curState": {
+                      "type": "string",
+                      "title": "当前状态"
+                    },
+                    "applierName": {
+                      "type": "string",
+                      "title": "申请人名称"
+                    },
+                    "applierEnName": {
+                      "type": "string",
+                      "title": "申请人名称-英文"
+                    },
+                    "applierAddress": {
+                      "type": "string",
+                      "title": "申请人地址"
+                    },
+                    "applierEnAddress": {
+                      "type": "string",
+                      "title": "申请人地址-英文"
+                    },
+                    "applyYear": {
+                      "type": "string",
+                      "title": "申请年份"
+                    },
+                    "applyDate": {
+                      "type": "string",
+                      "title": "申请日期"
+                    },
+                    "applyRegNo": {
+                      "type": "string",
+                      "title": "申请 / 注册号"
+                    },
+                    "colorMark": {
+                      "type": "string",
+                      "title": "颜色标记"
+                    },
+                    "firstAuditedNo": {
+                      "type": "string",
+                      "title": "初审公告期号"
+                    },
+                    "gjRegDate": {
+                      "type": "string",
+                      "title": "国际注册日期"
+                    },
+                    "product": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "productName": {
+                            "type": "string",
+                            "title": "商品名称"
+                          },
+                          "productType": {
+                            "type": "string",
+                            "title": "商品类型"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "productName",
+                          "productType"
+                        ]
+                      },
+                      "title": "商品 / 服务列表"
+                    },
+                    "priorityDate": {
+                      "type": "string",
+                      "title": "优先权日期"
+                    },
+                    "regNoticeNo": {
+                      "type": "string",
+                      "title": "注册公告期号"
+                    },
+                    "afterSpecifyDate": {
+                      "type": "string",
+                      "title": "后期指定日期"
+                    },
+                    "shareFlag": {
+                      "type": "string",
+                      "title": "是否公用商标"
+                    },
+                    "ltFlag": {
+                      "type": "string",
+                      "title": "是否立体商标"
+                    },
+                    "gjCategory": {
+                      "type": "string",
+                      "title": "国际分类",
+                      "description": "1：化学原料；2：颜料油漆；3：日化用品；4：染料油脂；5：医药；6：金属材料；7：机械设备；8：手工器械；9：科学仪器；10：医疗器械；\n11：灯具空调；12：运输工具；13：军火烟火；14：珠宝钟表；15：乐器；16：办公品；17：橡胶制品；18：皮革皮具；19：建筑材料；20：家具；\n21：厨房洁具；22：绳网袋篷；23：纱线丝；24：布料床单；25：服装鞋帽；26：纽扣拉链；27：地毯席垫；28：健身器材；29：食品；30：方便食品；\n31：饲料种籽；32：啤酒饮料；33：酒；34：烟草烟具；35：广告销售；36：金融物管；37：建筑修理；38：通讯服务；39：运输贮藏；40：材料加工；41：教育娱乐；42：设计研究；43：餐饮住宿；44：医疗园艺；45：社会法律"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "tradeTagName",
+                    "tradeTagStatus",
+                    "tradeTagType",
+                    "tradeTagStyle",
+                    "curState",
+                    "applierName",
+                    "applierEnName",
+                    "applierAddress",
+                    "applierEnAddress",
+                    "applyYear",
+                    "applyDate",
+                    "applyRegNo",
+                    "colorMark",
+                    "firstAuditedNo",
+                    "gjRegDate",
+                    "gjCategory",
+                    "product",
+                    "priorityDate",
+                    "regNoticeNo",
+                    "afterSpecifyDate",
+                    "shareFlag",
+                    "ltFlag"
+                  ],
+                  "required": [
+                    "gjCategory"
+                  ]
+                }
+              },
+              "total": {
+                "type": "string",
+                "title": "商标总数"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "items",
+              "total"
+            ],
+            "required": [
+              "items"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 633690088,
+      "data": "{\n    \"reqId\": \"1c961c15b533477ea3bdfb46cc4de7a1\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"data\": {\n        \"items\": [\n            {\n                \"tradeTagName\": \"商标名称xx\",\n                \"tradeTagStatus\": \"等待实质审查\",\n                \"tradeTagType\": \"\",\n                \"tradeTagStyle\": \"\",\n                \"curState\": \"\",\n                \"applierName\": \"xx科技有限责任公司\",\n                \"applierEnName\": \"\",\n                \"applierAddress\": \"北京市xx区xx中路108号院6号楼6层006号\",\n                \"applierEnAddress\": \"\",\n                \"applyYear\": \"2025\",\n                \"applyDate\": \"2025-02-17\",\n                \"applyRegNo\": \"835**413\",\n                \"colorMark\": \"\",\n                \"firstAuditedNo\": \"\",\n                \"gjRegDate\": \"\",\n                \"product\": [\n                    {\n                        \"productName\": \"为商品和服务的买卖双方提供在线市场\",\n                        \"productType\": \"3503\"\n                    },\n                    {\n                        \"productName\": \"在计算机数据库中更新和维护数据\",\n                        \"productType\": \"3506\"\n                    }\n                ],\n                \"priorityDate\": \"\",\n                \"regNoticeNo\": \"\",\n                \"afterSpecifyDate\": \"\",\n                \"shareFlag\": \"0\",\n                \"ltFlag\": \"0\"\n            },\n            {\n                \"tradeTagName\": \"商标名称xx1\",\n                \"tradeTagStatus\": \"等待实质审查\",\n                \"tradeTagType\": \"\",\n                \"tradeTagStyle\": \"\",\n                \"curState\": \"\",\n                \"applierName\": \"xx科技有限责任公司\",\n                \"applierEnName\": \"\",\n                \"applierAddress\": \"北京市xx区xx中路108号院6号楼6层006号\",\n                \"applierEnAddress\": \"\",\n                \"applyYear\": \"2025\",\n                \"applyDate\": \"2025-02-17\",\n                \"applyRegNo\": \"834**473\",\n                \"colorMark\": \"\",\n                \"firstAuditedNo\": \"\",\n                \"gjRegDate\": \"\",\n                \"product\": [\n                    {\n                        \"productName\": \"受托管理\",\n                        \"productType\": \"3608\"\n                    },\n                    {\n                        \"productName\": \"不动产经纪\",\n                        \"productType\": \"3604\"\n                    },\n                    {\n                        \"productName\": \"在线商业筹款服务\",\n                        \"productType\": \"3602\"\n                    },\n                    {\n                        \"productName\": \"募集慈善基金\",\n                        \"productType\": \"3607\"\n                    }\n                ],\n                \"priorityDate\": \"\",\n                \"regNoticeNo\": \"\",\n                \"afterSpecifyDate\": \"\",\n                \"shareFlag\": \"0\",\n                \"ltFlag\": \"0\"\n            }\n        ],\n        \"total\": \"2\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 529946291
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 122,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-15T07:18:18.000Z",
+  "updatedAt": "2025-04-21T07:02:47.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.633690088"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

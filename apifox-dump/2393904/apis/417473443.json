@@ -1,0 +1,190 @@
+{
+  "id": 417473443,
+  "name": "机动车类专用发票导出业务未下载文件下载",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "机动车类专用发票导出业务未下载文件下载",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/jdcwxzwjxz",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：queryJdcxx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "uuid": {
+              "type": "string",
+              "title": "文件唯一标识",
+              "description": "由未下载文件列表接口查询获取"
+            }
+          },
+          "x-apifox-orders": [
+            "uuid"
+          ],
+          "x-apifox-refs": {},
+          "required": [
+            "uuid"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01JAA099QH73978DKKD71TW15M"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**********QY4Y\",\r\n    \"data\": {\r\n        \"uuid\": \"325ea739-ddea-4b26-a259-582c45c51d7b\"\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": "",
+        "name": "导出全部示例"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "title": "文件下载地址"
+              },
+              "wjm": {
+                "type": "string",
+                "title": "文件名"
+              }
+            },
+            "x-apifox-orders": [
+              "url",
+              "wjm"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "url",
+              "wjm"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"url\": \"https://qxy-oss.beijing.**********.dat\",\n        \"wjm\": \"数电发票数据91***********442B_20240401_093302.dat\"\n    },\n    \"success\": true,\n    \"message\": null,\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 77968968,
+  "ordering": 82,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-10T03:09:02.000Z",
+  "updatedAt": "2026-03-03T03:19:36.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

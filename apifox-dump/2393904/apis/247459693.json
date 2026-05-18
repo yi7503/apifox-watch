@@ -1,0 +1,311 @@
+{
+  "id": 247459693,
+  "name": "账号信息上传并校验（申报密码校验）",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "juywuh3umwQh53F3_Ud9X",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于上传并校验密码是否正确(同步接口)\n1. 如能保证密码正确，可以不进行校验；\n2. 校验返回密码正确后有12小时缓存，缓存时间内只返回正确，到期后重新登录检查；\n\n「对照自然人税务局扣缴客户端登录页面」\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/575277/image-preview)\n\n密码加密参见：[加密说明](doc-3774763)\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/check/checkPassword",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "checkPassword": {
+          "type": "string",
+          "title": "是否发起校验",
+          "description": "Y是校验 N是不校验 默认是Y"
+        },
+        "qymc": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "mmlx": {
+          "type": "string",
+          "title": "登录方式",
+          "description": "0表示申报密码登录\n2表示实名登录"
+        },
+        "smzh": {
+          "type": "string",
+          "title": "实名账号",
+          "description": "当mmlx=2时，必填"
+        },
+        "smmm": {
+          "type": "string",
+          "title": "实名密码",
+          "description": "当mmlx=2时，必填 （密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）"
+        },
+        "djxhid": {
+          "type": "string",
+          "title": "登记序号",
+          "description": "存在多个登记序号时，需要指定传入一个.例：10117440105249764755"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "areaid": {
+          "type": "string",
+          "title": "地区编号",
+          "description": "6位行政区划代码,精确到省，五个单列市到市，例如：440000,440300,参考省市区编码;可通用地区附录枚举[地区代码](apifox://link/pages/2246773)"
+        },
+        "bmbh": {
+          "type": "string",
+          "title": "部门编号",
+          "description": "分部门报送必传，企业自定义3位数的编号,用于创建分部门；"
+        },
+        "bmmc": {
+          "type": "string",
+          "title": "部门名称",
+          "description": "分部门报送必传"
+        },
+        "sbmm": {
+          "type": "string",
+          "title": "申报密码",
+          "description": "当mmlx=0时，必填 （密码需加密 加密参考[加密说明](apifox://link/pages/3774763) ）"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "checkPassword",
+        "nsrsbh",
+        "qymc",
+        "mmlx",
+        "smzh",
+        "smmm",
+        "sbmm",
+        "djxhid",
+        "areaid",
+        "bmbh",
+        "bmmc"
+      ],
+      "required": [
+        "aggOrgId",
+        "qymc",
+        "mmlx",
+        "nsrsbh",
+        "areaid"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"qymc\": \"********\",\r\n\t\"djxhid\": \"\",\r\n\t\"wgzbh\": \"\",\r\n\t\"areaid\": \"440000\",\r\n\t\"nsrsbh\": \"9144011**********\",\r\n\t\"checkPassword\": \"Y\",\r\n\t\"mmlx\": \"2\",\r\n\t\"smzh\": \"44**********\",\r\n\t\"smmm\": \"*************************\",\r\n\t\"sbmm\": \"*************************\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 590497285,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码；\n4004：密码是临时密码，调用申报密码修改后再进行业务处理"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "accountId": {
+                "type": "string",
+                "title": "账号ID",
+                "description": "账号信息上传之后会生成账号ID，各服务商保存好，接下来个税接口服务需要传入accountId"
+              },
+              "checkFlag": {
+                "type": "string",
+                "title": "密码校验状态",
+                "description": "true代表账号信息正确，false则是错误"
+              }
+            },
+            "x-apifox-orders": [
+              "accountId",
+              "checkFlag"
+            ],
+            "description": "数据"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 590497285,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"accountId\": \"4552900726228096\",\n        \"checkFlag\": true\n    },\n    \"success\": true,\n    \"reqId\": \"3ab540a99471438cbc24686380a2e431\"\n}",
+      "id": 463936454
+    },
+    {
+      "name": "异常示例",
+      "responseId": 590497285,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 463936455
+    },
+    {
+      "name": "未传主管登记序号示例",
+      "responseId": 590497285,
+      "data": "{\n    \"reqId\": \"94fb4026376342ed94343298e8e2f76f\",\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"企业存在多个登记序号，请选择一个登记序号，再进行后续操作！\",\n    \"data\": null\n}",
+      "id": 648678585
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153050,
+  "ordering": 84,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2024-12-23T09:36:40.000Z",
+  "updatedAt": "2026-04-16T08:17:20.000Z",
+  "creatorId": 1452584,
+  "editorId": 3222025,
+  "creatorUserId": 1452584,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

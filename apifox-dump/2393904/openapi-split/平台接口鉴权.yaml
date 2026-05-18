@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 平台接口鉴权
+  version: latest
+  description: 'Split from full spec, module: 平台接口鉴权'
+tags:
+- name: 平台接口鉴权
+paths:
+  /v2/public/oauth2/login:
+    post:
+      summary: 获取access_token
+      operationId: api-66569900
+      tags:
+      - 平台接口鉴权
+      description: |-
+        ## 接口描述
+        - 此接口针对合作接入方，以REST风格的HTTP服务接口方式，或模块界面集成方式，提供发票、税务相关能力服务；
+        - 客户系统可以根据自己系统的情况，选择不同的实现语言来实现对接。本文档以java为主要示例语言；
+        - access_token默认有效时间是15天，建议在过期之前一段时间重新调用login接口使用refresh_token刷新token，token过期则调用login接口重新获取新的access_token；
+
+        :::tip
+        获取到的access_token需要存储到本地缓存中再使用，建议至少7天更新一次，频繁请求login接口将会被限制。
+
+        对接请参考：[认证鉴权](https://openapi.qixiangyun.com/doc-2179954)
+      parameters:
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: API-SV1:10001990:ZTY1MzBjYmNkMWU1YzhmOTU4MDdmYTdjMTE2MzcwNmQ=
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  description: 默认client_credentials，刷新token使用refresh_token
+                client_appkey:
+                  type: string
+                  description: 提供的AppKey
+                client_secret:
+                  type: string
+                  description: 提供的AppSecret MD5 32位小写
+                refresh_token:
+                  type: string
+                  description: 使用接口返回refresh_token,调用时不需要传递client_appkey,client_secret参数
+              x-apifox-orders:
+              - grant_type
+              - client_appkey
+              - client_secret
+              - refresh_token
+              required:
+              - grant_type
+              - client_appkey
+              - client_secret
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      access_token:
+                        type: string
+                        description: 返回签名需要使用的access_token
+                      expires_in:
+                        type: integer
+                        description: 有效时长(毫秒)，默认15天
+                      refresh_token:
+                        type: string
+                        description: 刷新access_token时使用
+                    description: 业务数据
+                    required:
+                    - access_token
+                    - expires_in
+                    x-apifox-orders:
+                    - access_token
+                    - expires_in
+                    - refresh_token
+                  code:
+                    type: string
+                    description: 业务异常状态码
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    description: 业务异常消息
+                  success:
+                    type: boolean
+                    default: 'true'
+                    description: 是否成功
+                  reqId:
+                    type: string
+                    description: 请求ID
+                required:
+                - code
+                - success
+                - reqId
+                x-apifox-orders:
+                - code
+                - message
+                - reqId
+                - success
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    message: null
+                    success: true
+                    reqId: 75e20c4a7eec4ac0b42f9b3cdf223392
+                    data:
+                      access_token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJbLTEsLTEsLTEsMTAwLFwiXCIsMTAwMDE5OTksbnVsbCxcIlwiLC0xLG51bGxdIiwiZXhwIjoxNjc5NjI2MjI1LCJpYXQiOjE2NzgzMzAyMjV9.vrjbsmJv4Fi9FtpfI2x8DOxWwQGsiDNd75aIiR0Wy0VJvFtjy_7QMFIz4lmibud5LSoPMY7sGdC1_6KQ-fYrIw
+                      expires_in: 1296000000
+                      refresh_token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJbLTEsLTEsLTEsMTAwLFwiXCIsMTAwMDE5OTksbnVsbCxcIlwiLC0xLG51bGxdIiwiZXhwIjoxNzQyMDA2NDI3LCJpYXQiOjE3Mzk0MTQ0Mjd9.z26qUDMXRb5hOq_H75rhStGgWUaaHsGALoNyCLyViv7Uv2ZCZvNCm0rjB1Zv2Ob7hd-G9klgBBT3keg

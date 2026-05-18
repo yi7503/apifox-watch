@@ -1,0 +1,151 @@
+{
+  "id": 386840241,
+  "name": "开庭公告信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/courtAnnouncementInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {},
+      "x-apifox-orders": [
+        "01KBP54Q4QRBQCJK00HY318R27"
+      ],
+      "required": [],
+      "x-apifox-refs": {
+        "01KBP54Q4QRBQCJK00HY318R27": {
+          "$ref": "#/definitions/226029776"
+        }
+      }
+    },
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"name\":\"xxx信息技术有限公司\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 756724463,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [
+                    "01KBP8TEQSMHP2GMFGVQ7XSQ59"
+                  ],
+                  "x-apifox-refs": {
+                    "01KBP8TEQSMHP2GMFGVQ7XSQ59": {
+                      "$ref": "#/definitions/226072606"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            },
+            "required": [
+              "items"
+            ],
+            "x-apifox-orders": [
+              "items"
+            ],
+            "title": "数据内容"
+          }
+        },
+        "x-apifox-orders": [
+          "data",
+          "01KBP50AE88HGXZ4B60FF0TCR8"
+        ],
+        "x-apifox-refs": {
+          "01KBP50AE88HGXZ4B60FF0TCR8": {
+            "$ref": "#/definitions/226032752"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 756724463,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"total\": \"8664\",\n        \"items\": [\n            {\n                \"publishTime\": \"\",\n                \"districtCode\": \"***\",\n                \"city\": \"上海市\",\n                \"courtCode\": \"***\",\n                \"caseCauseNumber\": \"\",\n                \"relatedEntity\": \"[{\\\"role\\\":\\\"被告\\\",\\\"name\\\":\\\"上海*****有限公司\\\",\\\"item\\\":\\\"21****682\\\",\\\"type\\\":\\\"E\\\",\\\"pure_role\\\":\\\"被告\\\"},{\\\"role\\\":\\\"原告\\\",\\\"name\\\":\\\"****有限责任公司\\\",\\\"item\\\":\\\"2301*****4\\\",\\\"type\\\":\\\"E\\\",\\\"pure_role\\\":\\\"原告\\\"}]\",\n                \"chiefJudger\": \"Z某某\",\n                \"monthDate\": \"2024-09\",\n                \"caseCause\": \"[{\\\"standard_case_reason\\\": \\\"侵害商标权纠纷\\\", \\\"case_reason_code\\\": \\\"D1*****202\\\"}]\",\n                \"courtName\": \"上海市*****区人民法院\",\n                \"dayDate\": \"2024-09-09T00:00:00\",\n                \"province\": \"上海\",\n                \"caseNumber\": \"（2023）沪0107民初25098号\",\n                \"courtSite\": \"第三法庭\",\n                \"entityName\": \"********有限责任公司\",\n                \"district\": \"普陀区\",\n                \"announcementContent\": \"\",\n                \"announcementTitle\": \"\",\n                \"personRole\": \"原告\",\n                \"isHistory\": \"0\",\n                \"yearDate\": \"2024\",\n                \"department\": \"知识产权审判庭\",\n                \"courtClerk\": \"\",\n                \"courtTime\": \"2024-09-09T15:30:00\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"成功\",\n    \"timestamp\": \"2025-12-05 11:13:27\",\n    \"reqId\": \"b1b036a105e21ec5acb1b7ab474817c4\"\n}",
+      "id": 672748785
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 306,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-12-05T03:27:00.000Z",
+  "updatedAt": "2025-12-05T03:30:11.000Z",
+  "creatorId": 887900,
+  "editorId": 887900,
+  "creatorUserId": 887900,
+  "editorUserId": 887900,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,249 @@
+{
+  "id": 66569900,
+  "name": "获取access_token",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        407297
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "sNxzo_WLWIF2hKDvLFCt4",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        407299
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "IfXiZsFTF7CBjrMqM_9vv"
+    }
+  ],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n- 此接口针对合作接入方，以REST风格的HTTP服务接口方式，或模块界面集成方式，提供发票、税务相关能力服务；\n- 客户系统可以根据自己系统的情况，选择不同的实现语言来实现对接。本文档以java为主要示例语言；\n- access_token默认有效时间是15天，建议在过期之前一段时间重新调用login接口使用refresh_token刷新token，token过期则调用login接口重新获取新的access_token；\n\n:::tip\n获取到的access_token需要存储到本地缓存中再使用，建议至少7天更新一次，频繁请求login接口将会被限制。\n\n对接请参考：[认证鉴权](https://openapi.qixiangyun.com/doc-2179954)",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/oauth2/login",
+  "tags": [
+    "获取token"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "grant_type": {
+          "type": "string",
+          "description": "默认client_credentials，刷新token使用refresh_token"
+        },
+        "client_appkey": {
+          "type": "string",
+          "description": "提供的AppKey"
+        },
+        "client_secret": {
+          "type": "string",
+          "description": "提供的AppSecret MD5 32位小写"
+        },
+        "refresh_token": {
+          "type": "string",
+          "description": "使用接口返回refresh_token,调用时不需要传递client_appkey,client_secret参数"
+        }
+      },
+      "x-apifox-orders": [
+        "grant_type",
+        "client_appkey",
+        "client_secret",
+        "refresh_token"
+      ],
+      "required": [
+        "grant_type",
+        "client_appkey",
+        "client_secret"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"grant_type\":\"client_credentials\",\r\n    \"client_appkey\":\"{{client_appkey}}\",\r\n    \"client_secret\":\"{{client_secret}}\"\r\n}\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "kb9FXDWiys",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "API-SV1:10001990:ZTY1MzBjYmNkMWU1YzhmOTU4MDdmYTdjMTE2MzcwNmQ="
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 396502988,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "access_token": {
+                "type": "string",
+                "description": "返回签名需要使用的access_token"
+              },
+              "expires_in": {
+                "type": "integer",
+                "description": "有效时长(毫秒)，默认15天"
+              },
+              "refresh_token": {
+                "type": "string",
+                "description": "刷新access_token时使用"
+              }
+            },
+            "description": "业务数据",
+            "required": [
+              "access_token",
+              "expires_in"
+            ],
+            "x-apifox-orders": [
+              "access_token",
+              "expires_in",
+              "refresh_token"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "业务异常状态码"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "业务异常消息"
+          },
+          "success": {
+            "type": "boolean",
+            "default": "true",
+            "description": "是否成功"
+          },
+          "reqId": {
+            "type": "string",
+            "description": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "message",
+          "reqId",
+          "success",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 396502988,
+      "data": "{\n    \"code\": \"2000\",\n    \"message\": null,\n    \"success\": true,\n    \"reqId\": \"75e20c4a7eec4ac0b42f9b3cdf223392\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJbLTEsLTEsLTEsMTAwLFwiXCIsMTAwMDE5OTksbnVsbCxcIlwiLC0xLG51bGxdIiwiZXhwIjoxNjc5NjI2MjI1LCJpYXQiOjE2NzgzMzAyMjV9.vrjbsmJv4Fi9FtpfI2x8DOxWwQGsiDNd75aIiR0Wy0VJvFtjy_7QMFIz4lmibud5LSoPMY7sGdC1_6KQ-fYrIw\",\n        \"expires_in\": 1296000000,\n        \"refresh_token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJbLTEsLTEsLTEsMTAwLFwiXCIsMTAwMDE5OTksbnVsbCxcIlwiLC0xLG51bGxdIiwiZXhwIjoxNzQyMDA2NDI3LCJpYXQiOjE3Mzk0MTQ0Mjd9.z26qUDMXRb5hOq_H75rhStGgWUaaHsGALoNyCLyViv7Uv2ZCZvNCm0rjB1Zv2Ob7hd-G9klgBBT3keg\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 396502989
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13630516,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2023-03-07T05:01:05.000Z",
+  "updatedAt": "2025-09-10T13:42:32.000Z",
+  "creatorId": 887778,
+  "editorId": 1564651,
+  "creatorUserId": 887778,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.396502988"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

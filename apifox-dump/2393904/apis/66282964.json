@@ -1,0 +1,324 @@
+{
+  "id": 66282964,
+  "name": "通用电子发票(浙江/宁波)",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于通用电子发票查验，目前支持浙江、宁波通用电子发票查验。与[浙江通用电子发票查验](http://etax.zhejiang.chinatax.gov.cn/zjgfdzswjfpyh/fp/fpzw/fpzw.html)保持一致。\n\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/tydzfpCy",
+  "tags": [
+    "发票查验",
+    "通用电子发票查验"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {},
+      "properties": {
+        "customReqId": {
+          "type": "string",
+          "description": "传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+        },
+        "cyList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dq": {
+                "type": "string",
+                "title": "地区代码",
+                "description": "默认值3300",
+                "enum": [
+                  "3300-浙江",
+                  "3302-宁波"
+                ],
+                "x-apifox": {
+                  "enumDescriptions": {
+                    "3300-浙江": "",
+                    "3302-宁波": ""
+                  }
+                }
+              },
+              "fpdm": {
+                "type": "string",
+                "title": "发票代码"
+              },
+              "fphm": {
+                "type": "string",
+                "title": "发票号码"
+              },
+              "xfsbh": {
+                "type": "string",
+                "title": "销方识别号"
+              },
+              "kprq": {
+                "type": "string",
+                "title": "开票日期",
+                "description": "yyyy-MM-dd / yyyyMMdd"
+              },
+              "jshj": {
+                "type": "number",
+                "title": "价税合计"
+              }
+            },
+            "x-apifox-orders": [
+              "dq",
+              "fpdm",
+              "fphm",
+              "xfsbh",
+              "kprq",
+              "jshj"
+            ],
+            "required": [
+              "fpdm",
+              "fphm",
+              "kprq",
+              "dq",
+              "xfsbh",
+              "jshj"
+            ],
+            "description": "单张发票查验入参"
+          },
+          "title": "查验发票列表",
+          "description": "必填"
+        }
+      },
+      "x-apifox-orders": [
+        "cyList",
+        "customReqId"
+      ],
+      "required": [
+        "cyList"
+      ]
+    },
+    "examples": [
+      {
+        "value": "// 浙江通行电子发票查验示例\r\n{\r\n    \"cyList\": [\r\n        {\r\n            \"dq\": \"3300\",\r\n            \"fpdm\": \"23**********11\",\r\n            \"fphm\": \"51****24\",\r\n            \"xfsbh\": \"92***************0A\",\r\n            \"kprq\": \"20210801\",\r\n            \"jshj\": 630.0\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "39W2puBmbi",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "ygJVLIXDJ6",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "9ZvNuInDFe",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 168498167,
+      "name": "通用电子发票查验（浙江）查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXZKEJD5W6ADXAKT20JK20SW": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "x-apifox-refs": {
+                  "01HNAJT9AG5CPZCFGPCTTZNWZ6": {
+                    "$ref": "#/definitions/35326710",
+                    "x-apifox-overrides": {
+                      "data": {
+                        "title": "查验结果",
+                        "$ref": "#/definitions/41476475"
+                      }
+                    },
+                    "required": [
+                      "data"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "01HNAJT9AG5CPZCFGPCTTZNWZ6"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXZKEJD5W6ADXAKT20JK20SW"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 564226414,
+      "name": "通用电子发票查验（宁波）查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JCJQW9PQ8TD85EHT7H63X37T": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JCJQX4Z0NQBB0E8MFX4YYJZS": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/41476475"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JCJQX4Z0NQBB0E8MFX4YYJZS"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01JCJQW9PQ8TD85EHT7H63X37T"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "通用电子发票查验（浙江）",
+      "responseId": 168498167,
+      "data": "{\n    \"reqId\": \"907a1642d5de40c19fd1d48a7375043d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": null,\n            \"czpjCyAndGetFile\": null,\n            \"data\": {\n                \"xfsbh\": \"92***************0A\",\n                \"gfsbh\": \"91***************7A\",\n                \"fpdm\": \"23********11\",\n                \"gfmc\": \"物***************************司\",\n                \"dq\": \"浙江\",\n                \"fpzt\": \"0\",\n                \"kprq\": \"2021-08-01\",\n                \"kjlx\": \"1\",\n                \"jshj\": \"630\",\n                \"xfmc\": \"杭********************店\",\n                \"fplbmc\": \"电子发票\",\n                \"fphm\": \"51****24\"\n            },\n            \"dq\": \"3300\",\n            \"fpdm\": \"23*********11\",\n            \"fphm\": \"51****24\",\n            \"fplx\": \"102\",\n            \"je\": null,\n            \"jshj\": 630,\n            \"jym\": null,\n            \"kprq\": \"2021-08-01 00:00:00\",\n            \"message\": null,\n            \"qkl\": null,\n            \"retry\": null,\n            \"skm\": null,\n            \"success\": true,\n            \"time\": null,\n            \"times\": null,\n            \"tydz\": true,\n            \"xzpj\": null,\n            \"ylpjFile\": null\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 19085576
+    },
+    {
+      "name": "宁波通用电子发票查验成功示例",
+      "responseId": 564226414,
+      "data": "{\n    \"reqId\": \"b682618cbe9a4607be238ad77b5e4c8b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"customReqId\": \"10001995741180e6f20a40a3ae270de90fb363fa\",\n            \"data\": {\n                \"dq\": \"宁波\",\n                \"fpdm\": \"13******50\",\n                \"fphm\": \"58****98\",\n                \"fplbmc\": \"电子发票\",\n                \"fpzt\": \"0\",\n                \"gfmc\": \"宁波************公司\",\n                \"gfsbh\": \"91**********9P\",\n                \"jshj\": \"65\",\n                \"kjlx\": \"1\",\n                \"kprq\": \"2024-10-16\",\n                \"xfmc\": \"宁波************公司\",\n                \"xfsbh\": \"91*************8A\"\n            },\n            \"dq\": \"3302\",\n            \"fpdm\": \"13*********50\",\n            \"fphm\": \"58****98\",\n            \"fplx\": \"102\",\n            \"je\": null,\n            \"jshj\": 65,\n            \"jym\": null,\n            \"kprq\": \"2024-10-16 00:00:00\",\n            \"success\": true,\n            \"time\": null,\n            \"times\": null\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 441005518
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58677131,
+  "ordering": 127,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-11-13T12:26:23.000Z",
+  "updatedAt": "2025-06-10T05:58:00.000Z",
+  "creatorId": 1426961,
+  "editorId": 2706439,
+  "creatorUserId": 1426961,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.168498167",
+    "BLANK.564226414"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,185 @@
+{
+  "id": 69497719,
+  "name": "初始化数据查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n根据税费种YzpzzlDm和年月查询当期增值税期初数据。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|请检查该aggOrgId对应的企业已创建|\n|PARAMETER_ERROR|请求参数year或period不能为空|请检查该字段是否赋值|\n|PARAMETER_ERROR|参数yzpzzlDm不能为空！|请检查该字段是否赋值|\n| PARAMETER_ERROR | 请求参数year或period不能为零！ | 请检查该字段是否赋值正确 |\n| PARAMETER_ERROR | 应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |  |\n| BUSINESS_ERROR |此税种暂不支持获取期初|  |\n| BUSINESS_ERROR | 本期无此税种，没有期初！ |  |\n| INTERFACE_ERROR | 接口异常,请联系管理员!||\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！||",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/getInitData",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/37186394"
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":448565857054976,\r\n    \"year\":2023,\r\n    \"period\":3,\r\n    \"yzpzzlDm\":\"BDA0611159\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 176404637,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GVZ3C1DY0JMY4GQNNAM8QJK3": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "initData": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {},
+                    "title": "报表期初报文",
+                    "description": "各税种报文结构不一致，可参考相应的报表上传报文结构",
+                    "x-apifox-orders": []
+                  },
+                  "taxIncentives": {
+                    "type": "object",
+                    "properties": {},
+                    "x-apifox-orders": [],
+                    "title": "税收优惠政策代码和名",
+                    "description": "数据结构参考【查询税收优惠政策代码及名称】接口"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "initData",
+                  "taxIncentives"
+                ],
+                "required": [
+                  "taxIncentives"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GVZ3C1DY0JMY4GQNNAM8QJK3"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 176404637,
+      "data": "{\r\n    \"code\": \"SUCCESS\",\r\n    \"data\": {\r\n        \"initData\": {\r\n            //因各税种的报文结构不一致，此处不展示具体报表的报文\r\n        }\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"reqId\": \"405fe76fdaae4fa88381e645bfa7bfaa\"\r\n}",
+      "id": 17564121
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13530188,
+  "ordering": 59,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-10-31T03:30:12.000Z",
+  "updatedAt": "2024-10-31T03:30:12.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.176404637"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

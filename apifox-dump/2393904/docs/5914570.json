@@ -1,0 +1,17 @@
+{
+  "id": 5914570,
+  "name": "2025年1月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年1月发布内容\n\n发布日期：2025-01-24\n发布版本：V1.0.13\n\n\n\n## 企业税\n\n\n:::highlight orange 💡\n新增支持能力\n1.环保税申报支持（申报计算减免表+申报）\n2.资源税申报\n3.财务报表年报申报（小企业/企业会计准则 /企业会计制度）\n\n:::\n1.接口变化\n1)新增支持 BDA0610865增值税预缴 申报\n涉及接口：[上传各税种申报表数据](apifox://link/endpoint/67298736)；[上传各税种申报表EXCEL数据](apifox://link/endpoint/78182955)\n支持场景：目前仅支持本主体增值税预缴申报，特定业务主体登录申报场景暂不支持\n注意：本次上线的返回的税额只有一个申报的总金额，返回增值税+附加税的明细金额待2月产品优化上线\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/493313/image-preview)\n\n2)增值税一般人初始化，支持返回农产品名称\n涉及接口：[初始化数据查询](apifox://link/endpoint/69497719)\n支持场景：需要申报农产品的客户，初始化时进入报表中农产品相关报表中下拉获取；\n注意：新增的ncpmcList节点仅初始化的时候返回，申报上传报文时忽略该节点！\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/493314/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/493317/image-preview)\n\n3)增值税一般人code=4300 一窗式比对返回提示语进行格式化调整\n涉及接口：[查询申报任务结果](apifox://link/endpoint/69614923)\n业务场景：针对返回一窗式比对失败提示语，税局是表格展示浮动行固定的5列\n每一列进行“|”分隔符，每一行进行自动换行处理\n返回示例：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/493319/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/493320/image-preview)\n\n4)印花税按季和按年合并申报处理\n涉及接口：发起申报、上传报文并发起申报、pdf下载、完税证明下载\n\n\n```\n报文上传方案：\n1. 申报：上传报文的时候请求所属期就按照季报或者年报请求都可以，最终申报以表体对象中对应的季度所属期和年度所属期明细数据，和税局匹配一致一起提交完成申报，并且返回的时候季报和年报一起申报的税额\n2. 缴款：一样传季度所属期和年度所属期都行，请求税额是按季和按年的合并税额；我们默认将税局待缴款中印花税按季和按年的一起勾选比对金额一致，进行缴款\n3. 完税凭证、pdf下载是仅1月来请求的时候所属期不管是季度还是年度的的所属期，我们都会按季和按年都打包返回\n文件上传方案：\n1. 申报：上传文件的时候将所属期统一处理成按季度发一个任务，我们默认解析你们excel文件里面按季和按年的数据一起申报；\n2. 缴款的话就是传季度还是年度都可以，请求税额是按季和按年的合并税额；我们默认将税局待缴款印花税把按季和按年的一起勾选比对金额一致，进行缴款\n3. 完税凭证、pdf当期下载也是默认1月请求季度还是年度的所属期。我们把按季和按年都打包返回\n```\n\n### 针对1月申报印花税失败率较高总结分享\n文档地址：[印花税本月申报失败常见问题总结](https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E5%8D%B0%E8%8A%B1%E7%A8%8E%E6%9C%AC%E6%9C%88%E7%94%B3%E6%8A%A5%E5%A4%B1%E8%B4%A5%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93.pdf)\n\n\n## 企业数据采集\n1.基础信息新增预缴税款信息\n2)本月增加能力（定制版）：\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/493341/image-preview)\n\n## 个税\n新增新版个税申报接口\n[个税申报新](apifox://link/folders/47732261)",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-02-07T02:35:16.000Z",
+  "updatedAt": "2025-02-07T08:11:08.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

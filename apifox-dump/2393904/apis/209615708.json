@@ -1,0 +1,350 @@
+{
+  "id": 209615708,
+  "name": "查询简易申报任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询已发起的简易申报任务的执行结果。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！  |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ |\n|PARAMETER_ERROR |参数格式不合法！ |\n|INTERFACE_ERROR |接口异常,请联系管理员 |\n\n\n## 小规模增值税ywbw\n| **字段** | **类型**  | **说明**|\n| --- | --- |---|\n| zzsxse |  金额  |增值税销售额 |\n| zzsynse |  金额  |增值税应纳税额 |\n|zzsjmse |  金额  |增值税减免税额 |\n|zzsyjse |   金额|增值税预缴税额 |\n|cswhjss | 金额 |城市维护建设税 |\n|jyffj | 金额 |教育费附加 |\n|dfjyffj | 金额 |地方教育费附加 |\n|bqybtse | 金额 |本期应补退税额 |\n\n\n## 一般纳税人增值税ywbw\n| **字段** | **类型**  | **说明**|\n| --- | --- |---|\n|zzsxse  |  金额（两位小数）  |增值税销售额 |\n|zzsxxse  |  金额（两位小数）  |增值税销项税额 |\n|zzsjxse  |  金额（两位小数）  |增值税进项税额|\n|zzsynse  |  金额（两位小数）  |增值税应纳税额 |\n|zzsyjse  |  金额（两位小数）  |增值税已缴税额 |\n|bqybtse  |  金额（两位小数）  |本期应补（退）税额 |\n|cswhjss  |  金额（两位小数）  |城市维护建设税本期应补（退）税额 |\n|jyffj  |  金额（两位小数）  |教育费附加本期应补（退）税额 |\n|dfjyffj  |  金额（两位小数）  |地方教育费附加本期应补（退）税额|\n\n\n## 企业所得税（月季）算税结果ywbw\n| **字段** | **类型**  | **说明**|\n| --- | --- |---|\n|sjlre  |  金额（两位小数）  |实际利润额 |\n|ynsdse  |  金额（两位小数）  |应纳所得税额 |\n|sjyjnsdse  |  金额（两位小数）  |实际已缴纳所得税额 |\n|tdywyjzsdse  |  金额（两位小数）  |特定业务预缴（征）所得税额 |\n|jmsdse  |  金额（两位小数）  |减免所得税额 |\n|bqybtse  |  金额（两位小数）  |本期应补（退）所得税额 |\n\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/querySimplifiedDeclareTaskInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454760922049792\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 519338949,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "服务代码"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "detail": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "title": "信息"
+                    },
+                    "yzpzzldm": {
+                      "type": "string",
+                      "title": "应征凭证代码"
+                    },
+                    "code": {
+                      "type": "string",
+                      "title": "状态码",
+                      "description": "2000表示申报成功，2222表示算税成功"
+                    },
+                    "zspmDm": {
+                      "type": "string",
+                      "title": "品目"
+                    },
+                    "ywbw": {
+                      "type": "string",
+                      "title": "业务报文",
+                      "description": "算税和初始化时，税种返回的业务数据（查看响应示例）"
+                    },
+                    "state": {
+                      "type": "string",
+                      "title": "申报状态"
+                    },
+                    "skje": {
+                      "type": "string",
+                      "title": "申报金额"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg",
+                    "yzpzzldm",
+                    "code",
+                    "skje",
+                    "zspmDm",
+                    "ywbw",
+                    "state"
+                  ]
+                }
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业id"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "服务名称"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "任务Id"
+              },
+              "screenshot": {
+                "type": "string",
+                "title": "截图"
+              }
+            },
+            "required": [
+              "businessStatusName",
+              "serviceCode",
+              "businessStatus",
+              "detail",
+              "aggOrgId",
+              "serviceName",
+              "taskId"
+            ],
+            "x-apifox-orders": [
+              "businessStatusName",
+              "serviceCode",
+              "businessStatus",
+              "detail",
+              "aggOrgId",
+              "serviceName",
+              "taskId",
+              "screenshot"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "任务执行成功",
+      "responseId": 519338949,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"SimpliedDeclare\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"msg\": \"\",\n                \"yzpzzldm\": \"BDA0610611\",\n                \"code\": \"2000\",\n                \"skje\": \"100\",\n                \"zspmDm\": \"\",\n                \"ywbw\": \"\",\n                \"state\": \"1\"\n            }\n        ],\n        \"aggOrgId\": 536716572799104,\n        \"serviceName\": \"简易申报\",\n        \"taskId\": 548954543863808\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"ebde815b1bad46dfbf458d509224c8cd\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 424002623
+    },
+    {
+      "name": "增值税小规模算税结果报文",
+      "responseId": 519338949,
+      "data": "{\r\n    \"ywbw\": { // 增值税小规模算税结果报文\r\n        \"zzsxse\": \"0.00\", // 增值税销售额\r\n        \"zzsynse\": \"0.00\", // 增值税应纳税额\r\n        \"zzsjmse\": \"0.00\", // 增值税减免税额\r\n        \"zzsyjse\": \"0.00\", // 增值税预缴税额\r\n        \"cswhjss\": \"0.00\", // 城市维护建设税\r\n        \"jyffj\": \"0.00\", // 教育费附加\r\n        \"dfjyffj\": \"0.00\", // 地方教育费附加\r\n        \"bqybtse\": \"0.00\" // 本期应补退税额\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 439552848
+    },
+    {
+      "name": "增值税一般纳税人算税结果报文",
+      "responseId": 519338949,
+      "data": "{\r\n    \"ywbw\": { // 增值税一般纳税人算税结果报文\r\n        \"zzsxse\": \"0.00\", // 增值税销售额\r\n        \"zzsxxse\": \"0.00\", // 增值税销项税额\r\n        \"zzsjxse\": \"0.00\", // 增值税进项税额\r\n        \"zzsynse\": \"0.00\", // 增值税应纳税额\r\n        \"zzsyjse\": \"0.00\", // 增值税已缴税额\r\n        \"bqybtse\": \"0.00\", // 本期应补（退）税额\r\n        \"cswhjss\": \"0.00\", // 城市维护建设税本期应补（退）税额\r\n        \"jyffj\": \"0.00\", // 教育费附加本期应补（退）税额\r\n        \"dfjyffj\": \"0.00\" // 地方教育费附加本期应补（退）税额\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 491613674
+    },
+    {
+      "name": "企业所得税（月季）算税结果",
+      "responseId": 519338949,
+      "data": "{\r\n    \"ywbw\": { // 企业所得税（月季）算税结果\r\n        \"sjlre\": \"0.09\", // 实际利润额\r\n        \"ynsdse\": \"0.02\", // 应纳所得税额\r\n        \"sjyjnsdse\": \"0.00\", // 实际已缴纳所得税额\r\n        \"tdywyjzsdse\": \"0.00\", // 特定业务预缴（征）所得税额\r\n        \"jmsdse\": \"0.02\", // 减免所得税额\r\n        \"bqybtse\": \"0.00\" // 本期应补（退）所得税额\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 439552849
+    },
+    {
+      "name": "企业不存在",
+      "responseId": 519338949,
+      "data": "{\"reqId\":\"807aa626b84b4e49ab0405dee305682d\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 424002621
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 519338949,
+      "data": "{\"reqId\":\"489b28c74c0a4e8e94da5409c67818db\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 424002622
+    },
+    {
+      "name": "初始化示例",
+      "responseId": 519338949,
+      "data": "{\n    \"reqId\": \"e3d19d75595f5fa0\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-sb-jysb\",\n        \"businessStatus\": 3,\n        \"serviceName\": \"简易申报\",\n        \"detail\": [\n            {\n                \"msg\": \"初始化成功\",\n                \"yzpzzldm\": \"BDA0610606\",\n                \"code\": \"2000\",\n                \"state\": \"0\",\n                \"ywbw\": {\n                    \"qtkspzList\": [\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"海关进口增值税专用缴款书\",\n                            \"je\": \"0\",\n                            \"fs\": \"0\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"农产品收购发票或者销售发票\",\n                            \"je\": \"0\",\n                            \"fs\": \"0\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"代扣代缴税收通用缴款书\",\n                            \"je\": \"\",\n                            \"fs\": \"0\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"其他\",\n                            \"je\": \"0\",\n                            \"fs\": \"0\"\n                        },\n                        {\n                            \"se\": \"18.28\",\n                            \"name\": \"本期用于抵扣的旅客运输服务扣税凭证\",\n                            \"je\": \"203.22\",\n                            \"fs\": \"5\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"加计扣除农产品进项税额\",\n                            \"je\": \"\",\n                            \"fs\": \"\"\n                        }\n                    ],\n                    \"syxgmjzzcqssj\": \"\",\n                    \"xxse\": \"3270.56\",\n                    \"bqjxsezceList\": [\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"其中：免税货物用\",\n                            \"ewbhxh\": \"14\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"集体福利、个人消费\",\n                            \"ewbhxh\": \"15\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"非正常损失\",\n                            \"ewbhxh\": \"16\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"简易计税方法征税项目用\",\n                            \"ewbhxh\": \"17\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"红字专用发票信息表注明的进项税额\",\n                            \"ewbhxh\": \"20\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"上期留抵税额抵减欠税\",\n                            \"ewbhxh\": \"21\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"上期留抵税额退税\",\n                            \"ewbhxh\": \"22\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"其他应作进项税额转出的情形\",\n                            \"ewbhxh\": \"23\"\n                        },\n                        {\n                            \"se\": \"0\",\n                            \"name\": \"异常凭证转出进项税额\",\n                            \"ewbhxh\": \"38\"\n                        }\n                    ],\n                    \"bqsfsyxgmyhzc\": \"N\",\n                    \"xse\": \"36272.94\",\n                    \"syxgmjzzczzsj\": \"\",\n                    \"fjsJmse\": \"0\",\n                    \"jxse\": \"271.87\",\n                    \"djseMx\": {\n                        \"jzfw\": {\n                            \"bqfse\": \"0\",\n                            \"name\": \"建筑服务预征缴纳税款\",\n                            \"qcye\": \"0\",\n                            \"bqsjdjse\": \"0\",\n                            \"ewbhxh\": \"3\"\n                        },\n                        \"xsbdc\": {\n                            \"bqfse\": \"0\",\n                            \"name\": \"销售不动产预征缴纳税款\",\n                            \"qcye\": \"0\",\n                            \"bqsjdjse\": \"0\",\n                            \"ewbhxh\": \"4\"\n                        },\n                        \"czbdc\": {\n                            \"bqfse\": \"0\",\n                            \"name\": \"出租不动产预征缴纳税款\",\n                            \"qcye\": \"0\",\n                            \"bqsjdjse\": \"0\",\n                            \"ewbhxh\": \"5\"\n                        }\n                    },\n                    \"xssrmxList\": [\n                        {\n                            \"xmmc\": \"13%税率的货物及加工修理修配劳务\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"一般计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"13%税率的服务、不动产和无形资产\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"一般计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"9%税率的货物及加工修理修配劳务\",\n                            \"xxse\": \"3263370.56\",\n                            \"xse\": \"36259672.94\",\n                            \"lx\": \"一般计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"9%税率的服务、不动产和无形资产\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"一般计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"6%税率\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"一般计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"5%征收率的服务、不动产和无形资产\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"简易计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"3%征收率的货物及加工修理修配劳务\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"简易计税方法计税\"\n                        },\n                        {\n                            \"xmmc\": \"3%征收率的服务、不动产和无形资产\",\n                            \"xxse\": \"0\",\n                            \"xse\": \"0\",\n                            \"lx\": \"简易计税方法计税\"\n                        }\n                    ],\n                    \"sedjBqsjdjeHj\": \"0\",\n                    \"jxsezc\": \"0\"\n                }\n            }\n        ],\n        \"aggOrgId\": 69147392,\n        \"taskId\": 626648\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 600284939
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 40748400,
+  "ordering": 6,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-10-11T06:32:16.000Z",
+  "updatedAt": "2025-04-09T06:34:27.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.519338949"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

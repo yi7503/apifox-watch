@@ -1,0 +1,17 @@
+{
+  "id": 6376893,
+  "name": "2025年3月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年3月发布内容\n\n发布日期：2025-03-28\n发布版本：V1.0.15\n\n\n:::highlight orange 💡\n新增支持能力\n1.支持金融类财务报表报送与信息采集（已执行新金融工具准则的金融企业）申报及初始化\n2.水资源税合并财产行为税 \n:::\n\n- 接口变化\n\n## 1.跨区域的房土税申报表下载、完税证明下载\n  1)涉及接口：发起下载完税证明任务、发起下载完税证明并解析任务结果、发起下载当期PDF、发起下载往期PDF\n 2)影响客户：已经对接跨区域申报和缴款的客户\n 3)调整点：新增bsswjg字段\n![企业微信截图_17435616976873.png](https://api.apifox.com/api/v1/projects/2393904/resources/509204/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509205/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509206/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509207/image-preview)\n## 2.基础信息采集返回增加跨区域信息返回\n  1)涉及接口：查询企业信息\n  2)适用场景：涉及跨区域的用户可以对接这个接口，将用户账户中心可切换跨区域记录返回\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509208/image-preview)\n税局路径：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509209/image-preview)\n## 3.支持财务报表报送与信息采集（已执行新金融工具准则的金融企业）申报及初始化\n 1)涉及接口：上传财报报表数据，仅支持报文上传，不支持excel上传；初始化数据查询\n 2)影响客户：北京金税大企业部\n 3)调整点：附录新增ZL10010010  新增金融类已执行财务报表，支持资产、利润、所有者、现金、附注\n \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509213/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509214/image-preview)\n## 4.水资源税合并财产行为税\n 1)涉及接口：上传报文申报\n 2)适用场景：水资源税申报之前已支持，现在税局政策调整重新调整上传报表,支持税源采集以及申报\n \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509217/image-preview)\n## 5.漏报检查接口支持返回申报期限\n 1)涉及接口：查询漏报检查任务\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509219/image-preview)\n6.非税收入完税证明下载支持路径【开具中央非税收入统一票据】\n\n## - 特定主体登录\n\n1)涉及接口：托管模式登录：多账号管理-账号管理-托管账号创建\n2)调整点：新增特定主体标识、特定主体类型这两个参数，非必传；创建特定主体登录账号时，特定3）主体标识、特定主体类型这两个参数也必传；本主体无需上传这两个参数\n4）适用场景：目前只支持税局特定主体登录-跨区税源登记纳税人 其他特定主体类型暂时不支持\n\n注意：特定主体目前只完成登录侧的调整，业务侧还未完成\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509224/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509225/image-preview)\n\n\n\n\n\n\n:::",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-04-02T02:49:41.000Z",
+  "updatedAt": "2025-05-23T03:50:12.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

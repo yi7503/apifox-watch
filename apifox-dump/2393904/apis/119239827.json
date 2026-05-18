@@ -1,0 +1,350 @@
+{
+  "id": 119239827,
+  "name": "获取发票数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "PeTWVGKf_hw26lCtC_qXa",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "描述：仅获取发票采集状态及数据的接口\n注：发票数据量会过多一个月发票明细返回一个json进行整体压缩，返回压缩文件文件进行加密，解密方式参考附录示例\n\n调用流程：\n1. 通过发起采集任务时返回的taskId；\n2. 判断采集状态是否完成，获取data节点下的status状态；\n3. 获取结果，当采集状态为3时采集完成，获取result节点下的数据；\n\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| 2000 | 成功 | |\n| 5000 | 异常 | |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/collect/invoice/getCollectTaskPageData",
+  "tags": [
+    "企业信息采集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "integer",
+          "title": "回调的任务id",
+          "description": "发票采集任务完成后回调的任务id",
+          "x-apifox-mock": "1701169470436978689"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "纳税人识别号",
+          "x-apifox-mock": "92440111MABM82R16A"
+        }
+      },
+      "required": [
+        "taskId",
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "taskId",
+        "nsrsbh"
+      ],
+      "x-apifox-refs": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"taskId\": 1701169470436978700,\n    \"nsrsbh\": \"92****************\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "qdkYrvK1jv",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "Hw32Fiw2tC",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "uabTZYTAQj",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42948662,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "2000成功其他失败",
+            "x-apifox-mock": "2000"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null",
+            "title": "错误信息描述",
+            "description": "错误信息描述"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "object",
+                "properties": {
+                  "fp": {
+                    "type": "object",
+                    "properties": {
+                      "jxxFileDownLoad": {
+                        "title": "进销项发票",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "x-apifox-refs": {
+                          "01J2EEY8QV0T3D533NWWMZ1S4S": {
+                            "$ref": "#/definitions/98674583",
+                            "x-apifox-overrides": {}
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01J2EEY8QV0T3D533NWWMZ1S4S"
+                        ],
+                        "properties": {}
+                      },
+                      "ygxFileDownLoad": {
+                        "title": "已勾选发票",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "x-apifox-refs": {
+                          "01J2EEYAJY39Q6VCKPXMA8Z603": {
+                            "$ref": "#/definitions/98674583",
+                            "x-apifox-overrides": {}
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01J2EEYAJY39Q6VCKPXMA8Z603"
+                        ],
+                        "properties": {}
+                      },
+                      "fpLimit": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {},
+                        "x-apifox-orders": [
+                          "01JN3V6Y9SBBJS9KN7YNFZ0GPT"
+                        ],
+                        "x-apifox-refs": {
+                          "01JN3V6Y9SBBJS9KN7YNFZ0GPT": {
+                            "$ref": "#/definitions/149384796"
+                          }
+                        },
+                        "description": "发票额度",
+                        "title": "发票额度"
+                      },
+                      "jxsezcFileDownLoad": {
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "jsonUrl": {
+                            "type": "string",
+                            "title": "链接文件地址",
+                            "description": "txt格式，详情查看示例"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "jsonUrl"
+                        ],
+                        "title": "进项税额转出发票",
+                        "description": "进项税额转出节点"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "jxxFileDownLoad",
+                      "ygxFileDownLoad",
+                      "fpLimit",
+                      "jxsezcFileDownLoad"
+                    ],
+                    "title": "发票数据节点"
+                  }
+                },
+                "x-apifox-orders": [
+                  "fp"
+                ],
+                "title": "结果",
+                "required": [
+                  "fp"
+                ]
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "x-apifox-orders": [
+              "result"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "发票响应示例",
+      "responseId": 42948662,
+      "data": "{\n    \"reqId\": \"bf066e8c6e339\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"result\": {\n            \"fp\": {\n                \"jxxFileDownLoad\": {\n                    \"downloadLink\": \"http://qxy-oss-robot-pro***\",\n                    \"cxrqq\": \"202201\",\n                    \"bigDataMark\": \"0\",\n                    \"isFileAvailable\": true,\n                    \"cxrqz\": \"202401\",\n                    \"monthCount\": {\n                        \"total\": 132,\n                        \"202105_jx\": 0,\n                        \"202309_xx\": 12,\n                        \"202407_jx\": 14,\n                        \"202406_jx\": 40,\n                        \"202107_xx\": 0,\n                        \"202409_jx\": 26,\n                        \"202405_jx\": 20,\n                        \"202108_xx\": 0,\n                        \"202408_jx\": 32,\n                        \"202302_xx\": 0\n                    }\n                },\n                \"ygxFileDownLoad\": {\n                    \"downloadLink\": \"http://qxy-oss-robot-pr***\",\n                    \"bigDataMark\": \"0\",\n                    \"cxrqq\": \"202201\",\n                    \"isFileAvailable\": true,\n                    \"cxrqz\": \"202401\",\n                    \"monthCount\": {\n                        \"total\": 132,\n                        \"202105_jx\": 0,\n                        \"202309_xx\": 12,\n                        \"202407_jx\": 14,\n                        \"202406_jx\": 40,\n                        \"202107_xx\": 0,\n                        \"202409_jx\": 26,\n                        \"202405_jx\": 20,\n                        \"202108_xx\": 0,\n                        \"202408_jx\": 32,\n                        \"202302_xx\": 0\n                    }\n                }\n            }\n        },\n        \"statusMsg\": \"完成\",\n        \"statusDetails\": {\n            \"fp\": {\n                \"groupStatusDetail\": {\n                    \"YGXFP\": {\n                        \"code\": \"2000\",\n                        \"hasLoginErr\": \"0\",\n                        \"codeMsg\": \"发票回调完成\",\n                        \"status\": 3\n                    },\n                    \"XGJFP\": {\n                        \"code\": \"2000\",\n                        \"hasLoginErr\": \"0\",\n                        \"codeMsg\": \"发票回调完成\",\n                        \"status\": 3\n                    }\n                },\n                \"loginCode\": \"2000\",\n                \"status\": 3\n            },\n            \"main\": 3\n        },\n        \"status\": 3\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 416943675
+    },
+    {
+      "name": "jxx发票文件内容示例",
+      "responseId": 42948662,
+      "data": "[\r\n    {\r\n        \"kpyf\": \"202206\",\r\n        \"xfsbh\": \"91*****6P\",\r\n        \"gfsbh\": \"91*****3J\",\r\n        \"fpdm\": \"0123456789\",\r\n        \"gfmc\": \"**有限公司\",\r\n        \"fplx\": \"04\",\r\n        \"fply\": \"增值税发票管理系统\",\r\n        \"fpfxdj\": \"正常\",\r\n        \"jxxbz\": \"xx\",\r\n        \"kpr\": \"姓名\",\r\n        \"se\": 0.0,\r\n        \"kprq\": \"2022-06-06 15:05:12\",\r\n        \"jshj\": 50001.0,\r\n        \"je\": 50001.0,\r\n        \"fpztDm\": \"0\",\r\n        \"slv\": \"0\",\r\n        \"xfmc\": \"**有限公司\",\r\n        \"hwxx\": [\r\n            {\r\n                \"lslbs\": \"1\",\r\n                \"se\": 0.0,\r\n                \"fpdm\": \"013456745674\",\r\n                \"mc\": \"技术推广服务费\",\r\n                \"mxxh\": \"1\",\r\n                \"je\": 50001.0,\r\n                \"slv\": 0,\r\n                \"spbm\": \"000000000\",\r\n                \"fphm\": \"160000005\"\r\n            }\r\n        ],\r\n        \"fphm\": \"100000995\"\r\n    },\r\n    { // 机动车发票专用 追加字段\r\n        \"fdjhm\": \"RAP931**\",\r\n        \"fpztBz\": \"0\",\r\n        \"sjlyBz\": \"FPYXZ01\",\r\n        \"sjlyDm\": \"FPYXZ101\",\r\n        \"spbm\": \"1090300000\",\r\n        \"spmc\": \"*机动车*客车\",\r\n        \"cpzh\": \"*B955\",\r\n        \"djzh\": \"6000****475\",\r\n        \"escMc\": \"XXX旧机动车交易市场有限责任公司\",\r\n        \"escSbh\": \"9100000000******\",\r\n        \"zrdclglsMc\": \"XX市车辆管理所\"\r\n    }\r\n]\r\n\r\n------------------------------\r\n\r\n| 参数    | 数据项名称   | 字段类型      | 必须 | 说明 |\r\n|---------|--------------|--------------|------|------|\r\n| xfsbh   | 销方识别号   | string        | 可选 |      |\r\n| gfsbh   | 购方识别号   | string        | 可选 |      |\r\n| fpdm    | 发票代码     | string        | 可选 |      |\r\n| jxxbz   | 进销项标志   | string        | 可选 | 进项：jx，销项：xx |\r\n| gfmc    | 购方名称     | string        | 可选 |      |\r\n| fplx    | 发票类型     | string        | 可选 | 参考 发票业务-发票归集-《发票附录》文档 |\r\n| kpr     | 开票人       | string        | 可选 |      |\r\n| se      | 税额         | number        | 可选 |      |\r\n| kprq    | 开票日期     | string        | 可选 |      |\r\n| bz      | 备注         | string        | 可选 |      |\r\n| jshj    | 加税合计     | number        | 可选 |      |\r\n| je      | 金额         | number        | 可选 |      |\r\n| fpztDm  | 发票状态代码 | string        | 可选 | 参考 发票业务-发票归集-《发票附录》文档 |\r\n| xfmc    | 销方名称     | string        | 可选 |      |\r\n| hwxx    | 货物信息     | array[object] | 可选 |      |\r\n| xcdxx   | 行程单信息   | array[object] | 可选 | 发票类型未51, 61时返回 |\r\n| fphm    | 发票号码     | string        | 可选 |      |\r\n| sdphm   | 数电票号码   | string        | 可选 |      |\r\n| fply    | 发票来源     | string        | 可选 | 增值税发票管理系统, 电子发票服务平台 |\r\n| fpfxdj  | 发票风险等级 | string        | 可选 |      |\r\n| tdywlx  | 特定业务类型 | string        | 可选 | 特定业务类型(\"01\":\"成品油发票\",\"02\":\"稀土发票\",\"03\":\"建筑服务发票\",\"04\":\"货物运输服务发票\",\"05\":\"不动产销售服务发票\",\"06\":\"不动产经营租赁服务\", \"07\": \"代收车船税\",\"08\":\"通行费\",\"09\":\"旅客运输服务发票\",\"10\":\"医疗服务（住院）发票\",\"11\":\"医疗服务（门诊）发票\",\"12\":\"自产农产品销售发票\", \"13\":\"拖拉机和联合收割机发票\",\"14\":\"机动车\",\"15\":\"二手车\",\"16\":\"农产品收购发票\",\"17\":\"光伏收购发票\",\"18\":\"卷烟发票\",\"19\":\"出口发票\",\"20\":\"农产品\") |\r\n| fdjhm   | 发动机号码   | string        | 可选 | 机动车发票使用 |\r\n| fpztBz  | 发票状态标识 | string        | 可选 | 机动车发票使用，发票状态标识：0正数票 1负数票 2空白作废发票 3正数作废发票 4负数作废发票 |\r\n| spbm    | 商品编码     | string        | 可选 | 机动车发票使用 |\r\n| spmc    | 商品名称     | string        | 可选 | 机动车发票使用 |\r\n| sjlyBz  | 数据来源标识 | string        | 可选 | 机动车发票使用 |\r\n| sjlyDm  | 数据来源代码 | string        | 可选 | 机动车发票使用 |\r\n| cpzh    | 车牌照号     | string        | 可选 | 二手车发票使用 |\r\n| djzh    | 登记证号     | string        | 可选 | 二手车发票使用 |\r\n| escMc   | 二手车市场名称 | string        | 可选 | 二手车发票使用 |\r\n| escSbh  | 二手车市场识别号 | string        | 可选 | 二手车发票使用 |\r\n| zrdclglsMc | 转入地车辆管理所名称 | string        | 可选 | 二手车发票使用 |\r\n| sfzsfp | 是否正数发票 | string        | 可选 | 0：正数，1：负数 |\r\n\r\n\r\n行程单信息（xcdxx）：\r\n| 参数     | 数据项名称     | 字段类型 | 必须 | 说明         |\r\n|----------|----------------|----------|------|--------------|\r\n| cfd      | 出发地         | string   | 必需 |              |\r\n| cxcc     | 出行车次       | string   | 可选 |              |\r\n| ddd      | 到达地         | string   | 必需 |              |\r\n| lkxm     | 旅客姓名       | string   | 必需 |              |\r\n| rq       | 日期           | string   | 必需 |              |\r\n| sdphm    | 数电票号码     | string   | 必需 |              |\r\n| sj       | 时间           | string   | 必需 |              |\r\n| yxsfzh   | 有效身份证号   | string   | 可选 |              |\r\n| cyr      | 承运人         | string   | 可选 |              |\r\n| hbh      | 航班号         | string   | 可选 |              |\r\n\r\n货物信息（hwxx）：\r\n| 参数    | 数据项名称   | 字段类型 | 必须 | 说明 |\r\n|---------|--------------|----------|------|------|\r\n| ggxh    | 规格型号     | string   | 可选 |      |\r\n| fpdm    | 发票代码     | string   | 可选 |      |\r\n| jldw    | 计量单位     | string   | 可选 |      |\r\n| dj      | 单价         | string   | 可选 |      |\r\n| mxxh    | 明细序号     | string   | 必需 |      |\r\n| se      | 税额         | number   | 必需 |      |\r\n| mc      | 名称         | string   | 必需 |      |\r\n| sl      | 数量         | string   | 可选 |      |\r\n| je      | 金额         | number   | 必需 |      |\r\n| slv     | 税率         | number   | 必需 |      |\r\n| spbm    | 商品编码     | string   | 可选 |      |\r\n| fphm    | 发票号码     | string   | 可选 |      |\r\n",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417046192
+    },
+    {
+      "name": "ygx发票文件内容示例",
+      "responseId": 42948662,
+      "data": "[\n    {\n        \"kpyf\": \"202301\",\n        \"xfsbh\": \"91***9P\",\n        \"gfsbh\": \"91***0H\",\n        \"fpdm\": \"qd\",\n        \"gfmc\": \"**有限公司\",\n        \"fplx\": \"81\",\n        \"sdphm\": \"23000008\",\n        \"yxse\": 33.96,\n        \"se\": 33.96,\n        \"kprq\": \"2023-08-25 12:49:52\",\n        \"gxsj\": \"2023-10-07T18:08:57\",\n        \"gxzt\": \"1\",\n        \"je\": 566.04,\n        \"xfmc\": \"**有限公司\",\n        \"hwxx\": [],\n        \"fphm\": \"2300028\",\n        \"skssq\": 202309,\n        \"jkshm\": \"缴款书号码\",\n        \"tfrq\": null\n    },\n    { // 机动车发票专用 追加字段\n        \"fdjhm\": \"RAP931**\",\n        \"fpztBz\": \"0\",\n        \"sjlyBz\": \"FPYXZ01\",\n        \"sjlyDm\": \"FPYXZ101\",\n        \"spbm\": \"1090300000\",\n        \"spmc\": \"*机动车*客车\",\n        \"cpzh\": \"*B955\",\n        \"djzh\": \"6000****475\",\n        \"escMc\": \"XXX旧机动车交易市场有限责任公司\",\n        \"escSbh\": \"9100000000******\",\n        \"zrdclglsMc\": \"XX市车辆管理所\"\n    }\n]\n\n\n-------------------------------\n\n| 参数        | 数据项名称         | 字段类型         | 必须 | 说明                                                         |\n|-------------|--------------------|-----------------|------|--------------------------------------------------------------|\n| xfsbh       | 销方识别号         | string           | 可选 |                                                              |\n| gfsbh       | 购方识别号         | string           | 可选 |                                                              |\n| fpdm        | 发票代码           | string           | 可选 |                                                              |\n| jxxbz       | 进销项标志         | string           | 可选 |      进项：jx，销项：xx                                       |\n| gfmc        | 购方名称           | string           | 可选 |                                                              |\n| fplx        | 发票类型           | string           | 可选 |      参考 发票业务-发票归集-《发票附录》文档        |\n| kpr         | 开票人             | string           | 可选 |                                                              |\n| se          | 税额               | number           | 可选 |                                                              |\n| kprq        | 开票日期           | string           | 可选 |                                                              |\n| bz          | 备注               | string           | 可选 |                                                              |\n| jshj        | 加税合计           | number           | 可选 |                                                              |\n| je          | 金额               | number           | 可选 |                                                              |\n| fpztDm      | 发票状态代码       | string           | 可选 |     参考 发票业务-发票归集-《发票附录》文档           |\n| xfmc        | 销方名称           | string           | 可选 |                                                              |\n| xcdxx       | 行程单信息         | array[object]    | 可选 | 发票类型未51, 61时返回                                        |\n| fphm        | 发票号码           | string           | 可选 |                                                              |\n| sdphm       | 数电票号码         | string           | 可选 |                                                              |\n| fply        | 发票来源           | string           | 可选 | 增值税发票管理系统, 电子发票服务平台                          |\n| fpfxdj      | 发票风险等级       | string           | 可选 |                                                              |\n| tdywlx      | 特定业务类型       | string           | 可选 | 特定业务类型（\"01\":\"成品油发票\",\"02\":\"稀土发票\",\"03\":\"建筑服务发票\",\"04\":\"货物运输服务发票\",\"05\":\"不动产销售服务发票\",\"06\":\"不动产经营租赁服务\", \"07\": \"代收车船税\",\"08\":\"通行费\",\"09\":\"旅客运输服务发票\",\"10\":\"医疗服务（住院）发票\",\"11\":\"医疗服务（门诊）发票\",\"12\":\"自产农产品销售发票\", \"13\":\"拖拉机和联合收割机发票\",\"14\":\"机动车\",\"15\":\"二手车\",\"16\":\"农产品收购发票\",\"17\":\"光伏收购发票\",\"18\":\"卷烟发票\",\"19\":\"出口发票\",\"20\":\"农产品\"） |\n| jkshm     | 缴款书号码           | string           | 可选 | 缴款书号码（海关缴款专用） |\n| tfrq      | 填发日期             | string           | 可选 | 填发日期（海关缴款专用） |\n| fdjhm   | 发动机号码   | string        | 可选 | 机动车发票使用 |\n| fpztBz  | 发票状态标识 | string        | 可选 | 机动车发票使用，发票状态标识：0正数票 1负数票 2空白作废发票 3正数作废发票 4负数作废发票 |\n| spbm    | 商品编码     | string        | 可选 | 机动车发票使用 |\n| spmc    | 商品名称     | string        | 可选 | 机动车发票使用 |\n| sjlyBz  | 数据来源标识 | string        | 可选 | 机动车发票使用 |\n| sjlyDm  | 数据来源代码 | string        | 可选 | 机动车发票使用 |\n| cpzh    | 车牌照号     | string        | 可选 | 二手车发票使用 |\n| djzh    | 登记证号     | string        | 可选 | 二手车发票使用 |\n| escMc   | 二手车市场名称 | string        | 可选 | 二手车发票使用 |\n| escSbh  | 二手车市场识别号 | string        | 可选 | 二手车发票使用 |\n| zrdclglsMc | 转入地车辆管理所名称 | string        | 可选 | 二手车发票使用 |\n\n\n行程单信息（xcdxx）：\n| 参数     | 数据项名称     | 字段类型 | 必须 | 说明         |\n|----------|----------------|----------|------|--------------|\n| cfd      | 出发地         | string   | 必需 |              |\n| cxcc     | 出行车次       | string   | 可选 |              |\n| ddd      | 到达地         | string   | 必需 |              |\n| lkxm     | 旅客姓名       | string   | 必需 |              |\n| rq       | 日期           | string   | 必需 |              |\n| sdphm    | 数电票号码     | string   | 必需 |              |\n| sj       | 时间           | string   | 必需 |              |\n| yxsfzh   | 有效身份证号   | string   | 可选 |              |\n| cyr      | 承运人         | string   | 可选 |              |\n| hbh      | 航班号         | string   | 可选 |              |\n\n",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417046193
+    },
+    {
+      "name": "发票数量格式",
+      "responseId": 42948662,
+      "data": "{\n    \"fp\": {\n        \"jxxFileDownLoad\": {\n            \"monthCount\": {\n                \"total\": 132,\n                \"202105_jx\": 0,\n                \"202309_xx\": 0,\n                \"202202_xx\": 0,\n                \"202206_xx\": 0,\n                \"202111_jx\": 0,\n                \"202101_jx\": 0,\n                \"202305_xx\": 0,\n                \"202212_xx\": 0,\n                \"202109_jx\": 0,\n                \"202407_jx\": 14,\n                \"202301_xx\": 0,\n                \"202310_jx\": 0,\n                \"202308_jx\": 0,\n                \"202201_jx\": 0,\n                \"202106_xx\": 0,\n                \"202205_jx\": 0,\n                \"202304_jx\": 0,\n                \"202210_jx\": 0,\n                \"202209_jx\": 0,\n                \"202205_xx\": 0,\n                \"202106_jx\": 0,\n                \"202211_jx\": 0,\n                \"202209_xx\": 0,\n                \"202102_jx\": 0,\n                \"202308_xx\": 0,\n                \"202304_xx\": 0,\n                \"202406_jx\": 40,\n                \"202107_xx\": 0,\n                \"202307_jx\": 0,\n                \"202204_jx\": 0,\n                \"202103_xx\": 0,\n                \"202110_xx\": 0,\n                \"202208_jx\": 0,\n                \"202112_jx\": 0,\n                \"202303_jx\": 0,\n                \"202311_xx\": 0,\n                \"202204_xx\": 0,\n                \"202107_jx\": 0,\n                \"202212_jx\": 0,\n                \"202103_jx\": 0,\n                \"202208_xx\": 0,\n                \"202101_xx\": 0,\n                \"202401_jx\": 0,\n                \"202307_xx\": 0,\n                \"202210_xx\": 0,\n                \"202303_xx\": 0,\n                \"202409_jx\": 26,\n                \"202405_jx\": 20,\n                \"202108_xx\": 0,\n                \"202203_jx\": 0,\n                \"202312_jx\": 0,\n                \"202207_jx\": 0,\n                \"202104_xx\": 0,\n                \"202111_xx\": 0,\n                \"202306_jx\": 0,\n                \"202201_xx\": 0,\n                \"202302_jx\": 0,\n                \"202310_xx\": 0,\n                \"202312_xx\": 0,\n                \"202108_jx\": 0,\n                \"202203_xx\": 0,\n                \"202207_xx\": 0,\n                \"202104_jx\": 0,\n                \"202110_jx\": 0,\n                \"202102_xx\": 0,\n                \"202306_xx\": 0,\n                \"202211_xx\": 0,\n                \"202408_jx\": 32,\n                \"202302_xx\": 0,\n                \"202311_jx\": 0,\n                \"202309_jx\": 0,\n                \"202202_jx\": 0,\n                \"202109_xx\": 0,\n                \"202112_xx\": 0,\n                \"202105_xx\": 0,\n                \"202206_jx\": 0,\n                \"202305_jx\": 0,\n                \"202401_xx\": 0,\n                \"202301_jx\": 0\n            }\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 439778276
+    },
+    {
+      "name": "异常返回结果",
+      "responseId": 42948662,
+      "data": "{\n    \"code\": \"50002\",\n    \"success\": false,\n    \"message\": \"字段nsrsbh的格式不正确\",\n    \"reqId\": \"d56999744734437eb10f3369d52efc15\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42948664
+    },
+    {
+      "name": "发票进项税额转出",
+      "responseId": 42948662,
+      "data": "{\r\n    \"fp\": {\r\n        \"jxsezcFileDownLoad\": {\r\n            \"jsonUrl\": \"https://qxy-oss-test.oss\"\r\n        }\r\n    }\r\n}\r\n// 链接文件内容示例：\r\n[\r\n    {\r\n        \"total\": 1, // 发票总数\r\n        \"tjxxList\": [ // 统计信息\r\n            {\r\n                \"fplxDm\": \"81\", // 发票类型\r\n                \"kdkse\": 1073.82, // 可抵扣税额\r\n                \"nsrmc\": \"*******有限责任公司\", // 纳税人名称\r\n                \"fs\": 1 // 发票份数\r\n            },\r\n            {\r\n                \"fplxDm\": \"总计\",\r\n                \"kdkse\": 1073.82,\r\n                \"fs\": 1\r\n            }\r\n        ],\r\n        \"list\": [\r\n            { // 发票列表\r\n                \"kprq\": \"2026-01-16 14:45:46\", // 开票日期\r\n                \"zcqkbz\": \"N\", // 转出情况标志：Y-已转出，N-未转出\r\n                \"jshj\": \"\", // 价税合计\r\n                \"qdfphm\": \"26112000000*******\", // 全电发票号码\r\n                \"xhfnsrmc\": \"*******有限责任公司\", // 销方名称\r\n                \"fplxDm\": \"81\", // 发票类型\r\n                \"fplyDm\": \"2\", // 发票来源代码\r\n                \"pjlbDm\": \"1 \", // 票种类别代码\r\n                \"sehj\": 1073.82, // 税额合计\r\n                \"sjlybz\": \"*******000000\", // 数据来源标志\r\n                \"fpztDm\": \"0 \", // 发票状态代码\r\n                \"chbz\": \"N\", // 冲红标注：Y-是，N-否\r\n                \"jehj\": \"\", // 金额合计\r\n                \"xsfnsrsbh\": \"9111011356*******\" // 销方税号\r\n            }\r\n        ],\r\n        \"skssq\": \"202502\" // 税款所属期\r\n    }\r\n]",
+      "id": "019d1ea8-3c43-7761-8aac-87f9bce85b68"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 33438848,
+  "ordering": 58,
+  "responsibleId": 887900,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T07:15:13.000Z",
+  "updatedAt": "2026-04-20T07:18:53.000Z",
+  "creatorId": 1476015,
+  "editorId": 1910680,
+  "creatorUserId": 1476015,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

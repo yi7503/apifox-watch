@@ -1,0 +1,328 @@
+{
+  "id": 118661866,
+  "name": "查询商品",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "从电子税务局查询已存在的商品信息列表",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/spxxCx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "spxx_cx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer",
+              "title": "当前页码"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页行数",
+              "description": "10 、 20、50、100"
+            },
+            "params": {
+              "type": "object",
+              "properties": {
+                "xmmc": {
+                  "type": "string",
+                  "title": "项目名称"
+                },
+                "slv": {
+                  "type": "string",
+                  "title": "税率"
+                },
+                "ggxh": {
+                  "type": "string",
+                  "title": "规格型号"
+                },
+                "dj": {
+                  "type": "string",
+                  "title": "单价"
+                },
+                "dwmc": {
+                  "type": "string",
+                  "title": "计量单位名称"
+                },
+                "dwdm": {
+                  "type": "string",
+                  "title": "计量单位代码"
+                },
+                "fluuid": {
+                  "type": "string",
+                  "title": "分类uuid",
+                  "description": "要查询的商品分类ID, 默认为00"
+                },
+                "jm": {
+                  "type": "string",
+                  "title": "简码"
+                },
+                "spfwjc": {
+                  "type": "string",
+                  "title": "税收服务简称"
+                },
+                "spfwbm": {
+                  "type": "string",
+                  "title": "税收服务编码"
+                }
+              },
+              "x-apifox-orders": [
+                "xmmc",
+                "jm",
+                "ggxh",
+                "slv",
+                "dj",
+                "spfwbm",
+                "spfwjc",
+                "dwdm",
+                "dwmc",
+                "fluuid"
+              ],
+              "title": "查询参数"
+            }
+          },
+          "required": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "x-apifox-orders": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8VHQVHNEZSKKY4C80TGZR"
+      ],
+      "x-apifox-refs": {
+        "01HMB8VHQVHNEZSKKY4C80TGZR": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 338424783,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "records": {
+                "type": "integer",
+                "title": "总记录数"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "uuid": {
+                      "type": "string",
+                      "title": "商品UUID"
+                    },
+                    "fluuid": {
+                      "type": "string",
+                      "title": "商品分类UUID"
+                    },
+                    "xmmc": {
+                      "type": "string",
+                      "title": "项目名称",
+                      "description": "例如：设计制作服务费"
+                    },
+                    "ggxh": {
+                      "type": "string",
+                      "title": "规格型号"
+                    },
+                    "dwdm": {
+                      "type": "string",
+                      "title": "计量单位代码"
+                    },
+                    "dwmc": {
+                      "type": "string",
+                      "title": "计量单位名称"
+                    },
+                    "spfwbm": {
+                      "type": "string",
+                      "title": "税收服务编码"
+                    },
+                    "spfwjc": {
+                      "type": "string",
+                      "title": "税收服务简称",
+                      "description": "例如：设计服务"
+                    },
+                    "jm": {
+                      "type": "string",
+                      "title": "简码"
+                    },
+                    "dj": {
+                      "type": "string",
+                      "title": "单价"
+                    },
+                    "slv": {
+                      "type": "string",
+                      "title": "税率"
+                    },
+                    "yhzsbz": {
+                      "type": "string",
+                      "title": "是否享受优惠政策标志",
+                      "description": "Y是 /  N否"
+                    },
+                    "zzstsgl": {
+                      "type": "string",
+                      "title": "增值税简易计税类型",
+                      "description": "\"01\"：\"简易征收\"\n\"03\": \"免税\"\n”08“:\"按3%简易征收\"\n\"09\":\"按5%简易征收\"\n\"10\": \"按5%简易征收减按1.5%计征\"\n\"19\":\"按2%简易征收\""
+                    },
+                    "hsbz": {
+                      "type": "string",
+                      "title": "含税标记",
+                      "description": "Y含税 / N不含税"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "uuid",
+                    "fluuid",
+                    "xmmc",
+                    "ggxh",
+                    "dwdm",
+                    "dwmc",
+                    "spfwbm",
+                    "spfwjc",
+                    "jm",
+                    "dj",
+                    "hsbz",
+                    "slv",
+                    "yhzsbz",
+                    "zzstsgl"
+                  ],
+                  "required": [
+                    "uuid",
+                    "fluuid",
+                    "xmmc"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "records",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "records",
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHAX433CWDTRRP1MAJC4GMY"
+        ],
+        "x-apifox-refs": {
+          "01HRHAX433CWDTRRP1MAJC4GMY": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23430606,
+  "ordering": 6,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-10-14T10:02:04.000Z",
+  "updatedAt": "2026-04-28T03:07:27.000Z",
+  "creatorId": 2400309,
+  "editorId": 3099717,
+  "creatorUserId": 2400309,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

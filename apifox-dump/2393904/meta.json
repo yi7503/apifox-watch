@@ -1,0 +1,27 @@
+{
+  "id": 2393904,
+  "projectId": 2393904,
+  "enableSubdirectory": false,
+  "subdirectory": "",
+  "customDomainOptions": {
+    "enableSubdirectory": false,
+    "subdirectory": "",
+    "enableHttps": true
+  },
+  "versionSettings": [
+    {
+      "branchId": 2914965,
+      "isDefaultVersion": true,
+      "name": "latest",
+      "slug": "latest",
+      "environments": {
+        "environmentIds": [
+          20962261
+        ],
+        "defaultEnvironmentId": 20962261
+      }
+    }
+  ],
+  "docRedirectRules": [],
+  "customCnameList": []
+}

@@ -1,0 +1,321 @@
+{
+  "id": 414735944,
+  "name": "风控报告结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/risk/rpt/queryResult",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "riskRptId": {
+          "type": "string",
+          "title": "报告id"
+        }
+      },
+      "required": [
+        "riskRptId"
+      ],
+      "x-apifox-orders": [
+        "riskRptId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"riskRptId\": \"5255567414****47791\"\r\n}",
+        "name": "示例 1"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 129932231,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "null"
+              },
+              "rptJson": {
+                "type": "object",
+                "properties": {
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "纳税人识别号"
+                  },
+                  "dfx": {
+                    "type": "integer",
+                    "title": "低风险数"
+                  },
+                  "nsrmc": {
+                    "type": "string",
+                    "title": "纳税人名称"
+                  },
+                  "fxmxList": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "yjflDm": {
+                          "type": "string",
+                          "title": "一级分类代码"
+                        },
+                        "fxqq": {
+                          "type": "string",
+                          "title": "分析期间起"
+                        },
+                        "zcyj": {
+                          "type": "string",
+                          "title": "政策依据"
+                        },
+                        "sjflDm": {
+                          "type": "string",
+                          "title": "三级分类代码"
+                        },
+                        "fxms": {
+                          "type": "string",
+                          "title": "风险描述"
+                        },
+                        "zbdm": {
+                          "type": "string",
+                          "title": "指标代码"
+                        },
+                        "ejflDm": {
+                          "type": "string",
+                          "title": "二级分类代码"
+                        },
+                        "fxqz": {
+                          "type": "string",
+                          "title": "分析期间至"
+                        },
+                        "yjflMc": {
+                          "type": "string",
+                          "title": "一级分类名称"
+                        },
+                        "sjflMc": {
+                          "type": "string",
+                          "title": "三级分类名称"
+                        },
+                        "cljy": {
+                          "type": "string",
+                          "title": "应对方式"
+                        },
+                        "fxdjMc": {
+                          "type": "string",
+                          "title": "风险等级"
+                        },
+                        "fxmc": {
+                          "type": "string",
+                          "title": "风险名称"
+                        },
+                        "ycqj": {
+                          "type": "string",
+                          "title": "异常期间"
+                        },
+                        "ycxq": {
+                          "type": "string",
+                          "title": "异常详情"
+                        },
+                        "ejflMc": {
+                          "type": "string",
+                          "title": "二级分类名称"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "yjflDm",
+                        "yjflMc",
+                        "ejflDm",
+                        "ejflMc",
+                        "sjflDm",
+                        "sjflMc",
+                        "zbdm",
+                        "fxmc",
+                        "fxqq",
+                        "fxqz",
+                        "fxdjMc",
+                        "fxms",
+                        "zcyj",
+                        "cljy",
+                        "ycqj",
+                        "ycxq"
+                      ]
+                    },
+                    "title": "风险明细列表"
+                  },
+                  "gfx": {
+                    "type": "integer",
+                    "title": "高风险数"
+                  },
+                  "fxzs": {
+                    "type": "integer",
+                    "title": "风险总数"
+                  },
+                  "zfx": {
+                    "type": "integer",
+                    "title": "中风险数"
+                  }
+                },
+                "required": [
+                  "nsrsbh",
+                  "dfx",
+                  "nsrmc",
+                  "fxmxList",
+                  "gfx",
+                  "fxzs",
+                  "zfx"
+                ],
+                "x-apifox-orders": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "fxzs",
+                  "gfx",
+                  "zfx",
+                  "dfx",
+                  "fxmxList"
+                ],
+                "title": "报告的json格式内容",
+                "description": "当风险报告申请接口的入参rptType=1时，该字段为空"
+              },
+              "rptUrls": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "报告的pdfurl信息",
+                "description": "当风险报告申请接口的入参rptType=2时，该字段为空"
+              },
+              "status": {
+                "type": "integer",
+                "title": "报告生成状态",
+                "description": "1进行中，2生成失败 3 生成成功"
+              }
+            },
+            "required": [
+              "message",
+              "rptJson",
+              "rptUrls",
+              "status"
+            ],
+            "x-apifox-orders": [
+              "message",
+              "rptJson",
+              "rptUrls",
+              "status"
+            ]
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "时间戳"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "data",
+          "timestamp",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "data",
+          "timestamp",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 129932231,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"message\": null,\n        \"rptJson\": {\n            \"nsrsbh\": \"12345678910111\",\n            \"dfx\": 3,\n            \"nsrmc\": \"xxxxxxxxxxxxxxxxx\",\n            \"fxmxList\": [\n                {\n                    \"yjflDm\": \"01\",\n                    \"fxqq\": \"202402\",\n                    \"zcyj\": \"根据《中华人民共和国税收征收管理法》第二十五条规定，纳税人必须依照法律、行政法规规定或者税务机关依照法律、行政法规的规定确定的申报期限、申报内容如实办理纳税申报，报送纳税申报表、财务会计报表以及税务机关根据实际需要要求纳税人报送的其他纳税资料。\\n《增值税暂行条例》\\n第十条　下列项目的进项税额不得从销项税额中抵扣：\\n（一）用于简易计税方法计税项目、免征增值税项目、集体福利或者个人消费的购进货物、劳务、服务、无形资产和不动产；\\n（二）非正常损失的购进货物，以及相关的劳务和交通运输服务；\\n（三）非正常损失的在产品、产成品所耗用的购进货物（不包括固定资产）、劳务和交通运输服务；\\n（四）国务院规定的其他项目。\",\n                    \"sjflDm\": \"010202\",\n                    \"fxms\": \"增值税进项税与销项税正常情况下变动趋势应当基本一致，若两者之间变动趋势严重不符，意味着企业的收入或成本存在异常，可能存在隐匿收入、虚增进项的风险。\",\n                    \"zbdm\": \"ZB010202000009\",\n                    \"ejflDm\": \"0102\",\n                    \"fxqz\": \"202601\",\n                    \"yjflMc\": \"风险类\",\n                    \"sjflMc\": \"销项税额风险\",\n                    \"cljy\": \"1.风险核实及处理\\n（1）核实是否存在漏报未开票收入或视同销售未入账的行为。\\n（2）检查是否存在扩大抵扣范围的情况，如多抵扣了应作进项税额转出的发票（如非正常损失、简易计税项目对应的进项发票等）。\\n（3）核实是否抵扣了与主营业务无关的发票。\\n2.风险防范\\n（1）企业应建立健全的财务管理制度，完善的会计核算体系，确保准确核算各项税收数据。\\n（2）严格按照《中华人民共和国发票管理办法》的规定，合法取得和使用发票，确保进项税额的准确抵扣。\",\n                    \"fxdjMc\": \"中风险\",\n                    \"fxmc\": \"增值税进项税增长但销项税下降监控\",\n                    \"ycqj\": \"202510-202510\",\n                    \"ycxq\": \"根据该期间的数据分析结果显示，2025年10月进项税增长率为32.61%，销项税增长率为-51.74%，进项税与销项税增长趋势严重不符，存在隐匿收入、虚增进项、少缴增值税风险。\",\n                    \"ejflMc\": \"增值税风险\"\n                }\n            ],\n            \"gfx\": 0,\n            \"fxzs\": 8,\n            \"zfx\": 5\n        },\n        \"rptUrls\": [\n            \"https://yqzk.cssyq.com.cn/znfk/qyfxgl/saas/zsr/downloadBgPdf?path=qyfxgl/2026/02/03/c1182963345c4d588c1867802fe5076f/c1182963345c4d588c1867802fe5076f/*****************_20260203162800_05.pdf\"\n        ],\n        \"status\": 3\n    },\n    \"timestamp\": \"2026-02-03 16:32:43\",\n    \"reqId\": \"T7e1cf615f8974adc9********44\"\n}",
+      "id": "019c22cc-ac4d-770c-a403-5e2f3d528e9f"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 77906980,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-03T09:04:36.000Z",
+  "updatedAt": "2026-03-14T03:09:31.000Z",
+  "creatorId": 887778,
+  "editorId": 2795319,
+  "creatorUserId": 887778,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

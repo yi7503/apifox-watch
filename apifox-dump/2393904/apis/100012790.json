@@ -1,0 +1,946 @@
+{
+  "id": 100012790,
+  "name": "已开发票明细查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "从局端查询符合指定条件的发票详细明细信息。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/fpmx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：fpmx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fphm": {
+              "title": "发票号码",
+              "type": "string",
+              "description": "20位数电发票号码"
+            },
+            "kprq": {
+              "title": "开票日期",
+              "type": "string",
+              "description": "包含时间 yyyy-MM-dd HH:mm:ss"
+            },
+            "ly_ddbh": {
+              "type": "string",
+              "title": "来源单编号",
+              "description": "同开具接口来源订单编号，通过订单号查询已开明细，如果传此参数，fphm和kprq可不传；注意：只有开具成功才能查询到明细，如开票异步开具中，此接口会返回来源单号不存在！"
+            },
+            "zz_fphm": {
+              "type": "string",
+              "title": "纸质发票号码",
+              "description": "数电纸质发票时必传"
+            },
+            "zz_fpdm": {
+              "type": "string",
+              "title": "纸质发票代码",
+              "description": "数电纸质发票时必传"
+            }
+          },
+          "x-apifox-orders": [
+            "ly_ddbh",
+            "kprq",
+            "fphm",
+            "zz_fphm",
+            "zz_fpdm"
+          ],
+          "title": "",
+          "required": [
+            "kprq",
+            "fphm"
+          ]
+        },
+        "dataScope": {
+          "type": "string",
+          "title": "获取的数据范围字段",
+          "description": "0 或者空默认值 只获取发票预览的数据  1 获取勾选状态 2.获取入账状态 3 获取入账，勾选，预览数据"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "dataScope",
+        "01HMB9FE8599H350DZB03NJGV1"
+      ],
+      "x-apifox-refs": {
+        "01HMB9FE8599H350DZB03NJGV1": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"fpmx\",\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"data\": {\r\n        \"kprq\": \"2024-02-29 10:59:02\",\r\n        \"fphm\": \"************54513944\"\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847724,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "fphm": {
+                "type": "string",
+                "title": "发票号码",
+                "description": "数电为20位数电号码"
+              },
+              "kprq": {
+                "type": "string",
+                "title": "开票日期时间",
+                "description": "格式yyyy-MM-dd 00:00:00 注意：税局更新后不再返回精确的时分秒，请不要更新覆盖影响后续流程。"
+              },
+              "fplxdm": {
+                "type": "string",
+                "description": "增值税纸质专用发票： \"004\";\n增值税纸质普通发票：\"007\";\n增值税纸质普通发票（卷式发票）：\"025\";\n增值税电子普通发票：\"026\";\n增值税电子专用发票：\"028\";\n全面数字化电子普通发票：\"030\";\n全面数字化电子专用发票：\"032\";\n机动车发票：\"005\";\n通行费发票：\"14\";\n数电发票（铁路电子客票）: \"51\";\n数电发票（航空运输电子客票行程单）: \"61\";\n数电发票（机动车销售统一发票）: \"83\";\n数电发票（二手车销售统一发票）: \"70\";\n数电纸质发票（机动车销售统一发票）: \"87\";\n数电纸质发票（二手车销售统一发票）: \"88\";\n数电纸质发票（增值税专用发票）: \"84\";\n数电纸质发票（普通发票）: \"85\";\n数电发票（通行费发票）: \"8208\"",
+                "title": "发票类型代码"
+              },
+              "kpf_nsrsbh": {
+                "type": "string",
+                "title": "开票方纳税人识别号"
+              },
+              "xsf_nsrmc": {
+                "type": "string",
+                "title": "销方纳税人名称"
+              },
+              "xsf_nsrsbh": {
+                "type": "string",
+                "title": "销方纳税人识别号"
+              },
+              "xsf_yhmc": {
+                "type": "string",
+                "title": "销方开户银行"
+              },
+              "xsf_yhzh": {
+                "type": "string",
+                "title": "销方银行账号"
+              },
+              "xsf_dz": {
+                "type": "string",
+                "title": "销方地址"
+              },
+              "xsf_dh": {
+                "type": "string",
+                "title": "销方电话"
+              },
+              "gmf_nsrsbh": {
+                "type": "string",
+                "title": "购方纳税人识别号"
+              },
+              "gmf_nsrmc": {
+                "type": "string",
+                "title": "购方名称"
+              },
+              "gmf_dz": {
+                "type": "string",
+                "title": "购方地址"
+              },
+              "gmf_dh": {
+                "type": "string",
+                "title": "购方电话"
+              },
+              "gmf_yhmc": {
+                "type": "string",
+                "title": "购方开户银行"
+              },
+              "gmf_yhzh": {
+                "type": "string",
+                "title": "购方银行账号"
+              },
+              "ewm": {
+                "type": "string",
+                "title": "发票二维码"
+              },
+              "kplx": {
+                "type": "string",
+                "title": "开票类型",
+                "description": "开票类型 0：正常票，1：红冲票"
+              },
+              "kpr": {
+                "type": "string",
+                "title": "开票人"
+              },
+              "bz": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "备注"
+              },
+              "hjje": {
+                "type": "number",
+                "title": "合计金额"
+              },
+              "hjse": {
+                "type": "number",
+                "title": "合计税额"
+              },
+              "jshj": {
+                "type": "number",
+                "title": "价税合计"
+              },
+              "kce": {
+                "type": "number",
+                "title": "扣除额"
+              },
+              "jshj_chn": {
+                "type": "string",
+                "title": "价税合计（中文大写）"
+              },
+              "xmmx": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "xh": {
+                      "type": "integer",
+                      "title": "行序号"
+                    },
+                    "fphxz": {
+                      "type": "string",
+                      "title": "发票行性质",
+                      "description": "0：正常行 1：折扣行 2：被折扣行"
+                    },
+                    "spbm": {
+                      "type": "string",
+                      "title": "商品税收编码",
+                      "description": "19位税收分类代码"
+                    },
+                    "spmc": {
+                      "type": "string",
+                      "title": "商品税收名称"
+                    },
+                    "yhzcbs": {
+                      "type": "string",
+                      "title": "优惠政策标识",
+                      "description": "N-未享受, Y-享受"
+                    },
+                    "yhzclxDm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "优惠政策类型代码（\"03\":\"免税\",\"04\":\"不征税\", \"08\":\"按3%简易征收\",\"09\":\"按5%简易征收\"）",
+                      "description": "yhzcbs=‘Y'时有值"
+                    },
+                    "xmmc2": {
+                      "type": "string",
+                      "title": "项目名称全称",
+                      "description": "带税收名称和星号"
+                    },
+                    "xmmc": {
+                      "type": "string",
+                      "title": "项目名称",
+                      "description": "不带税收名称"
+                    },
+                    "dw": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "单位"
+                    },
+                    "ggxh": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "规格型号"
+                    },
+                    "spsl": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "商品数量"
+                    },
+                    "dj": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "商品单价"
+                    },
+                    "je": {
+                      "type": "number",
+                      "title": "金额"
+                    },
+                    "sl": {
+                      "type": "string",
+                      "title": "税率",
+                      "description": "例如0.06"
+                    },
+                    "se": {
+                      "type": "number",
+                      "title": "税额"
+                    },
+                    "kce": {
+                      "type": "number",
+                      "title": "扣除额"
+                    },
+                    "lzMxxh": {
+                      "type": "integer",
+                      "title": "对应蓝字明细序",
+                      "description": "仅负数发票有值"
+                    }
+                  },
+                  "required": [
+                    "xh",
+                    "fphxz",
+                    "spbm",
+                    "spmc",
+                    "yhzcbs",
+                    "yhzclxDm",
+                    "xmmc2",
+                    "xmmc",
+                    "dw",
+                    "ggxh",
+                    "spsl",
+                    "dj",
+                    "je",
+                    "sl",
+                    "se",
+                    "kce",
+                    "lzMxxh"
+                  ],
+                  "x-apifox-orders": [
+                    "xh",
+                    "fphxz",
+                    "spbm",
+                    "spmc",
+                    "yhzcbs",
+                    "yhzclxDm",
+                    "xmmc2",
+                    "xmmc",
+                    "dw",
+                    "ggxh",
+                    "spsl",
+                    "dj",
+                    "je",
+                    "sl",
+                    "se",
+                    "kce",
+                    "lzMxxh"
+                  ]
+                },
+                "title": "项目明细"
+              },
+              "zz_fpdm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "纸质发票代码"
+              },
+              "zz_fphm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "纸质发票号码"
+              },
+              "zzsytdm": {
+                "type": "string",
+                "title": "增值税用途代码",
+                "description": "    (\"ZZ00\", \"未使用\"),     (\"ZZ01\", \"已勾选(抵扣)\"),     (\"ZZ02\", \"不抵扣不退税不代办退税\"),     (\"ZZ03\", \"已勾选(退税)\"),     (\"ZZ04\", \"已勾选(代办退税)\"),     (\"ZZ05\", \"待抵扣\"),     (\"ZZ06\", \"待退税\"),     (\"ZZ07\", \"已抵扣\"),     (\"ZZ08\", \"已抵扣(改退)\"),     (\"ZZ09\", \"已退税\"),     (\"ZZ10\", \"已代办退税\"),     (\"ZZ11\", \"不予退税且不予抵扣\")"
+              },
+              "zzsytmc": {
+                "type": "string",
+                "title": "增值税用途名称"
+              },
+              "xfsytdm": {
+                "type": "string",
+                "title": "消费税用途代码",
+                "description": "    (\"XF00\", \"未使用\"),     (\"XF01\", \"已勾选 (外购)\"),     (\"XF02\", \"已勾选 (用于生产乙烯、芳烃类化工产品的石脑油燃料油消费税退税)\"),     (\"XF03\", \"待外购\"),     (\"XF04\", \"待用于生产乙烯、芳烃类化工产品的石脑油燃料油消费税退税\"),     (\"XF05\", \"已外购\"),     (\"XF06\", \"已用于生产乙烯、芳烃类化工产品的石脑油燃料油消费税退税\"),     (\"XF07\", \"未勾选库存\"),     (\"XF08\", \"已勾选库存\"),"
+              },
+              "xfsytmc": {
+                "type": "string",
+                "title": "消费税用途名称"
+              },
+              "fprzztdm": {
+                "type": "string",
+                "title": "发票入账状态代码",
+                "description": "    (\"00\", \"未入账\"),     (\"01\", \"已入账\")"
+              },
+              "fprzztmc": {
+                "type": "string",
+                "title": "发票入账状态名称"
+              },
+              "fjysxxList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fjxxmc": {
+                      "type": "string",
+                      "title": "附加要素信息名称"
+                    },
+                    "fjxxnr": {
+                      "type": "string",
+                      "title": "附加要素信息内容"
+                    },
+                    "sjlx": {
+                      "type": "string",
+                      "title": "数据类型"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fjxxmc",
+                    "fjxxnr",
+                    "sjlx"
+                  ],
+                  "required": [
+                    "fjxxmc",
+                    "fjxxnr",
+                    "sjlx"
+                  ]
+                },
+                "title": "附加要素信息"
+              },
+              "fhr": {
+                "type": "string",
+                "title": "复核人"
+              },
+              "skr": {
+                "type": "string",
+                "title": "收款人"
+              },
+              "sfzsgmfyhzh": {
+                "type": "string",
+                "title": "是否展示购买方银行账号",
+                "description": "（Y 为展示 N为不展示）"
+              },
+              "sfzsxsfyhzh": {
+                "type": "string",
+                "title": "是否展示销售方银行账号",
+                "description": "（Y 为展示 N为不展示）"
+              },
+              "tdywlxDm": {
+                "type": "string",
+                "description": "(\"01\":\"成品油发票\",\"02\":\"稀土发票\",\"03\":\"建筑服务发票\",\"04\":\"货物运输服务发票\",\"05\":\"不动产销售服务发票\",\"06\":\"不动产经营租赁服务\", \"07\": \"代收车船税\",\"08\":\"通行费\",\"09\":\"旅客运输服务发票\",\"10\":\"医疗服务（住院）发票\",\"11\":\"医疗服务（门诊）发票\",\"12\":\"自产农产品销售发票\", \"13\":\"拖拉机和联合收割机发票\",\"14\":\"机动车\",\"15\":\"二手车\",\"16\":\"农产品收购发票\",\"17\":\"光伏收购发票\",\"18\":\"卷烟发票\",\"19\":\"出口发票\",\"20\":\"农产品\",\"21\":\"铁路电子客票\",\"22\":\"航空运输电子客票行程单\",\"23\":\"白酒\",\"24\":\"报废产品收购\",\"25\":\"正常开具\",\"26\":\"反向开具\",\"51\":\"二手车销售（正向开具）\",\"52\":\"二手车销售（反向开具）\")",
+                "title": "特定业务类型"
+              },
+              "jzfwfpmxList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [
+                    "01J90R4KDF1CYZV2S32WG8GPGJ"
+                  ],
+                  "x-apifox-refs": {
+                    "01J90R4KDF1CYZV2S32WG8GPGJ": {
+                      "$ref": "#/definitions/122627311"
+                    }
+                  }
+                },
+                "title": "特定要素信息-建筑服务"
+              },
+              "hwysfwdzfpmxbList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [
+                    "01J90R6Z98G0BENGRDAVBQPZ4E"
+                  ],
+                  "x-apifox-refs": {
+                    "01J90R6Z98G0BENGRDAVBQPZ4E": {
+                      "$ref": "#/definitions/122671115"
+                    }
+                  }
+                },
+                "title": "特定要素信息-货物运输"
+              },
+              "bdcTdysfpList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [
+                    "01J90R8B07Q6F1VNGY7GHHM2AA"
+                  ],
+                  "x-apifox-refs": {
+                    "01J90R8B07Q6F1VNGY7GHHM2AA": {
+                      "$ref": "#/definitions/122671341"
+                    }
+                  }
+                },
+                "title": "特定要素信息-不动产信息"
+              },
+              "sfzsgmfdzdh": {
+                "type": "string",
+                "description": "（Y 为展示 N为不展示）",
+                "title": "是否购买方地址电话"
+              },
+              "sfzsxsfdzdh": {
+                "type": "string",
+                "title": "是否销售方地址电话",
+                "description": "（Y 为展示 N为不展示）"
+              },
+              "lzKprq": {
+                "type": "string",
+                "title": "蓝字开票日期",
+                "description": "如果是红字发票该字段有值 格式yyyy-MM-dd 00:00:00  没有精确的时分秒"
+              },
+              "lzFphm": {
+                "type": "string",
+                "title": "蓝字发票号码",
+                "description": "如果是红字发票该字段有值"
+              },
+              "lkysfwTdysList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "cxr": {
+                      "type": "string",
+                      "title": "出行人"
+                    },
+                    "sfzjhm": {
+                      "type": "string",
+                      "title": "身份证件号码"
+                    },
+                    "cxrzjlxDm": {
+                      "type": "string",
+                      "title": "出行人证件类型代码",
+                      "description": "见发票开具旅客运输-出行人证件类型"
+                    },
+                    "chuxrq": {
+                      "type": "string",
+                      "title": "出行日期",
+                      "description": "yyyy-MM-dd"
+                    },
+                    "ddd": {
+                      "type": "string",
+                      "title": "到达地"
+                    },
+                    "cfd": {
+                      "type": "string",
+                      "title": "出发地"
+                    },
+                    "jtgjlx": {
+                      "type": "string",
+                      "title": "交通工具类型",
+                      "description": "\"1\":飞机; \"2\":火车; \"3\":长途汽车; \"4\":公共交通; \"5\":出租车; \"6\":汽车; \"7\":船舶; \"9\":其他"
+                    },
+                    "xh": {
+                      "type": "string",
+                      "title": "序号"
+                    },
+                    "dj": {
+                      "type": "string",
+                      "title": "等级"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "cxr",
+                    "sfzjhm",
+                    "cxrzjlxDm",
+                    "chuxrq",
+                    "ddd",
+                    "cfd",
+                    "jtgjlx",
+                    "xh",
+                    "dj"
+                  ],
+                  "required": [
+                    "cxr",
+                    "sfzjhm",
+                    "cxrzjlxDm",
+                    "chuxrq",
+                    "ddd",
+                    "cfd",
+                    "jtgjlx",
+                    "xh",
+                    "dj"
+                  ]
+                }
+              },
+              "txfList": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/153995435"
+                },
+                "title": "通行费信息",
+                "description": "当发票类型代码是14时返回此节点"
+              },
+              "jym": {
+                "type": "string",
+                "title": "校验码"
+              },
+              "bmbBbh": {
+                "type": "string",
+                "title": "编码表版本号"
+              },
+              "fpztdm": {
+                "type": "string",
+                "title": "发票状态代码"
+              },
+              "zzsskssq": {
+                "type": "string",
+                "title": "勾选属期"
+              },
+              "jdcxsTdys": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "bhsj": {
+                      "type": "string",
+                      "title": "不含税价"
+                    },
+                    "cd": {
+                      "type": "string",
+                      "title": "产地"
+                    },
+                    "cldw": {
+                      "type": "string",
+                      "title": "车辆单位"
+                    },
+                    "clsbdh": {
+                      "type": "string",
+                      "title": "车辆识别号码"
+                    },
+                    "cpxh": {
+                      "type": "string",
+                      "title": "厂牌型号"
+                    },
+                    "fdjhm": {
+                      "type": "string",
+                      "title": "发动机号码"
+                    },
+                    "hgzh": {
+                      "type": "string",
+                      "title": "合格证号"
+                    },
+                    "hwhyslwfwmc": {
+                      "type": "string",
+                      "title": "货物或应税劳务，服务名称"
+                    },
+                    "jdcxstyfpjg": {
+                      "type": "string"
+                    },
+                    "scqymc": {
+                      "type": "string",
+                      "title": "生产企业名称"
+                    },
+                    "se": {
+                      "type": "string",
+                      "title": "税额"
+                    },
+                    "slv": {
+                      "type": "string",
+                      "title": "税率"
+                    },
+                    "spfwjc": {
+                      "type": "string",
+                      "title": "商品简称"
+                    },
+                    "sphfwssflhbbm": {
+                      "type": "string",
+                      "title": "商品税收分类编码"
+                    },
+                    "xcrs": {
+                      "type": "string",
+                      "title": "限乘人数"
+                    },
+                    "xmmc": {
+                      "type": "string",
+                      "title": "项目名称"
+                    },
+                    "zgswjgdm": {
+                      "type": "string",
+                      "title": "主管税务机关代码"
+                    },
+                    "zgswjgmc": {
+                      "type": "string",
+                      "title": "主管税务机关名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "bhsj",
+                    "cd",
+                    "cldw",
+                    "clsbdh",
+                    "cpxh",
+                    "fdjhm",
+                    "hgzh",
+                    "hwhyslwfwmc",
+                    "jdcxstyfpjg",
+                    "scqymc",
+                    "se",
+                    "slv",
+                    "spfwjc",
+                    "sphfwssflhbbm",
+                    "xcrs",
+                    "xmmc",
+                    "zgswjgdm",
+                    "zgswjgmc"
+                  ]
+                },
+                "title": "机动车特定业务信息"
+              },
+              "tldzkp": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [
+                  "01KFWH8JZSTKR17CQPFJ0YNP3N"
+                ],
+                "title": "铁路电子客票信息",
+                "x-apifox-refs": {
+                  "01KFWH8JZSTKR17CQPFJ0YNP3N": {
+                    "$ref": "#/definitions/241973940",
+                    "x-apifox-overrides": {
+                      "kprq": null
+                    }
+                  }
+                }
+              },
+              "hkysdzkpxcd": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [
+                  "01KFWHE4WKXJKN06C5YYGN30TC"
+                ],
+                "title": "航空运输电子客票行程单信息",
+                "x-apifox-refs": {
+                  "01KFWHE4WKXJKN06C5YYGN30TC": {
+                    "$ref": "#/definitions/241982082"
+                  }
+                }
+              },
+              "escxsTdysList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [
+                    "01KJW0F892NT18P6Q29TZ94AVC"
+                  ],
+                  "x-apifox-refs": {
+                    "01KJW0F892NT18P6Q29TZ94AVC": {
+                      "$ref": "#/definitions/250343386"
+                    }
+                  }
+                },
+                "title": "二手车销售特定要素信息"
+              }
+            },
+            "required": [
+              "fphm",
+              "kprq",
+              "fplxdm",
+              "kpf_nsrsbh",
+              "xsf_nsrmc",
+              "xsf_nsrsbh",
+              "gmf_nsrsbh",
+              "gmf_nsrmc",
+              "ewm",
+              "kplx",
+              "kpr",
+              "bz",
+              "hjje",
+              "hjse",
+              "jshj",
+              "kce",
+              "jshj_chn",
+              "xmmx",
+              "tdywlxDm",
+              "jzfwfpmxList",
+              "hwysfwdzfpmxbList",
+              "bdcTdysfpList"
+            ],
+            "x-apifox-orders": [
+              "fphm",
+              "zz_fpdm",
+              "zz_fphm",
+              "kprq",
+              "lzKprq",
+              "lzFphm",
+              "fplxdm",
+              "kpf_nsrsbh",
+              "xsf_nsrmc",
+              "xsf_nsrsbh",
+              "xsf_yhmc",
+              "xsf_yhzh",
+              "xsf_dz",
+              "xsf_dh",
+              "gmf_nsrsbh",
+              "gmf_nsrmc",
+              "gmf_dz",
+              "gmf_dh",
+              "gmf_yhmc",
+              "gmf_yhzh",
+              "ewm",
+              "jym",
+              "bmbBbh",
+              "fpztdm",
+              "kplx",
+              "kpr",
+              "fhr",
+              "skr",
+              "bz",
+              "hjje",
+              "hjse",
+              "jshj",
+              "kce",
+              "jshj_chn",
+              "xmmx",
+              "zzsytdm",
+              "zzsytmc",
+              "xfsytdm",
+              "xfsytmc",
+              "zzsskssq",
+              "fprzztdm",
+              "fprzztmc",
+              "sfzsgmfyhzh",
+              "sfzsxsfyhzh",
+              "sfzsgmfdzdh",
+              "sfzsxsfdzdh",
+              "fjysxxList",
+              "tdywlxDm",
+              "jzfwfpmxList",
+              "hwysfwdzfpmxbList",
+              "bdcTdysfpList",
+              "lkysfwTdysList",
+              "txfList",
+              "jdcxsTdys",
+              "tldzkp",
+              "hkysdzkpxcd",
+              "escxsTdysList",
+              "01KQYC1VRR8B4Y1WYEXZ4643JV",
+              "01KQYC31AB03R8C8N6CX32BR86"
+            ],
+            "x-apifox-refs": {
+              "01KQYC1VRR8B4Y1WYEXZ4643JV": {
+                "$ref": "#/definitions/270850708"
+              },
+              "01KQYC31AB03R8C8N6CX32BR86": {
+                "$ref": "#/definitions/270874361"
+              }
+            }
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRH75FVTZ1NQFNK14E69PH9C"
+        ],
+        "x-apifox-refs": {
+          "01HRH75FVTZ1NQFNK14E69PH9C": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847724,
+      "data": "{\n    \"reqId\": \"5459b5980b004b4ba08091be6e9de2b2\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"kplx\": \"1\",\n        \"xsf_dz\": \"******************弄1-72号B座12层\",\n        \"gmf_dz\": \"**************906号001\",\n        \"xsf_yhzh\": \"**********10301\",\n        \"kce\": 0,\n        \"hjje\": -0.94,\n        \"gmf_dh\": \"********7376\",\n        \"xsf_nsrsbh\": \"************PDDL2G\",\n        \"jshj_chn\": \"（负数）壹圆整\",\n        \"kprq\": \"2024-02-29 00:00:00\",\n        \"bz\": \"******************************************号：************02704133\",\n        \"xmmx\": [\n            {\n                \"ggxh\": null,\n                \"spsl\": null,\n                \"yhzcbs\": \"N\",\n                \"dj\": null,\n                \"spmc\": \"研发和技术服务\",\n                \"yhzclxDm\": null,\n                \"xmmc2\": \"*研发和技术服务*技术服务费\",\n                \"kce\": 0,\n                \"xsyhzcbz\": null,\n                \"lzMxxh\": 1,\n                \"xh\": 1,\n                \"fphxz\": \"0\",\n                \"se\": -0.06,\n                \"dw\": null,\n                \"xmmc\": \"技术服务费\",\n                \"sl\": \"0.06\",\n                \"je\": -0.94,\n                \"spbm\": \"3040105000000000000\"\n            }\n        ],\n        \"gmf_nsrmc\": \"**********术有限公司\",\n        \"zz_fpdm\": null,\n        \"xsf_yhmc\": \"**********上海青浦支行\",\n        \"kpf_nsrsbh\": \"************PDDL2G\",\n        \"hjse\": -0.06,\n        \"gmf_yhmc\": \"**************首体科技金融支行\",\n        \"kpr\": \"**飞\",\n        \"xsf_dh\": \"******98617\",\n        \"fplxdm\": \"030\",\n        \"xsf_nsrmc\": \"********信息有限公司\",\n        \"ewm\": \"01,32, ,************54513944,-1,20240229, ,F3F7\",\n        \"jshj\": -1,\n        \"zz_fphm\": null,\n        \"gmf_nsrsbh\": \"************BDRR90\",\n        \"gmf_yhzh\": \"**********10702\",\n        \"fphm\": \"************54513944\",\n        \"lzFphm\": \"************54513666\",\n        \"lzKprq\": \"2024-02-29 00:00:00\"\n    }\n}",
+      "id": 400266620
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681480,
+  "ordering": 150,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar responseJson = {\r\n  \"kplx\": \"0\",\r\n  \"xsf_dz\": \"发票明细查询沙箱销方地址\",\r\n  \"fprzztmc\": \"未入账\",\r\n  \"sfzsgmfyhzh\": \"Y\",\r\n  \"xsf_yhzh\": \"2209200011200100240\",\r\n  \"hjje\": 2524.27,\r\n  \"zzsytmc\": null,\r\n  \"gmf_dh\": \"15606701468\",\r\n  \"xsf_nsrsbh\": \"8Q0890810266EKNB12\",\r\n  \"jshj_chn\": \"贰仟陆佰圆整\",\r\n  \"kprq\": \"2006-01-01 00:00:00\",\r\n  \"bz\": \"这是个备注\",\r\n  \"xmmx\": [\r\n    {\r\n      \"xh\": 1,\r\n      \"fphxz\": \"0\",\r\n      \"se\": 75.73,\r\n      \"xmmc\": \"培训费\",\r\n      \"yhzcbs\": \"Y\",\r\n      \"spmc\": \"非学历教育服务\",\r\n      \"yhzclxDm\": \"01 \",\r\n      \"sl\": \"0.03\",\r\n      \"xmmc2\": \"*非学历教育服务*培训费\",\r\n      \"je\": 2524.27,\r\n      \"spbm\": \"3070201020000000000\"\r\n    }\r\n  ],\r\n  \"gmf_nsrmc\": \"发票明细查询沙箱购方名称\",\r\n  \"sfzsxsfdzdh\": \"Y\",\r\n  \"gmf_dzdh\": \"15606701468\",\r\n  \"xsf_yhmc\": \"发票明细查询沙箱销方银行名称\",\r\n  \"kpf_nsrsbh\": \"DE724572MK5DQEUM3G\",\r\n  \"zzsytdm\": null,\r\n  \"hjse\": 75.73,\r\n  \"kpr\": \"封于修\",\r\n  \"zzsskssq\": null,\r\n  \"xfsytdm\": null,\r\n  \"xsf_dh\": \"3042503\",\r\n  \"xfsytmc\": null,\r\n  \"tdywlxDm\": \"\",\r\n  \"fplxdm\": \"030\",\r\n  \"xsf_nsrmc\": \"发票明细查询沙箱销方名称\",\r\n  \"ewm\": \"01,32,,25332000000619622713,2600,20250101,,EAE2\",\r\n  \"jshj\": 2600,\r\n  \"sfzsgmfdzdh\": \"Y\",\r\n  \"gmf_nsrsbh\": \"\",\r\n  \"sfzsxsfyhzh\": \"Y\",\r\n  \"xsf_yhmczh\": \"发票明细查询沙箱销方银行名称2209200011200100240\",\r\n  \"fphm\": \"25332000000619622713\",\r\n  \"xsf_dzdh\": \"发票明细查询沙箱销方地址电话\",\r\n  \"fprzztdm\": \"00\"\r\n};\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2024-07-31T05:41:56.000Z",
+  "updatedAt": "2026-01-10T04:08:20.000Z",
+  "creatorId": 887900,
+  "editorId": 3099717,
+  "creatorUserId": 887900,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,188 @@
+{
+  "id": 302460635,
+  "name": "采集任务（其他）-回调通知",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "sbpS7Xjd2l_1vFO9CpKO-",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "描述：除采集完成状态通知外的其他回调通知，如：大票通知。\n调用流程：\n1. 客户提供自己的接口回调地址；\n2. 发起企业数据采集，采集中会推送数据到回调地址，客户返回成功响应；\n3. 推送完成。\n\n客户回调返回查看响应参数及示例",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/地址联系技术支持配置",
+  "tags": [
+    "企业信息采集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "description": "任务ID",
+          "title": "任务ID"
+        },
+        "noticeType": {
+          "type": "string",
+          "title": "通知类型",
+          "description": "根据通知类型区分（查看示例），推送数据内容不同"
+        },
+        "largeInvoice": {
+          "type": "string",
+          "title": "大票状态（noticeType=FIN_COLLECT_BIG_FP）",
+          "description": "大票：1"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "appKey": {
+          "type": "string",
+          "title": "appKey"
+        }
+      },
+      "required": [
+        "taskId",
+        "noticeType",
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "taskId",
+        "noticeType",
+        "nsrsbh",
+        "appKey",
+        "largeInvoice"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "noticeType类型：\r\n\r\nFIN_COLLECT_BIG_FP 大票通知类型",
+        "mediaType": "application/json",
+        "description": "",
+        "name": "通知类型描述"
+      },
+      {
+        "name": "大票通知",
+        "value": "{\r\n    \"taskId\": 544290009248,\r\n    \"noticeType\": \"FIN_COLLECT_BIG_FP\",\r\n    \"nsrsbh\": \"9000****6\",\r\n    \"appKey\": \"10001000\",\r\n    \"largeInvoice\": \"1\" // 大票：1\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686828232,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "接收响应Code"
+          },
+          "msg": {
+            "type": "string",
+            "description": "接收响应消息"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功返回结果",
+      "responseId": 686828232,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"已接收\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596471041
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 33438848,
+  "ordering": 182,
+  "responsibleId": 887900,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T07:31:36.000Z",
+  "updatedAt": "2025-05-30T03:05:52.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.686828232"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,214 @@
+{
+  "id": 263768302,
+  "name": "查询作废申报任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   该接口用于查询作废申报任务结果。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| NO_RESULT | 任务不存在 |\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR | 请求参数taskId不能为空！| |\n| PARAMETER_ERROR |参数格式不合法,不是有效的json格式!||\n| BUSINESS_ERROR | 查询任务结果失败，请联系管理员！ |  |\n| BUSINESS_ERROR | 没有找到对应的任务信息 |  |\n| BUSINESS_ERROR | 暂不支持此任务类型查询 |  |\n| INTERFACE_ERROR |接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaxSbCancel",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":447893717379200,\r\n    \"taskId\":\"455856444756480\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 619205098,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GVZ6HG6MZ4E7460FXGK62HM5": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/36872328"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GVZ6HG6MZ4E7460FXGK62HM5"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 619205098,
+      "data": "{\"reqId\":\"884697ed4c1443778cc394543d902b30\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 492426545
+    },
+    {
+      "name": "查询无结果",
+      "responseId": 619205098,
+      "data": "{\"reqId\":\"302d90ae5c624b6d9aa4f9bd5894c1af\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 492426546
+    },
+    {
+      "name": "任务执行成功-用户未注册",
+      "responseId": 619205098,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"result\": \"业务执行失败\",\n        \"finishTime\": \"2023-03-20 16:26:07\",\n        \"businessStatusName\": \"执行失败\",\n        \"startTime\": \"2023-03-20 16:26:00\",\n        \"businessStatus\": 2,\n        \"detail\": [],\n        \"serviceName\": \"申报作废\",\n        \"resultMessage\": \"广东电子税务局登录失败：该用户未注册，请在自然人业务入口进行用户注册\",\n        \"taskId\": \"455856444756480\"\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"c7b41780b17b4bc6ab92ae59b3833be9\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 492426547
+    },
+    {
+      "name": "任务执行成功-作废成功",
+      "responseId": 619205098,
+      "data": "{\n    \"reqId\": \"10bfa1fdf74\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-sb-cancel\",\n        \"businessStatus\": 3,\n        \"screenshot\": \"http://xxx/SCREENSHOT/0490.png\",\n        \"serviceName\": \"申报作废\",\n        \"resultMessage\": \"作废成功\",\n        \"message\": null,\n        \"result\": \"作废成功\",\n        \"detail\": [\n            {\n                \"code\": \"2000\",\n                \"yzpzzldm\": \"BDA0610794\",\n                \"ssqQ\": \"2025-02-27\",\n                \"state\": \"0\", // 0:未申报\n                \"message\": \"作废成功\",\n                \"ssqZ\": \"2025-02-27\"\n            }\n        ],\n        \"aggOrgId\": 4651769152,\n        \"taskId\": 581426304\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 492426548
+    },
+    {
+      "name": "作废失败",
+      "responseId": 619205098,
+      "data": "{\n    \"reqId\": \"39b99adf23ce47c18e719b4ea5a33509\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"失败\",\n        \"serviceCode\": \"tax-sb-cancel\",\n        \"businessStatus\": 2,\n        \"screenshot\": \"http://xxxx.com/SCREENSHOT/xxxx.png\",\n        \"serviceName\": \"申报作废\",\n        \"resultMessage\": \"增值税认定类型与税局不一致，税局为增值税及附加税(适用于一般纳税人)，请求为增值税及附加税(适用于小规模纳税人)\",\n        \"message\": null,\n        \"result\": \"\",\n        \"detail\": [],\n        \"aggOrgId\": 4627816284210176,\n        \"taskId\": 579882055762944\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 492426555
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531291,
+  "ordering": 79,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-02-24T04:03:42.000Z",
+  "updatedAt": "2025-05-08T10:40:52.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.619205098"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,356 @@
+{
+  "id": 145019720,
+  "name": "查询申报任务进度结果接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询已发起的申报任务的执行结果。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！  |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ |\n|PARAMETER_ERROR |参数格式不合法！ |\n|INTERFACE_ERROR |接口异常,请联系管理员 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/task/qys/queryDeclareTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "任务ids",
+          "minItems": 1
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskIds"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskIds"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"taskIds\": [454760922049792]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947981,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "startTime",
+              "finishTime",
+              "businessStatusName",
+              "businessStatus",
+              "serviceName",
+              "serviceCode",
+              "taskId",
+              "code",
+              "message",
+              "detail",
+              "申报状态判断规则："
+            ],
+            "properties": {
+              "finishTime": {
+                "type": "string",
+                "title": "任务结束时间"
+              },
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "服务名称"
+              },
+              "startTime": {
+                "type": "string",
+                "title": "任务发起时间"
+              },
+              "detail": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string",
+                      "title": "任务信息"
+                    },
+                    "code": {
+                      "type": "string",
+                      "title": "任务code"
+                    },
+                    "bqybtse": {
+                      "type": "string",
+                      "title": "增值税本期应补退税额"
+                    },
+                    "yzpzzlDm": {
+                      "type": "string",
+                      "title": "税费种的应征凭证种类代码"
+                    },
+                    "bqybtsejyfj": {
+                      "type": "string",
+                      "title": "教育附加本期应补退税额"
+                    },
+                    "bqybtsecjs": {
+                      "type": "string",
+                      "title": "城建税本期应补退税额"
+                    },
+                    "bqybtsedfjyfj": {
+                      "type": "string",
+                      "title": "地方教育附加本期应补退税额 "
+                    },
+                    "state": {
+                      "type": "string",
+                      "title": "申报状态 (0:未申报，1:已申报)"
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "异常信息"
+                    },
+                    "taxAmount": {
+                      "type": "string",
+                      "title": "税局应补退税额"
+                    },
+                    "sbScreenUrl": {
+                      "type": "string",
+                      "title": "任务截图"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "result",
+                    "code",
+                    "message",
+                    "yzpzzlDm",
+                    "state",
+                    "taxAmount",
+                    "bqybtse",
+                    "bqybtsejyfj",
+                    "bqybtsecjs",
+                    "bqybtsedfjyfj",
+                    "sbScreenUrl"
+                  ]
+                },
+                "title": "明细"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "任务 id"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "服务代码",
+                "description": "taxBatchSb批量申报"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "任务信息"
+              },
+              "申报状态判断规则：": {
+                "type": "string",
+                "description": "1.businessStatus=1则是申报中; 2.businessStatus = 2 则系统报错 判断申报失败 ;3.businessStatus=3 则 sbstate和state有可能是申报成功有可能是申报失败，根据返回任务code判断  2000申报成功 \\2002(非本通道申报)  4开头都是申报失败"
+              }
+            },
+            "required": [
+              "finishTime",
+              "businessStatusName",
+              "businessStatus",
+              "serviceName",
+              "startTime",
+              "detail",
+              "taskId",
+              "serviceCode",
+              "code",
+              "message"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 42947981,
+      "data": "{\"reqId\":\"807aa626b84b4e49ab0405dee305682d\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 42947982
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 42947981,
+      "data": "{\n    \"code\": \"BUSINESS_ERROR\",\n    \"success\": true,\n    \"message\": \"根据请求参数taskIds和orgId未找到对应任务数据！\",\n    \"reqId\": \"fee6036dcbaf46c38070a0a835c05a59\"\n}",
+      "id": 42947983
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 42947981,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"5f03097d3ea84afcbcfbc3e6e11101d0\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行成功\",\n            \"finishTime\": \"2024-01-26 10:06:05.0\",\n            \"serviceCode\": \"taxBatchSb\",\n            \"serviceName\": \"多税种申报\",\n            \"businessStatus\": \"3\",\n            \"startTime\": \"2024-01-26 10:05:56.0\",\n            \"taskId\": \"511017269999872\",\n            \"detail\": [\n                {\n                    \"result\": \"增值税及附加税(适用于一般纳税人)申报成功\",\n                    \"code\": \"2002\",\n                    \"message\": \"申报成功\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"state\": \"1\",\n                    \"taxAmount\": \"100.00\",\n                    \"bqybtse\": \"10.00\",\n                    \"bqybtsejyfj\": \"40.00\",\n                    \"bqybtsecjs\": \"20.00\",\n                    \"bqybtsedfjyfj\": \"30.00\",\n                    \"sbScreenUrl\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_d6d48a5f-0727-4715-99a9-eddec2e069f21704419624110_1704419773396.png?Expires=1708826794&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=j3bsr1xVjg9a3%2BLKWgrHuIhT%2BKA%3D\"\n                }\n            ]\n        }\n    ]\n}",
+      "id": 42947984
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13476144,
+  "ordering": 120,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-11-29T06:57:28.000Z",
+  "updatedAt": "2025-01-03T06:34:01.000Z",
+  "creatorId": 1476015,
+  "editorId": 1452584,
+  "creatorUserId": 1476015,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.42947981"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

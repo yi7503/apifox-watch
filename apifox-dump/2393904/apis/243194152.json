@@ -1,0 +1,240 @@
+{
+  "id": 243194152,
+  "name": "登出",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n该接口用登出",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/ext/loginOut",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "该值必填"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "见附录：[地区代码](apifox://link/pages/2246773)",
+          "examples": [
+            "11"
+          ]
+        },
+        "gryhm": {
+          "type": "string",
+          "title": "用户名",
+          "description": "可为：居民身份证/手机号/用户名。该值必填"
+        },
+        "sflx": {
+          "type": "string",
+          "title": "身份类型",
+          "description": "见附录：[身份类型](apifox://link/pages/4553802)参见附录身份类型"
+        },
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码"
+        },
+        "type": {
+          "type": "string",
+          "title": "类型 (英文逗号分割)",
+          "enum": [
+            "0",
+            "1"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "0",
+              "name": "清理缓存",
+              "description": ""
+            },
+            {
+              "value": "1",
+              "name": "清理指纹",
+              "description": ""
+            }
+          ],
+          "examples": [
+            "0,1"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "sflx",
+        "sjhm",
+        "type"
+      ],
+      "required": [
+        "nsrsbh",
+        "areaCode",
+        "gryhm",
+        "sflx",
+        "type",
+        "sjhm"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "EHl6oONAJx",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "0IjOHjpFUP",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "id": "khv3lq67G6",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582719294,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "登录返回的code",
+                "description": "2000：登录成功；4xxx;登录信息有误;8xxx短信发送频繁；5xxx:系统错误"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              },
+              "data": null
+            },
+            "required": [
+              "code"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功结果示例",
+      "responseId": 582719294,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"操作成功\",\n    \"reqId\": \"1a254acbe29d4c248e41c41607d42efb\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454805518
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582719294,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数nsrsbh不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454805519
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841624,
+  "ordering": 95,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-11T05:53:17.000Z",
+  "updatedAt": "2025-12-12T03:21:56.000Z",
+  "creatorId": 1442097,
+  "editorId": 1564651,
+  "creatorUserId": 1442097,
+  "editorUserId": 1564651,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

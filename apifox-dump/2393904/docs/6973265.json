@@ -1,0 +1,17 @@
+{
+  "id": 6973265,
+  "name": "2025年6月发布内容  ",
+  "sidebarTitle": "",
+  "content": "## 2025年5月发布内容\n\n发布日期：2025-05-30\n发布版本：V1.0.16\n\n## 个税申报新版，升级啦 \n:::\n\n****《代扣代缴》-更新：**\n 1.开放员工并档查询文档；\n https://openapi.qixiangyun.com/api-256452790\n 2.新增获取累计数,和专附扣累计金额查询下载 ；\n https://openapi.qixiangyun.com/api-313096390\n 3.新增非居民所得算税+申报能力\n https://openapi.qixiangyun.com/api-251282989\n https://openapi.qixiangyun.com/api-248154544\n 非居民所得-特许权使用费所得；\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541828/image-preview)\n 非居民所得-财产租赁所得-个人房屋和其他财产出租所得；\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541830/image-preview)\n 非居民所得-财产转让所得-财产拍卖所得及回流文物拍卖所得、股权转让、其他转让；\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541831/image-preview)\n \n 5.申报成功返回结果相关节点增加ybtse应补退税额；\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/542002/image-preview)\n 6.新增查询统计能力\n 员工汇算申报状态查询\n https://openapi.qixiangyun.com/api-313453398\n\n 员工未注册个税APP情况\n https://openapi.qixiangyun.com/api-313541849\n \n 7.优化完税证明开具接口入参增加缴款月份起始，非必填，多条缴款记录同时开具完税时，返回数组链接。\n https://openapi.qixiangyun.com/api-256981549\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541849/image-preview)\n 8.完税证明支持非居民和分类所得\n https://openapi.qixiangyun.com/api-256981549\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541843/image-preview)\n 9.企业注册接口支持并发能力\nhttps://openapi.qixiangyun.com/api-247413304\n****《生产经营所得》-更新**\n1.新增作废电子税票号码接口\nhttps://openapi.qixiangyun.com/api-312235130\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541846/image-preview)\n**综合接口**\n1.新增漏报漏缴款检查\n https://openapi.qixiangyun.com/api-314754379\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/541871/image-preview)",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-07-03T08:02:38.000Z",
+  "updatedAt": "2025-07-03T12:47:27.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

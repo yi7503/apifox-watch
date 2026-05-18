@@ -1,0 +1,247 @@
+{
+  "id": 249923120,
+  "name": "获取我的待办结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述:\n发起获取我的待办任务。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaxMyTodo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID",
+          "description": "发起时的"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\": \"234567\",\r\n    \"aggOrgId\": \"550600000336\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 594828441,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01JGJBMVZZ0GMQA9AN0SHT2VEG": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "businessStatus": {
+                    "type": "string",
+                    "title": "任务状态",
+                    "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+                  },
+                  "detail": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "bqzt": {
+                          "type": "string",
+                          "title": "状态",
+                          "description": "已申报/未申报"
+                        },
+                        "sxdm": {
+                          "type": "string",
+                          "title": "事项代码",
+                          "description": "应征凭证种类代码"
+                        },
+                        "sxmc": {
+                          "type": "string",
+                          "title": "事项名称",
+                          "description": "应征凭证种类代码名称"
+                        },
+                        "blqx": {
+                          "type": "string",
+                          "title": "办理期限"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "bqzt",
+                        "sxdm",
+                        "sxmc",
+                        "blqx"
+                      ],
+                      "required": [
+                        "bqzt",
+                        "sxdm",
+                        "sxmc",
+                        "blqx"
+                      ]
+                    },
+                    "title": "我的待办数据列表"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "businessStatus",
+                  "detail"
+                ],
+                "required": [
+                  "businessStatus"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01JGJBMVZZ0GMQA9AN0SHT2VEG"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 594828441,
+      "data": "{\"reqId\":\"bc8d1c6a828a49978bdde83dec543c20\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 466282648
+    },
+    {
+      "name": "成功示例",
+      "responseId": 594828441,
+      "data": "{\n    \"reqId\": \"9bed68d9ce2f4387b6676ade343033d4\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-my-todo\",\n        \"businessStatus\": 3,\n        \"screenshot\": null,\n        \"detail\": [\n            {\n                \"bqzt\": \"已申报\",\n                \"sxdm\": \"BDA0610606\",\n                \"sxmc\": \"增值税及附加税费申报（一般纳税人适用）\",\n                \"blqx\": \"2024-12-16\"\n            }\n        ],\n        \"aggOrgId\": 541833245636800,\n        \"serviceName\": null,\n        \"resultMessage\": null,\n        \"message\": null,\n        \"taskId\": 571031062563072\n    }\n}",
+      "id": 466282649
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48191782,
+  "ordering": 36,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-12-30T10:52:45.000Z",
+  "updatedAt": "2026-04-16T03:11:35.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

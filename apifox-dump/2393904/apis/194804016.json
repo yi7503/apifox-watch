@@ -1,0 +1,265 @@
+{
+  "id": 194804016,
+  "name": "税局维护、停机消息推送接口说明",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "\n:::highlight red 💡\n注意：忽略上面api.qixiangyun.com企享云的域名，这个接口文档是客户提供给企享云的回调接口说明！！！\n:::\n\n本接口需要客户自行设计实现，发布后把接口访问地址发给企享云，企享云进行配置，将税局维护、停机消息调用此接口通知到客户。\n调用方式: HTTP POST。\n报文格式：application/json; utf-8。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/服务商CallbackURL地址",
+  "tags": [
+    "结果回调"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "title": "标题"
+              },
+              "area": {
+                "type": "string",
+                "title": "地区",
+                "description": "见附录：[地区代码](apifox://link/pages/2246773)"
+              },
+              "contentType": {
+                "type": "integer",
+                "title": "平台类型",
+                "enum": [
+                  0,
+                  1
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": 0,
+                    "name": "电子税局 ",
+                    "description": ""
+                  },
+                  {
+                    "value": 1,
+                    "name": " 电票平台 ",
+                    "description": ""
+                  }
+                ]
+              },
+              "message": {
+                "type": "string",
+                "title": "消息内容"
+              },
+              "module": {
+                "type": "string",
+                "title": "业务模块"
+              },
+              "noticeType": {
+                "type": "integer",
+                "title": "通知类别",
+                "enum": [
+                  10,
+                  20,
+                  30,
+                  31,
+                  40,
+                  41
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": 10,
+                    "name": "平台维护通知",
+                    "description": ""
+                  },
+                  {
+                    "value": 20,
+                    "name": "税局维护通知",
+                    "description": ""
+                  },
+                  {
+                    "value": 30,
+                    "name": "税局异常通知",
+                    "description": ""
+                  },
+                  {
+                    "value": 31,
+                    "name": "税局恢复通知",
+                    "description": ""
+                  },
+                  {
+                    "value": 40,
+                    "name": "查验异常通知",
+                    "description": ""
+                  },
+                  {
+                    "value": 41,
+                    "name": "查验恢复通知",
+                    "description": ""
+                  }
+                ]
+              },
+              "threshold": {
+                "type": "string",
+                "title": "失败阈值百分比"
+              },
+              "createTime": {
+                "type": "string",
+                "title": "创建时间",
+                "description": "yyyy-MM-dd HH:mm:ss"
+              },
+              "publishTime": {
+                "type": "string",
+                "title": "局端发布时间",
+                "description": "yyyy-MM-dd HH:mm:ss"
+              }
+            },
+            "x-apifox-orders": [
+              "area",
+              "contentType",
+              "message",
+              "module",
+              "noticeType",
+              "threshold",
+              "title",
+              "createTime",
+              "publishTime"
+            ],
+            "required": [
+              "publishTime",
+              "createTime"
+            ]
+          }
+        }
+      },
+      "x-apifox-orders": [
+        "data"
+      ],
+      "required": [
+        "data"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"data\": [\n        {\n            \"createTime\": \"2024-03-22T16:30:02\",\n            \"message\": \"【企享云发票查验预警】  【企享云】尊敬的合作伙伴，您好，目前我们监测到增值税查验平台深圳地区查验已恢复正常。我们将继续努力，为您提供更加优质的服务。\",\n            \"noticeType\": 41,\n            \"title\": \"查验恢复通知\",\n            \"area\": \"\",\n            \"contentType\": \"0\",\n            \"module\": \"\",\n            \"threshold\": \"\"\n        }\n    ]\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 491382749,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "回调返回结果",
+            "description": "默认2000为成功，9999为失败"
+          },
+          "msg": {
+            "type": "string",
+            "title": "成功或失败原因",
+            "description": "具体原因"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 491382749,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417831710
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28641833,
+  "ordering": 99,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-08-03T03:01:16.000Z",
+  "updatedAt": "2025-10-08T08:35:11.000Z",
+  "creatorId": 493303,
+  "editorId": 1564651,
+  "creatorUserId": 493303,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.491382749"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

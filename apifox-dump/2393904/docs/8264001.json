@@ -1,0 +1,17 @@
+{
+  "id": 8264001,
+  "name": "2026年2月发版内容",
+  "sidebarTitle": "",
+  "content": "2026年2月发布内容\n发布日期：2026-02-26\n发布版本：V2.2026.02\n\n# 功能优化\n\n## 1.税局升级内容同步更新\n1. 其他字段的调整,代扣代缴:税款所属期从2026年1月开始,所有所得项目,停止使用【其他】字段进行算税、申报,2026年以前的属期仍可用\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628561/image-preview)\n\n2.  综合所得-正常工资薪金：新增四个字段:公务交通费用、通讯费用、律师办案费用、西藏附加减除费用,具体使用说明请看接口文档\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628562/image-preview)\n\n3.生产经营:预缴纳税，投资人算税、申报页面停止使用【其他扣除字段】,2026年以前的属期仍可用\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628563/image-preview)\n\n4.人员报送去掉员工状态，新增入职日期、离职日期、补发税款所属月份\n    - 当人员无离职日期，允许算税、申报。\n    - 当人员入职日期≤税款所属期≤离职日期，则允许算税、申报。\n    -  当人员税款所属期＞离职日期，判断 补发税款所属月 是否有值\n        -   若有值，且税款所属期=补发税款所属月，可算税、申报；\n        -    若有值，税款所属期≠补发税款所属月，不允许算税、申；提示： 员工已离职，无法算税；或 员工已离职，无法申报\n        -    若无值，则不允许算税申报，提示： 员工已离职，无法算税  或 员工已离职，无法申报 \n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628564/image-preview)\n\n5.人员报送去减除费用取上个属期的累计减除费用+本期减除费用，不再根据入职离职时间计算\n    - 当人员信息中的【是否扣除减除费用】为“是”，按5000扣除时，【入职年度就业情形】为空：累计减除费用规则：累计减除费用=上个属期的累计减除费用+本期减除费用。本期减除费用=5000；\n    - 当人员信息中的【是否扣除减除费用】为“是”，按5000扣除时，【入职年度就业情形】不为空，累计减除费用=所属期所在的月份*5000\n\n6.自2025年度，残孤烈减免事项由一个拆分为三个。原减免事项：残疾、孤老、烈属减征个人所得税，1. 新减免事项拆分成三个：残疾人员减征个人所得税、孤老人员减征个人所得税、烈属人员减征个人所得税，有效期起均为2025年1月1日。减免事项由原先的一个调整成三个独立的，减免性质目前没有变化\n\n7.稿酬所得免税附表，减免事项，原来的\"其他\"改为\"稿酬所得减征个人所得税\"，减免性质不变\n\n## 1.代扣代缴优化\n1.代扣代缴，企业申报数据明细查询，合计增加字段:减除费用合计、累计减除费用合计、年减除费用合计\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628565/image-preview)\n\n2.退付手续费 申请手续费退付反馈, 增加结报单编号、结报单状态字段\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628566/image-preview)\n\n\n## 3.生产经营-年度汇缴优化\n1.生产经营-年度汇缴支持查询内置算税反馈结果\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628567/image-preview)\n\n2.生产经营，申报状态查询优化，可查询到税款所属期起止日期范围内所有的申报记录\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628568/image-preview)\n\n4.企业注册返回,增加开业日期字段\n\n\n# 新增功能\n\n1.新增公益慈善捐赠采集、公益慈善捐赠信息查询、公益慈善捐赠信息作废三个接口\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628569/image-preview)\n2.新增修改申报密码接口\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628570/image-preview)",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-03-05T14:04:48.000Z",
+  "updatedAt": "2026-03-06T05:51:12.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

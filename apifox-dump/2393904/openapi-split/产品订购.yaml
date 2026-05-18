@@ -1,0 +1,858 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 产品订购
+  version: latest
+  description: 'Split from full spec, module: 产品订购'
+tags:
+- name: 产品订购
+paths:
+  /v2/public/org/productPurchase:
+    post:
+      summary: 订购产品
+      operationId: api-145565464
+      tags:
+      - 产品订购
+      description: |-
+        ## 接口描述
+
+        产品订购是客户对接税号维度产品的起点，一个企业税号将在我们平台要使用什么产品，ISV可以通过接口来自行开通。对于首次订购产品的企业，该接口还会进行企业创建。该接口返回唯一标识aggOrgId，此aggOrgId作为双方平台企业关联的唯一标识，在之后的接口中都要用到，所以应该保存起来。
+
+
+        ## 产品码
+        请参考附录产品码列表>>> [产品码](apifox://link/pages/5110490)
+
+        ## 错误码
+        | **错误代码** | **错误信息**  | **示例** | **解决方案** |
+        | --- | --- | --- | --- |
+        | PARAMETER_ERROR | 纳税人识别号(nsrsbh)不能为空！ | | |
+        | PARAMETER_ERROR | 纳税人识别号只能包含数字和字母！ | | |
+        | PARAMETER_ERROR | 纳税人识别号只能为15位、17位、18位或20位！ | | |
+        | PARAMETER_ERROR | 企业纳税人识别号重复! | | |
+        | PARAMETER_ERROR | 企业名称(aggOrgName)不能为空！ | | |
+        | PARAMETER_ERROR | 企业名称重复! | | |
+        | PARAMETER_ERROR | 地区编码有误，请根据地区编码附录中限定的编码传参 | | |
+        | PARAMETER_ERROR | 产品列表(productCodeList)不能为空！ | | |
+        | PARAMETER_ERROR | 存在不能订购的产品码([XXXX])！ | 存在不能订购的产品码([0009,0020])！ | 参考产品码码表，权限未开通，需联系商务或技术支持 |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nsrsbh:
+                  type: string
+                  title: 税号
+                aggOrgName:
+                  type: string
+                  title: 企业名称
+                dq:
+                  type: string
+                  title: 地区
+                  description: 税号所在地区，见附录：[地区代码](apifox://link/pages/2246773)
+                  examples:
+                  - '11'
+                productCodeList:
+                  type: string
+                  title: 产品码列表(英文逗号分割)
+                  examples:
+                  - 0002,0003,0020
+                  description: 见附录：[产品码](apifox://link/pages/5110490)
+              x-apifox-orders:
+              - nsrsbh
+              - aggOrgName
+              - dq
+              - productCodeList
+              required:
+              - nsrsbh
+              - aggOrgName
+              - dq
+              - productCodeList
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    examples:
+                    - SUCCESS
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      aggOrgId:
+                        type:
+                        - integer
+                        - 'null'
+                        title: 企业id
+                        description: 按税号对应的唯一id，需存储，其他接口入参需要用到
+                      purchaseDetailList:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            productCode:
+                              type: string
+                              title: 产品码
+                              examples:
+                              - '0020'
+                            success:
+                              type: boolean
+                              title: 订购成功标识
+                            message:
+                              type: string
+                              title: 订购返回描述
+                              description: 订购成功、订购失败、订购成功(已订购)
+                              examples:
+                              - 订购成功
+                          x-apifox-orders:
+                          - productCode
+                          - success
+                          - message
+                          required:
+                          - productCode
+                          - success
+                          - message
+                        title: 订购详情
+                    x-apifox-orders:
+                    - aggOrgId
+                    - purchaseDetailList
+                    title: 业务数据
+                    required:
+                    - aggOrgId
+                    - purchaseDetailList
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - reqId
+                - success
+                - code
+                - message
+              examples:
+                订购返回示例:
+                  summary: 订购返回示例
+                  value: |-
+                    {
+                        "reqId": "c835d3478de34f17b479e269fe96c826",
+                        "code": "SUCCESS",
+                        "success": true,
+                        "message": "",
+                        "data": {
+                            "aggOrgId": 5107*******5344,
+                            "purchaseDetailList": [
+                                {
+                                    "productCode": "0002",
+                                    "success": true,
+                                    "message": "订购成功"
+                                },
+                                {
+                                    "productCode": "0003",
+                                    "success": false,
+                                    "message": "订购失败"
+                                },
+                                {
+                                    "productCode": "0020",
+                                    "success": true,
+                                    "message": "订购成功(已订购)"
+                                }
+                            ]
+                        }
+                    }
+                订购失败(企业名称或税号重复):
+                  summary: 订购失败(企业名称或税号重复)
+                  value: "{\r\n    \"code\": \"PARAMETER_ERROR\",\r\n    \"data\": {\r\n        \"nsrsbh\": \"913***********2T7M\",\r\n        \"aggOrgName\": \"上海****科技有限公司zxy\",\r\n        \"aggOrgId\": 46019769*****584\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"企业纳税人识别号重复!\",\r\n    \"reqId\": \"dee185c2aa544ad192e105cd1d129aad\"\r\n}"
+                产品码不正确:
+                  summary: 产品码不正确
+                  value:
+                    reqId: 4bac8d18841d469cadf38f9e95e546bc
+                    code: PARAMETER_ERROR
+                    success: false
+                    message: 存在未授权的产品码([00XX])，请联系服务提供商开通相应产品！
+                    data: null
+                地区编码不正确:
+                  summary: 地区编码不正确
+                  value:
+                    reqId: 273ce0aaac604f8fa58ff5bb79cd1892
+                    code: '600003'
+                    success: false
+                    message: 地区编码有误，请根据地区编码附录中限定的编码传参
+                    data: null
+  /v2/public/org/productCancel:
+    post:
+      summary: 订购取消
+      operationId: api-145742882
+      tags:
+      - 产品订购
+      description: |-
+        ## 接口描述
+         订购取消是订购产品的反向操作，可通过该接口取消税号主体使用产品权限。
+
+        ## 产品码
+        请参考附录产品码列表>>> [产品码](apifox://link/pages/5110490)
+
+        ## 错误码
+        | **错误代码** | **错误信息**  | **示例** | **解决方案** |
+        | --- | --- | --- | --- |
+        | PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ | | |
+        | PARAMETER_ERROR | 产品列表(productCodeList)不能为空！ | | |
+        | 601005 | 企业不存在，请先调用创建！ | | |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productCodeList:
+                  type: string
+                  title: 产品码列表(英文逗号分割)
+                  examples:
+                  - 0002,0003,0020
+                  description: 见附录：[产品码](apifox://link/pages/5110490)
+                aggOrgId:
+                  type: integer
+                  title: 企业id
+              x-apifox-orders:
+              - aggOrgId
+              - productCodeList
+              required:
+              - aggOrgId
+              - productCodeList
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    examples:
+                    - SUCCESS
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      aggOrgId:
+                        type:
+                        - integer
+                        - 'null'
+                        title: 企业id
+                      cancelDetailList:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            productCode:
+                              type: string
+                              title: 产品码
+                            success:
+                              type: boolean
+                              title: 取消成功标识
+                            message:
+                              type: string
+                              title: 取消返回描述
+                              description: 取消成功、取消失败、取消成功(无此订购产品)
+                          x-apifox-orders:
+                          - productCode
+                          - success
+                          - message
+                          required:
+                          - productCode
+                          - success
+                          - message
+                        title: 取消详情
+                    x-apifox-orders:
+                    - aggOrgId
+                    - cancelDetailList
+                    title: 业务数据
+                    required:
+                    - aggOrgId
+                    - cancelDetailList
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - reqId
+                - success
+                - code
+                - message
+              examples:
+                订购返回示例:
+                  summary: 订购返回示例
+                  value: |-
+                    {
+                      "reqId": "c835d3478de34f17b479e269fe96c826",
+                      "code": "SUCCESS",
+                      "success": true,
+                      "message": "",
+                      "data": {
+                        "aggOrgId": 5107*******5344,
+                        "cancelDetailList": [
+                          {
+                            "productCode": "0002",
+                            "success": true,
+                            "message": "取消成功"
+                          },
+                          {
+                            "productCode": "0003",
+                            "success": false,
+                            "message": "取消失败"
+                          },
+                          {
+                            "productCode": "0020",
+                            "success": true,
+                            "message": "取消成功(无此订购产品)"
+                          }
+                        ]
+                      }
+                    }
+  /v2/public/org/productList:
+    post:
+      summary: 订购查询
+      operationId: api-145745008
+      tags:
+      - 产品订购
+      description: |-
+        ## 接口描述
+         查询当前有效的订购列表信息。
+
+        ## 产品码
+        请参考附录产品码列表>>> [产品码](apifox://link/pages/5110490)
+
+        ## 错误码
+        | **错误代码** | **错误信息**  | **示例** | **解决方案** |
+        | --- | --- | --- | --- |
+        | PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ | | |
+        | NO_RESULT | 查询结果为空！ | | |
+        | 601005 | 企业不存在，请先调用创建！ | | |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: integer
+                  title: 企业id
+                  description: 传0代表查询当前appkey全部企业的订购信息
+              x-apifox-orders:
+              - aggOrgId
+              required:
+              - aggOrgId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    examples:
+                    - SUCCESS
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      aggOrgId:
+                        type: integer
+                        title: 企业id
+                      productCodeList:
+                        type: string
+                        title: 订购产品列表(英文逗号分隔)
+                        description: 见附录：[产品码](apifox://link/pages/5110490)
+                      nsrsbh:
+                        type: string
+                        title: 纳税人识别号
+                      aggOrgName:
+                        type: string
+                        title: 企业名称
+                      dq:
+                        type: string
+                        title: 地区码
+                        description: 见附录：[地区代码](apifox://link/pages/2246773)
+                    x-apifox-orders:
+                    - nsrsbh
+                    - aggOrgName
+                    - productCodeList
+                    - aggOrgId
+                    - dq
+                    title: 业务数据
+                    required:
+                    - aggOrgId
+                    - productCodeList
+                    - dq
+                    - aggOrgName
+                    - nsrsbh
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - reqId
+                - success
+                - code
+                - message
+              examples:
+                订购返回示例:
+                  summary: 订购返回示例
+                  value: |-
+                    {
+                      "reqId": "c835d3478de34f17b479e269fe96c826",
+                      "code": "SUCCESS",
+                      "success": true,
+                      "message": "",
+                      "data": [
+                        {
+                          "aggOrgId": 5107*******5344,
+                          "productCodeList": "0002,0003,0020,0021",
+                          "nsrsbh":"C14078675F843****",
+                          "aggOrgName":"压测企业C14078675F843****",
+                          "dq":"6100"
+                        }
+                      ]
+                    }
+  /v2/public/org/productPurchaseModify:
+    post:
+      summary: 订购修改
+      operationId: api-239363004
+      tags:
+      - 产品订购
+      description: |
+        ## 接口描述
+        该接口用于修改已订购信息中的「企业名称」和「地区」。
+
+        :::tip
+        税号不支持修改，税号错误需调用 [企业取消授权](api-66706482) ，再重新调用 [订购产品](api-145565464)。
+        :::
+
+
+
+        ## 错误码
+        | **错误代码** | **错误信息**  | **示例** | **解决方案** |
+        | --- | --- | --- | --- |
+        | PARAMETER_ERROR |企业Id(aggOrgId)不能为空！ | | |
+        | PARAMETER_ERROR | 纳税人识别号(nsrsbh)不能为空！ | | |
+        | PARAMETER_ERROR | 纳税人识别号只能包含数字和字母！ | | |
+        | PARAMETER_ERROR | 纳税人识别号只能为15位、17位、18位或20位！ | | |
+        | PARAMETER_ERROR | 企业纳税人识别号重复! | | |
+        | PARAMETER_ERROR | 企业名称(aggOrgName)不能为空！ | | |
+        | PARAMETER_ERROR | 企业名称重复! | | |
+        | PARAMETER_ERROR | 地区编码有误，请根据地区编码附录中限定的编码传参 | | |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nsrsbh:
+                  type:
+                  - string
+                  - 'null'
+                  title: 税号
+                  description: 税号不支持修改，税号错误需调用「企业取消授权」再重新订购
+                  deprecated: true
+                aggOrgName:
+                  type: string
+                  title: 企业名称
+                dq:
+                  type: string
+                  title: 地区
+                  examples:
+                  - '31'
+                  description: 见附录：[地区代码](apifox://link/pages/2246773)
+                aggOrgId:
+                  type: integer
+                  title: 企业id
+              x-apifox-orders:
+              - aggOrgId
+              - aggOrgName
+              - dq
+              - nsrsbh
+              required:
+              - aggOrgName
+              - dq
+              - aggOrgId
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    examples:
+                    - SUCCESS
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      aggOrgId:
+                        type:
+                        - integer
+                        - 'null'
+                        title: 企业id
+                      purchaseDetailList:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type:
+                          - object
+                          - 'null'
+                          properties:
+                            productCode:
+                              type:
+                              - string
+                              - 'null'
+                              title: 产品码
+                            success:
+                              type:
+                              - boolean
+                              - 'null'
+                              title: 订购成功标识
+                            message:
+                              type:
+                              - string
+                              - 'null'
+                              title: 订购返回描述
+                              description: 订购成功、订购失败、订购成功(已订购)
+                          x-apifox-orders:
+                          - productCode
+                          - success
+                          - message
+                        title: 订购详情
+                    x-apifox-orders:
+                    - aggOrgId
+                    - purchaseDetailList
+                    title: 业务数据
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - reqId
+                - success
+                - code
+                - message
+              examples:
+                订购返回示例:
+                  summary: 订购返回示例
+                  value:
+                    reqId: c835d3478de34f17b479e269fe96c826
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data: null
+  /v2/public/org/delete:
+    post:
+      summary: 企业取消授权
+      operationId: api-66706482
+      tags:
+      - 产品订购
+      description: |2
+
+        ## 接口描述
+        当与服务的企业客户解除合作关系（不再使用本平台接口）时，请调用该接口，删除该企业；
+        - 删除后如需再次使用，需重新订购产品；
+
+        ## 错误码
+
+        | **错误代码** | **错误消息** |解决方案|
+        | --- | --- |---|
+        | PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |
+        | PARAMETER_ERROR | 企业不存在！ |
+        | PARAMETER_ERROR | 参数格式不合法,不是有效的json格式！ |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: integer
+                  title: 企业Id
+              required:
+              - aggOrgId
+              x-apifox-orders:
+              - aggOrgId
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                x-apifox-refs:
+                  01GW150C10HJ4V0RTW90ZGQKAK:
+                    $ref: '#/definitions/35327531'
+                    x-apifox-overrides:
+                      data:
+                        type:
+                        - boolean
+                        - 'null'
+                        title: 删除成功标志
+                        description: true 成功，falses 失败
+                x-apifox-orders:
+                - 01GW150C10HJ4V0RTW90ZGQKAK
+                properties: {}
+              examples:
+                企业不存在:
+                  summary: 企业不存在
+                  value:
+                    reqId: 9195e4569635498295e076b78d164acb
+                    code: PARAMETER_ERROR
+                    success: true
+                    message: 企业不存在！
+                    data: null
+                任务执行成功-删除成功:
+                  summary: 任务执行成功-删除成功
+                  value:
+                    reqId: 4bb26dc3c3b142c696e86fb5f3a7f9a8
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data: true

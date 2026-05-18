@@ -1,0 +1,317 @@
+{
+  "id": 379944685,
+  "name": "月度缴费工资调整 ",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "THKNFIvxsQRSGn9n740qh",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整本年度或历史年度缴费工资。\n四川、浙江、宁波、深圳、山西、福建、内蒙古地区的可用月底缴费工资调整\n该接口于2026年1月6日将调整为异步接口，请各位客户做好适配。具体参数请看文档https://doc.weixin.qq.com/doc/w3_AT4AdwZQAO0CNBtloKvNbTUqq41KB?scode=AM4ARwdGAA4P4hFlBNAT4AdwZQAO0",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/adjustMonthlyPaymentSalary",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "sblx": {
+          "type": "string",
+          "description": "申报类型 0按人员申报，默认0； 1按险种申报"
+        },
+        "rysblb": {
+          "type": "array",
+          "description": "按人员申报列表 sblx为0，必填",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "description": "姓名"
+              },
+              "zjlx": {
+                "type": "string",
+                "description": "证件类型"
+              },
+              "zjlxmc": {
+                "type": "string",
+                "description": "证件类型名称"
+              },
+              "zjhm": {
+                "type": "string",
+                "description": "证件号码"
+              },
+              "xjfgz": {
+                "type": "number",
+                "description": "新缴费工资"
+              },
+              "sxyfq": {
+                "type": "string",
+                "description": "生效月份起\n"
+              },
+              "sxyfz": {
+                "type": "string",
+                "description": "生效月份止\n"
+              }
+            },
+            "required": [
+              "xm",
+              "zjhm",
+              "xjfgz",
+              "sxyfq"
+            ],
+            "x-apifox-orders": [
+              "xm",
+              "zjhm",
+              "xjfgz",
+              "sxyfq",
+              "sxyfz",
+              "zjlx",
+              "zjlxmc"
+            ]
+          }
+        },
+        "xzsblb": {
+          "type": "array",
+          "description": "按险种申报列表 sblx为1，必填",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "description": "姓名"
+              },
+              "zjlx": {
+                "type": "string",
+                "description": "证件类型"
+              },
+              "zjlxmc": {
+                "type": "string",
+                "description": "证件类型名称"
+              },
+              "zjhm": {
+                "type": "string",
+                "description": "证件号码"
+              },
+              "zgjbylbxjfgz": {
+                "type": "number",
+                "description": "职工基本养老保险缴费工资"
+              },
+              "sybxjfgz": {
+                "type": "number",
+                "description": "失业保险缴费工资"
+              },
+              "zgjbyliaobxjfgz": {
+                "type": "number",
+                "description": "职工基本医疗保险缴费工资"
+              },
+              "zgdeylhzbxjfgz": {
+                "type": "number",
+                "description": "职工大额医疗互助保险缴费工资"
+              },
+              "gsbxjfgz": {
+                "type": "number",
+                "description": "工伤保险缴费工资"
+              },
+              "sxyfq": {
+                "type": "string",
+                "description": "生效月份起"
+              },
+              "sxyfz": {
+                "type": "string",
+                "description": "生效月份止"
+              },
+              "cqhlbx": {
+                "type": "number",
+                "description": "长期护理保险缴费工资"
+              }
+            },
+            "required": [
+              "xm",
+              "zjhm",
+              "zgjbylbxjfgz",
+              "sybxjfgz",
+              "zgjbyliaobxjfgz",
+              "zgdeylhzbxjfgz",
+              "gsbxjfgz"
+            ],
+            "x-apifox-orders": [
+              "xm",
+              "zjhm",
+              "zgjbylbxjfgz",
+              "sybxjfgz",
+              "zgjbyliaobxjfgz",
+              "zgdeylhzbxjfgz",
+              "gsbxjfgz",
+              "cqhlbx",
+              "sxyfq",
+              "sxyfz",
+              "zjlx",
+              "zjlxmc"
+            ]
+          }
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "sblx",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "sblx",
+        "rysblb",
+        "xzsblb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"498736\",\r\n    \"accountId\": \"504653\",\r\n\r\n    \"sblx\": \"0\",\r\n    \"rysblb\": [\r\n        {\r\n            \"xm\": \"张三\",\r\n            \"zjhm\": \"1234567893456789\",\r\n            \"xjfgz\": \"1\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 807917507,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01KE6SV96VVDPCQVTCVT8XYE9C"
+        ],
+        "x-apifox-refs": {
+          "01KE6SV96VVDPCQVTCVT8XYE9C": {
+            "$ref": "#/definitions/141932940"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 807917507,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"taskId\": \"12345678\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 723851602
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 71473594,
+  "ordering": 70,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-11-21T02:06:47.000Z",
+  "updatedAt": "2026-04-21T02:40:48.000Z",
+  "creatorId": 1442097,
+  "editorId": 1910680,
+  "creatorUserId": 1442097,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

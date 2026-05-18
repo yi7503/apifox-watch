@@ -1,0 +1,201 @@
+{
+  "id": 67969858,
+  "name": "查询下载PDF任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询下载PDF任务结果。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| NO_RESULT| 任务不存在 |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454624899269376\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 172687176,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3Y4EXHPAVAV9E7ZSBVQCNR": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/37418374"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3Y4EXHPAVAV9E7ZSBVQCNR"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 172687176,
+      "data": "{\"reqId\":\"e2b308161e7d4b4093cf42ba0fa287f0\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17301558
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 172687176,
+      "data": "{\"reqId\":\"1a0736e05a444c83b48c2af026de0edf\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "id": 17301577
+    },
+    {
+      "name": "不支持获取",
+      "responseId": 172687176,
+      "data": "{\n    \"reqId\": \"6bf71dc6767447fe90585dd124388b5e\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": \"业务执行失败\",\n        \"finishTime\": \"2023-03-28 15:09:46\",\n        \"businessStatusName\": \"执行失败\",\n        \"startTime\": \"2023-03-28 15:08:42\",\n        \"businessStatus\": 2,\n        \"detail\": [],\n        \"serviceName\": \"获取PDF\",\n        \"resultMessage\": \"该税种暂不支持获取报表，请联系管理员\",\n        \"taskId\": \"457262524087040\"\n    }\n}",
+      "id": 18191434
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 172687176,
+      "data": "{\"reqId\":\"92e29879be994ab98cd9055801a0fa88\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"result\":\"等待结果\",\"businessStatusName\":\"任务执行中\",\"startTime\":\"2023-03-13 17:23:43\",\"businessStatus\":1,\"serviceName\":\"获取PDF\",\"resultMessage\":\"\",\"taskId\":\"454624899269376\"}}",
+      "id": 17187848
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 172687176,
+      "data": "{\n    \"reqId\": \"502548af08e74c31bd8dcc3e3dc0b88a\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": \"获取PDF成功\",\n        \"finishTime\": \"2023-03-13 17:21:07\",\n        \"businessStatusName\": \"执行成功\",\n        \"pdfFileUrl\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/ARCHIVE/ttkEtax-AGG-test_3c9fbdbc-ebcf-4a89-b80c-*****d345261678699189354_dzda_pzgd9E14C3CFFFFFFFBF11C63D97FFBDEBF0_1677689411696.pdf?Expires=1682143933&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=0kzD5bafCFlUm2LCbIJtkTEyxhE%3D\",\n        \"startTime\": \"2023-03-13 17:19:52\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"result\": \"2000\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"screenshot\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/ARCHIVE/ttkEtax-AGG-test_3c9fbdbc-ebcf-4a89-b80c-*****345261678699189354_dzda_pzgd9E14C3CFFFFFFFBF11C63D97FFBDEBF0_1677689411696.pdf?Expires=1682143933&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=0kzD5bafCFlUm2LCbIJtkTEyxhE%3D\",\n                \"message\": \"下载pdf成功\"\n            }\n        ],\n        \"serviceName\": \"获取PDF\",\n        \"resultMessage\": \"获取PDF成功\",\n        \"taskId\": \"454624433999872\"\n    }\n}",
+      "id": 17187640
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531082,
+  "ordering": 193,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:40:57.000Z",
+  "updatedAt": "2025-01-03T06:40:57.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.172687176"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

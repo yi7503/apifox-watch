@@ -1,0 +1,432 @@
+{
+  "id": 401711118,
+  "name": "通知提醒消息查询反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "u9QkfPz5GJOjoFMNDnBWH",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "通知提醒消息查询的异步查询接口",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/message/tztxxxcxFeedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
+              },
+              "taskStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "fkzt": {
+                    "type": "string",
+                    "description": "反馈状态: 1成功 2失败"
+                  },
+                  "sbyy": {
+                    "type": "string",
+                    "description": "失败原因"
+                  },
+                  "tzgglb": {
+                    "type": "array",
+                    "description": "通知公告数组",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xxlx": {
+                          "type": "string",
+                          "description": "消息类型"
+                        },
+                        "xxbt": {
+                          "type": "string",
+                          "description": "消息标题"
+                        },
+                        "fssj": {
+                          "type": "string",
+                          "description": "发送时间"
+                        },
+                        "xxnr": {
+                          "type": "string",
+                          "description": "消息内容"
+                        },
+                        "xxlb": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "xm": {
+                                "type": "string",
+                                "title": "姓名"
+                              },
+                              "zzlx": {
+                                "type": "string",
+                                "title": "证件类型\t",
+                                "description": "证件类型中文"
+                              },
+                              "zzhm": {
+                                "type": "string",
+                                "title": "证件号码\t"
+                              },
+                              "hsnd": {
+                                "type": "string",
+                                "title": "汇算年度\t"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "xm",
+                              "zzlx",
+                              "zzhm",
+                              "hsnd"
+                            ],
+                            "required": [
+                              "xm",
+                              "zzlx",
+                              "zzhm",
+                              "hsnd"
+                            ]
+                          },
+                          "title": "消息列表\t"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xxlx",
+                        "xxbt",
+                        "fssj",
+                        "xxnr",
+                        "xxlb"
+                      ]
+                    }
+                  },
+                  "fxtslb": {
+                    "type": "array",
+                    "description": "风险提示数组",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xxlx": {
+                          "type": "string",
+                          "description": "消息类型"
+                        },
+                        "xxbt": {
+                          "type": "string",
+                          "description": "消息标题"
+                        },
+                        "fssj": {
+                          "type": "string",
+                          "description": "发送时间"
+                        },
+                        "xxnr": {
+                          "type": "string",
+                          "description": "消息内容"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xxlx",
+                        "xxbt",
+                        "fssj",
+                        "xxnr"
+                      ]
+                    }
+                  },
+                  "zhsdhslb": {
+                    "type": "array",
+                    "description": "综合所得汇算数组",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xxlx": {
+                          "type": "string",
+                          "description": "消息类型"
+                        },
+                        "xxbt": {
+                          "type": "string",
+                          "description": "消息标题"
+                        },
+                        "fssj": {
+                          "type": "string",
+                          "description": "发送时间"
+                        },
+                        "xxnr": {
+                          "type": "string",
+                          "description": "消息内容"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xxlx",
+                        "xxbt",
+                        "fssj",
+                        "xxnr"
+                      ]
+                    }
+                  },
+                  "talb": {
+                    "type": "array",
+                    "description": "其他数组",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xxlx": {
+                          "type": "string",
+                          "description": "消息类型"
+                        },
+                        "xxbt": {
+                          "type": "string",
+                          "description": "消息标题"
+                        },
+                        "fssj": {
+                          "type": "string",
+                          "description": "发送时间"
+                        },
+                        "xxnr": {
+                          "type": "string",
+                          "description": "消息内容"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xxlx",
+                        "xxbt",
+                        "fssj",
+                        "xxnr"
+                      ]
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "fkzt",
+                  "sbyy",
+                  "tzgglb",
+                  "fxtslb",
+                  "zhsdhslb",
+                  "talb"
+                ]
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ],
+            "required": [
+              "taskId",
+              "result",
+              "message",
+              "code",
+              "taskStatusName",
+              "taskStatus",
+              "taskTypeName",
+              "taskTypeCode"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"fkzt\": \"1\",\n        \"sbyy\": \"\",\n        \"tzgglb\": [\n            {\n                \"xxlx\": \"1\",\n                \"xxbt\": \"关于个税申报的通知\",\n                \"fssj\": \"2024-01-15 10:30:00\",\n                \"xxnr\": \"请及时完成本月个税申报工作\"\n            }\n        ],\n        \"fxtslb\": [],\n        \"zhsdhslb\": [],\n        \"talb\": []\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59992942,
+  "ordering": 55,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-01-07T03:08:17.000Z",
+  "updatedAt": "2026-04-02T06:11:52.000Z",
+  "creatorId": 1910680,
+  "editorId": 3222025,
+  "creatorUserId": 1910680,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 2178265,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n通过申报接口发起申报任务，企享云平台根据接收的数据完成企业当期税费种申报。同时返回申报结果，申报失败+失败原因，申报成功等\n## 流程示例\n\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372920/image-preview)\n## 接口列表\n第一步：发起申报任务。\n| 接口 | 地址 |说明|\n| --- | --- | --- |\n|发起申报任务  |v2/tax/qys/loadDeclareTask  |异步发起申报任务|\n\n\n第二步：根据发起申报任务成功后的taskID调用询查询申报任务结果。\n| 接口 | 地址 |说明|\n| --- | --- | --- |\n|查询申报任务结果  |v2/tax/qys/queryTaskInfo|查询申报是否成功|",
+  "folderId": 13476144,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-13T12:41:55.000Z",
+  "updatedAt": "2023-03-24T14:41:19.000Z",
+  "creatorId": 1441586,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

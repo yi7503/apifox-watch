@@ -1,0 +1,17 @@
+{
+  "id": 6138856,
+  "name": "2025年2月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年2月发布内容\n\n发布日期：2025-02-28\n发布版本：V1.0.14\n\n\n## 企业税\n\n:::highlight orange 💡\n新增支持能力\n1.新增土地增值税申报\n2.增值税一般人支持成品油申报\n:::\n\n## 1.接口变化\n### 1)优化申报作废能力\n涉及接口：[发起作废申报任务](apifox://link/endpoint/263768135)\n优化点：之前的申报作废接口已删除，统一对接新接口；之前接口都是基于旧版税局36区域的做的，旧接口与我们本地的申报状态有关联，本地没申报税局申报也不允许作废；新接口已做调整，不关联本地状态\n支持税种：增值税一般人/小规模、企业所得税、消费税、文建费、通用申报/非税收入、印花税\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500232/image-preview)\n\n### 2)增值税一般人支持成品油申报\n涉及接口：[上传各税种申报表数据](apifox://link/endpoint/67298736)\n接口变化：新增表单能力：成品油购销存情况明细表、成品油购销存情况明细合计、加油站月份加油信息明细表、加油站月销售油品汇总表\n业务场景：非必填表单，有业务需要对接，无业务需要可无需上传该节点\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500235/image-preview)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500236/image-preview)\n\n### 3)代扣代缴调整\n3.1.增值税代扣代缴初始化【应代扣代缴代收代缴项目】调整成数组返回\n涉及接口：[发起代扣代缴初始化数据任务](apifox://link/endpoint/253169268)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500238/image-preview)\n3.2.企业所得代扣代缴初始化及查询合同都支持扣缴类型=指定扣缴业务类型返回\n涉及接口：[发起查询合同接口任务](apifox://link/endpoint/250807905)\n[发起代扣代缴初始化数据任务](apifox://link/endpoint/253169268)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500239/image-preview)\n\n### 4)申报更正优化\n涉及接口：[发起更正申报任务接口](apifox://link/endpoint/239092838)\n接口变化：增加节点：whsyjsfData文化事业建设费报文xfsData消费税报文\n\n### 5)新增土地增值税申报\n涉及接口：[上传各税种申报表数据](apifox://link/endpoint/67298736)\n业务场景：只支持申报、缴款这两个业务；pdf下载、完税证明暂不支持\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500247/image-preview)\n\n## 2.多账号登录对接流程\n1)涉及业务场景：\n- 集团公司按税种划分人员管理，一个人管理企业所得税，一个人增值税情况\n- 涉及异地预缴办税的客户，除了需要再本主体区域报税外，还需要通过特定主体登录在其他区域申报房产、土地、增值税等情况。（建筑行业、分包业务）\n\n2)对接流程：\n- 第一步：订购产品，和现在流程一致，之前没对接这一步的也无需对接，创建企业完会自动订购\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500242/image-preview)\n\n- 第二步：账号管理--多账号管理-托管账号创建，创建完毕后会返回账户id。\n（之前对接V1版本的客户都未对接此流程，使用多账号必须对接该流程）\n如果想完成业务就讲修改、删除、查询都对接\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500243/image-preview)\n\n- 第三步：账号产品绑定，根据一二步返回的企业id、账户id绑定对应的产品\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500244/image-preview)\n\n- 第四步：业务接口修改，涉及申报所有接口都对应增加账户id参数\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500245/image-preview)\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-03-04T11:41:23.000Z",
+  "updatedAt": "2025-05-23T03:51:13.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

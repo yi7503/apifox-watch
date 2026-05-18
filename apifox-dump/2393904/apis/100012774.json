@@ -1,0 +1,216 @@
+{
+  "id": 100012774,
+  "name": "扫脸时长查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "通过本接口可获取当前登录纳税人的风险等级，预警等级等授信信息。\n\n特别提示：”办税(开票)人授信类别查询“接口，返回参数scanTime是扫脸二维码能设置的最大时长，然后在”设置二维码有效时长“接口里设置phxxz参数值与scanTime保持一致，就可以最大限度设置扫脸二维码有效时间，提升开票体验。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/sxlbCx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：sxlb_cx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB920DVBK15QPWNXDYCXCTX"
+      ],
+      "x-apifox-refs": {
+        "01HMB920DVBK15QPWNXDYCXCTX": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"sxlb_cx\",\r\n    \"nsrsbh\": \"************PDDL2G\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847708,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "yjjb": {
+                "type": "string",
+                "title": "预警级别",
+                "enum": [
+                  "01,无预警",
+                  "02,红色预警",
+                  "03,黄色预警",
+                  "04,蓝色预警"
+                ],
+                "x-apifox": {
+                  "enumDescriptions": {
+                    "01,无预警": "",
+                    "02,红色预警": "",
+                    "03,黄色预警": "",
+                    "04,蓝色预警": ""
+                  }
+                }
+              },
+              "sxlb": {
+                "type": "string",
+                "title": "授信类别",
+                "enum": [
+                  "1,高风险纳税人 ",
+                  "2,中风险纳税人",
+                  " 3,低风险纳税人",
+                  " 4,无风险纳税人"
+                ],
+                "x-apifox": {
+                  "enumDescriptions": {
+                    "1,高风险纳税人 ": "",
+                    "2,中风险纳税人": "",
+                    " 3,低风险纳税人": "",
+                    " 4,无风险纳税人": ""
+                  }
+                }
+              },
+              "sfsl": {
+                "type": "string",
+                "title": "开票前是否需要刷脸",
+                "description": "Y或null:需要刷脸；N:无需刷脸，\n建议用户在获取到sfsl不为'N'时，触发刷脸程序。"
+              },
+              "scanTime": {
+                "type": "integer",
+                "title": "扫码能设置的最大时长(单位： 分钟)"
+              },
+              "phxxz": {
+                "type": "string",
+                "title": "扫码设置的时长",
+                "description": "单位分钟"
+              }
+            },
+            "x-apifox-orders": [
+              "yjjb",
+              "sxlb",
+              "sfsl",
+              "scanTime",
+              "phxxz"
+            ],
+            "required": [
+              "yjjb",
+              "sfsl",
+              "sxlb",
+              "scanTime"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HREFSS0P6DKKC1CRTCZ84G5H"
+        ],
+        "x-apifox-refs": {
+          "01HREFSS0P6DKKC1CRTCZ84G5H": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 248847708,
+      "data": "{\n    \"reqId\": \"91c29e6cf1df4ddd9856019e0d1a634d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"yjjb\": \"01\",\n        \"itsScanFlag\": \"N\",\n        \"sfsl\": \"Y\",\n        \"sxlb\": \"3\"\n    }\n}",
+      "id": 400165510
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73682379,
+  "ordering": 159,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-27T01:57:14.000Z",
+  "updatedAt": "2025-12-13T09:11:00.000Z",
+  "creatorId": 887900,
+  "editorId": 2795319,
+  "creatorUserId": 887900,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.248847708"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

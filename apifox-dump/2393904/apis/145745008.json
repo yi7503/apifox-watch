@@ -1,0 +1,255 @@
+{
+  "id": 145745008,
+  "name": "订购查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "xSi85sxZigX92z4QCst0m",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n 查询当前有效的订购列表信息。\n\n## 产品码\n请参考附录产品码列表>>> [产品码](apifox://link/pages/5110490)\n\n## 错误码\n| **错误代码** | **错误信息**  | **示例** | **解决方案** |\n| --- | --- | --- | --- |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ | | |\n| NO_RESULT | 查询结果为空！ | | |\n| 601005 | 企业不存在，请先调用创建！ | | |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/productList",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业id",
+          "description": "传0代表查询当前appkey全部企业的订购信息"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId"
+      ],
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\": 5266006400877376\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "b2HFgIPJxQ",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "5ovtpQcjKS",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "eyhz9DMYOg",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "wLZW0UQYA4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42487445,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "examples": [
+              "SUCCESS"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "aggOrgId": {
+                "type": "integer",
+                "title": "企业id"
+              },
+              "productCodeList": {
+                "type": "string",
+                "title": "订购产品列表(英文逗号分隔)",
+                "description": "见附录：[产品码](apifox://link/pages/5110490)"
+              },
+              "nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "aggOrgName": {
+                "type": "string",
+                "title": "企业名称"
+              },
+              "dq": {
+                "type": "string",
+                "title": "地区码",
+                "description": "见附录：[地区代码](apifox://link/pages/2246773)"
+              }
+            },
+            "x-apifox-orders": [
+              "nsrsbh",
+              "aggOrgName",
+              "productCodeList",
+              "aggOrgId",
+              "dq"
+            ],
+            "title": "业务数据",
+            "required": [
+              "aggOrgId",
+              "productCodeList",
+              "dq",
+              "aggOrgName",
+              "nsrsbh"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "reqId",
+          "success",
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "订购返回示例",
+      "responseId": 42487445,
+      "data": "{\n  \"reqId\": \"c835d3478de34f17b479e269fe96c826\",\n  \"code\": \"SUCCESS\",\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": [\n    {\n      \"aggOrgId\": 5107*******5344,\n      \"productCodeList\": \"0002,0003,0020,0021\",\n      \"nsrsbh\":\"C14078675F843****\",\n      \"aggOrgName\":\"压测企业C14078675F843****\",\n      \"dq\":\"6100\"\n    }\n  ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42487446
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28539131,
+  "ordering": 170,
+  "responsibleId": 2122743,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-26T08:31:17.000Z",
+  "updatedAt": "2026-05-07T05:55:07.000Z",
+  "creatorId": 2122743,
+  "editorId": 3612160,
+  "creatorUserId": 2122743,
+  "editorUserId": 3612160,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

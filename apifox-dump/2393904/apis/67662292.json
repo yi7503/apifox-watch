@@ -1,0 +1,298 @@
+{
+  "id": 67662292,
+  "name": "发起税款缴纳任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   该接口用于批量发起税款缴纳任务。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n|PARAMETER_ERROR   | 请求参数year或period不能为空！   |\n|PARAMETER_ERROR|请求参数year或period不合法！ |\n|PARAMETER_ERROR |应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadPaymentTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "year": {
+          "type": "integer",
+          "description": "年"
+        },
+        "period": {
+          "type": "integer",
+          "description": "月"
+        },
+        "detail": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzzlDm": {
+                "type": "string",
+                "description": "应征凭证种类代码"
+              },
+              "fromDate": {
+                "type": "string",
+                "description": "有效期起"
+              },
+              "toDate": {
+                "type": "string",
+                "description": "有效期止"
+              },
+              "taxAmount": {
+                "type": "number",
+                "description": "申请缴款金额",
+                "format": "double"
+              },
+              "agreementAccount": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "三方缴款协议号"
+              },
+              "zspmDm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "文化事业建设费为区分税种明细，需要传参征收品目代码（zspmDm）302170100代表娱乐业文化事业建设费或302170200代表广告业文化事业建设费"
+              },
+              "yhzh": {
+                "type": "string",
+                "description": "银行账号 （银行账号缴款用的到，不传税局默认选择付款信息为空）"
+              },
+              "jkfs": {
+                "type": "string",
+                "description": "缴款方式 0-三方协议号缴款 1 银行账号缴款 2-二维码缴款;不传则默认三方协议缴款"
+              },
+              "zsxmDm": {
+                "type": "string",
+                "description": "征收项目代码工会经费=39900/水利建设专项收入=30221 合并缴款则可以为空"
+              },
+              "bsswjg": {
+                "type": "string",
+                "description": "跨区域缴款(只针对房产税，城镇土地使用税，环保税)上传办税税务机关上传格式 省|市|区 如“湖南省|湘潭市|岳塘区”"
+              },
+              "sebyz": {
+                "type": "string",
+                "description": "请求税额大于税局税额5元以内，税额不一致允许缴款，（Y是/N否 （仅针对部分区域财行税按照税目判断小于1元不需要缴款）默认=N否）"
+              },
+              "kqyswjgmc": {
+                "type": "string",
+                "description": "跨区域税局机关名称"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "fromDate",
+              "toDate",
+              "taxAmount",
+              "agreementAccount",
+              "zspmDm",
+              "jkfs",
+              "yhzh",
+              "zsxmDm",
+              "bsswjg",
+              "kqyswjgmc",
+              "sebyz"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "fromDate",
+              "toDate",
+              "taxAmount"
+            ]
+          },
+          "description": "税种明细列表"
+        },
+        "duration": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "任务时长（必须大于30），单位分钟"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "description": "特定主体税务机关名称"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "year",
+        "period",
+        "detail"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "tdztswjgmc",
+        "year",
+        "period",
+        "duration",
+        "detail"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"year\": 2023,\r\n    \"period\": 3,\r\n    \"detail\": [\r\n        {\r\n            \"yzpzzlDm\": \"BDA0610606\",\r\n            \"fromDate\": \"2023-02-01\",\r\n            \"toDate\": \"2023-02-28\",\r\n            \"taxAmount\": 10.00,\r\n            \"jkfs\":\"1\",\r\n            \"yhzh\":\"34001445708053*******\",\r\n            \"agreementAccount\": \"BD235235123A0610606\",\r\n            \"zspmDm\":\"\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "LBD6HEcKYN",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "jr1TWf2RMo",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "o5yFKExGf1",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "x2WAEWY41Z",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947997,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3J1XP5AYDSP7JYHVXEF0XH": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/37343951"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3J1XP5AYDSP7JYHVXEF0XH"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 42947997,
+      "data": "{\"reqId\":\"eedb866f0ddb43e88342adb88283ef98\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 42947998
+    },
+    {
+      "name": "缴款发起成功",
+      "responseId": 42947997,
+      "data": "{\n    \"reqId\": \"34d758a4fcbc4c3c8ab9f8571a708aa7\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 452681066557440,\n        \"taskId\": \"456166531799296\",\n        \"taskIds\": [\n            {\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"fromDate\": \"2023-02-01\",\n                \"toDate\": \"2023-02-28\",\n                \"taxProjectCode\": \"10101\",\n                \"taskId\": \"456166531799296\"\n            }\n        ]\n    }\n}",
+      "id": 42947999
+    },
+    {
+      "name": "正在缴款中",
+      "responseId": 42947997,
+      "data": "{\r\n    \"reqId\": \"86abc9c077e74a5783925bcd6a5045ad\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"aggOrgId\": 452681066557440,\r\n        \"taskIds\": [\r\n            {\r\n                \"fromDate\": \"2023-02-01\",\r\n                \"msg\": \"当前增值税及附加税(适用于一般纳税人)税种正在缴款中，请稍后再试！\",\r\n                \"yzpzzlDm\": \"BDA0610606\",\r\n                \"toDate\": \"2023-02-28\",\r\n                \"taxProjectCode\": \"10101\",\r\n                \"taskId\": \"456166531799296\"\r\n            }\r\n        ],\r\n        \"taskId\": \"456166531799296\"\r\n    }\r\n}",
+      "id": 42948150
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13520077,
+  "ordering": 107,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-26T09:33:28.000Z",
+  "updatedAt": "2025-12-30T02:40:45.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

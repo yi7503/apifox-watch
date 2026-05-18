@@ -1,0 +1,220 @@
+{
+  "id": 302377016,
+  "name": "软件著作权信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "获取企业软件著作权的详细信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/softwareCopyright",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页显示条数",
+          "description": "最大50"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "页码"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageSize",
+        "pageIndex"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686655046,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "categoryType": {
+                      "type": "string",
+                      "title": "分类号"
+                    },
+                    "copyrightOwner": {
+                      "type": "string",
+                      "title": "著作权人"
+                    },
+                    "softwareName": {
+                      "type": "string",
+                      "title": "软件全称"
+                    },
+                    "publishDate": {
+                      "type": "string",
+                      "title": "首次发表日期"
+                    },
+                    "version": {
+                      "type": "string",
+                      "title": "版本号"
+                    },
+                    "softwareNameAbbr": {
+                      "type": "string",
+                      "title": "作品简称"
+                    },
+                    "registerNo": {
+                      "type": "string",
+                      "title": "登记号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "categoryType",
+                    "copyrightOwner",
+                    "softwareName",
+                    "publishDate",
+                    "version",
+                    "softwareNameAbbr",
+                    "registerNo"
+                  ]
+                },
+                "title": "软件著作权列表"
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 686655046,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"total\": \"2\",\r\n        \"items\": [\r\n            {\r\n                \"categoryType\": \"\",\r\n                \"copyrightOwner\": \"xx科技有限责任公司\",\r\n                \"softwareName\": \"xx技术和产品logo\",\r\n                \"publishDate\": \"2019-11-20 00:00:00\",\r\n                \"version\": \"\",\r\n                \"softwareNameAbbr\": \"\",\r\n                \"registerNo\": \"国作登字-2020-F-xxx\"\r\n            },\r\n            {\r\n                \"categoryType\": \"\",\r\n                \"copyrightOwner\": \"xx科技有限责任公司\",\r\n                \"softwareName\": \"xx安卓挂绳\",\r\n                \"publishDate\": \"2012-02-15 00:00:00\",\r\n                \"version\": \"\",\r\n                \"softwareNameAbbr\": \"\",\r\n                \"registerNo\": \"国作登字-2012-F-xxx\"\r\n            }\r\n        ]\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"成功\",\r\n    \"reqId\": \"cfd46c4ade32419f8720ab28008eb0b1\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596364404
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 222,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T06:09:50.000Z",
+  "updatedAt": "2025-05-30T10:10:18.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.686655046"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

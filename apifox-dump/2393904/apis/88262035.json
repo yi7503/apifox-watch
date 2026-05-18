@@ -1,0 +1,255 @@
+{
+  "id": 88262035,
+  "name": "查询短信验证码",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n    该接口用于根据手机号码查询企业短信验证码信息（接口只会返回最新的10条短信验证码信息）\n\n## 错误码\n| 错误代码 | 错误信息                 | 说明 |\n| -------- | ------------------------ | ---- |\n| PARAMETER_ERROR   | 接收人手机号码不能为空！ | 200  |\n| NO_RESULT   | 未查到结果！！ | 200  |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sjhm/queryNote",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "receiver": {
+          "type": "string",
+          "title": "办税小号",
+          "description": "办税小号手机号"
+        },
+        "dq": {
+          "type": "string",
+          "title": "地区代码",
+          "description": "请参考附录地区代码>>[地区代码](doc-2246773)"
+        }
+      },
+      "x-apifox-orders": [
+        "receiver",
+        "dq"
+      ],
+      "required": [
+        "receiver"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"receiver\":\"13208175344\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "EBqPiDwXJj",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "aOVhJKn10R",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "HZ7mAW5EbI",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Kf1rVEGw9H",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign",
+        "enable": true
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947048,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息",
+            "description": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "sender": {
+                "type": "string",
+                "title": "发送人号码",
+                "description": "发送人号码"
+              },
+              "receiver": {
+                "type": "string",
+                "title": "接收人手机号码",
+                "description": "接收人手机号码"
+              },
+              "smsContent": {
+                "type": "string",
+                "title": "短信内容",
+                "description": "短信内容"
+              },
+              "createtime": {
+                "type": "string",
+                "title": "createtime",
+                "description": "createtime"
+              }
+            },
+            "x-apifox-orders": [
+              "sender",
+              "receiver",
+              "smsContent",
+              "createtime"
+            ],
+            "required": [
+              "sender",
+              "receiver",
+              "smsContent",
+              "createtime"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947048,
+      "data": "{\n    \"reqId\": \"55a0b9c64e3c4792a9b026b306dd53a1\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"sender\": \"发送人号码\",\n            \"receiver\": \"接收人手机号码\",\n            \"smsContent\": \"短信内容\",\n            \"createtime\": \"短信创建时间\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947049
+    },
+    {
+      "name": "失败示例",
+      "responseId": 42947048,
+      "data": "{\n    \"reqId\": \"8fc4454f42354ec2956517c3f4a5bde9\",\n    \"code\": \"NO_RESULT\",\n    \"success\": false,\n    \"message\": \"未查到结果！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947050
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36843727,
+  "ordering": 337,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2023-06-12T07:19:36.000Z",
+  "updatedAt": "2025-04-30T08:07:42.000Z",
+  "creatorId": 1659553,
+  "editorId": 996549,
+  "creatorUserId": 1659553,
+  "editorUserId": 996549,
+  "responseChildren": [
+    "BLANK.42947048"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

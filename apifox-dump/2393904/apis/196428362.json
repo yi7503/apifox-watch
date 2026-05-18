@@ -1,0 +1,197 @@
+{
+  "id": 196428362,
+  "name": "校验税局缓存是否有效",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n该接口用于36个地区的异步登录成功后，缓存的dpptcookie是否有效。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/multiacc/checkAsyncLoginDpptCache",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "该值必填"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户ID"
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "accountId"
+      ],
+      "required": [
+        "nsrsbh",
+        "accountId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "\r\n\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "fNZ4bXINgy",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "uR0D7KbpMz",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "id": "8PlY4LajCQ",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 494443864,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW14PXT5M6CPA7QN31MEE9HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "返回结果",
+                "description": "true为缓存有效；false缓存失效"
+              },
+              "code": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "错误码",
+                "description": "2000：接口成功；4xxx;登录信息有误；5xxx:系统错误"
+              },
+              "success": {
+                "description": "接口是否成功（是否发生业务异常）",
+                "type": "boolean",
+                "title": "是否成功标记"
+              },
+              "message": {
+                "type": "string",
+                "title": "错误信息"
+              }
+            },
+            "required": [
+              "code",
+              "success"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01GW14PXT5M6CPA7QN31MEE9HS"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 494443864,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": false,\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"d8e97e6e88514e329f28386d2d07f6f0\"\n}",
+      "id": 418527117
+    },
+    {
+      "name": "异常示例",
+      "responseId": 494443864,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": true,\n    \"message\": \"参数gryhm不能为空！\",\n    \"reqId\": \"8b2991d73f924e85994670564975aa42\"\n}",
+      "id": 418527118
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36841720,
+  "ordering": 43,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-07-22T08:56:08.000Z",
+  "updatedAt": "2024-07-22T08:56:45.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.494443864"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

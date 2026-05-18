@@ -1,0 +1,219 @@
+{
+  "id": 302400253,
+  "name": "域名备案",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业域名备案的相关信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/websiteInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "两个参数只需要传入一个即可"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "每页显示条数",
+          "description": "最大50"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "页码"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageSize",
+        "pageIndex"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 686709749,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "string",
+                "title": "总条数"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "orgType": {
+                      "type": "string",
+                      "title": "单位性质"
+                    },
+                    "websiteName": {
+                      "type": "string",
+                      "title": "网站名称"
+                    },
+                    "icpNumber": {
+                      "type": "string",
+                      "title": "网站备案许可证号"
+                    },
+                    "homepageUrl": {
+                      "type": "string",
+                      "title": "网站首页"
+                    },
+                    "approveDate": {
+                      "type": "string",
+                      "title": "登记批准时间"
+                    },
+                    "websiteUrl": {
+                      "type": "string",
+                      "title": "网站域名"
+                    },
+                    "orgName": {
+                      "type": "string",
+                      "title": "企业名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "orgType",
+                    "orgName",
+                    "websiteName",
+                    "icpNumber",
+                    "homepageUrl",
+                    "approveDate",
+                    "websiteUrl"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "total"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "title": "业务数据"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 686709749,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"total\": \"1\",\r\n        \"items\": [\r\n            {\r\n                \"orgType\": \"企业\",\r\n                \"websiteName\": \"\",\r\n                \"icpNumber\": \"浙ICP备202101xxx号-1\",\r\n                \"homepageUrl\": \"\",\r\n                \"approveDate\": \"2021-05-18\",\r\n                \"websiteUrl\": \"nbfxxx.cn\"\r\n            }\r\n        ]\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"成功\",\r\n    \"reqId\": \"8c29a5efda724a809b61aad61f8901aa\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 596442452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 252,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-05-29T06:36:00.000Z",
+  "updatedAt": "2025-05-30T10:10:09.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.686709749"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

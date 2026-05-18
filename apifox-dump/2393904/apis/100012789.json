@@ -1,0 +1,390 @@
+{
+  "id": 100012789,
+  "name": "已开发票统计查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "从局端查询符合指定条件的发票开具统计信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/fptjcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：fptjcx",
+          "const": "fptjcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fplxdm": {
+              "type": "string",
+              "title": "发票类型代码",
+              "description": "为空则查询所有数电专票和普票",
+              "enum": [
+                "030",
+                "032"
+              ],
+              "x-apifox": {
+                "enumDescriptions": {
+                  "030": "数电普通发票",
+                  "032": "数电专用发票"
+                }
+              }
+            },
+            "cxyf": {
+              "type": "string",
+              "title": "查询月份",
+              "description": "(条件必填，cxyf和cxrqqz二选一)yyyy-MM"
+            },
+            "cxrqq": {
+              "type": "string",
+              "title": "查询日期起",
+              "description": "(条件必填，按季度,年度查询,cxyf和cxrqqz二选一)yyyy-MM"
+            },
+            "cxrqz": {
+              "type": "string",
+              "title": "查询日期止",
+              "description": "(条件必填，按季度，年度查询,cxyf和cxrqqz二选一)yyyy-MM"
+            }
+          },
+          "x-apifox-orders": [
+            "fplxdm",
+            "cxyf",
+            "cxrqq",
+            "cxrqz"
+          ],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB9PQQW2XTV48QG40AJWNP4"
+      ],
+      "x-apifox-refs": {
+        "01HMB9PQQW2XTV48QG40AJWNP4": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"fptjcx\",\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"data\": {\r\n        \"fplxdm\": \"030\",\r\n        \"cxyf\": \"2024-01\"\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847723,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "lp": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fplxdm": {
+                      "type": "string",
+                      "title": "发票类型代码"
+                    },
+                    "fplxmc": {
+                      "type": "string",
+                      "title": "发票类型名称"
+                    },
+                    "gjfpfs": {
+                      "type": "integer",
+                      "title": "购过发票份数"
+                    },
+                    "thfpfs": {
+                      "type": "integer",
+                      "title": "退回发票份数"
+                    },
+                    "kbfpfs": {
+                      "type": "integer",
+                      "title": "空白发票份数"
+                    },
+                    "tjrq": {
+                      "type": "string",
+                      "title": "统计时间"
+                    },
+                    "qckcfs": {
+                      "type": "integer",
+                      "title": "期初库存份数"
+                    },
+                    "qmkcfs": {
+                      "type": "integer",
+                      "title": "期末库存份数"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fplxdm",
+                    "fplxmc",
+                    "gjfpfs",
+                    "thfpfs",
+                    "kbfpfs",
+                    "qckcfs",
+                    "qmkcfs",
+                    "tjrq"
+                  ]
+                },
+                "title": "领票统计信息"
+              },
+              "kp": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fplxdm": {
+                      "type": "string",
+                      "title": "发票类型代码"
+                    },
+                    "fplxmc": {
+                      "type": "string",
+                      "title": "发票类型名称"
+                    },
+                    "zsfpfs": {
+                      "type": "integer",
+                      "title": "正数发票份数"
+                    },
+                    "fsfpfs": {
+                      "type": "integer",
+                      "title": "负数发票份数"
+                    },
+                    "zsfpfs1": {
+                      "type": "integer",
+                      "title": "正数废票份数"
+                    },
+                    "fsfpfs1": {
+                      "type": "integer",
+                      "title": "负数废票份数"
+                    },
+                    "tjrq": {
+                      "type": "string",
+                      "title": "统计时间"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fplxdm",
+                    "fplxmc",
+                    "zsfpfs",
+                    "fsfpfs",
+                    "zsfpfs1",
+                    "fsfpfs1",
+                    "tjrq"
+                  ]
+                },
+                "title": "开票统计信息"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fplxdm": {
+                      "type": "string",
+                      "title": "发票类型代码"
+                    },
+                    "fplxmc": {
+                      "type": "string",
+                      "title": "发票类型名称"
+                    },
+                    "sl": {
+                      "type": "string",
+                      "title": "税率"
+                    },
+                    "kjlzfpje": {
+                      "type": "string",
+                      "title": "开具蓝字发票金额"
+                    },
+                    "kjlzfpse": {
+                      "type": "string",
+                      "title": "开具蓝字发票税额"
+                    },
+                    "zflzfpje": {
+                      "type": "string",
+                      "title": "作废蓝字发票金额"
+                    },
+                    "zflzfpse": {
+                      "type": "string",
+                      "title": "作废蓝字发票税额"
+                    },
+                    "kjhzfpje": {
+                      "type": "string",
+                      "title": "开具红字发票金额"
+                    },
+                    "kjhzfpse": {
+                      "type": "string",
+                      "title": "开具红字发票税额"
+                    },
+                    "zfhzfpje": {
+                      "type": "string",
+                      "title": "作废红字发票金额"
+                    },
+                    "zfhzfpse": {
+                      "type": "string",
+                      "title": "废红字发票税额"
+                    },
+                    "sjkjfpje": {
+                      "type": "string",
+                      "title": "实际开具发票金额"
+                    },
+                    "sjkjfpse": {
+                      "type": "string",
+                      "title": "实际开具发票税额"
+                    },
+                    "tjrq": {
+                      "type": "string",
+                      "title": "统计时间"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fplxdm",
+                    "fplxmc",
+                    "sl",
+                    "kjlzfpje",
+                    "kjlzfpse",
+                    "zflzfpje",
+                    "zflzfpse",
+                    "kjhzfpje",
+                    "kjhzfpse",
+                    "zfhzfpje",
+                    "zfhzfpse",
+                    "sjkjfpje",
+                    "sjkjfpse",
+                    "tjrq"
+                  ]
+                },
+                "title": "根据税率统计详细开票信息"
+              }
+            },
+            "required": [
+              "lp",
+              "kp",
+              "details"
+            ],
+            "x-apifox-orders": [
+              "lp",
+              "kp",
+              "details"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRH7YY9SQMQBK3HGS03FP04N"
+        ],
+        "x-apifox-refs": {
+          "01HRH7YY9SQMQBK3HGS03FP04N": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847723,
+      "data": "{\n    \"reqId\": \"4e79b5331cd444529251f9d1175b89f7\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"lp\": [\n            {\n                \"thfpfs\": 0,\n                \"gjfpfs\": 0,\n                \"tjrq\": \"2024-03-09 08:08:00\",\n                \"fplxdm\": \"030\",\n                \"kbfpfs\": 0,\n                \"fplxmc\": \"电子发票（普通发票）\"\n            }\n        ],\n        \"kp\": [\n            {\n                \"tjrq\": \"2024-03-09 08:08:00\",\n                \"zsfpfs\": 28,\n                \"fplxdm\": \"030\",\n                \"fsfpfs\": 28,\n                \"zsfpfs1\": 0,\n                \"fplxmc\": \"电子发票（普通发票）\",\n                \"fsfpfs1\": 0\n            }\n        ],\n        \"details\": [\n            {\n                \"zflzfpje\": \"0.00\",\n                \"sjkjfpje\": \"0.00\",\n                \"tjrq\": \"2024-03-09 08:00:41\",\n                \"fplxmc\": \"电子发票（普通发票）\",\n                \"kjhzfpje\": \"-28.54\",\n                \"zfhzfpje\": \"0.00\",\n                \"sjkjfpse\": \"0.00\",\n                \"zflzfpse\": \"0.00\",\n                \"kjlzfpse\": \"1.75\",\n                \"zfhzfpse\": \"0.00\",\n                \"fplxdm\": \"030\",\n                \"kjlzfpje\": \"28.54\",\n                \"sl\": \"0.06\",\n                \"kjhzfpse\": \"-1.75\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400271225
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681480,
+  "ordering": 105,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2023-08-02T07:49:13.000Z",
+  "updatedAt": "2025-12-13T09:21:37.000Z",
+  "creatorId": 493984,
+  "editorId": 2795319,
+  "creatorUserId": 493984,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.248847723"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

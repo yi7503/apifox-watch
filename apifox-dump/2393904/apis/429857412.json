@@ -1,0 +1,387 @@
+{
+  "id": 429857412,
+  "name": "工资年终奖税筹测算反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "PPlrklPl1MRgqaxHj0Wl1",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "异步结果查询接口。根据企业及人员的薪资、扣除项等信息，计算全年奖金筹划前后的税额及节税金额，返回税筹结果。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/calculateTax/getSalaryBonusPlanningFeedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
+              },
+              "taskStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "title": "工资奖金筹划响应",
+                "type": "object",
+                "properties": {
+                  "zrs": {
+                    "type": "integer",
+                    "title": "总人数"
+                  },
+                  "ndjsze": {
+                    "type": "number",
+                    "title": "年度节税总额",
+                    "multipleOf": 0.01
+                  },
+                  "rylb": {
+                    "type": "array",
+                    "title": "人员列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xm": {
+                          "type": "string",
+                          "title": "姓名"
+                        },
+                        "zzlx": {
+                          "type": "string",
+                          "title": "证件类型"
+                        },
+                        "zzhm": {
+                          "type": "string",
+                          "title": "证件号码"
+                        },
+                        "dygze": {
+                          "type": "number",
+                          "title": "当月工资额",
+                          "multipleOf": 0.01
+                        },
+                        "qnsrze": {
+                          "type": "number",
+                          "title": "全年收入总额",
+                          "multipleOf": 0.01
+                        },
+                        "qnzxze": {
+                          "type": "number",
+                          "title": "全年专项扣除总额",
+                          "multipleOf": 0.01
+                        },
+                        "qnzxfjkcze": {
+                          "type": "number",
+                          "title": "全年专项附加扣除总额",
+                          "multipleOf": 0.01
+                        },
+                        "qnkczx_zxfjkcze": {
+                          "type": "number",
+                          "title": "全年专项和专附附加扣除总额",
+                          "multipleOf": 0.01
+                        },
+                        "chqqnjj": {
+                          "type": "number",
+                          "title": "筹划前全年奖金",
+                          "multipleOf": 0.01
+                        },
+                        "chqzcgzxj": {
+                          "type": "number",
+                          "title": "筹划前正常工资薪金",
+                          "multipleOf": 0.01
+                        },
+                        "chqqnse": {
+                          "type": "number",
+                          "title": "筹划前全年税额",
+                          "multipleOf": 0.01
+                        },
+                        "chhqngze": {
+                          "type": "number",
+                          "title": "筹划后全年工资额",
+                          "multipleOf": 0.01
+                        },
+                        "chhqnjj": {
+                          "type": "number",
+                          "title": "筹划后全年奖金",
+                          "multipleOf": 0.01
+                        },
+                        "chhqnse": {
+                          "type": "number",
+                          "title": "筹划后全年税额",
+                          "multipleOf": 0.01
+                        },
+                        "qnjsze": {
+                          "type": "number",
+                          "title": "全年节税总额",
+                          "multipleOf": 0.01
+                        },
+                        "sbqnjj": {
+                          "type": "number",
+                          "title": "建议申报全年奖金",
+                          "multipleOf": 0.01
+                        },
+                        "sbqnjjse": {
+                          "type": "number",
+                          "title": "建议申报全年奖金税额",
+                          "multipleOf": 0.01
+                        },
+                        "sbdyyfgz": {
+                          "type": "number",
+                          "title": "建议申报当月应发工资",
+                          "multipleOf": 0.01
+                        },
+                        "bz": {
+                          "type": "string",
+                          "title": "备注"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xm",
+                        "zzlx",
+                        "zzhm",
+                        "dygze",
+                        "qnsrze",
+                        "qnzxze",
+                        "qnzxfjkcze",
+                        "qnkczx_zxfjkcze",
+                        "chqqnjj",
+                        "chqzcgzxj",
+                        "chqqnse",
+                        "chhqngze",
+                        "chhqnjj",
+                        "chhqnse",
+                        "qnjsze",
+                        "sbqnjj",
+                        "sbqnjjse",
+                        "sbdyyfgz",
+                        "bz"
+                      ]
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "zrs",
+                  "ndjsze",
+                  "rylb"
+                ]
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ],
+            "required": [
+              "taskId",
+              "message",
+              "code",
+              "taskStatusName",
+              "taskStatus",
+              "taskTypeName",
+              "taskTypeCode"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae1981bb6d4aeacf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"taskId\": \"1000000000000001102\",\n        \"taskTypeCode\": \"gs-gzjjch\",\n        \"taskTypeName\": \"工资奖金筹划\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"code\": \"2000\",\n        \"message\": \"成功\",\n        \"result\": {\n            \"zrs\": 1,\n            \"ndjsze\": 3240.00,\n            \"rylb\": [\n                {\n                    \"xm\": \"张三\",\n                    \"zzlx\": \"01\",\n                    \"zzhm\": \"110101199001011234\",\n                    \"dygze\": 15000.00,\n                    \"qnsrze\": 230000.00,\n                    \"qnzxze\": 2550.00,\n                    \"qnzxfjkcze\": 57600.00,\n                    \"qnkczx_zxfjkcze\": 60150.00,\n                    \"chqqnjj\": 50000.00,\n                    \"chqzcgzxj\": 180000.00,\n                    \"chqqnse\": 3240.00,\n                    \"chhqngze\": 180000.00,\n                    \"chhqnjj\": 50000.00,\n                    \"chhqnse\": 0.00,\n                    \"qnjsze\": 3240.00,\n                    \"sbqnjj\": 50000.00,\n                    \"sbqnjjse\": 0.00,\n                    \"sbdyyfgz\": 15000.00,\n                    \"bz\": \"筹划方案合理\"\n                }\n            ]\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 59,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-18T09:05:28.000Z",
+  "updatedAt": "2026-04-01T09:08:48.000Z",
+  "creatorId": 1910680,
+  "editorId": 3222025,
+  "creatorUserId": 1910680,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

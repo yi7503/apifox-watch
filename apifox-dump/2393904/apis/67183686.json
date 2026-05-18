@@ -1,0 +1,195 @@
+{
+  "id": 67183686,
+  "name": "查询申报信息任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n   该接口用于根据aggOrgId和taskId查询异步任务执行进度信息。\n   申报信息查询任务：返回当前客户请求月份在税局所有税种的申报状态、缴款状态、税局金额、截图。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| BUSINESS_ERROR| 任务不存在 |\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR | 请求参数taskId不能为空！| |\n| PARAMETER_ERROR |参数格式不合法,不是有效的json格式!||\n| BUSINESS_ERROR | 查询任务结果失败，请联系管理员！ |  |\n| BUSINESS_ERROR | 没有找到对应的任务信息 |  |\n| BUSINESS_ERROR | 暂不支持此任务类型查询 |  |\n| INTERFACE_ERROR |接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskTaxInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"taskId\":455810223673344\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9rnhNtdK2Y",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "eR6dGGBgi6",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "VtC08zlLo9",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "hc5Si6ga6e",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 170804785,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW21D2TDAFFPWRN089AWG49G": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/37245142"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW21D2TDAFFPWRN089AWG49G"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 170804785,
+      "data": "{\"reqId\":\"c4ddd915207544b1809c04006a922cd8\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17752293
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 170804785,
+      "data": "{\"reqId\":\"f346f71df4b84b059a8ca17b6189a822\",\"code\":\"BUSINESS_ERROR\",\"success\":true,\"message\":\"没有找到对应的任务信息\",\"data\":null}",
+      "id": 17752312
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 170804785,
+      "data": "{\"reqId\":\"ef545ca80b4f4a369d23e936425656e7\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"businessStatusName\":\"执行中\",\"serviceCode\":\"tax-sb-msg\",\"businessStatus\":1,\"detail\":null,\"aggOrgId\":452681066557440,\"serviceName\":\"申报信息\",\"taskId\":455810223673344}}",
+      "id": 17221575
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 170804785,
+      "data": "{\n    \"reqId\": \"2fa7949b87184a81926b0b5d25809574\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-sb-msg\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"sbywbm\": \"YBNSRZZS\",\n                \"bqybtsedfjyfjSj\": \"156826.13\",\n                \"bqybtsecjsSj\": \"548891.45\",\n                \"toDate\": \"2023-02-28\",\n                \"zspmDm\": \"\",\n                \"bqybtsezzsSj\": \"7841306.46\",\n                \"projectType\": 0,\n                \"kjzdzzDm\": null,\n                \"payState\": 0,\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_c05c1b1f-b24e-4cda-a4b4-*****8b4ae31679554705056_1679554830842.png?Expires=1682146835\",\n                \"fromDate\": \"2023-02-01\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"zspmMc\": \"\",\n                \"taxProjectName\": \"增值税及附加税费申报表(一般纳税人适用)\",\n                \"zlbsxlDm\": null,\n                \"voucherDate\": \"2023-03-10\",\n                \"bqybtseSj\": \"8782263.23\",\n                \"bqybtsejyfjSj\": \"235239.19\",\n                \"state\": 1,\n                \"taxProjectCode\": \"10101\",\n                \"qcSbOssUrl\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_c05c1b1f-b24e-4cda-a4b4-0c4d9f8b4ae31679554705056_1679554797389.png?Expires=1682146800\",\n                \"qcJkOssUrl\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_c05c1b1f-b24e-4cda-a4b4-*****8b4ae31679554705056_1679554890027.png?Expires=1682146891\"\n            }\n        ],\n        \"aggOrgId\": 448414768920896,\n        \"serviceName\": \"申报信息\",\n        \"taskId\": 456376524077056\n    }\n}",
+      "id": 17225251
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13530951,
+  "ordering": 61,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-11-15T03:49:19.000Z",
+  "updatedAt": "2025-01-03T06:36:41.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.170804785"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,274 @@
+{
+  "id": 100012792,
+  "name": "下载版式文件-废弃",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": ":::caution[]\n该接口将于2026年1月30日下线，请使用[下载版式文件](api-155759098)接口\n:::",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/bswjxz",
+  "tags": [],
+  "status": 0,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传入：bswjxz"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "fphm": {
+              "title": "发票号码",
+              "type": "string",
+              "description": "20位数电发票号码"
+            },
+            "kprq": {
+              "title": "开票日期",
+              "type": "string",
+              "description": "包含时间 yyyy-MM-dd HH:mm:ss"
+            },
+            "wjgs": {
+              "type": "string",
+              "title": "文件格式",
+              "enum": [
+                "PDF",
+                "OFD",
+                "XML"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "PDF",
+                  "name": "",
+                  "description": "获取PDF文件"
+                },
+                {
+                  "value": "OFD",
+                  "name": "",
+                  "description": "获取OFD文件"
+                },
+                {
+                  "value": "XML",
+                  "name": "",
+                  "description": "获取XML文件(zip格式)"
+                }
+              ]
+            },
+            "xzlx": {
+              "type": "string",
+              "title": "下载类型",
+              "description": "base64或url(建议使用url，base64的数据超过500k后自动转换为url)",
+              "enum": [
+                "base64",
+                "url"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "base64",
+                  "name": "",
+                  "description": "以base64编码返回文件内容"
+                },
+                {
+                  "value": "url",
+                  "name": "",
+                  "description": "以URL方式返回下载路"
+                }
+              ]
+            }
+          },
+          "x-apifox-orders": [
+            "kprq",
+            "fphm",
+            "wjgs",
+            "xzlx"
+          ],
+          "title": "",
+          "required": [
+            "wjgs",
+            "kprq",
+            "fphm"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB9DDH1NFAW3GHNDVRZB4Y9"
+      ],
+      "x-apifox-refs": {
+        "01HMB9DDH1NFAW3GHNDVRZB4Y9": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"data\": {\r\n        \"wjgs\": \"XML\",\r\n        \"kprq\": \"2024-02-29 10:59:02\",\r\n        \"fphm\": \"************54513944\",\r\n        \"xzlx\": \"base64\"\r\n    },\r\n    \"action\": \"bswjxz\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847726,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "wjgs": {
+                "type": "string",
+                "title": "文件格式"
+              },
+              "base64": {
+                "type": "string",
+                "title": "文件内容(Base64格式)"
+              },
+              "fpdm": {
+                "type": "string",
+                "title": "发票代码",
+                "description": "数电时为空"
+              },
+              "fphm": {
+                "type": "string",
+                "title": "发票号码",
+                "description": "数电时为20位数电号码"
+              },
+              "kprq": {
+                "type": "string",
+                "title": "开票日期"
+              },
+              "url": {
+                "type": "string",
+                "title": "文件内容（url格式）"
+              }
+            },
+            "required": [
+              "wjgs",
+              "base64",
+              "fpdm",
+              "fphm",
+              "kprq",
+              "url"
+            ],
+            "x-apifox-orders": [
+              "wjgs",
+              "base64",
+              "url",
+              "fpdm",
+              "fphm",
+              "kprq"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRH5V0125SFV3HMTSC59PWYF"
+        ],
+        "x-apifox-refs": {
+          "01HRH5V0125SFV3HMTSC59PWYF": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847726,
+      "data": "{\n    \"reqId\": \"8aa61a5f34024b0fa9f3c6e659b915e6\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"fpdm\": \"\",\n        \"kprq\": \"2024-02-29 10:59:02\",\n        \"base64\": \"\",\n        \"wjgs\": \"XML\",\n        \"url\": \"\",\n        \"fphm\": \"************54513944\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400271122
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681567,
+  "ordering": 231,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-12T05:48:28.000Z",
+  "updatedAt": "2025-12-13T09:23:50.000Z",
+  "creatorId": 887900,
+  "editorId": 2795319,
+  "creatorUserId": 887900,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,202 @@
+{
+  "id": 93748240,
+  "name": "获取税款所属期任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询申请企业电子发票服务平台（发票云）获取税款所属期任务的结果。\n\n## 错误码\n| **错误代码**              | **错误消息**                                                 | **解决方案**                                                 |\n| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                    | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                    | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq          | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification | 传入参数不能为空！<br/>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>传入的参数-任务id-taskId不能为空 | 请检查参数是否不为空<br/>请检查参数nsrsbh是否不为空<br/>请检查参数taskId是否不为空 |\n| FprzTaxLoginFailed        | 登录相关错误导致认证任务失败                                 | 根据对应的错误信息重新登录或确认登录信息是否正确             |\n| FprzSqTaskFailed          | 申请任务发起失败！                                           | 请重新发起任务                                               |\n| FprzTaxFailed             | 税局操作失败！                                               | 请联系管理员                                                 |\n| FprzServerError           | 获取税款所属期结果查询操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/skssqCjjg",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id",
+          "description": "发起申请获取税款所属期接口返回的taskId"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "taskId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"52**************XJ\",\r\n  \"taskId\": 468422340284480\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "cXK44uVype",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "Wxj6phUfZf",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "vqR3uFsBHh",
+        "name": "req_sign",
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947481,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H4JG46TC3E13K5TWHZA6KDC7": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/51474297"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H4JG46TC3E13K5TWHZA6KDC7"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "任务进行中",
+      "responseId": 42947481,
+      "data": "{\n    \"reqId\": \"667bda45b1d34cf1a91615ef4dd26955\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"gxfw\": null,\n        \"message\": null,\n        \"nsrsbh\": \"52***************XJ\",\n        \"sbxx\": null,\n        \"skssq\": null,\n        \"skssqJzrq\": null,\n        \"zt\": \"1\"\n    }\n}",
+      "id": 42947482
+    },
+    {
+      "name": "任务执行失败",
+      "responseId": 42947481,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"zt\": \"2\",\n        \"code\": \"8000\",\n        \"message\": \"未登录或登录缓存已失效，请重新发起！\",\n        \"skssq\": \"\",\n        \"skssqJzrq\": \"\",\n        \"nsrsbh\": \"52***************XJ\",\n        \"gxfw\": \"\",\n        \"sbxx\": \"\"\n    },\n    \"success\": true,\n    \"reqId\": \"2bc23cbec88d41afb9176d431c0b1b96\"\n}",
+      "id": 42947483
+    },
+    {
+      "name": "任务执行成功示例",
+      "responseId": 42947481,
+      "data": "{\n    \"reqId\": \"2ccf56aac97940fa94970ac2c7b8ca65\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"gxfw\": \"20170101-20230630\",\n        \"message\": null,\n        \"nsrsbh\": \"52****************XJ\",\n        \"sbxx\": \"0\",\n        \"skssq\": \"202306\",\n        \"skssqJzrq\": \"20230717\",\n        \"zt\": \"3\"\n    }\n}",
+      "id": 42947484
+    },
+    {
+      "name": "登录信息已过期，请重新登录",
+      "responseId": 42947481,
+      "data": "{\r\n    \"reqId\": \"53bd767a21f145a0ab0ed7523dae814c\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": \"FprzTaxLoginFailed\",\r\n        \"gxfw\": null,\r\n        \"message\": \"登录信息已过期，请重新登录\",\r\n        \"nsrsbh\": \"5233068147148171XJ\",\r\n        \"sbxx\": null,\r\n        \"skssq\": null,\r\n        \"skssqJzrq\": null,\r\n        \"zt\": \"2\"\r\n    }\r\n}",
+      "id": 42947485
+    },
+    {
+      "name": "未查到对应的任务信息",
+      "responseId": 42947481,
+      "data": "{\n    \"reqId\": \"b98fa86eb2ba4cce9d72f56fc1505864\",\n    \"code\": \"FprzBusinessVerification\",\n    \"success\": false,\n    \"message\": \"未查到对应的任务信息！\",\n    \"data\": null\n}",
+      "id": 42947486
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58870897,
+  "ordering": 322,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-03T06:41:07.000Z",
+  "updatedAt": "2025-06-12T02:47:50.000Z",
+  "creatorId": 1426961,
+  "editorId": 2706439,
+  "creatorUserId": 1426961,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.42947481"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

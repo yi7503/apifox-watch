@@ -1,0 +1,17 @@
+{
+  "id": 2576281,
+  "name": "cztdsSycjData(城镇土地使用税税源采集报文) ",
+  "sidebarTitle": "",
+  "content": "\n```\n{\n\t\"cztdsyssymxb\": { //城镇土地使用税 税源明细表\n\t\t\"nsrxx\": {  // 纳税人信息\n\t\t\t\"nsrsbh\": \"914401*******R4H94G\", // 纳税人识别号\n\t\t\t\"nsrmc\": \"新邦物******有限公司\", // 纳税人名称\n\t\t\t\"skssqq\": \"2022-01-01\", // 税款所属期起\n\t\t\t\"skssqz\": \"2022-12-31\" // 税款所属期止\n\t\t},\n\t\t\"body\":[//城镇土地使用税 税源明细表\n\t\t\t{\n\t\t\t\t\"ewbhxh\": \"1\", // 二维表行序号\n\t\t\t\t\"tdbh\": \"\", // 土地编号\n\t\t\t\t\"zdh\": \"\", //宗地号（丘号）\n\t\t\t\t\"tdmc\": \"\", //土地名称\n\t\t\t\t\"bdcqzh\": \"\", //不动产权证号\n\t\t\t\t\"xzqhdz\": \"\", // 地址(行政区划)\n\t\t\t\t\"jxdz\": \"\", // 地址(街乡)\n\t\t\t\t\"tdzlxxdz\": \"\", // 土地坐落详细地址\n\t\t\t\t\"tdzmj\": \"\", // 土地总面积\n\t\t\t\t\"sszgsws\": \"\", // 所属主管税务所（科、分局）\n\t\t\t\t\"status\": \"\", // 状态\n\t\t\t\t\"nsrlx\": \"\", // 纳税人类型(传代码，查看附录码表)\n\t\t\t\t\"tdsyqrnsrsbh\": \"\", // 土地使用权人纳税人识别号\n\t\t\t\t\"tdsyqrnsrmc\": \"\", // 土地使用权人名称\n\t\t\t\t\"tdxz\": \"\", // 土地性质(传代码，查看附录码表)\n\t\t\t\t\"tdyt\": \"\", // 土地用途(传代码，查看附录码表) \n\t\t\t\t\"tdqdsj\": \"\", // 土地取得时间\n\t\t\t\t\"tdqdfs\": \"\", // 土地取得方式(传代码，查看附录码表)\n\t\t\t\t\"zytdmj\": \"\", // 占用土地面积\n\t\t\t\t\"pkbz\": \"\", // 批扣标志\n\t\t\t\t\"bdcdydm\": \"\", // 不动产单元代码\n\t\t\t\t\"dj\": \"\", // 地价（单位：元）\n\t\t\t\t\"qztdkfcb\": \"\", // 其中土地开发成本\n\t\t\t\t\"qzqdtdsyqzfje\": \"\", // 其中取得土地使用权支付金额\n\t\t\t\t\"jbr\": \"\", // 经办人\n\t\t\t\t\"jbrsfzjlx\": \"\", // 经办人身份证件类型\n\t\t\t\t\"jbrsfzjhm\": \"\", // 经办人身份证件号码\n\t\t\t\t\"tddj\": \"\", // 土地等级\n\t\t\t\t\"sebz\": \"\", // 税额标准\n\t\t\t\t\"yxqq\": \"\", // 有效期起\n\t\t\t\t\"yxqz\": \"\", // 有效期止\n\t\t\t\t\"jmsxsl\": \"\", // 减免事项数量\n\t\t\t\t\"operationType\":\"0\",//0-新增 1-修改 2-作废\n\t\t\t\t\"jmsxList\": [  //减免事项 列表 （查看附录减免性质代码码表）\n\t\t\t\t\t{\n\t\t\t\t\t\t\"jmxzDm\": \"\", // 减免性质编码\n\t\t\t\t\t\t\"swsxDm\": \"\", // 减免性质的税务事项代码\n\t\t\t\t\t\t\"jmxzShowData\": \"\", // 减免政策展示的名称\n\t\t\t\t\t\t\"jmtdmj\":\"\",//减免土地面积\n\t\t\t\t\t\t\"yjmsje\": \"\",// 月减免税金额\n\t\t\t\t\t\t\"jmqsyf\": \"\",// 减免起始月份\n\t\t\t\t\t\t\"jmzzyf\": \"\"// 减免终止月份\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t]\n\t}\n}\n```",
+  "folderId": 14012227,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-06-08T06:25:11.000Z",
+  "updatedAt": "2024-11-27T02:01:27.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

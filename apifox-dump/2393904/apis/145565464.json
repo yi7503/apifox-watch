@@ -1,0 +1,338 @@
+{
+  "id": 145565464,
+  "name": "订购产品",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "eYbA2Igkp4EVQ39Sjdqmi",
+      "executionTiming": "prerequest"
+    },
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "Ni8qUhL8iNlzaiVYUimB5",
+      "executionTiming": "prerequest",
+      "data": [
+        408221
+      ]
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n产品订购是客户对接税号维度产品的起点，一个企业税号将在我们平台要使用什么产品，ISV可以通过接口来自行开通。对于首次订购产品的企业，该接口还会进行企业创建。该接口返回唯一标识aggOrgId，此aggOrgId作为双方平台企业关联的唯一标识，在之后的接口中都要用到，所以应该保存起来。\n\n\n## 产品码\n请参考附录产品码列表>>> [产品码](apifox://link/pages/5110490)\n\n## 错误码\n| **错误代码** | **错误信息**  | **示例** | **解决方案** |\n| --- | --- | --- | --- |\n| PARAMETER_ERROR | 纳税人识别号(nsrsbh)不能为空！ | | |\n| PARAMETER_ERROR | 纳税人识别号只能包含数字和字母！ | | |\n| PARAMETER_ERROR | 纳税人识别号只能为15位、17位、18位或20位！ | | |\n| PARAMETER_ERROR | 企业纳税人识别号重复! | | |\n| PARAMETER_ERROR | 企业名称(aggOrgName)不能为空！ | | |\n| PARAMETER_ERROR | 企业名称重复! | | |\n| PARAMETER_ERROR | 地区编码有误，请根据地区编码附录中限定的编码传参 | | |\n| PARAMETER_ERROR | 产品列表(productCodeList)不能为空！ | | |\n| PARAMETER_ERROR | 存在不能订购的产品码([XXXX])！ | 存在不能订购的产品码([0009,0020])！ | 参考产品码码表，权限未开通，需联系商务或技术支持 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/productPurchase",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "aggOrgName": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "dq": {
+          "type": "string",
+          "title": "地区",
+          "description": "税号所在地区，见附录：[地区代码](apifox://link/pages/2246773)",
+          "examples": [
+            "11"
+          ]
+        },
+        "productCodeList": {
+          "type": "string",
+          "title": "产品码列表(英文逗号分割)",
+          "examples": [
+            "0002,0003,0020"
+          ],
+          "description": "见附录：[产品码](apifox://link/pages/5110490)"
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "aggOrgName",
+        "dq",
+        "productCodeList"
+      ],
+      "required": [
+        "nsrsbh",
+        "aggOrgName",
+        "dq",
+        "productCodeList"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"nsrsbh\": \"91430103MADFYUHT72\",\r\n    \"aggOrgName\": \"长沙市天心区智健益丰大药房（个人独资）\",\r\n    \"dq\": \"43\",\r\n    \"productCodeList\": \"0053\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "b2HFgIPJxQ",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "5ovtpQcjKS",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "eyhz9DMYOg",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "wLZW0UQYA4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 396502990,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "examples": [
+              "SUCCESS"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "aggOrgId": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "企业id",
+                "description": "按税号对应的唯一id，需存储，其他接口入参需要用到"
+              },
+              "purchaseDetailList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productCode": {
+                      "type": "string",
+                      "title": "产品码",
+                      "examples": [
+                        "0020"
+                      ]
+                    },
+                    "success": {
+                      "type": "boolean",
+                      "title": "订购成功标识"
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "订购返回描述",
+                      "description": "订购成功、订购失败、订购成功(已订购)",
+                      "examples": [
+                        "订购成功"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "productCode",
+                    "success",
+                    "message"
+                  ],
+                  "required": [
+                    "productCode",
+                    "success",
+                    "message"
+                  ]
+                },
+                "title": "订购详情"
+              }
+            },
+            "x-apifox-orders": [
+              "aggOrgId",
+              "purchaseDetailList"
+            ],
+            "title": "业务数据",
+            "required": [
+              "aggOrgId",
+              "purchaseDetailList"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "reqId",
+          "success",
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "订购返回示例",
+      "responseId": 396502990,
+      "data": "{\n    \"reqId\": \"c835d3478de34f17b479e269fe96c826\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 5107*******5344,\n        \"purchaseDetailList\": [\n            {\n                \"productCode\": \"0002\",\n                \"success\": true,\n                \"message\": \"订购成功\"\n            },\n            {\n                \"productCode\": \"0003\",\n                \"success\": false,\n                \"message\": \"订购失败\"\n            },\n            {\n                \"productCode\": \"0020\",\n                \"success\": true,\n                \"message\": \"订购成功(已订购)\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 396502991
+    },
+    {
+      "name": "订购失败(企业名称或税号重复)",
+      "responseId": 396502990,
+      "data": "{\r\n    \"code\": \"PARAMETER_ERROR\",\r\n    \"data\": {\r\n        \"nsrsbh\": \"913***********2T7M\",\r\n        \"aggOrgName\": \"上海****科技有限公司zxy\",\r\n        \"aggOrgId\": 46019769*****584\r\n    },\r\n    \"success\": true,\r\n    \"message\": \"企业纳税人识别号重复!\",\r\n    \"reqId\": \"dee185c2aa544ad192e105cd1d129aad\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 473373482
+    },
+    {
+      "name": "产品码不正确",
+      "responseId": 396502990,
+      "data": "{\n    \"reqId\": \"4bac8d18841d469cadf38f9e95e546bc\",\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": false,\n    \"message\": \"存在未授权的产品码([00XX])，请联系服务提供商开通相应产品！\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 674991959
+    },
+    {
+      "name": "地区编码不正确",
+      "responseId": 396502990,
+      "data": "{\n    \"reqId\": \"273ce0aaac604f8fa58ff5bb79cd1892\",\n    \"code\": \"600003\",\n    \"success\": false,\n    \"message\": \"地区编码有误，请根据地区编码附录中限定的编码传参\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 674991960
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28539131,
+  "ordering": 83,
+  "responsibleId": 543708,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-26T08:30:18.000Z",
+  "updatedAt": "2026-05-08T07:01:59.000Z",
+  "creatorId": 2122743,
+  "editorId": 3612160,
+  "creatorUserId": 2122743,
+  "editorUserId": 3612160,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

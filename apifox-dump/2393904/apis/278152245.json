@@ -1,0 +1,269 @@
+{
+  "id": 278152245,
+  "name": "获取收入费用测算情况及预缴信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "zvSM98Rm6VepYEAOyuVsu",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/calculateTax/getRevenueExpenseAndPrepaymentInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssqq": {
+          "type": "string",
+          "description": "格式YYYYMMDD年月日",
+          "title": "所属期起"
+        },
+        "01JQN5J7PC4XMFPGRRGKVY1RXW": {
+          "x-tmp-pending-properties": true
+        },
+        "skssqz": {
+          "type": "string",
+          "title": "所属期止",
+          "description": "格式YYYYMMDD年月日"
+        },
+        "bbmc": {
+          "type": "string",
+          "title": "报表类型",
+          "description": "1、预缴纳税；2、年度汇缴"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "01JQN5J7PC4XMFPGRRGKVY1RXW",
+        "bbmc",
+        "skssqz"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz",
+        "bbmc",
+        "01JQN5J7PC4XMFPGRRGKVY1RXW"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"accountId\": \"471****1619712\",\n    \"aggOrgId\": \"47114*****9665024\",\n    \"skssqq\": \"20250101\",\n    \"skssqz\": \"20250331\",\n    \"bbmc\": \"1\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 644791366,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01JQN5NKZPB17NPD2NHPY4TEFH"
+            ],
+            "description": "数据",
+            "required": [],
+            "x-apifox-refs": {
+              "01JQN5NKZPB17NPD2NHPY4TEFH": {
+                "$ref": "#/definitions/156818537"
+              }
+            }
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 644791366,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"zzssrze\": \"0.00\",\n        \"fpsrze\": \"0.00\",\n        \"fpjsze\": \"0.00\",\n        \"gzkjhj\": \"0.00\",\n        \"qysb\": \"0.00\",\n        \"yyfy\": \"0.00\",\n        \"yycb\": \"0.00\",\n        \"glfy\": \"0.00\",\n        \"cwfy\": \"0.00\",\n        \"yywzc\": \"0.00\",\n        \"sj\": \"0.00\",\n        \"hzss\": \"0.00\",\n        \"bkklss\": \"0.00\",\n        \"ssznj\": \"0.00\",\n        \"fj\": \"0.00\",\n        \"tzzxxlb\": [\n            {\n                \"xm\": \"测试奚昊欣\",\n                \"zzlx\": \"居民身份证\",\n                \"zzhm\": \"53010****009022504\",\n                \"tzzjcfy\": \"可使用\",\n                \"yjse\": \"0.00\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"reqId\": \"3ab540a99471438cbc24686380a2e431\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 549159385
+    },
+    {
+      "name": "异常示例",
+      "responseId": 644791366,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 549159386
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53476811,
+  "ordering": 90,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-31T03:39:02.000Z",
+  "updatedAt": "2025-04-21T07:20:34.000Z",
+  "creatorId": 1452584,
+  "editorId": 2661157,
+  "creatorUserId": 1452584,
+  "editorUserId": 2661157,
+  "responseChildren": [
+    "BLANK.644791366"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

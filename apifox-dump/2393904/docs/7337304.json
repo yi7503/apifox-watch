@@ -1,0 +1,17 @@
+{
+  "id": 7337304,
+  "name": "2025年8月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年8月发布内容\n\n发布日期：2025-08-29\n发布版本：V1.0.19\n\n## 个税申报新版，升级啦 \n:::\n\n****《代扣代缴》-更新：** \n   1.获取累计数，支持按人员下载\n   \n  \n   2.获取累计数接口：支持获取全量或者按照所得项目大类获取\n   \n   \n   3.企业注册接口目前税费种认定信息返回，不区分是否多个主管机关返回\n   \n   接口文档无变化。\n   \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/569727/image-preview)\n   4.全年一次性奖金个税筹划\n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570072/image-preview)\n\n****《生产经营所得》-更新**\n  1.按税务机关认可的其他方式(征收率)\n  2.按税务机关认可的其他方式(所得率)\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/569726/image-preview)\n   \n  3.生产经营漏报检查\n  \n  4.生产经营申报时，增加身份证号校验，校验是否和投资者身份证号一致，不一致不允许申报； \n \n  5.生产经营 申报数据报送、异步算税接口 成本费用字段增加 不允许为负数判断，必须大于等于0；",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-09-03T07:10:06.000Z",
+  "updatedAt": "2025-09-04T08:35:54.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

@@ -1,0 +1,2725 @@
+{
+  "id": 329126163,
+  "name": "进出口报关单",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "进出口报关单获取",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/customs/imex/dzh/getHQJCKBGD",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "jsonData": {
+          "type": "object",
+          "properties": {
+            "body": {
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "object",
+                  "properties": {
+                    "nsrsbh": {
+                      "type": "string",
+                      "title": "纳税人识别号"
+                    },
+                    "rqq": {
+                      "type": "string",
+                      "title": "日期起"
+                    },
+                    "rqz": {
+                      "type": "string",
+                      "title": "日期止"
+                    },
+                    "dclTrnRelFlag": {
+                      "type": "string",
+                      "title": "报关单类型",
+                      "enum": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "0",
+                          "name": "一般报关单  ",
+                          "description": ""
+                        },
+                        {
+                          "value": "1",
+                          "name": "转关提前报关单  ",
+                          "description": ""
+                        },
+                        {
+                          "value": "2",
+                          "name": "备案清单  ",
+                          "description": ""
+                        },
+                        {
+                          "value": "3",
+                          "name": "转关提前备案清单 ",
+                          "description": ""
+                        },
+                        {
+                          "value": "4",
+                          "name": "出口二次转关  ",
+                          "description": ""
+                        },
+                        {
+                          "value": "5",
+                          "name": "内贸货物备案清单",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "etpsCategory": {
+                      "type": "string",
+                      "title": "企业类别",
+                      "enum": [
+                        "A",
+                        "C",
+                        "D"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "A",
+                          "name": "报关申报单位 ",
+                          "description": ""
+                        },
+                        {
+                          "value": "C",
+                          "name": "报关收发货人  ",
+                          "description": ""
+                        },
+                        {
+                          "value": "D",
+                          "name": "报关录入单位",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "cusIEFlag": {
+                      "type": "string",
+                      "title": "进出口标志",
+                      "enum": [
+                        "I",
+                        "E"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "I",
+                          "name": "进口 ",
+                          "description": ""
+                        },
+                        {
+                          "value": "E",
+                          "name": "出口",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "tableFlag": {
+                      "type": "string",
+                      "title": "是否结关",
+                      "enum": [
+                        "0 ",
+                        "1"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "0 ",
+                          "name": "否 ",
+                          "description": ""
+                        },
+                        {
+                          "value": "1",
+                          "name": "是",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "pageNum": {
+                      "type": "string",
+                      "title": "当前页"
+                    },
+                    "pageSize": {
+                      "type": "string",
+                      "title": "分页数量"
+                    },
+                    "entryId": {
+                      "type": "string",
+                      "title": "统一编号"
+                    }
+                  },
+                  "required": [
+                    "nsrsbh",
+                    "rqq",
+                    "rqz"
+                  ],
+                  "x-apifox-orders": [
+                    "nsrsbh",
+                    "rqq",
+                    "rqz",
+                    "dclTrnRelFlag",
+                    "etpsCategory",
+                    "cusIEFlag",
+                    "tableFlag",
+                    "pageNum",
+                    "pageSize",
+                    "entryId"
+                  ]
+                }
+              },
+              "required": [
+                "input"
+              ],
+              "x-apifox-orders": [
+                "input"
+              ],
+              "description": "此处为xml内节点"
+            }
+          },
+          "x-apifox-orders": [
+            "body"
+          ],
+          "required": [
+            "body"
+          ]
+        }
+      },
+      "required": [
+        "jsonData"
+      ],
+      "xml": {
+        "name": "business"
+      },
+      "x-apifox-orders": [
+        "jsonData"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"jsonData\": \"\r\n    <?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\n\r\n    <business comment=\\\"获取进出口报关单\\\" id=\\\"HQJCKBGD\\\">\\n\r\n      <body yylxdm=\\\"1\\\">\\n\r\n        <input>\\n\r\n          <rqq>2025-08-28</rqq>\\n\r\n          <rqz>2025-08-31</rqz>\\n\r\n          <entryId></entryId>\\n\r\n          <nsrsbh>91441900733********</nsrsbh>\\n\r\n          <dclTrnRelFlag>0</dclTrnRelFlag>\\n\r\n          <etpsCategory>C</etpsCategory>\r\n          <cusIEFlag>E</cusIEFlag>\\n\r\n          <tableFlag>1</tableFlag>\\n\r\n          <pageNum>0</pageNum>\\n\r\n          <pageSize>100</pageSize>\r\n        </input>\\n\r\n      </body>\\n\r\n    </business>\r\n\"\r\n}",
+        "mediaType": "application/xml",
+        "description": ""
+      },
+      {
+        "name": "示例 1",
+        "value": "{\r\n  \"jsonData\": \"\r\n    <?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\\n\r\n    <business comment=\\\"获取进出口报关单\\\" id=\\\"HQJCKBGD\\\">\\n\r\n      <body yylxdm=\\\"1\\\">\\n\r\n        <input>\\n\r\n          <rqq>2025-08-28</rqq>\\n\r\n          <rqz>2025-08-31</rqz>\\n\r\n          <entryId></entryId>\\n\r\n          <nsrsbh>91441900733********</nsrsbh>\\n\r\n          <dclTrnRelFlag>0</dclTrnRelFlag>\\n\r\n          <etpsCategory>C</etpsCategory>\r\n          <cusIEFlag>E</cusIEFlag>\\n\r\n          <tableFlag>1</tableFlag>\\n\r\n          <pageNum>0</pageNum>\\n\r\n          <pageSize>100</pageSize>\r\n        </input>\\n\r\n      </body>\\n\r\n    </business>\r\n\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "WIao5AWXey",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "tMsMHr3Qvz",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "HilSZB1KlQ",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      },
+      {
+        "id": "bkXsm9NtTG",
+        "name": "Content-Type",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "application/json"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 733195788,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "tsjhbz": {
+                "type": "string",
+                "title": "退税稽核标志"
+              },
+              "cusCiqNo": {
+                "type": "string",
+                "title": "统一编号"
+              },
+              "spDecSeqNo": {
+                "type": "string",
+                "title": " 统一编号"
+              },
+              "entryId": {
+                "type": "string",
+                "title": "海关编号"
+              },
+              "cnsnTradeCode": {
+                "type": "string",
+                "title": "境内收发货人 海关编码"
+              },
+              "cnsnTradeScc": {
+                "type": "string",
+                "title": "境内收发货人 社会信用代码"
+              },
+              "agentCode": {
+                "type": "string",
+                "title": "申报单位 海关编码"
+              },
+              "agentName": {
+                "type": "string",
+                "title": "申报单位 名称"
+              },
+              "agentScc": {
+                "type": "string",
+                "title": "申报单位 社会信用代码"
+              },
+              "ownerCode": {
+                "type": "string",
+                "title": "生产销售单位海关编码"
+              },
+              "coOwner": {
+                "type": "string",
+                "title": ""
+              },
+              "customMaster": {
+                "type": "string",
+                "title": "申报地海关"
+              },
+              "entryType": {
+                "type": "string",
+                "title": "报关单类型",
+                "enum": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "M"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0",
+                    "name": "有纸报关单",
+                    "description": ""
+                  },
+                  {
+                    "value": "1",
+                    "name": "转关提前报关单",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "转关提前备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "出口二次转关",
+                    "description": ""
+                  },
+                  {
+                    "value": "5",
+                    "name": "内贸货物备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "6",
+                    "name": "横琴简化备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "M",
+                    "name": "通关无纸化",
+                    "description": ""
+                  }
+                ]
+              },
+              "billNo": {
+                "type": "string",
+                "title": "订单编号"
+              },
+              "iEDate": {
+                "type": "string",
+                "title": "进出口日期",
+                "description": "格式：yyyyMMdd"
+              },
+              "dDate": {
+                "type": "string",
+                "title": "录入日期",
+                "description": "格式：yyyy-MM-dd"
+              },
+              "distinatePort": {
+                "type": "string",
+                "title": "目的地海关"
+              },
+              "districtCode": {
+                "type": "string",
+                "title": "境内目的地/境内货源地"
+              },
+              "cusTrafMode": {
+                "type": "string",
+                "title": "运输方式代码",
+                "enum": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9",
+                  "G",
+                  "H",
+                  "L",
+                  "P",
+                  "S",
+                  "T",
+                  "W",
+                  "X",
+                  "Y",
+                  "Z"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0",
+                    "name": "非保税区",
+                    "description": ""
+                  },
+                  {
+                    "value": "1",
+                    "name": "监管仓库",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "水路运输",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "铁路运输",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "公路运输",
+                    "description": ""
+                  },
+                  {
+                    "value": "5",
+                    "name": "航空运输",
+                    "description": ""
+                  },
+                  {
+                    "value": "6",
+                    "name": "邮件运输",
+                    "description": ""
+                  },
+                  {
+                    "value": "7",
+                    "name": "保税区",
+                    "description": ""
+                  },
+                  {
+                    "value": "8",
+                    "name": "保税仓库",
+                    "description": ""
+                  },
+                  {
+                    "value": "9",
+                    "name": "其它运输",
+                    "description": ""
+                  },
+                  {
+                    "value": "G",
+                    "name": "固定设施",
+                    "description": ""
+                  },
+                  {
+                    "value": "H",
+                    "name": "边境特殊海关作业区",
+                    "description": ""
+                  },
+                  {
+                    "value": "L",
+                    "name": "旅客携带",
+                    "description": ""
+                  },
+                  {
+                    "value": "P",
+                    "name": "洋浦保税港区",
+                    "description": ""
+                  },
+                  {
+                    "value": "S",
+                    "name": "特殊综合保税区",
+                    "description": ""
+                  },
+                  {
+                    "value": "T",
+                    "name": "综合实验区",
+                    "description": ""
+                  },
+                  {
+                    "value": "W",
+                    "name": "物流中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "X",
+                    "name": "物流园区",
+                    "description": ""
+                  },
+                  {
+                    "value": "Y",
+                    "name": "保税港区",
+                    "description": ""
+                  },
+                  {
+                    "value": "Z",
+                    "name": "出口加工区",
+                    "description": ""
+                  }
+                ],
+                "description": "海关"
+              },
+              "ciqTrafMode": {
+                "type": "string",
+                "title": "运输方式代码",
+                "description": "检疫检验"
+              },
+              "cusTradeNationCode": {
+                "type": "string",
+                "title": "出口目的国代码",
+                "description": "详见附录-国别代码"
+              },
+              "ciqTradeCountryCode": {
+                "type": "string",
+                "title": "检验检疫目的国代码",
+                "description": "详见附录-国别代码"
+              },
+              "cusTradeCountry": {
+                "type": "string",
+                "title": "出口国家",
+                "description": "详见附录-国别代码"
+              },
+              "ciqDespCtryCode": {
+                "type": "string",
+                "title": "检验检疫目标国家",
+                "description": "详见附录-国别代码"
+              },
+              "iEPort": {
+                "type": "string",
+                "title": "出口港口编码",
+                "description": "详见附录-关区代码"
+              },
+              "contrNo": {
+                "type": "string",
+                "title": "合同号"
+              },
+              "supvModeCdde": {
+                "type": "string",
+                "title": "监管方式",
+                "enum": [
+                  "0110",
+                  "0615",
+                  "0644",
+                  "0654",
+                  "0664",
+                  "0700",
+                  "0844",
+                  "1300",
+                  "2600",
+                  "3010",
+                  "3339",
+                  "4500",
+                  "4600",
+                  "9700"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0110",
+                    "name": "一般贸易",
+                    "description": ""
+                  },
+                  {
+                    "value": "0615",
+                    "name": "进料对口",
+                    "description": ""
+                  },
+                  {
+                    "value": "0644",
+                    "name": "进料料件内销",
+                    "description": ""
+                  },
+                  {
+                    "value": "0654",
+                    "name": "进料深加工",
+                    "description": ""
+                  },
+                  {
+                    "value": "0664",
+                    "name": "进料料件复出",
+                    "description": ""
+                  },
+                  {
+                    "value": "0700",
+                    "name": "进料料件退换",
+                    "description": ""
+                  },
+                  {
+                    "value": "0844",
+                    "name": "进料边角料内销",
+                    "description": ""
+                  },
+                  {
+                    "value": "1300",
+                    "name": "修理物品",
+                    "description": ""
+                  },
+                  {
+                    "value": "2600",
+                    "name": "暂时进出货物",
+                    "description": ""
+                  },
+                  {
+                    "value": "3010",
+                    "name": "货样广告品",
+                    "description": ""
+                  },
+                  {
+                    "value": "3339",
+                    "name": "其他进出口免费",
+                    "description": ""
+                  },
+                  {
+                    "value": "4500",
+                    "name": "直接退运",
+                    "description": ""
+                  },
+                  {
+                    "value": "4600",
+                    "name": "进料成品退换",
+                    "description": ""
+                  },
+                  {
+                    "value": "9700",
+                    "name": "后续补税",
+                    "description": ""
+                  }
+                ]
+              },
+              "cutMode": {
+                "type": "string",
+                "title": "征免性质",
+                "enum": [
+                  "101",
+                  "118",
+                  "119",
+                  "201",
+                  "299",
+                  "301",
+                  "307",
+                  "399",
+                  "401",
+                  "402",
+                  "403",
+                  "405",
+                  "406",
+                  "407",
+                  "408",
+                  "409",
+                  "412",
+                  "413",
+                  "417",
+                  "418",
+                  "419",
+                  "420",
+                  "421",
+                  "422",
+                  "423",
+                  "426",
+                  "428",
+                  "481",
+                  "482",
+                  "490",
+                  "491",
+                  "492",
+                  "493",
+                  "494",
+                  "495",
+                  "496",
+                  "497",
+                  "498",
+                  "499",
+                  "501",
+                  "502",
+                  "503",
+                  "506",
+                  "510",
+                  "591",
+                  "592",
+                  "593",
+                  "594",
+                  "595",
+                  "596",
+                  "601",
+                  "602",
+                  "603",
+                  "605",
+                  "606",
+                  "608",
+                  "609",
+                  "610",
+                  "611",
+                  "666",
+                  "686",
+                  "698",
+                  "701",
+                  "702",
+                  "703",
+                  "704",
+                  "705",
+                  "706",
+                  "707",
+                  "708",
+                  "789",
+                  "799",
+                  "801",
+                  "802",
+                  "803",
+                  "811",
+                  "815",
+                  "818",
+                  "819",
+                  "888",
+                  "898",
+                  "899",
+                  "901",
+                  "902",
+                  "903",
+                  "904",
+                  "905",
+                  "906",
+                  "907",
+                  "908",
+                  "909",
+                  "910",
+                  "911",
+                  "912",
+                  "913",
+                  "915",
+                  "916",
+                  "917",
+                  "918",
+                  "919",
+                  "921",
+                  "922",
+                  "924",
+                  "926",
+                  "927",
+                  "928",
+                  "930",
+                  "931",
+                  "939",
+                  "940",
+                  "941",
+                  "942",
+                  "943",
+                  "944",
+                  "997",
+                  "998",
+                  "999"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "101",
+                    "name": "一般征税",
+                    "description": ""
+                  },
+                  {
+                    "value": "118",
+                    "name": "整车征税",
+                    "description": ""
+                  },
+                  {
+                    "value": "119",
+                    "name": "零部件征税",
+                    "description": ""
+                  },
+                  {
+                    "value": "201",
+                    "name": "无偿援助",
+                    "description": ""
+                  },
+                  {
+                    "value": "299",
+                    "name": "其他法定",
+                    "description": ""
+                  },
+                  {
+                    "value": "301",
+                    "name": "特定区域",
+                    "description": ""
+                  },
+                  {
+                    "value": "307",
+                    "name": "保税区",
+                    "description": ""
+                  },
+                  {
+                    "value": "399",
+                    "name": "其他地区",
+                    "description": ""
+                  },
+                  {
+                    "value": "401",
+                    "name": "科教用品",
+                    "description": ""
+                  },
+                  {
+                    "value": "402",
+                    "name": "示范平台用品",
+                    "description": ""
+                  },
+                  {
+                    "value": "403",
+                    "name": "技术改造",
+                    "description": ""
+                  },
+                  {
+                    "value": "405",
+                    "name": "科技开发用品",
+                    "description": ""
+                  },
+                  {
+                    "value": "406",
+                    "name": "重大项目",
+                    "description": ""
+                  },
+                  {
+                    "value": "407",
+                    "name": "动漫用品",
+                    "description": ""
+                  },
+                  {
+                    "value": "408",
+                    "name": "重大技术装备",
+                    "description": ""
+                  },
+                  {
+                    "value": "409",
+                    "name": "科技重大专项",
+                    "description": ""
+                  },
+                  {
+                    "value": "412",
+                    "name": "基础设施",
+                    "description": ""
+                  },
+                  {
+                    "value": "413",
+                    "name": "残疾人",
+                    "description": ""
+                  },
+                  {
+                    "value": "417",
+                    "name": "远洋渔业",
+                    "description": ""
+                  },
+                  {
+                    "value": "418",
+                    "name": "国产化",
+                    "description": ""
+                  },
+                  {
+                    "value": "419",
+                    "name": "整车特征",
+                    "description": ""
+                  },
+                  {
+                    "value": "420",
+                    "name": "远洋船舶",
+                    "description": ""
+                  },
+                  {
+                    "value": "421",
+                    "name": "内销设备",
+                    "description": ""
+                  },
+                  {
+                    "value": "422",
+                    "name": "集成电路",
+                    "description": ""
+                  },
+                  {
+                    "value": "423",
+                    "name": "新型显示器件",
+                    "description": ""
+                  },
+                  {
+                    "value": "426",
+                    "name": "集成电路和软件企业进口设备",
+                    "description": ""
+                  },
+                  {
+                    "value": "428",
+                    "name": "集成电路产业进口货物",
+                    "description": ""
+                  },
+                  {
+                    "value": "481",
+                    "name": "合作区自用设备",
+                    "description": ""
+                  },
+                  {
+                    "value": "482",
+                    "name": "合作区基建物资",
+                    "description": ""
+                  },
+                  {
+                    "value": "490",
+                    "name": "暂出修理货物",
+                    "description": ""
+                  },
+                  {
+                    "value": "491",
+                    "name": "零关税自用生产设备",
+                    "description": ""
+                  },
+                  {
+                    "value": "492",
+                    "name": "零关税交通工具及游艇",
+                    "description": ""
+                  },
+                  {
+                    "value": "493",
+                    "name": "零关税自用生产设备缴纳进口环节税",
+                    "description": ""
+                  },
+                  {
+                    "value": "494",
+                    "name": "零关税交通工具游艇缴纳进口环节税",
+                    "description": ""
+                  },
+                  {
+                    "value": "495",
+                    "name": "暂进修理内销货物",
+                    "description": ""
+                  },
+                  {
+                    "value": "496",
+                    "name": "含进口料件加工增值货物",
+                    "description": ""
+                  },
+                  {
+                    "value": "497",
+                    "name": "不含进口料件加工增值货物",
+                    "description": ""
+                  },
+                  {
+                    "value": "498",
+                    "name": "加工贸易副产品",
+                    "description": ""
+                  },
+                  {
+                    "value": "499",
+                    "name": "ITA产品",
+                    "description": ""
+                  },
+                  {
+                    "value": "501",
+                    "name": "加工设备",
+                    "description": ""
+                  },
+                  {
+                    "value": "502",
+                    "name": "来料加工",
+                    "description": ""
+                  },
+                  {
+                    "value": "503",
+                    "name": "进料加工",
+                    "description": ""
+                  },
+                  {
+                    "value": "506",
+                    "name": "边境小额",
+                    "description": ""
+                  },
+                  {
+                    "value": "510",
+                    "name": "港澳OPA",
+                    "description": ""
+                  },
+                  {
+                    "value": "591",
+                    "name": "零关税原辅料",
+                    "description": ""
+                  },
+                  {
+                    "value": "592",
+                    "name": "原辅料部分征税",
+                    "description": ""
+                  },
+                  {
+                    "value": "593",
+                    "name": "内外贸同船运输加注保税油",
+                    "description": ""
+                  },
+                  {
+                    "value": "594",
+                    "name": "内外贸同船运输加注本地生产燃料油",
+                    "description": ""
+                  },
+                  {
+                    "value": "595",
+                    "name": "进出岛航班加注保税油全免",
+                    "description": ""
+                  },
+                  {
+                    "value": "596",
+                    "name": "进出岛航班加注保税油部分征税",
+                    "description": ""
+                  },
+                  {
+                    "value": "601",
+                    "name": "中外合资",
+                    "description": ""
+                  },
+                  {
+                    "value": "602",
+                    "name": "中外合作",
+                    "description": ""
+                  },
+                  {
+                    "value": "603",
+                    "name": "外资企业",
+                    "description": ""
+                  },
+                  {
+                    "value": "605",
+                    "name": "勘探开发煤层气",
+                    "description": ""
+                  },
+                  {
+                    "value": "606",
+                    "name": "海洋石油",
+                    "description": ""
+                  },
+                  {
+                    "value": "608",
+                    "name": "陆上石油",
+                    "description": ""
+                  },
+                  {
+                    "value": "609",
+                    "name": "贷款项目",
+                    "description": ""
+                  },
+                  {
+                    "value": "610",
+                    "name": "海上应急救援",
+                    "description": ""
+                  },
+                  {
+                    "value": "611",
+                    "name": "贷款中标",
+                    "description": ""
+                  },
+                  {
+                    "value": "666",
+                    "name": "加征关税排除措施",
+                    "description": ""
+                  },
+                  {
+                    "value": "686",
+                    "name": "市场化组织采购排除措施",
+                    "description": ""
+                  },
+                  {
+                    "value": "698",
+                    "name": "公益收藏",
+                    "description": ""
+                  },
+                  {
+                    "value": "701",
+                    "name": "部分进口饲料",
+                    "description": ""
+                  },
+                  {
+                    "value": "702",
+                    "name": "中资方便旗船",
+                    "description": ""
+                  },
+                  {
+                    "value": "703",
+                    "name": "航空公司进口飞机",
+                    "description": ""
+                  },
+                  {
+                    "value": "704",
+                    "name": "花卉种子",
+                    "description": ""
+                  },
+                  {
+                    "value": "705",
+                    "name": "科普事业",
+                    "description": ""
+                  },
+                  {
+                    "value": "706",
+                    "name": "租赁企业进口飞机",
+                    "description": ""
+                  },
+                  {
+                    "value": "707",
+                    "name": "博览会留购展品",
+                    "description": ""
+                  },
+                  {
+                    "value": "708",
+                    "name": "替代种植农产品",
+                    "description": ""
+                  },
+                  {
+                    "value": "789",
+                    "name": "鼓励项目",
+                    "description": ""
+                  },
+                  {
+                    "value": "799",
+                    "name": "自有资金",
+                    "description": ""
+                  },
+                  {
+                    "value": "801",
+                    "name": "救灾捐赠",
+                    "description": ""
+                  },
+                  {
+                    "value": "802",
+                    "name": "扶贫慈善",
+                    "description": ""
+                  },
+                  {
+                    "value": "803",
+                    "name": "抗艾滋病药物",
+                    "description": ""
+                  },
+                  {
+                    "value": "811",
+                    "name": "种子种源",
+                    "description": ""
+                  },
+                  {
+                    "value": "815",
+                    "name": "野生动植物",
+                    "description": ""
+                  },
+                  {
+                    "value": "818",
+                    "name": "中央储备粮油",
+                    "description": ""
+                  },
+                  {
+                    "value": "819",
+                    "name": "科教图书",
+                    "description": ""
+                  },
+                  {
+                    "value": "888",
+                    "name": "航材减免",
+                    "description": ""
+                  },
+                  {
+                    "value": "898",
+                    "name": "国批减免",
+                    "description": ""
+                  },
+                  {
+                    "value": "899",
+                    "name": "选择征税",
+                    "description": ""
+                  },
+                  {
+                    "value": "901",
+                    "name": "科研院所",
+                    "description": ""
+                  },
+                  {
+                    "value": "902",
+                    "name": "高等学校",
+                    "description": ""
+                  },
+                  {
+                    "value": "903",
+                    "name": "工程研究中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "904",
+                    "name": "国家企业技术中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "905",
+                    "name": "转制科研机构",
+                    "description": ""
+                  },
+                  {
+                    "value": "906",
+                    "name": "重点实验室",
+                    "description": ""
+                  },
+                  {
+                    "value": "907",
+                    "name": "国家工程技术研究中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "908",
+                    "name": "社会研发机构",
+                    "description": ""
+                  },
+                  {
+                    "value": "909",
+                    "name": "示范平台",
+                    "description": ""
+                  },
+                  {
+                    "value": "910",
+                    "name": "外资研发中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "911",
+                    "name": "出版物进口单位",
+                    "description": ""
+                  },
+                  {
+                    "value": "912",
+                    "name": "国家实验室",
+                    "description": ""
+                  },
+                  {
+                    "value": "913",
+                    "name": "国家产业创新中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "915",
+                    "name": "国家制造业创新中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "916",
+                    "name": "国家技术创新中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "917",
+                    "name": "公共图书馆",
+                    "description": ""
+                  },
+                  {
+                    "value": "918",
+                    "name": "国家临床医学研究中心",
+                    "description": ""
+                  },
+                  {
+                    "value": "919",
+                    "name": "党校（行政学院）",
+                    "description": ""
+                  },
+                  {
+                    "value": "921",
+                    "name": "大型客机研制物资",
+                    "description": ""
+                  },
+                  {
+                    "value": "922",
+                    "name": "进博会留购展品",
+                    "description": ""
+                  },
+                  {
+                    "value": "924",
+                    "name": "消防救援装备",
+                    "description": ""
+                  },
+                  {
+                    "value": "926",
+                    "name": "服贸会留购展品",
+                    "description": ""
+                  },
+                  {
+                    "value": "927",
+                    "name": "进口钻石",
+                    "description": ""
+                  },
+                  {
+                    "value": "928",
+                    "name": "三代核电",
+                    "description": ""
+                  },
+                  {
+                    "value": "930",
+                    "name": "疫情防控物资",
+                    "description": ""
+                  },
+                  {
+                    "value": "931",
+                    "name": "消博会留购展品",
+                    "description": ""
+                  },
+                  {
+                    "value": "939",
+                    "name": "运动会",
+                    "description": ""
+                  },
+                  {
+                    "value": "940",
+                    "name": "技能大赛",
+                    "description": ""
+                  },
+                  {
+                    "value": "941",
+                    "name": "广交会留购展品",
+                    "description": ""
+                  },
+                  {
+                    "value": "942",
+                    "name": "高水平医院",
+                    "description": ""
+                  },
+                  {
+                    "value": "943",
+                    "name": "高水平医院科教图书",
+                    "description": ""
+                  },
+                  {
+                    "value": "944",
+                    "name": "邮轮直供",
+                    "description": ""
+                  },
+                  {
+                    "value": "997",
+                    "name": "自贸协定",
+                    "description": ""
+                  },
+                  {
+                    "value": "998",
+                    "name": "内部暂定",
+                    "description": ""
+                  },
+                  {
+                    "value": "999",
+                    "name": "例外减免",
+                    "description": ""
+                  }
+                ]
+              },
+              "wrapType": {
+                "type": "string",
+                "title": "包装种类",
+                "description": "详见附录-包装种类代码"
+              },
+              "packNo": {
+                "type": "string",
+                "title": "件数"
+              },
+              "grossWt": {
+                "type": "string",
+                "title": "毛重"
+              },
+              "netWt": {
+                "type": "string",
+                "title": "净重"
+              },
+              "transMode": {
+                "type": "string",
+                "title": "成交方式",
+                "enum": [
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "7"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "CIF",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "C&F",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "FOB",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "C&I",
+                    "description": ""
+                  },
+                  {
+                    "value": "7",
+                    "name": "EXW",
+                    "description": ""
+                  }
+                ]
+              },
+              "dclTrnRelFlag": {
+                "type": "string",
+                "title": "报关单类型",
+                "enum": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0",
+                    "name": "一般报关单",
+                    "description": ""
+                  },
+                  {
+                    "value": "1",
+                    "name": "转关提前报关单",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "转关提前备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "出口二次转关",
+                    "description": ""
+                  },
+                  {
+                    "value": "5",
+                    "name": "内贸货物备案清单",
+                    "description": ""
+                  },
+                  {
+                    "value": "6",
+                    "name": "横琴简化备案清单",
+                    "description": ""
+                  }
+                ]
+              },
+              "preEntryId": {
+                "type": "string",
+                "title": "预录入编号"
+              },
+              "promiseItems": {
+                "type": "string",
+                "title": "承诺事项"
+              },
+              "noteS": {
+                "type": "string",
+                "title": "备注"
+              },
+              "dclrNo": {
+                "type": "string",
+                "title": ""
+              },
+              "ediId": {
+                "type": "string",
+                "title": "报关标志"
+              },
+              "consignorCode": {
+                "type": "string",
+                "title": "境内收发货人"
+              },
+              "consignorCname": {
+                "type": "string",
+                "title": "境内收发货人名称"
+              },
+              "consigneeCode": {
+                "type": "string",
+                "title": "境外收发货人编码"
+              },
+              "consigneeEname": {
+                "type": "string",
+                "title": "境外收发货人英文名称"
+              },
+              "tradeModeCode": {
+                "type": "string",
+                "title": "交易方式代码",
+                "enum": [
+                  "0110",
+                  "0130",
+                  "0214",
+                  "0513",
+                  "2250",
+                  "3410"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0110",
+                    "name": "一般贸易",
+                    "description": ""
+                  },
+                  {
+                    "value": "0130",
+                    "name": "易货贸易",
+                    "description": ""
+                  },
+                  {
+                    "value": "0214",
+                    "name": "来料加工装配贸易",
+                    "description": ""
+                  },
+                  {
+                    "value": "0513",
+                    "name": "补偿贸易",
+                    "description": ""
+                  },
+                  {
+                    "value": "2250",
+                    "name": "国际技术许可贸易",
+                    "description": ""
+                  },
+                  {
+                    "value": "3410",
+                    "name": "外商直接投资",
+                    "description": ""
+                  }
+                ]
+              },
+              "markNo": {
+                "type": "string",
+                "title": "标记唛码",
+                "description": "例如：“N/M”"
+              },
+              "despPortCode": {
+                "type": "string",
+                "title": "目标海关代码",
+                "description": "详见附录-港口代码和国内口岸代码"
+              },
+              "portStopCode": {
+                "type": "string",
+                "title": "经停海关编码",
+                "description": "详见附录-港口代码和国内口岸代码"
+              },
+              "goodsPlace": {
+                "type": "string",
+                "title": "货物存放地点",
+                "description": "例如：“XXX仓库”"
+              },
+              "deliveryOrder": {
+                "type": "string",
+                "title": "提运单号"
+              },
+              "specDeclFlag": {
+                "type": "string",
+                "title": "特殊业务标识"
+              },
+              "custmRegNo": {
+                "type": "string",
+                "title": "境内收发货人 检验检疫编码"
+              },
+              "declCode": {
+                "type": "string",
+                "title": "申报代码"
+              },
+              "declDate": {
+                "type": "string",
+                "title": "申报日期",
+                "description": "格式：yyyy-MM-dd"
+              },
+              "specPassFlag": {
+                "type": "string",
+                "title": ""
+              },
+              "declRegNo": {
+                "type": "string",
+                "title": "申报单位 检验检疫代码"
+              },
+              "declRegName": {
+                "type": "string",
+                "title": "申报单位名称"
+              },
+              "speclInspQuraRe": {
+                "type": "string",
+                "title": "备注"
+              },
+              "arrivPortCode": {
+                "type": "string",
+                "title": "运抵海关编码",
+                "description": "详见附录-港口代码和国内口岸代码"
+              },
+              "cusIEFlag": {
+                "type": "string",
+                "title": "进出口标识",
+                "enum": [
+                  "E",
+                  "I"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "E",
+                    "name": "出口",
+                    "description": ""
+                  },
+                  {
+                    "value": "I",
+                    "name": "进口",
+                    "description": ""
+                  }
+                ]
+              },
+              "ciqIEFlag": {
+                "type": "string",
+                "title": "检验检疫标识",
+                "enum": [
+                  "E",
+                  "I"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "E",
+                    "name": "出口",
+                    "description": ""
+                  },
+                  {
+                    "value": "I",
+                    "name": "进口",
+                    "description": ""
+                  }
+                ]
+              },
+              "dataSrcCode": {
+                "type": "string",
+                "title": "数据来源代码",
+                "enum": [
+                  "01",
+                  "02",
+                  "03"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "01",
+                    "name": "企业自主录入",
+                    "description": ""
+                  },
+                  {
+                    "value": "02",
+                    "name": "第三方服务平台",
+                    "description": ""
+                  },
+                  {
+                    "value": "03",
+                    "name": "跨境电商专用系统",
+                    "description": ""
+                  }
+                ],
+                "description": "名称和枚举值全部为猜测"
+              },
+              "dataSrcUnitCode": {
+                "type": "string",
+                "title": "",
+                "description": "数据来源单位的代码（猜的）"
+              },
+              "dataSrcModeCode": {
+                "type": "string",
+                "title": ""
+              },
+              "createUser": {
+                "type": "string",
+                "title": "创建用户"
+              },
+              "indbTime": {
+                "type": "string",
+                "title": "入库时间",
+                "description": "格式：yyyy-mm-dd HH:MM:SS"
+              },
+              "updateUser": {
+                "type": "string",
+                "title": "更新用户"
+              },
+              "updateTime": {
+                "type": "string",
+                "title": "更新时间",
+                "description": "格式：yyyy-mm-dd"
+              },
+              "inputErName": {
+                "type": "string",
+                "title": "录入人名称"
+              },
+              "inputEtpsName": {
+                "type": "string",
+                "title": "录入且有信息"
+              },
+              "isudMark": {
+                "type": "string",
+                "title": ""
+              },
+              "cusRemark": {
+                "type": "string",
+                "title": ""
+              },
+              "contractNo": {
+                "type": "string",
+                "title": "合同号"
+              },
+              "ciqIsudMark": {
+                "type": "string",
+                "title": ""
+              },
+              "inputEtpsCode": {
+                "type": "string",
+                "title": "录入企业编码"
+              },
+              "typistNo": {
+                "type": "string",
+                "title": "审核员编码"
+              },
+              "cusDecStatus": {
+                "type": "string",
+                "title": "申报状态代码",
+                "enum": [
+                  "1",
+                  "2",
+                  "4",
+                  "6",
+                  "7",
+                  "8",
+                  "9",
+                  "10",
+                  "11",
+                  "S",
+                  "T",
+                  "U"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "保存",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "已申报",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "海关入库成功",
+                    "description": ""
+                  },
+                  {
+                    "value": "6",
+                    "name": "退单",
+                    "description": ""
+                  },
+                  {
+                    "value": "7",
+                    "name": "审结",
+                    "description": ""
+                  },
+                  {
+                    "value": "8",
+                    "name": "删单",
+                    "description": ""
+                  },
+                  {
+                    "value": "9",
+                    "name": "放行",
+                    "description": ""
+                  },
+                  {
+                    "value": "10",
+                    "name": "结关",
+                    "description": ""
+                  },
+                  {
+                    "value": "11",
+                    "name": "查验通知",
+                    "description": ""
+                  },
+                  {
+                    "value": "S",
+                    "name": "公自用物品核准通过",
+                    "description": ""
+                  },
+                  {
+                    "value": "T",
+                    "name": "公自用物品退单",
+                    "description": ""
+                  },
+                  {
+                    "value": "U",
+                    "name": "公自用物品待核准",
+                    "description": ""
+                  }
+                ]
+              },
+              "ciqDecStatus": {
+                "type": "string",
+                "title": "检验检疫状态"
+              },
+              "extendField": {
+                "type": "string",
+                "title": ""
+              },
+              "chktstFlag": {
+                "type": "string",
+                "title": "出口退税标志"
+              },
+              "tableFlag": {
+                "type": "string",
+                "title": "是否结关",
+                "enum": [
+                  "0",
+                  "1"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0",
+                    "name": "未结关",
+                    "description": ""
+                  },
+                  {
+                    "value": "1",
+                    "name": "已结关",
+                    "description": ""
+                  }
+                ]
+              },
+              "ediRemark": {
+                "type": "string",
+                "title": ""
+              },
+              "ownerCiqCode": {
+                "type": "string",
+                "title": ""
+              },
+              "isCopPromise": {
+                "type": "string",
+                "title": ""
+              },
+              "relmanNo": {
+                "type": "string",
+                "title": "关联备案号"
+              },
+              "bonNo": {
+                "type": "string",
+                "title": "监管仓号"
+              },
+              "feeCurr": {
+                "type": "string",
+                "title": "运费币制"
+              },
+              "feeMark": {
+                "type": "string",
+                "title": "运费标记",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "率",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "单价",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "总价",
+                    "description": ""
+                  }
+                ]
+              },
+              "feeRate": {
+                "type": "string",
+                "title": "运费／率"
+              },
+              "otherCurr": {
+                "type": "string",
+                "title": "杂费币制"
+              },
+              "otherMark": {
+                "type": "string",
+                "title": "杂费标志",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "率",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "单价",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "总价",
+                    "description": ""
+                  }
+                ]
+              },
+              "otherRate": {
+                "type": "string",
+                "title": "杂费／率"
+              },
+              "insurCurr": {
+                "type": "string",
+                "title": "保险费币制"
+              },
+              "insurMark": {
+                "type": "string",
+                "title": "保险费标记",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "率",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "单价",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "总价",
+                    "description": ""
+                  }
+                ]
+              },
+              "insurRate": {
+                "type": "string",
+                "title": "保险费／率"
+              },
+              "mxs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "GNo": {
+                      "type": "string",
+                      "title": "项号"
+                    },
+                    "CodeTS": {
+                      "type": "string",
+                      "title": "商品编号",
+                      "description": ""
+                    },
+                    "GName": {
+                      "type": "string",
+                      "title": "商品名称"
+                    },
+                    "GModel": {
+                      "type": "string",
+                      "title": "规格型号"
+                    },
+                    "TradeQty": {
+                      "type": "string",
+                      "title": "成交数量"
+                    },
+                    "TradeUnit": {
+                      "type": "string",
+                      "title": "成交计量单位",
+                      "description": "详见附录-计量方式代码"
+                    },
+                    "Price": {
+                      "type": "string",
+                      "title": "单价"
+                    },
+                    "Total": {
+                      "type": "string",
+                      "title": "总价"
+                    },
+                    "Curr": {
+                      "type": "string",
+                      "title": "币制",
+                      "description": "详见附录-货币代码"
+                    },
+                    "FirstQty": {
+                      "type": "string",
+                      "title": "第一法定数量"
+                    },
+                    "FirstUnit": {
+                      "type": "string",
+                      "title": "法定第一计量单位",
+                      "description": "详见附录-计量方式代码"
+                    },
+                    "DestinationCountry": {
+                      "type": "string",
+                      "title": "最终目的国（地区）",
+                      "description": "详见附录-国别代码"
+                    },
+                    "SecondQty": {
+                      "type": "string",
+                      "title": "法定第二数量"
+                    },
+                    "SecondUnit": {
+                      "type": "string",
+                      "title": "法定第二计量单位",
+                      "description": "详见附录-计量方式代码"
+                    },
+                    "OrigPlace": {
+                      "type": "string",
+                      "title": "原产国（地区）",
+                      "description": "详见附录-国别代码"
+                    },
+                    "DistrictCode": {
+                      "type": "string",
+                      "title": "境内目的地/境内货源地",
+                      "description": "详见附录-货源地代码"
+                    },
+                    "ContrItem": {
+                      "type": "string",
+                      "title": "备案序号",
+                      "description": ""
+                    },
+                    "CiqCode": {
+                      "type": "string",
+                      "title": "检验检疫编码",
+                      "description": "",
+                      "enum": [
+                        "101",
+                        "102",
+                        "103",
+                        "301",
+                        "302",
+                        "303",
+                        "309",
+                        "990",
+                        "999"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "101",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "102",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "103",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "301",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "302",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "303",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "309",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "990",
+                          "name": "",
+                          "description": ""
+                        },
+                        {
+                          "value": "999",
+                          "name": "",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "Jgcpdhbbh": {
+                      "type": "string",
+                      "title": "加工成品单耗版本号",
+                      "description": ""
+                    },
+                    "ExgNo": {
+                      "type": "string",
+                      "title": "货号",
+                      "description": ""
+                    },
+                    "PtaOrigPlace": {
+                      "type": "string",
+                      "title": "优惠贸易协定项下原产地",
+                      "description": ""
+                    },
+                    "OrigPlaceCode": {
+                      "type": "string",
+                      "title": "原产地区代码",
+                      "description": "",
+                      "enum": [
+                        "156"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "156",
+                          "name": "中国",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "DestCode": {
+                      "type": "string",
+                      "title": "目的地代码/产地代码",
+                      "description": "",
+                      "enum": [
+                        "110000",
+                        "320200",
+                        "320211",
+                        "320214",
+                        "440300",
+                        "440307",
+                        "441900"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "110000",
+                          "name": "北京市",
+                          "description": ""
+                        },
+                        {
+                          "value": "320200",
+                          "name": "江苏省无锡市",
+                          "description": ""
+                        },
+                        {
+                          "value": "320211",
+                          "name": "无锡市滨湖区",
+                          "description": ""
+                        },
+                        {
+                          "value": "320214",
+                          "name": "无锡市新吴区",
+                          "description": ""
+                        },
+                        {
+                          "value": "440300",
+                          "name": "广东省深圳市",
+                          "description": ""
+                        },
+                        {
+                          "value": "440307",
+                          "name": "深圳市龙岗区",
+                          "description": ""
+                        },
+                        {
+                          "value": "441900",
+                          "name": "广东省东莞市",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "GoodsAttr": {
+                      "type": "string",
+                      "title": "货物属性代码",
+                      "description": "",
+                      "enum": [
+                        "12",
+                        "19",
+                        "21",
+                        "32",
+                        "33",
+                        "38",
+                        "40",
+                        "41"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "12",
+                          "name": "3C目录外",
+                          "description": ""
+                        },
+                        {
+                          "value": "19",
+                          "name": "正常",
+                          "description": ""
+                        },
+                        {
+                          "value": "21",
+                          "name": "旧品",
+                          "description": ""
+                        },
+                        {
+                          "value": "32",
+                          "name": "件装危险化学品",
+                          "description": ""
+                        },
+                        {
+                          "value": "33",
+                          "name": "非危险化学品",
+                          "description": ""
+                        },
+                        {
+                          "value": "38",
+                          "name": "非医疗器械",
+                          "description": ""
+                        },
+                        {
+                          "value": "40",
+                          "name": "非特种设备",
+                          "description": ""
+                        },
+                        {
+                          "value": "41",
+                          "name": "真空包装等货物",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "ProdEnnm": {
+                      "type": "string",
+                      "title": "英文名称",
+                      "description": ""
+                    },
+                    "Purpose": {
+                      "type": "string",
+                      "title": "用途代码",
+                      "description": "",
+                      "enum": [
+                        "19",
+                        "26",
+                        "99"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "19",
+                          "name": "食品包装材料 ",
+                          "description": ""
+                        },
+                        {
+                          "value": "26",
+                          "name": "仅工业用途 ",
+                          "description": ""
+                        },
+                        {
+                          "value": "99",
+                          "name": "其他",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "NoDangFlag": {
+                      "type": "string",
+                      "title": "非危险货物编码",
+                      "description": "",
+                      "enum": [
+                        "0",
+                        "1"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "0",
+                          "name": "否",
+                          "description": ""
+                        },
+                        {
+                          "value": "1",
+                          "name": "是",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "Uncode": {
+                      "type": "string",
+                      "title": "UN编号",
+                      "description": "例如：1170"
+                    },
+                    "DangPackType": {
+                      "type": "string",
+                      "title": "危险类别",
+                      "description": ""
+                    },
+                    "PackType": {
+                      "type": "string",
+                      "title": "包装类别",
+                      "description": "",
+                      "enum": [
+                        "2"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "2",
+                          "name": "二类",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "PackUnFlag": {
+                      "type": "string",
+                      "title": "包装UN标记",
+                      "description": ""
+                    },
+                    "Stuff": {
+                      "type": "string",
+                      "title": "成分/原料/组分",
+                      "description": ""
+                    },
+                    "ProdValidDt": {
+                      "type": "string",
+                      "title": "产品有效期",
+                      "description": ""
+                    },
+                    "ProdQgp": {
+                      "type": "string",
+                      "title": "产品保质期(天)",
+                      "description": ""
+                    },
+                    "EngManEntCnm": {
+                      "type": "string",
+                      "title": "境外生产企业",
+                      "description": ""
+                    },
+                    "GoodsSpec": {
+                      "type": "string",
+                      "title": "货物规格",
+                      "description": ""
+                    },
+                    "GoodsModel": {
+                      "type": "string",
+                      "title": "货物型号",
+                      "description": ""
+                    },
+                    "GoodsBrand": {
+                      "type": "string",
+                      "title": "货物品牌",
+                      "description": ""
+                    },
+                    "ProduceDate": {
+                      "type": "string",
+                      "title": "生产日期",
+                      "description": ""
+                    },
+                    "ProdBatchNo": {
+                      "type": "string",
+                      "title": "生产批次",
+                      "description": ""
+                    },
+                    "MnufctrRegNo": {
+                      "type": "string",
+                      "title": "生产单位代码",
+                      "description": ""
+                    },
+                    "DutyMode": {
+                      "type": "string",
+                      "title": "征免方式",
+                      "enum": [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "1",
+                          "name": "照章征税",
+                          "description": ""
+                        },
+                        {
+                          "value": "2",
+                          "name": "折半征税",
+                          "description": ""
+                        },
+                        {
+                          "value": "3",
+                          "name": "全免",
+                          "description": ""
+                        },
+                        {
+                          "value": "4",
+                          "name": "特案",
+                          "description": ""
+                        },
+                        {
+                          "value": "5",
+                          "name": "随征免性质",
+                          "description": ""
+                        },
+                        {
+                          "value": "6",
+                          "name": "保证金",
+                          "description": ""
+                        },
+                        {
+                          "value": "7",
+                          "name": "保函",
+                          "description": ""
+                        },
+                        {
+                          "value": "8",
+                          "name": "折半补税",
+                          "description": ""
+                        },
+                        {
+                          "value": "9",
+                          "name": "全额退税",
+                          "description": ""
+                        }
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "GNo",
+                    "CodeTS",
+                    "GName",
+                    "GModel",
+                    "TradeQty",
+                    "TradeUnit",
+                    "Price",
+                    "Total",
+                    "Curr",
+                    "FirstQty",
+                    "FirstUnit",
+                    "DestinationCountry",
+                    "SecondQty",
+                    "SecondUnit",
+                    "OrigPlace",
+                    "DistrictCode",
+                    "DutyMode",
+                    "ContrItem",
+                    "CiqCode",
+                    "Jgcpdhbbh",
+                    "ExgNo",
+                    "PtaOrigPlace",
+                    "OrigPlaceCode",
+                    "DestCode",
+                    "GoodsAttr",
+                    "ProdEnnm",
+                    "Purpose",
+                    "NoDangFlag",
+                    "Uncode",
+                    "DangPackType",
+                    "PackType",
+                    "PackUnFlag",
+                    "Stuff",
+                    "ProdValidDt",
+                    "ProdQgp",
+                    "EngManEntCnm",
+                    "GoodsSpec",
+                    "GoodsModel",
+                    "GoodsBrand",
+                    "ProduceDate",
+                    "ProdBatchNo",
+                    "MnufctrRegNo"
+                  ]
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "tsjhbz",
+              "cusCiqNo",
+              "spDecSeqNo",
+              "entryId",
+              "cnsnTradeCode",
+              "cnsnTradeScc",
+              "agentCode",
+              "agentName",
+              "agentScc",
+              "ownerCode",
+              "coOwner",
+              "customMaster",
+              "entryType",
+              "billNo",
+              "iEDate",
+              "dDate",
+              "distinatePort",
+              "districtCode",
+              "cusTrafMode",
+              "ciqTrafMode",
+              "cusTradeNationCode",
+              "ciqTradeCountryCode",
+              "cusTradeCountry",
+              "ciqDespCtryCode",
+              "iEPort",
+              "contrNo",
+              "supvModeCdde",
+              "cutMode",
+              "wrapType",
+              "packNo",
+              "grossWt",
+              "netWt",
+              "transMode",
+              "relmanNo",
+              "bonNo",
+              "feeCurr",
+              "feeMark",
+              "feeRate",
+              "otherCurr",
+              "otherMark",
+              "otherRate",
+              "insurCurr",
+              "insurMark",
+              "insurRate",
+              "dclTrnRelFlag",
+              "preEntryId",
+              "promiseItems",
+              "noteS",
+              "dclrNo",
+              "ediId",
+              "consignorCode",
+              "consignorCname",
+              "consigneeCode",
+              "consigneeEname",
+              "tradeModeCode",
+              "markNo",
+              "despPortCode",
+              "portStopCode",
+              "goodsPlace",
+              "deliveryOrder",
+              "specDeclFlag",
+              "custmRegNo",
+              "declCode",
+              "declDate",
+              "specPassFlag",
+              "declRegNo",
+              "declRegName",
+              "speclInspQuraRe",
+              "arrivPortCode",
+              "cusIEFlag",
+              "ciqIEFlag",
+              "dataSrcCode",
+              "dataSrcUnitCode",
+              "dataSrcModeCode",
+              "createUser",
+              "indbTime",
+              "updateUser",
+              "updateTime",
+              "inputErName",
+              "inputEtpsName",
+              "isudMark",
+              "cusRemark",
+              "contractNo",
+              "ciqIsudMark",
+              "inputEtpsCode",
+              "typistNo",
+              "cusDecStatus",
+              "ciqDecStatus",
+              "extendField",
+              "chktstFlag",
+              "tableFlag",
+              "ediRemark",
+              "ownerCiqCode",
+              "isCopPromise",
+              "mxs"
+            ],
+            "description": "返回报文是已XML字符串形式返回，具体样式参考示例",
+            "required": [
+              "cusCiqNo"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "application/json",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 733195788,
+      "data": "{\n\t\"reqId\": \"b79a96e3c51640c9b12ce46cd0fa8f03\",\n\t\"code\": \"2000\",\n\t\"success\": true,\n\t\"message\": null,\n\t\"data\": \"\n\t\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t\t\t<business comment=\"获取进出口报关单\" id=\"HQJCKBGD2\">\n\t\t\t\t<body yylxdm=\"1\">\n\t\t\t\t\t<head>\n\t\t\t\t\t\t<cardNo>口岸卡编号</cardNo>\n\t\t\t\t\t\t<corpName>企业名称</corpName>\n\t\t\t\t\t\t<zzjgDm>企业组织机构代码证</zzjgDm>\n\t\t\t\t\t\t<certNo>证书编号</certNo>\n\t\t\t\t\t</head>\n\t\t\t\t\t<output>\n\t\t\t\t\t\t<returncode>0</returncode>\n\t\t\t\t\t\t<returnmsg>成功</returnmsg>\n\t\t\t\t\t\t<data>\n\t\t\t\t\t\t\t<![CDATA[\n\t\t\t\t\t\t[\n\t\t\t\t\t\t\t[\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\"cusCiqNo\": \"E20200000547*****\", // 统一编号\n\t\t\t\t\t\t\t\t\t\"spDecSeqNo\": \"E202000005477*****\", // 统一编号\n\t\t\t\t\t\t\t\t\t\"entryId\": \"53172020017029*****\", //海关编号\n\t\t\t\t\t\t\t\t\t\"cnsnTradeCode\": \"330196*****\", //境内收发货人 海关编码\n\t\t\t\t\t\t\t\t\t\"cnsnTradeScc\": \"91330105MA2*****\", //境内收发货人 社会信用代码\n\t\t\t\t\t\t\t\t\t\"agentCode\": \"44031*****\", //申报单位 海关编码\n\t\t\t\t\t\t\t\t\t\"agentName\": \"深圳市*****有限公司\", //申报单位 名称\n\t\t\t\t\t\t\t\t\t\"agentScc\": \"914403000942*****\", //申报单位 社会信用代码\n\t\t\t\t\t\t\t\t\t\"ownerCode\": \"43013*****\", //生产销售单位海关编码\n\t\t\t\t\t\t\t\t\t\"ownerName\": \"湖南*****科技有限公司\", //生产销售单位名称\n\t\t\t\t\t\t\t\t\t\"ownerScc\": \"91430100796*****\", //生产销售单位 社会信用代码\n\t\t\t\t\t\t\t\t\t\"coOwner\": \"6\",\n\t\t\t\t\t\t\t\t\t\"customMaster\": \"5317\", //申报地海关\n\t\t\t\t\t\t\t\t\t\"entryType\": \"M\", //报关单类型\n\t\t\t\t\t\t\t\t\t\"billNo\": \"29737*****\", //订单编号\n\t\t\t\t\t\t\t\t\t\"iEDate\": \"20201223\", //进出口日期\n\t\t\t\t\t\t\t\t\t\"dDate\": \"2020-12-21\", //录入日期\n\t\t\t\t\t\t\t\t\t\"distinatePort\": \"USA309\", //目的地海关\n\t\t\t\t\t\t\t\t\t\"districtCode\": \"430*****\", //境内目的地/境内货源地\n\t\t\t\t\t\t\t\t\t\"cusTrafMode\": \"5\", //运输方式代码\n\t\t\t\t\t\t\t\t\t\"ciqTrafMode\": \"5\", //运输方式\n\t\t\t\t\t\t\t\t\t\"cusTradeNationCode\": \"USA\", //出口目的国代码\n\t\t\t\t\t\t\t\t\t\"ciqTradeCountryCode\": \"USA\", //检验检疫目的国代码\n\t\t\t\t\t\t\t\t\t\"cusTradeCountry\": \"USA\", //出口国家\n\t\t\t\t\t\t\t\t\t\"ciqDespCtryCode\": \"USA\", //检验检疫目标国家\n\t\t\t\t\t\t\t\t\t\"iEPort\": \"5317\", //出口口港口编码\n\t\t\t\t\t\t\t\t\t\"contrNo\": \"*****19\", //合同号\n\t\t\t\t\t\t\t\t\t\"supvModeCdde\": \"01*****\", //监管方式\n\t\t\t\t\t\t\t\t\t\"cutMode\": \"101\", //征免性质\n\t\t\t\t\t\t\t\t\t\"wrapType\": \"22\", //包装种类\n\t\t\t\t\t\t\t\t\t\"packNo\": \"8*****\", //件数\n\t\t\t\t\t\t\t\t\t\"grossWt\": \"77*****\", //毛重\n\t\t\t\t\t\t\t\t\t\"netWt\": \"4*****\", //净重\n\t\t\t\t\t\t\t\t\t\"paymentMark\": null, //支付标记\n\t\t\t\t\t\t\t\t\t\"transMode\": \"7\", //成交方式代码\n\t\t\t\t\t\t\t\t\t\"dclTrnRelFlag\": \"0\",\n\t\t\t\t\t\t\t\t\t\"preEntryId\": \"531720200*****\", //预录入编号\n\t\t\t\t\t\t\t\t\t\"promiseItems\": \"000\",\n\t\t\t\t\t\t\t\t\t\"noteS\": \"*****20202140304，\", //备注\n\t\t\t\t\t\t\t\t\t\"dclrNo\": \"531*****\",\n\t\t\t\t\t\t\t\t\t\"ediId\": \"1\", //报关标志\n\t\t\t\t\t\t\t\t\t\"consignorCode\": \"338320*****\", //境内收发货人\t海关编码\n\t\t\t\t\t\t\t\t\t\"consignorCname\": \"*****）有限公司\", //境内收发货人名称\n\t\t\t\t\t\t\t\t\t\"consigneeCode\": \"NO\", //境外收发货人编码\n\t\t\t\t\t\t\t\t\t\"consigneeEname\": \"*****\", //境外收发货人英文名称\n\t\t\t\t\t\t\t\t\t\"tradeModeCode\": \"01*****\", //交易方式代码\n\t\t\t\t\t\t\t\t\t\"markNo\": \"N/M\", //标记唛码\t\n\t\t\t\t\t\t\t\t\t\"despPortCode\": \"47*****\", //目标海关代码\n\t\t\t\t\t\t\t\t\t\"portStopCode\": \"*****09\", //经停海关编码\n\t\t\t\t\t\t\t\t\t\"goodsPlace\": \"深圳机场物流园区\", //货物存放地点\n\t\t\t\t\t\t\t\t\t\"deliveryOrder\": \"297376*****\", //提运单号\n\t\t\t\t\t\t\t\t\t\"specDeclFlag\": \"0000\",\n\t\t\t\t\t\t\t\t\t\"custmRegNo\": \"33832*****\", //境内收发货人 检验检疫编码\n\t\t\t\t\t\t\t\t\t\"declCode\": \"24\", //申报代码\n\t\t\t\t\t\t\t\t\t\"declDate\": \"2020-12-21\", //申报日期\n\t\t\t\t\t\t\t\t\t\"specPassFlag\": \"000\",\n\t\t\t\t\t\t\t\t\t\"declRegNo\": \"47001*****\", //申报单位 检验检疫代码\n\t\t\t\t\t\t\t\t\t\"declRegName\": \"深圳市*****流有限公司\", //申报单位名称\n\t\t\t\t\t\t\t\t\t\"speclInspQuraRe\": \"*****4，\", //备注\n\t\t\t\t\t\t\t\t\t\"arrivPortCode\": \"US**********\", //运抵海关编码\n\t\t\t\t\t\t\t\t\t\"cusIEFlag\": \"E\", //进出口标识\n\t\t\t\t\t\t\t\t\t\"ciqIEFlag\": \"E\", //检验检疫标识\n\t\t\t\t\t\t\t\t\t\"dataSrcCode\": \"01\",\n\t\t\t\t\t\t\t\t\t\"dataSrcUnitCode\": \"SW44030*****\",\n\t\t\t\t\t\t\t\t\t\"dataSrcModeCode\": \"01\",\n\t\t\t\t\t\t\t\t\t\"createUser\": \"210006*****\", //创建用户\n\t\t\t\t\t\t\t\t\t\"indbTime\": \"2020-12-18\", //入库时间\n\t\t\t\t\t\t\t\t\t\"updateUser\": \"2000060*****\", //更新用户\n\t\t\t\t\t\t\t\t\t\"updateTime\": \"2020-12-21\", //更新时间\n\t\t\t\t\t\t\t\t\t\"inputErName\": \"*****\", //录入人名称\n\t\t\t\t\t\t\t\t\t\"inputEtpsName\": \"深圳市*****流有限公司\", //录入且有信息\n\t\t\t\t\t\t\t\t\t\"isudMark\": \"1\",\n\t\t\t\t\t\t\t\t\t\"cusRemark\": \"00000\",\n\t\t\t\t\t\t\t\t\t\"contractNo\": \"*****1219\", //合同号\n\t\t\t\t\t\t\t\t\t\"ciqIsudMark\": \"3\",\n\t\t\t\t\t\t\t\t\t\"inputEtpsCode\": \"440*****\", //录入企业编码\n\t\t\t\t\t\t\t\t\t\"typistNo\": \"210006*****\", //审核员编码\n\t\t\t\t\t\t\t\t\t\"cusDecStatus\": \"10\", //申报状态\n\t\t\t\t\t\t\t\t\t\"ciqDecStatus\": \"42\", //检验检疫状态\n\t\t\t\t\t\t\t\t\t\"extendField\": \"0001101\",\n\t\t\t\t\t\t\t\t\t\"chktstFlag\": \"0\",\n\t\t\t\t\t\t\t\t\t\"tableFlag\": \"1\",\n\t\t\t\t\t\t\t\t\t\"ediRemark\": \"M            1\",\n\t\t\t\t\t\t\t\t\t\"ownerCiqCode\": \"43006*****\", //生产销售单位检验检疫代码\n\t\t\t\t\t\t\t\t\t\"isCopPromise\": \"0\",\n\t\t\t\t\t\t\t\t\t\"mxs\": [\n\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\t\"GNo\": \"1\", //项号\n\t\t\t\t\t\t\t\t\t\t\t\"ContrItem\": \"\", //备案序号\n\t\t\t\t\t\t\t\t\t\t\t\"CodeTS\": \"63079*****0\", //商品编号\n\t\t\t\t\t\t\t\t\t\t\t\"CiqCode\": \"\", //检验检疫编码  \n\t\t\t\t\t\t\t\t\t\t\t\"GName\": \"*****\", //商品名称\n\t\t\t\t\t\t\t\t\t\t\t\"GModel\": \"1|0|内层35%+外层32%纺粘无纺布+中间层33%熔喷无纺布|||品牌：Techray牌 ，型号：平面型耳挂式 ，规格：17.5cmX9.5cm（允差±5%），非无菌型，生产厂家：湖南泰瑞医疗科技有限公司\", //规格型号\n\t\t\t\t\t\t\t\t\t\t\t\"TradeQty\": \"*****0\", //成交数量\n\t\t\t\t\t\t\t\t\t\t\t\"TradeUnit\": \"0*****\", //成交计量单位\n\t\t\t\t\t\t\t\t\t\t\t\"Price\": \"0.*****\", //单价\n\t\t\t\t\t\t\t\t\t\t\t\"Total\": \"8*****\", //总价\n\t\t\t\t\t\t\t\t\t\t\t\"Curr\": \"*****\", //币制\n\t\t\t\t\t\t\t\t\t\t\t\"FirstQty\": \"4*****\", //第一法定数量\n\t\t\t\t\t\t\t\t\t\t\t\"FirstUnit\": \"035\", //法定第一计量单位\n\t\t\t\t\t\t\t\t\t\t\t\"Jgcpdhbbh\": \"\", //加工成品单耗版本号\n\t\t\t\t\t\t\t\t\t\t\t\"ExgNo\": \"\", //货号\n\t\t\t\t\t\t\t\t\t\t\t\"DestinationCountry\": \"USA\", //最终目的国（地区）\n\t\t\t\t\t\t\t\t\t\t\t\"SecondQty\": \"1*****\", //法定第二数量\n\t\t\t\t\t\t\t\t\t\t\t\"SecondUnit\": \"0*****\", //法定第二计量单位\n\t\t\t\t\t\t\t\t\t\t\t\"PtaOrigPlace\": \"\", //优惠贸易协定项下原产地\n\t\t\t\t\t\t\t\t\t\t\t\"OrigPlace\": \"CHN\", //原产国（地区）\n\t\t\t\t\t\t\t\t\t\t\t\"OrigPlaceCode\": \"\", //原产地区代码\n\t\t\t\t\t\t\t\t\t\t\t\"DistrictCode\": \"43*****9\", //境内目的地/境内货源地\n\t\t\t\t\t\t\t\t\t\t\t\"DestCode\": \"\", //目的地代码/产地代码\n\t\t\t\t\t\t\t\t\t\t\t\"DutyMode\": \"1\", //征免方式\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsAttr\": \"\", //货物属性代码\n\t\t\t\t\t\t\t\t\t\t\t\"ProdEnnm\": \"\", //英文名称\n\t\t\t\t\t\t\t\t\t\t\t\"Purpose\": \"\", //用途代码\n\t\t\t\t\t\t\t\t\t\t\t\"NoDangFlag\": \"\", //非危险货物\n\t\t\t\t\t\t\t\t\t\t\t\"Uncode\": \"\", //UN编号\n\t\t\t\t\t\t\t\t\t\t\t\"DangPackType\": \"\", //危险类别\n\t\t\t\t\t\t\t\t\t\t\t\"PackType\": \"\", //包装类别\n\t\t\t\t\t\t\t\t\t\t\t\"PackUnFlag\": \"\", //包装UN标记\n\t\t\t\t\t\t\t\t\t\t\t\"Stuff\": \"\", //成分/原料/组分\n\t\t\t\t\t\t\t\t\t\t\t\"ProdValidDt\": \"\", //产品有效期\n\t\t\t\t\t\t\t\t\t\t\t\"ProdQgp\": \"\", //产品保质期(天)\n\t\t\t\t\t\t\t\t\t\t\t\"EngManEntCnm\": \"\", //境外生产企业\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsSpec\": \"\", //货物规格\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsModel\": \"\", //货物型号\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsBrand\": \"\", //货物品牌\n\t\t\t\t\t\t\t\t\t\t\t\"ProduceDate\": \"\", //生产日期\n\t\t\t\t\t\t\t\t\t\t\t\"ProdBatchNo\": \"\", //生产批次\n\t\t\t\t\t\t\t\t\t\t\t\"MnufctrRegNo\": \"\" //生产单位代码\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t]\n\t\t\t\t\t\t]\n\t\t\t\t\t]>\n\t\t\t\t\t\t</data>\n\t\t\t\t\t</output>\n\t\t\t\t</body>\n\t\t\t</business>\n    \"\n\t}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650513373
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 62894296,
+  "ordering": 6,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-30T08:20:00.000Z",
+  "updatedAt": "2025-12-11T10:32:09.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

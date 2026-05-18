@@ -1,0 +1,302 @@
+{
+  "id": 420447724,
+  "name": "异议申诉风险提醒回复",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "IQK66OR6XArs-lrprpqKD",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口为同步接口\n该接口用于回复员工异议申诉风险提醒信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/message/yyssfxtxhf",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "title": "异议申诉风险提醒回复请求参数",
+      "type": "object",
+      "required": [
+        "ssfxtxhf",
+        "aggOrgId",
+        "accountId"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账户ID"
+        },
+        "ssfxtxhf": {
+          "type": "object",
+          "description": "申诉风险提醒回复内容",
+          "required": [
+            "xxxh",
+            "fxmxxh",
+            "pcxh",
+            "ssrdah",
+            "fksm",
+            "fkrxm",
+            "fkrlxfs"
+          ],
+          "properties": {
+            "xxxh": {
+              "type": "string",
+              "description": "消息id",
+              "minLength": 1
+            },
+            "fxmxxh": {
+              "type": "string",
+              "description": "风险明细序号",
+              "minLength": 1
+            },
+            "pcxh": {
+              "type": "string",
+              "description": "批次序号",
+              "minLength": 1
+            },
+            "ssrdah": {
+              "type": "string",
+              "description": "申诉人档案号",
+              "minLength": 1
+            },
+            "zccljg": {
+              "type": "boolean",
+              "description": "自查处理结果。是：申诉属实；否：申诉不属实"
+            },
+            "fksm": {
+              "type": "string",
+              "description": "反馈说明",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "fkrxm": {
+              "type": "string",
+              "description": "反馈人姓名",
+              "minLength": 1
+            },
+            "fkrlxfs": {
+              "type": "string",
+              "description": "反馈人联系电话",
+              "minLength": 1
+            },
+            "wjlb": {
+              "type": "array",
+              "description": "文件列表",
+              "items": {
+                "type": "object",
+                "required": [
+                  "wjbm",
+                  "wjmc"
+                ],
+                "properties": {
+                  "wjbm": {
+                    "type": "string",
+                    "description": "base64编码",
+                    "minLength": 1
+                  },
+                  "wjmc": {
+                    "type": "string",
+                    "description": "文件名称（需带文件后缀，格式限制JPG, JPEG, BMP, PNG）",
+                    "minLength": 1,
+                    "pattern": "^.*\\.(jpg|jpeg|bmp|png)$"
+                  }
+                },
+                "x-apifox-orders": [
+                  "wjbm",
+                  "wjmc"
+                ]
+              }
+            },
+            "ssmxlb": {
+              "type": "array",
+              "description": "申诉明细列表",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "mxxh": {
+                    "type": "string",
+                    "description": "明细序号（条件必填）"
+                  },
+                  "sf": {
+                    "type": "boolean",
+                    "description": "是否存在标志。true:存在; false:不存在"
+                  }
+                },
+                "x-apifox-orders": [
+                  "mxxh",
+                  "sf"
+                ],
+                "required": [
+                  "mxxh"
+                ]
+              }
+            }
+          },
+          "x-apifox-orders": [
+            "xxxh",
+            "fxmxxh",
+            "pcxh",
+            "ssrdah",
+            "zccljg",
+            "fksm",
+            "fkrxm",
+            "fkrlxfs",
+            "wjlb",
+            "ssmxlb"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "ssfxtxhf"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"123456789\",\r\n    \"accountId\": \"987654321\",\r\n    \"ssfxtxhf\": {\r\n        \"xxxh\": \"MSG202502270001\",\r\n        \"fxmxxh\": \"FXM001\",\r\n        \"pcxh\": \"PC001\",\r\n        \"ssrdah\": \"SSR001\",\r\n        \"zccljg\": true,\r\n        \"fksm\": \"申诉属实，已核实相关信息\",\r\n        \"fkrxm\": \"张三\",\r\n        \"fkrlxfs\": \"13800138000\",\r\n        \"wjlb\": [\r\n            {\r\n                \"wjbm\": \"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==\",\r\n                \"wjmc\": \"证明材料.jpg\"\r\n            }\r\n        ],\r\n        \"ssmxlb\": [\r\n            {\r\n                \"mxxh\": \"MX001\",\r\n                \"sf\": true\r\n            }\r\n        ]\r\n    }\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "zt": {
+                "type": "string",
+                "description": "业务办理状态: 1成功 2失败"
+              }
+            },
+            "x-apifox-orders": [
+              "zt"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {}\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59992942,
+  "ordering": 46,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-27T07:26:37.000Z",
+  "updatedAt": "2026-05-11T07:48:30.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

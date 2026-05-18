@@ -1,0 +1,201 @@
+{
+  "id": 450290741,
+  "name": "查询公示状态反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "bmjdcDwQzxRQ-O2hc6Jsc",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "工商年报公示状态结果查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/gsnb/business/gsStatusResult",
+  "tags": [],
+  "status": -2,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        }
+      },
+      "if": {
+        "properties": {
+          "bsywsx": {
+            "const": "01"
+          }
+        },
+        "required": [
+          "bsywsx"
+        ],
+        "x-apifox-orders": [
+          "bsywsx"
+        ]
+      },
+      "then": {
+        "required": [
+          "xkzbh",
+          "ywzl1",
+          "xkzyxqq",
+          "xkzyxqz"
+        ]
+      },
+      "else": {
+        "if": {
+          "properties": {
+            "bsywsx": {
+              "const": "02"
+            }
+          },
+          "required": [
+            "bsywsx"
+          ],
+          "x-apifox-orders": [
+            "bsywsx"
+          ]
+        },
+        "then": {
+          "required": [
+            "pthyycxmc",
+            "yykssj",
+            "ywlxdmjh"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "01KMJ4C6D5WSM1C8H1HBEY6NGZ"
+      ],
+      "x-apifox-refs": {
+        "01KMJ4C6D5WSM1C8H1HBEY6NGZ": {
+          "$ref": "#/definitions/257608427"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\n    \"aggOrgId\": \"521427827**********\",\n    \"taskId\": \"51209887*********\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790300683,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "x-apifox-orders": [
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS"
+        ],
+        "x-apifox-refs": {
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01KQ77CHSRDK48GZQPNHERG75J"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01KQ77CHSRDK48GZQPNHERG75J": {
+                    "$ref": "#/definitions/269035411"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81235447,
+  "ordering": 116,
+  "responsibleId": 543708,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2026-04-27T10:16:36.000Z",
+  "updatedAt": "2026-04-28T12:55:03.000Z",
+  "creatorId": 3099717,
+  "editorId": 1534873,
+  "creatorUserId": 3099717,
+  "editorUserId": 1534873,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

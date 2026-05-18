@@ -1,0 +1,413 @@
+{
+  "id": 177718962,
+  "name": "进销项发票信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于同步发起企业进销项发票归集任务，最大归集发票数量2500条",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/syncCollectTask",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/xml",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "企业纳税人识别号，必填"
+        },
+        "fplx": {
+          "type": "string",
+          "title": "发票类型",
+          "description": "发票类型代码，非必填，不填时默认全部,传多个类型时以','进行分割",
+          "enum": [
+            "01，增值税专用发票",
+            "03，机动车销售统一发票",
+            "04，增值税普通发票",
+            "08，增值税专用发票（电子）",
+            "10，增值税普通发票（电子）",
+            "11，增值税普通发票（卷票）",
+            "14，通行费发票",
+            "15，二手车统一销售发票",
+            "81，电子发票(增值税专用发票)",
+            "82，电子发票(增值税普通发票)",
+            "84，纸质发票(增值税专用发票)",
+            "85，纸质发票(增值税普通发票)",
+            "83，数电票（机动车销售统一发票）",
+            "87，数电纸质发票（机动车销售统一发票）",
+            "70，数电票（二手车销售统一发票）",
+            "88，数电纸质发票（二手车销售统一发票）",
+            "51，数电票(铁路)",
+            "61，数电票(航空)",
+            "8208，数电票(通行费发票)"
+          ],
+          "x-apifox-enum": [
+            {
+              "name": "",
+              "value": "01，增值税专用发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "03，机动车销售统一发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "04，增值税普通发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "08，增值税专用发票（电子）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "10，增值税普通发票（电子）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "11，增值税普通发票（卷票）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "14，通行费发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "15，二手车统一销售发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "81，电子发票(增值税专用发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "82，电子发票(增值税普通发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "84，纸质发票(增值税专用发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "85，纸质发票(增值税普通发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "83，数电票（机动车销售统一发票）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "87，数电纸质发票（机动车销售统一发票）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "70，数电票（二手车销售统一发票）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "88，数电纸质发票（二手车销售统一发票）",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "51，数电票(铁路)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "61，数电票(航空)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "8208，数电票(通行费发票)",
+              "description": ""
+            }
+          ]
+        },
+        "jxxbz": {
+          "type": "string",
+          "title": "进销项标志",
+          "description": "进销项标志，非必填，不填时默认进项，格式 jx 进项 xx 销项"
+        },
+        "dataType": {
+          "type": "string",
+          "title": "数据类型",
+          "description": "默认为空以报文方式返回，zip按压缩包方式返回"
+        },
+        "kprqq": {
+          "type": "string",
+          "title": "开票日期起",
+          "description": "必填（格式： yyyy-MM-dd）"
+        },
+        "kprqz": {
+          "type": "string",
+          "title": "开票日期止",
+          "description": "必填（格式： yyyy-MM-dd）"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "kprqq",
+        "kprqz"
+      ],
+      "x-apifox-orders": [
+        "01H68S0SX78CFY8Q6FKJ4NKG82",
+        "nsrsbh",
+        "fplx",
+        "jxxbz",
+        "kprqq",
+        "kprqz",
+        "dataType"
+      ],
+      "x-apifox-refs": {
+        "01H68S0SX78CFY8Q6FKJ4NKG82": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"kprqq\": \"2023-05-02\",\r\n\t\"kprqz\": \"2024-05-01\",\r\n    \"jxxbz\": \"jx\",\r\n    \"fplx\": \"10,14\"\r\n}",
+        "mediaType": "application/xml",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "S4CQ6aHueY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "c2c8mNZDgi",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "491JAzxqeH",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 458026014,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "description": " 返回code(2000成功，其他失败)"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "null",
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "jsonUrl": {
+                "type": "string",
+                "title": "发票数据下载地址"
+              }
+            },
+            "x-apifox-orders": [
+              "jsonUrl",
+              "01HNCVNNG0CJ6PJ3XN6KJYVDCY"
+            ],
+            "x-apifox-refs": {
+              "01HNCVNNG0CJ6PJ3XN6KJYVDCY": {
+                "$ref": "#/definitions/81261238"
+              }
+            },
+            "required": [
+              "jsonUrl"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 458026014,
+      "data": "{\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91310118MAD57LQY4Y/2494898449049255936.txt?Expires=1785665679&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=O%2BlJ6sT8O0Wv0H2RFZ**********\",\n        \"list\": [\n            {\n                \"xfsbh\": \"**********x5277\",\n                \"gfsbh\": \"**********KPT0X\",\n                \"fpdm\": \"********2211\",\n                \"jxxbz\": \"xx\",\n                \"gfmc\": \"********件有限公司\",\n                \"fplx\": \"10\",\n                \"kpr\": \"**琼\",\n                \"se\": 19.32,\n                \"kprq\": \"2023-04-30 00:00:00\",\n                \"bz\": \"发票单号：**************03952591\",\n                \"jshj\": 167.91,\n                \"je\": 148.59,\n                \"fpztDm\": \"0\",\n                \"xfmc\": \"********xx有限公司\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"fpdm\": \"********2211\",\n                        \"jldw\": \"升\",\n                        \"dj\": \"6.87606100\",\n                        \"mxxh\": \"1\",\n                        \"se\": 23.01,\n                        \"mc\": \"*汽油*92号车用汽油(VIB)\",\n                        \"sl\": \"25.74002600\",\n                        \"je\": 176.99,\n                        \"slv\": 0.13,\n                        \"spbm\": \"1070101010100000000\",\n                        \"fphm\": \"****9780\"\n                    },\n                    {\n                        \"ggxh\": \"\",\n                        \"fpdm\": \"********2211\",\n                        \"jldw\": \"\",\n                        \"dj\": \"\",\n                        \"mxxh\": \"2\",\n                        \"se\": -3.69,\n                        \"mc\": \"*汽油*92号车用汽油(VIB)\",\n                        \"sl\": \"\",\n                        \"je\": -28.4,\n                        \"slv\": 0.13,\n                        \"spbm\": \"1070101010100000000\",\n                        \"fphm\": \"****9780\"\n                    }\n                ],\n                \"fphm\": \"****9780\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 410535292
+    },
+    {
+      "name": "数电票（铁路）",
+      "responseId": 458026014,
+      "data": "{\n    \"reqId\": \"8d7f385966e747ee8ad516deb55f6267\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": 54,\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91310118MAD57LQY4Y/2491811107679305728.txt?Expires=1785297859&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=L56fXzbhJNo9lqvgFsU9o%*******\",\n        \"totalPages\": 54,\n        \"pageSize\": 1,\n        \"list\": [\n            {\n                \"kpyf\": \"202507\",\n                \"xfsbh\": \"91310106785*******\",\n                \"gfmc\": \"*******信息技术有限公司\",\n                \"sfzsfp\": \"0\",\n                \"sdphm\": \"2531916610000*******\",\n                \"sjlyDm\": \"FPYXZ101\",\n                \"fpfxdj\": \"正常\",\n                \"jxxbz\": \"jx\",\n                \"fpztBz\": \"0\",\n                \"xcdxx\": [\n                    {\n                        \"cfd\": \"上海虹桥\",\n                        \"ddd\": \"杭州东\",\n                        \"lkxm\": \"*******\",\n                        \"sdphm\": \"253191661000*******\",\n                        \"sj\": \"10:58\",\n                        \"cxcc\": \"G7599\",\n                        \"yxsfzh\": \"33062319*******\",\n                        \"rq\": \"2025-04-14 00:00:00\"\n                    }\n                ],\n                \"se\": 7.18,\n                \"kprq\": \"2025-07-10 13:17:04\",\n                \"sjlyBz\": \"FPYXZ101\",\n                \"fpztDm\": \"0\",\n                \"gfsbh\": \"91310118MAD*******\",\n                \"fpdm\": \"\",\n                \"fplx\": \"51\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"铁路12306科创中心\",\n                \"tdywlx\": \"21\",\n                \"jshj\": 87,\n                \"je\": 79.82,\n                \"slv\": \"0.09\",\n                \"xfmc\": \"中国铁路上海局集团有限公司上海站\",\n                \"hwxx\": [\n                    {\n                        \"se\": 7.18,\n                        \"fpdm\": \"\",\n                        \"mc\": \"*运输服务*票价\",\n                        \"mxxh\": \"1\",\n                        \"je\": 79.82,\n                        \"slv\": 0.09,\n                        \"ysslv\": \"9%\",\n                        \"spbm\": \"3010101010100000000\",\n                        \"fphm\": \"253191661000*******\"\n                    }\n                ],\n                \"fphm\": \"2531916610000*******\"\n            }\n        ],\n        \"pageNum\": 1\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 651200224
+    },
+    {
+      "name": "数电票（航空）",
+      "responseId": 458026014,
+      "data": "{\n    \"reqId\": \"5bbded08862c4cf6a8cb5448655d4fe5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": 13,\n        \"totalPages\": 13,\n        \"pageSize\": 1,\n        \"list\": [\n            {\n                \"kpyf\": 202503,\n                \"xfsbh\": \"91110000**********\",\n                \"gfmc\": \"**********有限公司\",\n                \"sfzsfp\": \"0\",\n                \"sdphm\": \"243187811105**********\",\n                \"xhqdBz\": \"N\",\n                \"fpfxdj\": \"正常\",\n                \"se\": 92.47,\n                \"kprq\": \"2025-03-01 11:08:06\",\n                \"xcdList\": [\n                    {\n                        \"cfd\": \"厦门-高崎\",\n                        \"ddd\": \"上海-虹桥\",\n                        \"lkxm\": \"**********\",\n                        \"sdphm\": \"24318781110**********\",\n                        \"sj\": \"2024-11-24 11:00:00\",\n                        \"yxsfzh\": \"35022119**********\",\n                        \"cyr\": \"东航\",\n                        \"hbh\": \"MU5248\",\n                        \"rq\": \"2024-11-24 00:00:00\"\n                    }\n                ],\n                \"kjlx\": \"1\",\n                \"mxts\": 3,\n                \"fpztDm\": \"0\",\n                \"gfsbh\": \"9111000**********\",\n                \"fpdm\": \"\",\n                \"fplx\": \"61\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"上海携程宏睿国际旅行社北京分公司\",\n                \"jshj\": 1170,\n                \"je\": 1077.53,\n                \"xfmc\": \"中国国际航空股份有限公司\",\n                \"hwxx\": [\n                    {\n                        \"se\": 53.67,\n                        \"mc\": \"*运输服务*票价\",\n                        \"mxxh\": 1,\n                        \"je\": 596.33,\n                        \"slv\": 0.09,\n                        \"spbm\": \"3010301010100000000\"\n                    },\n                    {\n                        \"lslbs\": \"2\",\n                        \"se\": 0,\n                        \"mc\": \"*代收民航发展基金*民航发展基金\",\n                        \"mxxh\": 2,\n                        \"je\": 50,\n                        \"slv\": 0,\n                        \"spbm\": \"6130000000000000000\"\n                    },\n                    {\n                        \"se\": 1.65,\n                        \"mc\": \"*运输服务*燃油附加费\",\n                        \"mxxh\": 3,\n                        \"je\": 18.35,\n                        \"slv\": 0.09,\n                        \"spbm\": \"3010301010100000000\"\n                    }\n                ],\n                \"fphm\": \"243187811105**********\"\n            }\n        ],\n        \"pageNum\": 1\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 651202459
+    },
+    {
+      "name": "机动车销售统一发票",
+      "responseId": 458026014,
+      "data": "{\n    \"reqId\": \"051e3a520b11475cbea47b1a938a1e4b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": 37,\n        \"totalPages\": 37,\n        \"pageSize\": 1,\n        \"list\": [\n            {\n                \"kpyf\": 202505,\n                \"cjhm\": \"*********\",\n                \"gfmc\": \"*********务有限公司\",\n                \"sfzsfp\": \"1\",\n                \"sdphm\": \"255020000*********\",\n                \"fpfxdj\": \"正常\",\n                \"xhdwsbh\": \"*********\",\n                \"yszzsse\": \"-19994.69\",\n                \"kprq\": \"2025-05-20 17:10:00\",\n                \"kjlx\": \"1\",\n                \"cllx\": \"插电式增程混合动力轿车\",\n                \"fpztDm\": \"0\",\n                \"hgzh\": \"*********\",\n                \"spbm\": \"1090309000000000000\",\n                \"cd\": \"南京\",\n                \"gfsbh\": \"91654004*********\",\n                \"fpdm\": \"qd\",\n                \"fplx\": \"83\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"*********\",\n                \"cpxh\": \"*********/*********\",\n                \"zzsse\": 19994.69,\n                \"xhdwmc\": \"**************服务有限公司\",\n                \"jshj\": 173800,\n                \"je\": 153805.31,\n                \"slv\": 0.13,\n                \"ysslv\": \"13%\",\n                \"fdjhm\": \"*********\",\n                \"fphm\": \"255020000000*********\"\n            }\n        ],\n        \"pageNum\": 1\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 651200225
+    },
+    {
+      "name": "二手车统一销售发票",
+      "responseId": 458026014,
+      "data": "{\n    \"result\": {\n        \"success\": true,\n        \"req_id\": \"f3b60e96629141dc82a15947971870b5\",\n        \"timestamp\": 1753342231276,\n        \"time\": 472\n    },\n    \"value\": {\n        \"code\": \"2000\",\n        \"data\": {\n            \"page\": {\n                \"pageSize\": 1,\n                \"currentPage\": 1,\n                \"totalPage\": 198,\n                \"totalCount\": 198\n            },\n            \"list\": [\n                {\n                    \"fplx\": \"70\",\n                    \"kpyf\": 202505,\n                    \"fpztDm\": \"0\",\n                    \"fpdm\": \"qd\",\n                    \"fphm\": null,\n                    \"kprq\": \"2025-05-12 00:00:00\",\n                    \"xfDm\": \"52242619**********\",\n                    \"xfMc\": \"**********\",\n                    \"xfDz\": \"**********\",\n                    \"xfDh\": null,\n                    \"gfDm\": \"91522620MA**********\",\n                    \"gfMc\": \"贵州**********销售服务有限公司\",\n                    \"gfDz\": \"贵州省黔东南苗族侗族自治州凯里经济开发区经纬汽车城3号地块内\",\n                    \"gfDh\": \"0855-8659111\",\n                    \"skm\": null,\n                    \"bz\": \"\",\n                    \"kpr\": \"黄**\",\n                    \"fply\": \"电子发票服务平台\",\n                    \"fpfxdj\": \"正常\",\n                    \"kjlx\": \"1\",\n                    \"spbm\": \"1090305010300000000\",\n                    \"cpzh\": \"贵**********\",\n                    \"djzh\": \"33002**********\",\n                    \"cllx\": \"小型轿车\",\n                    \"clsbdm\": \"LB37844Z**********\",\n                    \"cpxh\": \"**********\",\n                    \"zrdclglsMc\": \"黔东南州车管所\",\n                    \"cjhj\": 22600,\n                    \"jyPmSbh\": \"**********\",\n                    \"jyPmMc\": \"**********有限公司\",\n                    \"escSbh\": \"\",\n                    \"escMc\": \"\",\n                    \"kpfLx\": null,\n                    \"kpfNsrsbh\": null,\n                    \"zfr\": null,\n                    \"zfrq\": null,\n                    \"sdphm\": \"255220000000**********\",\n                    \"sfzsfp\": \"0\"\n                }\n            ]\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 651200226
+    },
+    {
+      "name": "海关缴款书",
+      "responseId": 458026014,
+      "data": "{\r\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"page\": {\r\n            \"totalPage\": 1,\r\n            \"pageSize\": 20,\r\n            \"currentPage\": 1,\r\n            \"totalCount\": 9\r\n        },\r\n        \"list\": [\r\n            {\r\n                \"fplx\": \"17\", // 发票代码\r\n                \"gfmc\": \"\", //购方名称\r\n                \"hwxx\": [\r\n                    {\r\n                        \"dw\": \"035\", // 单位\r\n                        \"hwmc\": \"碳酸钙粉\", // 货物名称\r\n                        \"jkshm\": \"42582025100****-L01\", // 缴款书号码\r\n                        \"mc\": \"\", // 商品名称\r\n                        \"mxxh\": \"1\", // 明细序号\r\n                        \"shxx\": \"2836500000\", // 税号信息\r\n                        \"skje\": 15214.65, // 税款金额\r\n                        \"sl\": \"275000\", // 数量\r\n                        \"slv\": 0.13, // 税率\r\n                        \"spbm\": \"\", // 商品编码\r\n                        \"tfyf\": 202505, // 填发月份\r\n                        \"wsjg\": \"117035.77\" // 完税价格\r\n                    }\r\n                ],\r\n                \"jkdw1mc\": \"****际贸易有限公司\", // 缴款单位一名称\r\n                \"jkdw1nsrsbh\": \"91371300MA****\", // 缴款单位一税号\r\n                \"jkshm\": \"425820251000****-L01\", // 缴款书号码\r\n                \"jkdw2nsrsbh\": \"91320691MA1R****\", // 缴款单位二税号\r\n                \"jkdw2mc\": \"****有限公司\", // 缴款单位二名称\r\n                \"kpr\": \"\", //开票人\r\n                \"sjlyBz\": \"FPYXZ101\", //数据来源标志\r\n                \"sjlyDm\": \"FPYXZ101\", //数据来源标志\r\n                \"skje\": 15214.65, // 税款金额\r\n                \"slv\": \"\", //税率\r\n                \"tfrq\": \"2025-05-07 00:00:00\", // 填发日期\r\n                \"tfyf\": 202505, // 填发月份\r\n                \"xfmc\": \"\" //销方名称\r\n            }\r\n        ]\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 651202401
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 34804361,
+  "ordering": 121,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-25T02:11:05.000Z",
+  "updatedAt": "2026-03-14T08:02:10.000Z",
+  "creatorId": 887778,
+  "editorId": 2118003,
+  "creatorUserId": 887778,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

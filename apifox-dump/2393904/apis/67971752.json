@@ -1,0 +1,202 @@
+{
+  "id": 67971752,
+  "name": "查询下载完税证明任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "\n## 接口描述\n   该接口用于根据taskId查询异步任务执行进度信息。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| NO_RESULT | 任务不存在 |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557441,\r\n    \"taskId\":\"454625331471104\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 172692026,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3EY0ZVHPC5VR7HXG5T0QQ9": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/37321248"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3EY0ZVHPC5VR7HXG5T0QQ9"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 172692026,
+      "data": "{\"reqId\":\"531c48780e7f4a14a0c399669c16e1ba\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17300541
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 172692026,
+      "data": "{\"reqId\":\"58758ebac8a2418e876e9e48e21d3f7c\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "id": 17300516
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 172692026,
+      "data": "{\"reqId\":\"81eec8a26b2744b8a9e0dbc35ce6f2cf\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"result\":\"等待结果\",\"businessStatusName\":\"任务执行中\",\"startTime\":\"2023-03-13 17:27:14\",\"businessStatus\":1,\"serviceName\":\"完税证明\",\"resultMessage\":\"\",\"taskId\":\"454625331471104\"}}",
+      "id": 17188034
+    },
+    {
+      "name": "任务执行成功-无完税证明",
+      "responseId": 172692026,
+      "data": "{\n    \"reqId\": \"8a37b2f1eda04efd86d462d3c979b8c7\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": \"完税证明成功\",\n        \"finishTime\": \"2023-03-13 17:28:32\",\n        \"businessStatusName\": \"执行成功\",\n        \"startTime\": \"2023-03-13 17:27:14\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"fromDate\": \"2023-02-01\",\n                \"code\": \"4040\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"toDate\": \"2023-02-28\",\n                \"screenshot\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_*****35-deab-40f4-aebc-5bbe547d86c21678699633576_1678699706926.png?Expires=1681986300&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=1WEd5SVDUdYIG1XMuSr%2BPwzZhkU%3D\",\n                \"message\": \"电子税局税款所属期为2023-02-01到2023-02-28内的增值税找不到可下载的完税证明，请核实\"\n            }\n        ],\n        \"serviceName\": \"完税证明\",\n        \"resultMessage\": \"完税证明成功\",\n        \"taskId\": \"454625331471104\"\n    }\n}",
+      "id": 17188146
+    },
+    {
+      "name": "任务执行成功-下载成功",
+      "responseId": 172692026,
+      "data": "{\n    \"reqId\": \"919ee3f89fea4b8086f903bfbd0816db\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": \"完税证明成功\",\n        \"finishTime\": \"2023-03-15 15:44:51\",\n        \"businessStatusName\": \"执行成功\",\n        \"startTime\": \"2023-03-15 15:44:39\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"fromDate\": \"2023-02-01\",\n                \"code\": \"2000\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"toDate\": \"2022-02-28\",\n                \"screenshot\": \"\",\n                \"message\": \"下载成功\",\n                \"wszmOssUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/etax-agg-product_d7dd5476-74da-4f02-ac1c-*****d609fcf1675151010073_75085e1257d24831babc8926e912cb66.pdf?Expires=1677743078&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=LyKplCfb1j4IkgzwmpEbHwZWtgY%3D\"\n            }\n        ],\n        \"serviceName\": \"完税证明\",\n        \"resultMessage\": \"完税证明成功\",\n        \"taskId\": \"454966627896320\"\n    }\n}",
+      "id": 17327831
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531071,
+  "ordering": 157,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:39:43.000Z",
+  "updatedAt": "2026-01-08T06:55:45.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.172692026"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

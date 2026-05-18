@@ -1,0 +1,17 @@
+{
+  "id": 6101458,
+  "name": "土地增值税申报报文",
+  "sidebarTitle": "",
+  "content": "\n```\n{\n    \"nssbb\": { //财产和行为税纳税申报表\n        \"commonTop\": { //顶部\n            \"nsrsbh\": \"纳税人识别号\",\n            \"nsrmc\": \"纳税人名称\",\n            \"skssqq\": \"税款所属期起\",\n            \"skssqz\": \"税款所属期止\"\n        },\n        \"commonbw\": { //表尾\n            \"tbrq\": \"纳税人填报日期(纳税人（签章）日期)\",\n            \"jbr\": \"经办人\",\n            \"jbrsfzjhm\": \"经办人身份证号\",\n            \"dljgqz\": \"代理机构签章\",\n            \"slr\": \"受理人\",\n            \"slswjg\": \"受理税务机关\",\n            \"slrq\": \"受理日期\",\n            \"dlr\": \"代理机构统一社会信用代码\"\n        },\n        \"sbxxGrids\": [{ //行数据\n                \"ewbhxh\": \"序号\",\n                \"zsxmDm\": \"税种代码\",\n                \"zspmDm\": \"税目代码\",\n                \"zspmDmName\": \"税目名称\",\n                \"skssqq\": \"税款所属期起\",\n                \"skssqz\": \"税款所属期止\",\n                \"jsyj\": \"计税依据\",\n                \"sl\": \"税率\",\n                \"ynse\": \"应纳税额\",\n                \"jmse\": \"减免税额\",\n                \"yjse\": \"已缴税额\",\n                \"ybtse\": \"应补退税额\"\n            }, { //合计行必传\n                \"ewbhxh\": \"合计\",\n                \"zsxmDm\": \"合计\",\n                \"ynse\": \"应纳税额\",\n                \"jmse\": \"减免税额\",\n                \"yjse\": \"已缴税额\",\n                \"ybtse\": \"应补退税额\"\n            }\n        ]\n    },\n    \"jmsmxsbfb\": { //财产和行为税减免税明细申报附表\n        \"commonTop\": {\n            \"nsrsbh\": \"纳税人识别号\",\n            \"nsrmc\": \"纳税人名称\"\n        },\n        \"commonbt\": { //表头\n            \"bqsfsyxwqylslfjzszc\": \"本期是否适用小微企业“六税两费”减征收政策Y是N否\",\n            \"jzzcsyztzzsxgmnsr\": \"增值税小规模纳税人 Y是 N否\",\n            \"jzzcsyztzzsybnsr\": \"增值税一般纳税人1个体工商户2小型微利企业\",\n            \"syjzzcqsj\": \"适用减征政策起时间\",\n            \"syjzzczsj\": \"适用减征政策止时间\"\n        },\n        \"jmxxGrids\": [{ //减免税明细申报附表\n                \"ewbhxh\": \"序号\",\n                \"xmbh\": \"项目编号\",\n                \"skssqq\": \"税款所属期起\",\n                \"skssqz\": \"税款所属期止\",\n                \"jmxzDm\": \"减免性质代码\",\n                \"jmxzMc\": \"减免性质名称\",\n                \"swsxDm\": \"税务事项代码\",\n                \"swsxMc\": \"税务事项名称\",\n\t\t\"jmse\": \"减免税额\"\n            }, { //合计行必传\n                \"ewbhxh\": \"合计\",\n                \"zspmDm\": \"合计\",\n                \"jmse\": \"减免税额\"\n            }\n        ],\n        \"commonbw\": { //表尾\n            \"tbrq\": \"纳税人填报日期(纳税人（签章）日期)\",\n            \"jbr\": \"经办人\",\n            \"jbrsfzjhm\": \"经办人身份证号\",\n            \"dljgqz\": \"代理机构签章\",\n            \"dlr\": \"代理机构统一社会信用代码\",\n            \"slr\": \"受理人\",\n            \"slswjg\": \"受理税务机关\",\n            \"slrq\": \"受理日期\"\n        }\n    }\n}\n\n```",
+  "folderId": 14012227,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-02-27T13:15:06.000Z",
+  "updatedAt": "2025-03-04T06:35:22.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

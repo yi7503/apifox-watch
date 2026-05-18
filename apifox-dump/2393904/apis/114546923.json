@@ -1,0 +1,243 @@
+{
+  "id": 114546923,
+  "name": "历史已抵扣信息采集结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询发起的企业电子发票服务平台（发票云）历史已抵扣信息采集任务的结果。\n\n## 错误码\n| **错误代码**              | **错误消息**                                                 | **解决方案**                                                 |\n| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                    | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                    | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq          | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br>传入的参数-任务id-taskId不能为空<br> | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数taskId是否不为空<br> |\n| FprzTaxLoginFailed        | 登录相关错误导致认证任务失败                                 | 根据对应的错误信息重新登录或确认登录信息是否正确             |\n| FprzSqTaskFailed          | 申请任务发起失败！                                           | 请重新发起任务                                               |\n| FprzTaxFailed             | 税局操作失败！                                               | 请联系管理员                                                 |\n| FprzServerError           | 历史已抵扣信息采集结果查询操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/lsydkxxCjjg",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "申请历史已抵扣发票采集任务id"
+        },
+        "page": {
+          "type": "object",
+          "properties": {
+            "currentPage": {
+              "type": "integer",
+              "title": "当前页"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "分页大小"
+            }
+          },
+          "x-apifox-orders": [
+            "currentPage",
+            "pageSize"
+          ],
+          "required": [
+            "currentPage",
+            "pageSize"
+          ],
+          "title": "分页信息"
+        }
+      },
+      "required": [
+        "taskId",
+        "page"
+      ],
+      "x-apifox-orders": [
+        "01KR2SK5ECYX7H194TATX6F471",
+        "taskId",
+        "page"
+      ],
+      "x-apifox-refs": {
+        "01KR2SK5ECYX7H194TATX6F471": {
+          "$ref": "#/definitions/79290206"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"52**************XJ\",\r\n  \"taskId\": 483450885689600,\r\n     \"page\": {\r\n        \"currentPage\": 1,\r\n        \"pageSize\": 200\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "e8SqimXHyi",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "OXKAJLtSp9",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "o6hHfJgALt",
+        "name": "req_sign",
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 329473040,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H4JGQ7Y6FJ7660JJ0XH2WGXE": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/61540630"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H4JGQ7Y6FJ7660JJ0XH2WGXE"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 329473040,
+      "data": "{\n    \"reqId\": \"5bd2760bdf7f42cbb49c66ca36b2bd17\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"list\": [\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"fpdm\": \"33******30\",\n                \"fphm\": \"38****45\",\n                \"fplx\": \"01\",\n                \"fply\": \"3\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91***************6Y\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2023-02-08 16:49:35\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 714.29,\n                \"jkshm\": null,\n                \"jym\": null,\n                \"kprq\": \"2023-01-13 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 35.71,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"skssq\": \"202301\",\n                \"xfmc\": \"浙江***********************公司\",\n                \"xfsbh\": \"91*************32\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 35.71,\n                \"zmbh\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"fpdm\": \"31******30\",\n                \"fphm\": \"01****40\",\n                \"fplx\": \"01\",\n                \"fply\": \"3\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91***************6Y\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2023-02-24 12:08:25\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 186364.42,\n                \"jkshm\": null,\n                \"jym\": null,\n                \"kprq\": \"2023-01-12 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 24227.38,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"skssq\": \"202302\",\n                \"xfmc\": \"快板**************公司\",\n                \"xfsbh\": \"91*************4G\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 24227.38,\n                \"zmbh\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"fpdm\": \"31******30\",\n                \"fphm\": \"01****42\",\n                \"fplx\": \"01\",\n                \"fply\": \"3\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91*************6Y\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2023-02-24 12:08:25\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 34304.9,\n                \"jkshm\": null,\n                \"jym\": null,\n                \"kprq\": \"2023-01-16 00:00:00\",\n                \"ncpfpbz\": false,\n                \"qdfphm\": null,\n                \"se\": 4459.64,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"skssq\": \"202302\",\n                \"xfmc\": \"快板******************公司\",\n                \"xfsbh\": \"91*************4G\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 4459.64,\n                \"zmbh\": null\n            }\n        ],\n        \"message\": null,\n        \"page\": {\n            \"currentPage\": 1,\n            \"pageSize\": 200,\n            \"totalCount\": 1829,\n            \"totalPage\": 10\n        },\n        \"tjInfo\": {\n            \"fpxx\": null,\n            \"jglx\": null,\n            \"jgzt\": \"2\",\n            \"jxdkhz\": [\n                {\n                    \"fplx\": \"15\",\n                    \"hjfs\": 249,\n                    \"hjje\": 54443623.83,\n                    \"sehj\": 6978582.51\n                },\n                {\n                    \"fplx\": \"16\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"17\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"18\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"19\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"20\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"yc15\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                }\n            ],\n            \"ncptjxx\": [\n                {\n                    \"fplx\": \"9\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"10\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"11\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"12\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"13\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"14\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                }\n            ],\n            \"nsrsbh\": \"91330481MA2JHRUR6Y\",\n            \"skssq\": \"202307\",\n            \"tjsj\": null,\n            \"tjxx\": [\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 249,\n                    \"dkzje\": 54443623.83,\n                    \"dkzyxse\": 6978582.51,\n                    \"fplx\": \"01\",\n                    \"qtfpfs\": 249,\n                    \"qtyxdksehj\": 6978582.51\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"90\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"91\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"14\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"04\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"03\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"17\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"92\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"21\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"22\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 249,\n                    \"dkzje\": 54443623.83,\n                    \"dkzyxse\": 6978582.51,\n                    \"fplx\": \"99\",\n                    \"qtfpfs\": 249,\n                    \"qtyxdksehj\": 6978582.51\n                }\n            ]\n        },\n        \"zt\": \"3\"\n    }\n}",
+      "id": 30014815
+    },
+    {
+      "name": "任务进行中示例",
+      "responseId": 329473040,
+      "data": "{\n    \"reqId\": \"481c4b0374c147e9b1ee1f78460c65c5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"list\": [],\n        \"message\": null,\n        \"page\": {\n            \"currentPage\": 0,\n            \"pageSize\": 10,\n            \"totalCount\": 0,\n            \"totalPage\": 0\n        },\n        \"zt\": \"1\"\n    }\n}",
+      "id": 30014816
+    },
+    {
+      "name": "任务执行失败示例",
+      "responseId": 329473040,
+      "data": "{\n    \"reqId\": \"481c4b0374c147e9b1ee1f78460c65c5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": \"FprzTaxLoginFailed\",\n        \"list\": [],\n        \"message\": \"登录信息已过期，请重新登录\",\n        \"page\": {\n            \"currentPage\": 0,\n            \"pageSize\": 10,\n            \"totalCount\": 0,\n            \"totalPage\": 0\n        },\n        \"zt\": \"2\"\n    }\n}",
+      "id": 30014817
+    },
+    {
+      "name": "传入的参数-任务id-taskId不能为空",
+      "responseId": 329473040,
+      "data": "{\n    \"reqId\": \"ce776e6a61c74d659fad5eb742bf66de\",\n    \"code\": \"FprzTaskIdIsNull\",\n    \"success\": false,\n    \"message\": \"传入的参数-任务id-taskId不能为空\",\n    \"data\": null\n}",
+      "id": 30014818
+    },
+    {
+      "name": "请联系管理员错误示例",
+      "responseId": 329473040,
+      "data": "{\n    \"reqId\": \"b370aa7310f44ca2b87a39f2f13aaf48\",\n    \"code\": \"FprzServerError\",\n    \"success\": false,\n    \"message\": \"进项发票采集结果查询操作发生异常，请联系管理员\",\n    \"data\": null\n}",
+      "id": 30014819
+    },
+    {
+      "name": "税局操作失败",
+      "responseId": 329473040,
+      "data": "{\r\n    \"reqId\": \"e69c83f8646d45cca312b733f8641865\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": \"FprzTaxFailed\",\r\n        \"list\": null,\r\n        \"message\": \"税局操作失败！\",\r\n        \"page\": {\r\n            \"currentPage\": 1,\r\n            \"pageSize\": 50,\r\n            \"totalCount\": 0,\r\n            \"totalPage\": 1\r\n        },\r\n        \"zt\": \"2\"\r\n    }\r\n}",
+      "id": 30014820
+    },
+    {
+      "name": "未查到对应的任务信息",
+      "responseId": 329473040,
+      "data": "{\r\n    \"reqId\": \"b98fa86eb2ba4cce9d72f56fc1505864\",\r\n    \"code\": \"FprzBusinessVerification\",\r\n    \"success\": false,\r\n    \"message\": \"未查到对应的任务信息！\",\r\n    \"data\": null\r\n}",
+      "id": 30014821
+    },
+    {
+      "name": "带历史已加计扣除农产品发票明细示例",
+      "responseId": 329473040,
+      "data": "{\n    \"reqId\": \"2456dc899cd943ffa69cbe445c3857ff\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"customReqId\": \"10001999fa856f1eed834a2784ef885560c1442a\",\n        \"list\": [\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"bkjnsrmc\": null,\n                \"bkjnsrsbh\": null,\n                \"bz\": \"\",\n                \"fpdm\": \"45******30\",\n                \"fphm\": \"02****79\",\n                \"fplx\": \"01\",\n                \"fply\": \"3\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2024-08-05 15:31:11\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 3097.35,\n                \"jkshm\": null,\n                \"jsje\": null,\n                \"jym\": null,\n                \"kprq\": \"2024-05-28 09:18:23\",\n                \"ncpfpbz\": false,\n                \"pzhm\": null,\n                \"qdfphm\": null,\n                \"se\": 402.65,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"sjje\": null,\n                \"skssq\": \"202407\",\n                \"tdyslxDm\": null,\n                \"tfrq\": null,\n                \"xfmc\": \"广西***********公司\",\n                \"xfsbh\": \"91**************55\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 402.65,\n                \"zmbh\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"bkjnsrmc\": null,\n                \"bkjnsrsbh\": null,\n                \"bz\": \"\",\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"81\",\n                \"fply\": \"4\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2024-08-05 15:31:11\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 769380.53,\n                \"jkshm\": null,\n                \"jsje\": null,\n                \"jym\": null,\n                \"kprq\": \"2024-07-22 10:52:54\",\n                \"ncpfpbz\": false,\n                \"pzhm\": null,\n                \"qdfphm\": \"24*****************05\",\n                \"se\": 100019.47,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"sjje\": null,\n                \"skssq\": \"202407\",\n                \"tdyslxDm\": null,\n                \"tfrq\": null,\n                \"xfmc\": \"新疆*********************公司\",\n                \"xfsbh\": \"91******************0U\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 100019.47,\n                \"zmbh\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"bkjnsrmc\": null,\n                \"bkjnsrsbh\": null,\n                \"bz\": \"\",\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"82\",\n                \"fply\": \"4\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2024-08-05 15:31:11\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 56988.91,\n                \"jkshm\": null,\n                \"jsje\": null,\n                \"jym\": null,\n                \"kprq\": \"2024-07-29 16:58:37\",\n                \"ncpfpbz\": false,\n                \"pzhm\": null,\n                \"qdfphm\": \"24***************85\",\n                \"se\": 0,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"sjje\": null,\n                \"skssq\": \"202407\",\n                \"tdyslxDm\": null,\n                \"tfrq\": null,\n                \"xfmc\": \"河南润***********公司\",\n                \"xfsbh\": \"91**************19\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 5129,\n                \"zmbh\": null\n            },\n            {\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"bkjnsrmc\": null,\n                \"bkjnsrsbh\": null,\n                \"bz\": \"\",\n                \"fpdm\": \"41******60\",\n                \"fphm\": \"02****11\",\n                \"fplx\": \"85\",\n                \"fply\": \"4\",\n                \"fpzt\": \"0\",\n                \"gfmc\": null,\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"gxsj\": \"2024-08-05 15:31:11\",\n                \"gxzt\": \"1\",\n                \"hzsdbz\": false,\n                \"je\": 73616.81,\n                \"jkshm\": null,\n                \"jsje\": null,\n                \"jym\": null,\n                \"kprq\": \"2024-07-28 16:42:15\",\n                \"ncpfpbz\": false,\n                \"pzhm\": null,\n                \"qdfphm\": \"24**************39\",\n                \"se\": 9570.19,\n                \"sfdbts\": null,\n                \"sflrbfx\": null,\n                \"sjje\": null,\n                \"skssq\": \"202407\",\n                \"tdyslxDm\": null,\n                \"tfrq\": null,\n                \"xfmc\": \"鲁洲******************公司\",\n                \"xfsbh\": \"91**************0U\",\n                \"yclx\": null,\n                \"yqkgxbz\": null,\n                \"yskssq\": null,\n                \"yxse\": 9570.19,\n                \"zmbh\": null\n            }\n        ],\n        \"message\": null,\n        \"ncpfpList\": [\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"81\",\n                \"fpzt\": \"0\",\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxzt\": \"1\",\n                \"je\": \"4733.94\",\n                \"jjkce\": \"47.34\",\n                \"jjkcsj\": \"2024-08-05 15:34:22\",\n                \"jjkcskssq\": \"202407\",\n                \"jjkczt\": \"1\",\n                \"kjjkcse\": \"47.34\",\n                \"kprq\": \"2024-06-21 09:00:53\",\n                \"qdfphm\": \"24****************25\",\n                \"sykjjkcse\": \"0.00\",\n                \"xfmc\": \"驻马***************公司\",\n                \"xfsbh\": \"91**************8R\"\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"82\",\n                \"fpzt\": \"0\",\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxzt\": \"1\",\n                \"je\": \"56869.87\",\n                \"jjkce\": \"322.93\",\n                \"jjkcsj\": \"2024-08-05 15:34:43\",\n                \"jjkcskssq\": \"202407\",\n                \"jjkczt\": \"3\",\n                \"kjjkcse\": \"568.70\",\n                \"kprq\": \"2024-06-17 11:39:21\",\n                \"qdfphm\": \"24*****************25\",\n                \"sykjjkcse\": \"245.77\",\n                \"xfmc\": \"河南*************公司\",\n                \"xfsbh\": \"91***************19\"\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"81\",\n                \"fpzt\": \"0\",\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxzt\": \"1\",\n                \"je\": \"163059.64\",\n                \"jjkce\": \"1630.60\",\n                \"jjkcsj\": \"2024-08-05 15:34:22\",\n                \"jjkcskssq\": \"202407\",\n                \"jjkczt\": \"1\",\n                \"kjjkcse\": \"1630.60\",\n                \"kprq\": \"2024-06-24 14:58:02\",\n                \"qdfphm\": \"24******************93\",\n                \"sykjjkcse\": \"0.00\",\n                \"xfmc\": \"中粮*******************公司\",\n                \"xfsbh\": \"91******************5W\"\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fplx\": \"81\",\n                \"fpzt\": \"0\",\n                \"gfsbh\": \"91****************3E\",\n                \"glzt\": \"0\",\n                \"gxzt\": \"1\",\n                \"je\": \"256637.62\",\n                \"jjkce\": \"2566.38\",\n                \"jjkcsj\": \"2024-08-05 15:34:22\",\n                \"jjkcskssq\": \"202407\",\n                \"jjkczt\": \"1\",\n                \"kjjkcse\": \"2566.38\",\n                \"kprq\": \"2024-06-21 13:04:56\",\n                \"qdfphm\": \"24*****************76\",\n                \"sykjjkcse\": \"0.00\",\n                \"xfmc\": \"中粮*******************公司\",\n                \"xfsbh\": \"91*****************5W\"\n            }\n        ],\n        \"page\": {\n            \"currentPage\": 1,\n            \"pageSize\": 200,\n            \"totalCount\": 105,\n            \"totalPage\": 1\n        },\n        \"tjInfo\": {\n            \"fpxx\": null,\n            \"jglx\": null,\n            \"jgzt\": \"2\",\n            \"jxdkhz\": [\n                {\n                    \"fplx\": \"15\",\n                    \"hjfs\": 102,\n                    \"hjje\": 17422889.94,\n                    \"sehj\": 2070195.24\n                },\n                {\n                    \"fplx\": \"16\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"17\",\n                    \"hjfs\": 3,\n                    \"hjje\": 170652.76,\n                    \"sehj\": 15358.75\n                },\n                {\n                    \"fplx\": \"18\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"19\",\n                    \"hjfs\": 4,\n                    \"hjje\": 481301.07,\n                    \"sehj\": 4567.25\n                },\n                {\n                    \"fplx\": \"20\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                },\n                {\n                    \"fplx\": \"yc15\",\n                    \"hjfs\": 0,\n                    \"hjje\": 0,\n                    \"sehj\": 0\n                }\n            ],\n            \"ncptjxx\": [\n                {\n                    \"fplx\": \"9\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 3,\n                    \"zsyxdksehj\": 4244.32\n                },\n                {\n                    \"fplx\": \"10\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"11\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 1,\n                    \"zsyxdksehj\": 322.93\n                },\n                {\n                    \"fplx\": \"12\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"13\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 0,\n                    \"zsyxdksehj\": 0\n                },\n                {\n                    \"fplx\": \"14\",\n                    \"fsfpfs\": 0,\n                    \"fsyxdksehj\": 0,\n                    \"zsfpfs\": 4,\n                    \"zsyxdksehj\": 4567.25\n                }\n            ],\n            \"nsrsbh\": \"91****************3E\",\n            \"skssq\": \"202407\",\n            \"tjsj\": \"2024-08-06 10:52:36\",\n            \"tjxx\": [\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 102,\n                    \"dkzje\": 17422889.94,\n                    \"dkzyxse\": 2070195.24,\n                    \"fplx\": \"01\",\n                    \"qtfpfs\": 102,\n                    \"qtyxdksehj\": 2070195.24\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"90\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 3,\n                    \"dkzje\": 170652.76,\n                    \"dkzyxse\": 15358.75,\n                    \"fplx\": \"91\",\n                    \"qtfpfs\": 3,\n                    \"qtyxdksehj\": 15358.75\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"14\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"21\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"22\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"04\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"03\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"17\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 0,\n                    \"dkzje\": 0,\n                    \"dkzyxse\": 0,\n                    \"fplx\": \"92\",\n                    \"qtfpfs\": null,\n                    \"qtyxdksehj\": null\n                },\n                {\n                    \"bdkfpfs\": 0,\n                    \"bdkzje\": 0,\n                    \"bdkzyxse\": 0,\n                    \"ckznxsehj\": null,\n                    \"ckznxzmfs\": null,\n                    \"dkfpfs\": 105,\n                    \"dkzje\": 17593542.7,\n                    \"dkzyxse\": 2085553.99,\n                    \"fplx\": \"99\",\n                    \"qtfpfs\": 105,\n                    \"qtyxdksehj\": 2085553.99\n                }\n            ]\n        },\n        \"zt\": \"3\"\n    }\n}",
+      "id": 425276263
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58725789,
+  "ordering": 1078,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-06T03:00:02.000Z",
+  "updatedAt": "2026-05-08T03:20:23.000Z",
+  "creatorId": 1426961,
+  "editorId": 3099717,
+  "creatorUserId": 1426961,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

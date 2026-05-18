@@ -1,0 +1,577 @@
+{
+  "id": 176336449,
+  "name": "获取采集状态及全量数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "IMSQUN16aPxIhoHbZzwsE",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "描述：该接口用于获取采集状态及税务和发票信息数据。\n调用流程：\n1. 通过发起采集任务时返回的taskId；\n2. 判断采集状态是否完成，获取data节点下的status状态；\n3. 获取结果，当采集状态为3时采集完成，获取result节点下的数据；\n\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| 2000 | 成功 | |\n| 5000 | 异常 | |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/collect/getTaxAndFpInfo",
+  "tags": [
+    "企业信息采集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务id",
+          "description": "任务成功后任务ID",
+          "x-apifox-mock": "1698948417616556034"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "纳税人识别号",
+          "x-apifox-mock": "91440111MACHRDGB9W"
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "nsrsbh"
+      ],
+      "x-apifox-refs": {},
+      "required": [
+        "taskId",
+        "nsrsbh"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\": \"1698948417616556034\",\r\n    \"nsrsbh\": \"91**************9W\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "qdkYrvK1jv",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "Hw32Fiw2tC",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "uabTZYTAQj",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 455316310,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id",
+            "description": "请求唯一id",
+            "x-apifox-mock": "1702594054403760130"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code码",
+            "description": "返回code码",
+            "x-apifox-mock": "2000"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "返回信息描述",
+            "description": "返回信息描述",
+            "x-apifox-mock": "成功"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "status": {
+                "type": "integer",
+                "description": "-1：任务创建失败，0:无任务，1:进行中，3:完成",
+                "title": "任务完成状态"
+              },
+              "result": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "sb": {
+                    "description": "税表节点",
+                    "type": "object",
+                    "x-apifox-refs": {
+                      "01HW50V4HX8FY1QMHC5Y7GJHE2": {
+                        "$ref": "#/definitions/93983155",
+                        "x-apifox-overrides": {
+                          "fullFileDownLoad": null
+                        }
+                      }
+                    },
+                    "properties": {
+                      "taxRptList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "x-apifox-refs": {
+                            "01HW51AGZ8KT7AYPXA75992EVG": {
+                              "$ref": "#/definitions/86279521",
+                              "x-apifox-overrides": {}
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01HW51AGZ8KT7AYPXA75992EVG"
+                          ],
+                          "properties": {}
+                        },
+                        "title": "税表",
+                        "description": "企业税申报表"
+                      },
+                      "finRptList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-refs": {
+                            "01HYD46STFYG4BV3F5K5ZDY2F3": {
+                              "$ref": "#/definitions/95482618"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01HYD46STFYG4BV3F5K5ZDY2F3"
+                          ]
+                        },
+                        "title": "财务报表",
+                        "description": "财务报表"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "01HW50V4HX8FY1QMHC5Y7GJHE2",
+                      "taxRptList",
+                      "finRptList"
+                    ]
+                  },
+                  "jcxx": {
+                    "type": "object",
+                    "properties": {},
+                    "description": "基础信息节点",
+                    "x-apifox-orders": [
+                      "01HDGHQ2949K5HV2SW6SW5GBXC",
+                      "01HDGJ39724AG1JJ2FY4TF9G6R",
+                      "01HDGJ41C4FHXBGRB55G104705",
+                      "01HDGGZW6Q670MZQPMK4R3YWD7",
+                      "01HYCZS8B0WRPZDQ5PZFWD5JHF",
+                      "01HDGJ4J6W4Z2NME5EC191QZPM",
+                      "01HA4TA6BST2MGBZGWH5JSM9GC",
+                      "01HA4TA608EKWWMEMF71KWC7CJ",
+                      "01HA4TA5N1CMS2453A6SXBFS65",
+                      "01HA4TA4Z3AW4JYM7AHPEYQP5S",
+                      "01HA4TA3VCPZWF81453BTZWGWR",
+                      "01HE30ZCEFBKK5TTHR17GQ4PJ9",
+                      "01HW598R03TT96J7QTSSG8G86V",
+                      "01JBGPVJH8CQNG0J1X10FCST0D",
+                      "01JBGPWFYS9GVPGJMTY7XSMMZ1",
+                      "01K2C1YR120V70G16X7Y7FCWRQ",
+                      "01JN3VM8RMBQ0KNB35PJGP68C1",
+                      "01JTJADQ7V80Z6N4CYED2X50SZ",
+                      "01JYNHGGWDSDA9EZH4X02B26F9"
+                    ],
+                    "x-apifox-refs": {
+                      "01HA4TA6BST2MGBZGWH5JSM9GC": {
+                        "$ref": "#/definitions/60712671"
+                      },
+                      "01HA4TA608EKWWMEMF71KWC7CJ": {
+                        "$ref": "#/definitions/60713556"
+                      },
+                      "01HA4TA5N1CMS2453A6SXBFS65": {
+                        "$ref": "#/definitions/60713722"
+                      },
+                      "01HA4TA4Z3AW4JYM7AHPEYQP5S": {
+                        "$ref": "#/definitions/60714097"
+                      },
+                      "01HA4TA3VCPZWF81453BTZWGWR": {
+                        "$ref": "#/definitions/60714198"
+                      },
+                      "01HDGGZW6Q670MZQPMK4R3YWD7": {
+                        "$ref": "#/definitions/66006890"
+                      },
+                      "01HDGHQ2949K5HV2SW6SW5GBXC": {
+                        "$ref": "#/definitions/66012252"
+                      },
+                      "01HDGJ39724AG1JJ2FY4TF9G6R": {
+                        "$ref": "#/definitions/66014735"
+                      },
+                      "01HDGJ41C4FHXBGRB55G104705": {
+                        "$ref": "#/definitions/66015006"
+                      },
+                      "01HDGJ4J6W4Z2NME5EC191QZPM": {
+                        "$ref": "#/definitions/66015020"
+                      },
+                      "01HE30ZCEFBKK5TTHR17GQ4PJ9": {
+                        "$ref": "#/definitions/60664446"
+                      },
+                      "01HW598R03TT96J7QTSSG8G86V": {
+                        "$ref": "#/definitions/94046136"
+                      },
+                      "01HYCZS8B0WRPZDQ5PZFWD5JHF": {
+                        "$ref": "#/definitions/66001464"
+                      },
+                      "01JBGPVJH8CQNG0J1X10FCST0D": {
+                        "$ref": "#/definitions/128054519"
+                      },
+                      "01JBGPWFYS9GVPGJMTY7XSMMZ1": {
+                        "$ref": "#/definitions/128055065"
+                      },
+                      "01JN3VM8RMBQ0KNB35PJGP68C1": {
+                        "$ref": "#/definitions/149385768"
+                      },
+                      "01JTJADQ7V80Z6N4CYED2X50SZ": {
+                        "$ref": "#/definitions/165415548"
+                      },
+                      "01JYNHGGWDSDA9EZH4X02B26F9": {
+                        "$ref": "#/definitions/179395277"
+                      },
+                      "01K2C1YR120V70G16X7Y7FCWRQ": {
+                        "$ref": "#/definitions/144673091"
+                      }
+                    }
+                  },
+                  "fp": {
+                    "description": "发票节点",
+                    "type": "object",
+                    "x-apifox-refs": {},
+                    "x-apifox-orders": [
+                      "jxxFileDownLoad",
+                      "ygxFileDownLoad",
+                      "fpLimit",
+                      "jxsezcFileDownLoad"
+                    ],
+                    "properties": {
+                      "jxxFileDownLoad": {
+                        "title": "进销项发票",
+                        "description": "进销项发票",
+                        "type": "object",
+                        "x-apifox-refs": {
+                          "01HYD6SQ2C8ER1AWKR9V45504D": {
+                            "$ref": "#/definitions/98674583",
+                            "x-apifox-overrides": {}
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01HYD6SQ2C8ER1AWKR9V45504D"
+                        ],
+                        "properties": {}
+                      },
+                      "ygxFileDownLoad": {
+                        "title": "已勾选发票",
+                        "description": "已勾选发票",
+                        "type": "object",
+                        "x-apifox-refs": {
+                          "01HYD6TTH34HCPG3YFE1DNHHW8": {
+                            "$ref": "#/definitions/98674583",
+                            "x-apifox-overrides": {}
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "01HYD6TTH34HCPG3YFE1DNHHW8"
+                        ],
+                        "properties": {}
+                      },
+                      "fpLimit": {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": [
+                          "01JN3V2X8S0RNCEHQ02YSMXWG3"
+                        ],
+                        "description": "发票额度",
+                        "title": "发票额度",
+                        "x-apifox-refs": {
+                          "01JN3V2X8S0RNCEHQ02YSMXWG3": {
+                            "$ref": "#/definitions/149384796"
+                          }
+                        }
+                      },
+                      "jxsezcFileDownLoad": {
+                        "type": "object",
+                        "properties": {
+                          "jsonUrl": {
+                            "type": "string",
+                            "title": "链接文件地址",
+                            "description": "txt格式，详情查看解析版-获取发票数据接口示例"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "jsonUrl"
+                        ],
+                        "title": "进项税额转出发票",
+                        "description": "进项税额转出节点"
+                      }
+                    }
+                  },
+                  "syhq": {
+                    "type": "object",
+                    "properties": {
+                      "syhqTd": {
+                        "description": "土地-税源获取",
+                        "$ref": "#/definitions/111688801"
+                      },
+                      "syhqFc": {
+                        "description": "房产-税源获取",
+                        "$ref": "#/definitions/111690103"
+                      },
+                      "syhqHb": {
+                        "description": "环保-税源获取",
+                        "$ref": "#/definitions/111691703"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "syhqTd",
+                      "syhqFc",
+                      "syhqHb"
+                    ],
+                    "description": "税源获取"
+                  },
+                  "db": {
+                    "description": "我的待办节点",
+                    "$ref": "#/definitions/128059214"
+                  },
+                  "tx": {
+                    "description": "我的提醒节点",
+                    "$ref": "#/definitions/128057392"
+                  }
+                },
+                "x-apifox-orders": [
+                  "jcxx",
+                  "sb",
+                  "fp",
+                  "syhq",
+                  "db",
+                  "tx"
+                ],
+                "x-apifox-refs": {},
+                "description": "任务结果内容",
+                "title": "任务结果内容"
+              },
+              "statusMsg": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务完成状态描述",
+                "description": "任务完成状态描述"
+              },
+              "statusDetails": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "main": {
+                    "type": "string",
+                    "title": "分组总状态",
+                    "description": "1：进行中，2：失败（任何失败），3：成功"
+                  },
+                  "mainStatusCode": {
+                    "type": "string",
+                    "title": "分组总code",
+                    "description": "8000：存在登录失效任务，2000：全部成功，5000：部分失败，4500：无权限"
+                  },
+                  "sb、fp、jcxx、syhq、db、tx": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "title": "分组任务处理状态",
+                        "description": "1：进行中，2：失败，3：成功"
+                      },
+                      "loginCode": {
+                        "type": "string",
+                        "title": "登录失效状态",
+                        "description": "登录失效（8000），其他：2000"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "status",
+                      "loginCode"
+                    ],
+                    "required": [
+                      "status",
+                      "loginCode"
+                    ],
+                    "title": "分组任务状态详情节点",
+                    "description": "类型及下节点类型参考上级目录中的《企业数据采集公共附录》"
+                  }
+                },
+                "title": "任务状态详情",
+                "x-apifox-orders": [
+                  "sb、fp、jcxx、syhq、db、tx",
+                  "main",
+                  "mainStatusCode"
+                ]
+              }
+            },
+            "x-apifox-orders": [
+              "status",
+              "statusMsg",
+              "statusDetails",
+              "result"
+            ],
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "message",
+          "success",
+          "data"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功返回结果",
+      "responseId": 455316310,
+      "data": "{\n    \"msg\": null,\n    \"code\": \"2000\",\n    \"data\": {\n        \"result\": {\n            \"jcxx\": {\n                \"taxCompanyCreditLevelDtoPageResult\": [\n                    {\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"xydj\": \"A\",\n                        \"xypfnd\": \"2022\",\n                        \"xypffs\": \"90\",\n                        \"taskId\": 17826942852867586\n                    }\n                ],\n                \"contactInfo\": [\n                    {\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"dbrmc\": \"XXX\",\n                        \"dbrdhhm\": \"13000000001\",\n                        \"dbryddhhm\": \"13000000001\",\n                        \"dbrdydz\": \"\",\n                        \"dbrzjlxdm\": \"201\",\n                        \"dbrzjlxmc\": \"居民身份证\",\n                        \"dbrzjhm\": \"身份证号码\",\n                        \"bssf\": \"1\",\n                        \"taskId\": 17826942849991616\n                    }\n                ],\n                \"taxCompanyEnterpriseChangeDtoPageResult\": [\n                    {\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"bgxmmc\": \"财务负责人姓名\",\n                        \"bgxmdm\": \"036\",\n                        \"bgqnr\": \"XXX\",\n                        \"bghnr\": \"XXX\",\n                        \"bgrq\": \"\",\n                        \"taskId\": 17826942824432130\n                    }\n                ],\n                \"taxFeeIdentify\": [\n                    {\n                        \"ZSXM\": \"个人所得税\",\n                        \"ZSPM\": \"工资薪金所得\",\n                        \"SL\": \"0.03\",\n                        \"NSQX\": \"月\",\n                        \"RDYXQQ\": \"2019-03-01\",\n                        \"RDYXQZ\": \"9999-12-31\",\n                        \"ZSDLFS\": \"代扣代缴\",\n                        \"ZSZM\": \"\"\n                    }\n                ],\n                \"taxCompanyInfoDtoPageResult\": {\n                    \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                    \"nsrmc\": \"XXXXX（省）有限公司\",\n                    \"swjgmc\": \"国XXXX局XX市XX区XX局\",\n                    \"xydj\": \"A\"\n                },\n                \"taxSocialSecurityDtoPageResult\": [\n                    {\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"ssswj\": \"国XXXX局XX市XX区XX局\",\n                        \"zsxm\": \"企业职工基本养老保险费\",\n                        \"sbrq\": \"2022-12-08\",\n                        \"nssbq\": \"2022-11\",\n                        \"nssbz\": \"2022-11\",\n                        \"bblx\": \"正常申报\",\n                        \"fz\": \"企业职工基本养老保险费\",\n                        \"zspm\": \"职工基本养老保险(单位缴纳)\",\n                        \"zszm\": \"\",\n                        \"jfjs\": \"1000002.0\",\n                        \"fl\": \"0.14\",\n                        \"yjfe\": \"100780.28\",\n                        \"jfrs\": \"121\",\n                        \"sbqx\": \"\",\n                        \"taskId\": 17821506\n                    }\n                ],\n                \"backTaxInfo\": [\n                    {\n                        \"nsrsbh\": \"912439****\",\n                        \"zsxm\": \"文化事业建设费\",\n                        \"sssqq\": \"2024-03-01\",\n                        \"sssqz\": \"2024-03-31\",\n                        \"xmmc\": \"文化事业建设费\",\n                        \"zspm\": \"广告**\",\n                        \"jkqx\": \"2024-04-15\",\n                        \"ybse\": \"0.6\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"taxCompanyEnterpriseInfoDtoPageResult\": {\n                    \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                    \"nsrmc\": \"XXXXX（省）有限公司\",\n                    \"zcdz\": \"XX省XX市XX区XX中心\",\n                    \"yydz\": \"XX省XX市XX区XX中心\",\n                    \"dhhm\": \"13000000001\",\n                    \"sshydm\": \"000\",\n                    \"sshymc\": \"供应\",\n                    \"djzclxmc\": \"港、澳、台商独资经营企业\",\n                    \"nslxdm\": \"1\",\n                    \"nslxmc\": \"一般纳税人\",\n                    \"scjyqxz\": \"\",\n                    \"zczb\": \"200000.00\",\n                    \"sykjzdmc\": \"小企业会计准则\",\n                    \"nsztdm\": \"01\",\n                    \"nsztmc\": \"正常\",\n                    \"swjgdm\": \"10000000000\",\n                    \"swjgmc\": \"国XXXX局XX市XX区XX局\",\n                    \"kyrq\": \"20100101\",\n                    \"zczbbz\": \"\",\n                    \"cyrs\": \"0\",\n                    \"jyfw\": \"\",\n                    \"zcddhhm\": \"\",\n                    \"ssmc\": \"XX省\",\n                    \"dsmc\": \"XX省XX市\",\n                    \"dbrmc\": \"XXX\",\n                    \"dbryddhhm\": \"13000000001\",\n                    \"dbrzjlxmc\": \"居民身份证\",\n                    \"dbrzjhm\": \"身份证号码\",\n                    \"scjyqxq\": \"\",\n                    \"cwfzrxm\": \"XX\",\n                    \"cwfzrzjhm\": \"0000000000000000\",\n                    \"cwfzrzjlx\": \"居民身份证\",\n                    \"cwfzryddh\": \"13000000001\",\n                    \"bsrzjmc\": \"居民身份证\",\n                    \"bsrzjhm\": \"000000000000000000\",\n                    \"bsryddh\": \"\",\n                    \"bsrmc\": \"XXX\",\n                    \"ssswj\": \"国XXXX局XX市XX区XX局\",\n                    \"xfcy\": \"供应\",\n                    \"taskId\": 17826942787201\n                },\n                \"taxCompanyEnterpriseIllegalDtoPageResult\": [],\n                \"taxCompanyPaymentListDtoPageResult\": [\n                    {\n                        \"taskId\": 178260971394,\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"dq\": \"0000\",\n                        \"skssqq\": \"2021-01-01\",\n                        \"skssqz\": \"2021-01-31\",\n                        \"xmmc\": \"\",\n                        \"zspm\": \"\",\n                        \"jkrq\": \"2021-02-05\",\n                        \"yjsk\": \"\"\n                    }\n                ],\n                \"tzfxxDtoPageResult\": [\n                    {\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"tzfmc\": \"XXXXX投资（XX）有限公司\",\n                        \"tzfjjxzdm\": \"\",\n                        \"tzfjjxzmc\": \"\",\n                        \"tzbl\": \"100.0\",\n                        \"zjzldm\": \"113\",\n                        \"zjzlmc\": \"XX登记证\",\n                        \"zjhm\": \"91XXXXXXXXXXXXXX01\",\n                        \"gjdz\": \"中华人民共和国\",\n                        \"tzje\": \"\",\n                        \"taskId\": 17826942289730\n                    }\n                ],\n                \"paymentInfo\": [\n                    {\n                        \"taskId\": 1782525826,\n                        \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                        \"sssqq\": \"2024-01-01\",\n                        \"sssqz\": \"2024-03-31\",\n                        \"jkqx\": \"\",\n                        \"jkfsrq\": \"2024-04-11\",\n                        \"zsxmmc\": \"印花税\",\n                        \"zsxmdm\": \"10111\",\n                        \"skzlmc\": \"正税\",\n                        \"skzldm\": \"10\",\n                        \"skztmc\": \"已入库\",\n                        \"skztdm\": \"4\",\n                        \"se\": \"43.57\"\n                    }\n                ],\n                \"notSbQuery\": [\n                    {\n                        \"zsxm\": \"征收项目\",\n                        \"zspm\": \"征收品目\",\n                        \"zsdlfs\": \"征收代理方式\",\n                        \"skssqq\": \"2024-01-01\",\n                        \"skssqz\": \"2024-12-31\",\n                        \"sbqx\": \"2025-09-30\",\n                        \"nsqx\": \"\",\n                        \"sfcwbb\": \"N\"\n                    }\n                ]\n            },\n            \"fp\": {\n                \"jxsezcFileDownLoad\": {\n                    \"jsonUrl\": \"https://qxy-oss-test.oss\"\n                }\n            },\n            \"sb\": {\n                \"fullFileDownLoad\": {\n                    \"downloadLogs\": [\n                        {\n                            \"tableCode\": \"BDA0610600\",\n                            \"code\": \"1\",\n                            \"message\": \"下载税表成功\",\n                            \"ssqq\": \"2021-03-01\",\n                            \"tableName\": \"《增值税纳税申报表（一般纳税人适用）》\",\n                            \"ssqz\": \"2021-03-31\"\n                        }\n                    ],\n                    \"nsrsbh\": \"91XXXXXXXXXXXXXX01\",\n                    \"downloadLink\": \"http://91XXXXXXXXXXXXXX01_2021-01-01_2024-04-24.zip\",\n                    \"cxrqq\": \"2021-01-01\",\n                    \"isFileAvailable\": true,\n                    \"isZip\": \"1\",\n                    \"cxrqz\": \"2024-04-24\"\n                }\n            }\n        },\n        \"statusDetails\": {\n            \"jcxx\": {\n                \"groupStatusDetail\": {\n                    \"ORG_ILLEGAL_INFO\": 3,\n                    \"CREDIT_LEVEL_DETAIL\": 3,\n                    \"CONTACT_INFO\": 3,\n                    \"CHANGE_INFO\": 3,\n                    \"ORG_BACK_TAX_INFO\": 3,\n                    \"INVESTOR_INFO\": 3,\n                    \"BASIC_INFO\": 3,\n                    \"TAX_SBF\": 3,\n                    \"CREDIT_LEVEL\": 3,\n                    \"TICKET_IDENTIFY\": 3,\n                    \"TAX_FEE_IDENTIFY\": 3,\n                    \"DUTY_PAID_PROOF\": 3,\n                    \"TAX_PAYMENT\": 3\n                },\n                \"status\": 3\n            },\n            \"fp\": {\n                \"groupStatusDetail\": {\n                    \"XGJFP\": 3\n                },\n                \"status\": 3\n            },\n            \"main\": 3,\n            \"sb\": {\n                \"groupStatusDetail\": {\n                    \"FULL_FILE_ZIP\": 3\n                },\n                \"status\": 3\n            }\n        },\n        \"statusMsg\": \"完成\",\n        \"status\": 3\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409935671
+    },
+    {
+      "name": "税源获取结构",
+      "responseId": 455316310,
+      "data": "{\n    \"msg\": null,\n    \"code\": \"2000\",\n    \"data\": {\n        \"result\": {\n            \"jcxx\": {},\n            \"syhq\": {\n                \"syhqTd\": [\n                    {\n                        \"tdbh\": \"T40000000594\",\n                        \"tdxz\": \"02\",\n                        \"tdsyqrnsrmc\": \"\",\n                        \"dj\": \"0.00\",\n                        \"tdzlxxdz\": \"XX大道南侧、XX一路东侧、XX路北侧\",\n                        \"tdmc\": \"\",\n                        \"tdqdsj\": \"2020-06-30\",\n                        \"sszgsws\": \"XX市XXX区税务局\",\n                        \"bdcqzh\": \"\",\n                        \"jxdz\": \"XXX镇\",\n                        \"tdzmj\": \"734917.00\",\n                        \"tdsyqrnsrsbh\": \"\",\n                        \"bdcdydm\": \"\",\n                        \"tdqdfs\": \"02\",\n                        \"nsrlx\": \"01\",\n                        \"tdyt\": \"04\",\n                        \"ysmx\": [\n                            {\n                                \"tddj\": \"城市土地-十级土地\",\n                                \"yxqz\": \"2099-12-31\",\n                                \"zytdmj\": \"734917.00\",\n                                \"jmxx\": [],\n                                \"jmsxsl\": \"0\",\n                                \"yxqq\": \"2020-07-01\",\n                                \"sebz\": \"2.00\"\n                            }\n                        ],\n                        \"xzqhdz\": \"XXX区\"\n                    }\n                ],\n                \"syhqFc\": [\n                    {\n                        \"fwzldzscjx\": \"XXX镇\",\n                        \"fwzldzxzqh\": \"XXX区\",\n                        \"fwsztdbh\": \"\",\n                        \"syqrmc\": \"\",\n                        \"czjz\": [],\n                        \"fcbh\": \"F40000000084\",\n                        \"fccsqdsj\": \"2021-12-31\",\n                        \"fwzlxxdz\": \"XX大道南侧、XX一路东侧、XX路北侧\",\n                        \"bdcqzsh\": \"\",\n                        \"bdcdyhdm\": \"\",\n                        \"nsrsbh\": \"\",\n                        \"cqzhlb\": \"\",\n                        \"fcyt\": \"01\",\n                        \"fwssswskfj\": \"XXX市XXX区税务局\",\n                        \"cjjz\": [\n                            {\n                                \"jsbl\": \"0.70\",\n                                \"jmxx\": [],\n                                \"qzczmj\": \"0.00\",\n                                \"nsywyxqz\": \"2099-12-31\",\n                                \"jmsxsl\": \"0\",\n                                \"qzczfyz\": \"0.00\",\n                                \"nsywyxqq\": \"2023-01-01\",\n                                \"fcyzswjggz\": \"851496.39\"\n                            },\n                            {\n                                \"jsbl\": \"0.70\",\n                                \"jmxx\": [],\n                                \"qzczmj\": \"0.00\",\n                                \"nsywyxqz\": \"2022-12-31\",\n                                \"jmsxsl\": \"0\",\n                                \"qzczfyz\": \"0.00\",\n                                \"nsywyxqq\": \"2022-01-01\",\n                                \"fcyzswjggz\": \"851496.39\"\n                            }\n                        ],\n                        \"fcmc\": \"\",\n                        \"nsrlx\": \"01\",\n                        \"jzmj\": \"330744.42\"\n                    }\n                ],\n                \"syhqHb\": {\n                    \"jbxx\": {\n                        \"sfscxwsjzclcs\": \"N\",\n                        \"zs_list\": [\n                            {\n                                \"pfkbh\": \"1声-01\",\n                                \"scjyszjx\": \"XXX镇（XXX开发）\",\n                                \"swrwzl\": \"\",\n                                \"pfkdlzb_wdm\": \"\",\n                                \"bzz_yj\": \"50.00\",\n                                \"bzz_zj\": \"60.00\",\n                                \"yxqq\": \"2018-01\",\n                                \"yxqz\": \"2099-12\",\n                                \"wrwlb\": \"噪声\",\n                                \"wrwmc\": \"工业噪声\",\n                                \"pfkmc\": \"空压机\",\n                                \"pfkdlzb_jdf\": \"\",\n                                \"sfzysc\": \"Y\",\n                                \"pfkdlzb_jdd\": \"\",\n                                \"zszm\": \"\",\n                                \"wrwpfljsff\": \"监测机构监测\",\n                                \"sybh\": \"N400000606\",\n                                \"pfkdlzb_jdm\": \"\",\n                                \"pfkdlzb_wdf\": \"\",\n                                \"pwxkzbh\": \"无排污许可证排口\",\n                                \"pfkdlzb_wdd\": \"\"\n                            }\n                        ],\n                        \"nsrmc\": \"XXXXXX有限公司\",\n                        \"sfczhygc\": \"N\",\n                        \"scjyszqh\": \"XXX区\",\n                        \"wrwlbs\": \"大气污染物;水污染物;\",\n                        \"nsrsbh\": \"91xxxxxxxx00L\",\n                        \"gtfw_list\": [\n                            {\n                                \"pfkbh\": \"声\",\n                                \"scjyszjx\": \"XXX镇\",\n                                \"swrwzl\": \"\",\n                                \"pfkdlzb_wdm\": \"\",\n                                \"yxqq\": \"2018-01\",\n                                \"zhlyqk\": \"\",\n                                \"yxqz\": \"9999-12\",\n                                \"wrwlb\": \"固体废物\",\n                                \"wrwmc\": \"危险废物（固）\",\n                                \"pfkmc\": \"\",\n                                \"pfkdlzb_jdf\": \"\",\n                                \"pfkdlzb_jdd\": \"\",\n                                \"zszm\": \"含有或沾染毒性、感染性危险废物的废弃包装物、容器、过滤吸附介质\",\n                                \"wrwpfljsff\": \"\",\n                                \"sybh\": \"S40000051\",\n                                \"pfkdlzb_jdm\": \"\",\n                                \"zcqk\": \"XXXXXX危废房\",\n                                \"pfkdlzb_wdf\": \"\",\n                                \"pwxkzbh\": \"无排污许可证排口\",\n                                \"pfkdlzb_wdd\": \"\",\n                                \"czqk\": \"\"\n                            }\n                        ],\n                        \"sfsshljjzclcs\": \"N\",\n                        \"sthjzgbm\": \"XXX市生态环境局XXX区分局\",\n                        \"dqswr_list\": [\n                            {\n                                \"pfkbh\": \"水-01\",\n                                \"scjyszjx\": \"XXX镇（XXX开发）\",\n                                \"swrwzl\": \"第一类水污染物\",\n                                \"pfkdlzb_wdm\": \"\",\n                                \"yxqq\": \"2018-01\",\n                                \"yxqz\": \"2099-12\",\n                                \"wrwlb\": \"水污染物\",\n                                \"wrwmc\": \"总镍（水）\",\n                                \"pfkmc\": \"1线含镍预处理排放口\",\n                                \"pfkdlzb_jdf\": \"\",\n                                \"pfkdlzb_jdd\": \"\",\n                                \"zszm\": \"\",\n                                \"wrwpfljsff\": \"监测机构监测\",\n                                \"dqswrwwbzpfxz_bzndz\": \"1.00\",\n                                \"sybh\": \"W40000066\",\n                                \"pfkdlzb_jdm\": \"\",\n                                \"dqswrwwbzpfxz_zxbz\": \"1\",\n                                \"pfkdlzb_wdf\": \"\",\n                                \"pwxkzbh\": \"无排污许可证排口\",\n                                \"pfkdlzb_wdd\": \"\"\n                            },\n                            {\n                                \"pfkbh\": \"气06\",\n                                \"scjyszjx\": \"XXX镇（XXX开发）\",\n                                \"swrwzl\": \"\",\n                                \"pfkdlzb_wdm\": \"\",\n                                \"yxqq\": \"2018-01\",\n                                \"yxqz\": \"2099-12\",\n                                \"wrwlb\": \"大气污染物\",\n                                \"wrwmc\": \"苯（气）\",\n                                \"pfkmc\": \"2线保险杠烘干废气焚烧炉排气筒\",\n                                \"pfkdlzb_jdf\": \"\",\n                                \"pfkdlzb_jdd\": \"\",\n                                \"zszm\": \"\",\n                                \"wrwpfljsff\": \"监测机构监测\",\n                                \"dqswrwwbzpfxz_bzndz\": \"1.00\",\n                                \"sybh\": \"A40000491\",\n                                \"pfkdlzb_jdm\": \"\",\n                                \"dqswrwwbzpfxz_zxbz\": \"1\",\n                                \"pfkdlzb_wdf\": \"\",\n                                \"pwxkzbh\": \"无排污许可证排口\",\n                                \"pfkdlzb_wdd\": \"\"\n                            }\n                        ],\n                        \"acsb\": \"N\",\n                        \"pwxkzbh\": \"无排污许可证排口;\"\n                    }\n                }\n            },\n            \"fp\": {},\n            \"sb\": {}\n        },\n        \"statusDetails\": {\n            \"syhq\": {\n                \"loginCode\": \"2000\",\n                \"groupStatusDetail\": {\n                    \"TAX_SYHQ_HB\": {\n                        \"code\": \"2000\",\n                        \"hasLoginErr\": \"0\",\n                        \"status\": 3,\n                        \"codeMsg\": \"任务处理成功: 执行完成\"\n                    },\n                    \"TAX_SYHQ_FC\": {\n                        \"code\": \"2000\",\n                        \"hasLoginErr\": \"0\",\n                        \"status\": 3,\n                        \"codeMsg\": \"任务处理成功: 执行完成\"\n                    },\n                    \"TAX_SYHQ_TD\": {\n                        \"code\": \"2000\",\n                        \"hasLoginErr\": \"0\",\n                        \"status\": 3,\n                        \"codeMsg\": \"任务处理成功: 执行完成\"\n                    }\n                },\n                \"status\": 3\n            },\n            \"main\": 3\n        },\n        \"statusMsg\": \"完成\",\n        \"status\": 3\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 419920607
+    },
+    {
+      "name": "异常返回结果",
+      "responseId": 455316310,
+      "data": "{\n    \"code\": \"50002\",\n    \"success\": false,\n    \"message\": \"字段nsrsbh的格式不正确\",\n    \"reqId\": \"d56999744734437eb10f3369d52efc15\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409935672
+    },
+    {
+      "name": "执行中",
+      "responseId": 455316310,
+      "data": "{\n    \"msg\": null,\n    \"code\": \"2000\",\n    \"data\": {\n        \"statusMsg\": \"执行中\",\n        \"statusDetails\": {\n            \"jcxx\": {\n                \"groupStatusDetail\": {\n                    \"ORG_ILLEGAL_INFO\": 3,\n                    \"CREDIT_LEVEL_DETAIL\": 1,\n                    \"CONTACT_INFO\": 3,\n                    \"CHANGE_INFO\": 3,\n                    \"ORG_BACK_TAX_INFO\": 3,\n                    \"INVESTOR_INFO\": 3,\n                    \"BASIC_INFO\": 3,\n                    \"TAX_SBF\": 1,\n                    \"CREDIT_LEVEL\": 1,\n                    \"TICKET_IDENTIFY\": 1,\n                    \"TAX_FEE_IDENTIFY\": 1,\n                    \"DUTY_PAID_PROOF\": 3,\n                    \"TAX_PAYMENT\": 1\n                },\n                \"status\": 1\n            },\n            \"fp\": {\n                \"groupStatusDetail\": {\n                    \"XGJFP\": 1\n                },\n                \"status\": 1\n            },\n            \"main\": 1,\n            \"sb\": {\n                \"groupStatusDetail\": {\n                    \"FULL_FILE_ZIP\": 1\n                },\n                \"status\": 1\n            }\n        },\n        \"status\": 1\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409935673
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 33438848,
+  "ordering": 169,
+  "responsibleId": 887900,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T07:14:27.000Z",
+  "updatedAt": "2025-11-25T07:44:19.000Z",
+  "creatorId": 1476015,
+  "editorId": 1910680,
+  "creatorUserId": 1476015,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

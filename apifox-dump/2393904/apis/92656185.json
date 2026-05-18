@@ -1,0 +1,193 @@
+{
+  "id": 92656185,
+  "name": "任务终止接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于根据taskId取消异步任务。\n \n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| SUCCESS | 成功 | |\n| PARAMETER_ERROR | 没有找到对应的企业信息！ | |\n| PARAMETER_ERROR | 无企业Id(aggOrgId)不能为空！| |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ | |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qxy/taskCancel",
+  "tags": [
+    "任务终止接口"
+  ],
+  "status": 0,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id",
+          "description": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务id",
+          "title": "任务id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 4707243136208,\r\n    \"taskId\": 4714529331408\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "eogHnb3ugK",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "Z2KJDtlSBV",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "491glQTI0R",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "C1REJYNjmR",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 396505478,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "撤销成功",
+      "responseId": 396505478,
+      "data": "{\n    \"reqId\": \"e837185d9153401b951c195d2b1d8853\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"撤销成功\",\n    \"data\": null\n}",
+      "id": 406741193
+    },
+    {
+      "name": "任务已撤销,不能再撤销",
+      "responseId": 396505478,
+      "data": "{\n    \"reqId\": \"3934a6718640467b990bf6a274302d7b\",\n    \"code\": \"4000\",\n    \"success\": true,\n    \"message\": \"任务已撤销,不能再撤销\",\n    \"data\": null\n}",
+      "id": 406741194
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13945512,
+  "ordering": 161,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:41:29.000Z",
+  "updatedAt": "2026-01-04T15:22:23.000Z",
+  "creatorId": 1452584,
+  "editorId": 1476015,
+  "creatorUserId": 1452584,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

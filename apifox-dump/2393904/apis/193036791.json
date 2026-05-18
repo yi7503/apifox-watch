@@ -1,0 +1,157 @@
+{
+  "id": 193036791,
+  "name": "异步任务结果回调",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "注意：忽略上面api.qixiangyun.com企享云的域名，这个接口文档是客户提供给企享云的回调接口说明！！！\n本接口需要客户自行设计实现，发布后把接口访问地址发给企享云，企享云进行配置，异步处理结果将通过回调地址通知到ISV。\n调用方式: HTTP POST。\n报文格式：application/json; utf-8。\n\n| 认证回调业务名称         |\n| -------------------- |\n| 税款所属期采集       |\n| 进项发票采集         |\n| 进项发票勾选         |\n| 海关缴款书勾选       |\n| 代扣代缴完税凭证勾选 |\n| 申请统计             |\n| 申请统计确认         |\n| 申请农产品发票采集   |\n| 申请农产品发票处理   |\n| 申请农产品加计扣除   |\n| 海关缴款书采集       |\n| 代扣代缴完税凭证采集 |\n| 最新统计确认信息采集 |\n| 注销勾选             |\n| 历史已抵扣采集       |\n| 红字发票采集         |\n| 退税已用途确认采集   |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/服务商CallbackURL地址",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务id",
+          "description": "定位一个任务的唯一值，不能重复"
+        },
+        "status": {
+          "type": "integer",
+          "title": "任务执行结果",
+          "description": "0：初始化； 1：执行中；2 ：失败；3：成功"
+        },
+        "errorMsg": {
+          "type": "string",
+          "title": "失败原因",
+          "description": "失败原因"
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "status",
+        "errorMsg"
+      ],
+      "required": [
+        "taskId",
+        "status",
+        "errorMsg"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\": \"12345abcde\",\r\n    \"status\": 3,\r\n    \"errorMsg\": \"成功\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 488063214,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "回调返回结果",
+            "description": "默认2000为重构，9999为失败"
+          },
+          "msg": {
+            "type": "string",
+            "title": "成功或失败原因",
+            "description": "具体原因"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 488063214,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417078155
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 36852193,
+  "ordering": 80,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-07-11T08:03:29.000Z",
+  "updatedAt": "2025-06-12T07:49:51.000Z",
+  "creatorId": 1875506,
+  "editorId": 2706439,
+  "creatorUserId": 1875506,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.488063214"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

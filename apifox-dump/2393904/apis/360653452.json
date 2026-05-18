@@ -1,0 +1,271 @@
+{
+  "id": 360653452,
+  "name": "企业登记和查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "mDYHoiq5fuczoZFaxh9iL",
+      "executionTiming": "prerequest"
+    },
+    {
+      "type": "commonScript",
+      "data": [
+        407297
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "QGYx-TT5vnuv541nKG2jk",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业首次使用社保服务，需要先调用企业注册接口，核验录入的税号是否做过社保登记，税号正确才能进行社保业务。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/getCompanyRegisterInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "description": "企业ID，String类型，必填项",
+          "type": "string"
+        },
+        "dwbh": {
+          "description": "单位编号，String类型，广东地区必填（示例为广东地区编号）",
+          "type": "string"
+        },
+        "qymc": {
+          "description": "企业名称，String类型",
+          "type": "string"
+        },
+        "nsrsbh": {
+          "description": "纳税人识别号，String类型，必填项（示例为广东地区纳税人识别号格式）",
+          "type": "string"
+        },
+        "areaid": {
+          "description": "地区代码，String类型，必填项，国家标准的4位地区代码",
+          "type": "string"
+        },
+        "zgswskfjdm": {
+          "description": "主管税务所（科、分局）代码，String类型",
+          "type": "string"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "nsrsbh",
+        "areaid",
+        "qymc"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "dwbh",
+        "qymc",
+        "nsrsbh",
+        "areaid",
+        "zgswskfjdm"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4987245897876736\",\r\n    \"dwbh\": \"\",\r\n    \"qymc\": \"社保测试91410105MA47Y2LN36\",\r\n    \"nsrsbh\": \"91410105MA47Y2LN36\",\r\n    \"areaid\": \"4100\",\r\n    \"zgswskfjdm\": \"\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 786677514,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "x-apifox-refs": {},
+              "x-apifox-orders": [
+                "nsrsbh",
+                "nsrmc",
+                "djxhid",
+                "qymc",
+                "hymc",
+                "zgswjgmc",
+                "zgswjg",
+                "gswksmc",
+                "lxdh",
+                "frxm",
+                "nsrzt",
+                "djrq"
+              ],
+              "properties": {
+                "zgswjgmc": {
+                  "type": "string",
+                  "title": "主管税务机关名称"
+                },
+                "nsrzt": {
+                  "type": "string",
+                  "title": "纳税人状态"
+                },
+                "nsrsbh": {
+                  "type": "string",
+                  "title": "纳税识别号"
+                },
+                "nsrmc": {
+                  "type": "string",
+                  "title": "纳税人名称"
+                },
+                "djxhid": {
+                  "type": "string",
+                  "title": "登记序号"
+                },
+                "qymc": {
+                  "type": "string",
+                  "title": "企业名称"
+                },
+                "zgswjg": {
+                  "type": "string",
+                  "title": "税务机关"
+                },
+                "lxdh": {
+                  "type": "string",
+                  "title": "联系电话"
+                },
+                "gswksmc": {
+                  "type": "string",
+                  "title": "主管科所分局"
+                },
+                "frxm": {
+                  "type": "string",
+                  "title": "法人代表人"
+                },
+                "hymc": {
+                  "type": "string",
+                  "title": "行业名称"
+                },
+                "djrq": {
+                  "type": "string",
+                  "title": "登记日期"
+                }
+              }
+            },
+            "description": "企业信息列表"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68385955,
+  "ordering": 10,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-14T03:40:14.000Z",
+  "updatedAt": "2026-04-21T03:47:24.000Z",
+  "creatorId": 1442097,
+  "editorId": 1910680,
+  "creatorUserId": 1442097,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

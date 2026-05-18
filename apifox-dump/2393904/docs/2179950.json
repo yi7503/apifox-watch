@@ -1,0 +1,17 @@
+{
+  "id": 2179950,
+  "name": "对接地址",
+  "sidebarTitle": "",
+  "content": "### API环境说明\n\n\n环境 | apiHost |  注意事项\n---|---|---\n线上环境 | https://api.qixiangyun.com | 测试过程需要使用真实纳税人账号\n\n\n### postman调用demo\n导入时环境和接口都选择导入，已经配置好内置脚本，导入即用\n[postman导入文件-点击下载](https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/postman%E5%AF%BC%E5%85%A5%E6%96%87%E4%BB%B6-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD.zip)\n\n### apifox调用demo\n导入时环境和接口都选择导入，已经配置好内置脚本，导入即用\n[apifox导入文件-点击下载](https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/apifoxdemo.json)",
+  "folderId": 13476167,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-14T03:34:55.000Z",
+  "updatedAt": "2025-11-27T02:30:29.000Z",
+  "creatorId": 493984,
+  "editorId": 493984,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

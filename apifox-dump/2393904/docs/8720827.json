@@ -1,0 +1,17 @@
+{
+  "id": 8720827,
+  "name": "2026年4月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 新增民非、农村合作社财务报表的申报、初始化、查询、pdf下载等相关能力\n2. 汇算清缴的进行部分优化\n3. 消费税申支持税表:卷烟批发企业月份销售明细清单申报\n4. 未开票收入大于免税额度的算税优化\n5. 财务报表需要新增是否进行表单校验的场景需求\n6. 其他内部优化\n:::\n## 一、新增民非、农村合作社财务报表的申报、初始化、查询、pdf下载等相关能力\n1. 涉及接口调整：\n- 新增：民非资料报送小类=ZL1001054、农村合作社资料报送小类=ZL1001055\n3. 涉及业务：支持民非会计制度财务报表、农村合作社财务报表的申报、pdf下载、申报更正、初始化、作废、申报查询、漏报、获取条目等业务\n4. 对接流程：与其他类型财务报表对接流程一致，需要去进行表单上传报文的适配，以及资料报送小类的适配\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652996/image-preview)\n上传报文查看申报附录中各税种报文结构\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652995/image-preview)\n\n## 二、汇算清缴的进行部分优化\n1. 汇算清缴的信息表中股东信息节点必传改成非必传，传这个节点则会校验必须每个字段有值\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652987/image-preview)\n\n2、A105060广告费和业务宣传费等跨年度纳税调整明细表优化\n- bxqyanftxygjzqtglfje 六、按照分摊协议归集至其他关联方的金额（10≤3与6孰小值）文档中剔除\n- 新增字段：bxqybnzcnstzje  七、本年支出纳税调整金额\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652988/image-preview)\n\n3、主表中msjjsrjjjkclb减免性质代码新增一个残疾人员数量，减免代码JJKC00051安置残疾人员所支付的工资加计扣除 适用，其他优惠事项这个参数可以不传或者传空。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652989/image-preview)\n\n4、企业所得税汇缴初始化新增一张表单【纳税调整明细表】，且支持客户入参请求获取哪些表单数据\n- 涉及接口：申报初始化接口\n- 新增纳税调整项目明细表的初始化，结合3月发布的共支持9张表单初始化\n- 不进行表单请求则默认将现在支持的9张表单选择后进入报表获取数据返回\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652990/image-preview)\n\n## 三、消费税申支持税表:卷烟批发企业月份销售明细清单申报\n1、涉及接口：上传申报表数据\n2、运用场景：新增消费税卷烟行业的表单，不涉及可以不进行对接\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652991/image-preview)\n\n## 四、 未开票收入大于免税额度（10万或者30万）的算税优化\n- 涉及接口：未开票收入算税 https://api.qixiangyun.com/v2/tax/qys/loadTaxUnbilledCalculate\n- 运用场景：大于免税额度进行未开票收入算税填入税局时进行本期18栏本期应纳税额减征额计算和减免表0001011608|SXA031901121|填写\n- 对接该接口无需重新对接，rpa计算流程调整，正常适用即可。\n\n## 五、财务报表需要新增是否进行表单校验的场景需求\n- 涉及接口：上传各税种申报表EXCEL数据、上传财报数据\n- 涉及税种：财务报表（小企业、企业会计准则未执行、企业会计准则已执行、企业会计制度、金融类企业会计准则已执行、个体工商户财务报表、政府会计准则制度）\n- 运用场景：新增【财务报表表单是否一致校验】参数，Y=是/N=否 \n- 非必传字段，请求Y则会对请求的表单节点与税局报表列表进行比对是否一致，税局要求申报的表单未请求则失败返回，默认为空。空或者N则是维持现状只校验必填表单（资产、利润），其他表单不上传默认以税局的数据申报\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652994/image-preview)\n\n\n## 六、其他优化\n1. 汇算清缴初始化进入企业信息表107适用会计准则或会计制度（填写代码）这个字段税局自动带出的=500 410  420 430  440 450 460  800 则不勾选A104000报表进行数据初始化\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/652992/image-preview)\n2、环保税条目比对进行优化，进入申报计算减免表明细报表用户请求比税局少则会报错返回，用户请求比税局多则将税局多出的条目清空进行提交\n3、企业所得税汇算清缴上传excel申报的时候进入人工任务的时候对分支机构做个判断处理\n4、财务报表企业会计准则已执行支持解析所有者权益变动表\n5、增值税减免码表新增城市维护建设税的减免代码：0007013610|SXA031901040\n\n\n\n\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-05-08T11:24:41.000Z",
+  "updatedAt": "2026-05-14T10:25:24.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

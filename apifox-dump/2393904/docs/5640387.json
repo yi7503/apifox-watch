@@ -1,0 +1,17 @@
+{
+  "id": 5640387,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n   更正申报能力支持在电子税务局是已申报状态但未缴款或者缴款金额为0的情况下，通过企享云平台重新更正数据完成申报，(支持增值税一般人/小规模、企业所得税预缴A类、消费税、文建费）\n   注意：财务报表更正不能调用此接口，通过上传申报时对接参数gzDeclare--财报是否覆盖申报\n\n## 流程示例\n\n![企业微信截图_17335426518398.png](https://api.apifox.com/api/v1/projects/2393904/resources/482049/image-preview)\n\n\n\n## 接口列表\n第一步：根据税费种和所属期发起从税局获取申报表的初始化数据任务。\n| 接口 | 地址 |说明 |\n| --- | --- | --- |\n| 发起更正申报任务 |/v2/tax/qys/writeTaxDataWithGzDeclare|发起更正申报任务|\n\n\n第二步：根据发起更正申报任务成功后的返回的任务id调用调用更正申报结果接口查询更正申报的状态。\n| 接口 | 地址 |说明 |\n| --- | --- | --- |\n|查询更正申报任务结果|/v2/tax/qys/queryTaskInfo|查询更正申报是否成功",
+  "folderId": 46218331,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-12-07T03:38:18.000Z",
+  "updatedAt": "2025-03-03T08:15:09.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -1,0 +1,17 @@
+{
+  "id": 8438577,
+  "name": "2026年3月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2026年3月发布内容\n\n发布日期：2026-03-31\n发布版本：V2.2026.03\n\n\n## 一、发票开具\n 1.数电二手车统一销售发票开票模块全场景支持 ；\nhttps://openapi.qixiangyun.com/api-419759568\n 支持3种场景开票二手车经销、二手车拍卖、二手车市场；\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/638479/image-preview)\n2.报废产品收购发票发票开票模块全场景支持 ；\nhttps://openapi.qixiangyun.com/api-362676959\n\n3.开票任务分池；\n针对开票量大的用户，单独任务池。调整任务消费逻辑。\n  \n## 二、发票归集\n\n1.采集历史抵扣信息采集路径。（原路径税局升级后存在部分税号导出为空，税局修复时间不可控）\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/638481/image-preview)\n2.新增支持进项税额转出情况查询 ；\nhttps://openapi.qixiangyun.com/api-426566068\nhttps://openapi.qixiangyun.com/api-362676959\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/638482/image-preview)\n ## 三、发票查验\n 1.查验新通道支持数电发票（普通发票）不含特定要素、数电发票（增值税专用发票）不含特定要素、数电发票（普通发票）-旅客运输服务、数电发票（增值税专用发票）--旅客运输服务、数电发票（铁路电子客票）；\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/638486/image-preview)\n ## 四、发票认证\n 1.综合发票认证定制需求交付；\n ## 五、发票识别\n 1.识别数电二手车，数电机动车统一销售、纸质机动车统一销售增加字段：「电话」字段 - 买卖双方、「转入地车辆管理所名称」字段、「价税合计」大写字段。\n\n\n   \n",
+  "folderId": 36975595,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-02T07:11:19.000Z",
+  "updatedAt": "2026-04-02T07:34:04.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

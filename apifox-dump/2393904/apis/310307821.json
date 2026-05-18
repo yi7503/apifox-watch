@@ -1,0 +1,243 @@
+{
+  "id": 310307821,
+  "name": "政策分类查询接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "政策法规库文章分类枚举查询接口，以树形层级返回",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/legislation/category",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/xml",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {},
+      "xml": {
+        "name": "business"
+      },
+      "x-apifox-orders": [],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"needInvoices\": true,\r\n    \"taxNo\": \"546848545\",\r\n    \"statisticsType\": \"1\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "mediaType": "application/xml",
+        "value": "{}",
+        "name": "示例 1"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Ud5k1foWPO",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "kgnQevy54Y",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "zemiLse7y2",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 700360169,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "相应返回信息"
+          },
+          "code": {
+            "type": "string",
+            "description": "响应返回码 如：0"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "title": "分类ID"
+                },
+                "categoryName": {
+                  "type": "string",
+                  "title": "分类名称"
+                },
+                "parentId": {
+                  "type": "string",
+                  "title": "父分类ID，当分类的parentId=0表示当前分类为一级分类"
+                },
+                "children": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "title": "分类ID"
+                      },
+                      "categoryName": {
+                        "type": "string",
+                        "title": "分类名称"
+                      },
+                      "updateTime": {
+                        "type": "string",
+                        "title": "更新日期",
+                        "description": "yyyy/mm/dd hh:mm:ss"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "categoryName",
+                      "updateTime"
+                    ],
+                    "x-apifox-orders": [
+                      "id",
+                      "categoryName",
+                      "updateTime"
+                    ]
+                  },
+                  "description": "子节点-递归"
+                }
+              },
+              "required": [
+                "id",
+                "categoryName",
+                "parentId",
+                "children"
+              ],
+              "x-apifox-orders": [
+                "id",
+                "categoryName",
+                "parentId",
+                "children"
+              ]
+            },
+            "title": "响应数据"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一ID"
+          }
+        },
+        "required": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 700360169,
+      "data": "{\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"categoryName\": \"税务法规\",\n            \"parentId\": \"0\",\n            \"children\": [\n                {\n                    \"id\": \"4\",\n                    \"categoryName\": \"中央税法\",\n                    \"updateTime\": \"2025-05-15 12:34:56\"\n                },\n                {\n                    \"id\": \"5\",\n                    \"categoryName\": \"地方税法\",\n                    \"updateTime\": \"2025-05-15 12:34:56\"\n                }\n            ]\n        },\n        {\n            \"id\": \"24\",\n            \"categoryName\": \"财经法规\",\n            \"parentId\": \"0\",\n            \"children\": [\n                {\n                    \"id\": \"25\",\n                    \"categoryName\": \"金融证券\",\n                    \"updateTime\": \"2025-05-15 12:34:56\"\n                },\n                {\n                    \"id\": \"26\",\n                    \"categoryName\": \"财政法规\",\n                    \"updateTime\": \"2025-05-15 12:34:56\"\n                }\n            ]\n        }\n    ],\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\n    \"message\": \"成功\",\n    \"code\": \"0\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 607287025
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59359025,
+  "ordering": 0,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-18T03:45:17.000Z",
+  "updatedAt": "2025-07-08T03:17:14.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.700360169"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 8255921,
+  "name": "2026年2月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2026年2月发布内容\n\n发布日期：2026-02-28\n发布版本：V2.2026.02\n\n\n## 一、发票开具\n1.客户户信息维护-客户分类查询，增加重命名这个功能；\n2.机动车业务增加机动类专用发票导出\n- 已开具发票的合格证台账信息查询：https://openapi.qixiangyun.com/api-415083843\n- 机动车类专用发票列表查询：https://openapi.qixiangyun.com/api-417249456\n- 机动车类专用发票申请导出：https://openapi.qixiangyun.com/api-417453373\n- 机动车类专用发票导出业务未下载文件列表：https://openapi.qixiangyun.com/api-417465824\n- 机动车类专用发票导出业务未下载文件下载：https://openapi.qixiangyun.com/api-417473443\n3.发票开具：支持是否支持个人出租住房、销售自己使用过的固定资产\nhttps://openapi.qixiangyun.com/api-100012782\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627874/image-preview)\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627873/image-preview)\n4.优化获取版式文件逻辑，提供客户体验，生成固定链接\n5.【获取人脸识别二维码】接口增加返回办税人员姓名，解决数电开票扫脸app提示人脸核验失败后核对人员一致性问题\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627876/image-preview)\n6.客户开具折扣行发票，支持【按比例折扣】\nhttps://openapi.qixiangyun.com/api-100012782\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627882/image-preview)\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627879/image-preview)\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627880/image-preview)\n## 二、发票查验和识别\n1.发票查验-回复获取版式文件\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627891/image-preview)\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/627893/image-preview)\n\n2.财政明细的兼容，支持地方黑龙江、河南、甘肃、厦门、青岛、内蒙古（只有版式）获取版式明细及文件\nhttps://openapi.qixiangyun.com/api-241358209\n ## 三、发票认证\n 1.认证逻辑优化，\n-  支持本地已勾选，实际税局未勾选直接勾选\n-  支持本地未勾选，实际税局已勾选直接返回已勾选\n   \n",
+  "folderId": 36975595,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-03-04T08:45:11.000Z",
+  "updatedAt": "2026-03-04T09:16:23.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

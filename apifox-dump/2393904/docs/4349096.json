@@ -1,0 +1,17 @@
+{
+  "id": 4349096,
+  "name": "jthbData(企业集团合并财务报表) ",
+  "sidebarTitle": "",
+  "content": "\n```\n{\n    \"sbxxForm\": {\n        \"skssqq\": \"2022-01-01\", //税款所属期起\n        \"skssqz\": \"2022-12-31\"  //税款所属期止\n    },\n    \"attachEncode\": \"附件base64编码字符串\",\n    \"attachName\": \"附件名称.xls/.xlsx\" //只接收.xls或.xlsx文件\n}\n```",
+  "folderId": 14012227,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-05-21T03:45:40.000Z",
+  "updatedAt": "2024-05-21T03:46:35.000Z",
+  "creatorId": 2122743,
+  "editorId": 2122743,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

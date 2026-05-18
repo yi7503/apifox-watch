@@ -1,0 +1,17 @@
+{
+  "id": 8264024,
+  "name": "2026年2月发布内容",
+  "sidebarTitle": "",
+  "content": "2026年2月发布内容\n发布日期：2026-02-26\n发布版本：V1.2026.02\n\n# 功能优化\n## 1.优化社保申报提交逻辑\n社保客户端页面不允许调整往年的已申报的基数，但是有些地区的接口没限制，接口允许往高调，不允许往低调,若往高调整会产生费用,为了避免已申报再提交申报产生费用的情况,接口做了优化处理\n\n## 2.缴费记录查询，支持按缴费日期查询\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628571/image-preview)\n\n## 3.特殊缴款待申报信息查询 ，返回增加名称，zspmmc、zsxmmc、zszmmc\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628572/image-preview)\n\n## 3.优化年度缴费工资调整返回报文提示\n\n## 4.优化日常待申报提交,一次提交多月数据,针对费款所属期的校验逻辑",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-03-05T14:44:58.000Z",
+  "updatedAt": "2026-03-06T05:14:56.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

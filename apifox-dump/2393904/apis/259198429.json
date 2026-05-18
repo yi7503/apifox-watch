@@ -1,0 +1,249 @@
+{
+  "id": 259198429,
+  "name": "人员专项扣除信息登记报送服务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "TIR7CecuAZgYWPP8PHguN",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是异步接口。\n1.大部分企业都是让员工自己在APP采集专项附加扣除信息。企业在算税时，算税接口会直接根据员工采集的专项附加信息计算专项附加扣除金额。无需用到此接口。\n2.部分企业为了方便管理员工的专附信息，已经实现了专项附加信息采集工具，可用专项附加信息采集接口进行专附信息报送。如需本地算税，需调用该接口获取专付口信息。\n\n注意:在专项代报成功后可以对专项进行作废，作废和报送的区别在于专项状态，专项状态为“正常”则表示代报，专项状态为“非正常”则表示作废。专项的唯一性由若干个业务字段组成，对于组成唯一性的业务字段修改需要先作废再代报的流程，对于其他字段可以直接进行修改。\n\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/declare/declareEssentialInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "skssq": {
+          "type": "string",
+          "title": "所属期",
+          "description": "格式YYYYMM"
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/145504462"
+          },
+          "title": "企业人员列表"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "rylb"
+      ],
+      "required": [
+        "skssq",
+        "accountId",
+        "aggOrgId",
+        "rylb"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4552900726228096\",\r\n    \"skssq\": \"202501\",\r\n    \"rylb\": [{\r\n            \"xm\": \"姓名\",\r\n            \"zzlx\": \"证件类型\",\r\n            \"zzhm\": \"证件号码\",\r\n            \"znjys\": [{\r\n                    \"xm\": \"子女姓名\",\r\n                    \"sfzjlx\": \"子女证件类型\",\r\n                    \"sfzjhm\": \"子女证件号\",\r\n                    \"csrq\": \"子女出生日期\",\r\n                    \"gjhdqsz\": \"子女国籍\",\r\n                    \"sfypo\": \"是否有配偶\",\r\n                    \"nsrpoxm\": \"配偶姓名\",\r\n                    \"nsrposfzjlx\": \"配偶证件类型\",\r\n                    \"nsrposfzjhm\": \"配偶证件号\",\r\n                    \"sjyjd\": \"当前受教育阶段\",\r\n                    \"sjyrqq\": \"受教育期间起\",\r\n                    \"yjbysj\": \"预计受教育时间止\",\r\n                    \"zjsjysj\": \"教育终止时间\",\r\n                    \"jdgjhdqsz\": \"就读国家（地区）\",\r\n                    \"jdxx\": \"就读学校名称\",\r\n                    \"fpbl\": \"1\" ,\r\n                    \"zxzt\": \"专项状态\"\r\n                }\r\n            ],\r\n            \"sylrs\": {\r\n                \"nsrsf\": \"纳税人身份\",\r\n                \"bsyrxxs\": [{\r\n                        \"xm\": \"被赡养人姓名\",\r\n                        \"sfzjlx\": \"被赡养人证件类型\",\r\n                        \"sfzjhm\": \"被赡养人证件号\",\r\n                        \"csrq\": \"被赡养人出生日期\",\r\n                        \"gjhdqsz\": \"被赡养人国籍\",\r\n                        \"ynsrgx\": \"被赡养人与员工的关系\"\r\n                    }\r\n                ],\r\n                \"ftfs\": \"分摊类型\",\r\n                \"ftje\": \"13.00\",\r\n                \"gtsyrxxs\": [{\r\n                        \"xm\": \"共同赡养人姓名\",\r\n                        \"sfzjlx\": \"共同赡养人证件类型\",\r\n                        \"sfzjhm\": \"共同赡养人证件号\",\r\n                        \"csrq\": \"共同赡养人出生日期\",\r\n                        \"gjhdqsz\": \"共同赡养人国籍\",\r\n                        \"ynsrgx\": \"共同赡养人与员工的关系\"\r\n                    }\r\n                ],\r\n                \"zxzt\": \"专项状态\"\r\n            },\r\n            \"fwzls\": [{\r\n                    \"sfypo\": \"是否有配偶\",\r\n                    \"nsrpoxm\": \"配偶姓名\",\r\n                    \"nsrposfzjlx\": \"配偶证件类型\",\r\n                    \"nsrposfzjhm\": \"配偶证件号\",\r\n                    \"gzcsxzqh_shi\": \"主要工作城市所在省\",\r\n                    \"gzcsxzqh_sheng\": \"主要工作城市所在市\",\r\n                    \"czflx\": \"出租方类型\",\r\n                    \"czrxm\": \"出租方姓名\",\r\n                    \"czrsfzjlx\": \"出租方证件类型\",\r\n                    \"czrsfzjhm\": \"出租方证件号码(统一社会信用代码)\",\r\n                    \"zfzlhtbh\": \"住房租赁合同编号\",\r\n                    \"fwszd_sheng\": \"房屋坐落地址省\",\r\n                    \"fwszd_shi\": \"房屋坐落地址市\",\r\n                    \"fwszd_qx\": \"房屋坐落楼牌区\",\r\n                    \"jzdxxdz\": \"房屋坐落详细地址\",\r\n                    \"zlrqq\": \"租赁日期起\",\r\n                    \"zlrqz\": \"租赁日期止\",\r\n                    \"zxzt\": \"专项状态\"\r\n                }\r\n            ],\r\n            \"fwdks\": [{\r\n                    \"sfypo\": \"是否有配偶\",\r\n                    \"nsrpoxm\": \"配偶姓名\",\r\n                    \"nsrposfzjlx\": \"配偶证件类型\",\r\n                    \"nsrposfzjhm\": \"配偶证件号\",\r\n                    \"jzdxxdz\": \"房屋坐落地址\",\r\n                    \"fwszd_sheng\": \"房屋坐落地址省\",\r\n                    \"fwszd_shi\": \"房屋坐落地址市\",\r\n                    \"fwszd_qx\": \"房屋坐落楼牌区\",\r\n                    \"fwzslx\": \"房屋证书类型\",\r\n                    \"zsh\": \"房屋证书号\",\r\n                    \"sfgzkc\": \"是否首套婚前贷款，且婚后各自扣除\",\r\n                    \"dkrsfbr\": \"是否本人借款\",\r\n                    \"fdxxs\": [{\r\n                            \"fdlx\": \"房屋贷款类型\",\r\n                            \"zfdkhtbh\": \"贷款合同编号\",\r\n                            \"dkyhmc\": \"贷款银行\",\r\n                            \"schkrq\": \"首次还款日期\",\r\n                            \"dkys\": \"1\"\r\n                        }\r\n                    ],\r\n                    \"zxzt\": \"专项状态\"\r\n                }\r\n            ],\r\n            \"jxjys\": [{\r\n                    \"jxjyqk\": \"学历继续教育情况\",\r\n                    \"rxsj\": \"入学时间\",\r\n                    \"yjbysj\": \"（预计）毕业时间\",\r\n                    \"xljxjyjd\": \"教育阶段\",\r\n                    \"fxljxjylx\": \"继续教育类型\",\r\n                    \"zsqdsj\": \"发证日期\",\r\n                    \"zsmc\": \"证书名称\",\r\n                    \"zsbh\": \"证件编号\",\r\n                    \"fzjg\": \"发证机关\",\r\n                    \"zxzt\": \"专项状态\"\r\n                }\r\n            ],\r\n            \"dbyls\": [{\r\n                    \"xm\": \"病人姓名\",\r\n                    \"sfzjlx\": \"病人证件类型\",\r\n                    \"sfzjhm\": \"病人证件号\",\r\n                    \"csrq\": \"病人出生日期\",\r\n                    \"gjhdqsz\": \"病人国籍\",\r\n                    \"ynsrgx\": \"与员工的关系\",\r\n                    \"zfcdzje\": \"个人负担金额\",\r\n                    \"ylzczje\": \"医疗支出总金额\",\r\n                    \"zxzt\": \"专项状态\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 610959447,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JH51YC36SHZWHDY3P5KE14T7": {
+            "$ref": "#/definitions/141932940"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JH51YC36SHZWHDY3P5KE14T7"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 610959447,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1000000000000001304\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 476842408
+    },
+    {
+      "name": "异常示例",
+      "responseId": 610959447,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 476842409
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 49627199,
+  "ordering": 84,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-02-10T09:22:57.000Z",
+  "updatedAt": "2025-05-14T08:41:52.000Z",
+  "creatorId": 1452584,
+  "editorId": 1910680,
+  "creatorUserId": 1452584,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.610959447"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

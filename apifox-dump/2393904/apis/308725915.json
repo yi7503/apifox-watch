@@ -1,0 +1,248 @@
+{
+  "id": 308725915,
+  "name": "出口退税自检反馈查询结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/getSelfCheckFeedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454760922049792\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 697596260,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "title": "业务code",
+                "description": "2000业务成功"
+              },
+              "message": {
+                "type": "string",
+                "title": "信息"
+              },
+              "businessStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "description": "1进行中，2 失败，3成功"
+              },
+              "result": {
+                "type": "string",
+                "title": "反馈结果",
+                "description": "XML内容，[出口退税自检反馈查询XML说明](apifox://link/pages/7151344)"
+              }
+            },
+            "x-apifox-orders": [
+              "code",
+              "businessStatus",
+              "message",
+              "result"
+            ],
+            "required": [
+              "code",
+              "businessStatus"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 697596260,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"\",\n    \"data\": {\n        \"code\": \"2000\",\n        \"businessStatus\": \"3\",\n        \"message\": \"自检反馈成功\",\n        \"result\": \"c470b7179f870e0f758\",\n        \"data\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><business comment=\\\"出口退税反馈获取\\\" id=\\\"CKTSFK2\\\"><body yylxdm=\\\"1\\\"><output><returncode>0</returncode><returnmsg>成功</returnmsg><CKTS_ydfkxx_0001><![CDATA[<taxML xmlns=\\\"http: //www.chinatax.gov.cn/dataspec/\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xsi:type=\\\"cktsBlShydYwbw\\\" xmlbh=\\\"String\\\" bbh=\\\"1.0\\\" xmlmc=\\\"\\\" xsi:schemaLocation=\\\"http://www.chinatax.gov.cn/dataspec/ CKTS_ydfkxx_0001.xsd\\\"><cktsBlShydGrid><cktsBlShydGridlb><shdxmc>免抵退明细表</shdxmc><ydjksdDm>1</ydjksdDm><ydbh>B0018</ydbh><tgbz/><clyjsm/><sbxh>00000001</sbxh><sbpc/><ssq>202505</ssq><ydnr>海关数据中无此出口货物报关单号（531001）</ydnr><hgqyDm>31044</hgqyDm><ktgydbz>N</ktgydbz><ydjbDm>E</ydjbDm></cktsBlShydGridlb><cktsBlShydGridlb><shdxmc>免抵退汇总表</shdxmc><ydjksdDm>1</ydjksdDm><ydbh>B0603</ydbh><tgbz/><clyjsm/><sbxh/><sbpc/><ssq>202505</ssq><ydnr>企业申报当期《汇总表》“进料加工核销应调整免抵退税额”-4531.29与实际应调整额0不一致</ydnr><hgqyDm>31044</hgqyDm><ktgydbz>N</ktgydbz><ydjbDm>E</ydjbDm></cktsBlShydGridlb><cktsBlShydGridlb><shdxmc>离岸价差异表</shdxmc><ydjksdDm>1</ydjksdDm><ydbh>B0311</ydbh><tgbz/><clyjsm/><sbxh>00000001</sbxh><sbpc/><ssq>202505</ssq><ydnr>差异表中的出口报关单号/代理出口证明号(77111)在当期免抵退税申报明细中不存在</ydnr><hgqyDm>31044</hgqyDm><ktgydbz>N</ktgydbz><ydjbDm>E</ydjbDm></cktsBlShydGridlb><cktsBlShydGridlb><shdxmc>免抵退明细表</shdxmc><ydjksdDm>2</ydjksdDm><ydbh>B0105</ydbh><tgbz/><clyjsm/><sbxh>00000001</sbxh><sbpc/><ssq>202505</ssq><ydnr>首次申报跨大类商品(7090)退税，且未申报视同自产</ydnr><hgqyDm>31044</hgqyDm><ktgydbz>Y</ktgydbz><ydjbDm>W</ydjbDm></cktsBlShydGridlb><cktsBlShydGridlb><shdxmc>免抵退汇总表</shdxmc><ydjksdDm>1</ydjksdDm><ydbh>B0601</ydbh><tgbz/><clyjsm/><sbxh/><sbpc/><ssq>202505</ssq><ydnr>（当期202505申报《汇总表》“免抵退税不得免征和抵扣税额合计”15879.02+最近一期202503税务机关核准《汇总表》差额0）与（最近一期免抵退申报下一属期2025-04-01至当期2025-05-31增值税纳税申报表附表二18栏合计数0）不一致</ydnr><hgqyDm>31044</hgqyDm><ktgydbz>N</ktgydbz><ydjbDm>E</ydjbDm></cktsBlShydGridlb><cktsBlShydGridlb><shdxmc>免抵退明细表</shdxmc><ydjksdDm>1</ydjksdDm><ydbh>B0017</ydbh><tgbz/><clyjsm/><sbxh>000001</sbxh><sbpc/><ssq>202505</ssq><ydnr>申报的计量单位(个)与退税率文库中的(千克)不一致</ydnr><hgqyDm>3144</hgqyDm><ktgydbz>N</ktgydbz><ydjbDm>E</ydjbDm></cktsBlShydGridlb><cktsBlShydGridlb><shdxmc>免抵退汇总表</shdxmc><ydjksdDm>1</ydjksdDm><ydbh>B0604</ydbh><tgbz/><clyjsm/><sbxh/><sbpc/><ssq>202505</ssq><ydnr>《免抵退汇总表》1a、4a、5a、10a栏与相关明细表合计数不一致</ydnr><hgqyDm>311044</hgqyDm><ktgydbz>N</ktgydbz><ydjbDm>E</ydjbDm></cktsBlShydGridlb></cktsBlShydGrid></taxML>]]></CKTS_ydfkxx_0001><CKTS_cktsBaBaxx_0001><![CDATA[<taxML xmlns=\\\"http://www.chinatax.gov.cn/dataspec/\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xsi:type=\\\"cktsBaBaxxYwbw\\\" xmlbh=\\\"cktsxx\\\" bbh=\\\"1.0\\\" xmlmc=\\\"NSRXXYWBW\\\" xsi:schemaLocation=\\\"http://www.chinatax.gov.cn/dataspec/ CKTS_cktsBaBaxx_0001.xsd\\\"><cktsBaBaxx><head><tglslysfwbz>N</tglslysfwbz><nsrsbh>919000030</nsrsbh><ckhwtmsjsffDm>1</ckhwtmsjsffDm><cktszhbltgdkywbz>N</cktszhbltgdkywbz><dwmyjyzbadjbbh>外经号</dwmyjyzbadjbbh><djxh>1001739</djxh><tbrq1>2003-09-08 00:00:00.0</tbrq1><ssq>202505</ssq><qybltmsryesfzjhm/><dxggwmqyzzrq/><wmzhfwqybz>N</wmzhfwqybz><zgwgjmc/><tsswjgDm1>131000</tsswjgDm1><zsqsdybnsrbz>N</zsqsdybnsrbz><hyDm>1469</hyDm><nsrmc>xx有限公司</nsrmc><qybltmsryelxdh/><fddbrgddh>021-00</fddbrgddh><sbbs>1</sbbs><fddbrsfzjhm>048621</fddbrsfzjhm><djrq>1998-09-09 00:00:00.0</djrq><sjtsswjgDm>13100000</sjtsswjgDm><cktmsgllx>04</cktmsgllx><sbpc/><shxydm>9100000030</shxydm><qybltmsryysfzjhm/><djzclxDm>330</djzclxDm><fddbryddh>18068</fddbryddh><yfsjfw/><hxny/><zczb1>3.86333E7</zczb1><qybltmsryylxdh>62387</qybltmsryylxdh><bachbz>N</bachbz><tskhyhmc>开发区支行</tskhyhmc><hhcbhlsx>100.00</hhcbhlsx><tskhyhzh>1001242719300311602</tskhyhzh><tsswjgmc>国家税务总局税务局</tsswjgmc><hgqyDm>31044</hgqyDm><qybltmsryyxm>周</qybltmsryyxm><jhfpl/><lslysfw/><dxggwmqybz>N</dxggwmqybz><fddbrxm>钟</fddbrxm><dxggwmqyksrq/><cktsqylxDm>2</cktsqylxDm><qybltmsryexm>毛信晖</qybltmsryexm><fklx>08</fklx><hhcbhlxx>0.00</hhcbhlxx><zcdz>上海市</zcdz><nsrztcode>03</nsrztcode><fszl/><xszzsyhzc/><gjysfwysfs/><bachrq/></head></cktsBaBaxx></taxML>]]></CKTS_cktsBaBaxx_0001><CKTS_cktsBaKz_0001><![CDATA[<taxML xmlns=\\\"http://www.chinatax.gov.cn/dataspec/\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xsi:type=\\\"cktsBaKzYwbw\\\" xmlbh=\\\"String\\\" bbh=\\\"1.0\\\" xmlmc=\\\"\\\" xsi:schemaLocation=\\\"http://www.chinatax.gov.cn/dataspec/ CKTS_cktsBaKz_0001.xsd\\\"><cktsBaKzGrid><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>B</kznr><yxqz>2024-05-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2018-06-01 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>C</kznr><yxqz>2018-05-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2017-06-01 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>B</kznr><yxqz>2017-05-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2016-10-01 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>YBNSRRD</cktmsbakzlxDm><kznr>1</kznr><yxqz>2100-12-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2007-06-01 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>WZHQY</cktmsbakzlxDm><kznr>1</kznr><yxqz>2100-12-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2017-02-24 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>B</kznr><yxqz>2015-08-04 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2010-12-30 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>B</kznr><yxqz>2016-09-30 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2015-08-05 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>B</kznr><yxqz>2100-12-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2025-06-01 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb><cktsBaKzGridlb><cktmsbakzlxDm>FLGLCD</cktmsbakzlxDm><kznr>B</kznr><yxqz>2025-05-31 00:00:00.0</yxqz><yxbz>Y</yxbz><yxqq>2024-06-01 00:00:00.0</yxqq><hgqyDm>31044</hgqyDm></cktsBaKzGridlb></cktsBaKzGrid></taxML>]]></CKTS_cktsBaKz_0001></output></body></business>\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650797359
+    },
+    {
+      "name": "企业不存在",
+      "responseId": 697596260,
+      "data": "{\"reqId\":\"807aa626b84b4e49ab0405dee305682d\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 604198393
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 697596260,
+      "data": "{\"reqId\":\"489b28c74c0a4e8e94da5409c67818db\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 604198394
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63426984,
+  "ordering": 15,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-14T01:46:35.000Z",
+  "updatedAt": "2025-08-26T09:17:38.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [
+    "BLANK.697596260"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

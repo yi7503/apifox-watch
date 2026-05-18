@@ -1,0 +1,203 @@
+{
+  "id": 100012784,
+  "name": "撤销红字信息表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "购方（销方）发起红字信息确认单申请后，可通过该接口进行红字确认单撤销操作。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/hzqrxxCancel",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：hzqrxx_cancel",
+          "const": "hzqrxx_cancel"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "hzuuid": {
+              "type": "string",
+              "title": "红字确认单 UUID"
+            },
+            "xsfNsrsbh": {
+              "type": "string",
+              "title": "销方纳税人识别号"
+            }
+          },
+          "required": [
+            "hzuuid",
+            "xsfNsrsbh"
+          ],
+          "x-apifox-orders": [
+            "hzuuid",
+            "xsfNsrsbh"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB9AZJFPAG0WZTYA6XHQ6JH"
+      ],
+      "x-apifox-refs": {
+        "01HMB9AZJFPAG0WZTYA6XHQ6JH": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "examples": [
+      {
+        "value": "{\r\n\t\"nsrsbh\": \"************6WHM94\",\r\n\t\"data\": {\r\n\t\t\"hzuuid\": \"********************8e7968c65166\",\r\n\t\t\"xsfNsrsbh\": \"************6WHM94\"\r\n\t},\r\n\t\"action\": \"hzqrxx_cancel\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847718,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "hzuuid": {
+                "type": "string",
+                "title": "红字确认单uuid"
+              },
+              "code": {
+                "type": "string",
+                "title": "状态",
+                "description": "’Y'表示撤销成功， ‘N'表示失败"
+              }
+            },
+            "x-apifox-orders": [
+              "hzuuid",
+              "code"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRH2X4Q3ZKSC8VK5Y1ET0RX8"
+        ],
+        "x-apifox-refs": {
+          "01HRH2X4Q3ZKSC8VK5Y1ET0RX8": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847718,
+      "data": "{\n    \"data\": {\n        \"code\": \"Y\",\n        \"hzuuid\": \"1f4f398d3adf45d88e11c0223d26e97e\"\n    },\n    \"reqId\": \"e8855fbab3f44d1997f3a113c559163f\",\n    \"code\": \"2000\",\n    \"success\": false\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 400269382
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681470,
+  "ordering": 253,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\n\r\nvar responseJson = {\r\n\t\"hzuuid\": \"8ce2e471219d4219a18e6f4984e70c3f\",\r\n    \"code\": \"Y\"\r\n};\r\nresponseJson.hzuuid = uuid;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2025-06-10T03:22:39.000Z",
+  "updatedAt": "2025-12-13T09:14:45.000Z",
+  "creatorId": 2706439,
+  "editorId": 2795319,
+  "creatorUserId": 2706439,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

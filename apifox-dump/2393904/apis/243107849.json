@@ -1,0 +1,310 @@
+{
+  "id": 243107849,
+  "name": "失信信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "defaultEnable": true,
+      "enable": true,
+      "id": "hwLwNqzf7OzTcI0j2he_N",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口提供涉诉案件执行信息，包括执行依据单位、法院、义务、文号、失信情形、履行情况等信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/dishonestyInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "社会统一代码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "organizationNo": {
+          "type": "string",
+          "title": "组织号码",
+          "description": "四个参数只需要传入一个即可"
+        },
+        "registerNo": {
+          "type": "string",
+          "title": "注册号",
+          "description": "四个参数只需要传入一个即可"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "organizationNo",
+        "registerNo"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"name\":\"企享云（北京）信息技术有限公司\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 582571190,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "total": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "executionAgency": {
+                      "type": "string",
+                      "title": "做出执行依据的单位"
+                    },
+                    "relatingCaseId": {
+                      "type": "string",
+                      "title": "涉诉事件ID",
+                      "deprecated": true
+                    },
+                    "city": {
+                      "type": "string",
+                      "title": "城市"
+                    },
+                    "court": {
+                      "type": "string",
+                      "title": "承办法院"
+                    },
+                    "contry": {
+                      "type": "string",
+                      "title": "区县"
+                    },
+                    "lawBookObligation": {
+                      "type": "string",
+                      "title": "生效法律文书确定的义务"
+                    },
+                    "executionBasisNo": {
+                      "type": "string",
+                      "title": "执行依据文号"
+                    },
+                    "dishonestBehavior": {
+                      "type": "string",
+                      "title": "失信行为的具体情形"
+                    },
+                    "performInfo": {
+                      "type": "string",
+                      "title": "被执行人的履行情况"
+                    },
+                    "caseDate": {
+                      "type": "string",
+                      "title": "立案日期"
+                    },
+                    "performAmount": {
+                      "type": "string",
+                      "title": "已履行金额"
+                    },
+                    "performedAmount": {
+                      "type": "string",
+                      "title": "已履行部分",
+                      "deprecated": true
+                    },
+                    "province": {
+                      "type": "string",
+                      "title": "省份"
+                    },
+                    "noticeDate": {
+                      "type": "string",
+                      "title": "公告日期"
+                    },
+                    "caseNo": {
+                      "type": "string",
+                      "title": "执行案号"
+                    },
+                    "unPerformAmount": {
+                      "type": "string",
+                      "title": "未履行金额"
+                    },
+                    "unPerformedAmount": {
+                      "type": "string",
+                      "title": "未履行部分",
+                      "deprecated": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "executionAgency",
+                    "city",
+                    "court",
+                    "contry",
+                    "lawBookObligation",
+                    "executionBasisNo",
+                    "dishonestBehavior",
+                    "performInfo",
+                    "caseDate",
+                    "performAmount",
+                    "province",
+                    "noticeDate",
+                    "caseNo",
+                    "unPerformAmount",
+                    "performedAmount",
+                    "relatingCaseId",
+                    "unPerformedAmount"
+                  ]
+                }
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "total",
+              "items"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "total",
+              "items"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 582571190,
+      "data": "{\n    \"reqId\": \"ea7783cfbd7246028324140bd0d85812\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"total\": \"4\",\n        \"items\": [\n            {\n                \"caseDate\": \"2023-06-29\",\n                \"city\": \"331125\",\n                \"performAmount\": \"\",\n                \"lawBookObligation\": \"一、被告*********************************就未归还款项和违约金一并向法院申请强制执行;\",\n                \"court\": \"12111106\",\n                \"caseNo\": \"（2023）浙1100执000号\",\n                \"province\": \"浙江省\",\n                \"noticeDate\": \"2023-07-31\",\n                \"performInfo\": \"全部未履行\",\n                \"unPerformedAmount\": \"\",\n                \"executionAgency\": \"云和县人民法院\",\n                \"dishonestBehavior\": \"违反财产报告制度\",\n                \"executionBasisNo\": \"（2023）浙1100民初000号\"\n            },\n            {\n                \"caseDate\": \"2023-07-03\",\n                \"city\": \"110108\",\n                \"performAmount\": \"\",\n                \"lawBookObligation\": \"未履行生效判决确定的义务\",\n                \"court\": \"11110102\",\n                \"caseNo\": \"（2023）京0308执11111号\",\n                \"province\": \"北京\",\n                \"noticeDate\": \"2023-08-03\",\n                \"performInfo\": \"全部未履行\",\n                \"unPerformedAmount\": \"\",\n                \"executionAgency\": \"法院\",\n                \"dishonestBehavior\": \"有履行能力而拒不履行生效法律文书确定义务\",\n                \"executionBasisNo\": \"（2022）京0308民初11111号\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454771386
+    },
+    {
+      "name": "异常示例",
+      "responseId": 582571190,
+      "data": "{\n    \"reqId\": \"d1c7834e45f248caad1930a14c973e7a\",\n    \"code\": \"100001\",\n    \"success\": false,\n    \"message\": \"查询无结果\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 454771387
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 64,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-11T02:46:18.000Z",
+  "updatedAt": "2025-02-20T08:49:03.000Z",
+  "creatorId": 2400309,
+  "editorId": 2706439,
+  "creatorUserId": 2400309,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.582571190"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

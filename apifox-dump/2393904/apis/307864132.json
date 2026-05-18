@@ -1,0 +1,333 @@
+{
+  "id": 307864132,
+  "name": "申请发票额度调整",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局查询发起过的发票额度调整申请",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/saveSxedsqSqxx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "sqtzedlx": {
+              "type": "string",
+              "title": "申请调整额度类型",
+              "description": "{\"1\": \"短期\", \"2\": \"长期\"}"
+            },
+            "sxedlstzlx": {
+              "type": "string",
+              "title": "发票额度短期调整类型",
+              "description": "只有申请调整额度类型位短期时，该参数生效 {\"1\": \"当月\", \"2\": \"指定期间\"}",
+              "x-apifox-enum": [
+                {
+                  "value": "10",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "20",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "50",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "100",
+                  "name": "",
+                  "description": ""
+                }
+              ]
+            },
+            "yxqq": {
+              "type": "string",
+              "title": "有效期起  格式（yyyy-MM-dd)",
+              "description": "1.当发票额度短期调整类型为当月时，该参数无效（自动为当前日期） 2.当发票额度短期调整类型为指定期间或者申请调整额度类型为长期时,此参数生效,日期值只能为当天，或者当月往后月份第一天 例如（2025-12-01,2026-12-01)"
+            },
+            "yxqz": {
+              "type": "string",
+              "title": "有效期止  格式（yyyy-MM-dd)",
+              "description": "1.当发票额度短期调整类型为当月时，该参数无效（自动设置为当月最后一天） 2.当发票额度短期调整类型为指定期间，此参数生效，日期值只能当月最后一天，或者当月往后月份最后一天 例如（2025-12-31,2026-12-31) 3.当发申请调整额度类型为长期时，此参数无效（自动设置为2099-12-31)"
+            },
+            "sqtzed": {
+              "type": "string",
+              "title": "申请调整额度（元）"
+            },
+            "sqly": {
+              "type": "string",
+              "title": "申请理由"
+            },
+            "gdzcFileData": {
+              "type": "string",
+              "description": "文件的base64",
+              "title": "固定资产情况表（目前只支持pdf）"
+            },
+            "gxhtFileData": {
+              "type": "string",
+              "title": "购销合同（目前只支持pdf)",
+              "description": "文件的base64，当合同对象为N时，此值必填"
+            },
+            "qtclFileData": {
+              "type": "string",
+              "description": "文件的base64",
+              "title": "其他材料（ 目前只支持pdf)"
+            },
+            "htdx": {
+              "type": "string",
+              "enum": [
+                "N",
+                "Y"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "N",
+                  "name": "自然人",
+                  "description": ""
+                },
+                {
+                  "value": "Y",
+                  "name": "单位（企业）",
+                  "description": ""
+                }
+              ],
+              "description": "合同对象：N 自然人；Y 单位（企业）"
+            },
+            "gxhtxx": {
+              "type": "object",
+              "properties": {
+                "htmc": {
+                  "type": "string",
+                  "title": "合同名称"
+                },
+                "htsphfw": {
+                  "type": "string",
+                  "title": "合同商品或服务"
+                },
+                "htje": {
+                  "type": "number",
+                  "title": "合同金额"
+                },
+                "htdfnsrsbh": {
+                  "type": "string",
+                  "title": "合同对方纳税人识别号"
+                },
+                "htyxqq": {
+                  "type": "string",
+                  "title": "合同有效起",
+                  "description": "格式：YYY-MM-DD；合同有效期起不能大于当前日期所在月的月末!",
+                  "format": "YYY-MM-DD"
+                },
+                "htyxqz": {
+                  "type": "string",
+                  "title": "合同有效期止",
+                  "format": "YYY-MM-DD",
+                  "description": "格式：YYY-MM-DD；合同有效期止不能小于合同有效期起!"
+                },
+                "sfcqht": {
+                  "type": "string",
+                  "title": "是否长期合同",
+                  "description": "是否长期合同：Y-是；N-否；选择Y时，合同有效期止默认为2099-12-31"
+                },
+                "gxhtFileData": {
+                  "type": "string",
+                  "title": "购销合同文件数据",
+                  "description": "文件的base64"
+                }
+              },
+              "x-apifox-orders": [
+                "htmc",
+                "htsphfw",
+                "htje",
+                "htdfnsrsbh",
+                "htyxqq",
+                "htyxqz",
+                "sfcqht",
+                "gxhtFileData"
+              ],
+              "required": [
+                "htmc",
+                "htsphfw",
+                "htje",
+                "htdfnsrsbh",
+                "htyxqq",
+                "htyxqz",
+                "gxhtFileData"
+              ],
+              "title": "购销合同信息",
+              "description": "当选择合同对象为”单位（企业）“时，此对象中所有字段必填"
+            }
+          },
+          "x-apifox-orders": [
+            "sxedlstzlx",
+            "yxqq",
+            "yxqz",
+            "sqtzed",
+            "sqtzedlx",
+            "sqly",
+            "gdzcFileData",
+            "gxhtFileData",
+            "qtclFileData",
+            "htdx",
+            "gxhtxx"
+          ],
+          "required": [
+            "sqtzed",
+            "sqly",
+            "sqtzedlx"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "title": "操作类型",
+          "const": "khxx_add"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8WF4VYKDK31QWYCYJ2SG7"
+      ],
+      "x-apifox-refs": {
+        "01HMB8WF4VYKDK31QWYCYJ2SG7": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 696196218,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "boolean",
+                "title": "执行结果",
+                "description": "true成功， false失败"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "x-apifox-orders": [
+              "result"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHAYXAXVZP1DEVVTPB20H60"
+        ],
+        "x-apifox-refs": {
+          "01HRHAYXAXVZP1DEVVTPB20H60": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 696196218,
+      "data": "{\n    \"data\": {\n        \"result\": true\n    },\n    \"reqId\": \"string\",\n    \"code\": \"string\",\n    \"success\": true,\n    \"message\": \"string\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 600002133
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58714763,
+  "ordering": 42,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-12T05:51:35.000Z",
+  "updatedAt": "2025-11-20T10:36:28.000Z",
+  "creatorId": 2118003,
+  "editorId": 3099717,
+  "creatorUserId": 2118003,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

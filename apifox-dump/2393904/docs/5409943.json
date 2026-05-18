@@ -1,0 +1,17 @@
+{
+  "id": 5409943,
+  "name": "2024年10月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年10月发布内容\n\n发布日期：2024-10-31\n发布版本：V1.0.10\n\n- 小客影响：\n1)目前新版税局全国已基本全部升级；\n2)新增支持残保金申报；\n3)新增支持增值税小规模定期定额申报和初始化；\n4)新增简易办税，当前支持税种：增值税一般人、增值税小规模、企业所得预缴月季报；\n- 大客影响：\n1)新增支持重点税源初始化；\n\n## 企业税\n1.接口变化\n1)缴款支持跨区域缴款\n涉及接口：[发起税款缴纳任务](api-67662292)\n主要能力：增加参数bsswjg不传默认为空\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474931/image-preview)\n\n2)PDF下载并解析新增税种\n涉及接口：[发起下载当期PDF任务](api-67645165)\n主要能力：新增财务报表月季报/年报、印花税、房产税、土地、房土合并。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474932/image-preview)\n\n3)发起获取初始化数据任务新增支持重点税源\n涉及接口：[发起获取初始化数据任务](api-69420373)\n主要能力：新增应征凭证种类代码：ZDSY\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474933/image-preview)\n\n4)新增支持简易申报\n涉及接口：[发起简易申报任务](api-209615709)\n主要能力：支持的税种：增值税一般人、增值税小规模、企业所得预缴月季报，可通过接口进行算税和申报\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474934/image-preview)\n\n2.自身产品能力优化\n1)优化申报流程稳定性\n\n\n## 企业数据采集\n1.增加消费税报表解析（主表+附加税+减免表）\n2.企业所得税年度申报表增加： 投资收益纳税调整明细表、 资产损失税前扣除及纳税调整明细表\n3.未缴税查询 --加入jcxx节点\n4.减免税费额查询 --加入jcxx节点\n5.我的待办-本期应申报\n6.我的提醒--服务提醒、通知公告、政策速递、风险提示\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474935/image-preview)\n\n\n:::highlight orange 📌\n以下是当前企业数据采集报表解析所有支持的能力，标记橙色为本月新增\n:::\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474936/image-preview)\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-11-03T05:34:57.000Z",
+  "updatedAt": "2024-11-03T05:59:05.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

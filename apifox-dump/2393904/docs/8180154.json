@@ -1,0 +1,17 @@
+{
+  "id": 8180154,
+  "name": "2026年1月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 增值税一般人附表二表样变动调整\n2. 获取条目优化，整合未申报查询的任务\n3. 缴款成功后进行缴款金额的比对\n4. 申报结果新增定期定期税额返回\n5. 车船税进行excel解析\n6. 支持环保税的噪声和固体废物的申报以及大气水污染填表优化\n7. 小规模增值税新增一个业务弹框\n:::\n## 接口变化\n### 一、增值税一般人附表二表样变动调整\n  2月报1月增值税一般人申报时，附列资料(二)有2个变化，大家根据我们接口文档提供最新报文https://openapi.qixiangyun.com/doc-2220463，尽快完成业务侧改造以及和与我们接口的对接。\n1. 附表二--8b“其他扣税凭证-其他” 新增二级明细弹框\n2. 附表二-23b“其他应作进项税额转出的情形”新增二级明细\"弹框\n3. 两个新增的业务弹框都是税款所属期起大于等于2026-01-01字段值大于0时需要传入\n4. 截图如下：\n- 附表二第8b“其他扣税凭证-其他”\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623629/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623630/image-preview)\n- 附表二23b“其他应作进项税额转出的情形\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623631/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623632/image-preview)\n\n### 二、获取条目优化，整合未申报查询的任务\n1. 结果返回进行调整，接口对接无变化。返回结果：增加未申报查询数据返回，税费种认定计算完后，未申报查询界面还有未申报的比税费种认定计算的多则一并返回\n2. 截止目前获取条目、申报查询、漏保检查整合税局规则如下：\n- 获取条目=税费种认定+未申报 \n- 申报查询=税费种认定+财务报表备案+重点税源信息采集+申报查询+未申报查询+缴款查询\n- 漏报检查=未申报查询+缴款查询\n\n### 三、缴款成功后进行缴款金额的比对\n1. 接口对接无变化，rpa流程处理上增加了优化点：缴款款完成后会跳转到税局缴款成功界面将请求的缴款金额与税局缴款成功的金额再次进行比对\n- 若数据一致：正常返回缴款结果流程。\n- 若数据不一致：进入异常干预平台预警研发进行数据排查\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623634/image-preview)\n\n### 四、申报结果新增定期定期税额返回\n1. 涉及接口：查询上传并申报各税种申报表数据任务结果、查询多个任务执行结果\n2. 调整点：这两接口的detail节点中都增加一个字段：定期定额申报税额  \n3. 涉及业务场景：小规模增值税和定期定额要一起申报，返回增值税税额同时也返回定期定额税额\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623636/image-preview)\n\n### 五、车船税进行excel解析\n1. 涉及业务：车船税excel上传申报，对excel税源明细表的中车辆识别代码（车架号）或船舶识别号进行解析\n2. 业务场景：车船税申报之前必须先勾选税局对应的税源信息提交后才能申报\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623638/image-preview)\n\n### 六、支持环保税的噪声和固体废物的申报以及大气水污染填表优化\n1. 接口对接无变化，rpa流程处理上对环保税噪声、固体废物申报计算减免表填写进行适配\n2. 对大气水污染申报表计算减免表填写几百条数据进行优化处理\n\n### 七、小规模增值税新增一个业务弹框\n1. 涉及接口：上传申报表数据和申报完获取结果时\n- 申报结果会返回这个弹框信息未配置，返回弹窗结构和一窗式比对一致\n- 申报时需要根据新增的弹框代码信息进行上传，上传弹窗信息结构和一窗式比对一致\n- ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623640/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623641/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/623639/image-preview)\n\n### 八、其他\n1. 缴款方式=银行端缴款时已经全部放开，无需在进行客户配置\n2. 后端rpa申报完印花税返回的skje与请求的申报表中的合计行的ybtse比对进行优化，后端计算请求的税额时申报表中所属期1-12的税额小于1元的时候，合计行自动减掉年报小于1的税额和rpa返回的sjke进行比对\n3. 1月请求印花税发起下载完税证明并解析任务对季报和年报进行合并下载处理\n4. 增值税一般人附表五全表比对：当期新增投资额、上期留抵可抵免金额、结转下期可抵免金额、当期新增可用于扣除的留抵退税额、上期结存可用于扣除的留抵退税额、结转下期可用于扣除的留抵退税额这几个字段进行比对校验。\n\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-02-10T13:20:06.000Z",
+  "updatedAt": "2026-02-10T13:20:15.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

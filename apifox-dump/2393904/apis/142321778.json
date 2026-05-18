@@ -1,0 +1,173 @@
+{
+  "id": 142321778,
+  "name": "扫脸时长设置",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "可通过此接口设置扫脸二维码的有效时长,登录人的身份必须是财务负责人或法定代表人。\n\n特别提示：”办税(开票)人授信类别查询“接口，返回参数scanTime是扫脸二维码能设置的最大时长，然后在”设置二维码有效时长“接口里设置phxxz参数值与scanTime保持一致，就可以最大限度设置扫脸二维码有效时间，提升开票体验。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/smsc",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：smsc"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "phxxz": {
+              "type": "string",
+              "title": "设置的扫码时长(单位分钟，最小为1天，需要是天的倍数）",
+              "description": "比如：1天这里设置成1440，2天2880依次类推"
+            }
+          },
+          "x-apifox-orders": [
+            "phxxz"
+          ],
+          "required": [
+            "phxxz"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB95MEG4DSKKT4DVXF93EYF",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HMB95MEG4DSKKT4DVXF93EYF": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"smsc\",\r\n    \"nsrsbh\": \"************YKXF53R\",\r\n    \"data\": {\r\n        \"phxxz\": \"20\"\r\n    }\r\n}\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 387750406,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": []
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRH569QAVRJ6YP3KF7RH7ZVD"
+        ],
+        "x-apifox-refs": {
+          "01HRH569QAVRJ6YP3KF7RH7ZVD": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 387750406,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {},\n    \"success\": true,\n    \"reqId\": \"2f102e6303c244d69af3fabb61afbf1b\"\n}",
+      "id": 387750303
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73682379,
+  "ordering": 63,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-10-10T03:43:25.000Z",
+  "updatedAt": "2026-04-24T01:42:17.000Z",
+  "creatorId": 2540087,
+  "editorId": 3099717,
+  "creatorUserId": 2540087,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

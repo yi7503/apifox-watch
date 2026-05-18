@@ -1,0 +1,949 @@
+{
+  "id": 87525549,
+  "name": "查询税源获取任务结果接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于根据taskId查询异步任务执行进度信息,可以通过该接口来查询任务执行的情况和获取的税源信息。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\nPARAMETER_ERROR\t| 企业Id(aggOrgId)不能为空！\t\t\t\t|参数错误 |\nPARAMETER_ERROR\t| 请求参数不能为空\t\t\t\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 参数格式不正确，请参考文档!\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 当前已存在税源明细任务执行中，请稍后再试!\t|业务错误 |\nBUSINESS_ERROR\t| 当前已存在申报任务执行中，请稍后再试！  \t|业务错误 |\nBUSINESS_ERROR\t| 当前不支持操作，敬请期待上线！\t\t\t|业务错误 |\nINTERFACE_ERROR\t| 接口异常，请联系技术人员\t\t\t\t\t|程序错误 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaxFundGainInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "x-apifox-overrides": {},
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "title": "任务id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "taskId",
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\":361676547*****4,\r\n  \"taskId\":\"362243293*****8\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 218634814,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": [
+              "object",
+              "null"
+            ],
+            "x-apifox-refs": {
+              "01J8Z5ZQ38286KGBGTNTE83P8F": {
+                "$ref": "#/definitions/122699794"
+              }
+            },
+            "x-apifox-orders": [
+              "aggOrgId",
+              "taskId",
+              "businessStatus",
+              "businessStatusName",
+              "serviceCode",
+              "serviceName",
+              "detail",
+              "detail‘",
+              "detail''",
+              "01J8Z5ZQ38286KGBGTNTE83P8F"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "申报任务id，可以通过查询任务状态接口来查询任务执行的情况"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业aggOrgId"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "任务类型",
+                "description": "tax-fund-gain税源信息获取"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "任务类型名称",
+                "description": "税源信息获取"
+              },
+              "detail": {
+                "title": "房产税明细",
+                "description": "字段detail根据请求的税源类型不同，detail的格式不同",
+                "type": "object",
+                "properties": {
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "纳税人识别号"
+                  },
+                  "nsrmc": {
+                    "type": "string",
+                    "title": "纳税人名称"
+                  },
+                  "yzpzzlDm": {
+                    "type": "string",
+                    "title": "应征凭证种类代码",
+                    "description": "BDA0610791SYCJ：房产税税源"
+                  },
+                  "dataList": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "nsrlx": {
+                          "type": "string",
+                          "title": "纳税人类型"
+                        },
+                        "czjz": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "htczzmj": {
+                                "type": "string",
+                                "title": "合同出租总面积"
+                              },
+                              "htzjzsr": {
+                                "type": "string",
+                                "title": "合同租金总收入"
+                              },
+                              "sbzjsr": {
+                                "type": "string",
+                                "title": "申报租金收入"
+                              },
+                              "czfmc": {
+                                "type": "string",
+                                "title": "承租方名称"
+                              },
+                              "htydzlqq": {
+                                "type": "string",
+                                "title": "合同约定租赁期起"
+                              },
+                              "htydzlqz": {
+                                "type": "string",
+                                "title": "合同约定租赁期止"
+                              },
+                              "sbzjsszlqq": {
+                                "type": "string",
+                                "title": "申报租金所属租赁期起"
+                              },
+                              "sbzjsszlqz": {
+                                "type": "string",
+                                "title": "申报租金所属租赁期止"
+                              },
+                              "jmsxsl": {
+                                "type": "string",
+                                "title": "减免事项数量"
+                              },
+                              "jmxx": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "jmxzDm": {
+                                      "type": "string",
+                                      "title": "减免性质编码"
+                                    },
+                                    "swsxDm": {
+                                      "type": "string",
+                                      "title": "减免性质的税务事项代码"
+                                    },
+                                    "jmxzShowData": {
+                                      "type": "string",
+                                      "title": "减免政策展示的名称"
+                                    },
+                                    "yjmje": {
+                                      "type": "string",
+                                      "title": "月减免金额"
+                                    },
+                                    "jmqsyf": {
+                                      "type": "string",
+                                      "title": "减免起始月份"
+                                    },
+                                    "jmzzyf": {
+                                      "type": "string",
+                                      "title": "减免终止月份"
+                                    },
+                                    "jmszjsr": {
+                                      "type": "string",
+                                      "title": "减免税租金收入"
+                                    }
+                                  },
+                                  "x-apifox-orders": [
+                                    "jmxzDm",
+                                    "swsxDm",
+                                    "jmxzShowData",
+                                    "yjmje",
+                                    "jmqsyf",
+                                    "jmzzyf",
+                                    "jmszjsr"
+                                  ],
+                                  "required": [
+                                    "jmszjsr"
+                                  ]
+                                },
+                                "title": "减免信息"
+                              },
+                              "czfnsrsbh": {
+                                "type": "string",
+                                "title": "承租方纳税人识别号(统一社会信用代码)"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "htczzmj",
+                              "htzjzsr",
+                              "sbzjsr",
+                              "czfnsrsbh",
+                              "czfmc",
+                              "htydzlqq",
+                              "htydzlqz",
+                              "sbzjsszlqq",
+                              "sbzjsszlqz",
+                              "jmsxsl",
+                              "jmxx"
+                            ]
+                          },
+                          "title": "从租计征"
+                        },
+                        "fwsztdbh": {
+                          "type": "string",
+                          "title": "房屋所在土地编号"
+                        },
+                        "fcbh": {
+                          "type": "string",
+                          "title": "房产编号"
+                        },
+                        "nsrsbh": {
+                          "type": "string",
+                          "title": "所有权人纳税识别号"
+                        },
+                        "syqrmc": {
+                          "type": "string",
+                          "title": "所有权人名称"
+                        },
+                        "fcmc": {
+                          "type": "string",
+                          "title": "房产名称"
+                        },
+                        "fcyt": {
+                          "type": "string",
+                          "title": "房产用途"
+                        },
+                        "fwzldzxzqh": {
+                          "type": "string",
+                          "title": "房屋坐落地址（行政区划）"
+                        },
+                        "fwzldzscjx": {
+                          "type": "string",
+                          "title": "房屋坐落地址（所处街乡）"
+                        },
+                        "fwzlxxdz": {
+                          "type": "string",
+                          "title": "房屋坐落详细地址"
+                        },
+                        "fwssswskfj": {
+                          "type": "string",
+                          "title": "房屋所属税务所(科、分局)"
+                        },
+                        "cqzhlb": {
+                          "type": "string",
+                          "title": "产权证号类别"
+                        },
+                        "bdcqzsh": {
+                          "type": "string",
+                          "title": "不动产权证书号"
+                        },
+                        "bdcdyhdm": {
+                          "type": "string",
+                          "title": "不动产单元号(代码)"
+                        },
+                        "jzmj": {
+                          "type": "string",
+                          "title": "建筑面积"
+                        },
+                        "fccsqdsj": {
+                          "type": "string",
+                          "title": "房产初始取得时间"
+                        },
+                        "cjjz": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "fcyzswjggz": {
+                                "type": "string",
+                                "title": "房产原值(税务机关估值)"
+                              },
+                              "qzczfyz": {
+                                "type": "string",
+                                "title": "其中出租房原值"
+                              },
+                              "qzczmj": {
+                                "type": "string",
+                                "title": "其中出租面积"
+                              },
+                              "jsbl": {
+                                "type": "string",
+                                "title": "计税比例"
+                              },
+                              "nsywyxqq": {
+                                "type": "string",
+                                "title": "纳税义务有效期起"
+                              },
+                              "nsywyxqz": {
+                                "type": "string",
+                                "title": "纳税义务有效期止"
+                              },
+                              "jmsxsl": {
+                                "type": "string",
+                                "title": "减免事项数量"
+                              },
+                              "jmxx": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "jmxzDm": {
+                                      "type": "string",
+                                      "title": "减免性质编码"
+                                    },
+                                    "swsxDm": {
+                                      "type": "string",
+                                      "title": "减免性质的税务事项代码"
+                                    },
+                                    "jmxzShowData": {
+                                      "type": "string",
+                                      "title": "减免政策展示的名称"
+                                    },
+                                    "yjmje": {
+                                      "type": "string",
+                                      "title": "月减免金额"
+                                    },
+                                    "jmqsyf": {
+                                      "type": "string",
+                                      "title": "减免起始月份"
+                                    },
+                                    "jmzzyf": {
+                                      "type": "string",
+                                      "title": "减免终止月份"
+                                    },
+                                    "jmsfcyz": {
+                                      "type": "string",
+                                      "title": "减免税房产原值"
+                                    }
+                                  },
+                                  "x-apifox-orders": [
+                                    "jmxzDm",
+                                    "swsxDm",
+                                    "jmxzShowData",
+                                    "yjmje",
+                                    "jmqsyf",
+                                    "jmzzyf",
+                                    "jmsfcyz"
+                                  ],
+                                  "required": [
+                                    "jmxzDm",
+                                    "jmzzyf",
+                                    "jmqsyf",
+                                    "yjmje",
+                                    "jmxzShowData",
+                                    "swsxDm",
+                                    "jmsfcyz"
+                                  ]
+                                },
+                                "title": "减免信息"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "fcyzswjggz",
+                              "qzczfyz",
+                              "qzczmj",
+                              "jsbl",
+                              "nsywyxqq",
+                              "nsywyxqz",
+                              "jmsxsl",
+                              "jmxx"
+                            ],
+                            "required": [
+                              "fcyzswjggz",
+                              "jmxx",
+                              "jmsxsl",
+                              "nsywyxqz",
+                              "nsywyxqq",
+                              "jsbl",
+                              "qzczmj",
+                              "qzczfyz"
+                            ]
+                          }
+                        },
+                        "syzt": {
+                          "type": "string",
+                          "description": "0=正常、1=义务终止",
+                          "title": "税源状态"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "fwsztdbh",
+                        "fcbh",
+                        "fcmc",
+                        "fcyt",
+                        "fwzldzxzqh",
+                        "fwzldzscjx",
+                        "fwzlxxdz",
+                        "fwssswskfj",
+                        "cqzhlb",
+                        "bdcqzsh",
+                        "bdcdyhdm",
+                        "jzmj",
+                        "fccsqdsj",
+                        "nsrsbh",
+                        "syqrmc",
+                        "nsrlx",
+                        "cjjz",
+                        "czjz",
+                        "syzt"
+                      ],
+                      "title": "",
+                      "required": [
+                        "cjjz"
+                      ]
+                    },
+                    "title": "基本信息集合"
+                  }
+                },
+                "x-apifox-refs": {},
+                "x-apifox-orders": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "yzpzzlDm",
+                  "dataList"
+                ],
+                "required": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "yzpzzlDm",
+                  "dataList"
+                ]
+              },
+              "detail‘": {
+                "title": "城镇土地使用税明细",
+                "description": "字段detail根据请求的税源类型不同，detail的格式不同",
+                "type": "object",
+                "x-apifox-refs": {},
+                "x-apifox-orders": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "yzpzzlDm",
+                  "dataList"
+                ],
+                "properties": {
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "纳税人识别号"
+                  },
+                  "nsrmc": {
+                    "type": "string",
+                    "title": "纳税人名称"
+                  },
+                  "yzpzzlDm": {
+                    "type": "string",
+                    "title": "应征凭证种类代码",
+                    "description": "BDA0610790SYCJ：城镇土地使用税税源"
+                  },
+                  "dataList": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "tdbh": {
+                          "type": "string",
+                          "title": "土地编号"
+                        },
+                        "bdcqzh": {
+                          "type": "string",
+                          "title": "不动产权证号(旧版税局字段 新版税局已无此字段))"
+                        },
+                        "xzqhdz": {
+                          "type": "string",
+                          "title": "地址(行政区划)"
+                        },
+                        "jxdz": {
+                          "type": "string",
+                          "title": "地址(街乡)"
+                        },
+                        "tdzlxxdz": {
+                          "type": "string",
+                          "title": "土地坐落详细地址"
+                        },
+                        "tdzmj": {
+                          "type": "string",
+                          "title": "土地总面积"
+                        },
+                        "sszgsws": {
+                          "type": "string",
+                          "title": "所属主管税务所（科、分局）"
+                        },
+                        "nsrlx": {
+                          "type": "string",
+                          "title": "纳税人类型"
+                        },
+                        "tdsyqrnsrsbh": {
+                          "type": "string",
+                          "title": "土地使用权人纳税人识别号"
+                        },
+                        "tdsyqrnsrmc": {
+                          "type": "string",
+                          "title": "土地使用权人名称"
+                        },
+                        "tdxz": {
+                          "type": "string",
+                          "title": "土地性质"
+                        },
+                        "tdyt": {
+                          "type": "string",
+                          "title": "土地用途"
+                        },
+                        "tdqdsj": {
+                          "type": "string",
+                          "title": "土地取得时间"
+                        },
+                        "tdqdfs": {
+                          "type": "string",
+                          "title": "土地取得方式"
+                        },
+                        "ysmx": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "zytdmj": {
+                                "type": "string",
+                                "title": "占用土地面积"
+                              },
+                              "tddj": {
+                                "type": "string",
+                                "title": "土地等级"
+                              },
+                              "sebz": {
+                                "type": "string",
+                                "title": "税额标准"
+                              },
+                              "yxqq": {
+                                "type": "string",
+                                "title": "有效期起"
+                              },
+                              "yxqz": {
+                                "type": "string",
+                                "title": "有效期止"
+                              },
+                              "jmsxsl": {
+                                "type": "string",
+                                "title": "减免事项数量"
+                              },
+                              "jmxx": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "jmxzDm": {
+                                      "type": "string",
+                                      "title": "减免性质编码"
+                                    },
+                                    "swsxDm": {
+                                      "type": "string",
+                                      "title": "减免性质的税务事项代码"
+                                    },
+                                    "jmxzShowData": {
+                                      "type": "string",
+                                      "title": "减免政策展示的名称"
+                                    },
+                                    "yjmje": {
+                                      "type": "string",
+                                      "title": "月减免金额"
+                                    },
+                                    "jmqsyf": {
+                                      "type": "string",
+                                      "title": "减免起始月份"
+                                    },
+                                    "jmzzyf": {
+                                      "type": "string",
+                                      "title": "减免终止月份"
+                                    },
+                                    "jmtdmj": {
+                                      "type": "string",
+                                      "title": "减免税土地面积"
+                                    }
+                                  },
+                                  "x-apifox-orders": [
+                                    "jmxzDm",
+                                    "swsxDm",
+                                    "jmxzShowData",
+                                    "yjmje",
+                                    "jmqsyf",
+                                    "jmzzyf",
+                                    "jmtdmj"
+                                  ]
+                                },
+                                "title": "减免信息"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "zytdmj",
+                              "tddj",
+                              "sebz",
+                              "yxqq",
+                              "yxqz",
+                              "jmsxsl",
+                              "jmxx"
+                            ]
+                          },
+                          "title": "应税明细"
+                        },
+                        "zdh": {
+                          "type": "string",
+                          "title": "宗地号"
+                        },
+                        "tdmc": {
+                          "type": "string",
+                          "title": "土地名称"
+                        },
+                        "bdcdydm": {
+                          "type": "string",
+                          "title": "不动产单元代码（旧版税局字段  新版税局已无此字段)）"
+                        },
+                        "dj": {
+                          "type": "string",
+                          "title": "地价（单位：元）"
+                        },
+                        "qszdlx": {
+                          "type": "string",
+                          "title": "权属证书类型"
+                        },
+                        "tdsyzbh": {
+                          "type": "string",
+                          "title": "权属证书号"
+                        },
+                        "bdcqzlx": {
+                          "type": "string",
+                          "title": "权属证书类型",
+                          "description": "税局变更，已废弃"
+                        },
+                        "bdcdyh": {
+                          "type": "string",
+                          "title": "不动产单元号"
+                        },
+                        "syzt": {
+                          "type": "string",
+                          "title": "税源状态",
+                          "description": "0=正常、1=义务终止"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "tdbh",
+                        "zdh",
+                        "tdmc",
+                        "bdcqzh",
+                        "xzqhdz",
+                        "jxdz",
+                        "tdzlxxdz",
+                        "tdzmj",
+                        "sszgsws",
+                        "nsrlx",
+                        "tdsyqrnsrsbh",
+                        "tdsyqrnsrmc",
+                        "tdxz",
+                        "tdyt",
+                        "tdqdsj",
+                        "tdqdfs",
+                        "bdcdydm",
+                        "dj",
+                        "qszdlx",
+                        "syzt",
+                        "ysmx",
+                        "tdsyzbh",
+                        "bdcqzlx",
+                        "bdcdyh"
+                      ],
+                      "required": [
+                        "qszdlx"
+                      ]
+                    },
+                    "title": "基本信息"
+                  }
+                },
+                "required": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "yzpzzlDm",
+                  "dataList"
+                ]
+              },
+              "detail''": {
+                "type": "object",
+                "properties": {
+                  "nsrsbh": {
+                    "type": "string",
+                    "title": "纳税人识别号"
+                  },
+                  "nsrmc": {
+                    "type": "string",
+                    "title": "纳税人名称"
+                  },
+                  "yzpzzlDm": {
+                    "type": "string",
+                    "title": "应征凭证种类代码",
+                    "description": "BDA0610980SYCJ：环保税税源采集"
+                  },
+                  "dataList": {
+                    "type": "object",
+                    "properties": {
+                      "jbxx": {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": [
+                          "01J86RH09S3JVWSGQ1N6H3ZYJB"
+                        ],
+                        "title": "基本信息",
+                        "x-apifox-refs": {
+                          "01J86RH09S3JVWSGQ1N6H3ZYJB": {
+                            "$ref": "#/definitions/121275310"
+                          }
+                        }
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "jbxx"
+                    ],
+                    "title": "环保税应税明细",
+                    "required": [
+                      "jbxx"
+                    ],
+                    "x-apifox-refs": {}
+                  }
+                },
+                "x-apifox-orders": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "yzpzzlDm",
+                  "dataList"
+                ],
+                "title": "环保税明细",
+                "description": "字段detail根据请求的税源类型不同，detail的格式不同",
+                "required": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "yzpzzlDm",
+                  "dataList"
+                ]
+              }
+            },
+            "required": [
+              "businessStatus",
+              "businessStatusName",
+              "taskId",
+              "serviceCode",
+              "aggOrgId",
+              "serviceName"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "不支持示例",
+      "responseId": 218634814,
+      "data": "{\n    \"req_id\": \"20affbd9851a4f3fbbd31bfa7198634c\",\n    \"code\": \"BUSINESS_ERROR\",\n    \"success\": false,\n    \"aggOrgId\": 464528606622016,\n    \"message\": \"没有找到对应的任务信息\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 22152475
+    },
+    {
+      "name": "成功示例",
+      "responseId": 218634814,
+      "data": "#房产税报文\n{\n  \"req_id\": \"55f7808aeb0f466eb7f110d89db85845\",\n  \"success\": true,\n  \"code\": \"SUCCESS\",\n  \"message\": \"\",\n  \"data\": {\n    \"aggOrgId\": 464528606622016,\n    \"taskId\": 468224438862336,\n    \"businessStatus\": 3,\n    \"businessStatusName\": \"已成功\",\n    \"serviceCode\": \"tax-fund-gain\",\n    \"serviceName\": \"税源信息获取\",\n    \"detail\": [{\n      \"nsrsbh\": \"纳税人识别号\",\n      \"nsrmc\": \"纳税人名称\",\n      \"yzpzzlDm\": \"BDA0610791SYCJ\",\n      \"dataList\": [\n        {\n          \"fwsztdbh\": \"房屋所在土地编号\",\n          \"fcbh\": \"房产编号\",\n          \"fcmc\": \"房产名称\",\n          \"fcyt\": \"房产用途\",\n          \"fwzldzxzqh\": \"房屋坐落地址（行政区划）\",\n          \"fwzldzscjx\": \"房屋坐落地址（所处街乡）\",\n          \"fwzlxxdz\": \"房屋坐落详细地址\",\n          \"fwssswskfj\": \"房屋所属税务所(科、分局)\",\n          \"cqzhlb\": \"产权证号类别\",\n          \"bdcqzsh\": \"不动产权证书号\",\n          \"bdcdyhdm\": \"不动产单元号(代码)\",\n          \"jzmj\": \"建筑面积\",\n          \"fccsqdsj\": \"房产初始取得时间\",\n          \"nsrsbh\": \"所有权人纳税识别号\",\n          \"syqrmc\": \"所有权人名称\",\n          \"nsrlx\": \"纳税人类型\",\n          \"cjjz\": [\n            {\n              \"fcyzswjggz\": \"房产原值(税务机关估值)\",\n              \"qzczfyz\": \"其中出租房原值\",\n              \"qzczmj\": \"其中出租面积\",\n              \"jsbl\": \"计税比例\",\n              \"nsywyxqq\": \"纳税义务有效期起\",\n              \"nsywyxqz\": \"纳税义务有效期止\",\n              \"jmsxsl\": \"减免事项数量\",\n              \"jmxx\": [\n                {\n                  \"jmxzDm\": \"减免性质编码\",\n                  \"swsxDm\": \"减免性质的税务事项代码\",\n                  \"jmxzShowData\": \"减免政策展示的名称\",\n                  \"yjmje\": \"月减免金额\",\n                  \"jmqsyf\": \"减免起始月份\",\n                  \"jmzzyf\": \"减免终止月份\",\n                  \"jmsfcyz\": \"减免税房产原值\"\n                }\n              ]\n            }\n          ],\n          \"czjz\": [\n            {\n              \"htczzmj\": \"合同出租总面积\",\n              \"htzjzsr\": \"合同租金总收入\",\n              \"sbzjsr\": \"申报租金收入\",\n              \"czfnsrsbh\": \"承租方纳税人识别号(统一社会信用代码)\",\n              \"czfmc\": \"承租方名称\",\n              \"htydzlqq\": \"合同约定租赁期起\",\n              \"htydzlqz\": \"合同约定租赁期止\",\n              \"sbzjsszlqq\": \"申报租金所属租赁期起\",\n              \"sbzjsszlqz\": \"申报租金所属租赁期止\",\n              \"jmsxsl\": \"减免事项数量\",\n              \"jmxx\": [\n                {\n                  \"jmxzDm\": \"减免性质编码\",\n                  \"swsxDm\": \"减免性质的税务事项代码\",\n                  \"jmxzShowData\": \"减免政策展示的名称\",\n                  \"yjmje\": \"月减免金额\",\n                  \"jmqsyf\": \"减免起始月份\",\n                  \"jmzzyf\": \"减免终止月份\",\n                  \"jmszjsr\": \"减免税租金收入\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }]\n  }\n}\n\n#城镇土地使用税报文\n{\n  \"req_id\": \"55f7808aeb0f466eb7f110d89db85845\",\n  \"success\": true,\n  \"code\": \"SUCCESS\",\n  \"message\": \"\",\n  \"data\": {\n    \"aggOrgId\": 464528606622016,\n    \"taskId\": 468224438862336,\n    \"businessStatus\": 3,\n    \"businessStatusName\": \"已成功\",\n    \"serviceCode\": \"tax-fund-gain\",\n    \"serviceName\": \"税源信息获取\",\n    \"detail\": [{\n      \"nsrsbh\": \"纳税人识别号\",\n      \"nsrmc\": \"纳税人名称\",\n      \"yzpzzlDm\": \"BDA0610790SYCJ\",\n      \"dataList\": [\n        {\n          \"tdbh\": \"土地编号\",\n          \"zdh\": \"宗地号\",\n          \"tdmc\": \"土地名称\",\n          \"bdcqzh\": \"不动产权证号\",\n          \"xzqhdz\": \"地址(行政区划)\",\n          \"jxdz\": \"地址(街乡)\",\n          \"tdzlxxdz\": \"土地坐落详细地址\",\n          \"tdzmj\": \"土地总面积\",\n          \"sszgsws\": \"所属主管税务所（科、分局）\",\n          \"nsrlx\": \"纳税人类型\",\n          \"tdsyqrnsrsbh\": \"土地使用权人纳税人识别号\",\n          \"tdsyqrnsrmc\": \"土地使用权人名称\",\n          \"tdxz\": \"土地性质\",\n          \"tdyt\": \"土地用途\",\n          \"tdqdsj\": \"土地取得时间\",\n          \"tdqdfs\": \"土地取得方式\",\n          \"bdcdydm\": \"不动产单元代码\",\n          \"dj\": \"地价（单位：元）\",\n          \"ysmx\": [\n            {\n              \"zytdmj\": \"占用土地面积\",\n              \"tddj\": \"土地等级\",\n              \"sebz\": \"税额标准\",\n              \"yxqq\": \"有效期起\",\n              \"yxqz\": \"有效期止\",\n              \"jmsxsl\": \"减免事项数量\",\n              \"jmxx\": [\n                {\n                  \"jmxzDm\": \"减免性质编码\",\n                  \"swsxDm\": \"减免性质的税务事项代码\",\n                  \"jmxzShowData\": \"减免政策展示的名称\",\n                  \"yjmje\": \"月减免金额\",\n                  \"jmqsyf\": \"减免起始月份\",\n                  \"jmzzyf\": \"减免终止月份\",\n                  \"jmtdmj\": \"减免税土地面积\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }]\n  }\n}\n\n # 环保税税报文 \n{\n  \"req_id\": \"55f7808aeb0f466eb7f110d89db85845\",\n  \"success\": true,\n  \"code\": \"SUCCESS\",\n  \"message\": \"\",\n  \"data\": {\n    \"aggOrgId\": 464528606622016,\n    \"taskId\": 468224438862336,\n    \"businessStatus\": 3,\n    \"businessStatusName\": \"已成功\",\n    \"serviceCode\": \"tax-fund-gain\",\n    \"serviceName\": \"税源信息获取\",\n    \"detail\": [{\n      \"nsrsbh\": \"纳税人识别号\",\n      \"nsrmc\": \"纳税人名称\",\n      \"yzpzzlDm\": \"BDA0610980SYCJ\",\n      \"dataList\": {\n        \"jbxx\": { //基本信息\n          \"nsrsbh\": \"纳税人识别号(统一社会信用代码)\",\n          \"nsrmc\": \"纳税人名称\",\n          \"acsb\": \"按次申报\", //Y=是N=否\n          \"sfczhygc\": \"从事海洋工程\", //Y=是N=否\n          \"sfscxwsjzclcs\": \"城乡污水集中处理场所\", //Y=是N=否\n          \"sfsshljjzclcs\": \"生活垃圾集中处理场所\", //Y=是N=否\n          \"pwxkzbh\": \"排污许可证编号\",\n          \"wrwlbs\": \"污染物类别\", //大气污染物\\水污染物\\噪声\\固体污染物\n          \"xzqhszDm\": \"生产经营所在区划\",\n          \"gjhbjgDm\": \"生态环境主管部门\"\n                    \"dqswr_list\": [\n            { //大气水污染\n              \"sybh\": \"税源编号\",\n              \"pwxkzbh\": \"排污许可证编号\",\n              \"pfkbh\": \"排放口编号\",\n              \"pfkmc\": \"排放口名称/噪声源名称\",\n              \"zszm\": \"征收子目\",\n              \"wrwpfljsff\": \"污染物排放量计算方法\",\n              \"pfkdlzb_jdd\": \"排放口地理坐标-经度_度\",\n              \"pfkdlzb_jdf\": \"排放口地理坐标-经度_分\",\n              \"pfkdlzb_jdm\": \"排放口地理坐标-经度_秒\",\n              \"pfkdlzb_wdd\": \"排放口地理坐标-纬度_度\",\n              \"pfkdlzb_wdf\": \"排放口地理坐标-纬度_分\",\n              \"pfkdlzb_wdm\": \"排放口地理坐标-纬度_秒\",\n              \"scjyszjx\": \"生产经营所在街乡\",\n              \"yxqq\": \"有效期起\",\n              \"yxqz\": \"有效期止\",\n              \"wrwlb\": \"污染物类别\",\n              \"swrwzl\": \"水污染物种类\",\n              \"swrwmc\": \"水污染物名称\",\n              \"wrwmc\": \"污染物名称\",\n              \"dqswrwwbzpfxz_zxbz\": \"大气、水污染物标准排放限值_执行标准\",\n              \"dqswrwwbzpfxz_bzndz\": \"大气、水污染物标准排放限值_标准浓度值 (毫克/升或堂克/标立方米)\"\n            }\n          ],\n          \"zs_list\": [\n            { //噪声\n              \"sybh\": \"税源编号\",\n              \"pwxkzbh\": \"排污许可证编号\",\n              \"pfkbh\": \"排放口编号\",\n              \"pfkmc\": \"排放口名称/噪声源名称\",\n              \"zszm\": \"征收子目\",\n              \"wrwpfljsff\": \"污染物排放量计算方法\",\n              \"pfkdlzb_jdd\": \"排放口地理坐标-经度_度\",\n              \"pfkdlzb_jdf\": \"排放口地理坐标-经度_分\",\n              \"pfkdlzb_jdm\": \"排放口地理坐标-经度_秒\",\n              \"pfkdlzb_wdd\": \"排放口地理坐标-纬度_度\",\n              \"pfkdlzb_wdf\": \"排放口地理坐标-纬度_分\",\n              \"pfkdlzb_wdm\": \"排放口地理坐标-纬度_秒\",\n              \"scjyszjx\": \"生产经营所在街乡\",\n              \"yxqq\": \"有效期起\",\n              \"yxqz\": \"有效期止\",\n              \"wrwlb\": \"污染物类别\",\n              \"swrwzl\": \"水污染物种类\",\n              \"wrwmc\": \"污染物名称\",\n              \"sfzysc\": \"是否昼夜生产\",\n              \"bzz_zj\": \"标准值——昼间 (6时至22时)\",\n              \"bzz_yj\": \"标准值——夜间 (22时至次日6时) \"\n            }\n          ],\n          \"gtfw_list\": [\n            { //固体废物信息\n              \"sybh\": \"税源编号\",\n              \"pwxkzbh\": \"排污许可证编号\",\n              \"pfkbh\": \"排放口编号\",\n              \"pfkmc\": \"排放口名称/噪声源名称\",\n              \"zszm\": \"征收子目\",\n              \"wrwpfljsff\": \"污染物排放量计算方法\",\n              \"pfkdlzb_jdd\": \"排放口地理坐标-经度_度\",\n              \"pfkdlzb_jdf\": \"排放口地理坐标-经度_分\",\n              \"pfkdlzb_jdm\": \"排放口地理坐标-经度_秒\",\n              \"pfkdlzb_wdd\": \"排放口地理坐标-纬度_度\",\n              \"pfkdlzb_wdf\": \"排放口地理坐标-纬度_分\",\n              \"pfkdlzb_wdm\": \"排放口地理坐标-纬度_秒\",\n              \"scjyszjx\": \"生产经营所在街乡\",\n              \"yxqq\": \"有效期起\",\n              \"yxqz\": \"有效期止\",\n              \"wrwlb\": \"污染物类别\",\n              \"swrwzl\": \"水污染物种类\",\n              \"wrwmc\": \"污染物名称\",\n              \"zcqk\": \"贮存情况\",\n              \"czqk\": \"处置情况\",\n              \"zhlyqk\": \"综合利用情况\"\n            }\n          ]\n        }\n      }\n    }]\n  }\n}\n\n # 车船税报文 {\n    \"req_id\": \"55f7808aeb0f466eb7f110d89db85845\",\n    \"success\": true,\n    \"code\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": {\n        \"aggOrgId\": 464528606622016,\n        \"taskId\": 468224438862336,\n        \"businessStatus\": 3,\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-fund-gain\",\n        \"serviceName\": \"税源信息获取\",\n        \"detail\": [{\n            \"nsrsbh\": \"91330000143995391Q\",\n            \"nsrmc\": \"浙江船舶-车船税\",\n            \"yzpzzlDm\": \"BDA0610005SYCJ\",\n            \"dataList\": {\n                \"result_cls_list\": [{//车辆税\n                        \"sbzt\": \"申报状态\",//已申报/未申报\n                        \"zszm\": \"征收子目\",\n                        \"dwse\": \"单位税额\",\n                        \"nsywzzsj\": \"纳税义务终止时间\",\n                        \"xzqh\": \"行政区划\",//330000\n                        \"zgsws\": \"主管税务所\",\n                        \"sbqx\": \"申报期限\",\n                        \"jkqx\": \"交款期限\",\n                        \"nsqx\": \"纳税期限\",\n                        \"lxhm\": \"车辆号码\",\n                        \"clsbdm\": \"车辆识别代码\",\n                        \"cllx\": \"车辆类型\",\n                        \"clpp\": \"车辆品牌\",\n                        \"clxs\": \"车辆型号\",\n                        \"fdjhm\": \"发动机号码\",\n                        \"clfprq\": \"车辆发票日期或登记注册日期\",\n                        \"pql\": \"排气量\",\n                        \"hdzk\": \"核定载客\",\n                        \"zbzl\": \"整备质量\",\n                        \"jmxzdm1\": \"减免性质代码和项目名称1\",\n                        \"jmxzdm2\": \"减免性质代码和项目名称2\",\n                        \"clscxj\": \"车辆所处街乡\",\n                    }\n                ],\n                \"result_cbs_list\": [{//船舶税\n                        \"sbzt\": \"申报状态\",\n                        \"zszm\": \"征收子目\",\n                        \"dwse\": \"单位税额\",\n                        \"nsywzzsj\": \"纳税义务终止时间\",\n                        \"xzqh\": \"行政区划\",//330000\n                        \"zgsws\": \"主管税务所\",\n                        \"sbqx\": \"申报起止时间\",\n                        \"jkqx\": \"申报终止时间\",\n                        \"nsqx\": \"纳税期限\",\n                        \"cbdjh\": \"船舶登记号\",\n                        \"cbsbh\": \"船舶识别号\",\n                        \"cblx\": \"船舶类型\",\n                        \"zwcm\": \"中文名称\",\n                        \"ccdjhm\": \"初次登记号码\",\n                        \"cjg\": \"船籍港\",\n                        \"fzrq\": \"发证日期\",\n                        \"qdsyqrq\": \"取得所有权日期\",\n                        \"jcrq\": \"建成日期\",\n                        \"jdw\": \"净吨位\",\n                        \"zjgl\": \"主机功率\",\n                        \"tscd\": \"庭审长度\",\n                        \"jmxzdm\": \"减免性质代码\",\n                        \"cbscjx\": \"船舶所处街乡\"\n                    }\n                ]\n            }\n        }]\n    }\n}\n",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 22152476
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 20505956,
+  "ordering": 94,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T03:49:50.000Z",
+  "updatedAt": "2026-05-11T09:07:28.000Z",
+  "creatorId": 2122743,
+  "editorId": 1391922,
+  "creatorUserId": 2122743,
+  "editorUserId": 1391922,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

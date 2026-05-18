@@ -1,0 +1,17 @@
+{
+  "id": 8313857,
+  "name": "附录-授权书",
+  "sidebarTitle": "",
+  "content": "**授权书：**\n\n风控报告申请接口中，需要传入sqInfo （授权书pdf文件的base64字符串）特别说明。\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/631073/image-preview)\n   \n   根据下发链接获取word版制式授权文件，按文件中的要求填写，并生成pdf文件的base64字符串，填入接口sqInfo字段中。每次请求报告申请，都需要授权书，可以根据模版动态填入相关参数。\n   \n   数据归集授权书-ISV平台向企享云授权.docx\nhttps://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sjgj/%E6%95%B0%E6%8D%AE%E5%BD%92%E9%9B%86%E6%8E%88%E6%9D%83%E4%B9%A6-ISV%E5%B9%B3%E5%8F%B0%E5%90%91%E4%BC%81%E4%BA%AB%E4%BA%91%E6%8E%88%E6%9D%830317.docx",
+  "folderId": 77906980,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-03-13T09:55:07.000Z",
+  "updatedAt": "2026-03-17T08:47:01.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

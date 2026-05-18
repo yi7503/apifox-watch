@@ -1,0 +1,254 @@
+{
+  "id": 250807905,
+  "name": "发起查询合同接口任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n根据税费种的yzpzzlDm发起从税局获取合同信息的数据。\n支持请求：企业所得税(代扣代缴)=BDA0610070/增值税代扣代缴、代收代缴税款报告表=BDA0610069\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryContract",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "title": "税局取数入参",
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "sfwQFII": {
+          "type": "string",
+          "title": "是否为QFII、RQFII等申报企业所得税",
+          "description": "Y=是/N=否；企业所得税代扣代缴必传"
+        },
+        "kjywlx": {
+          "type": "string",
+          "title": "扣缴义务类型",
+          "description": "1 法定源泉扣缴  (企业所得税代扣代缴初始化必传)/2指定扣缴申报"
+        },
+        "yzpzzlDm": {
+          "type": "string",
+          "title": "应征凭证种类代码"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id",
+          "description": "多账号场景"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "sfwQFII",
+        "kjywlx",
+        "yzpzzlDm"
+      ],
+      "required": [
+        "aggOrgId",
+        "yzpzzlDm"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 4559815081414081,\r\n    \"yzpzzlDm\": \"BDA0610070\",\r\n    \"sfwQFII\":\"Y\",\r\n\t\"kjywlx\": \"1\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 596440139,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务id"
+              },
+              "yzpzzlDm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "应征凭证种类代码"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "taskId"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 596440139,
+      "data": "{\"reqId\":\"5c79abd5e9c54d5a8dbd6c5139c536bc\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 466681118
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 596440139,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"yzpzzlDm\": \"BDA0610070\",\n        \"taskId\": \"571709195744768\"\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"fd64fcea84ec43b58e250cccc8026198\"\n}",
+      "id": 466681119
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48358226,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T01:40:10.000Z",
+  "updatedAt": "2025-02-27T12:36:47.000Z",
+  "creatorId": 1452584,
+  "editorId": 1442097,
+  "creatorUserId": 1452584,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.596440139"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

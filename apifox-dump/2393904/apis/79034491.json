@@ -1,0 +1,196 @@
+{
+  "id": 79034491,
+  "name": "进项发票取数",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于获取企业电子发票服务平台（发票云）的进项发票信息。\n\n## 错误码\n\n| 错误代码        | 错误消息                                | 说明                               |\n| --------------- | --------------------------------------- | ---------------------------------- |\n| FprzForbiddenOperation    | 此税号不属于当前appkey对应的企业，不可操作！                 | 检查纳税人识别号与appKey的关系 |\n| FprzSkssqIsNull | 获取已勾选发票，税款所属期起/止不能为空 | 已勾选发票是按照勾选税款所属期查询 |\n| FprzKprqIsNull  | 开票日期起/止不能为空                   |                                    |\n| FprzSbxxIsNull  | 企业申报信息为空                        | 没有获取到企业当前的申报信息       |\n| 50001           | 纳税人识别号不能为空                    | Request Body中的nsrsbh字段不能为空 | \n| 50008                     | 参数不能为空                                                 |              |\n| 8600                      | 进项发票取数发生异常，请联系管理员                           |              |\n| 50001                     | 纳税人识别号不能为空                                         |              |\n| FprzSkssqIsNull           | 获取已勾选发票，税款所属期起/止不能为空                      |              |\n| FprzKprqAndRksjIsNull     | 开票日期起/止和入库时间起/止不能同时为空                     |              |\n| FprzSbxxIsNull            | 企业申报信息为空                                             |              |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/jxfpqs",
+  "tags": [
+    "发票认证",
+    "数字证书认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/54174748"
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\":\"91*************90\",\r\n    \"skssqq\":\"202109\",\r\n    \"skssqz\":\"202302\",\r\n    \"kprqq\":\"20210901\",\r\n    \"kprqz\":\"20230331\",\r\n    \"rksjq\":\"20210901\",\r\n    \"rksjz\":\"20230301\",\r\n    \"glzt\":\"\",\r\n    \"gxzt\":\"0\",\r\n    \"fplx\":\"01,08,14,03,24\",  \r\n    \"fpzt\":\"0,1,2\",\r\n    \"page\":{\r\n        \"currentPage\":1,\r\n        \"pageSize\":10\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "e8SqimXHyi",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "OXKAJLtSp9",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "o6hHfJgALt",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 199398868,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXR3X4YFM1TWR1B5JWFNN72Q": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/54514196"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXR3X4YFM1TWR1B5JWFNN72Q"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"a2c0bf097ef64c0487e5483fb993f223\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"skssq\": \"202211\",\n        \"kgxKprqq\": \"20170101\",\n        \"kgxKprqz\": \"20220831\",\n        \"gxjzrq\": \"20221215\",\n        \"list\": [\n            {\n                \"fplx\": \"01\",\n                \"fpdm\": \"11******30\",\n                \"fphm\": \"23****17\",\n                \"jym\": \"\",\n                \"kprq\": \"20220214\",\n                \"gfsbh\": \"9111***********RR90\",\n                \"gfmc\": null,\n                \"xfsbh\": \"9111***********2D05\",\n                \"xfmc\": \"北京**********公司\",\n                \"je\": 6019.8,\n                \"se\": 60.2,\n                \"fpzt\": \"2\",\n                \"gxzt\": \"0\",\n                \"gxsj\": null,\n                \"gxlx\": \"\",\n                \"yxse\": null,\n                \"skssq\": \"\",\n                \"yskssq\": \"\",\n                \"sfdbts\": \"0\",\n                \"yqkgxbz\": \"0\",\n                \"glzt\": \"0\",\n                \"yclx\": \"\",\n                \"fply\": \"1\",\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"hzsdbz\": false,\n                \"ncpfpbz\": false\n            },\n            {\n                \"fplx\": \"01\",\n                \"fpdm\": \"11******30\",\n                \"fphm\": \"21****06\",\n                \"jym\": \"\",\n                \"kprq\": \"20210907\",\n                \"gfsbh\": \"9111***********RR90\",\n                \"gfmc\": null,\n                \"xfsbh\": \"9111***********25XA\",\n                \"xfmc\": \"北京********公司\",\n                \"je\": 130.97,\n                \"se\": 17.03,\n                \"fpzt\": \"0\",\n                \"gxzt\": \"0\",\n                \"gxsj\": \"20220302\",\n                \"gxlx\": \"6\",\n                \"yxse\": 0,\n                \"skssq\": \"\",\n                \"yskssq\": \"\",\n                \"sfdbts\": \"0\",\n                \"yqkgxbz\": \"0\",\n                \"glzt\": \"0\",\n                \"yclx\": \"\",\n                \"fply\": \"1\",\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"hzsdbz\": false,\n                \"ncpfpbz\": false\n            },\n            {\n                \"fplx\": \"01\",\n                \"fpdm\": \"11******30\",\n                \"fphm\": \"22****59\",\n                \"jym\": \"\",\n                \"kprq\": \"20210917\",\n                \"gfsbh\": \"9111***********RR90\",\n                \"gfmc\": null,\n                \"xfsbh\": \"9111***********PJXH\",\n                \"xfmc\": \"****（北京）*********公司\",\n                \"je\": 66371.68,\n                \"se\": 8628.32,\n                \"fpzt\": \"0\",\n                \"gxzt\": \"0\",\n                \"gxsj\": \"20220905\",\n                \"gxlx\": \"6\",\n                \"yxse\": 0,\n                \"skssq\": \"\",\n                \"yskssq\": \"\",\n                \"sfdbts\": \"0\",\n                \"yqkgxbz\": \"0\",\n                \"glzt\": \"0\",\n                \"yclx\": \"0\",\n                \"fply\": \"1\",\n                \"bdkyy\": \"\",\n                \"bdkyyms\": \"\",\n                \"hzsdbz\": false,\n                \"ncpfpbz\": false\n            }\n        ],\n        \"page\": {\n            \"pageSize\": 50,\n            \"currentPage\": 1,\n            \"totalPage\": 3,\n            \"totalCount\": 101\n        }\n    }\n}",
+      "id": 19999168
+    },
+    {
+      "name": "请填写传递纳税人识别号示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"e74d2868a9874c4692b0c83dd133ba1a\",\n    \"code\": \"505063\",\n    \"success\": false,\n    \"message\": \"请填写传递纳税人识别号!\",\n    \"data\": null\n}",
+      "id": 348474851
+    },
+    {
+      "name": "未查询到该企业信息示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"f0136c7955e74dd0950f9172b93964b5\",\n    \"code\": \"FprzOrgIsNull\",\n    \"success\": false,\n    \"message\": \"未查询到该企业信息！\",\n    \"data\": null\n}",
+      "id": 33065820
+    },
+    {
+      "name": "此税号不属于当前appkey对应的企业，不可操作示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"c77c961a72a542d88a8927634265b204\",\n    \"code\": \"FprzForbiddenOperation\",\n    \"success\": false,\n    \"message\": \"此税号不属于当前appkey对应的企业，不可操作！\",\n    \"data\": null\n}",
+      "id": 33068023
+    },
+    {
+      "name": "账号登录信息存在问题示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"1b3f5796575e404aa9c13fd9991a9c82\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"skssq\": null,\n        \"kgxKprqq\": null,\n        \"kgxKprqz\": null,\n        \"gxjzrq\": null,\n        \"list\": null,\n        \"page\": null,\n        \"code\": \"FprzTaxLoginFailed\",\n        \"message\": \"缺少[个人用户名,个人用户密码]请先完善信息！\"\n    }\n}",
+      "id": 348383825
+    },
+    {
+      "name": "token过期示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"905879a64f434a97bbc09472c9a23856\",\n    \"code\": \"40101\",\n    \"success\": false,\n    \"message\": \"登录信息过期!\"\n}",
+      "id": 33065819
+    },
+    {
+      "name": "接口调用异常示例",
+      "responseId": 199398868,
+      "data": "{\n    \"reqId\": \"581ced4654f14df7b8b5d59e1ba320ab\",\n    \"code\": \"505002\",\n    \"success\": false,\n    \"message\": \"接口调用异常，请联系管理员!\",\n    \"data\": null\n}",
+      "id": 348551008
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58725450,
+  "ordering": 60,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-10-30T06:41:26.000Z",
+  "updatedAt": "2025-06-10T10:17:09.000Z",
+  "creatorId": 1426961,
+  "editorId": 2706439,
+  "creatorUserId": 1426961,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.199398868"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

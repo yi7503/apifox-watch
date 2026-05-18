@@ -1,0 +1,203 @@
+{
+  "id": 233989453,
+  "name": "业务请求回调通知",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "当ISV配置了回调地址后，所有异步处理结果将通过回调地址通知到ISV。\n调用方式:  HTTP POST\n报文格式：application/json; utf-8",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/服务商CallbackURL地址",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "returnCode": {
+          "type": "string",
+          "title": "业务返回结果代码",
+          "description": "“0”表示成功，否则为执行失败，详见统一报文格式中的错误代码说明"
+        },
+        "returnMsg": {
+          "type": "string",
+          "title": "业务返回结果信息",
+          "description": "当returnCode不为0时的错误信息"
+        },
+        "request": {
+          "type": "object",
+          "properties": {
+            "requestTime": {
+              "type": "integer",
+              "title": "请求时的时间戳"
+            },
+            "bizType": {
+              "type": "string",
+              "title": "请求业务类型"
+            },
+            "nsrsbh": {
+              "type": "string",
+              "title": "请求税号"
+            },
+            "requestId": {
+              "type": "string",
+              "title": "请求ID"
+            },
+            "action": {
+              "type": "string",
+              "title": "请求Action"
+            },
+            "ly_ddbh": {
+              "type": "string",
+              "title": "来源订单编号"
+            }
+          },
+          "required": [
+            "requestTime",
+            "bizType",
+            "nsrsbh",
+            "requestId",
+            "action",
+            "ly_ddbh"
+          ],
+          "x-apifox-orders": [
+            "requestId",
+            "requestTime",
+            "bizType",
+            "action",
+            "nsrsbh",
+            "ly_ddbh"
+          ],
+          "title": "源请求信息"
+        },
+        "returnBody": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": "业务返回结果",
+          "description": "JSON格式，具体内容请参考每个业务接口的回应消息说明"
+        }
+      },
+      "required": [
+        "returnCode",
+        "returnMsg",
+        "request"
+      ],
+      "x-apifox-orders": [
+        "returnCode",
+        "returnMsg",
+        "returnBody",
+        "request"
+      ],
+      "title": "返回的内容结构"
+    },
+    "examples": [
+      {
+        "value": "\r\n##发票开具回调示例\r\n{\r\n    \"request\": {\r\n        \"requestTime\": 1709631963068,\r\n        \"bizType\": \"invoice\",\r\n        \"nsrsbh\": \"************UE434Y\",\r\n        \"requestId\": \"****************16738490\",\r\n        \"action\": \"fpkj_zzs\"\r\n    },\r\n    \"returnCode\": \"0\",\r\n    \"returnMsg\": \"Success\",\r\n    \"returnBody\": {\r\n        \"xsfNsrmc\": \"**************（个体工商户）\",\r\n        \"kplx\": \"0\",\r\n        \"fplxdm\": \"030\",\r\n        \"gmfNsrsbh\": \"************JL4X8H\",\r\n        \"kplsh\": \"****************16738490\",\r\n        \"kprq\": \"2024-03-05 17:46:01\",\r\n        \"jshj\": 1.00,\r\n        \"gmfNsrmc\": \"********有限责任公司\",\r\n        \"xsfNsrsbh\": \"************UE434Y\",\r\n        \"fphm\": \"************17968847\"\r\n    }\r\n}\r\n##版式文件回调示例\r\n{\r\n\t\"request\": {\r\n\t\t\"requestTime\": 1721962333596,\r\n\t\t\"bizType\": \"query\",\r\n\t\t\"nsrsbh\": \"91310118****7LQY4Y\",\r\n\t\t\"requestId\": \"202407261052137627974719\",\r\n\t\t\"action\": \"bswjxzBatch\"\r\n\t},\r\n\t\"returnCode\": \"0\",\r\n\t\"returnMsg\": \"Success\",\r\n\t\"execStatus\": 2,\r\n\t\"returnBody\": [{\r\n\t\t\"kprq\": \"2024-03-20 10:12:51\",\r\n\t\t\"base64\": \"base64字符串\",\r\n\t\t\"wjgs\": \"PDF\",\r\n\t\t\"url\": \"oss url地址\",\r\n\t\t\"fphm\": \"2492200********75124\"\r\n\t}]\r\n}\r\n\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 565445458,
+      "name": "成功",
+      "code": 200,
+      "contentType": "raw",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "会掉状态",
+            "description": "成功返回success, 失败返回faild"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "x-apifox-orders": [
+          "status"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 565445458,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "id": 441252269
+    },
+    {
+      "name": "异常示例",
+      "responseId": 565445458,
+      "data": "{\n    \"code\": \"9999\",\n    \"msg\": \"内部处理异常\"\n}",
+      "id": 441252270
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 34086051,
+  "ordering": 63,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-11-15T02:51:56.000Z",
+  "updatedAt": "2025-05-22T03:09:51.000Z",
+  "creatorId": 887900,
+  "editorId": 2706439,
+  "creatorUserId": 887900,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.565445458"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

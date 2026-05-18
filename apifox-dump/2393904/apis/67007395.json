@@ -1,0 +1,185 @@
+{
+  "id": 67007395,
+  "name": "查询申报条目任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于根据aggOrgId和taskId查询异步任务执行进度信息。\n获取条目任务：仅支持当前月份清册查询\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业不存在 |\n| BUSINESS_ERROR | 任务不存在 |\n| PARAMETER_ERROR | 请求参数不能为空! |  |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |  |\n| PARAMETER_ERROR| 请求参数taskId不能为空！| |\n|PARAMETER_ERROR|参数格式不合法,不是有效的json格式!||\n|INTERFACE_ERROR|接口异常,请联系管理员! |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskTaxInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"taskId\":452111122222440\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "GZBBSU89lK",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "iJwMeOfUDX",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "7aaDjWHOQ6",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "mWnb5eM4n9",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 170346750,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1YR4C1JJ6Z342YCH0DRGQC": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/37237474"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1YR4C1JJ6Z342YCH0DRGQC"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 170346750,
+      "data": "{\n    \"reqId\": \"2f36616995da4d9fab02d5f8d1fb9792\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-item\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"sbywbm\": \"YBNSRZZS\",\n                \"toDate\": \"2023-02-28\",\n                \"zspmDm\": \"\",\n                \"projectType\": 0,\n                \"kjzdzzDm\": null,\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png\",\n                \"fromDate\": \"2023-02-01\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"zspmMc\": \" \",\n                \"taxProjectName\": \"增值税及附加税费申报表(一般纳税人适用)\",\n                \"zlbsxlDm\": null,\n                \"taxProjectCode\": \"10101\"\n            },\n            {\n                \"sbywbm\": \"CWBB_XQYKJZZ\",\n                \"toDate\": \"2022-12-31\",\n                \"zspmDm\": null,\n                \"projectType\": 1,\n                \"kjzdzzDm\": \"102\",\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png\",\n                \"fromDate\": \"2022-10-01\",\n                \"yzpzzlDm\": \"CWBBSB\",\n                \"zspmMc\": null,\n                \"taxProjectName\": \"财务报表报送与信息采集（小企业会计准则）\",\n                \"zlbsxlDm\": \"ZL1001003\",\n                \"taxProjectCode\": \"ZL1001003\"\n            },\n            {\n                \"sbywbm\": \"QYSDS_A_18ND\",\n                \"toDate\": \"2022-12-31\",\n                \"zspmDm\": \"101040001\",\n                \"projectType\": 0,\n                \"kjzdzzDm\": null,\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png\",\n                \"fromDate\": \"2022-01-01\",\n                \"yzpzzlDm\": \"BDA0610994\",\n                \"zspmMc\": \"应纳税所得额\",\n                \"taxProjectName\": \"居民企业（查账征收）企业所得税年度申报\",\n                \"zlbsxlDm\": null,\n                \"taxProjectCode\": \"10104\"\n            },\n            {\n                \"sbywbm\": \"CWBB_XQYKJZZ\",\n                \"toDate\": \"2022-12-31\",\n                \"zspmDm\": null,\n                \"projectType\": 1,\n                \"kjzdzzDm\": \"102\",\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png\",\n                \"fromDate\": \"2022-01-01\",\n                \"yzpzzlDm\": \"CWBBNDSB\",\n                \"zspmMc\": null,\n                \"taxProjectName\": \"财务报表报送与信息采集（小企业会计准则）\",\n                \"zlbsxlDm\": \"ZL1001003\",\n                \"taxProjectCode\": \"ZL1001003\"\n            }\n        ],\n        \"aggOrgId\": 452681066557440,\n        \"serviceName\": \"获取条目\",\n        \"taskId\": 456046345377024\n    }\n}",
+      "id": 17297744
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 170346750,
+      "data": "{\"reqId\":\"dcd2481a2e774a9f91308708ee0192c7\",\"code\":\"BUSINESS_ERROR\",\"success\":true,\"message\":\"没有找到对应的任务信息\",\"data\":null}",
+      "id": 17297789
+    },
+    {
+      "name": "任务执行成功",
+      "responseId": 170346750,
+      "data": "{\r\n    \"reqId\": \"ae337545430347069d968bdc4a8bcaac\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"businessStatusName\": \"已成功\",\r\n        \"serviceCode\": \"tax-item\",\r\n        \"businessStatus\": 3,\r\n        \"detail\": [\r\n            {\r\n                \"sbywbm\": \"YBNSRZZS\",\r\n                \"toDate\": \"2023-02-28\",\r\n                \"zspmDm\": \"\",\r\n                \"projectType\": 0,\r\n                \"kjzdzzDm\": null,\r\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png?Expires=1681985562&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=M28m1Fo%2BJbDNsX6GAsx9glkfvLU%3D\",\r\n                \"fromDate\": \"2023-02-01\",\r\n                \"yzpzzlDm\": \"BDA0610606\",\r\n                \"zspmMc\": \" \",\r\n                \"taxProjectName\": \"增值税及附加税费申报表(一般纳税人适用)\",\r\n                \"zlbsxlDm\": null,\r\n                \"taxProjectCode\": \"10101\"\r\n            },\r\n            {\r\n                \"sbywbm\": \"CWBB_XQYKJZZ\",\r\n                \"toDate\": \"2022-12-31\",\r\n                \"zspmDm\": null,\r\n                \"projectType\": 1,\r\n                \"kjzdzzDm\": \"102\",\r\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png?Expires=1681985562&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=M28m1Fo%2BJbDNsX6GAsx9glkfvLU%3D\",\r\n                \"fromDate\": \"2022-10-01\",\r\n                \"yzpzzlDm\": \"CWBBSB\",\r\n                \"zspmMc\": null,\r\n                \"taxProjectName\": \"财务报表报送与信息采集（小企业会计准则）\",\r\n                \"zlbsxlDm\": \"ZL1001003\",\r\n                \"taxProjectCode\": \"ZL1001003\"\r\n            },\r\n            {\r\n                \"sbywbm\": \"QYSDS_A_18ND\",\r\n                \"toDate\": \"2022-12-31\",\r\n                \"zspmDm\": \"101040001\",\r\n                \"projectType\": 0,\r\n                \"kjzdzzDm\": null,\r\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png?Expires=1681985562&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=M28m1Fo%2BJbDNsX6GAsx9glkfvLU%3D\",\r\n                \"fromDate\": \"2022-01-01\",\r\n                \"yzpzzlDm\": \"BDA0610994\",\r\n                \"zspmMc\": \"应纳税所得额\",\r\n                \"taxProjectName\": \"居民企业（查账征收）企业所得税年度申报\",\r\n                \"zlbsxlDm\": null,\r\n                \"taxProjectCode\": \"10104\"\r\n            },\r\n            {\r\n                \"sbywbm\": \"CWBB_XQYKJZZ\",\r\n                \"toDate\": \"2022-12-31\",\r\n                \"zspmDm\": null,\r\n                \"projectType\": 1,\r\n                \"kjzdzzDm\": \"102\",\r\n                \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_38b1704b-a51f-467d-851a-b326523e64b31679393482121_1679393564887.png?Expires=1681985562&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=M28m1Fo%2BJbDNsX6GAsx9glkfvLU%3D\",\r\n                \"fromDate\": \"2022-01-01\",\r\n                \"yzpzzlDm\": \"CWBBNDSB\",\r\n                \"zspmMc\": null,\r\n                \"taxProjectName\": \"财务报表报送与信息采集（小企业会计准则）\",\r\n                \"zlbsxlDm\": \"ZL1001003\",\r\n                \"taxProjectCode\": \"ZL1001003\"\r\n            }\r\n        ],\r\n        \"aggOrgId\": 452681066557440,\r\n        \"serviceName\": \"获取条目\",\r\n        \"taskId\": 456046345377024\r\n    }\r\n}",
+      "id": 17672473
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13530811,
+  "ordering": 50,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:25:14.000Z",
+  "updatedAt": "2026-01-22T07:27:12.000Z",
+  "creatorId": 1452584,
+  "editorId": 1476015,
+  "creatorUserId": 1452584,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

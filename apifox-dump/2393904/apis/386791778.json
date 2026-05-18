@@ -1,0 +1,155 @@
+{
+  "id": 386791778,
+  "name": "股权出质信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/equityPledgeInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {},
+      "x-apifox-orders": [
+        "01KBP54Q4QRBQCJK00HY318R27"
+      ],
+      "required": [],
+      "x-apifox-refs": {
+        "01KBP54Q4QRBQCJK00HY318R27": {
+          "$ref": "#/definitions/226029776"
+        }
+      }
+    },
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"name\":\"xxx信息技术有限公司\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 756724463,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01KBP7AVG06G4WFYNJFK3X32E5",
+          "01KBP50AE88HGXZ4B60FF0TCR8"
+        ],
+        "x-apifox-refs": {
+          "01KBP50AE88HGXZ4B60FF0TCR8": {
+            "$ref": "#/definitions/226032752"
+          },
+          "01KBP7AVG06G4WFYNJFK3X32E5": {
+            "$ref": "#/definitions/226046399",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [
+                        "01KBP7BYY8MD8MW4TBWDJV228V"
+                      ],
+                      "required": [],
+                      "x-apifox-refs": {
+                        "01KBP7BYY8MD8MW4TBWDJV228V": {
+                          "$ref": "#/definitions/226055298"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "items"
+                ],
+                "x-apifox-orders": [
+                  "items"
+                ],
+                "title": "数据内容"
+              }
+            },
+            "required": [
+              "data"
+            ]
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 756724463,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"items\": [\n            {\n                \"stkPawnRegdate\": \"2016-01-20\",\n                \"stkPawnRegno\": \"A15020234324\",\n                \"stkPawnCzamt\": \"7899\",\n                \"stkPawnDate\": \"2016-01-20\",\n                \"stkPawnCzcerno\": \"\",\n                \"stkPawnStatus\": \"有效\",\n                \"stkPawnZqcerno\": \"\",\n                \"stkPawnCzper\": \"**************科技有限责任公司\",\n                \"stkPawnZqper\": \"**********有限责任公司\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"成功\",\n    \"timestamp\": \"2025-12-05 10:42:10\",\n    \"reqId\": \"27ad896c333357baacc9edb5bdfbcfdc\"\n}",
+      "id": 672748785
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 294,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-12-05T02:39:13.000Z",
+  "updatedAt": "2025-12-05T03:04:07.000Z",
+  "creatorId": 887900,
+  "editorId": 887900,
+  "creatorUserId": 887900,
+  "editorUserId": 887900,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

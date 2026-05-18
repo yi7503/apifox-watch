@@ -1,0 +1,384 @@
+{
+  "id": 284502582,
+  "name": "查询合同任务结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n查询已发起的获取合同任务的执行结果。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！  |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ |\n|PARAMETER_ERROR |参数格式不合法！ |\n|INTERFACE_ERROR |接口异常,请联系管理员 |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryContractTaskInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454760922049792\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 655723298,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "服务代码"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "detail": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "htmc": {
+                      "type": "string",
+                      "title": "合同名称"
+                    },
+                    "htje": {
+                      "type": "string",
+                      "title": "合同金额"
+                    },
+                    "xthtbh": {
+                      "type": "string",
+                      "title": "系统合同编号"
+                    },
+                    "cjrq": {
+                      "type": "string",
+                      "title": "采集日期"
+                    },
+                    "fjmNsrsbh": {
+                      "type": "string",
+                      "title": "非居民纳税识别号"
+                    },
+                    "fjmqyzwmc": {
+                      "type": "string",
+                      "title": "非居民企业名称"
+                    },
+                    "hth": {
+                      "type": "string",
+                      "title": "合同编号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "htmc",
+                    "htje",
+                    "xthtbh",
+                    "cjrq",
+                    "fjmNsrsbh",
+                    "fjmqyzwmc",
+                    "hth"
+                  ]
+                },
+                "description": "企业所得税代扣代缴返回参数"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业id"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "服务名称"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "任务Id"
+              },
+              "detail ": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fjmNsrsbh": {
+                      "type": "string",
+                      "title": "非居民组织纳税人识别号"
+                    },
+                    "fjmNsrmc": {
+                      "type": "string",
+                      "title": "非居民企业名称"
+                    },
+                    "htmc": {
+                      "type": "string",
+                      "title": "合同名称"
+                    },
+                    "xthtbh": {
+                      "type": "string",
+                      "title": "系统合同编号",
+                      "description": "修正错误"
+                    },
+                    "htje": {
+                      "type": "string",
+                      "title": "合同总金额"
+                    },
+                    "htbzMc": {
+                      "type": "string",
+                      "title": "合同币种"
+                    },
+                    "zfsdxm": {
+                      "type": "string",
+                      "title": "支付（所得）项目"
+                    },
+                    "gjhdqszMc": {
+                      "type": "string",
+                      "title": "非居民国家或地区名称"
+                    },
+                    "htbh": {
+                      "type": "string",
+                      "title": "合同编号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fjmNsrsbh",
+                    "fjmNsrmc",
+                    "htmc",
+                    "xthtbh",
+                    "htbh",
+                    "htje",
+                    "htbzMc",
+                    "zfsdxm",
+                    "gjhdqszMc"
+                  ],
+                  "required": [
+                    "fjmNsrsbh",
+                    "gjhdqszMc",
+                    "zfsdxm",
+                    "htbzMc",
+                    "htmc",
+                    "fjmNsrmc",
+                    "htje",
+                    "xthtbh",
+                    "htbh"
+                  ]
+                },
+                "description": "增值税代扣代缴返回参数"
+              },
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码"
+              }
+            },
+            "required": [
+              "businessStatusName",
+              "serviceCode",
+              "businessStatus",
+              "detail",
+              "aggOrgId",
+              "serviceName",
+              "taskId",
+              "detail ",
+              "yzpzzlDm"
+            ],
+            "x-apifox-orders": [
+              "aggOrgId",
+              "taskId",
+              "serviceCode",
+              "serviceName",
+              "businessStatus",
+              "businessStatusName",
+              "yzpzzlDm",
+              "detail ",
+              "detail"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "任务执行成功",
+      "responseId": 655723298,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"serviceCode\": \"tax-contract\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"htmc\": \"合同名称\",\n                \"htje\": \"合同金额\",\n                \"xthtbh\": \" 系统合同编号\",\n                \"cjrq\": \"采集日期\",\n                \"fjmNsrsbh\": \"非居民纳税识别号\",\n                \"fjmqyzwmc\": \"非居民企业名称\"\n            }\n        ],\n        \"aggOrgId\": 482734358988800,\n        \"serviceName\": \"查询合同\",\n        \"taskId\": 571709195744768\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"073ef7d312a843a680a1aba4007cd5bf\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 584205125
+    },
+    {
+      "name": "企业不存在",
+      "responseId": 655723298,
+      "data": "{\"reqId\":\"807aa626b84b4e49ab0405dee305682d\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 584205126
+    },
+    {
+      "name": "任务不存在",
+      "responseId": 655723298,
+      "data": "{\"reqId\":\"489b28c74c0a4e8e94da5409c67818db\",\"code\":\"NO_RESULT\",\"success\":true,\"message\":\"查询无结果！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 584205127
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48358226,
+  "ordering": 14,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-04-15T10:02:38.000Z",
+  "updatedAt": "2025-04-30T01:38:25.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.655723298"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,218 @@
+{
+  "id": 193123565,
+  "name": "异步任务执行结果回调",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "异步任务执行完成后，将任务执行结果通知到ISV；\n支持回调的接口：进销项发票归集-异步、已勾选发票归集-异步；\n调用方式：HTTP POST；\n报文格式：application、json、utf-8；\n接口流程：\n1、ISV根据接口形式进行开发；\n2、开发完成后，将接口访问地址提供给到企享云进行配置；\n3、任务执行完成后，企享云会将「请求任务id、任务执行结果、失败原因」通过回调地址返回；",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/服务商CallbackURL地址",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "任务id",
+          "description": "定位一个任务的唯一值，不能重复"
+        },
+        "status": {
+          "type": "integer",
+          "title": "任务执行结果",
+          "description": "0：初始化； 1：执行中；2 ：失败；3：成功"
+        },
+        "errorMsg": {
+          "type": "string",
+          "title": "失败原因",
+          "description": "失败原因"
+        },
+        "result": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "kpyf": {
+                "type": "integer",
+                "title": "开票月份"
+              },
+              "msg": {
+                "type": "string",
+                "title": "任务失败原因"
+              },
+              "nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "fplx": {
+                "type": "string",
+                "title": "发票类型编码"
+              },
+              "errorCode": {
+                "type": "string",
+                "title": "任务失败编码",
+                "description": "2000表示成功"
+              },
+              "jxxbz": {
+                "type": "string",
+                "title": "进销项标志",
+                "description": "jx表示进项 xx表示销项"
+              },
+              "status": {
+                "type": "string",
+                "title": "任务状态",
+                "description": "任务状态(processed 完成 processing处理中 failed 失败)"
+              }
+            },
+            "x-apifox-orders": [
+              "kpyf",
+              "msg",
+              "nsrsbh",
+              "fplx",
+              "errorCode",
+              "jxxbz",
+              "status"
+            ],
+            "required": [
+              "kpyf",
+              "msg",
+              "nsrsbh",
+              "fplx",
+              "errorCode",
+              "jxxbz",
+              "status"
+            ]
+          }
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "status",
+        "errorMsg",
+        "result"
+      ],
+      "required": [
+        "taskId",
+        "status",
+        "errorMsg"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\t\"result\": [\r\n\t\t\t{\r\n\t\t\t\t\"kpyf\": 202408,\r\n\t\t\t\t\"msg\": \"\",\r\n\t\t\t\t\"nsrsbh\": \"91310xxxxxxxxx4Y\",\r\n\t\t\t\t\"fplx\": \"81\",\r\n\t\t\t\t\"errorCode\": \"2000\",\r\n\t\t\t\t\"jxxbz\": \"jx\",\r\n\t\t\t\t\"status\": \"processed\"\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\"kpyf\": 202408,\r\n\t\t\t\t\"msg\": \"\",\r\n\t\t\t\t\"nsrsbh\": \"91310xxxxxxxxx4Y\",\r\n\t\t\t\t\"fplx\": \"81\",\r\n\t\t\t\t\"errorCode\": \"2000\",\r\n\t\t\t\t\"jxxbz\": \"xx\",\r\n\t\t\t\t\"status\": \"processed\"\r\n\t\t\t}\r\n\t\t],\r\n\t\t\"taskId\": 2249917215653036032,\r\n\t\t\"status\": 3,\r\n\t\t\"errorMsg\": \"操作成功\"\r\n\t}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 488187413,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "回调返回结果",
+            "description": "默认2000为重构，9999为失败"
+          },
+          "msg": {
+            "type": "string",
+            "title": "成功或失败原因",
+            "description": "具体原因"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 488187413,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 417117350
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 19486202,
+  "ordering": 137,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-08-30T07:17:23.000Z",
+  "updatedAt": "2025-12-13T10:00:49.000Z",
+  "creatorId": 887778,
+  "editorId": 2795319,
+  "creatorUserId": 887778,
+  "editorUserId": 2795319,
+  "responseChildren": [
+    "BLANK.488187413"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

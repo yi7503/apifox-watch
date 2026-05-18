@@ -1,0 +1,17 @@
+{
+  "id": 8271449,
+  "name": "20626年2月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 企业所得税汇算清缴上线\n2. 增值税一般人附表二表样变动调整\n3. 增值税一般初始化支持返回税局表单列表\n:::\n## 接口变化\n### 一、企业所得税汇算清缴上线\n1. 支持上线能力：\n-  本期支持的是企业所得税A类汇算清缴  BDA0610994，B类暂不支持\n-  初始化本期不支持\n- 支持申报、缴款、下载PDF、完税证证明下载\n2. 对接流程\n- 与其他税种申报对接流程一致，只是在上传上传各税种申报表数据数据接口中有新增两个上传报文的节点。https://openapi.qixiangyun.com/api-67298736\n- 跨地区分支机构报文节点和非分支机构上传节点不同，对应的报文也是分开，请分开对接.\n   1)非分支机构（一般企业/总机构）的报文： https://openapi.qixiangyun.com/doc-7879877\n   2)分支机构报文：https://openapi.qixiangyun.com/doc-7948550\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628870/image-preview)\n3. 支持31张表单，以目前线上报文提供的表单报文为主 。\n\n### 二、增值税一般人附表二表样变动调整\n    2月报1月增值税一般人申报时，附列资料(二)有2个变化，根据我们接口文档提供完成业务侧改造以及和与我们接口的对接。https://openapi.qixiangyun.com/doc-2220463，\n     1）附表二--8b“其他扣税凭证-其他” 新增二级明细弹框\n     2）附表二-23b“其他应作进项税额转出的情形”新增二级明细\"弹框\n     3）两个新增的业务弹框都是税款所属期起大于等于2026-01-01字段值大于0时需要传入\n     4）截图如下：\n     https://openapi.qixiangyun.com/doc-2220463，\n- 附表二第8b“其他扣税凭证-其他”\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628871/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628872/image-preview)\n\n- 附表二23b“其他应作进项税额转出的情形”\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628873/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/628874/image-preview)\n\n### 三、增值税一般人初始化支持返回左侧表单列表\n1. 涉及接口部分：初始化返回结果的时候增加一个sbbList节点，业务不涉及不影响业务\n![企业微信截图_17728756361946.png](https://api.apifox.com/api/v1/projects/2393904/resources/628876/image-preview)\n![企业微信截图_17728759394402.png](https://api.apifox.com/api/v1/projects/2393904/resources/628878/image-preview)\n\n### 四、其他\n1. 增值税减免码表进行更新：请查看最新码表https://openapi.qixiangyun.com/doc-4886154#%E5%A2%9E%E5%80%BC%E7%A8%8E%E5%8F%8A%E9%99%84%E5%8A%A0%E7%A8%8E-2026%E5%B9%B4%E6%9C%80%E6%96%B0%E7%89%88\n2. 支持按照税种配置征期结束时间\n3. 缴款三方协议号比对进行优化，以点击缴款的时候税局弹框带出三方协议进行比对\n\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-03-07T09:27:23.000Z",
+  "updatedAt": "2026-03-08T13:38:51.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

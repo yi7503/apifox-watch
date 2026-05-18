@@ -1,0 +1,177 @@
+{
+  "id": 66706482,
+  "name": "企业取消授权",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "\n## 接口描述\n当与服务的企业客户解除合作关系（不再使用本平台接口）时，请调用该接口，删除该企业；\n- 删除后如需再次使用，需重新订购产品；\n\n## 错误码\n\n| **错误代码** | **错误消息** |解决方案|\n| --- | --- |---|\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| PARAMETER_ERROR | 企业不存在！ |\n| PARAMETER_ERROR | 参数格式不合法,不是有效的json格式！ |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/delete",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业Id"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "24AFE5wUZc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "zz8H91X2RC",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "o66zFhqWcL",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "KH4aCzzFB4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 396503004,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW150C10HJ4V0RTW90ZGQKAK": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "删除成功标志",
+                "description": "true 成功，falses 失败"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW150C10HJ4V0RTW90ZGQKAK"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 396503004,
+      "data": "{\"reqId\":\"9195e4569635498295e076b78d164acb\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"企业不存在！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 396503005
+    },
+    {
+      "name": "任务执行成功-删除成功",
+      "responseId": 396503004,
+      "data": "{\"reqId\":\"4bb26dc3c3b142c696e86fb5f3a7f9a8\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":true}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 396503006
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28539131,
+  "ordering": 176,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2023-03-07T09:43:02.000Z",
+  "updatedAt": "2026-03-20T11:29:34.000Z",
+  "creatorId": 887778,
+  "editorId": 2400309,
+  "creatorUserId": 887778,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

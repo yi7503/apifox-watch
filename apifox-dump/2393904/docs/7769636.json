@@ -1,0 +1,17 @@
+{
+  "id": 7769636,
+  "name": "2025年11月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年11月发布内容\n\n发布日期：2025-11-28\n发布版本：V2.2025.11\n\n\n## 一、发票开具\n  1.发票额度调整，优化购销合同节点，增加合同对象（选择单位（企业）、自然人）；\n  \n![fee473fc-ab9b-405d-9bc9-5440a824b147.png](https://api.apifox.com/api/v1/projects/2393904/resources/600490/image-preview)\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600491/image-preview)\n  2.红字确认单列表查询，入参条件增加 开具状态字段；\n  \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600743/image-preview)\n  3.红字发票列表和明细一起返回，做成异步接口；\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600744/image-preview)\n## 二、发票认证 \n1.退税企业自动配置；不依赖手工配置，未到勾选日期发票采集回来含有退税性质发票自动加配置；\n\n--退税的企业根据采集的发票的用途表情自动添加到数据表配置表；\n\n2.申请统计接口多加一个所属期传参period 非必填，传入period 则和税局当前的认证所属期做个交叉校验，如果不一致，返回错误提示；一致则进行抵扣统计；如果没传还是保持原来的逻辑（直接根据底账库属期进行申请统计），不校验所属期（Vince）；DQ需求。\n\n3.DQ的数电通行费发票适配，涉及查验、归集、认证；\n\n4.发票认证-进项发票取数增加票种标签；\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600365/image-preview)\n## 三、发票归集\n1.数电通行费发票归集有特定业务单独sheet页，适配解析；\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600362/image-preview)\n2.发票归集-查询已勾选归集数据-增加风险状态、票种标签；\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600366/image-preview)\n## 四、发票入账\n 1.入账少了一个发票类型  8208数电通行费；\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600363/image-preview)\n## 五、发票识别\n 1.江苏车辆通行费发票 发票类型统计为103；识别返回的是102类型，查验是103；\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/600364/image-preview)\n## 六、乐企\n 1.乐企开票货物运输发票开具\n 2.乐企开票金银首饰发票开具\n## 七、发票沙箱\n ",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-01T13:59:44.000Z",
+  "updatedAt": "2026-03-04T08:46:48.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

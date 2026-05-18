@@ -1,0 +1,221 @@
+{
+  "id": 304375029,
+  "name": "出口退税申报自检任务发起",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/selfCheck",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "账号"
+        },
+        "swjgdm": {
+          "type": "string",
+          "title": "税务机关代码"
+        },
+        "hgqyDm": {
+          "type": "string",
+          "title": "海关企业代码"
+        },
+        "ssyf": {
+          "type": "string",
+          "title": "申报所属月份",
+          "description": "必传yyyyMM"
+        },
+        "pc": {
+          "type": "string",
+          "title": "批次号"
+        },
+        "sbVersion": {
+          "type": "string",
+          "title": "申报版本"
+        },
+        "shVersion": {
+          "type": "string",
+          "title": "审核版本"
+        },
+        "cmVersion": {
+          "type": "string",
+          "title": "编码库版本"
+        },
+        "ywxx": {
+          "type": "string",
+          "title": "业务报文",
+          "description": "base64的业务xml  https://openapi.qixiangyun.com/doc-6799230"
+        }
+      },
+      "required": [
+        "ssyf",
+        "aggOrgId",
+        "pc",
+        "ywxx",
+        "hgqyDm"
+      ],
+      "x-apifox-orders": [
+        "swjgdm",
+        "hgqyDm",
+        "ssyf",
+        "aggOrgId",
+        "accountId",
+        "pc",
+        "sbVersion",
+        "shVersion",
+        "cmVersion",
+        "ywxx"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "DMetfRszj3",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "wRYb83IiH6",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "sJDSCr1VXE",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "V5LFn5R7qq",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 690162653,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01GW664NTG8DAA40CQ3926Y530": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "x-apifox-refs": {
+                  "01JWX7QQGXX4YJKTV4NQFFAMKT": {
+                    "$ref": "#/definitions/33757676",
+                    "x-apifox-overrides": {
+                      "aggOrgId": null
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "01JWX7QQGXX4YJKTV4NQFFAMKT"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW664NTG8DAA40CQ3926Y530"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63426930,
+  "ordering": 21,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-04T10:19:57.000Z",
+  "updatedAt": "2026-04-14T03:49:34.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

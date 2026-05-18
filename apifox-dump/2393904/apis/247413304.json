@@ -1,0 +1,276 @@
+{
+  "id": 247413304,
+  "name": "企业注册",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "M7it-1Fv1X-wS34zlhV2G",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n1.企业首次使用个税接口服务，需要先调用企业注册接口，校验录入的税号是否做过税务登记，税号正确才能进行人员报送等业务。\n2.企业存在由于外验户或者多地经营等情况，存在多个登记序号，需要选择一个登记序号进行报税，可以调用企业注册接口进行选择。\n3.需要知道企业是否有分部门备案时，可以调用企业注册接口进行查询。\n4.同一税号下不同的登记序号或者不同的分部门编号，都可以独立算税和独立申报个税。\n5.个税按照属地税务局管理，所以接口注册的时候需要传企业报税所属地。若税号是做过税务登记的，但是报税所属地不对，也是会注册失败。\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |\n| 4111 | 纳税人税号不能为空！|\n| 4111 | 地区编号不能为空！|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/declare/getCompanyRegisterInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "企业纳税人识别号"
+        },
+        "qymc": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "areaid": {
+          "type": "string",
+          "title": "地区编号",
+          "description": "6位行政区划代码,精确到省，五个单列市到市，例如：440000,440300,参考省市区编码;可通用地区附录枚举[地区代码](apifox://link/pages/2246773)"
+        },
+        "djxhid": {
+          "type": "string",
+          "title": "登记序号id",
+          "description": "Djxhid不为空时,返回对应的登记序号的企业登记信息。登记序号为空，返回该税号下所有登记信息"
+        },
+        "wgzbh": {
+          "type": "string",
+          "title": "外管证编号",
+          "description": "根据外管证编号筛选企业信息"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "qymc",
+        "nsrsbh",
+        "areaid"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "qymc",
+        "nsrsbh",
+        "areaid",
+        "djxhid",
+        "wgzbh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"qymc\": \"企业名称\",\r\n\t\"nsrsbh\": \"91440115M********\",\r\n\t\"areaid\": \"440000\",\r\n\t\"djxhid\": \"\",\r\n\t\"wgzbh\": \"\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 590394116,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "x-apifox-refs": {
+                "01JYK1C4EZ83WASFY4DPGR5FX1": {
+                  "$ref": "#/definitions/138811639",
+                  "x-apifox-overrides": {
+                    "kyrq": null
+                  }
+                }
+              },
+              "x-apifox-orders": [
+                "01JYK1C4EZ83WASFY4DPGR5FX1"
+              ],
+              "properties": {}
+            },
+            "description": "数据"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 590394116,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae1981bb6d4a4a8300ac35eacf85fc\",\n    \"success\": true,\n    \"data\": [\n        {\n            \"bsrxm\": \"\",\n            \"cwxm\": \"\",\n            \"djrq\": \"2024-04-03\",\n            \"djxhid\": \"102144010000000000\",\n            \"fbmba\": \"\",\n            \"frxm\": \"***\",\n            \"hydm\": \"5199\",\n            \"hymc\": \"其他未列明***\",\n            \"jdxzdm\": \"44011000\",\n            \"jjlxdm\": \"173\",\n            \"jjlxmc\": \"私营有限责任公司\",\n            \"kjywrdm\": \"\",\n            \"lxdh\": \"\",\n            \"nsrsbm\": \"914401********\",\n            \"qymc\": \"广州****有限公司\",\n            \"scjydz\": \"广州市********室\",\n            \"sfscjyqy\": \"\",\n            \"shxydm\": \"914401**********\",\n            \"smzh\": \"\",\n            \"ssglydm\": \"\",\n            \"swjgdm\": \"14400000000\",\n            \"swjgmc\": \"国家税务总局广州市*****\",\n            \"yzbm\": \"\",\n            \"zgswjgmc\": \"国家税务总局广州市*****\",\n            \"zgswjgskmc\": \"国家税务总局广州市*********\",\n            \"sfzrdxx\": [\n                {\n                    \"rdpzuuid\": \"111111111111********\",\n                    \"rdyxqq\": \"2025-01-01\",\n                    \"rdyxqz\": \"2025-01-31\",\n                    \"nsqxDm\": \"06\",\n                    \"zsxmDm\": \"征收项目代码\",\n                    \"zsxmMc\": \"征收项目名称\",\n                    \"zspmDm\": \"征收品目代码\",\n                    \"zspmMc\": \"征收品目名称\",\n                    \"yxbz\": \"Y\"\n                }\n            ]\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 463916531
+    },
+    {
+      "name": "异常示例",
+      "responseId": 590394116,
+      "data": "{\n    \"code\": \"4999\",\n    \"success\": false,\n    \"message\": \"获取登记序号返回信息有误\",\n    \"reqId\": \"9cf320a3c91e4fac97cb671f40756d53\"\n}\n{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}\n",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 463922982
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 51072962,
+  "ordering": 34,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2024-12-23T08:39:57.000Z",
+  "updatedAt": "2026-04-09T01:56:56.000Z",
+  "creatorId": 1452584,
+  "editorId": 1910680,
+  "creatorUserId": 1452584,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

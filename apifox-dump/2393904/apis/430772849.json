@@ -1,0 +1,111 @@
+{
+  "id": 430772849,
+  "name": "配置公共回调地址",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "发起业务后需要回调拿到结果的，目前通过联系技术支持配置回调地址。\n目前是每个产品可以配置一个回调地址\n回调策略：\n1.第一次回调成功后不再发起回调\n2.第一次不成功，10s后再发起一次回调，不成功则30s后再发起回调，目前是重试3次，加上第一次回调失败一共会推送4次\n\n个税/社保产品回调报文\n{\n    \"msg\":\"success\",\n    \"taskStatus\":3,\n    \"taskId\":\"5151471684213235391\"\n}",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/CALLBACKURL",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "none",
+    "parameters": [],
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 145669366,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "一定要返回字符串2000",
+            "description": "返回字符串2000的会认为是成功"
+          },
+          "msg": {
+            "type": "string",
+            "title": "返回消息说明",
+            "description": "\"成功\""
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 145669366,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"msg\": \"成功\"\r\n}",
+      "id": "019d08dc-6966-7536-863a-865428a68e27"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 80789557,
+  "ordering": 10,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-20T01:20:32.000Z",
+  "updatedAt": "2026-03-30T03:20:48.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "creatorUserId": 2400309,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

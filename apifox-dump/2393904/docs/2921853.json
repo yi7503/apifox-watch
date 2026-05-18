@@ -1,0 +1,17 @@
+{
+  "id": 2921853,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n   支持房产税、城镇土地使用税、环保税、车船税的税源信息获取，获取税源基本信息、应税明细。\n   \n\n## 流程示例\n\n![1693214179157.jpg](https://api.apifox.cn/api/v1/projects/2393904/resources/397650/image-preview)\n\n## 接口列表\n第一步：发起税源获取的任务\n\n| 接口名称|接口地址  |接口说明|\n| --- | --- |--- |\n|发起税源采集的任务  |v2/tax/qys/loadTaxFundGainTask |该接口用于发起房产税和城镇土地使用税的税源信息获取的任务\n\n第二步：查询税源获取任务结果\n\n| 接口名称|接口地址  |接口说明|\n| --- | --- |--- |\n|查询税源获取任务结果  |v2/tax/qys/queryTaxFundGainInfo |根据第一步任务返回的任务ID查询任务执行结果。\n\n\n\n",
+  "folderId": 20505956,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-08-28T06:08:24.000Z",
+  "updatedAt": "2024-11-07T02:33:16.000Z",
+  "creatorId": 1441586,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

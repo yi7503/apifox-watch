@@ -1,0 +1,359 @@
+{
+  "id": 69718402,
+  "name": "最新统计确认信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于获取企业电子发票服务平台（发票云）最新统计确认结果。\n\n## 错误码\n\n| **错误代码**       | **错误消息**             | **解决方案**                             |\n| -------------- | -------------------- | -------------------------------- |\n| FprzSbxxIsNull | 企业申报信息为空     | 没有获取到企业当前的申报信息     |\n| FprzTjqrIsNull | 企业统计确认数据为空 | 没有获取到企业最新的统计确认数据 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/tjqrjg",
+  "tags": [
+    "发票认证",
+    "发票云认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01KR2SFN5EAFRJAN70X9K4JEC4": {
+          "$ref": "#/definitions/79290206"
+        }
+      },
+      "properties": {},
+      "required": [],
+      "x-apifox-orders": [
+        "01KR2SFN5EAFRJAN70X9K4JEC4"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"nsrsbh\": \"91****************90\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "4XXv8W9ljG",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "korBUgaB05",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "lvpX8DDGcs",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 177549733,
+      "name": "未统计",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW6FJ6CXA1J0C0EEMC6SRWYR": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/37329389"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01GW6FJ6CXA1J0C0EEMC6SRWYR"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 176959594,
+      "name": "已统计未确认",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW6FN2FNDWP4QHEEAP7EA652": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/37329389"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01GW6FN2FNDWP4QHEEAP7EA652"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 177549731,
+      "name": "已确认",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW6FNRYJS0FRDFP7NRRMCS4M": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/37329389"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01GW6FNRYJS0FRDFP7NRRMCS4M"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 177549732,
+      "name": "已撤销未统计",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW6FP61J52HGQYQ1HTZPRAEK": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/37329389"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01GW6FP61J52HGQYQ1HTZPRAEK"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 177625800,
+      "name": "已统计未确认（未设置确认密码或确认密码不正确）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW6FPQJ7A3YC5Y7MRMBBZJN2": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/37329389"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01GW6FPQJ7A3YC5Y7MRMBBZJN2"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "未统计示例",
+      "responseId": 177549733,
+      "data": "{\n    \"reqId\": \"ce20f30221294095a9c495a0bb1731db\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cljg\": null,\n        \"cyfpxx\": [],\n        \"fpxx\": [],\n        \"id\": null,\n        \"jglx\": null,\n        \"jgzt\": \"0\",\n        \"nsrsbh\": \"91**************2G\",\n        \"skssq\": \"202211\",\n        \"time\": null,\n        \"tjsj\": null,\n        \"tjxx\": [],\n        \"ywlx\": null,\n        \"zt\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17691615
+    },
+    {
+      "name": "已统计未确认示例",
+      "responseId": 176959594,
+      "data": "{\n    \"reqId\": \"ce20f30221294095a9c495a0bb1731db\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cljg\": null,\n        \"cyfpxx\": [\n            {\n                \"fpdm\": \"4400221130\",\n                \"fphm\": \"18026754\",\n                \"fpje\": \"612.70\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"龙光投资顾问有限公司汕头龙光喜来登酒店\",\n                \"xfnsrsbh\": \"91440500068470842Y\",\n                \"yxse\": \"36.76\",\n                \"znxbh\": null\n            }\n        ],\n        \"fpxx\": [\n            {\n                \"fpdm\": \"4400221130\",\n                \"fphm\": \"18026754\",\n                \"fpje\": \"612.70\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"龙光投资顾问有限公司汕头龙光喜来登酒店\",\n                \"xfnsrsbh\": \"91440500068470842Y\",\n                \"yxse\": \"36.76\",\n                \"znxbh\": null\n            }\n        ],\n        \"id\": null,\n        \"jglx\": null,\n        \"jgzt\": \"1\",\n        \"nsrsbh\": \"91110105MA04BDRR90\",\n        \"skssq\": \"202211\",\n        \"time\": null,\n        \"tjsj\": \"20221201193921\",\n        \"tjxx\": [\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 4419,\n                \"dkzje\": 175738775.36,\n                \"dkzyxse\": 13551889.02,\n                \"fplx\": \"99\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            }\n        ],\n        \"ywlx\": null,\n        \"zt\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17624373
+    },
+    {
+      "name": "已确认示例",
+      "responseId": 177549731,
+      "data": "{\n    \"reqId\": \"ce20f30221294095a9c495a0bb1731db\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cljg\": null,\n        \"cyfpxx\": [\n            {\n                \"fpdm\": \"4400221130\",\n                \"fphm\": \"18026754\",\n                \"fpje\": \"612.70\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"龙光投资顾问有限公司汕头龙光喜来登酒店\",\n                \"xfnsrsbh\": \"91440500068470842Y\",\n                \"yxse\": \"36.76\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"3300221130\",\n                \"fphm\": \"03798413\",\n                \"fpje\": \"339.62\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"温州国际大酒店有限公司\",\n                \"xfnsrsbh\": \"91330300609310447F\",\n                \"yxse\": \"20.38\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"2200214130\",\n                \"fphm\": \"00088467\",\n                \"fpje\": \"271.84\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"白城市雅居客酒店管理有限公司\",\n                \"xfnsrsbh\": \"91220800MA17RBB29B\",\n                \"yxse\": \"8.16\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"010120191000441329-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"381145.18\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"381145.18\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221000683520-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"373851.80\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"373851.80\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221001005258-L02\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"827831.87\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"827831.87\",\n                \"znxbh\": null\n            }\n        ],\n        \"fpxx\": [\n            {\n                \"fpdm\": \"4400221130\",\n                \"fphm\": \"18026754\",\n                \"fpje\": \"612.70\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"龙光投资顾问有限公司汕头龙光喜来登酒店\",\n                \"xfnsrsbh\": \"91440500068470842Y\",\n                \"yxse\": \"36.76\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"2200214130\",\n                \"fphm\": \"02663925\",\n                \"fpje\": \"518.87\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220915\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"长春万富酒店管理有限公司文华酒店分公司\",\n                \"xfnsrsbh\": \"91220100MA84YFP94A\",\n                \"yxse\": \"31.13\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"3700222130\",\n                \"fphm\": \"09761407\",\n                \"fpje\": \"348.54\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220915\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"沂水朋悦酒店管理有限公司\",\n                \"xfnsrsbh\": \"91371323MA3QEPH33X\",\n                \"yxse\": \"10.46\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"010120191000441329-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"381145.18\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"381145.18\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221000683520-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"373851.80\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"373851.80\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221001005258-L02\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"827831.87\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"827831.87\",\n                \"znxbh\": null\n            }\n        ],\n        \"id\": null,\n        \"jglx\": null,\n        \"jgzt\": \"2\",\n        \"nsrsbh\": \"91110105MA04BDRR90\",\n        \"skssq\": \"202302\",\n        \"time\": null,\n        \"tjsj\": \"20230101193921\",\n        \"tjxx\": [\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 3,\n                \"dkzje\": 170109183.86,\n                \"dkzyxse\": 11995975.73,\n                \"fplx\": \"01\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"03\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 78,\n                \"dkzje\": 5629591.5,\n                \"dkzyxse\": 333406.66,\n                \"fplx\": \"08\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"14\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": null,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 3,\n                \"dkzje\": null,\n                \"dkzyxse\": 1222506.63,\n                \"fplx\": \"17\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"24\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": null,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": null,\n                \"dkzyxse\": 0,\n                \"fplx\": \"30\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"61\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"80\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"83\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 4419,\n                \"dkzje\": 175738775.36,\n                \"dkzyxse\": 13551889.02,\n                \"fplx\": \"99\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            }\n        ],\n        \"ywlx\": null,\n        \"zt\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17682734
+    },
+    {
+      "name": "已撤销未统计示例",
+      "responseId": 177549732,
+      "data": "{\n    \"reqId\": \"ce20f30221294095a9c495a0bb1731db\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cljg\": null,\n        \"cyfpxx\": [],\n        \"fpxx\": [],\n        \"id\": null,\n        \"jglx\": null,\n        \"jgzt\": \"3\",\n        \"nsrsbh\": \"91110105MA04BDRR90\",\n        \"skssq\": \"202211\",\n        \"time\": null,\n        \"tjsj\": null,\n        \"tjxx\": [],\n        \"ywlx\": null,\n        \"zt\": null\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17691616
+    },
+    {
+      "name": "已统计未确认（未设置确认密码或确认密码不正确）示例",
+      "responseId": 177625800,
+      "data": "{\n    \"reqId\": \"ce20f30221294095a9c495a0bb1731db\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"cljg\": \"20\",\n        \"cyfpxx\": [\n            {\n                \"fpdm\": \"4400221130\",\n                \"fphm\": \"18026754\",\n                \"fpje\": \"612.70\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"龙光投资顾问有限公司汕头龙光喜来登酒店\",\n                \"xfnsrsbh\": \"91440500068470842Y\",\n                \"yxse\": \"36.76\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"3300221130\",\n                \"fphm\": \"03798413\",\n                \"fpje\": \"339.62\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"温州国际大酒店有限公司\",\n                \"xfnsrsbh\": \"91330300609310447F\",\n                \"yxse\": \"20.38\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"2200214130\",\n                \"fphm\": \"00088467\",\n                \"fpje\": \"271.84\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"白城市雅居客酒店管理有限公司\",\n                \"xfnsrsbh\": \"91220800MA17RBB29B\",\n                \"yxse\": \"8.16\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"010120191000441329-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"381145.18\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"381145.18\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221000683520-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"373851.80\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"373851.80\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221001005258-L02\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"827831.87\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"827831.87\",\n                \"znxbh\": null\n            }\n        ],\n        \"fpxx\": [\n            {\n                \"fpdm\": \"4400221130\",\n                \"fphm\": \"18026754\",\n                \"fpje\": \"612.70\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220901\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"龙光投资顾问有限公司汕头龙光喜来登酒店\",\n                \"xfnsrsbh\": \"91440500068470842Y\",\n                \"yxse\": \"36.76\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"2200214130\",\n                \"fphm\": \"02663925\",\n                \"fpje\": \"518.87\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220915\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"长春万富酒店管理有限公司文华酒店分公司\",\n                \"xfnsrsbh\": \"91220100MA84YFP94A\",\n                \"yxse\": \"31.13\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": \"3700222130\",\n                \"fphm\": \"09761407\",\n                \"fpje\": \"348.54\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": null,\n                \"kprq\": \"20220915\",\n                \"qdfphm\": \"\",\n                \"se\": null,\n                \"xfmc\": \"沂水朋悦酒店管理有限公司\",\n                \"xfnsrsbh\": \"91371323MA3QEPH33X\",\n                \"yxse\": \"10.46\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"010120191000441329-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"381145.18\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"381145.18\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221000683520-L01\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"373851.80\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"373851.80\",\n                \"znxbh\": null\n            },\n            {\n                \"fpdm\": null,\n                \"fphm\": null,\n                \"fpje\": null,\n                \"fplx\": \"17\",\n                \"fpzt\": null,\n                \"glzt\": \"0\",\n                \"gxlx\": \"0\",\n                \"jkshm\": \"223320221001005258-L02\",\n                \"kprq\": null,\n                \"qdfphm\": null,\n                \"se\": \"827831.87\",\n                \"xfmc\": null,\n                \"xfnsrsbh\": null,\n                \"yxse\": \"827831.87\",\n                \"znxbh\": null\n            }\n        ],\n        \"id\": null,\n        \"jglx\": null,\n        \"jgzt\": \"4\",\n        \"nsrsbh\": \"91110105MA04BDRR90\",\n        \"skssq\": \"202302\",\n        \"time\": null,\n        \"tjsj\": \"20230101193921\",\n        \"tjxx\": [\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 3,\n                \"dkzje\": 170109183.86,\n                \"dkzyxse\": 11995975.73,\n                \"fplx\": \"01\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"03\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 78,\n                \"dkzje\": 5629591.5,\n                \"dkzyxse\": 333406.66,\n                \"fplx\": \"08\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"14\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": null,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 3,\n                \"dkzje\": null,\n                \"dkzyxse\": 1222506.63,\n                \"fplx\": \"17\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"24\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": null,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": null,\n                \"dkzyxse\": 0,\n                \"fplx\": \"30\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"61\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"80\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 0,\n                \"dkzje\": 0,\n                \"dkzyxse\": 0,\n                \"fplx\": \"83\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            },\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 4419,\n                \"dkzje\": 175738775.36,\n                \"dkzyxse\": 13551889.02,\n                \"fplx\": \"99\",\n                \"qtfpfs\": null,\n                \"qtyxdksehj\": null\n            }\n        ],\n        \"ywlx\": \"3\",\n        \"zt\": \"2\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17692225
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58725824,
+  "ordering": 666,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-10T09:10:38.000Z",
+  "updatedAt": "2026-05-08T03:18:32.000Z",
+  "creatorId": 2706439,
+  "editorId": 3099717,
+  "creatorUserId": 2706439,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

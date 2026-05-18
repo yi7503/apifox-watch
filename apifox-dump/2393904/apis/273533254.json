@@ -1,0 +1,340 @@
+{
+  "id": 273533254,
+  "name": "客户信息查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "从电子税务局查询已存在的客户信息列表",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/khxxCx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "khxx_cx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer",
+              "title": "当前页码"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页行数",
+              "description": "10 、 20、50"
+            },
+            "params": {
+              "type": "object",
+              "properties": {
+                "jm": {
+                  "type": "string",
+                  "title": "简码"
+                },
+                "khfluuid": {
+                  "type": "string",
+                  "title": "客户分类uuid"
+                },
+                "gmfmc": {
+                  "type": "string",
+                  "title": "名称"
+                },
+                "gmfnsrsbh": {
+                  "type": "string",
+                  "title": "税号"
+                }
+              },
+              "x-apifox-orders": [
+                "khfluuid",
+                "jm",
+                "gmfmc",
+                "gmfnsrsbh"
+              ],
+              "title": "查询参数"
+            }
+          },
+          "required": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "x-apifox-orders": [
+            "pageIndex",
+            "pageSize",
+            "params"
+          ],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8VHQVHNEZSKKY4C80TGZR"
+      ],
+      "x-apifox-refs": {
+        "01HMB8VHQVHNEZSKKY4C80TGZR": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 636669789,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "records": {
+                "type": "integer",
+                "title": "总记录数"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "jm": {
+                      "type": "string",
+                      "title": "简码"
+                    },
+                    "khfluuid": {
+                      "type": "string",
+                      "title": "客户分类uuid"
+                    },
+                    "gmfnsrsbh": {
+                      "type": "string",
+                      "title": "客户识别号"
+                    },
+                    "khflmc": {
+                      "type": "string",
+                      "title": "客户分类名称"
+                    },
+                    "jdqmc": {
+                      "type": "string",
+                      "title": "节点全名称",
+                      "enum": [
+                        "01",
+                        "02",
+                        "03",
+                        "04"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "01",
+                          "name": "",
+                          "description": "正常"
+                        },
+                        {
+                          "value": "02",
+                          "name": "",
+                          "description": "已作废(电票无此状态)"
+                        },
+                        {
+                          "value": "03",
+                          "name": "",
+                          "description": "已全额红冲"
+                        },
+                        {
+                          "value": "04",
+                          "name": "",
+                          "description": "部分红冲"
+                        }
+                      ]
+                    },
+                    "gmfmc": {
+                      "type": "string",
+                      "title": "客户名称"
+                    },
+                    "khxxuuid": {
+                      "type": "string",
+                      "title": "客户信息uuid"
+                    },
+                    "dzxxList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "email": {
+                            "type": "string",
+                            "title": "邮箱"
+                          },
+                          "glzxxlx": {
+                            "type": "string",
+                            "title": "管理者信息类型"
+                          },
+                          "lxdh": {
+                            "type": "string",
+                            "title": "联系电话"
+                          },
+                          "dz": {
+                            "type": "string",
+                            "title": "地址"
+                          },
+                          "yhzh": {
+                            "type": "string",
+                            "title": "银行账号"
+                          },
+                          "glzxxuuid": {
+                            "type": "string",
+                            "title": "管理者uuid"
+                          },
+                          "yhyywdmc": {
+                            "type": "string",
+                            "title": "银行名称"
+                          },
+                          "sfmrdz": {
+                            "type": "string",
+                            "title": "是否默认地址",
+                            "description": "Y是 /  N否"
+                          },
+                          "dzxxuuid": {
+                            "type": "string",
+                            "title": "地址信息uuid"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "email",
+                          "glzxxlx",
+                          "lxdh",
+                          "dz",
+                          "yhzh",
+                          "glzxxuuid",
+                          "yhyywdmc",
+                          "sfmrdz",
+                          "dzxxuuid"
+                        ]
+                      },
+                      "title": "地址信息"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "jm",
+                    "khfluuid",
+                    "gmfnsrsbh",
+                    "khflmc",
+                    "jdqmc",
+                    "gmfmc",
+                    "khxxuuid",
+                    "dzxxList"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "records",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "records",
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHAX433CWDTRRP1MAJC4GMY"
+        ],
+        "x-apifox-refs": {
+          "01HRHAX433CWDTRRP1MAJC4GMY": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 52619809,
+  "ordering": 24,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-03-19T07:05:40.000Z",
+  "updatedAt": "2025-06-10T08:58:56.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.636669789"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

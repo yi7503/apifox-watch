@@ -1,0 +1,261 @@
+{
+  "id": 283970610,
+  "name": "投资者列表查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "adNUxjLWf0IrRodm8p5gx",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n同步接口\n场景说明: 该接口用于个税的投资者信息查询,支持查询验证状态，以及基础信息、任职受雇从业信息、联系方式、投资信息等\n\n如无需获取企业人员列表信息，无需调研该接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/data/getInvestorInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "pageNo": {
+          "type": "string",
+          "title": "页码",
+          "description": "页码"
+        },
+        "pageSize": {
+          "type": "string",
+          "title": "数量",
+          "description": "数量"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "description": "维护企业信息接口返回的 aggOrgId",
+          "title": "aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID",
+          "title": "账号ID"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "pageNo",
+        "pageSize"
+      ],
+      "required": [
+        "pageNo",
+        "pageSize",
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"453968287232\",\r\n    \"accountId\": \"45396287232\",\r\n    \"pageNo\": \"1\",\r\n    \"pageSize\": \"10\"\r\n}\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 654813186,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "x-apifox-orders": [
+                "01JP9WG4BNJPKFHP6MHDJ1FW87"
+              ],
+              "required": [],
+              "x-apifox-refs": {
+                "01JP9WG4BNJPKFHP6MHDJ1FW87": {
+                  "$ref": "#/definitions/138834666"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 654813186,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": [\n        {\n            \"xm\": \"姓名\",\n            \"zzlx\": \"证件类型\",\n            \"zzhm\": \"证件号码\",\n            \"qtzzlx\": \"其他证件类型\",\n            \"qtzzhm\": \"其他证件号码\",\n            \"bmbh\": \"部门编号\",\n            \"rybscl\": \"人员报送策略\",\n            \"gh\": \"工号\",\n            \"skssq\": \"所属期\",\n            \"lxdh\": \"电话号码\",\n            \"nsrzt\": \"人员状态\",\n            \"sfgy\": \"任职受雇类型\",\n            \"rzndjyqk\": \"入职年度就业情形\",\n            \"rzsgrq\": \"受雇日期\",\n            \"xb\": \"性别\",\n            \"csny\": \"出生日期\",\n            \"gj\": \"国籍\",\n            \"rydq\": \"人员地区\",\n            \"lzrq\": \"离职日期\",\n            \"grgbze\": \"1\",\n            \"grgbbl\": \"2\",\n            \"sfcj\": \"是否残疾\",\n            \"sfls\": \"是否烈属\",\n            \"sfgl\": \"是否孤老\",\n            \"sfzdw\": \"是否扣除减除费用\",\n            \"cjzjlx\": \"残疾证件类型\",\n            \"cjzh\": \"残疾证号\",\n            \"lszh\": \"烈属证号\",\n            \"dzyx\": \"邮箱\",\n            \"xl\": \"学历\",\n            \"zw\": \"职务\",\n            \"khyh\": \"开户银行\",\n            \"khyhsfmz\": \"开户银行省份\",\n            \"yhzh\": \"银行账号\",\n            \"lxdz_sheng\": \"居住省份\",\n            \"lxdz_shi\": \"居住城市\",\n            \"lxdz_qx\": \"居住区县\",\n            \"lxdz_jd\": \"居住街道\",\n            \"lxdz\": \"居住详细地址\",\n            \"hjszd_sheng\": \"户籍省份\",\n            \"hjszd_shi\": \"户籍城市\",\n            \"hjszd_qx\": \"户籍区县\",\n            \"hjszd_jd\": \"户籍街道\",\n            \"hjszd_xxdz\": \"户籍详细地址\",\n            \"bz\": \"备注\",\n            \"csd\": \"出生地\",\n            \"sssx\": \"涉税事由\",\n            \"scrjsj\": \"首次入境时间\",\n            \"yjljsj\": \"预计离境时间\",\n            \"wjrlxdz_sheng\": \"联系地省份\",\n            \"wjrlxdz_shi\": \"联系地城市\",\n            \"wjrlxdz_qx\": \"联系地区县\",\n            \"wjrlxdz_jd\": \"联系地街道\",\n            \"wjrlxdz_xxdz\": \"联系地详细地址\",\n            \"xmzw\": \"中文名\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 583910342
+    },
+    {
+      "name": "异常示例",
+      "responseId": 654813186,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 583910343
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 54544568,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-04-14T12:06:22.000Z",
+  "updatedAt": "2025-04-21T03:36:26.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.654813186"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

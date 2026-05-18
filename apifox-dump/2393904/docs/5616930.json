@@ -1,0 +1,17 @@
+{
+  "id": 5616930,
+  "name": "2024年11月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年11月发布内容\n\n发布日期：2024-11-30\n发布版本：V1.0.11\n\n\n\n## 企业税\n1.接口变化\n1)采集企业税务信息返回增加企业标记\n涉及接口：[查询企业信息](apifox://link/endpoint/66706506)\n主要能力：增加返回企业标记字段，目前一直返回结果：A级纳税人、B级纳税人、C级纳税人、D级纳税人、M级纳税人、定期定额、查账征收；\n应用场景：适用于小微企业判断征收方式是否定期定额；\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481111/image-preview)\n\n2)税款缴纳接口支持兼容5块钱尾差缴款\n涉及接口：[发起税款缴纳任务](apifox://link/endpoint/67662292)\n接口变化：增加参数“sebyz”\n涉及业务点：部分税局财行税缴款金额按照税目金额计算，税目小于1无需缴款，会导致申报的税额高于待缴款金额；\n运用场景：如果请求缴款金额大于税局待缴款金额5块钱以内，该参数=是，税额不一致也会进行缴款；超过5块，参数=是仍返回缴款不一致；\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481113/image-preview)\n\n\n3)税款缴纳接口银行端查询缴款，去掉银行账号必填校验\n涉及接口：[发起税款缴纳任务](apifox://link/endpoint/67662292)\n主要能力：银行账号字段调整为非必填\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481114/image-preview)\n\n\n4)增值税一般人附加税分配表增加参数\n涉及接口：[上传各税种申报表数据](apifox://link/endpoint/67298736)\n接口变化：增加六税两费参数，对当前需要上传该表的客户无影响，税局该字段根据是否享受六税两费自动带出，rpa不进行比对，比对最后的减免税额；\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481116/image-preview)\n\n5)增加申报更正接口\n涉及接口：\n[发起更正申报任务接口](apifox://link/endpoint/239092838)\n[查询更正申报任务结果](apifox://link/endpoint/239092985)\n支持税种：支持增值税一般人、增值税小规模、企业所得税预缴；\n支持场景：支持已申报未缴款或者缴款金额为0的税种更正申报\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481117/image-preview)\n\n6)企业所得税代扣代缴上传优化\n涉及接口：[上传各税种申报表数据](apifox://link/endpoint/67298736)\n接口变化：企业所得税代扣代缴上传业务报文增加以下字段（见下图）\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481118/image-preview)\n\n2.自身产品能力优化\n1)印花税按次下载申报表\n```\n印花税按次下载报表，不以用户请求所属期为主，将税局本月所有按次的压缩返回；避免用户下载时请求所属期与当时申报不一致，无法下载报表\n```\n2)财务报表附注表单解析\n```\n企业会计准则（未执行/已执行）、企业会计制度上传excel文件支持附注解析\n```\n3)完税证明优化\n```\n优化1： 完税证明下载文件返回格式进行调整，之前是统一返回zip格式，优化后税局只有一个文件返回pdf,多个文件才会返回zip\n优化2：完税证明返回结构化解析，之前税局无法支持补打，平台缓存完税证明文件；调整后，税局已支持补打，则本地不进行缓存，以税局下载为主\n```\n\n## 企业数据采集\n1.完税凭证下载增加原始凭证号码返回\n2.本月增加能力：\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481120/image-preview)\n\n\n## 公共业务\n\n1.新增订购修改接口\n- 产品订购修改用于解决客户在产品订购时录入错误的税号、区域、企业名称而无无法修改的问题。\n涉及接口：[订购修改](api-239363004)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481133/image-preview)\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-12-03T11:28:21.000Z",
+  "updatedAt": "2024-12-14T11:35:21.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

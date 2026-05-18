@@ -1,0 +1,191 @@
+{
+  "id": 271944743,
+  "name": "专利关系信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业维度获取到对应的专利关系信息。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/patentRelationInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "name和creditNo至少一个字段传值"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "name和creditNo至少一个字段传值"
+        },
+        "pageSize": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "分页大小",
+          "description": "最大20"
+        },
+        "pageIndex": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "当前页",
+          "description": ""
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageSize",
+        "pageIndex"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\n    \"name\": \"xx科技有限责任公司\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 633724342,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "anyOf": [
+              {
+                "$ref": "#/definitions/153168219"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 633724342,
+      "data": "{\n    \"reqId\": \"81fd2e42103b41579af8d9bac5aeda43\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"data\": {\n        \"items\": [\n            {\n                \"applyDate\": \"2021-03-23\",\n                \"applyNo\": \"CN20213xxx176.0\",\n                \"applyNoticeDate\": \"\",\n                \"authorizeNo\": \"CN307354xx1S\",\n                \"patentName\": \"手机壳\",\n                \"patentType\": \"中国外观设计专利\"\n            },\n            {\n                \"applyDate\": \"2021-03-23\",\n                \"applyNo\": \"CN20213xxx886.1\",\n                \"applyNoticeDate\": \"\",\n                \"authorizeNo\": \"CN30679xx00S\",\n                \"patentName\": \"手机壳\",\n                \"patentType\": \"中国外观设计专利\"\n            }\n        ],\n        \"total\": \"2\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 529954355
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 142,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-15T08:36:06.000Z",
+  "updatedAt": "2025-03-31T03:04:37.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.633724342"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

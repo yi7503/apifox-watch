@@ -1,0 +1,186 @@
+{
+  "id": 69721501,
+  "name": "查询多个任务执行结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于根据taskIds查询异步任务执行进度信息。\n会返回taskId的接口有：发起采集企业税务信息、发起获取清册任务、发起申报任务接口、发起税款缴纳任务和发起下载pdf任务等。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| SUCCESS | 成功 | |\n| PARAMETER_ERROR | 没有找到对应的企业信息！ | |\n| PARAMETER_ERROR | 无企业Id(aggOrgId)不能为空！| |\n| PARAMETER_ERROR | 任务信息taskId不能为空！ | |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryTaskIdsInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": ""
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskIds"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskIds"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 447893717379200,\r\n    \"taskIds\": [\r\n        \"447900074182400\",\r\n        \"447901198051072\",\r\n        \"447904749215488\",\r\n        \"448024322614272\"\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "9ClHSF6y5t",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "voG5SU8tY3",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "LJ2zE2ezmT",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "Gtbff0bWiA",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "responses": [
+    {
+      "id": 176967930,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GVZ6HG6MZ4E7460FXGK62HM5": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "$ref": "#/definitions/37127142"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GVZ6HG6MZ4E7460FXGK62HM5"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "异常示例",
+      "responseId": 176967930,
+      "data": "{\"reqId\":\"9269d9bfabc54f03a8e4cb84bffcd97e\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17657883
+    },
+    {
+      "name": "成功示例",
+      "responseId": 176967930,
+      "data": "{\n    \"reqId\": \"2663a588e1994ec28c418d2acf06039f\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"result\": \"查询申报信息成功\",\n            \"finishTime\": \"2023-03-13 16:40:00\",\n            \"businessStatusName\": \"执行成功\",\n            \"startTime\": \"2023-03-13 16:33:40\",\n            \"businessStatus\": 3,\n            \"detail\": [\n                {\n                    \"sbywbm\": \"\",\n                    \"toDate\": \"2023-02-28\",\n                    \"zspmDm\": \"\",\n                    \"projectType\": \"0\",\n                    \"screenshot\": \"\",\n                    \"payState\": \"0\",\n                    \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696796549.png\",\n                    \"fromDate\": \"2023-02-01\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"zspmMc\": \"\",\n                    \"sbScreenUrl\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696606801.png\",\n                    \"voucherDate\": \"2023-03-09\",\n                    \"state\": \"1\"\n                },\n                {\n                    \"fromDate\": \"2022-01-01\",\n                    \"sbywbm\": \"\",\n                    \"yzpzzlDm\": \"BDA0611159\",\n                    \"zspmMc\": \"\",\n                    \"sbScreenUrl\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696639306.png\",\n                    \"toDate\": \"2022-12-31\",\n                    \"zspmDm\": \"\",\n                    \"projectType\": \"0\",\n                    \"payState\": \"0\",\n                    \"state\": \"0\",\n                    \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696796549.png\"\n                },\n                {\n                    \"fromDate\": \"2022-01-01\",\n                    \"sbywbm\": \"\",\n                    \"yzpzzlDm\": \"CWBBNDSB\",\n                    \"zspmMc\": \"\",\n                    \"sbScreenUrl\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696746760.png\",\n                    \"toDate\": \"2022-12-31\",\n                    \"zspmDm\": \"\",\n                    \"projectType\": \"1\",\n                    \"zlbsxlDm\": \"ZL1001001\",\n                    \"state\": \"0\",\n                    \"dqysb\": \"http://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696796549.png\"\n                }\n            ],\n            \"serviceName\": \"查询申报信息\",\n            \"resultMessage\": \"查询申报信息成功\",\n            \"taskId\": \"454618757185536\"\n        },\n        {\n            \"finishTime\": \"Thu Mar 09 10:30:23 CST 2023\",\n            \"businessStatusName\": \"执行成功\",\n            \"businessStatus\": 3,\n            \"serviceName\": \"多税种申报\",\n            \"resultMessage\": \"多税种申报成功\",\n            \"sbState\": 1,\n            \"result\": \"多税种申报成功\",\n            \"sbScreenUrl\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696606801.png\",\n            \"startTime\": \"Thu Mar 09 10:28:35 CST 2023\",\n            \"detail\": [],\n            \"taxAmount\": \"0\",\n            \"taskId\": \"453866107217920\"\n        },\n        {\n            \"finishTime\": \"2023-03-09 10:30:23\",\n            \"businessStatusName\": \"执行成功\",\n            \"businessStatus\": 3,\n            \"serviceName\": \"多税种申报\",\n            \"resultMessage\": \"多税种申报成功\",\n            \"sbState\": 1,\n            \"result\": \"多税种申报成功\",\n            \"sbScreenUrl\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_2b6f7521-4b64-497c-a6cb-be85f1fda5aa1678696420456_1678696606801.png\",\n            \"startTime\": \"2023-03-09 10:28:35\",\n            \"detail\": [],\n            \"taxAmount\": \"0\",\n            \"taskId\": \"453866107217920\"\n        },\n        {\n            \"result\": \"获取清册成功\",\n            \"finishTime\": \"Thu Mar 09 10:26:46 CST 2023\",\n            \"businessStatusName\": \"执行成功\",\n            \"startTime\": \"Thu Mar 09 10:20:19 CST 2023\",\n            \"businessStatus\": 3,\n            \"detail\": [\n                {\n                    \"result\": \"成功\",\n                    \"code\": \"2000\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"screenshot\": \"\",\n                    \"payState\": \"0\",\n                    \"state\": \"0\",\n                    \"message\": \"\",\n                    \"taxAmount\": \"\"\n                },\n                {\n                    \"result\": \"成功\",\n                    \"code\": \"2000\",\n                    \"yzpzzlDm\": \"BDA0610994\",\n                    \"payState\": \"0\",\n                    \"state\": \"0\",\n                    \"message\": \"\",\n                    \"taxAmount\": \"\"\n                },\n                {\n                    \"result\": \"成功\",\n                    \"code\": \"2000\",\n                    \"yzpzzlDm\": \"CWBBNDSB\",\n                    \"payState\": \"0\",\n                    \"state\": \"0\",\n                    \"message\": \"\",\n                    \"taxAmount\": \"\"\n                }\n            ],\n            \"serviceName\": \"获取清册\",\n            \"resultMessage\": \"获取清册成功\",\n            \"taskId\": \"453865090569216\"\n        },\n        {\n            \"result\": \"下载成功\",\n            \"finishTime\": \"2023-03-09 10:19:25\",\n            \"businessStatusName\": \"执行成功\",\n            \"startTime\": \"2023-03-09 10:16:57\",\n            \"businessStatus\": 3,\n            \"detail\": [],\n            \"serviceName\": \"下载企业信息\",\n            \"resultMessage\": \"下载成功\",\n            \"taskId\": \"453864678140928\"\n        }\n    ]\n}",
+      "id": 17625086
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13945512,
+  "ordering": 41,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-01-03T06:41:12.000Z",
+  "updatedAt": "2025-01-03T06:41:12.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.176967930"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

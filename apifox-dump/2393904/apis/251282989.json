@@ -1,0 +1,294 @@
+{
+  "id": 251282989,
+  "name": "异步算税",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "_Sr3J9rw28T3xo364seDu",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是异步接口。 \n1.一月只发一次薪:且上月个税已经申报，支持传当月算薪数据即可计算出税款。 (例如：企业每个月都是先申报在算下个月的税（比如4月10日之前已经申报完成，申报完成后局端3月份的所得已经申报，那么此时算4月份的发薪数据就只需要传一个月的所得） \n2.一月多次发薪:且上月个税已经申报，支持传本月不同发薪批次数据，即可算出对应批次税款。 (例如：企业每个月都是先申报在算下个月的税，且一月发多次的薪，需要传对应的批次号过来，系统会按照批次号进行收入的累计) \n3.一月只发一次薪:但上月个税未申报，支持传上月和本月的算薪数据，计算本月的税款。 (例如：无法判断企业上月是否已经申报，就传两个月的收入数据，系统会自动进行判断是否上月已申报来取数据用于算税)。\n 4.一月多次发薪: 但上月个税未申报，支持传上月数据和本月不同发薪批次数据，即可算出对应批次税款。 (例如：无法判断企业上月是否已经申报，就传两个月的收入数据，系统会自动进行判断是否上月已申报来取数据用于算税，且该用户一月发多次薪)\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/calculateTax/calculateASynIndividualIncomeTax",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "skssq": {
+          "type": "string",
+          "title": "税款所属期",
+          "description": "格式YYYYMM年月"
+        },
+        "zhsd": {
+          "title": "综合所得",
+          "type": "object",
+          "x-apifox-refs": {
+            "01JTW2Q5PGMPG6WGZ38MAFQFVX": {
+              "$ref": "#/definitions/138995688",
+              "x-apifox-overrides": {
+                "qtflxlwbc": null
+              }
+            }
+          },
+          "x-apifox-orders": [
+            "01JTW2Q5PGMPG6WGZ38MAFQFVX"
+          ],
+          "properties": {}
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户ID"
+        },
+        "flsd": {
+          "title": "分类所得",
+          "type": "object",
+          "x-apifox-refs": {
+            "01JTW0VCNGY5KB50J2ZHC1J0VQ": {
+              "$ref": "#/definitions/139616027",
+              "x-apifox-overrides": {
+                "gqzrlb": null
+              }
+            }
+          },
+          "x-apifox-orders": [
+            "01JTW0VCNGY5KB50J2ZHC1J0VQ"
+          ],
+          "properties": {}
+        },
+        "fjmsd": {
+          "title": "非居民所得",
+          "type": "object",
+          "x-apifox-refs": {
+            "01JTN3DW061GTFR98WN0T1DWZ0": {
+              "$ref": "#/definitions/139651104",
+              "x-apifox-overrides": {}
+            }
+          },
+          "x-apifox-orders": [
+            "01JTN3DW061GTFR98WN0T1DWZ0"
+          ],
+          "properties": {}
+        },
+        "xsgsd": {
+          "title": "限售股所得",
+          "$ref": "#/definitions/139620459"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "skssq",
+        "accountId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "zhsd",
+        "flsd",
+        "fjmsd",
+        "xsgsd"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"string\",\n    \"accountId\": \"string\",\n    \"skssq\": \"string\",\n    \"zhsd\": {\n        \"zcgzxj\": {\n            \"zcgzxjlb\": [{\n                    \"xm\": \"string\",\n                    \"zzlx\": \"string\",\n                    \"zzhm\": \"string\",\n                    \"sre\": 0,\n                    \"sygs\": \"string\",\n                    \"jngzts\": 0,\n                    \"jwgzts\": 0,\n                    \"jnzf\": 0,\n                    \"jwzf\": 0,\n                    \"mssd\": 0,\n                    \"jbylaobxf\": 0,\n                    \"jbylbxf\": 0,\n                    \"sybxf\": 0,\n                    \"zfgjj\": 0,\n                    \"nj\": 0,\n                    \"syjkbx\": 0,\n                    \"syylbx\": 0,\n                    \"qt\": \"string\",\n                    \"bz\": \"string\",\n                    \"zykcjze\": 0,\n                    \"jmse\": 0,\n                    \"sdxm\": \"string\",\n                    \"znjyzc\": 0,\n                    \"jxjyzc\": 0,\n                    \"zfzjzc\": 0,\n                    \"zfdklxzc\": 0,\n                    \"sylrzc\": 0,\n                    \"yyezhzc\": 0,\n                    \"ljznjyzc\": 0,\n                    \"ljjxjyzc\": 0,\n                    \"ljzfzjzc\": 0,\n                    \"ljzfdklxzc\": 0,\n                    \"ljsylrzc\": 0,\n                    \"ljyyezhzc\": 0,\n                    \"ljgrylj\": 0,\n                    \"ljgryljjym\": \"string\",\n                    \"ybtse\": 0\n                }\n            ],\n            \"rylb\": [{\n                    \"xm\": \"string\",\n                    \"zzlx\": \"string\",\n                    \"zzhm\": \"string\",\n                    \"qtzzlx\": \"string\",\n                    \"qtzzhm\": \"string\",\n                    \"bmbh\": \"string\",\n                    \"rybscl\": \"string\",\n                    \"gh\": \"string\",\n                    \"skssq\": \"string\",\n                    \"lxdh\": \"string\",\n                    \"nsrzt\": \"string\",\n                    \"sfgy\": \"string\",\n                    \"rzndjyqk\": \"string\",\n                    \"rzsgrq\": \"string\",\n                    \"xb\": \"string\",\n                    \"csny\": \"string\",\n                    \"gj\": \"string\",\n                    \"rydq\": \"string\",\n                    \"lzrq\": \"string\",\n                    \"grgbze\": \"string\",\n                    \"grgbbl\": \"string\",\n                    \"sfcj\": \"string\",\n                    \"sfls\": \"string\",\n                    \"sfgl\": \"string\",\n                    \"sfzdw\": \"string\",\n                    \"cjzh\": \"string\",\n                    \"lszh\": \"string\",\n                    \"dzyx\": \"string\",\n                    \"xl\": \"string\",\n                    \"zw\": \"string\",\n                    \"khyh\": \"string\",\n                    \"khyhsfmz\": \"string\",\n                    \"yhzh\": \"string\",\n                    \"lxdz_sheng\": \"string\",\n                    \"lxdz_shi\": \"string\",\n                    \"lxdz_qx\": \"string\",\n                    \"lxdz_jd\": \"string\",\n                    \"lxdz\": \"string\",\n                    \"hjszd_sheng\": \"string\",\n                    \"hjszd_shi\": \"string\",\n                    \"hjszd_qx\": \"string\",\n                    \"hjszd_jd\": \"string\",\n                    \"hjszd_xxdz\": \"string\",\n                    \"bz\": \"string\",\n                    \"csd\": \"string\",\n                    \"sssx\": \"string\",\n                    \"scrjsj\": \"string\",\n                    \"yjljsj\": \"string\",\n                    \"wjrlxdz_sheng\": \"string\",\n                    \"wjrlxdz_shi\": \"string\",\n                    \"wjrlxdz_qx\": \"string\",\n                    \"wjrlxdz_jd\": \"string\",\n                    \"wjrlxdz_xxdz\": \"string\",\n                    \"xmzw\": \"string\"\n                }\n            ]\n        }\n\n    }\n}\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 597228996,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JH51ZWF4J5NMSD6DTGADM92A": {
+            "$ref": "#/definitions/141932940"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JH51ZWF4J5NMSD6DTGADM92A"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 597228996,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1000000000000001304\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 466896570
+    },
+    {
+      "name": "异常示例",
+      "responseId": 597228996,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 466896571
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 50,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2025-01-04T09:35:58.000Z",
+  "updatedAt": "2026-05-13T08:00:52.000Z",
+  "creatorId": 1452584,
+  "editorId": 3222025,
+  "creatorUserId": 1452584,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,412 @@
+{
+  "id": 186922208,
+  "name": "单张数电版式下载",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于申请数电发票版式文件，可通过该接口申请已开具和取得的数电发票 xml、 pdf 、ofd版式文件\n\n\n:::highlight purple 💡\n各类型发票信息返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)\n:::",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/sdfile/syncLayoutFile",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "企业纳税人识别号，必填"
+        },
+        "jxxbz": {
+          "type": "string",
+          "title": "进销项标志",
+          "enum": [
+            "jx",
+            "xx"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "jx",
+              "name": "进项",
+              "description": ""
+            },
+            {
+              "value": "xx",
+              "name": "销项",
+              "description": ""
+            }
+          ]
+        },
+        "fphm": {
+          "type": "string",
+          "title": "发票号码"
+        },
+        "kprq": {
+          "type": "string",
+          "title": "开票日期",
+          "description": "yyyy-MM-dd"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "fphm",
+        "kprq",
+        "jxxbz"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "fphm",
+        "kprq",
+        "jxxbz",
+        "01HMB9H0G6QMVS6KKGMGDFNS6R"
+      ],
+      "x-apifox-refs": {
+        "01HMB9H0G6QMVS6KKGMGDFNS6R": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"nsrsbh\": \"91310118MAD57LQ***\",\n    \"fphm\": \"24448784110000017***\",\n    \"kprq\": \"2024-06-10\",\n    \"jxxbz\": \"1\",\n    \"accountId\": \"23434234*****\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 476209096,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null",
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "FpkjfxlxDm": {
+                "type": "string",
+                "title": "发票开具风险类型代码"
+              },
+              "Jshj": {
+                "type": "number",
+                "title": "价税合计"
+              },
+              "TdyslxDm": {
+                "type": "string",
+                "title": "特定要素类型代码"
+              },
+              "Xsfmc": {
+                "type": "string",
+                "title": "销售方名称"
+              },
+              "XsfssjswjgDm": {
+                "type": "string",
+                "title": "销售方税务机关代码"
+              },
+              "Kpr": {
+                "type": "string",
+                "title": "开票人"
+              },
+              "xmlFile": {
+                "type": "string",
+                "title": "xml文件oss地址（1年有效期）"
+              },
+              "ofdFile": {
+                "type": "string",
+                "title": "ofd文件oss地址（1年有效期）"
+              },
+              "Fphm": {
+                "type": "string",
+                "title": "发票号码"
+              },
+              "FplxDm": {
+                "type": "string",
+                "title": "发票类型代码"
+              },
+              "FppzDm": {
+                "type": "string",
+                "title": "发票票种代码"
+              },
+              "pdfFile": {
+                "type": "string",
+                "title": "pdf文件oss地址（1年有效期）"
+              },
+              "Zzfphm": {
+                "type": "string",
+                "title": "蓝字发票号码"
+              },
+              "Hjse": {
+                "type": "number",
+                "title": "税额"
+              },
+              "FpkjfsDm": {
+                "type": "string",
+                "title": "发票开具方式代码",
+                "enum": [
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "网页开票",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "移动端开票",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "客户端开票",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "第三方平台开票",
+                    "description": ""
+                  },
+                  {
+                    "value": "5",
+                    "name": "自建平台开票",
+                    "description": ""
+                  },
+                  {
+                    "value": "6",
+                    "name": "离线开票",
+                    "description": ""
+                  },
+                  {
+                    "value": "7",
+                    "name": "委托代开",
+                    "description": ""
+                  },
+                  {
+                    "value": "8",
+                    "name": "税务代开",
+                    "description": ""
+                  }
+                ]
+              },
+              "FpztDm": {
+                "type": "string",
+                "title": "发票状态代码"
+              },
+              "Xsfnsrsbh": {
+                "type": "string",
+                "title": "销售方识别号"
+              },
+              "Tdyslxmc": {
+                "type": "string",
+                "title": "特定要素类型名称"
+              },
+              "Kprq": {
+                "type": "string",
+                "title": "开票日期"
+              },
+              "ZzfpDm": {
+                "type": "string",
+                "title": "蓝字发票代码"
+              },
+              "GmfssjswjgDm": {
+                "type": "string",
+                "title": "购买方税务机关代码"
+              },
+              "Gmfmc": {
+                "type": "string",
+                "title": "购买方名称"
+              },
+              "FplyDm": {
+                "type": "string",
+                "title": "发票来源代码"
+              },
+              "Gjbq": {
+                "type": "string",
+                "title": "进销项标志"
+              },
+              "Sflzfp": {
+                "type": "string",
+                "title": "是否蓝字发票",
+                "description": "各类型发票信息返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)"
+              },
+              "Gmfnsrsbh": {
+                "type": "string",
+                "title": "购买方纳税人识别号"
+              },
+              "Gmfssjswjgmc": {
+                "type": "string",
+                "title": "购买方税务机关名称"
+              },
+              "Hjje": {
+                "type": "number",
+                "title": "金额"
+              },
+              "ewm_url": {
+                "type": "string",
+                "title": "二维码链接"
+              }
+            },
+            "x-apifox-orders": [
+              "ewm_url",
+              "xmlFile",
+              "ofdFile",
+              "pdfFile",
+              "Fphm",
+              "Kprq",
+              "FplxDm",
+              "FppzDm",
+              "Hjje",
+              "Hjse",
+              "Jshj",
+              "Gmfnsrsbh",
+              "Gmfmc",
+              "Xsfnsrsbh",
+              "Xsfmc",
+              "FplyDm",
+              "FpkjfsDm",
+              "FpztDm",
+              "TdyslxDm",
+              "Tdyslxmc",
+              "ZzfpDm",
+              "Zzfphm",
+              "FpkjfxlxDm",
+              "Gmfssjswjgmc",
+              "GmfssjswjgDm",
+              "XsfssjswjgDm",
+              "Kpr",
+              "Gjbq",
+              "Sflzfp"
+            ],
+            "required": [
+              "xmlFile",
+              "ofdFile",
+              "pdfFile",
+              "ewm_url"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 476209096,
+      "data": "{\n    \"reqId\": \"f65df7f7cedf49e68f72adc505499013\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"FpkjfxlxDm\": \"01\",\n        \"Jshj\": 1160,\n        \"TdyslxDm\": \"22\",\n        \"Xsfmc\": \"中国南方航空股份有限公司\",\n        \"XsfssjswjgDm\": \"14400000000\",\n        \"Kpr\": \"南方航空\",\n        \"xmlFile\": \"***********\",\n        \"ofdFile\": \"***********\",\n        \"Fphm\": \"244487841***********\",\n        \"FplxDm\": \"61\",\n        \"FppzDm\": \"06\",\n        \"pdfFile\": \"***********\",\n        \"Zzfphm\": \"\",\n        \"Hjse\": 91.65,\n        \"FpkjfsDm\": \"5\",\n        \"FpztDm\": \"01\",\n        \"Xsfnsrsbh\": \"91440000100017600N\",\n        \"Tdyslxmc\": \"航空运输电子客票行程单\",\n        \"Kprq\": \"2024-06-10 06:46:00\",\n        \"ZzfpDm\": \"\",\n        \"GmfssjswjgDm\": \"13100000000\",\n        \"Gmfmc\": \"***********\",\n        \"FplyDm\": \"2\",\n        \"Gjbq\": \"2\",\n        \"Sflzfp\": \"Y\",\n        \"Gmfnsrsbh\": \"91310118MA***********\",\n        \"Gmfssjswjgmc\": \"国家税务总局***********\",\n        \"Hjje\": 1068.35\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 414555211
+    },
+    {
+      "name": "异常示例",
+      "responseId": 476209096,
+      "data": "{\n    \"result\": {\n        \"req_id\": \"f7005a7d9351462e8d5c569d4f36124c\",\n        \"success\": false,\n        \"time\": 41,\n        \"timestamp\": 1670323665906\n    },\n    \"error\": {\n        \"code\": \"xxxx\",\n        \"message\": \"xxx\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 414555212
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 19486202,
+  "ordering": 35,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-08-15T01:50:35.000Z",
+  "updatedAt": "2026-01-10T06:27:09.000Z",
+  "creatorId": 2118003,
+  "editorId": 2795319,
+  "creatorUserId": 2118003,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

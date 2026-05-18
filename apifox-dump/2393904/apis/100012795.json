@@ -1,0 +1,229 @@
+{
+  "id": 100012795,
+  "name": "扫脸认证回调通知",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "根据电子税局安全要求，发票开具、红冲等操作前，开票员需要进行人脸识别安全验证，以确保当前开具发票的为开票员本人。\n当服务商在调用发票开具或红冲接口时，且开票员未及时进行扫脸时，服务商可使用本回调接口来提醒开票员进行扫脸操作",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/服务商CallbackURL地址",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "returnCode": {
+          "type": "string",
+          "title": "执行状态",
+          "description": "固定为720007",
+          "const": "720007"
+        },
+        "returnMsg": {
+          "type": "string",
+          "title": "业务返回消息",
+          "examples": [
+            "服务商可在此基础上生成二维码获取链接并推送短信、公众号消息通知开票人员进行扫脸认证。"
+          ],
+          "description": "通常的消息为：请重新扫脸、扫脸认证已过期等。"
+        },
+        "request": {
+          "type": "object",
+          "properties": {
+            "requestTime": {
+              "type": "integer",
+              "title": "请求时的时间戳"
+            },
+            "bizType": {
+              "type": "string",
+              "title": "请求业务类型"
+            },
+            "nsrsbh": {
+              "type": "string",
+              "title": "请求税号"
+            },
+            "requestId": {
+              "type": "string",
+              "title": "请求ID"
+            },
+            "action": {
+              "type": "string",
+              "title": "请求Action",
+              "description": "与源请求一致。"
+            }
+          },
+          "required": [
+            "requestTime",
+            "bizType",
+            "nsrsbh",
+            "requestId",
+            "action"
+          ],
+          "x-apifox-orders": [
+            "requestId",
+            "requestTime",
+            "bizType",
+            "action",
+            "nsrsbh"
+          ],
+          "title": "源请求信息"
+        },
+        "returnBody": {
+          "type": "object",
+          "properties": {
+            "nsrsbh": {
+              "type": "string",
+              "title": "纳税人识别号"
+            },
+            "kprId": {
+              "type": "string",
+              "title": "开票人ID"
+            },
+            "kprName": {
+              "type": "string",
+              "title": "开票人姓名"
+            },
+            "kprMobile": {
+              "type": "string",
+              "title": "开票人手机号"
+            }
+          },
+          "title": "返回内容",
+          "x-apifox-orders": [
+            "kprId",
+            "nsrsbh",
+            "kprName",
+            "kprMobile"
+          ],
+          "required": [
+            "kprName",
+            "kprId",
+            "kprMobile",
+            "nsrsbh"
+          ]
+        }
+      },
+      "required": [
+        "returnCode",
+        "returnMsg",
+        "request"
+      ],
+      "x-apifox-orders": [
+        "returnCode",
+        "returnMsg",
+        "returnBody",
+        "request"
+      ],
+      "title": "返回的内容结构"
+    },
+    "examples": [
+      {
+        "value": "{\n    \"request\": {\n        \"requestTime\": 17******37249,\n        \"bizType\": \"invoice\",\n        \"nsrsbh\": \"91***********WGX9\",\n        \"requestId\": \"202**********79966\",\n        \"action\": \"fpkj_zzs\"\n    },\n    \"returnCode\": \"720007\",\n    \"returnMsg\": \"等待开票员进行扫脸认证，服务商可在此基础上生成二维码获取链接并推送短信、公众号消息给开票人员\",\n    \"returnBody\": {}\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847729,
+      "name": "成功",
+      "code": 200,
+      "contentType": "raw",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "会掉状态",
+            "description": "成功返回success, 失败返回faild"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "x-apifox-orders": [
+          "status"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847729,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "id": 25423842
+    },
+    {
+      "name": "异常示例",
+      "responseId": 248847729,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"成功\"\n}",
+      "id": 25423843
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 19773348,
+  "ordering": 105,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-24T08:27:32.000Z",
+  "updatedAt": "2024-09-24T08:27:32.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "creatorUserId": 493303,
+  "editorUserId": 493303,
+  "responseChildren": [
+    "BLANK.248847729"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

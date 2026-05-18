@@ -1,0 +1,178 @@
+{
+  "id": 66706506,
+  "name": "查询企业信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询从税局读取企业信息状态。\n    \n## 错误码\n\n| **错误代码** | **错误消息** | **解决方案**|\n| --- | --- |---|\n| BUSINESS_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ |\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/org/queryOrgInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":369161****80320\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "24AFE5wUZc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "zz8H91X2RC",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "o66zFhqWcL",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "KH4aCzzFB4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947915,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1PNKPA7HHF8SR5ERZK9C2T": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "title": "业务数据",
+                "$ref": "#/definitions/37175755"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1PNKPA7HHF8SR5ERZK9C2T"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947915,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"3292926052d94235b065f87b73061338\",\n    \"data\": {\n        \"openSjState\": true,\n        \"vatTaxpayer\": 2000010002,\n        \"name\": \"**********有限公司\",\n        \"sfzxxDtos\": [\n            {\n                \"yxqq\": \"2024-01-01\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10101\",\n                \"sbxmName\": \"增值税\",\n                \"sbpm\": \"101014001\",\n                \"sbpmName\": \"商业(17%、16%、13%)\",\n                \"nsqxdm\": \"08\",\n                \"nsqxdmName\": \"季\",\n                \"slhdwse\": \"0.13\",\n                \"zsfs\": \"自行申报\",\n                \"zszm\": \"征收子目\",\n                \"zszmdm\": \"征收子目代码\"\n            }\n        ],\n        \"nsxxDto\": {\n            \"nsrsbh\": \"91***************X8\",\n            \"nsrmc\": \"*****限公司\",\n            \"djzclx\": \"173\",\n            \"djzclxName\": \"私营有限责任公司\",\n            \"zfjgBz\": \"3\",\n            \"hydl\": \"职业中介服务\",\n            \"zhymxhy\": \"职***服务\",\n            \"xydj\": \"B\",\n            \"hsfs\": \"0\",\n            \"kyrq\": \"2024-01-19\",\n            \"qysdszsfs\": \"1\",\n            \"sfqhjt\": \"1\",\n            \"zcdz\": \"云南省*****************栋407号\",\n            \"zjgmc\": \"总机构名称\",\n            \"fdfzr\": \"*****\",\n            \"fdfzrTel\": \"13**********\",\n            \"fdfzrSfzjlx\": \"201\",\n            \"fdfzrSfzjhm\": \"5202***************\",\n            \"cwfzr\": \"***\",\n            \"cwfzrTel\": \"1918*********\",\n            \"cwfzrSfzjlx\": \"201\",\n            \"cwfzrSfzjhm\": \"5303***************\",\n            \"bsy\": \"***\",\n            \"bsyTel\": \"136**********\",\n            \"bsySfzjlx\": \"201\",\n            \"bsySfzjhm\": \"520*************1X\"\n        },\n        \"zgrdDtos\": [\n            {\n                \"yxqksrq\": \"2021-04-01 00:00:00\",\n                \"yxqjsrq\": \"9999-12-31 00:00:00\",\n                \"zgrdlx\": \"201\",\n                \"zgrdlxName\": \"增值税一般纳税人\",\n                \"sjzzrq\": \"2024-03-19 00:00:00\"\n            }\n        ],\n        \"financeReportSettingDto\": {\n            \"yxqz\": \"9999-12-31\",\n            \"yxqq\": \"2023-09-05\",\n            \"reportingsubcategorycode\": \"ZL100100101\",\n            \"reportingSubCategoryCodeName\": \"适用未执行新金融准则、新收入准则和新租赁准则的一般企业\",\n            \"reportingcategorycode\": \"ZL1001001\",\n            \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则一般企业）\",\n            \"reportingperiod\": 2000270004,\n            \"reportingPeriodName\": \"月报\",\n            \"accountingstandardsid\": 102,\n            \"accountingStandardsIdName\": \"小企业会计准则\",\n            \"bdbaxx\": [\n                {\n                    \"zcfzb\": \"Y\",\n                    \"fz\": \"N\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"08\"\n                },\n                {\n                    \"zcfzb\": \"Y\",\n                    \"fz\": \"Y\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"10\"\n                }\n            ]\n        },\n        \"zgswjg\": [\n            {\n                \"zgswjgmc\": \"国家税务总局曲靖市麒麟区税务局寥廓税务分局\",\n                \"id\": 525740106790144\n            }\n        ],\n        \"jjdjxx\": {\n            \"jjdj_HY\": \"加计抵减_行业\",\n            \"jjdj_BAND\": \"加计抵减_备案年度\",\n            \"jjdj_SYJJDJL\": \"加计抵减_适用加计抵减率\"\n        },\n        \"taxPaymentMessageDtos\": [\n            {\n                \"bankNumber\": \"3******************67\",\n                \"bankName\": \"中****银行\",\n                \"tripleAgreement\": \"13******************0\",\n                \"accountNature\": \"基本存款账户\",\n                \"agreementStatus\": \"验证通过\",\n                \"signDate\": \"2021-04-06\"\n            }\n        ],\n        \"tzfxx\": {\n            \"bz\": \"人民币\",\n            \"bzje\": \"5000000.00\",\n            \"tzfList\": [\n                {\n                    \"tzfjjxz\": \"国有企业\",\n                    \"tzbl\": \"100\",\n                    \"gj\": \"中国\",\n                    \"dz\": \"大道****号\",\n                    \"zjzl\": \"营业执照\",\n                    \"zjhm\": \"91440300*****23456\",\n                    \"tzfmc\": \"团有限公司\"\n                }\n            ]\n        },\n        \"hdzsxx\": {\n            \"dqdehdxx\": [\n                {\n                    \"xh\": \"1\",\n                    \"hdzxqz\": \"2024-12-31\",\n                    \"ynsjye\": \"1000000.00\",\n                    \"zsxm\": \"增值税\",\n                    \"hdzxqq\": \"2024-01-01\",\n                    \"sl\": \"0.09\",\n                    \"zxhdbz\": \"是\",\n                    \"wdqzdbz\": \"否\",\n                    \"hdse\": \"90000.00\",\n                    \"zspm\": \"不动产销售\"\n                }\n            ],\n            \"hdzxqz\": \"2024-12-31\",\n            \"hdzxqq\": \"2024-01-01\"\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947916
+    },
+    {
+      "name": "20260326版本改动",
+      "responseId": 42947915,
+      "data": "{\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"reqId\": \"3292926052d94235b065f87b73061338\",\r\n    \"data\": {\r\n        \"openSjState\": true,\r\n        \"vatTaxpayer\": 2000010002,\r\n        \"name\": \"**********有限公司\",\r\n        \"sfzxxDtos\": [\r\n            {\r\n                \"yxqq\": \"2024-01-01\",\r\n                \"yxqz\": \"9999-12-31\",\r\n                \"sbxm\": \"10101\",\r\n                \"sbxmName\": \"增值税\",\r\n                \"sbpm\": \"101014001\",\r\n                \"sbpmName\": \"商业(17%、16%、13%)\",\r\n                \"nsqxdm\": \"08\",\r\n                \"nsqxdmName\": \"季\",\r\n                \"slhdwse\": \"0.13\",\r\n                \"zsfs\": \"自行申报\",\r\n                \"zszm\": \"征收子目\",\r\n                \"zszmdm\": \"征收子目代码\",\r\n                \"hy\": \"行业\" //20260326新增字段\r\n            }\r\n        ],\r\n        \"nsxxDto\": {\r\n            \"nsrsbh\": \"91***************X8\",\r\n            \"nsrmc\": \"*****限公司\",\r\n            \"djzclx\": \"173\",\r\n            \"djzclxName\": \"私营有限责任公司\",\r\n            \"zfjgBz\": \"3\",\r\n            \"hydl\": \"职业中介服务\",\r\n            \"zhymxhy\": \"职***服务\",\r\n            \"xydj\": \"B\",\r\n            \"hsfs\": \"0\",\r\n            \"kyrq\": \"2024-01-19\",\r\n            \"qysdszsfs\": \"1\",\r\n            \"sfqhjt\": \"1\",\r\n            \"zcdz\": \"云南省*****************栋407号\",\r\n            \"zjgmc\": \"总机构名称\",\r\n            \"fdfzr\": \"*****\",\r\n            \"fdfzrTel\": \"13**********\",\r\n            \"fdfzrSfzjlx\": \"201\",\r\n            \"fdfzrSfzjhm\": \"5202***************\",\r\n            \"cwfzr\": \"***\",\r\n            \"cwfzrTel\": \"1918*********\",\r\n            \"cwfzrSfzjlx\": \"201\",\r\n            \"cwfzrSfzjhm\": \"5303***************\",\r\n            \"bsy\": \"***\",\r\n            \"bsyTel\": \"136**********\",\r\n            \"bsySfzjlx\": \"201\",\r\n            \"bsySfzjhm\": \"520*************1X\",\r\n            \"pjnd\": \"2025\", // 20260326新增字段\r\n            \"swdjrq\": \"税务登记日期\", // 20260326新增字段\r\n            \"sfcktsqy\": \"是否出口退税企业\", // 20260326新增字段\r\n            \"ckzh\": \"存款账户\", // 20260326新增字段\r\n            \"qybz\": \"企业标志\", // 20260326新增字段\r\n            \"kqyccsdjztbz\": \"跨区域财产税登记主体标志\", // 20260326新增字段\r\n            \"ssgly\": \"税收管理员\", // 20260326新增字段\r\n            \"zcdyzbm\": \"注册地邮政编码\", // 20260326新增字段\r\n            \"zcdlxdh\": \"注册地联系电话\", // 20260326新增字段\r\n            \"djxh\": \"登记序号\", // 20260326新增字段\r\n            \"scjydz\": \"生产经营地址\", // 20260326新增字段\r\n            \"scjyyzbm\": \"生产经营邮政编码\", // 20260326新增字段\r\n            \"zzjgdm\": \"组织机构代码\", // 20260326新增字段\r\n            \"zzsqylx\": \"增值税企业类型\", // 20260326新增字段\r\n            \"jyfw\": \"经营范围\", // 20260326新增字段\r\n            \"cyrs\": \"从业人数\" // 20260326新增字段\r\n        },\r\n        \"zgrdDtos\": [\r\n            {\r\n                \"yxqksrq\": \"2021-04-01 00:00:00\",\r\n                \"yxqjsrq\": \"9999-12-31 00:00:00\",\r\n                \"zgrdlx\": \"201\",\r\n                \"zgrdlxName\": \"增值税一般纳税人\",\r\n                \"sjzzrq\": \"2024-03-19 00:00:00\"\r\n            }\r\n        ],\r\n        \"financeReportSettingDto\": {\r\n            \"yxqz\": \"9999-12-31\",\r\n            \"yxqq\": \"2023-09-05\",\r\n            \"reportingsubcategorycode\": \"ZL100100101\",\r\n            \"reportingSubCategoryCodeName\": \"适用未执行新金融准则、新收入准则和新租赁准则的一般企业\",\r\n            \"reportingcategorycode\": \"ZL1001001\",\r\n            \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则一般企业）\",\r\n            \"reportingperiod\": 2000270004,\r\n            \"reportingPeriodName\": \"月报\",\r\n            \"accountingstandardsid\": 102,\r\n            \"accountingStandardsIdName\": \"小企业会计准则\",\r\n            \"bdbaxx\": [\r\n                {\r\n                    \"zcfzb\": \"Y\",\r\n                    \"fz\": \"N\",\r\n                    \"xjllb\": \"Y\",\r\n                    \"lrb\": \"Y\",\r\n                    \"syzqybdb\": \"Y\",\r\n                    \"nsqx\": \"08\"\r\n                },\r\n                {\r\n                    \"zcfzb\": \"Y\",\r\n                    \"fz\": \"Y\",\r\n                    \"xjllb\": \"Y\",\r\n                    \"lrb\": \"Y\",\r\n                    \"syzqybdb\": \"Y\",\r\n                    \"nsqx\": \"10\"\r\n                }\r\n            ]\r\n        },\r\n        \"zgswjg\": [\r\n            {\r\n                \"zgswjgmc\": \"国家税务总局曲靖市麒麟区税务局寥廓税务分局\",\r\n                \"id\": 525740106790144\r\n            }\r\n        ],\r\n        \"jjdjxx\": {\r\n            \"jjdj_HY\": \"加计抵减_行业\",\r\n            \"jjdj_BAND\": \"加计抵减_备案年度\",\r\n            \"jjdj_SYJJDJL\": \"加计抵减_适用加计抵减率\"\r\n        },\r\n        \"taxPaymentMessageDtos\": [\r\n            {\r\n                \"bankNumber\": \"3******************67\",\r\n                \"bankName\": \"中****银行\",\r\n                \"tripleAgreement\": \"13******************0\",\r\n                \"accountNature\": \"基本存款账户\",\r\n                \"agreementStatus\": \"验证通过\",\r\n                \"signDate\": \"2021-04-06\"\r\n            }\r\n        ],\r\n        \"tzfxx\": { //20260326新增节点\r\n            \"bz\": \"人民币\",\r\n            \"bzje\": \"5000000.00\",\r\n            \"tzfList\": [\r\n                {\r\n                    \"tzfjjxz\": \"国有企业\",\r\n                    \"tzbl\": \"100\",\r\n                    \"gj\": \"中国\",\r\n                    \"dz\": \"大道****号\",\r\n                    \"zjzl\": \"营业执照\",\r\n                    \"zjhm\": \"91440300*****23456\",\r\n                    \"tzfmc\": \"团有限公司\"\r\n                }\r\n            ]\r\n        },\r\n        \"hdzsxx\": { //20260326新增节点\r\n            \"dqdehdxx\": [\r\n                {\r\n                    \"xh\": \"1\",\r\n                    \"hdzxqz\": \"2024-12-31\",\r\n                    \"ynsjye\": \"1000000.00\",\r\n                    \"zsxm\": \"增值税\",\r\n                    \"hdzxqq\": \"2024-01-01\",\r\n                    \"sl\": \"0.09\",\r\n                    \"zxhdbz\": \"是\",\r\n                    \"wdqzdbz\": \"否\",\r\n                    \"hdse\": \"90000.00\",\r\n                    \"zspm\": \"不动产销售\"\r\n                }\r\n            ],\r\n            \"hdzxqz\": \"2024-12-31\",\r\n            \"hdzxqq\": \"2024-01-01\"\r\n        }\r\n    }\r\n}",
+      "id": "019d292f-2706-710c-870e-340ff0509bca"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13281987,
+  "ordering": 122,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-09-29T15:33:02.000Z",
+  "updatedAt": "2026-03-24T13:11:10.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

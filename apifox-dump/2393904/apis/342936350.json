@@ -1,0 +1,876 @@
+{
+  "id": 342936350,
+  "name": "企业年报",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/annualRpt",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "creditCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "纳税人识别号",
+          "description": "纳税人识别号和企业名称必填一个"
+        },
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "纳税人识别号和企业名称必填一个"
+        }
+      },
+      "x-apifox-orders": [
+        "creditCode",
+        "name"
+      ],
+      "required": [
+        "name"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"name\":\"xxx信息技术有限公司\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 756724463,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误编码"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "reportName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "年报名称"
+                },
+                "totalAssets": {
+                  "type": "string",
+                  "title": "资产总额"
+                },
+                "isEquityTransfer": {
+                  "type": "string",
+                  "title": "是否发生股东股权转让"
+                },
+                "socialSecurityInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "maternityInsuranceEmployeeCnt": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "生育保险人数"
+                      },
+                      "endowmentInsuranceEmployeeCnt": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加城镇职工基本养老保险缴费基数"
+                      },
+                      "injuryInsuranceUnpaidAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加工伤保险累计欠缴金额"
+                      },
+                      "isDisplayPaymentBase": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "是否展示单位缴费基数"
+                      },
+                      "medicalInsuranceEmployeeCnt": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "职工基本医疗保险人数"
+                      },
+                      "medicalInsuranceUnpaidAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加职工基本医疗保险累计欠缴金额"
+                      },
+                      "unemploymentInsuranceAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "参加失业保险本期实际缴费金额"
+                      },
+                      "unemploymentInsuranceEmployeeCnt": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "失业保险人数"
+                      },
+                      "injuryInsuranceAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "参加工伤保险本期实际缴费金额"
+                      },
+                      "endowmentInsuranceUnpaidAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加城镇职工基本养老保险累计欠缴金额"
+                      },
+                      "medicalInsurancePaymentBase": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加职工基本医疗保险缴费基数"
+                      },
+                      "unemploymentInsurancePaymentBase": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加失业保险缴费基数"
+                      },
+                      "endowmentInsurancePaymentBase": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加城镇职工基本养老保险缴费基数"
+                      },
+                      "maternityInsurancePaymentBase": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加生育保险缴费基数"
+                      },
+                      "maternityInsuranceAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "参加生育保险本期实际缴费金额"
+                      },
+                      "maternityInsuranceUnpaidAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加生育保险累计欠缴金额"
+                      },
+                      "injuryInsuranceEmployeeCnt": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "工伤保险人数"
+                      },
+                      "injuryInsurancePaymentBase": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "单位参加工伤保险缴费基数"
+                      },
+                      "currency": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "币种"
+                      },
+                      "isDisplayAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "是否展示实际缴费金额"
+                      },
+                      "medicalInsuranceAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "unemploymentInsuranceUnpaidAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "endowmentInsuranceAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "isDisplayUnpaidAmount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "maternityInsuranceEmployeeCnt",
+                      "endowmentInsuranceEmployeeCnt",
+                      "injuryInsuranceUnpaidAmount",
+                      "isDisplayPaymentBase",
+                      "medicalInsuranceEmployeeCnt",
+                      "medicalInsuranceUnpaidAmount",
+                      "unemploymentInsuranceAmount",
+                      "unemploymentInsuranceEmployeeCnt",
+                      "injuryInsuranceAmount",
+                      "endowmentInsuranceUnpaidAmount",
+                      "medicalInsurancePaymentBase",
+                      "unemploymentInsurancePaymentBase",
+                      "endowmentInsurancePaymentBase",
+                      "maternityInsurancePaymentBase",
+                      "maternityInsuranceAmount",
+                      "maternityInsuranceUnpaidAmount",
+                      "injuryInsuranceEmployeeCnt",
+                      "injuryInsurancePaymentBase",
+                      "currency",
+                      "isDisplayAmount",
+                      "medicalInsuranceAmount",
+                      "unemploymentInsuranceUnpaidAmount",
+                      "endowmentInsuranceAmount",
+                      "isDisplayUnpaidAmount"
+                    ]
+                  },
+                  "title": "社保信息"
+                },
+                "netProfit": {
+                  "type": "string",
+                  "title": "净利润"
+                },
+                "totalOwnerEquity": {
+                  "type": "string",
+                  "title": "所有者权益合计"
+                },
+                "creditCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "社会信用代码"
+                },
+                "mainBusinessIncome": {
+                  "type": "string",
+                  "title": "主营业务收入"
+                },
+                "reportDate": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "年报日期"
+                },
+                "entityName": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "企业名称"
+                },
+                "registerCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "注册号"
+                },
+                "employeeCnt": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "从业人数"
+                },
+                "entityBusinessScope": {
+                  "type": "string",
+                  "title": "主营业务"
+                },
+                "isInvest": {
+                  "type": "string",
+                  "title": "企业是否有投资信息或购买其他公司股权"
+                },
+                "address": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "企业地址"
+                },
+                "actualEmployeeCnt": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "实际员工数量"
+                },
+                "totalLiabilities": {
+                  "type": "string",
+                  "title": "负债总额"
+                },
+                "telephone": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "企业联系电话"
+                },
+                "totalSalesAmount": {
+                  "type": "string",
+                  "title": "销售总额"
+                },
+                "totalNetProfit": {
+                  "type": "string",
+                  "title": "利润总额"
+                },
+                "entityPractitionerFemaleAmount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "其中女性从业人数"
+                },
+                "reportYear": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "年报年份"
+                },
+                "entityStatus": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "企业经营状态"
+                },
+                "organizationCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "组织机构代码"
+                },
+                "isExternalGuarantee": {
+                  "type": "string",
+                  "title": "是否提供对外担保"
+                },
+                "isWebsite": {
+                  "type": "string",
+                  "title": "是否有网站或网店"
+                },
+                "postCode": {
+                  "type": "string",
+                  "title": "邮编"
+                },
+                "totalTaxAmount": {
+                  "type": "string",
+                  "title": "纳税总额"
+                },
+                "guaranteeInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "creditor": {
+                        "type": "string",
+                        "title": "债权人"
+                      },
+                      "debtor": {
+                        "type": "string",
+                        "title": "债务人"
+                      },
+                      "type": {
+                        "type": "string",
+                        "title": "主债权种类"
+                      },
+                      "amount": {
+                        "type": "string",
+                        "title": "主债权数额"
+                      },
+                      "period": {
+                        "type": "string",
+                        "title": "履行债务的期限"
+                      },
+                      "guaranteeTime": {
+                        "type": "string",
+                        "title": "担保的期间"
+                      },
+                      "guaranteeType": {
+                        "type": "string",
+                        "title": "担保的方式"
+                      },
+                      "guaranteeScope": {
+                        "type": "string",
+                        "title": "担保的范围"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "creditor",
+                      "debtor",
+                      "type",
+                      "amount",
+                      "period",
+                      "guaranteeTime",
+                      "guaranteeType",
+                      "guaranteeScope"
+                    ],
+                    "required": [
+                      "creditor",
+                      "guaranteeScope",
+                      "guaranteeType",
+                      "guaranteeTime",
+                      "period",
+                      "amount",
+                      "type",
+                      "debtor"
+                    ]
+                  },
+                  "title": "对外担保信息"
+                },
+                "equityChangeInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "名称"
+                      },
+                      "beforePercent": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "变更前"
+                      },
+                      "afterPercent": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "变更后"
+                      },
+                      "changeDate": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "变更日期"
+                      },
+                      "publishDate": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "发布日期"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "name",
+                      "beforePercent",
+                      "afterPercent",
+                      "changeDate",
+                      "publishDate"
+                    ]
+                  },
+                  "title": "股权变更记录"
+                },
+                "updateInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "updateItem": {
+                        "type": "string",
+                        "title": "修改事项"
+                      },
+                      "beforeUpdate": {
+                        "type": "string",
+                        "title": "修改前"
+                      },
+                      "afterUpdate": {
+                        "type": "string",
+                        "title": "修改后"
+                      },
+                      "updateDate": {
+                        "type": "string",
+                        "title": "修改日期"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "updateItem",
+                      "beforeUpdate",
+                      "afterUpdate",
+                      "updateDate"
+                    ],
+                    "required": [
+                      "updateItem",
+                      "updateDate",
+                      "afterUpdate",
+                      "beforeUpdate"
+                    ]
+                  },
+                  "title": "年报修改记录"
+                },
+                "shareholderInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "stockName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "identifyType": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "证件类型"
+                      },
+                      "stockPercent": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "股比"
+                      },
+                      "realCapiItems": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "实缴详情"
+                      },
+                      "shouldCapiItems": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "应缴详情"
+                      },
+                      "totalRealCapi": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "实缴总额"
+                      },
+                      "totalShouldCapi": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "应缴总额"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "stockName",
+                      "identifyType",
+                      "stockPercent",
+                      "realCapiItems",
+                      "shouldCapiItems",
+                      "totalRealCapi",
+                      "totalShouldCapi"
+                    ]
+                  },
+                  "title": "股东信息"
+                },
+                "investInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "investName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "投资名称"
+                      },
+                      "investCapi": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "投资金额"
+                      },
+                      "investPercent": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "投资比例"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "investName",
+                      "investCapi",
+                      "investPercent"
+                    ]
+                  },
+                  "title": "对外投资信息"
+                },
+                "reportWebsiteInfos": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "websiteName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "网址名称"
+                      },
+                      "websiteUrl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "网址"
+                      },
+                      "websiteType": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "网址类型"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "websiteName",
+                      "websiteUrl",
+                      "websiteType"
+                    ]
+                  },
+                  "title": "网站"
+                }
+              },
+              "required": [
+                "isEquityTransfer",
+                "netProfit",
+                "totalOwnerEquity",
+                "mainBusinessIncome",
+                "entityBusinessScope",
+                "isInvest",
+                "totalLiabilities",
+                "totalSalesAmount",
+                "totalNetProfit",
+                "isExternalGuarantee",
+                "isWebsite",
+                "postCode",
+                "totalTaxAmount",
+                "totalAssets"
+              ],
+              "x-apifox-orders": [
+                "registerCode",
+                "organizationCode",
+                "creditCode",
+                "entityName",
+                "entityStatus",
+                "address",
+                "reportYear",
+                "reportName",
+                "reportDate",
+                "employeeCnt",
+                "entityPractitionerFemaleAmount",
+                "actualEmployeeCnt",
+                "telephone",
+                "totalAssets",
+                "totalLiabilities",
+                "totalOwnerEquity",
+                "netProfit",
+                "entityBusinessScope",
+                "totalTaxAmount",
+                "mainBusinessIncome",
+                "totalSalesAmount",
+                "totalNetProfit",
+                "isInvest",
+                "isEquityTransfer",
+                "isExternalGuarantee",
+                "isWebsite",
+                "postCode",
+                "reportWebsiteInfos",
+                "shareholderInfos",
+                "investInfos",
+                "socialSecurityInfos",
+                "guaranteeInfos",
+                "equityChangeInfos",
+                "updateInfos"
+              ]
+            },
+            "title": "业务数据"
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "reqId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "message",
+          "data",
+          "timestamp",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "data",
+          "timestamp",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 756724463,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"成功\",\n    \"data\": [\n        {\n            \"reportName\": \"2021年度报告\",\n            \"totalAssets\": \"\",\n            \"isEquityTransfer\": \"否\",\n            \"socialSecurityInfos\": [\n                {\n                    \"maternityInsuranceEmployeeCnt\": \"0人\",\n                    \"endowmentInsuranceEmployeeCnt\": \"31人\",\n                    \"injuryInsuranceUnpaidAmount\": \"0\",\n                    \"isDisplayPaymentBase\": \"2\",\n                    \"medicalInsuranceEmployeeCnt\": \"31人\",\n                    \"medicalInsuranceUnpaidAmount\": \"0\",\n                    \"unemploymentInsuranceAmount\": \"1.8\",\n                    \"unemploymentInsuranceEmployeeCnt\": \"31人\",\n                    \"injuryInsuranceAmount\": \"6\",\n                    \"endowmentInsuranceUnpaidAmount\": \"0\",\n                    \"medicalInsurancePaymentBase\": \"185\",\n                    \"unemploymentInsurancePaymentBase\": \"185\",\n                    \"endowmentInsurancePaymentBase\": \"185\",\n                    \"maternityInsurancePaymentBase\": \"185\",\n                    \"maternityInsuranceAmount\": \"0\",\n                    \"maternityInsuranceUnpaidAmount\": \"0\",\n                    \"injuryInsuranceEmployeeCnt\": \"31人\",\n                    \"injuryInsurancePaymentBase\": \"\",\n                    \"currency\": \"人民币\",\n                    \"isDisplayAmount\": \"2\",\n                    \"medicalInsuranceAmount\": \"16.5\",\n                    \"unemploymentInsuranceUnpaidAmount\": \"0\",\n                    \"endowmentInsuranceAmount\": \"44\",\n                    \"isDisplayUnpaidAmount\": \"2\"\n                }\n            ],\n            \"netProfit\": \"\",\n            \"totalOwnerEquity\": \"\",\n            \"creditCode\": \"91110105MA04xxxx\",\n            \"mainBusinessIncome\": \"\",\n            \"reportDate\": \"2022-05-25\",\n            \"entityName\": \"xxx有限公司\",\n            \"registerCode\": \"110105031xxxx\",\n            \"employeeCnt\": \"\",\n            \"entityBusinessScope\": \"技术咨询、技术转让、技术推广、技术服务、技术开发;软件开发;计算机系统服务;数据处理(数据处理中的银行卡中心、PUE值在1.4以上的云计算数据中心除外);基础软件服务;应用软件服务;设计、制作、代理、发布广告;企业管理咨询;税务咨询;企业策划;销售计算机、软件及辅助设备、通讯设备(除电子产品、服装等实体店);互联网信息服务。(市场主体依法自主选择经营项目，开展经营活动;互联网信息服务以及依法须经批准的项目，经相关部门批准后依批准的内容开展经营活动;不得从事国家和本市产业政策禁止和限制类项目的经营活动。)\",\n            \"isInvest\": \"否\",\n            \"address\": \"北京市海淀区xx号001\",\n            \"actualEmployeeCnt\": \"\",\n            \"totalLiabilities\": \"\",\n            \"telephone\": \"\",\n            \"totalSalesAmount\": \"\",\n            \"totalNetProfit\": \"\",\n            \"entityPractitionerFemaleAmount\": \"\",\n            \"reportYear\": \"2021\",\n            \"entityStatus\": \"开业\",\n            \"organizationCode\": \"ma04bdrr9\",\n            \"isExternalGuarantee\": \"否\",\n            \"isWebsite\": \"否\",\n            \"postCode\": \"100080\",\n            \"totalTaxAmount\": \"\"\n        }\n    ],\n    \"timestamp\": \"2025-08-29 13:58:19\",\n    \"reqId\": \"T0a6f17838ead41a49f5f04e249824521\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 672748785
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 282,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-08-29T03:56:13.000Z",
+  "updatedAt": "2025-09-02T07:51:48.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [
+    "BLANK.756724463"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

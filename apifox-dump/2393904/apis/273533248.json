@@ -1,0 +1,267 @@
+{
+  "id": 273533248,
+  "name": "客户分类查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局查询客户分类，以便进行客户的新增及编辑",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/khxxFlcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "khxx_flcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8QD0TNJ0EVS0FJ9GTTZY8"
+      ],
+      "x-apifox-refs": {
+        "01HMB8QD0TNJ0EVS0FJ9GTTZY8": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"action\": \"khxx_flcx\",\n    \"nsrsbh\": \"************PDDL2G\",\n    \"data\": {}\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 636669785,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "children": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fjddm": {
+                            "type": "string",
+                            "title": "父级代码(父级的fluuid)"
+                          },
+                          "fluuid": {
+                            "type": "string",
+                            "title": "分类uuid"
+                          },
+                          "jdqmc": {
+                            "type": "string",
+                            "title": "节点全名称"
+                          },
+                          "flmc": {
+                            "type": "string",
+                            "title": "分类名称"
+                          },
+                          "children": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "title": "子节点",
+                            "description": "树状目录结构（节点内容同children节点）"
+                          },
+                          "tjdpxxh": {
+                            "type": "string",
+                            "title": "提交的排序序号"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "fjddm",
+                          "fluuid",
+                          "jdqmc",
+                          "flmc",
+                          "tjdpxxh",
+                          "children"
+                        ],
+                        "required": [
+                          "fjddm",
+                          "fluuid",
+                          "jdqmc",
+                          "flmc",
+                          "tjdpxxh"
+                        ]
+                      },
+                      "title": "子分类"
+                    },
+                    "fluuid": {
+                      "type": "string",
+                      "title": "分类uuid"
+                    },
+                    "flmc": {
+                      "type": "string",
+                      "title": "分类名称"
+                    },
+                    "fjddm": {
+                      "type": "string",
+                      "title": "父节点代码"
+                    },
+                    "jdqmc": {
+                      "type": "string",
+                      "title": "节点全名称"
+                    },
+                    "tjdpxxh": {
+                      "type": "string",
+                      "title": "提交的排序序号"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fluuid",
+                    "fjddm",
+                    "flmc",
+                    "jdqmc",
+                    "tjdpxxh",
+                    "children"
+                  ]
+                },
+                "title": "列表根节点"
+              }
+            },
+            "required": [
+              "list"
+            ],
+            "x-apifox-orders": [
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHAFKNAFJJ68R4RKX6R3XEQ"
+        ],
+        "x-apifox-refs": {
+          "01HRHAFKNAFJJ68R4RKX6R3XEQ": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 636669785,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"list\": [\n            {\n                \"fjddm\": \"0\",\n                \"fluuid\": \"433ee37d3f76405fa5f3e9a3062b479c\",\n                \"jdqmc\": \"张三\",\n                \"tjdpxxh\": 1,\n                \"flmc\": \"张三\"\n            },\n            {\n                \"children\": [\n                    {\n                        \"children\": [\n                            {\n                                \"fjddm\": \"e9db5728c0ed4e23b686b1a96829318c\",\n                                \"fluuid\": \"13a215babe4d45879a74635ede435ee0\",\n                                \"jdqmc\": \"测试1/测试11/子子\",\n                                \"tjdpxxh\": 1,\n                                \"flmc\": \"子子\"\n                            }\n                        ],\n                        \"fjddm\": \"b683ab3f4a074db58e48a2f828378058\",\n                        \"fluuid\": \"e9db5728c0ed4e23b686b1a96829318c\",\n                        \"jdqmc\": \"测试1/测试11\",\n                        \"tjdpxxh\": 1,\n                        \"flmc\": \"测试11\"\n                    }\n                ],\n                \"fjddm\": \"0\",\n                \"fluuid\": \"b683ab3f4a074db58e48a2f828378058\",\n                \"jdqmc\": \"测试1\",\n                \"tjdpxxh\": 1,\n                \"flmc\": \"测试1\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"reqId\": \"9006e9c0ee1843abb8401cb88e16d7fc\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 537831027
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 52619809,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2025-03-19T07:05:39.000Z",
+  "updatedAt": "2025-03-31T06:55:34.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.636669785"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

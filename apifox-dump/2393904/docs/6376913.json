@@ -1,0 +1,17 @@
+{
+  "id": 6376913,
+  "name": "2025年3月发布的内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n新增支持能力\n1.支持耕地占用税解析、\n2.非税收入支持水利建设基金解析\n3.支持申报表解析及完税证明返回税局pdf文件，该能力需要单独联系配置权限\n:::\n1)完税证明支持返回文件\n调整点：基础信息-完税证明返回节点增加参数fileUrl，\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509220/image-preview)\n2)申报表解析支持返回文件\n调整点：返回结果sb节点财报和税报分别增加fileUrl\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509222/image-preview)",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-04-02T02:52:02.000Z",
+  "updatedAt": "2025-04-02T02:52:12.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

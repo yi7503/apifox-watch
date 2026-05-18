@@ -1,0 +1,17 @@
+{
+  "id": 5410536,
+  "name": "2024年10月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年10月发布内容\n\n发布日期：2024-10-30\n发布版本：V1.2024.10\n\n## 一. 发票查验\n1. 财政票据查验支持返回明细\n- 接口文档链接：https://openapi.qixiangyun.com/api-89495807\n- 说明：需要单独开通appkey权限，增加入参指定返回明细。\n- 支持的地区陆续上线中，目前已上线地区：北京、吉林、上海、江苏、浙江、广东\n```\n（1）入参增加标识，是否需要返回明细\n（2）返回报文变化：\n额外增加返回版式节点 \n\"bswjInfo\": {\n                    \"fileType\": \"pdf\",\n                    \"fileUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/\"\n                }\nxmmx节点list里对象新增  单价dj、自费zf、分类自负flzf节点有内容返回（目前仅上海地区涉及）\n```\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474948/image-preview)\n\n2. 航空运输电子客票行程单（电票平台查验）返回报文新增字段\n- 接口文档链接：https://openapi.qixiangyun.com/api-193188103\n```\n状态kpzt、签注qz、票价pj、燃油附加费ryfjf、增值税税率zzssl、增值税税额zzsse、民航发展基金mhfzjj、其他税费qtsf、合计hj、验证码yzm、提示信息tsxx、保险费bxf;\n```\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474951/image-preview)\n3. 数电铁路电子客票返回字段slv格式统一\n- 接口文档链接：https://openapi.qixiangyun.com/api-66282957\n说明：由原来的整数调整成小数，例如：9--->0.09\n\n## 二. 数电开票\n\n1. 数电发票开具接口不动产经营租赁节点字段变化\n- 接口文档链接：https://openapi.qixiangyun.com/api-100012782\n```\n商品编码是3040502020200000000:\n(1)租赁期起、租赁期止修改格式;\n(2)新增车牌号字段;\n```\n   \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474956/image-preview)\n\n2. 查询蓝字发票红冲信息接口优化入参\n- 接口文档链接：https://openapi.qixiangyun.com/api-175564187\n```\n（1）fply、gfnsrsbh、xfnsrsbh、jxxbz：由必传改为非必传\n（2）去掉fply字段\n```\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474957/image-preview)\n\n## 三. 发票归集\n1. 获取数电票版式文件数据接口入参增加是否过滤明细字段\n- 接口文档链接：https://openapi.qixiangyun.com/api-98530267\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/474958/image-preview)\n\n\n\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-11-03T08:06:29.000Z",
+  "updatedAt": "2026-03-04T08:46:09.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

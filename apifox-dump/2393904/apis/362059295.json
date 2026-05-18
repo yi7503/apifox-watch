@@ -1,0 +1,207 @@
+{
+  "id": 362059295,
+  "name": "特殊缴款申报提交",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "特殊缴款申报提交",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/specPayDeclaration",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "dwbh",
+        "fkssq",
+        "dwzyjfy"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID",
+          "description": " ",
+          "minLength": 1,
+          "examples": [
+            "ORG2024050100001",
+            "AGG-SH-00123456"
+          ]
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": " ",
+          "minLength": 1,
+          "examples": [
+            "ACC8880001",
+            "USER-20240520001"
+          ]
+        },
+        "dwbh": {
+          "type": "string",
+          "title": "单位编号",
+          "description": " ",
+          "minLength": 1,
+          "examples": [
+            "DWS20240001",
+            "UNIT-BJ-0005"
+          ]
+        },
+        "fkssq": {
+          "type": "string",
+          "title": "费款所属期",
+          "description": " 固定格式为“YYYYMM”（4位年份+2位月份），不可为空",
+          "pattern": "^\\d{6}$",
+          "examples": [
+            "202405",
+            "202412"
+          ]
+        },
+        "dwzyjfy": {
+          "type": "number",
+          "description": "若传输，则校验待申报时的应缴费额和申报提交时应缴费用是否一致\n",
+          "minimum": 0,
+          "multipleOf": 0.01,
+          "examples": [
+            12500.5,
+            8900,
+            5678.25
+          ],
+          "title": "单位总应缴费用"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "fkssq",
+        "accountId"
+      ],
+      "additionalProperties": false
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"aggOrgId\": \"维护企业信息接口返回的具体aggOrgId值\",\r\n  \"accountId\": \"具体的账号ID值\",\r\n  \"dwbh\": \"具体的单位编号（如：DWS20240001）\",\r\n  \"fkssq\": \"费款所属期（格式YYYYMM，如：202405）\",\r\n  \"dwzyjfy\": 12500.50\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 788944180,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JH51YC36SHZWHDY3P5KE14T7": {
+            "$ref": "#/definitions/141932940"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JH51YC36SHZWHDY3P5KE14T7"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 68408456,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-10-16T08:13:35.000Z",
+  "updatedAt": "2025-12-03T02:29:05.000Z",
+  "creatorId": 1442097,
+  "editorId": 1910680,
+  "creatorUserId": 1442097,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

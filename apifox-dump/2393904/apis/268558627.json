@@ -1,0 +1,227 @@
+{
+  "id": 268558627,
+  "name": "回调通知-获取采集状态",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "2Kz5o0HOCBhZOBE-t4P5y",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "描述：采集任务完成时回调通知客户。\n调用流程：\n1. 客户提供自己的接口回调地址通过对接群给到技术支持配置；\n2. 发起企业基本信息，任务完成后会推送数据到回调地址，客户返回成功响应；\n3. 判断采集状态是否完成，获取status状态；\n4. 获取结果，当采集状态为3时采集完成，调用获取数据接口获取数据；\n\n客户回调返回查看响应参数及示例",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/地址联系技术支持配置",
+  "tags": [
+    "企业信息采集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "-1：任务创建失败，0:无任务，1:进行中，3:完成",
+          "title": "任务完成状态"
+        },
+        "statusMsg": {
+          "type": "string",
+          "title": "任务完成状态描述",
+          "description": "任务完成状态描述"
+        },
+        "statusDetails": {
+          "type": "object",
+          "properties": {
+            "main": {
+              "type": "string",
+              "title": "分组总状态",
+              "description": "1：进行中，2：失败（任一失败），3：成功"
+            },
+            "mainStatusCode": {
+              "type": "string",
+              "title": "分组总code",
+              "description": "8000：存在登录失效任务，2000：全部成功，5000：部分失败"
+            },
+            "jcxx": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "title": "分组任务处理状态",
+                  "description": "1：进行中，2：失败，3：成功"
+                },
+                "loginCode": {
+                  "type": "string",
+                  "title": "子任务登录失效状态码",
+                  "description": "8000：存在登录失效任务，2000：全部成功，5000：部分失败"
+                }
+              },
+              "x-apifox-orders": [
+                "status",
+                "loginCode"
+              ],
+              "title": "分组任务状态详情节点"
+            }
+          },
+          "x-apifox-orders": [
+            "jcxx",
+            "main",
+            "mainStatusCode"
+          ],
+          "title": "任务状态详情",
+          "required": [
+            "mainStatusCode",
+            "main"
+          ]
+        },
+        "taskId": {
+          "type": "string",
+          "description": "任务ID",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "taskId",
+        "status",
+        "statusDetails"
+      ],
+      "x-apifox-orders": [
+        "taskId",
+        "status",
+        "statusMsg",
+        "statusDetails"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"statusMsg\": \"执行完成\",\r\n    \"statusDetails\": {\r\n        \"main\": 3,\r\n        \"mainStatusCode\": \"2000\",\r\n        \"jcxx\": {\r\n            \"groupStatusDetail\": {\r\n                \"BASIC_INFO\": {\r\n                    \"code\": \"2000\",\r\n                    \"hasLoginErr\": \"0\",\r\n                    \"codeMsg\": \"任务处理成功: 执行完成\",\r\n                    \"status\": 3\r\n                }\r\n            },\r\n            \"loginCode\": \"2000\",\r\n            \"status\": 3\r\n        }\r\n    },\r\n    \"taskId\": 544290009248,\r\n    \"status\": 3\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 627753662,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "接收响应Code"
+          },
+          "msg": {
+            "type": "string",
+            "description": "接收响应消息"
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg"
+        ],
+        "required": [
+          "code",
+          "msg"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功返回结果",
+      "responseId": 627753662,
+      "data": "{\n    \"code\": \"2000\",\n    \"msg\": \"已接收\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 528066315
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 51694530,
+  "ordering": 182,
+  "responsibleId": 887900,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-07T03:52:24.000Z",
+  "updatedAt": "2025-09-13T10:31:32.000Z",
+  "creatorId": 1910680,
+  "editorId": 1564651,
+  "creatorUserId": 1910680,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.627753662"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

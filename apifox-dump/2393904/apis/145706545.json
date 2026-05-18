@@ -1,0 +1,420 @@
+{
+  "id": 145706545,
+  "name": "服务异常通知",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "6DVOccRmoodvUzkC-Ek69",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口通过订阅消息，可以支持服务异常通知、税局变化通知、税局升级通知的获取，方便客户系统集成和实时提醒。\n- 接口调用方式：客户定时轮询接口获取消息。\n- 本接口支持增量数据拉取，支持获取一个月内全量数据",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/subscribe/sysmessage/getNoticeMessage",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "title": "操作类型",
+          "default": "notice"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "noticeType": {
+              "type": "integer",
+              "title": "通知类型",
+              "description": "不填写：所有类型通知",
+              "enum": [
+                10,
+                20,
+                30,
+                31,
+                40,
+                41
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": 10,
+                  "name": "平台维护通知",
+                  "description": ""
+                },
+                {
+                  "value": 20,
+                  "name": "税局维护通知",
+                  "description": ""
+                },
+                {
+                  "value": 30,
+                  "name": "税局异常通知",
+                  "description": ""
+                },
+                {
+                  "value": 31,
+                  "name": "税局恢复通知",
+                  "description": ""
+                },
+                {
+                  "value": 40,
+                  "name": "查验异常通知",
+                  "description": ""
+                },
+                {
+                  "value": 41,
+                  "name": "查验恢复通知",
+                  "description": ""
+                }
+              ]
+            },
+            "area": {
+              "type": "string",
+              "title": "地区",
+              "description": "见附录：[地区代码](apifox://link/pages/2246773)"
+            },
+            "contentType": {
+              "type": "string",
+              "title": "平台类型",
+              "description": "默认全部",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "0",
+                  "name": "电子税局 ",
+                  "description": ""
+                },
+                {
+                  "value": "1",
+                  "name": " 电票平台 ",
+                  "description": ""
+                }
+              ]
+            },
+            "acceptType": {
+              "type": "string",
+              "title": "增量全量标志",
+              "description": "默认是1-增量",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "0",
+                  "name": "全量",
+                  "description": "一个月时间内"
+                },
+                {
+                  "value": "1",
+                  "name": "增量",
+                  "description": "已读的不再发送"
+                }
+              ]
+            }
+          },
+          "x-apifox-orders": [
+            "noticeType",
+            "area",
+            "contentType",
+            "acceptType"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "action",
+        "data"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"action\": \"notice\",\n    \"data\": {\n        \"noticeType\": 20,\n        \"area\": \"3300\",\n        \"contentType\": \"0\",\n        \"acceptType\": \"1\"\n    }\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "aGjZYTEK2Z",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "9TxtpEy6W2",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": false,
+        "description": "",
+        "type": "string",
+        "id": "7sIxkkdeSi",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42464723,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01J8KGKEQTAY1FD99N7QEMBGJR"
+        ],
+        "x-apifox-refs": {
+          "01J8KGKEQTAY1FD99N7QEMBGJR": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "area": {
+                      "type": "string",
+                      "title": "地区",
+                      "description": "见附录：[地区代码](apifox://link/pages/2246773)"
+                    },
+                    "contentType": {
+                      "type": "integer",
+                      "title": "平台类型",
+                      "description": "默认全部",
+                      "enum": [
+                        0,
+                        1
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": 0,
+                          "name": "电子税局 ",
+                          "description": ""
+                        },
+                        {
+                          "value": 1,
+                          "name": "电票平台 ",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "title": "消息内容"
+                    },
+                    "module": {
+                      "type": "string",
+                      "title": "业务模块"
+                    },
+                    "noticeType": {
+                      "type": "integer",
+                      "title": "通知类别",
+                      "enum": [
+                        10,
+                        20,
+                        30,
+                        31,
+                        40,
+                        41
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": 10,
+                          "name": "平台维护通知",
+                          "description": ""
+                        },
+                        {
+                          "value": 20,
+                          "name": "税局维护通知",
+                          "description": ""
+                        },
+                        {
+                          "value": 30,
+                          "name": "税局异常通知",
+                          "description": ""
+                        },
+                        {
+                          "value": 31,
+                          "name": "税局恢复通知",
+                          "description": ""
+                        },
+                        {
+                          "value": 40,
+                          "name": "查验异常通知",
+                          "description": ""
+                        },
+                        {
+                          "value": 41,
+                          "name": "查验恢复通知",
+                          "description": ""
+                        }
+                      ]
+                    },
+                    "threshold": {
+                      "type": "string",
+                      "title": "失败阈值百分比"
+                    },
+                    "title": {
+                      "type": "string",
+                      "title": "标题"
+                    },
+                    "createTime": {
+                      "type": "string",
+                      "title": "创建时间",
+                      "description": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "publishTime": {
+                      "type": "string",
+                      "title": "局端发布时间",
+                      "description": "yyyy-MM-dd HH:mm:ss"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "area",
+                    "contentType",
+                    "message",
+                    "module",
+                    "noticeType",
+                    "threshold",
+                    "title",
+                    "createTime",
+                    "publishTime"
+                  ],
+                  "required": [
+                    "publishTime",
+                    "createTime"
+                  ]
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42464723,
+      "data": "{\n    \"reqId\": \"d94960e14fee4fab82696501b72151e9\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"area\": \"3300\",\n            \"contentType\": 0,\n            \"createTime\": \"2024-09-24 16:33:10\",\n            \"message\": \"尊敬的纳税人缴费人：\\n为保障业务可靠性，国家税务总局广东省税务局将于9月25日23:00至次日03:00、9月27日23:00至次日03:00 更新网络设备。更新期间网络可能会中断，影响门户网站、电子发票、电子税务局等相关互联网业务办理，请各位纳税人缴费人合理安排办税（费）、开票时间。\\n感谢广大纳税人缴费人对税收工作的理解与支持，给您带来不便，敬请谅解。\\n \\n国家税务总局广东省税务局\\n2024年9月24日\",\n            \"module\": \"\",\n            \"noticeType\": 20,\n            \"threshold\": \"\",\n            \"title\": \"平台维护通知\"\n        },\n        {\n            \"area\": \"3300\",\n            \"contentType\": 0,\n            \"createTime\": \"2024-09-23 17:06:14\",\n            \"message\": \"尊敬的缴费人：\\n为进一步提升社保费缴费服务水平，提高系统运行效率，国家税务总局山东省税务局将于2024年9月23日（周一）20:00至9月24日（周二）7:00进行社保费相关系统停机升级工作。期间，山东省电子税务局、社保费管理客户端、微信社保费缴纳小程序、支付宝社保费缴纳、自助办税终端、银行各缴费渠道、“爱山东”移动端等社保费缴纳相关功能暂停使用。\\n感谢广大缴费人的理解和支持，对此带来的不便敬请谅解。\\n国家税务总局山东省税务局\\n2024年9月23日\",\n            \"module\": \"\",\n            \"noticeType\": 20,\n            \"threshold\": \"\",\n            \"title\": \"平台维护通知\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 394463089
+    },
+    {
+      "name": "查验异常通知示例",
+      "responseId": 42464723,
+      "data": "{\n    \"reqId\": \"d46686f25cc6476aa90e95c839a3ee52\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"createTime\": \"2024-03-22T15:45:07\",\n            \"message\": \"【企享云发票查验预警】  【企享云】尊敬的合作伙伴，您好，目前我们监测到增值税查验平台深圳、辽宁等地区查验不稳定，可能会造成查验超时、批量查验概率性失败等情况，请您做好相关应对，给您带来的不便敬请谅解。\",\n            \"noticeType\": 40,\n            \"title\": \"查验异常通知\",\n            \"area\": \"\",\n            \"contentType\": \"0\",\n            \"module\": \"\",\n            \"threshold\": \"\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 402237584
+    },
+    {
+      "name": "查验恢复通知示例",
+      "responseId": 42464723,
+      "data": "{\n    \"reqId\": \"0e83dc0abc584f3795f67bd0130f1bc4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"createTime\": \"2024-03-22T16:30:02\",\n            \"message\": \"【企享云发票查验预警】  【企享云】尊敬的合作伙伴，您好，目前我们监测到增值税查验平台深圳地区查验已恢复正常。我们将继续努力，为您提供更加优质的服务。\",\n            \"noticeType\": 41,\n            \"title\": \"查验恢复通知\",\n            \"area\": \"\",\n            \"contentType\": \"0\",\n            \"module\": \"\",\n            \"threshold\": \"\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 402243848
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 28641833,
+  "ordering": 16,
+  "responsibleId": 1875506,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false,
+    "339435267": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-01-29T09:27:42.000Z",
+  "updatedAt": "2025-10-08T08:11:40.000Z",
+  "creatorId": 1875506,
+  "editorId": 1564651,
+  "creatorUserId": 1875506,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.42464723"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

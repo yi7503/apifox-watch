@@ -1,0 +1,252 @@
+{
+  "id": 118670478,
+  "name": "查询商品分类",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "在电子税务局查询商品分类，以便进行商品的新增及编辑",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/spxxFlcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "spxx_flcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": ""
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "data",
+        "01HMB8QD0TNJ0EVS0FJ9GTTZY8"
+      ],
+      "x-apifox-refs": {
+        "01HMB8QD0TNJ0EVS0FJ9GTTZY8": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"spxx_flcx\",\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"data\": {}\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947657,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "children": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fjddm": {
+                            "type": "string",
+                            "title": "父级代码(父级的fluuid)"
+                          },
+                          "fluuid": {
+                            "type": "string",
+                            "title": "分类uuid"
+                          },
+                          "tdysFlsDm": {
+                            "type": "string",
+                            "title": "目录树代码"
+                          },
+                          "jdqmc": {
+                            "type": "string",
+                            "title": "节点全名称"
+                          },
+                          "flmc": {
+                            "type": "string",
+                            "title": "分类名称"
+                          },
+                          "children": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "title": "子节点",
+                            "description": "树状目录结构（节点内容同children节点）"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "fjddm",
+                          "fluuid",
+                          "tdysFlsDm",
+                          "jdqmc",
+                          "flmc",
+                          "children"
+                        ],
+                        "required": [
+                          "fjddm",
+                          "fluuid",
+                          "tdysFlsDm",
+                          "jdqmc",
+                          "flmc"
+                        ]
+                      },
+                      "title": "子分类"
+                    },
+                    "fluuid": {
+                      "type": "string",
+                      "title": "分类uuid"
+                    },
+                    "tdysFlsDm": {
+                      "type": "string",
+                      "title": "目 录树代码"
+                    },
+                    "flmc": {
+                      "type": "string",
+                      "title": "分类名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "fluuid",
+                    "tdysFlsDm",
+                    "flmc",
+                    "children"
+                  ]
+                },
+                "title": "列表根节点"
+              }
+            },
+            "required": [
+              "list"
+            ],
+            "x-apifox-orders": [
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHAFKNAFJJ68R4RKX6R3XEQ"
+        ],
+        "x-apifox-refs": {
+          "01HRHAFKNAFJJ68R4RKX6R3XEQ": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947657,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"list\": [\n            {\n                \"children\": [\n                    {\n                        \"children\": [\n                            {\n                                \"fjddm\": \"0b2a48aa88884fd59255891eb86f4fef\",\n                                \"fluuid\": \"83a8bf1d6ce242fa853856272d77ff9f\",\n                                \"tdysFlsDm\": \"00\",\n                                \"jdqmc\": \"项目信息分类/测试测试测试/测试77\",\n                                \"flmc\": \"测试77\"\n                            }\n                        ],\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"0b2a48aa88884fd59255891eb86f4fef\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试测试测试\",\n                        \"flmc\": \"测试测试测试\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"17432b97996148ae95a2e2f7d7d03d85\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试9\",\n                        \"flmc\": \"测试9\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"2f477d40a2b74266aa35044b4c34f9ad\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/项目信息分类\",\n                        \"flmc\": \"项目信息分类\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"41ab962cf84f447d8e9e5005775c6a8e\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试6\",\n                        \"flmc\": \"测试6\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"46a152dc6b894bf5916e5ec5850989aa\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试1\",\n                        \"flmc\": \"测试1\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"495b010a0d0a4cfaae7582fe72bb80fd\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试3\",\n                        \"flmc\": \"测试3\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"4ad2336cc3e6498ba32164490bec6629\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试4\",\n                        \"flmc\": \"测试4\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"4bca2c3560cf4b53b9dd259fd331ecce\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试11\",\n                        \"flmc\": \"测试11\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"4df3089d0ed54e4496decf577d97a2c5\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试2\",\n                        \"flmc\": \"测试2\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"93d935410fe04b4084cbf85f089b9344\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试5\",\n                        \"flmc\": \"测试5\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"9b720eeecc74402294d744053dcc83f7\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试10\",\n                        \"flmc\": \"测试10\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"9c2c6fa042c64843a1df2e42c813a103\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试8\",\n                        \"flmc\": \"测试8\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"a421025da002494f8cb3cfde27333cd1\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试12\",\n                        \"flmc\": \"测试12\"\n                    },\n                    {\n                        \"fjddm\": \"00\",\n                        \"fluuid\": \"b28fb430148145d6b2a7e151a62940e4\",\n                        \"tdysFlsDm\": \"00\",\n                        \"jdqmc\": \"项目信息分类/测试13\",\n                        \"flmc\": \"测试13\"\n                    }\n                ],\n                \"fluuid\": \"00\",\n                \"tdysFlsDm\": \"00\",\n                \"flmc\": \"项目信息分类\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"reqId\": \"9006e9c0ee1843abb8401cb90e16d7fc\"\n}",
+      "id": 400270955
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23430606,
+  "ordering": 57,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-10-11T09:02:42.000Z",
+  "updatedAt": "2025-06-10T02:16:52.000Z",
+  "creatorId": 887900,
+  "editorId": 2706439,
+  "creatorUserId": 887900,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.42947657"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

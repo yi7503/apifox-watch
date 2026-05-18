@@ -1,0 +1,388 @@
+{
+  "id": 422479172,
+  "name": "特殊情形处理人员添加",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "83aQyQuLQNDwWWlA2lQd-",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "接口描述：居民身份证号码不符合一般规则或除居民身份证以外在税务机关取得纳税人识别号的人员，可以使用本接口做人信息采集和人员报送\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/dkdj/tsqxrytj",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "bizNo": {
+          "type": "string",
+          "title": "外部业务编号"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "传入accountId就免传登录信息"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "tsrylb": {
+          "type": "array",
+          "description": "特殊人员列表",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "tsqx": {
+                "type": "string",
+                "description": "特殊情形：0-居民身份证号码不符合一般赋码规则；1-除居民身份证以外已从税务机关取得纳税人识别号的人员",
+                "enum": [
+                  "0",
+                  "1"
+                ],
+                "examples": [
+                  "0"
+                ]
+              },
+              "xm": {
+                "type": "string",
+                "description": "姓名",
+                "examples": [
+                  "张三"
+                ]
+              },
+              "zzlx": {
+                "type": "string",
+                "description": "证件类型（tsqx为0时，必填）",
+                "examples": [
+                  "身份证"
+                ]
+              },
+              "zzhm": {
+                "type": "string",
+                "description": "证件号码（tsqx为0时，必填）",
+                "examples": [
+                  "110101199001011234"
+                ]
+              },
+              "nsrsbh": {
+                "type": "string",
+                "description": "纳税人识别号（tsqx为1时，必填）",
+                "examples": [
+                  "91110000MA00123456"
+                ]
+              },
+              "sfgy": {
+                "type": "string",
+                "description": "任职受雇从业类型",
+                "enum": [
+                  "雇员",
+                  "保险营销员",
+                  "证券经纪人",
+                  "其他",
+                  "实习学生（全日制学历教育）",
+                  "实习学生(全日制学历教育)",
+                  "平台内从业人员"
+                ],
+                "examples": [
+                  "雇员"
+                ]
+              },
+              "lxdh": {
+                "type": "string",
+                "description": "电话号码（11位中国大陆手机号码）",
+                "pattern": "^1[3-9]\\d{9}$",
+                "examples": [
+                  "13800138000"
+                ]
+              },
+              "rzsgrq": {
+                "type": "string",
+                "description": "受雇日期（格式:YYYY-MM-DD）",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "examples": [
+                  "2024-01-01"
+                ]
+              },
+              "xb": {
+                "type": "string",
+                "description": "性别",
+                "examples": [
+                  "男"
+                ]
+              },
+              "csny": {
+                "type": "string",
+                "description": "出生日期（格式:YYYY-MM-DD）",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "examples": [
+                  "1990-01-01"
+                ]
+              },
+              "gj": {
+                "type": "string",
+                "description": "国籍",
+                "examples": [
+                  "中国"
+                ]
+              },
+              "sssy": {
+                "type": "string",
+                "description": "涉税事由（tsqx为1时，必填）",
+                "enum": [
+                  "任职受雇",
+                  "提供临时劳务",
+                  "转让财产",
+                  "从事投资和经营活动",
+                  "其他"
+                ],
+                "examples": [
+                  "任职受雇"
+                ]
+              }
+            },
+            "x-apifox-orders": [
+              "tsqx",
+              "xm",
+              "zzlx",
+              "zzhm",
+              "nsrsbh",
+              "sfgy",
+              "lxdh",
+              "rzsgrq",
+              "xb",
+              "csny",
+              "gj",
+              "sssy"
+            ],
+            "required": [
+              "tsqx",
+              "xm",
+              "sfgy",
+              "rzsgrq",
+              "gj"
+            ]
+          }
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "bizNo",
+        "aggOrgId",
+        "accountId",
+        "tsrylb"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "tsrylb"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4539696148287232\",\r\n    \"tsrylb\": [\r\n        {\r\n            \"tsqx\": \"0\",\r\n            \"xm\": \"张三\",\r\n            \"zzlx\": \"身份证\",\r\n            \"zzhm\": \"110101199001011234\",\r\n            \"sfgy\": \"雇员\",\r\n            \"lxdh\": \"13800138000\",\r\n            \"rzsgrq\": \"2024-01-01\",\r\n            \"xb\": \"男\",\r\n            \"csny\": \"1990-01-01\",\r\n            \"gj\": \"中国\"\r\n        },\r\n        {\r\n            \"tsqx\": \"1\",\r\n            \"xm\": \"李四\",\r\n            \"nsrsbh\": \"91110000MA00123457\",\r\n            \"sfgy\": \"保险营销员\",\r\n            \"lxdh\": \"13900139000\",\r\n            \"rzsgrq\": \"2024-02-01\",\r\n            \"xb\": \"女\",\r\n            \"csny\": \"1985-05-15\",\r\n            \"gj\": \"中国\",\r\n            \"sssy\": \"提供临时劳务\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 606340146,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId"
+            ],
+            "required": [
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 606340146,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1234567\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 473135877
+    },
+    {
+      "name": "异常示例",
+      "responseId": 606340146,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 473135878
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 79286577,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-04T02:43:35.000Z",
+  "updatedAt": "2026-04-29T07:10:28.000Z",
+  "creatorId": 1910680,
+  "editorId": 3222025,
+  "creatorUserId": 1910680,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

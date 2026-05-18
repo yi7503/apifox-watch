@@ -1,0 +1,305 @@
+{
+  "id": 310307824,
+  "name": "政策详情查询接口",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "政策法规库文章详情页查询接口，支持根据政策的id或者文号查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/legislation/detail",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "documentNumber": {
+          "type": "string",
+          "description": "在详情页中链接到其他文章时，无id场景使用文号查询\n\n示例值：\"财税〔2017〕58号\"",
+          "title": "政策文号"
+        },
+        "id": {
+          "type": "string",
+          "description": "政策主键ID\n示例值：1204336209929963777",
+          "title": "主键ID"
+        }
+      },
+      "x-apifox-orders": [
+        "documentNumber",
+        "id"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"documentNumber\": \"财税〔2017〕58号\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "name": "示例 1",
+        "value": "{\n    \"id\": 1204336209929963800\n}",
+        "mediaType": "application/xml"
+      },
+      {
+        "name": "示例 2",
+        "value": "{\n    \"documentNumber\": \"财税〔2017〕58号\"\n}",
+        "mediaType": "application/xml"
+      },
+      {
+        "name": "示例 2",
+        "value": "{\n    \"id\": 1204336209929963800\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Ud5k1foWPO",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "kgnQevy54Y",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "zemiLse7y2",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 700360172,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "相应返回信息"
+          },
+          "code": {
+            "type": "string",
+            "description": "响应返回码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "政策主键ID"
+              },
+              "title": {
+                "type": "string",
+                "description": "标题"
+              },
+              "summary": {
+                "type": "string",
+                "description": "摘要"
+              },
+              "categoryId": {
+                "type": "string",
+                "description": "分类ID，当前子级分类ID"
+              },
+              "categoryName": {
+                "type": "string",
+                "description": "分类名称，父级分类-子级分类"
+              },
+              "documentNumber": {
+                "type": "string",
+                "description": "文号"
+              },
+              "documentIssuingAgency": {
+                "type": "string",
+                "description": "发文机关，多条使用逗号拼接"
+              },
+              "publicationTime": {
+                "type": "string",
+                "description": "发文日期，日期格式：yyyy-MM-dd"
+              },
+              "periodStartDate": {
+                "type": "string",
+                "description": "有效期开始日期，格式：yyyy/MM/dd"
+              },
+              "periodEndDate": {
+                "type": "string",
+                "description": "有效期结束日期，格式：yyyy/MM/dd"
+              },
+              "effective": {
+                "type": "string",
+                "description": "时效"
+              },
+              "tax": {
+                "type": "string",
+                "description": "税种，多条使用逗号拼接"
+              },
+              "industry": {
+                "type": "string",
+                "description": "行业，多条使用逗号拼接"
+              },
+              "area": {
+                "type": "string",
+                "description": "地区，多条使用逗号拼接"
+              },
+              "content": {
+                "type": "string",
+                "description": "正文内容，HTML格式"
+              },
+              "attachmentInfo": {
+                "type": "string",
+                "description": "附件，json格式，用key和filename调用【获取政策附件下载地址】，可生成下载地址。"
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "summary",
+              "categoryId",
+              "categoryName",
+              "documentNumber",
+              "documentIssuingAgency",
+              "publicationTime",
+              "periodStartDate",
+              "periodEndDate",
+              "effective",
+              "tax",
+              "industry",
+              "area",
+              "content",
+              "attachmentInfo"
+            ],
+            "x-apifox-orders": [
+              "id",
+              "title",
+              "summary",
+              "categoryId",
+              "categoryName",
+              "documentNumber",
+              "documentIssuingAgency",
+              "publicationTime",
+              "periodStartDate",
+              "periodEndDate",
+              "effective",
+              "tax",
+              "industry",
+              "area",
+              "content",
+              "attachmentInfo"
+            ],
+            "description": "响应数据"
+          },
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一ID"
+          }
+        },
+        "required": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "message",
+          "code",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 700360172,
+      "data": "{\n    \"data\": {\n        \"id\": \"1354569356436642304\",\n        \"title\": \"国家税务总局关于中国华融资产管理股份有限公司和中国东方资产管理公司企业所得税征管问题的公告\",\n        \"summary\": \"根据2025.03.24 国家税务总局令第59号《国家税务总局关于公布废止和修改的部分税务部门规章及规范性文件目录的决定》，本文第三条及附件自2025年3月24日起废止。\",\n        \"categoryId\": \"4\",\n        \"categoryName\": \"税务法规-中央税法\",\n        \"documentNumber\": \"国家税务总局公告2013年第38号\",\n        \"documentIssuingAgency\": \"国家税务总局\",\n        \"publicationTime\": \"2013-07-09\",\n        \"periodStartDate\": \"2013/07/09\",\n        \"periodEndDate\": \"2099/12/31\",\n        \"effective\": \"部分失效\",\n        \"tax\": \"企业所得税\",\n        \"industry\": \"全部行业\",\n        \"area\": \"全国适用\",\n        \"content\": \"<font color=\\\"red\\\">　　注释：根据2025.03.24 <a href=\\\"workbench/policy/detail?docNum=国家税务总局令第59号\\\">国家税务总局令第59号</a>《国家税务总局关于公布废止和修改的部分税务部门规章及规范性文件目录的决定》，本文第三条及附件自2025年3月24日起废止。<hr style=\\\"height:1px;border:none;border-top:1px dashed #0066cc;\\\"><br></font>　　《财政部、国家税务总局、中国人民银行关于明确中国邮政储蓄银行等企业所得税收入归属的通知》（财预〔2013〕34号）规定，中国华融资产管理股份有限公司、中国东方资产管理公司缴纳的企业所得税为中央收入，全部缴入中央国库。根据《国家税务总局关于中国工商银行股份有限公司等企业企业所得税有关征管问题的通知》（<a href=\\\"workbench/policy/detail?docNum=国税函〔2010〕184号\\\">国税函〔2010〕184号</a>）精神，现将中国华融资产管理股份有限公司和中国东方资产管理公司企业所得税征管问题公告如下： <p></p>　　一、中国华融资产管理股份有限公司、中国东方资产管理公司应缴纳的企业所得税，由企业总机构统一汇总计算后，向总机构所在地主管税务机关申报预缴，年终进行汇算清缴。上述企业所属二级分支机构应按照企业所得税的有关规定，向其当地主管税务机关报送企业所得税预缴申报表和其他相关资料，各分支机构不就地预缴企业所得税。 <p></p>　　二、中国华融资产管理股份有限公司、中国东方资产管理公司及其所属分支机构发生的资产损失，按照《国家税务总局关于发布〈企业资产损失所得税税前扣除管理办法〉的公告》（<a href=\\\"workbench/policy/detail?docNum=国家税务总局公告2011年第25号\\\">国家税务总局公告2011年第25号</a>）的规定办理。 <p></p>　　<font color=\\\"#666666\\\">三、中国华融资产管理股份有限公司、中国东方资产管理公司所属二级分支机构名单由国家税务总局公布。上述企业所属二级以下（不含）分支机构名单，由二级分支机构向所在地主管税务机关提供，经所在地省税务机关审核后公布。企业分支机构发生增减变化的，应及时上报国家税务总局及二级分支机构所在地主管税务机关，由国家税务总局和二级分支机构所在地省税务机关重新公布所属分支机构名单。</font><br><font color=\\\"red\\\">　　【注释：根据2025.03.24 <a href=\\\"workbench/policy/detail?docNum=国家税务总局令第59号\\\">国家税务总局令第59号</a>《国家税务总局关于公布废止和修改的部分税务部门规章及规范性文件目录的决定》，本条规定自2025年3月24日起废止。】</font><br>\\n <p></p>　　四、本公告自2013年1月1日起执行。 <p></p>　　特此公告。 <p></p><font color=\\\"blue\\\">　　<b>附：国家税务总局关于《中国华融资产管理股份有限公司和中国东方资产管理公司企业所得税征管问题的公告》的解读</b></font><p></p>　　根据《国家税务总局关于印发〈跨地区经营汇总纳税企业所得税征收管理暂行办法〉的通知》（<a href=\\\"workbench/policy/detail?docNum=国税发〔2008〕28号\\\">国税发〔2008〕28号</a>）规定，《国家税务总局关于中国工商银行股份有限公司等企业企业所得税有关征管问题的通知》（<a href=\\\"workbench/policy/detail?docNum=国税函〔2010〕184号\\\">国税函〔2010〕184号</a>）明确了中国工商银行股份有限公司等企业所得税收入全额归属中央的企业由总机构统一计算并缴纳企业所得税，分支机构不实行就地预缴的征管办法，并由总局发布各企业所属二级分支机构名单。《财政部 国家税务总局 中国人民银行关于明确中国邮政储蓄银行等企业所得税收入归属的通知》（财预[2013]34号）明确，中国华融资产管理股份有限公司和中国东方资产管理公司缴纳的企业所得税为中央收入，全部缴入中央国库。为保持企业所得税收入全额归属中央的企业征管政策的一致性，便于中国华融资产管理股份有限公司和中国东方资产管理公司所属二级分支机构所在地税务机关对其所属二级分支机构的管理，参照<a href=\\\"workbench/policy/detail?docNum=国税函〔2010〕184号\\\">国税函〔2010〕184号</a>文件的规定，明确了这两户企业的所得税征管办法。同时公布其所属二级分支机构名单。<p></p>\\n\",\n        \"attachmentInfo\": \"[{\\\"filename\\\":\\\"中国东方资产管理公司所属二级分支机构名单.doc\\\",\\\"key\\\":\\\"policy/409b14e13a0249f58c8dcae1399adab5\\\"},{\\\"filename\\\":\\\"中国华融资产管理股份有限公司所属二级分支机构名单.doc\\\",\\\"key\\\":\\\"policy/763dc554f49942c9a0f6a1fd1f16a650\\\"}]\"\n    },\n    \"message\": \"成功\",\n    \"code\": \"0\",\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 607321345
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59359025,
+  "ordering": 18,
+  "responsibleId": 1426961,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-06-18T03:45:17.000Z",
+  "updatedAt": "2025-07-08T03:17:56.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [
+    "BLANK.700360172"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

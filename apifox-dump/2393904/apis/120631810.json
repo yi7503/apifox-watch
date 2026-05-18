@@ -1,0 +1,363 @@
+{
+  "id": 120631810,
+  "name": "申请进项发票采集",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于发起企业电子发票服务平台（发票云）进项发票采集任务。最多可采集开票日期在2017年01月01日至当前日期的**所有未勾选发票**（包含**所有抵扣未勾选发票**和**未到勾选日期的发票**）和当前税款所属期的**所有已勾选发票**（包含**当期抵扣已勾选发票**、**当期不抵扣已勾选发票**、**当期退税已勾选发票**），也可单采限定时间范围内（2017年01月01日至当前日期的任意时间段）的未勾选发票和当前税款所属期的已勾选发票。\n\n\n## 错误码\n| **错误代码**               | **错误消息**                                                 | **解决方案**                                                 |\n| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                     | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                     | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的开票日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查开票日期起kprqq是否小于开票日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |\n| FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |\n| FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |\n| FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[进项发票采集结果查询](https://openapi.qixiangyun.com/api-120631815)接口查询任务转异步后执行结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/sqJxfpCj",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01K5E2A4FP8ZCEX5K35D2TEY5Q": {
+          "$ref": "#/definitions/51521516",
+          "x-apifox-overrides": {}
+        }
+      },
+      "properties": {},
+      "x-apifox-orders": [
+        "01K5E2A4FP8ZCEX5K35D2TEY5Q"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"52**************XJ\",\r\n    \"gxzt\": \"0\",\r\n    \"fplx\": \"01,08,14,03,24\",\r\n    \"fpzt\": \"0,1,2\",\r\n    \"kprqq\": \"20210901\",\r\n    \"kprqz\": \"20230331\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      },
+      {
+        "name": "同步请求",
+        "value": "{\r\n    \"sync\": true,\r\n    \"nsrsbh\": \"91************QY4Y\",\r\n    \"gxzt\": \"0\",\r\n    \"kprqq\": \"20250101\",\r\n    \"kprqz\": \"20250120\",\r\n    \"pageNumber\": 1,\r\n    \"pageSize\": 100\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "e8SqimXHyi",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "OXKAJLtSp9",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "o6hHfJgALt",
+        "name": "req_sign",
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 342647007,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H4JGP42PW7JZCEDQNZP0E3PV": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "申请进项发票采集任务Id"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H4JGP42PW7JZCEDQNZP0E3PV"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 772824015,
+      "name": "同步请求成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5E2BMQ97K18Y97KX78N95M3"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5E2BMQ97K18Y97KX78N95M3": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5E2BZ9NRQ0YYM5VSPR7F21R"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5E2BZ9NRQ0YYM5VSPR7F21R": {
+                    "$ref": "#/definitions/51474299"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 772824016,
+      "name": "同步超时转异步",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5E2GVM08M40P5QD52BGV8C2"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5E2GVM08M40P5QD52BGV8C2": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5E2H4Z2VJ5JZ4YDZB3PEDF7"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5E2H4Z2VJ5JZ4YDZB3PEDF7": {
+                    "$ref": "#/definitions/104050184"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "任务发起成功示例",
+      "responseId": 342647007,
+      "data": "{\n    \"reqId\": \"38263d26450f498cb19c51c5c0d53bb0\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": 475320326432832\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647008
+    },
+    {
+      "name": "任务发起失败示例",
+      "responseId": 342647007,
+      "data": "{\n    \"reqId\": \"7942e5819ffc464fa534df45eb393ece\",\n    \"code\": \"FprzSqTaskFailed\",\n    \"success\": false,\n    \"message\": \"申请任务发起失败！\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647009
+    },
+    {
+      "name": "未开通权限示例",
+      "responseId": 342647007,
+      "data": "{\n    \"reqId\": \"f0fe71dd7808429889539513905f4fb6\",\n    \"code\": \"600004\",\n    \"success\": false,\n    \"message\": \"未开通权限，请联系管理员！\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647010
+    },
+    {
+      "name": "接口调用异常示例",
+      "responseId": 342647007,
+      "data": "{\n    \"reqId\": \"0e7bdefc4fba4c8c99e8743129d4c092\",\n    \"code\": \"505002\",\n    \"success\": false,\n    \"message\": \"接口调用异常，请联系管理员!\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647011
+    },
+    {
+      "name": "错误的开票日期起止",
+      "responseId": 342647007,
+      "data": "{\r\n    \"reqId\": \"aed17abca42e48739811df58f125f162\",\r\n    \"code\": \"FprzWrongKprqqz\",\r\n    \"success\": false,\r\n    \"message\": \"错误的开票日期起止\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647012
+    },
+    {
+      "name": "登录问题导致的失败示例",
+      "responseId": 342647007,
+      "data": "{\r\n    \"reqId\": \"9cd7b549391a412e9c34e52455c506c2\",\r\n    \"code\": \"FprzTaxLoginFailed\",\r\n    \"success\": false,\r\n    \"message\": \"未登录或登录缓存已失效，请重新发起！\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647013
+    },
+    {
+      "name": "认证服务出错示例",
+      "responseId": 342647007,
+      "data": "{\r\n    \"reqId\": \"c7a2b7a4025347699edf2f0cd7d11bff\",\r\n    \"code\": \"FprzServerError\",\r\n    \"success\": false,\r\n    \"message\": \"申请进项发票采集操作发生异常，请联系管理员\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647014
+    },
+    {
+      "name": "超过当天可申请次数，请次日发起申请",
+      "responseId": 342647007,
+      "data": "{\n    \"reqId\": \"d747b6fb50b742e8978150f96a12c2c6\",\n    \"code\": \"FprzExceededCallCountLimit\",\n    \"success\": false,\n    \"message\": \"超过当天可申请次数，请次日发起申请!\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 342647015
+    },
+    {
+      "name": "开票日期校验不通过示例",
+      "responseId": 342647007,
+      "data": "{\r\n    \"reqId\": \"eaf7bb50f4c644d395230e307a6ece65\",\r\n    \"code\": \"FprzParameterVerification\",\r\n    \"success\": false,\r\n    \"message\": \"开票日期起止不能大于当日\",\r\n    \"data\": null\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 41892314
+    },
+    {
+      "name": "同步请求成功示例",
+      "responseId": 342647007,
+      "data": "{\r\n    \"reqId\": \"90e3d7c6a143475298d45801f635b22d\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"customReqId\": \"10001999060c9750e06e4b109d0d9f9877fab590\",\r\n        \"list\": [\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"bkjnsrmc\": null,\r\n                \"bkjnsrsbh\": null,\r\n                \"bz\": \"\",\r\n                \"fpdm\": null,\r\n                \"fphm\": null,\r\n                \"fplx\": \"83\",\r\n                \"fply\": \"4\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"91************QY4Y\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": \"\",\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 125.0,\r\n                \"jkshm\": null,\r\n                \"jsje\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2025-01-14 18:50:42\",\r\n                \"ncpfpbz\": false,\r\n                \"pzhm\": null,\r\n                \"qdfphm\": \"25119210010000011203\",\r\n                \"se\": 7.5,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"sjje\": null,\r\n                \"skssq\": null,\r\n                \"tdyslxDm\": \"21\",\r\n                \"tfrq\": null,\r\n                \"xfmc\": \"京沪******有限公司\",\r\n                \"xfsbh\": \"91**************257Q\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": 7.5,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"bkjnsrmc\": null,\r\n                \"bkjnsrsbh\": null,\r\n                \"bz\": \"\",\r\n                \"fpdm\": null,\r\n                \"fphm\": null,\r\n                \"fplx\": \"83\",\r\n                \"fply\": \"4\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"91************QY4Y\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": \"\",\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 117.92,\r\n                \"jkshm\": null,\r\n                \"jsje\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2025-01-14 18:50:42\",\r\n                \"ncpfpbz\": false,\r\n                \"pzhm\": null,\r\n                \"qdfphm\": \"25319266100000017682\",\r\n                \"se\": 7.08,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"sjje\": null,\r\n                \"skssq\": null,\r\n                \"tdyslxDm\": \"21\",\r\n                \"tfrq\": null,\r\n                \"xfmc\": \"中国*******有限公司上海站\",\r\n                \"xfsbh\": \"91************9180\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": 7.08,\r\n                \"zmbh\": null\r\n            }\r\n        ],\r\n        \"message\": null,\r\n        \"page\": {\r\n            \"currentPage\": 1,\r\n            \"pageSize\": 100,\r\n            \"totalCount\": 12,\r\n            \"totalPage\": 1\r\n        },\r\n        \"zt\": \"3\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707543218
+    },
+    {
+      "name": "同步成功",
+      "responseId": 772824015,
+      "data": "{\r\n    \"reqId\": \"259514e7a18c44c7bf85fa64a2bbc6c4\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"list\": [\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03**********12\",\r\n                \"fphm\": \"02****50\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52***************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 2.5,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 0.08,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"绍兴****************公司\",\r\n                \"xfsbh\": \"91***************6T\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03*********12\",\r\n                \"fphm\": \"59****34\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52***************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 13.5,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 0.4,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"浙江****************公司\",\r\n                \"xfsbh\": \"91****************2L\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03********12\",\r\n                \"fphm\": \"08****55\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52****************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 66.01,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 1.98,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"浙江*******************公司\",\r\n                \"xfsbh\": \"91****************5H\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03*********12\",\r\n                \"fphm\": \"02****27\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52****************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 47.62,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 2.38,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"浙江***********公司\",\r\n                \"xfsbh\": \"91******************75\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03*********12\",\r\n                \"fphm\": \"08****82\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52*****************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 48.59,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 1.46,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"浙江*********************公司\",\r\n                \"xfsbh\": \"91****************5H\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03*********12\",\r\n                \"fphm\": \"50****92\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52****************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 13.5,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 0.41,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"浙江*****************公司\",\r\n                \"xfsbh\": \"91*****************2K\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            },\r\n            {\r\n                \"bdkyy\": \"\",\r\n                \"bdkyyms\": \"\",\r\n                \"fpdm\": \"03********12\",\r\n                \"fphm\": \"02****29\",\r\n                \"fplx\": \"10\",\r\n                \"fply\": \"3\",\r\n                \"fpzt\": \"0\",\r\n                \"gfmc\": null,\r\n                \"gfsbh\": \"52*****************XJ\",\r\n                \"glzt\": \"0\",\r\n                \"gxlx\": null,\r\n                \"gxsj\": null,\r\n                \"gxzt\": \"0\",\r\n                \"hzsdbz\": false,\r\n                \"je\": 304.76,\r\n                \"jkshm\": null,\r\n                \"jym\": null,\r\n                \"kprq\": \"2018-07-01 00:00:00\",\r\n                \"ncpfpbz\": false,\r\n                \"qdfphm\": null,\r\n                \"se\": 15.24,\r\n                \"sfdbts\": null,\r\n                \"sflrbfx\": null,\r\n                \"skssq\": null,\r\n                \"xfmc\": \"浙江**********公司\",\r\n                \"xfsbh\": \"91****************75\",\r\n                \"yclx\": null,\r\n                \"yqkgxbz\": null,\r\n                \"yskssq\": null,\r\n                \"yxse\": null,\r\n                \"zmbh\": null\r\n            }\r\n        ],\r\n        \"message\": null,\r\n        \"page\": {\r\n            \"currentPage\": 1,\r\n            \"pageSize\": 10,\r\n            \"totalCount\": 777,\r\n            \"totalPage\": 78\r\n        },\r\n        \"zt\": \"3\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707666852
+    },
+    {
+      "name": "同步超时转异步示例",
+      "responseId": 772824016,
+      "data": "{\r\n    \"reqId\": \"0dd7f306967a44dfbfe251b8c5b5c240\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"action\": \"sqJxfpCj\",\r\n        \"code\": \"FprzSyncToAsync\",\r\n        \"message\": \"业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果\",\r\n        \"taskId\": 534457481415296,\r\n        \"nsrsbh\": \"91************2G\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707666851
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58725450,
+  "ordering": 756,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-08-27T07:58:40.000Z",
+  "updatedAt": "2025-10-23T09:11:34.000Z",
+  "creatorId": 1426961,
+  "editorId": 1564651,
+  "creatorUserId": 1426961,
+  "editorUserId": 1564651,
+  "responseChildren": [
+    "BLANK.342647007",
+    "BLANK.772824015",
+    "BLANK.772824016"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

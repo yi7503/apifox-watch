@@ -1,0 +1,17 @@
+{
+  "id": 3356049,
+  "name": "ccxwshbData（财产行为税合并纳税申报（房土））",
+  "sidebarTitle": "",
+  "content": "```\n{//财产行为税合并纳税申报，JSON格式；\n\t\"ccxwsnssbb\":{//财产行为税纳税申报表\n\t\t\"nsrxx\": { //纳税人信息\n\t\t\t\t\"nsrsbh\": \"91440101*****4G\", // 纳税人识别号\n\t\t\t\t\"nsrmc\": \"******公司\",// 纳税人名称\n\t\t\t\t\"skssqq\": \"2022-01-01\", // 税款所属期起\n\t\t\t\t\"skssqz\": \"2022-12-31\" // 税款所属期止\n\t\t},\n\t\t\"body\": [ //表体\n\t\t\t\t{\n\t\t\t\t\t\"zsxmDm\":\"10110\",//征收项目 10110-房产税/10112-城镇土地使用税\n\t\t\t\t\t\"zsxmMc\":\"房产税\",//征收项目名称\n\t\t\t\t\t\"zspmdm\":\"101100700\",//征收品目代码 101100700-从价计征 / 101100800-从租计征 城镇土地较多在附录进行查看\n\t\t\t\t\t\"zspmdmMc\":\"从价计征\",//征收品目名称\n\t\t\t\t\t\"skssqq\": \"\",// 税款所属期起\n\t\t\t\t\t\"skssqz\": \"\",// 税款所属期止\n\t\t\t\t\t\"jsyj\": \"0.00\",// 计税依据\n\t\t\t\t\t\"sl\": \"0.00\",// 税率\n\t\t\t\t\t\"ynse\": \"0.00\",// 应纳税额\n\t\t\t\t\t\"jmse\": \"0.00\",// 减免税额\n\t\t\t\t\t\"yjse\": \"0.00\",// 已缴税额\n\t\t\t\t\t\"ybtse\": \"0.00\"// 应补（退）税额\n\t\t\t\t}\n\t\t],\n\t\t\"hj\":{//表体对象合计行（必传）\n\t\t\t\t\"ynseHj\": \"0.00\",// 应纳税额合计\n\t\t\t\t\"jmseHj\": \"0.00\",// 减免税额合计\n\t\t\t\t\"yjseHj\": \"0.00\",// 已缴税额合计\n\t\t\t\t\"ybtseHj\": \"0.00\"// 应补（退）税额合计\n\t\t},\n\t\t\"footer\": { //表尾\n\t\t\t\t\"jbr\": \"\", // 经办人\n\t\t\t\t\"slr\": \"\", // 受理人\n\t\t\t\t\"jbrsfzjhm\": \"\", // 经办人身份证件号码\n\t\t\t\t\"slswjg\": \"\", // 受理税务机关（章）\n\t\t\t\t\"dljgqz\": \"\", // 代理机构签章\n\t\t\t\t\"slrq\": \"\",// 受理日期\n\t\t\t\t\"dljgtyshxydm\": \"\"// 代理机构统一社会信用代码\n\t\t}\n\t},\n\t\"ccxwsjmsmxsbfb\":{//财产行为税减免税明细申报附表\n\t\t\"nsrxx\": { //纳税人信息\n\t\t\t\t\"nsrsbh\": \"91440101*****4G\", // 纳税人识别号\n\t\t\t\t\"nsrmc\": \"******公司\"// 纳税人名称\n\t\t},\n\t\t\"header\": {  // 表头\n\t\t\t\t\"bqsfsyxwqylslfjzszc\": \"\", //本期是否适用小微企业“六税两费”减征收政策 Y是 N否\n\t\t\t\t\"jzzcsyztzzsxgmnsr\": \"\",// 减征政策适用主体-增值税小规模纳税人 Y是 N否\n\t\t\t\t\"jzzcsyztzzsybnsr\": \"\",//  减征政策适用主体-增值税一般纳税人： 1个体工商户 2小型微利企业\n\t\t\t\t\"syjzzcqsj\": \"\",// 适用减征政策起时间\n\t\t\t\t\"syjzzczsj\": \"\"// 适用减征政策止时间\n\t\t},\n\t\t\"body\":{\n\t\t\t\"hjjmse\":\"合计减免税额\",//合计减免税额\n\t\t\t\"cztdsysList\":[//城镇土地使用税数组\n\t\t\t\t{\n\t\t\t\t\"tdbh\": \"-\", //  土地编号\n\t\t\t\t\"skssqq\": \"-\", //税款所属期起\n\t\t\t\t\"skssqz\": \"-\", //税款所属期止\n\t\t\t\t\"jmxzDm\": \"\", // 减免性质编码\n\t\t\t\t\"swsxDm\": \"\", // 减免性质的税务事项代码\n\t\t\t\t\"jmxzShowData\": \"\", // 减免政策展示的名称\n\t\t\t\t\"jmse\": \"\"// 减免税额\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"cztdsysHjjmse\":\"城镇土地使用税合计减免税额\",//城镇土地使用税合计减免税额\n\t\t\t\"fcsList\":[//房产税数组\n\t\t\t\t{\n\t\t\t\t\"fcbh\": \"-\", //  房产编号\n\t\t\t\t\"skssqq\": \"-\", //税款所属期起\n\t\t\t\t\"skssqz\": \"-\", //税款所属期止\n\t\t\t\t\"jmxzDm\": \"\", // 减免性质编码\n\t\t\t\t\"swsxDm\": \"\", // 减免性质的税务事项代码\n\t\t\t\t\"jmxzShowData\": \"\" ,// 减免政策展示的名称\n\t\t\t\t\"jmse\": \"\"// 减免税额\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"fcsHjjmse\":\"房产税合计减免税额\",//房产税合计减免税额\n\t\t},\n\t\t\"footer\": { //表尾\n\t\t\t\"jbr\": \"\", // 经办人\n\t\t\t\"slr\": \"\", // 受理人\n\t\t\t\"jbrsfzjhm\": \"\", // 经办人身份证件号码\n\t\t\t\"slswjg\": \"\", // 受理税务机关（章）\n\t\t\t\"dljgqz\": \"\", // 代理机构签章\n\t\t\t\"slrq\": \"\",// 受理日期\n\t\t\t\"dljgtyshxydm\": \"\"// 代理机构统一社会信用代码\n\t\t}\n\t}\n}\n```",
+  "folderId": 14012227,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-12-05T08:28:35.000Z",
+  "updatedAt": "2023-12-05T08:31:10.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

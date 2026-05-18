@@ -1,0 +1,17 @@
+{
+  "id": 7983233,
+  "name": "2025年12月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 税局表格类弹框返回结果增加文件返回和申报\n2. 支持青岛区域工会经费4 10月半年报需要一次性报2个季度\n3. 印花税支持其他凭证税目申报\n4. 企业所得税预缴A类初始化附报事项增加税局是否勾选字段\n5. 漏报检查增加缴款期限字段\n6. 房产税从租变更优化\n:::\n## 接口变化\n### 一、企业所得税预缴A类附报事项新增是否勾选字段\n\n1. 五个附报事项税局有勾选框，初始化增加sfgx-税局是否勾选的字段，此字段申报无需传值，初始化的时候返回税局勾选情况，申报的时候可以参考\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610540/image-preview)\n\n### 二、支持青岛区域工会经费4 10月半年报需要一次性报2个季度\n1. 政策背景：青工2023 23号文件  青岛税局要求每年4月和10月申报工会经费，税局要求是分开2次申报\n- 4月需要申报：上半年10月-上半年12月、当年1月-当年3月\n- 10月需要申报：当年4月-6月  、当年年7-9月\n![402c4b49-1a46-46cc-a149-4fbe6e490b63.png](https://api.apifox.com/api/v1/projects/2393904/resources/610557/image-preview)\n2. 接口对接无变化，只是通道侧针对青岛区域工会经费在4月和10月放开了往期申报限制\n\n### 三、印花税支持其他凭证税目申报\n1. 其他凭证之前税局是取消这个税目申报，现在发现部分客户税局还是需要申报这个税目，通道侧进行适配处理。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610612/image-preview)\n2. 接口无变化，通道侧允许税目=其他凭证的请求，需要申报这个税目按照我们提供的代码进行正常业务报文请求即可。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610795/image-preview)\n\n### 四、税局表格类弹框业务处理\n1. 涉及接口：查询上传并申报各税种申报表数据任务结果、查询多个任务执行结果、上传各税种申报表数据\n2. 接口变化：\n- 上传各税种申报表数据接口新增一个上传弹框文件节点tcExcelList，支持弹框文件上传，支持一个税种申报上传多个\n- 查询上传并申报各税种申报表数据任务结果、查询多个任务执行结果返回结果的接口增加一个反馈弹框文件的参数tcExcelUrl  返回弹框的文件\n- 上传各税种申报表数据:\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610661/image-preview)\n- 查询多个任务执行结果:\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610663/image-preview)\n- 查询上传并申报各税种申报表数据任务结果\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610662/image-preview)\n4. 支持场景：目前本期仅支持增值税一般人附表四返回出口业务情况说明弹框、企业所得税返回出口收入差异弹框\n5. 运用场景的对接：\n- 针对税局弹框后续每个弹框我们自动生成固定的excel模版，每个弹框可以支持返回excel文件，可以减少每个弹框的报文结构对接，业务方可以支持弹框文件下载填写，申报的时候再带上excel文件上传完成申报。\n\n![企业微信截图_1757405128168.png](https://api.apifox.com/api/v1/projects/2393904/resources/610660/image-preview)\n\n![企业微信截图_1762933175435.png](https://api.apifox.com/api/v1/projects/2393904/resources/610658/image-preview)\n### 五、漏报检查增加缴款期限字段\n1. 涉及接口：查询漏报检查任务\n2. 接口变化：新增jkqx字段返回\n3. 运用场景对接处理：漏报检查默认是查的税局未缴款界面缴款期限是当年的记录都返回，如果只想看本期的可以根据jkqx这个字段进行过滤\n税局界面：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610625/image-preview)\n接口：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610624/image-preview)\n### 六、房产税从租变更的变更时间从必传改成非必传的优化\n1. 涉及接口：税源变更接口\n2. 接口变化：房产税-从租的变更变更时间从必传改成非必传。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/610637/image-preview)\n4. 运用场景对接处理：\n- 房产税变更大多数处理方式其实是新增一条从租税源，之前传了变更时间和现有记录有一致则进行变更，无一致则去走新增动作\n- 考虑到业务上可能无法精准到已有从租的税源的变更时间，则调整流程，变更时间请求则去匹配是否一致，不请求则直接走新增\n### 七、其他\n1. 印花税减免表进行更新，请下载最新的码表：https://openapi.qixiangyun.com/doc-4886154#%E5%8D%B0%E8%8A%B1%E7%A8%8E\n2. 重点税源信息表-增值税优惠政策形势码表进行更新，查看最新码表：https://openapi.qixiangyun.com/doc-4935070#%E4%BF%A1%E6%81%AF%E8%A1%A8-%E5%A2%9E%E5%80%BC%E7%A8%8E%E4%BC%98%E6%83%A0%E6%94%BF%E7%AD%96%E5%BD%A2%E5%BC%8F\n3. 代扣代缴优化\n- 代扣代缴增值在税局申报路径是代扣代缴、代收代缴税款明细报告表，增加一个判断，请求的zsxmMc不是等于增值税时不支持申报，返回：4666，当前仅支持征收名称是增值税的代扣代缴申报，其他征收项目暂不支持！\n- 企业所得税代扣代缴申报时，申报类型指定扣缴申报的fdyqkjqkForm-htbh之前是必传，无值返回失败，根据税局情况取消必传的校验，只有法定源泉扣缴的时候才需要必传。\n\n\n",
+  "folderId": 36975649,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-01-06T08:50:36.000Z",
+  "updatedAt": "2026-02-10T11:41:46.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

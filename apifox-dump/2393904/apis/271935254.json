@@ -1,0 +1,195 @@
+{
+  "id": 271935254,
+  "name": "专利信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "企业维度获取到对应的专利信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/insight/patentInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "企业名称",
+          "description": "name和creditNo至少一个字段传值"
+        },
+        "creditNo": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "name和creditNo至少一个字段传值"
+        },
+        "pageIndex": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "当前页",
+          "description": ""
+        },
+        "pageSize": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "分页大小",
+          "description": "最大20"
+        }
+      },
+      "x-apifox-orders": [
+        "name",
+        "creditNo",
+        "pageIndex",
+        "pageSize"
+      ],
+      "required": [
+        "pageIndex",
+        "pageSize"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\n    \"name\": \"xx科技有限责任公司\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 633708392,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "anyOf": [
+              {
+                "$ref": "#/definitions/153164778"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 633708392,
+      "data": "{\n    \"reqId\": \"39ad95a4eec842d690a7f9159fddd0d5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"data\": {\n        \"items\": [\n            {\n                \"patentName\": \"手机壳\",\n                \"patentType\": \"中国外观设计专利\",\n                \"patentOwner\": \"北京xxx科技有限责任公司\",\n                \"inventer\": \"杨xxx\",\n                \"agent\": \"孙xx\",\n                \"agentOrgan\": \"北京xx知识产权代理有限公司\",\n                \"agentOrganId\": \"230xx74576\",\n                \"applyNo\": \"CN202130xx8176.0\",\n                \"applyCountry\": \"\",\n                \"address\": \"北京市朝阳区望京xx大厦A座12层\",\n                \"postalCode\": \"100102\",\n                \"authorizeNo\": \"CN30735xx51S\",\n                \"authorizeDate\": \"2022-05-24\",\n                \"ipcCategory\": \"03-01(13)\",\n                \"pctApplyNo\": \"\",\n                \"pctApplyData\": \"\",\n                \"pctNoticeDate\": \"\",\n                \"pctNoticeNo\": \"\",\n                \"pctNationalDate\": \"\",\n                \"pctNoticeData\": \"\",\n                \"priority\": \"\",\n                \"digest\": \"1.本外观设计产品的名称手机壳。2.本外观设计产品的用途用于一种手机壳，例如折叠式手机的手机壳，组件1和组件2分别套设在手机的两个半部上。3.本外观设计产品的设计要点在于形状。4.最能表明设计要点的图片或照片组件1立体图1。5.本申请的组件产品为不固定组合方式。\",\n                \"compareFiles\": \"\",\n                \"lastLegalStatus\": \"授权\"\n            },\n            {\n                \"patentName\": \"手机壳\",\n                \"patentType\": \"中国外观设计专利\",\n                \"patentOwner\": \"北京xx科技有限责任公司\",\n                \"inventer\": \"杨xx\",\n                \"agent\": \"孙xx\",\n                \"agentOrgan\": \"北京xx知识产权代理有限公司\",\n                \"agentOrganId\": \"2301xx576\",\n                \"applyNo\": \"CN2021301xxx86.1\",\n                \"applyCountry\": \"\",\n                \"address\": \"北京市朝阳区望京西xx大厦A座12层\",\n                \"postalCode\": \"100102\",\n                \"authorizeNo\": \"CN30679xx00S\",\n                \"authorizeDate\": \"2021-09-03\",\n                \"ipcCategory\": \"03-01(13)\",\n                \"pctApplyNo\": \"\",\n                \"pctApplyData\": \"\",\n                \"pctNoticeDate\": \"\",\n                \"pctNoticeNo\": \"\",\n                \"pctNationalDate\": \"\",\n                \"pctNoticeData\": \"\",\n                \"priority\": \"\",\n                \"digest\": \"1.本外观设计产品的名称手机壳。2.本外观设计产品的用途用于一种手机壳，例如折叠式手机的手机壳。3.本外观设计产品的设计要点在于形状。4.最能表明设计要点的图片或照片主视图。\",\n                \"compareFiles\": \"\",\n                \"lastLegalStatus\": \"授权\"\n            }\n        ],\n        \"total\": \"6225\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 529950467
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 50629818,
+  "ordering": 132,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-03-15T08:05:36.000Z",
+  "updatedAt": "2025-03-31T03:04:24.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.633708392"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

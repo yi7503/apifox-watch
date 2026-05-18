@@ -1,0 +1,214 @@
+{
+  "id": 247474006,
+  "name": "人员信息报送",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "cMTiUiH00PVM2s8SXUvXh",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是异步接口。\n1.企业有新增人员，需要将人员进行信息采集并报送登记。税局会接受报送信息并验证人员的真实性，并返回报送状态和验证状态。报送状态是税局是否成功接收报送信息的状态，验证状态是验证人员是否真实的状态。\n2．若员工原来是报送成功的，然后填写离职日期，离职后，需要重新报送人员，告知税局该人员的离职时间。\n3.若变更员工的其他信息，如任职受雇类型、任职受雇时间、手机号码、联系地址等，都需要重新报送人员，告知税局人员信息变更后的情况。\n4.进行生产经营所得申报前需通过该接口获取股东投资人信息。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/declare/declareEmployeeInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$ref": "#/definitions/138834501"
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4539696148287232\",\r\n    \"skssq\": \"202412\",\r\n    \"rylb\": [{\r\n            \"xm\": \"姓名\",\r\n            \"zzlx\": \"证件类型\",\r\n            \"zzhm\": \"证件号码\",\r\n            \"qtzzlx\": \"其他证件类型\",\r\n            \"qtzzhm\": \"其他证件号码\",\r\n            \"rybscl\": \"人员报送策略\",\r\n            \"gh\": \"工号\",\r\n            \"skssq\": \"所属期\",\r\n            \"lxdh\": \"电话号码\",\r\n            \"nsrzt\": \"人员状态\",\r\n            \"sfgy\": \"任职受雇类型\",\r\n            \"rzndjyqk\": \"入职年度就业情形\",\r\n            \"rzsgrq\": \"受雇日期\",\r\n            \"xb\": \"性别\",\r\n            \"csny\": \"出生日期\",\r\n            \"gj\": \"国籍\",\r\n            \"rydq\": \"人员地区\",\r\n            \"lzrq\": \"离职日期\",\r\n            \"grgbze\": \"1\",\r\n            \"grgbbl\": \"2\",\r\n            \"sfcj\": \"是否残疾\",\r\n            \"sfls\": \"是否烈属\",\r\n            \"sfgl\": \"是否孤老\",\r\n            \"sfzdw\": \"是否扣除减除费用\",\r\n            \"cjzjlx\": \"残疾证件类型\",\r\n            \"cjzh\": \"残疾证号\",\r\n            \"lszh\": \"烈属证号\",\r\n            \"dzyx\": \"邮箱\",\r\n            \"xl\": \"学历\",\r\n            \"zw\": \"职务\",\r\n            \"khyh\": \"开户银行\",\r\n            \"khyhsfmz\": \"开户银行省份\",\r\n            \"yhzh\": \"银行账号\",\r\n            \"lxdz_sheng\": \"居住省份\",\r\n            \"lxdz_shi\": \"居住城市\",\r\n            \"lxdz_qx\": \"居住区县\",\r\n            \"lxdz_jd\": \"居住街道\",\r\n            \"lxdz\": \"居住详细地址\",\r\n            \"hjszd_sheng\": \"户籍省份\",\r\n            \"hjszd_shi\": \"户籍城市\",\r\n            \"hjszd_qx\": \"户籍区县\",\r\n            \"hjszd_jd\": \"户籍街道\",\r\n            \"hjszd_xxdz\": \"户籍详细地址\",\r\n            \"bz\": \"备注\",\r\n            \"csd\": \"出生地\",\r\n            \"sssx\": \"涉税事由\",\r\n            \"scrjsj\": \"首次入境时间\",\r\n            \"yjljsj\": \"预计离境时间\",\r\n            \"wjrlxdz_sheng\": \"联系地省份\",\r\n            \"wjrlxdz_shi\": \"联系地城市\",\r\n            \"wjrlxdz_qx\": \"联系地区县\",\r\n            \"wjrlxdz_jd\": \"联系地街道\",\r\n            \"wjrlxdz_xxdz\": \"联系地详细地址\",\r\n            \"xmzw\": \"中文名\"\r\n        }\r\n    ]\r\n}\r\n",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 590503925,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JH51YC36SHZWHDY3P5KE14T7": {
+            "$ref": "#/definitions/141932940"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JH51YC36SHZWHDY3P5KE14T7"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 590503925,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1000000000000001304\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 463952440
+    },
+    {
+      "name": "异常示例",
+      "responseId": 590503925,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 463952441
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 49389791,
+  "ordering": 78,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-23T10:02:05.000Z",
+  "updatedAt": "2026-05-07T07:30:31.000Z",
+  "creatorId": 1452584,
+  "editorId": 1534873,
+  "creatorUserId": 1452584,
+  "editorUserId": 1534873,
+  "responseChildren": [
+    "BLANK.590503925"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

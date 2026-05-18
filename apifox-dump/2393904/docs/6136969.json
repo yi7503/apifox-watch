@@ -1,0 +1,17 @@
+{
+  "id": 6136969,
+  "name": "地区码",
+  "sidebarTitle": "",
+  "content": "地区码详见在线文档，可根据需求自行下载导出表格使用：\n\n| 接口名称 | 对应表格 |\n| --- | --- |\n| 新增企业信息 | sheet1-市级区域码 |\n| 对外投资 | sheet2-行政区编码 |\n\n\n点击访问下载附件：[行政区划代码附件](https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E8%A1%8C%E6%94%BF%E5%8C%BA%E7%BC%96%E5%8F%B7.xlsx)",
+  "folderId": 51470509,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-03-04T07:47:25.000Z",
+  "updatedAt": "2026-03-20T08:01:52.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

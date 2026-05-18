@@ -1,0 +1,17 @@
+{
+  "id": 5616725,
+  "name": "2024年11月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2024年11月发布内容\n\n发布日期：2024-11-30\n发布版本：V1.2024.11\n\n## 一. 发票查验\n1. 财政票据查验-医疗门诊和住院支持返回明细和版式地区逐步适配\n目前已支持地区（10）：河北、浙江、上海、广东、北京、山东、江苏、天津、安徽、吉林\n接口文档：[财政票据查验](api-89495807)\n\n2. 电票平台查验-数电火车票返回新增销方信息\n●销方纳税人名称xfmc、销方纳税人识别号xfsbh、销售方地址xfdz、销售方电话xfdh、销方开户银行xfkhh、销售方银行账号xfyhzh\n接口文档：[数电票查验](api-193188103)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481092/image-preview)\n\n3. 数电火车票统一slv格式，新增ysslv字段，返回税局原始税率\n- slv字段返回格式统一为小数位，0.09\n接口文档：[数电票查验](api-66282957)\n接口文档：[数电票查验](api-193188103)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481126/image-preview)\n\n## 二. 发票归集\n\n1. 异步归集返回增加增加对机动车和二手车的返回项\n接口文档：[获取发票数据](api-98524059)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481125/image-preview)\n\n## 三. 发票识别\n1. 支持海关进出口报关单识别\n- 增加911-海关出口货物报关单 和 912-海关进口货物报关单\n接口文档：[普通票据识别](api-66365912)\n\n![企业微信截图_17332275073541.png](https://api.apifox.com/api/v1/projects/2393904/resources/481127/image-preview)\n\n## 四. 发票认证\n1. 进项采集发票入参增加glzt(发票风险等级)\n- 便于单独获取非正常状态的发票进行监控\n接口文档：[进项发票采集](api-181810936)\n接口文档：[进项发票采集结果查询](api-120631815)\n接口文档：[进项发票采集结果查询](api-93748243)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481128/image-preview)\n\n## 五. 数电开票\n1. 已开发票列表查询入参增加发票状态代码\n- 便于单独获取非正常状态的发票列表\n接口文档：[已开发票列表查询](api-100012787)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481129/image-preview)\n\n2. 适配不动产销售特定业务类型开票\n- 新增多方共同购买标识，多方共同购买方信息，支付信息\n接口文档：[数电发票开具接口](api-100012782)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481131/image-preview)\n## 六. 发票入账\n1. 发票入账信息查询支持入账用途多选\n接口文档：[发票入账信息查询](api-173974217)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/481132/image-preview)\n\n",
+  "folderId": 79346720,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-12-03T10:11:05.000Z",
+  "updatedAt": "2026-03-04T08:46:19.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -1,0 +1,352 @@
+{
+  "id": 287226360,
+  "name": "三方协议缴款反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "SdDYuGU8PrMU-x6oNMXvx",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是异步接口。\n用于用户发起三方协议缴款。选择的三方协议税款所属税务机关，必须和欠费查询对应的税款所属税务机关保持一致，才能发起缴款成功。所以在发起欠款前，需要根据查询到的三方协议号及欠费信息进行比对过滤，选择可用的三方协议发起缴款。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/payment/thirdAgreementPayment/feedback",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "请求返回的任务id",
+          "description": "三方协议缴款返回的taskId"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"aggOrgId\": \"12313*****2222\",\n    \"accountId\": \"1111********2222\",\n    \"taskId\": \"1223009998898892\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 660556085,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "title": "AsyncTaskCommonResp",
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "description": "任务ID"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "description": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "description": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "enum": [
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "0",
+                    "name": "未开始",
+                    "description": ""
+                  },
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  },
+                  {
+                    "value": "4",
+                    "name": "撤销",
+                    "description": ""
+                  }
+                ]
+              },
+              "taskStatusName": {
+                "type": "string",
+                "description": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "description": "执行任务code"
+              },
+              "message": {
+                "type": "string",
+                "description": "执行任务信息"
+              },
+              "result": {
+                "type": "object",
+                "description": "任务返回结果",
+                "x-apifox-orders": [
+                  "yjnsjk",
+                  "ndhjjk"
+                ],
+                "properties": {
+                  "yjnsjk": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/162404377"
+                    },
+                    "title": "预缴纳税缴款列表"
+                  },
+                  "ndhjjk": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/162404377"
+                    },
+                    "title": "年度汇缴缴款列表"
+                  }
+                }
+              },
+              "01KCG1AZRKWH29CB1RZNPNHH2K": {
+                "x-tmp-pending-properties": true
+              }
+            },
+            "required": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result",
+              "01KCG1AZRKWH29CB1RZNPNHH2K"
+            ],
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result",
+              "01KCG1AZRKWH29CB1RZNPNHH2K"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 660556085,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"4322313*****3123131231\",\n        \"taskTypeName\": \"生产经营三方协议缴款\",\n        \"taskTypeCode\": \"gs-scjy-sfxyjk\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"code\": \"2000\",\n        \"message\": \"操作成功\",\n        \"result\": {\n            \"yjnsjk\": [\n                {\n                    \"xm\": \"李四\",\n                    \"zzlx\": \"居民身份证\",\n                    \"zzhm\": \"440***********\",\n                    \"jkzt\": 0,\n                    \"sbzt\": \"已缴款\",\n                    \"jksbyy\": null,\n                    \"kkfhlb\": [\n                        {\n                            \"kkfhDm\": \"000\",\n                            \"kkfhmc\": \"缴款成功\",\n                            \"sjse\": 1838023.52\n                        }\n                    ]\n                }\n            ],\n            \"ndhjjk\": [\n                {\n                    \"xm\": \"张三\",\n                    \"zzlx\": \"居民身份证\",\n                    \"zzhm\": \"440101***********\",\n                    \"jkzt\": 0,\n                    \"sbzt\": \"未申报\",\n                    \"jksbyy\": \"当前申报状态无法进行缴款查询请求\",\n                    \"kkfhlb\": []\n                }\n            ]\n        }\n    }\n}",
+      "id": 585705353
+    },
+    {
+      "name": "异常示例",
+      "responseId": 660556085,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 585705354
+    },
+    {
+      "name": "查询失败",
+      "responseId": 660556085,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
+      "id": 585705355
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53477063,
+  "ordering": 95,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-04-22T01:52:18.000Z",
+  "updatedAt": "2025-12-15T03:39:15.000Z",
+  "creatorId": 2400309,
+  "editorId": 1452584,
+  "creatorUserId": 2400309,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

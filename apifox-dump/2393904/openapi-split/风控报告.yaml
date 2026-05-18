@@ -1,0 +1,417 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 API — 风控报告
+  version: latest
+  description: 'Split from full spec, module: 风控报告'
+tags:
+- name: 风控报告
+paths:
+  /v2/risk/rpt/apply:
+    post:
+      summary: 风控报告申请
+      operationId: api-414729059
+      tags:
+      - 风控报告
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nsrmc:
+                  type: string
+                  title: 企业名称
+                nsrsbh:
+                  type: string
+                  title: 企业税号
+                areaCode:
+                  type: string
+                  title: 所属区域码
+                  description: 参考申请地区码
+                rptType:
+                  type: string
+                  title: 报告格式
+                  description: 1 pdf链接 2 json
+                aggOrgId:
+                  type: string
+                  title: 企业id
+                accountId:
+                  type: string
+                  title: 登录账号id
+                sqInfo:
+                  type: string
+                  title: 授权书pdf文件的base64字符串
+              required:
+              - nsrmc
+              - nsrsbh
+              - areaCode
+              - rptType
+              - accountId
+              - aggOrgId
+              - sqInfo
+              x-apifox-orders:
+              - nsrmc
+              - nsrsbh
+              - areaCode
+              - rptType
+              - aggOrgId
+              - accountId
+              - sqInfo
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    examples:
+                    - SUCCESS
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      riskRptId:
+                        type:
+                        - integer
+                        - 'null'
+                        title: 报告id
+                        description: 报告id，用于后面该id调用报告结果查询接口获取报告结果
+                    x-apifox-orders:
+                    - riskRptId
+                    title: 业务数据
+                    required:
+                    - riskRptId
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - reqId
+                - success
+                - code
+                - message
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      riskRptId: '5255567414997147791'
+                    timestamp: '2026-02-03 16:08:24'
+                    reqId: T2e01022b737d42008775b0184fb63281
+  /v2/risk/rpt/queryResult:
+    post:
+      summary: 风控报告结果查询
+      operationId: api-414735944
+      tags:
+      - 风控报告
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                riskRptId:
+                  type: string
+                  title: 报告id
+              required:
+              - riskRptId
+              x-apifox-orders:
+              - riskRptId
+            examples:
+              示例 1:
+                summary: 示例 1
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  success:
+                    type: boolean
+                  message:
+                    type: 'null'
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: 'null'
+                      rptJson:
+                        type: object
+                        properties:
+                          nsrsbh:
+                            type: string
+                            title: 纳税人识别号
+                          dfx:
+                            type: integer
+                            title: 低风险数
+                          nsrmc:
+                            type: string
+                            title: 纳税人名称
+                          fxmxList:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                yjflDm:
+                                  type: string
+                                  title: 一级分类代码
+                                fxqq:
+                                  type: string
+                                  title: 分析期间起
+                                zcyj:
+                                  type: string
+                                  title: 政策依据
+                                sjflDm:
+                                  type: string
+                                  title: 三级分类代码
+                                fxms:
+                                  type: string
+                                  title: 风险描述
+                                zbdm:
+                                  type: string
+                                  title: 指标代码
+                                ejflDm:
+                                  type: string
+                                  title: 二级分类代码
+                                fxqz:
+                                  type: string
+                                  title: 分析期间至
+                                yjflMc:
+                                  type: string
+                                  title: 一级分类名称
+                                sjflMc:
+                                  type: string
+                                  title: 三级分类名称
+                                cljy:
+                                  type: string
+                                  title: 应对方式
+                                fxdjMc:
+                                  type: string
+                                  title: 风险等级
+                                fxmc:
+                                  type: string
+                                  title: 风险名称
+                                ycqj:
+                                  type: string
+                                  title: 异常期间
+                                ycxq:
+                                  type: string
+                                  title: 异常详情
+                                ejflMc:
+                                  type: string
+                                  title: 二级分类名称
+                              x-apifox-orders:
+                              - yjflDm
+                              - yjflMc
+                              - ejflDm
+                              - ejflMc
+                              - sjflDm
+                              - sjflMc
+                              - zbdm
+                              - fxmc
+                              - fxqq
+                              - fxqz
+                              - fxdjMc
+                              - fxms
+                              - zcyj
+                              - cljy
+                              - ycqj
+                              - ycxq
+                            title: 风险明细列表
+                          gfx:
+                            type: integer
+                            title: 高风险数
+                          fxzs:
+                            type: integer
+                            title: 风险总数
+                          zfx:
+                            type: integer
+                            title: 中风险数
+                        required:
+                        - nsrsbh
+                        - dfx
+                        - nsrmc
+                        - fxmxList
+                        - gfx
+                        - fxzs
+                        - zfx
+                        x-apifox-orders:
+                        - nsrsbh
+                        - nsrmc
+                        - fxzs
+                        - gfx
+                        - zfx
+                        - dfx
+                        - fxmxList
+                        title: 报告的json格式内容
+                        description: 当风险报告申请接口的入参rptType=1时，该字段为空
+                      rptUrls:
+                        type: array
+                        items:
+                          type: string
+                        title: 报告的pdfurl信息
+                        description: 当风险报告申请接口的入参rptType=2时，该字段为空
+                      status:
+                        type: integer
+                        title: 报告生成状态
+                        description: 1进行中，2生成失败 3 生成成功
+                    required:
+                    - message
+                    - rptJson
+                    - rptUrls
+                    - status
+                    x-apifox-orders:
+                    - message
+                    - rptJson
+                    - rptUrls
+                    - status
+                  timestamp:
+                    type: string
+                    title: 时间戳
+                  reqId:
+                    type: string
+                    title: 请求id
+                required:
+                - code
+                - success
+                - message
+                - data
+                - timestamp
+                - reqId
+                x-apifox-orders:
+                - code
+                - success
+                - message
+                - data
+                - timestamp
+                - reqId
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      message: null
+                      rptJson:
+                        nsrsbh: '12345678910111'
+                        dfx: 3
+                        nsrmc: xxxxxxxxxxxxxxxxx
+                        fxmxList:
+                        - yjflDm: '01'
+                          fxqq: '202402'
+                          zcyj: |-
+                            根据《中华人民共和国税收征收管理法》第二十五条规定，纳税人必须依照法律、行政法规规定或者税务机关依照法律、行政法规的规定确定的申报期限、申报内容如实办理纳税申报，报送纳税申报表、财务会计报表以及税务机关根据实际需要要求纳税人报送的其他纳税资料。
+                            《增值税暂行条例》
+                            第十条　下列项目的进项税额不得从销项税额中抵扣：
+                            （一）用于简易计税方法计税项目、免征增值税项目、集体福利或者个人消费的购进货物、劳务、服务、无形资产和不动产；
+                            （二）非正常损失的购进货物，以及相关的劳务和交通运输服务；
+                            （三）非正常损失的在产品、产成品所耗用的购进货物（不包括固定资产）、劳务和交通运输服务；
+                            （四）国务院规定的其他项目。
+                          sjflDm: '010202'
+                          fxms: 增值税进项税与销项税正常情况下变动趋势应当基本一致，若两者之间变动趋势严重不符，意味着企业的收入或成本存在异常，可能存在隐匿收入、虚增进项的风险。
+                          zbdm: ZB010202000009
+                          ejflDm: '0102'
+                          fxqz: '202601'
+                          yjflMc: 风险类
+                          sjflMc: 销项税额风险
+                          cljy: |-
+                            1.风险核实及处理
+                            （1）核实是否存在漏报未开票收入或视同销售未入账的行为。
+                            （2）检查是否存在扩大抵扣范围的情况，如多抵扣了应作进项税额转出的发票（如非正常损失、简易计税项目对应的进项发票等）。
+                            （3）核实是否抵扣了与主营业务无关的发票。
+                            2.风险防范
+                            （1）企业应建立健全的财务管理制度，完善的会计核算体系，确保准确核算各项税收数据。
+                            （2）严格按照《中华人民共和国发票管理办法》的规定，合法取得和使用发票，确保进项税额的准确抵扣。
+                          fxdjMc: 中风险
+                          fxmc: 增值税进项税增长但销项税下降监控
+                          ycqj: 202510-202510
+                          ycxq: 根据该期间的数据分析结果显示，2025年10月进项税增长率为32.61%，销项税增长率为-51.74%，进项税与销项税增长趋势严重不符，存在隐匿收入、虚增进项、少缴增值税风险。
+                          ejflMc: 增值税风险
+                        gfx: 0
+                        fxzs: 8
+                        zfx: 5
+                      rptUrls:
+                      - https://yqzk.cssyq.com.cn/znfk/qyfxgl/saas/zsr/downloadBgPdf?path=qyfxgl/2026/02/03/c1182963345c4d588c1867802fe5076f/c1182963345c4d588c1867802fe5076f/*****************_20260203162800_05.pdf
+                      status: 3
+                    timestamp: '2026-02-03 16:32:43'
+                    reqId: T7e1cf615f8974adc9********44

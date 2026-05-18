@@ -1,0 +1,17 @@
+{
+  "id": 7180886,
+  "name": "2025年7月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 增值税一般人解析增加汇总分配表单、成品油（4张表单）\n2. 企业所得税完善了主表增加总机构填报-总机构分摊比例、总机构填报-全部分支机构分摊比例 、民族区域优惠及减征幅度三个字段的解析\n:::\n\n## 接口变化\n\n### 一、增值税一般人解析增加汇总分配表单、成品油（4张表单）\n\n1.具体变化查看增值税一般人示例，新增5个报表节点\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553146/image-preview)\n\n",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-08-06T06:31:02.000Z",
+  "updatedAt": "2025-08-06T06:31:13.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

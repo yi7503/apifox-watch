@@ -1,0 +1,17 @@
+{
+  "id": 8086696,
+  "name": "A108020_境外分支机构弥补亏损明细表",
+  "sidebarTitle": "",
+  "content": "## A108020_境外分支机构弥补亏损明细表\n\n## 文档概述\n\n本文档描述了境外分支机构弥补亏损明细表的数据结构，用于记录境外分支机构非实际亏损额和实际亏损额的弥补情况。\n\n## 数据结构说明\n\n```jsonc\n{\n  \"A108020\": {\n    \"jwfzjgmbksMxbGrid\": {\n      \"jwfzjgmbksmxbgridVO\": [\n        ...\n      ],\n      \"jwfzjgmbksmxHj\": {\n        ...\n      }\n    }\n  }\n}\n```\n\n### 字段说明\n\n#### jwfzjgmbksmxbgridVO 明细列表字段说明\n\n| 字段名 | 字段类型 | 是否必填 | 字段描述 | 示例值 |\n|--------|----------|----------|----------|--------|\n| gjdq | String | 否 | 国家（地区）-参照国家地区码表，格式为\"国家地区代码|国家地区名称\" | 156|中华人民共和国 |\n| yqndjzwmbfsjkse | String | 否 | 非实际亏损额的弥补以前年度结转尚未弥补的非实际亏损额 | 0.00 |\n| bnfsfsjkse | String | 否 | 非实际亏损额的弥补本年发生的非实际亏损额 | 0.00 |\n| bnmbyqfsjkse | String | 否 | 非实际亏损额的弥补本年弥补的以前年度非实际亏损额 | 0.00 |\n| jzhndmbfsjkse | String | 否 | 非实际亏损额的弥补结转以后年度弥补的非实际亏损额 | 0.00 |\n| yqjzwmbsjksexj | String | 否 | 实际亏损额的弥补_以前年度结转尚未弥补的实际亏损额 | 0.00 |\n| bnfssjkse | String | 否 | 实际亏损额的弥补_本年发生的实际亏损额 | 0.00 |\n| bnmbyqsjkse | String | 否 | 实际亏损额的弥补_本年弥补的以前年度实际亏损额 | 0.00 |\n| jzhndmbsjksexj | String | 否 | 实际亏损额的弥补_结转以后年度弥补的实际亏损额 | 0.00 |\n\n#### jwfzjgmbksmxHj 合计字段说明\n\n| 字段名 | 字段类型 | 是否必填 | 字段描述 | 示例值 |\n|--------|----------|----------|----------|--------|\n| yqndjzwmbfsjkse | String | 否 | 非实际亏损额的弥补_以前年度结转尚未弥补的非实际亏损额 | 0.00 |\n| bnfsfsjkse | String | 否 | 非实际亏损额的弥补_本年发生的非实际亏损额 | 0.00 |\n| bnmbyqfsjkse | String | 否 | 非实际亏损额的弥补_本年弥补的以前年度非实际亏损额 | 0.00 |\n| jzhndmbfsjkse | String | 否 | 非实际亏损额的弥补_结转以后年度弥补的非实际亏损额 | 0.00 |\n| yqjzwmbsjksexj | String | 否 | 实际亏损额的弥补_以前年度结转尚未弥补的实际亏损额 | 0.00 |\n| bnfssjkse | String | 否 | 实际亏损额的弥补_本年发生的实际亏损额 | 0.00 |\n| bnmbyqsjkse | String | 否 | 实际亏损额的弥补_本年弥补的以前年度实际亏损额 | 0.00 |\n| jzhndmbsjksexj | String | 否 | 实际亏损额的弥补_结转以后年度弥补的实际亏损额 | 0.00 |\n\n## 标准样例\n\n```json\n{\n  \"A108020\": {\n    \"jwfzjgmbksMxbGrid\": {\n      \"jwfzjgmbksmxbgridVO\": [\n        {\n          \"gjdq\": \"156|中华人民共和国\",\n          \"yqndjzwmbfsjkse\": \"0.00\",\n          \"bnfsfsjkse\": \"0.00\",\n          \"bnmbyqfsjkse\": \"0.00\",\n          \"jzhndmbfsjkse\": \"0.00\",\n          \"yqjzwmbsjksexj\": \"0.00\",\n          \"bnfssjkse\": \"0.00\",\n          \"bnmbyqsjkse\": \"0.00\",\n          \"jzhndmbsjksexj\": \"0.00\"\n        }\n      ],\n      \"jwfzjgmbksmxHj\": {\n        \"yqndjzwmbfsjkse\": \"0.00\",\n        \"bnfsfsjkse\": \"0.00\",\n        \"bnmbyqfsjkse\": \"0.00\",\n        \"jzhndmbfsjkse\": \"0.00\",\n        \"yqjzwmbsjksexj\": \"0.00\",\n        \"bnfssjkse\": \"0.00\",\n        \"bnmbyqsjkse\": \"0.00\",\n        \"jzhndmbsjksexj\": \"0.00\"\n      }\n    }\n  }\n}\n```\n",
+  "folderId": 74110741,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-01-23T06:33:52.000Z",
+  "updatedAt": "2026-02-02T09:01:41.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

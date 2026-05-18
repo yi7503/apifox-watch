@@ -1,0 +1,233 @@
+{
+  "id": 329683182,
+  "name": "出口退税获取审核任务清单结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "查询审核任务清单任务返回得结果",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/getAuditTaskListResult",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "ax2MkhZp5z",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "Op7nRuulmX",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "6MdrTCBKEM",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "qKz3XfnIvI",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 734212051,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "title": "业务code",
+                "description": "2000业务成功"
+              },
+              "message": {
+                "type": "string",
+                "title": "信息"
+              },
+              "businessStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "description": "1进行中，2 失败，3成功"
+              },
+              "result": {
+                "type": "string",
+                "title": "清单结果",
+                "description": "附录--获取审核结果清单说明https://openapi.qixiangyun.com/doc-8019423"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "code",
+              "businessStatus",
+              "message",
+              "result"
+            ],
+            "required": [
+              "businessStatus",
+              "message",
+              "code"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 734212051,
+      "data": "{\n    \"reqId\": \"\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"审核结果清单下载成功\",\n    \"data\": {\n        \"businessStatus\": \"3\",\n        \"code\": \"2000\",\n        \"message\": \"审核结果清单下载成功\",\n        \"result\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<business comment=\\\"获取审核结果清单\\\" id=\\\"HQSHJGQD\\\"><body yylxdm=\\\"1\\\"><output><returncode>0</returncode><returnmsg>成功</returnmsg><CKTSfbqd><![CDATA[<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<taxML xsi:type=\\\"cktsfbqdbw\\\" bbh=\\\"1.0\\\" xmlbh=\\\"fbqd\\\" xmlmc=\\\"FBQDYWBW\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xsi:schemaLocation=\\\"http://www.chinatax.gov.cn/dataspec/ CKTSfbqd.xsd\\\"><head/><cktsfbqdGrid><cktsfbqdGridlb><xh>1</xh><wjm>CKTS_0610588_0001</wjm><bzdsDm>0610588</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>2</xh><wjm>CKTS_0810015_0001</wjm><bzdsDm>0810015</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>3</xh><wjm>CKTS_0810016_0001</wjm><bzdsDm>0810016</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>4</xh><wjm>CKTS_0810090_0001</wjm><bzdsDm>0810090</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>5</xh><wjm>CKTS_0610589_0001</wjm><bzdsDm>0610589</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>6</xh><wjm>CKTS_0810066_0001</wjm><bzdsDm>0810066</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>7</xh><wjm>CKTS_0810053_0001</wjm><bzdsDm>0810053</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>8</xh><wjm>CKTS_cktsBaBaxx_0001</wjm><bzdsDm>cktsBaBaxx</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>9</xh><wjm>CKTS_0610595_0001</wjm><bzdsDm>0610595</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>10</xh><wjm>CKTS_0610586_0001</wjm><bzdsDm>0610586</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>11</xh><wjm>CKTS_0810007_0001</wjm><bzdsDm>0810007</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>12</xh><wjm>CKTS_cktsBaKz_0001</wjm><bzdsDm>cktsBaKz</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>13</xh><wjm>CKTS_0620225_0001</wjm><bzdsDm>0620225</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>14</xh><wjm>CKTS_tdcodefkxx_0001</wjm><bzdsDm>tdcodefkxx</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>15</xh><wjm>CKTS_0610590_0001</wjm><bzdsDm>0610590</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>16</xh><wjm>CKTS_0810052_0001</wjm><bzdsDm>0810052</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>17</xh><wjm>CKTS_0610587_0001</wjm><bzdsDm>0610587</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>18</xh><wjm>CKTS_0610596_0001</wjm><bzdsDm>0610596</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>19</xh><wjm>CKTS_0610231_0001</wjm><bzdsDm>0610231</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>20</xh><wjm>CKTS_9910101_0001</wjm><bzdsDm>9910101</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>21</xh><wjm>CKTS_0810009_0001</wjm><bzdsDm>0810009</bzdsDm></cktsfbqdGridlb></cktsfbqdGrid></taxML>]]></CKTSfbqd><CKTS_0610588_0001><![CDATA[<taxML xmlns=\\\"http://www.chinatax.gov.cn/dataspec/\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xsi:type=\\\"cktsBaXthhzgYwbw\\\" xmlbh=\\\"String\\\" bbh=\\\"1.0\\\" xmlmc=\\\"\\\" xsi:schemaLocation=\\\"http://www.chinatax.gov.cn/dataspec/ CKTS_0610588_0001.xsd\\\"><cktsBaXthhzgGrid/></taxML>]]></CKTS_0610588_0001><CKTS_0810015_0001><![CDATA[<taxML xmlns=\\\"http://www.chinatax.gov.cn/dataspec/\\\" ......</output></body></business>\"\n    }\n}",
+      "id": 650777799
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 63427251,
+  "ordering": 6,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-31T07:26:28.000Z",
+  "updatedAt": "2026-01-13T07:59:08.000Z",
+  "creatorId": 1910680,
+  "editorId": 1476015,
+  "creatorUserId": 1910680,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

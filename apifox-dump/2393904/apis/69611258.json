@@ -1,0 +1,366 @@
+{
+  "id": 69611258,
+  "name": "发起申报任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口即将废弃\n请用上传税报表数据以及上传财报报表数据这2个接口中isDirectDeclare=true直接发起申报\n## 接口描述\n根据税费种明细和税款所属期发起已经确认过数据的税费种申报任务。不再维护\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n|PARAMETER_ERROR   | 请求参数year或period不能为空！   |\n|PARAMETER_ERROR|请求参数year或period不合法！|\n|PARAMETER_ERROR |参数yzpzzlDms和zsxmList不能都为空！ |\n| PARAMETER_ERROR|参数yzpzzlDms和zsxmList不能都存在！ |\n|PARAMETER_ERROR |应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |\n| BUSINESS_ERROR|预约扣款情况，预约扣款日期必填并且是yyyy-MM-dd格式，当前错误值：XXX |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/loadDeclareTask",
+  "tags": [],
+  "status": 0,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "title": "税局取数入参",
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "year": {
+          "type": "integer",
+          "title": "年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "申报月份，自然月",
+          "description": "例如：10月份申报增值税2021-09-01到2021-09-30，period传10"
+        },
+        "zsxmList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码",
+                "description": "参考附录yzpzzlDm应征凭证种类代码"
+              },
+              "ssqQ": {
+                "type": "string",
+                "title": "所属期起",
+                "description": "格式yyyy-MM-dd"
+              },
+              "ssqZ": {
+                "type": "string",
+                "title": "所属期止",
+                "description": "格式yyyy-MM-dd"
+              },
+              "zspmDm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "征收品目代码",
+                "description": "文化事业建设费时必传字段，用来区分文化业还是娱乐业",
+                "enum": [
+                  "302170100",
+                  "302170200"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "name": "",
+                    "value": "302170100",
+                    "description": "娱乐业文化事业建设费"
+                  },
+                  {
+                    "name": "",
+                    "value": "302170200",
+                    "description": "广告业文化事业建设费"
+                  }
+                ]
+              },
+              "zlbsxlDm": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "资料报送小类代码",
+                "description": "财报必须传，ZL1001001:一般企业会计准则、ZL1001003:小企业会计准则",
+                "enum": [
+                  "ZL1001001",
+                  "ZL1001003"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "name": "",
+                    "value": "ZL1001001",
+                    "description": "一般企业会计准则"
+                  },
+                  {
+                    "name": "",
+                    "value": "ZL1001003",
+                    "description": "小企业会计准则"
+                  }
+                ]
+              },
+              "templateCode": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "资料报送子类代码",
+                "description": "【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业"
+              },
+              "zeroDeclare": {
+                "type": "integer",
+                "title": "发起全零申报标记",
+                "description": "即将下架参数，新版税局无此功能 （按照税局一键零申报逻辑） 0非全零申报，1全零申报；默认0非全零申报"
+              },
+              "zsxmDm": {
+                "type": "string",
+                "title": "征收项目代码",
+                "description": "工会经费=39900/水利建设专项收入=30221 合并申报则可以为空"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "zspmDm",
+              "zlbsxlDm",
+              "templateCode",
+              "zeroDeclare",
+              "zsxmDm"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ"
+            ]
+          },
+          "title": "税种明细列表"
+        },
+        "waitResult": {
+          "type": "boolean",
+          "description": "即将下架参数，新版税局无此功能  是否等待结果（仅针对浙江、云南、海南地区）",
+          "title": "是否等待结果"
+        },
+        "gzDeclare": {
+          "type": "integer",
+          "title": "财报覆盖申报",
+          "description": "1表示覆盖申报；0表示不覆盖。默认及空为0；当yzpzzlDm为CWBBSB时生效。此参数针对税局财报已申报，是否继续覆盖申报，仅北京、广东地区支持，其余地区陆续上线中"
+        },
+        "kkfs": {
+          "type": "integer",
+          "title": "扣款方式",
+          "description": "即将下架参数，新版税局无此功能 1：手动扣款，2：预约扣款。仅浙江、海南、云南需要，其它地区忽略该字段"
+        },
+        "yykkrq": {
+          "type": "string",
+          "title": "预约扣款日期",
+          "description": "即将下架参数，新版税局无此功能  yyyy-MM-dd格式，如2023-12-13，仅当扣款方式(kkfs)为2时必传"
+        },
+        "jrwc": {
+          "type": "string",
+          "title": "是否兼容一分钱尾差",
+          "description": "Y兼容，N不兼容。默认不兼容。"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号Id",
+          "description": "多账号ID"
+        },
+        "zdsysfsh": {
+          "type": "string",
+          "title": "重点税源是否审核",
+          "description": "1=审核 不传或者传空则是申报"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "year",
+        "period",
+        "kkfs",
+        "yykkrq",
+        "jrwc",
+        "zdsysfsh",
+        "waitResult",
+        "gzDeclare",
+        "zsxmList"
+      ],
+      "required": [
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\": 447111111111200,\r\n    \"year\": 2023,\r\n    \"period\": 3,\r\n    \"kkfs\": 2,\r\n    \"yykkrq\":\"2023-12-13\",\r\n    \"zsxmList\": [\r\n        {\r\n            \"yzpzzlDm\":\"BDA0610606\",\r\n            \"ssqQ\":\"2023-02-01\",\r\n            \"ssqZ\":\"2023-02-28\"\r\n        }\r\n        \r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 176663350,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW13R4GFP91CYBY1XZD2R4ME": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "x-apifox-refs": {
+                  "01JGNDY5JPQ6N6J635MZ78N3S2": {
+                    "$ref": "#/definitions/36911222",
+                    "x-apifox-overrides": {
+                      "aggOrgId": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "企业Id"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01JGNDY5JPQ6N6J635MZ78N3S2"
+                ],
+                "properties": {}
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW13R4GFP91CYBY1XZD2R4ME"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 176663350,
+      "data": "{\"reqId\":\"bc8d1c6a828a49978bdde83dec543c20\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17869183
+    },
+    {
+      "name": "成功示例",
+      "responseId": 176663350,
+      "data": "{\r\n    \"reqId\": \"b09a2aaa9fd8474d9c14474d460f8712\",\r\n    \"code\": \"SUCCESS\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"aggOrgId\": 452681066557440,\r\n        \"taskIds\": [\r\n            {\r\n                \"msg\": \"您该属期 2023-02-01至2023-02-28 的【增值税及附加税(适用于一般纳税人)】正在申报!申报日期:2023-03-30,应补退税额:128746.24 元,请勿重复申报!\",\r\n                \"yzpzzlDm\": \"BDA0610606\",\r\n                \"ssqQ\": \"2023-02-01\",\r\n                \"taskId\": \"457588445624320\",\r\n                \"ssqZ\": \"2023-02-28\"\r\n            },\r\n            {\r\n                \"yzpzzlDm\": \"CWBBSB\",\r\n                \"ssqQ\": \"2023-02-01\",\r\n                \"taskId\": \"457612745682944\",\r\n                \"ssqZ\": \"2023-02-28\"\r\n            }\r\n        ],\r\n        \"taskId\": \"457588445624320\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 17596146
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13476144,
+  "ordering": 33,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-31T02:01:25.000Z",
+  "updatedAt": "2025-05-27T02:00:17.000Z",
+  "creatorId": 2122743,
+  "editorId": 1476015,
+  "creatorUserId": 2122743,
+  "editorUserId": 1476015,
+  "responseChildren": [
+    "BLANK.176663350"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 2233823,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n支持企业上传业务弹窗相关设置选项，对当前企业预置的弹窗信息选项进行设置。同时页支持查询当前客户在企享云平台已预置的业务弹窗信息。\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372906/image-preview)\n\n## 接口列表\n\n| 接口名称 | 接口地址 |接口说明 |\n| --- | --- |--- |\n| 保存申报辅助设置弹窗选项信息 |v2/public/org/saveDialogInfo|保存申报辅助（弹窗）的相关设置选项，以及企业当前对弹窗的设置\n| 查询申报辅助设置弹窗信息 |v2/public/org/queryDialogInfo|查询申报辅助（弹窗）的相关设置选项，以及企业当前对弹窗的设置\n\n## 业务弹框对接流程说明\n:::tip\n[业务弹框对接流程](https://qxy-opendoc.oss-cn-beijing.aliyuncs.com/download/%E4%B8%9A%E5%8A%A1%E5%BC%B9%E6%A1%86%E5%AF%B9%E6%8E%A5%E6%B5%81%E7%A8%8B.docx)\n",
+  "folderId": 14015021,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-24T08:59:20.000Z",
+  "updatedAt": "2025-06-14T08:38:17.000Z",
+  "creatorId": 1441586,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

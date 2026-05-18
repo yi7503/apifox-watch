@@ -1,0 +1,695 @@
+{
+  "id": 100012783,
+  "name": "申请红字信息表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "对数电发票进行红冲前，需先申请红字信息确认单，可通过本接口发起红字信息确认单申请流程。\n对于重复提交红字确认申请单的，直接返回已经生成的红字申请单信息，如果红字发票开具成功的会返回红字发票信息\n\n注：申请成功后，可以通过hzuuid去红字确认单明细信息进行查询，继而进行其他操作（红字确认单确认，撤销等）",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/hzqrxxSave",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "const": "hzqrxx_save"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "hcyydm": {
+              "type": "string",
+              "title": "红冲原因代码",
+              "enum": [
+                "01-开票有误",
+                "02-销货退回",
+                "03-服务中止",
+                "04-销售折让"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "01-开票有误",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "02-销货退回",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "03-服务中止",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "04-销售折让",
+                  "name": "",
+                  "description": ""
+                }
+              ]
+            },
+            "fplxdm": {
+              "type": "string",
+              "title": "发票类型代码",
+              "description": "税控发票无需传值",
+              "enum": [
+                "030：数电普票",
+                "032：数电专票"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "030：数电普票",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "032：数电专票",
+                  "name": "",
+                  "description": ""
+                }
+              ]
+            },
+            "gmfNsrsbh": {
+              "type": "string",
+              "title": "购买方识别号"
+            },
+            "lzFphm": {
+              "type": "string",
+              "title": "蓝字数电发票号码",
+              "description": "数电发票必传"
+            },
+            "lzKprq": {
+              "type": "string",
+              "title": "蓝字开票日期",
+              "description": "yyyy-MM-dd HH:mm:ss"
+            },
+            "bfhc": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "bfhcbz": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "部分红冲标志",
+                  "description": "不传默认0-全额红冲",
+                  "enum": [
+                    "1-部分红冲",
+                    "0-全额红冲"
+                  ],
+                  "x-apifox-enum": [
+                    {
+                      "value": "1-部分红冲",
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": "0-全额红冲",
+                      "name": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "hsslbs": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "title": "计税方式",
+                  "description": "不传值默认2-含税",
+                  "enum": [
+                    "2-含税价",
+                    "1-不含税价"
+                  ],
+                  "x-apifox-enum": [
+                    {
+                      "value": "2-含税价",
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": "1-不含税价",
+                      "name": "",
+                      "description": ""
+                    }
+                  ]
+                },
+                "hcmx": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "lzmxxh": {
+                        "type": "string",
+                        "title": "蓝字发票明细项序号",
+                        "description": "行号序号从1开始，除折扣行，依次为1,2,3...行"
+                      },
+                      "hcje": {
+                        "type": "string",
+                        "title": "本次红冲金额",
+                        "description": "当红冲原因是\"销货退回\"时可不传，其它红冲原因需根据\"部分红冲计税方式\"及\"本次红冲税额\"判断：\n1、部分红冲计税方式(hsslbs)为不含税时，此字段需传不含税金额；\n2、部分红冲计税方式(hsslbs)为含税时，此字段需传含税金额；\n3、如需传红冲税额(hcse)，此字段需传不含税金额；"
+                      },
+                      "hcse": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "本次红冲税额",
+                        "description": "不传时会自动计算"
+                      },
+                      "hcsl": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "title": "本次红冲数量"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "lzmxxh",
+                      "hcsl",
+                      "hcje",
+                      "hcse"
+                    ],
+                    "required": [
+                      "lzmxxh",
+                      "hcje"
+                    ]
+                  },
+                  "title": "部分红冲明细"
+                }
+              },
+              "x-apifox-orders": [
+                "bfhcbz",
+                "hsslbs",
+                "hcmx"
+              ],
+              "title": "部分红冲"
+            },
+            "hcjshj": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "红冲价税合计",
+              "description": "此参数可不传，传入是为了确认本次红冲的金额与原蓝字发票票面金额的一致性"
+            },
+            "xsfNsrsbh": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "销售方识别号",
+              "description": "1、购销身份为购方时必传\n2、购销身份为销方时可不传"
+            },
+            "lrfsf": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "录入方身份",
+              "enum": [
+                "0-销方发起",
+                "1-购方发起"
+              ],
+              "x-apifox-enum": [
+                {
+                  "name": "",
+                  "value": "0",
+                  "description": "销方发起"
+                },
+                {
+                  "name": "",
+                  "value": "1",
+                  "description": "购方发起"
+                }
+              ],
+              "description": "默认0-销方发起"
+            },
+            "wjgs": {
+              "type": "string",
+              "description": "（OFD,PDF,XML,EWM)多个以,隔开",
+              "title": "红字发票版式文件，如果已经开具成功的可以返回版式文件"
+            },
+            "zz_fpdm": {
+              "type": "string",
+              "title": "发票代码",
+              "description": "增值税发票必传"
+            },
+            "zz_fphm": {
+              "type": "string",
+              "title": "发票号码",
+              "description": "增值税发票必传"
+            },
+            "ly_ddbh": {
+              "type": "string",
+              "description": "指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。",
+              "title": "来源订单编号"
+            }
+          },
+          "required": [
+            "lzKprq",
+            "hcyydm"
+          ],
+          "x-apifox-orders": [
+            "lrfsf",
+            "gmfNsrsbh",
+            "xsfNsrsbh",
+            "lzFphm",
+            "zz_fpdm",
+            "zz_fphm",
+            "lzKprq",
+            "fplxdm",
+            "hcyydm",
+            "wjgs",
+            "hcjshj",
+            "bfhc",
+            "ly_ddbh"
+          ]
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB97EV93J0GBG27JG5RRE60",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01HMB97EV93J0GBG27JG5RRE60": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"action\": \"hzqrxx_save\",\r\n\t\"nsrsbh\": \"************59873Q\",\r\n\t\"data\": {\r\n\t\t\"lrfsf\": \"0\",\r\n\t\t\"gmfNsrsbh\": \"************14288Q\",\r\n\t\t\"xsfNsrsbh\": \"\",\r\n\t\t\"lzFphm\": \"************63598360\",\r\n\t\t\"lzKprq\": \"2024-03-08 10:01:32\",\r\n\t\t\"fplxdm\": \"032\",\r\n\t\t\"hcyydm\": \"01\"\r\n\t}\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847717,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "hzuuid": {
+                "type": "string",
+                "title": "红字申请uuid"
+              },
+              "gmfNsrsbh": {
+                "type": "string",
+                "title": "购买方识别号"
+              },
+              "xsfNsrsbh": {
+                "type": "string",
+                "title": "销售方识别号"
+              },
+              "qrjkpbz": {
+                "type": "string",
+                "title": "红字确认后立即开具红票",
+                "description": "数电电子发票通常为Y，\n纸票可能存在为N的情况。",
+                "enum": [
+                  "Y",
+                  "N"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "name": "",
+                    "value": "Y",
+                    "description": "确认后立即开票"
+                  },
+                  {
+                    "name": "",
+                    "value": "N",
+                    "description": "确认后不开票，通常是指纸票"
+                  }
+                ]
+              },
+              "hzfpCode": {
+                "type": "string",
+                "title": "开红票状态代码",
+                "description": "为0时表示已开具红字发票，非0表示红字发票未开具或失败",
+                "deprecated": true
+              },
+              "hzfpMsg": {
+                "type": "string",
+                "title": "开红票错误信息",
+                "description": "当qrjkpbz=Y时有效且hzfpCode不等于0时的错误信息",
+                "deprecated": true
+              },
+              "hzfpxx": {
+                "type": "object",
+                "properties": {
+                  "kplsh": {
+                    "type": "string",
+                    "title": "红字发票开具流水号"
+                  },
+                  "fplxdm": {
+                    "type": "string",
+                    "title": "红字发票类型代码"
+                  },
+                  "fpdm": {
+                    "type": "string",
+                    "description": "（数电为空）",
+                    "title": "红字发票代码"
+                  },
+                  "fphm": {
+                    "type": "string",
+                    "description": "（数电为20位数电号码）",
+                    "title": "红字发票号码"
+                  },
+                  "kprq": {
+                    "type": "string",
+                    "title": "红字发票开票日期"
+                  },
+                  "kplx": {
+                    "type": "string",
+                    "description": "固定为1",
+                    "const": "1",
+                    "title": "红字发票开票类型"
+                  },
+                  "xsfNsrsbh": {
+                    "type": "string",
+                    "title": "红字发票销方识别号"
+                  },
+                  "xsfNsrmc": {
+                    "type": "string",
+                    "title": "红字发票销方名称"
+                  },
+                  "gmfNsrsbh": {
+                    "type": "string",
+                    "title": "红字发票购方识别号"
+                  },
+                  "gmfNsrmc": {
+                    "type": "string",
+                    "title": "红字发票购方名称"
+                  },
+                  "jshj": {
+                    "type": "number",
+                    "title": "红字发票价税合计"
+                  },
+                  "pdf_url": {
+                    "type": "string",
+                    "title": "红字发票pdf文件"
+                  },
+                  "xml_url": {
+                    "type": "string",
+                    "title": "红字发票xml文件"
+                  },
+                  "ofd_url": {
+                    "type": "string",
+                    "title": "红字发票ofd文件"
+                  },
+                  "ewm_url": {
+                    "type": "string",
+                    "title": "红字发票二维码url"
+                  }
+                },
+                "x-apifox-orders": [
+                  "kplsh",
+                  "fplxdm",
+                  "fpdm",
+                  "fphm",
+                  "kprq",
+                  "kplx",
+                  "xsfNsrsbh",
+                  "xsfNsrmc",
+                  "gmfNsrsbh",
+                  "gmfNsrmc",
+                  "jshj",
+                  "pdf_url",
+                  "xml_url",
+                  "ofd_url",
+                  "ewm_url"
+                ],
+                "title": "红字发票信息",
+                "required": [
+                  "kplsh",
+                  "fplxdm",
+                  "fpdm",
+                  "fphm",
+                  "kprq",
+                  "kplx",
+                  "xsfNsrsbh",
+                  "xsfNsrmc",
+                  "gmfNsrsbh",
+                  "gmfNsrmc",
+                  "jshj"
+                ]
+              },
+              "hzkjBz": {
+                "type": "string",
+                "title": "红字发票状态",
+                "description": "Y表示开具成功，N表示未开具或失败\n当状态为N时，一般是开具延迟或红字确认单需要对方确认，需要隔一段时间通过\"红字确认单明细信息“接口来查询最新的红字发票开具状态。"
+              },
+              "hzqrdbh": {
+                "type": "string",
+                "title": "红字确认单编号"
+              },
+              "hzqrztDm": {
+                "type": "string",
+                "title": "红字申请单状态",
+                "description": "见申请单列表hzqrztDm说明"
+              },
+              "lrrq": {
+                "type": "string",
+                "description": "示例：2025-01-23 00:10:23",
+                "title": "红字申请单录入日期"
+              },
+              "hzHjse": {
+                "type": "string",
+                "title": "红字发票合计税额"
+              },
+              "hzHjje": {
+                "type": "string",
+                "title": "红字发票合计金额"
+              },
+              "jshj": {
+                "type": "string",
+                "title": "红字发票价税合计"
+              },
+              "01JQDTQR4CTGBQKA1HW7HHN7EC": {
+                "x-tmp-pending-properties": true
+              },
+              "yhcfps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "hcsj": {
+                      "description": "红冲时间对应红字发票开具时间",
+                      "type": "string"
+                    },
+                    "sylzfpje": {
+                      "type": "string",
+                      "description": "剩余蓝字发票金额"
+                    },
+                    "ljhcje": {
+                      "type": "string",
+                      "description": "累计红冲金额"
+                    },
+                    "hcje": {
+                      "type": "string",
+                      "description": "红冲金额"
+                    },
+                    "hcyy": {
+                      "type": "string",
+                      "description": "红冲原因"
+                    },
+                    "hzfphm": {
+                      "description": "红字发票号码",
+                      "type": "string"
+                    },
+                    "lzfphm": {
+                      "description": "蓝字发票号码",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "hcsj",
+                    "sylzfpje",
+                    "ljhcje",
+                    "hcje",
+                    "hcyy",
+                    "hzfphm",
+                    "lzfphm"
+                  ],
+                  "x-apifox-orders": [
+                    "hcsj",
+                    "sylzfpje",
+                    "ljhcje",
+                    "hcje",
+                    "hcyy",
+                    "hzfphm",
+                    "lzfphm"
+                  ]
+                },
+                "title": "已红冲发票信息",
+                "description": "如果发票已经红冲，返回所有红字发票信息"
+              }
+            },
+            "required": [
+              "hzuuid",
+              "gmfNsrsbh",
+              "xsfNsrsbh",
+              "qrjkpbz",
+              "hzfpCode",
+              "hzfpMsg",
+              "hzqrdbh",
+              "hzkjBz",
+              "01JQDTQR4CTGBQKA1HW7HHN7EC"
+            ],
+            "x-apifox-orders": [
+              "hzuuid",
+              "hzqrdbh",
+              "hzqrztDm",
+              "gmfNsrsbh",
+              "xsfNsrsbh",
+              "qrjkpbz",
+              "lrrq",
+              "hzHjse",
+              "hzHjje",
+              "jshj",
+              "hzfpxx",
+              "hzkjBz",
+              "yhcfps",
+              "hzfpCode",
+              "hzfpMsg",
+              "01JQDTQR4CTGBQKA1HW7HHN7EC"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "01HRGZCP8V8H85BTK4Q8MQEX7R",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HRGZCP8V8H85BTK4Q8MQEX7R": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 248847717,
+      "data": "{\n    \"reqId\": \"736679b0b2804e05a0d077a9495fe67c\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"hzfpCode\": \"0\",\n        \"hzfpxx\": {\n            \"fpdm\": null,\n            \"kplx\": \"1\",\n            \"gmfNsrsbh\": null,\n            \"kplsh\": null,\n            \"pdf_url\": null,\n            \"gmfNsrmc\": null,\n            \"ofd_url\": null,\n            \"xml_url\": null,\n            \"xsfNsrsbh\": null,\n            \"xsfNsrmc\": null,\n            \"fplxdm\": null,\n            \"kprq\": \"2025-01-25 00:10:24\",\n            \"ewm_url\": null,\n            \"jshj\": -466.14,\n            \"fphm\": \"254****************4559\"\n        },\n        \"gmfNsrsbh\": null,\n        \"hjse\": 53.63,\n        \"lzFpdm\": null,\n        \"hzkjBz\": \"Y\",\n        \"hzuuid\": \"4734**************************ee4\",\n        \"gmfNsrmc\": \"****大学\",\n        \"hjje\": 412.51,\n        \"hzfpMsg\": \"自动开票处理成功\",\n        \"xsfNsrsbh\": \"9144010***********D\",\n        \"xsfNsrmc\": \"广州市*******有限公司\",\n        \"hzqrdbh\": \"440**************572\",\n        \"hzqrztDm\": \"01\",\n        \"kprq\": \"2024-12-17 18:25:37\",\n        \"qrjkpbz\": \"Y\",\n        \"hzHjse\": -53.63,\n        \"lrrq\": \"2025-01-23 00:10:23\",\n        \"lzFphm\": \"244****************04\",\n        \"jshj\": -466.14,\n        \"hzHjje\": -412.51,\n        \"yhcfps\": [\n            {\n                \"hcsj\": \"2024-07-31 14:52:20\",\n                \"sylzfpje\": \"-9.90\",\n                \"ljhcje\": \"-9.90\",\n                \"hcje\": \"-9.90\",\n                \"jxzcje\": \"-9.90\",\n                \"hcyy\": \"01\",\n                \"jxsezcjeye\": \"0\",\n                \"hzfphm\": \"243***************75\",\n                \"lzfphm\": \"243***************93\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 427665895
+    },
+    {
+      "name": "重复红冲返回参数示例",
+      "responseId": 248847717,
+      "data": "{\n    \"code\": \"710021\",\n    \"data\": {\n        \"total\": 1,\n        \"pageNumber\": 1,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"hcsj\": \"2024-07-31 14:52:20\", //红冲时间对应红字发票开具时间\n                \"sylzfpje\": \"-9.90\",\n                \"ljhcje\": \"-9.90\",\n                \"hcje\": \"-9.90\",\n                \"jxzcje\": \"-9.90\",\n                \"hcyy\": \"01\",\n                \"jxsezcjeye\": \"0\",\n                \"hzfphm\": \"243***************75\",//红字发票号码\n                \"lzfphm\": \"243***************93\"//蓝字发票号码\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"业务提示：蓝票没有可红冲的金额，不可再次红冲!\",\n    \"reqId\": \"88224fe36592447e98122609a4a8b1e2\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 428063104
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 73681470,
+  "ordering": 211,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": true,
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar lzFphm =   eval(\"(\" + request.raw + \")\").data.lzFphm;\r\nvar gmfNsrsbh =   eval(\"(\" + request.raw + \")\").data.gmfNsrsbh;\r\nvar lrfsf =   eval(\"(\" + request.raw + \")\").data.lrfsf;\r\nvar xsfNsrsbh =   eval(\"(\" + request.raw + \")\").data.xsfNsrsbh;\r\nvar lzKprq =   eval(\"(\" + request.raw + \")\").data.lzKprq;\r\nvar fplxdm =   eval(\"(\" + request.raw + \")\").data.fplxdm;\r\nvar hcyydm =   eval(\"(\" + request.raw + \")\").data.hcyydm;\r\n\r\nvar responseJson = {\r\n\t\"hzfpCode\": \"710002\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"hzkjBz\": \"Y\",\r\n\t\"hzuuid\": \"892bf52e21b4417f9f365e970138c0b3\",\r\n\t\"hzfpMsg\": \"自动开票处理成功\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\"hzqrztDm\": \"01\",\r\n\t\"qrjkpbz\": \"Y\",\r\n\t\"lzFphm\": \"25952000000193124888\",\r\n\t\"lrrq\": \"2024-09-20 12:01:08\",\r\n\t\"hzfpxx\": {\r\n\t\t\"kplx\": \"1\",\r\n\t\t\"kplsh\": \"202407211032369994199505\",\r\n\t\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\t\"fplxdm\": \"030\",\r\n\t\t\"kprq\": \"\",\r\n\t\t\"jshj\": -2970.27,\r\n\t\t\"fphm\": \"\"\r\n\t}\r\n};\r\nvar fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.lrrq = kprq;\r\nresponseJson.lzFphm = lzFphm;\r\n\r\nresponseJson.hzfpxx.kprq = kprq;\r\nresponseJson.hzfpxx.fphm = fphm;\r\nresponseJson.hzfpxx.kplsh = kplsh;\r\nif(fplxdm !== null && fplxdm !== undefined && fplxdm !== \"\"){\r\n    responseJson.hzfpxx.fplxdm = fplxdm;\r\n}\r\n\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+  },
+  "createdAt": "2024-07-18T08:56:36.000Z",
+  "updatedAt": "2025-12-13T09:14:30.000Z",
+  "creatorId": 887900,
+  "editorId": 2795319,
+  "creatorUserId": 887900,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

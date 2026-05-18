@@ -1,0 +1,340 @@
+{
+  "id": 212658227,
+  "name": "查询PDF任务返回结构化数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询当前PDF下载和下载往期pdf结果，并返回解析之后的结构化数据\n\n下载PDF任务和下载往期pdf执行完后，请求参数analysisPdf=Y的，可以通过【查询PDF任务返回结构化数据】接口进行查询\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| INTERFACE_ERROR | 接口异常,请联系管理员!|\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/task/qys/queryAnalysisPdfTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "x-apifox-overrides": {},
+      "type": "object",
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557111,\r\n    \"taskId\": 452681066557111\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 525332320,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "businessStatus": {
+                  "type": "integer",
+                  "title": "任务执行状态",
+                  "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+                },
+                "startTime": {
+                  "type": "string",
+                  "title": "任务发起时间"
+                },
+                "finishTime": {
+                  "type": "string",
+                  "title": "任务结束时间"
+                },
+                "businessStatusName": {
+                  "type": "string",
+                  "title": "任务执行状态名称"
+                },
+                "serviceCode": {
+                  "type": "string",
+                  "title": "服务代码"
+                },
+                "taskId": {
+                  "type": "string",
+                  "title": "任务 id"
+                },
+                "code": {
+                  "type": "string",
+                  "title": "任务code"
+                },
+                "message": {
+                  "type": "string",
+                  "title": "任务信息"
+                },
+                "detail": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "result": {
+                        "type": "string",
+                        "title": "任务信息"
+                      },
+                      "code": {
+                        "type": "string",
+                        "title": "code"
+                      },
+                      "yzpzzlDm": {
+                        "type": "string",
+                        "title": "税费种的应征凭证种类代码"
+                      },
+                      "fromDate": {
+                        "type": "string",
+                        "title": "税款所属期起"
+                      },
+                      "toDate": {
+                        "type": "string",
+                        "title": "税款所属期止"
+                      },
+                      "pdfOssUrl": {
+                        "type": "string",
+                        "title": "pdf下载url"
+                      },
+                      "analysisResult": {
+                        "type": "string",
+                        "title": "pdf解析结构化数据节点"
+                      },
+                      "message": {
+                        "type": "string",
+                        "title": "失败信息"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "result",
+                      "code",
+                      "message",
+                      "yzpzzlDm",
+                      "fromDate",
+                      "toDate",
+                      "pdfOssUrl",
+                      "analysisResult"
+                    ],
+                    "required": [
+                      "result",
+                      "code",
+                      "yzpzzlDm",
+                      "analysisResult",
+                      "pdfOssUrl",
+                      "toDate",
+                      "fromDate",
+                      "message"
+                    ]
+                  },
+                  "title": "明细"
+                }
+              },
+              "x-apifox-orders": [
+                "startTime",
+                "finishTime",
+                "businessStatus",
+                "businessStatusName",
+                "serviceCode",
+                "taskId",
+                "code",
+                "message",
+                "detail"
+              ],
+              "required": [
+                "businessStatus",
+                "startTime",
+                "finishTime",
+                "businessStatusName",
+                "serviceCode",
+                "detail",
+                "message",
+                "code",
+                "taskId"
+              ]
+            }
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 525332320,
+      "data": "{\"reqId\":\"7f4795932506460e8065381ef4dd0be2\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 425320611
+    },
+    {
+      "name": "成功示例",
+      "responseId": 525332320,
+      "data": "{\n    \"reqId\": \"f913a1468dec4450baa6ed91422b59e4\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行成功\",\n            \"finishTime\": \"2024-09-06 14:11:24.0\",\n            \"code\": \"2000\",\n            \"serviceCode\": \"wqpdf\",\n            \"businessStatus\": \"3\",\n            \"startTime\": \"2024-09-06 14:10:49.0\",\n            \"detail\": [\n                {\n                    \"result\": \"企业所得税A类pdf下载成功\",\n                    \"fromDate\": \"2024-07-01\",\n                    \"code\": \"2000\",\n                    \"yzpzzlDm\": \"BDA0611159\",\n                    \"toDate\": \"2024-07-31\",\n                    \"pdfOssUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxxx.pdf?Expires=1728195669&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=H3Q6dOUfM8VYUZLcL0gFivSWLhU%3D\",\n                    \"analysisResult\": \"[{\\\"nsrsbh\\\":\\\"纳税人识别号\\\",\\\"taxDm\\\":\\\"BDA0611159\\\",\\\"ssqq\\\":\\\"2024-07-01\\\",\\\"bwData\\\":{\\\"a200000Ywbd\\\":{\\\"sdjmGrid\\\":{\\\"sdjmGridlb\\\":[]},\\\"nsrqtxxForm\\\":{\\\"fddbrqzrq\\\":\\\"\\\",\\\"sfdlsb\\\":\\\"\\\",\\\"blr\\\":\\\"\\\",\\\"blrysfzjlxDm\\\":\\\"\\\",\\\"slrq\\\":\\\"2024年08月09日\\\",\\\"jbrzyzjhm\\\":\\\"\\\",\\\"dljgtyshxydm\\\":\\\"\\\",\\\"tbrq1\\\":\\\"\\\",\\\"dlsbzjjg\\\":\\\"\\\",\\\"slr\\\":\\\"11100xdzswj\\\",\\\"fddbr\\\":\\\"\\\",\\\"dlsbrq\\\":\\\"\\\",\\\"jbr\\\":\\\"\\\",\\\"kjzg\\\":\\\"\\\",\\\"blrysfzjhm\\\":\\\"\\\",\\\"slswjg\\\":\\\"国家税务总局******局\\\"},\\\"sbbxxForm\\\":{\\\"gdzcjszjkctjeLj\\\":\\\"0.00\\\",\\\"qmzcze4\\\":\\\"\\\",\\\"zczePjz\\\":\\\"0.00\\\",\\\"sdjmLj\\\":\\\"0.00\\\",\\\"slLj\\\":\\\"0.25\\\",\\\"qmzcze2\\\":\\\"0.00\\\",\\\"yysrLj\\\":\\\"994660489.38\\\",\\\"bzssrLj\\\":\\\"0.00\\\",\\\"fzjgftbl\\\":\\\"\\\",\\\"dlscjybmftbl\\\":\\\"\\\",\\\"qmzcze3\\\":\\\"0.00\\\",\\\"jzmzlx\\\":\\\"\\\",\\\"qmzcze1\\\":\\\"0.00\\\",\\\"mbyqndksLj\\\":\\\"0.00\\\",\\\"qmcyrs3\\\":\\\"0\\\",\\\"yycbLj\\\":\\\"491656930.01\\\",\\\"qmcyrs4\\\":\\\"\\\",\\\"gjxzhjzhy\\\":\\\"N\\\",\\\"sjybtsdseBq\\\":\\\"9339764.25\\\",\\\"tdywjsdynssdeLj\\\":\\\"0.00\\\",\\\"sjyyjsdseLj\\\":\\\"40402951.61\\\",\\\"fpbl\\\":\\\"0.00000000%\\\",\\\"sfsyxxwlqy\\\":\\\"\\\",\\\"mzzzdqdfjmBq\\\":\\\"0.00\\\",\\\"dfjsrsjynseBq\\\":\\\"2794474.98\\\",\\\"qccyrs4\\\":\\\"\\\",\\\"qccyrs3\\\":\\\"0\\\",\\\"qccyrs2\\\":\\\"0\\\",\\\"qccyrs1\\\":\\\"0\\\",\\\"qczcze3\\\":\\\"0.00\\\",\\\"qczcze2\\\":\\\"0.00\\\",\\\"zjgftbl\\\":\\\"\\\",\\\"qczcze4\\\":\\\"\\\",\\\"zjgybtsdseBq\\\":\\\"9339764.25\\\",\\\"zjgyftsdseBq\\\":\\\"2353576.80\\\",\\\"jzfd\\\":\\\"\\\",\\\"qczcze1\\\":\\\"0.00\\\",\\\"mzzzdqdfjmzfjghjLj\\\":\\\"0.00\\\",\\\"lrzeLj\\\":\\\"427465997.31\\\",\\\"dfjsrynseBq\\\":\\\"2794474.98\\\",\\\"zjgczjzftbl\\\":\\\"\\\",\\\"ynsdseLj\\\":\\\"83028764.68\\\",\\\"mzzzdqdfjmLj\\\":\\\"0.00\\\",\\\"zyjsrsjynseBq\\\":\\\"6545289.27\\\",\\\"ybtsdseLj\\\":\\\"9414307.20\\\",\\\"mssrLj\\\":\\\"95350938.61\\\",\\\"zjgdlscjybmyftsdseBq\\\":\\\"4632610.65\\\",\\\"fzjgfpsdseBq\\\":\\\"0.00\\\",\\\"qmcyrs1\\\":\\\"0\\\",\\\"qmcyrs2\\\":\\\"0\\\",\\\"sjlreLj\\\":\\\"332115058.70\\\",\\\"cyrsPjz\\\":\\\"0\\\",\\\"czjzfpsdseBq\\\":\\\"2353576.80\\\",\\\"jmsdseLj\\\":\\\"33211505.87\\\",\\\"tdywyjzsdseLj\\\":\\\"0.00\\\"},\\\"fbsxGrid\\\":{\\\"fbsxGridlb\\\":[{\\\"xxbz\\\":\\\"N\\\",\\\"ewbhgjz\\\":\\\"K01002\\\",\\\"fbsxMc\\\":\\\"扶贫捐赠支出全额扣除（本年累计，元）\\\",\\\"jehxxz\\\":\\\"0.00\\\"},{\\\"xxbz\\\":\\\"N\\\",\\\"ewbhgjz\\\":\\\"Y01001\\\",\\\"fbsxMc\\\":\\\"软件集成电路企业优惠政策适用类型\\\",\\\"jehxxz\\\":\\\"\\\"},{\\\"xxbz\\\":\\\"N\\\",\\\"ewbhgjz\\\":\\\"Y01002\\\",\\\"fbsxMc\\\":\\\"高新技术企业资格证书发证时间\\\",\\\"jehxxz\\\":\\\"\\\"}]},\\\"nsrxxForm\\\":{\\\"xzqhszDm\\\":\\\"\\\",\\\"sbrq1\\\":\\\"\\\",\\\"nsrsbh\\\":\\\"*****有限公司\\\",\\\"sbqylx\\\":\\\"1\\\",\\\"skssqz\\\":\\\"2024-07-31\\\",\\\"yjfs\\\":\\\"1\\\",\\\"nsrmc\\\":\\\"纳税人识别号\\\",\\\"skssqq\\\":\\\"2024-07-01\\\"},\\\"mssrGrid\\\":{\\\"mssrGridlb\\\":[{\\\"jejslx\\\":\\\"01\\\",\\\"yhswsx\\\":\\\"MSSR021\\\",\\\"ssjmxzDm\\\":\\\"0004083909\\\",\\\"ewbhgjz\\\":\\\"一般股息红利等权益性投资收益免征企业所得税\\\",\\\"sxSelect\\\":true,\\\"yhjmje\\\":\\\"48000000.00\\\",\\\"zyywsrzb\\\":\\\"0.00\\\",\\\"ewbhxh\\\":\\\"2\\\",\\\"jejslxMc\\\":\\\"免税收入\\\"},{\\\"jejslx\\\":\\\"01\\\",\\\"yhswsx\\\":\\\"JJKC012\\\",\\\"ssjmxzDm\\\":\\\"\\\",\\\"ewbhgjz\\\":\\\"企业开发新技术、新产品、新工艺发生的研究开发费用加计扣除（按100%加计扣除）\\\",\\\"sxSelect\\\":true,\\\"yhjmje\\\":\\\"47350938.61\\\",\\\"zyywsrzb\\\":\\\"0.00\\\",\\\"ewbhxh\\\":\\\"23\\\",\\\"jejslxMc\\\":\\\"加计扣除\\\"}]},\\\"jmsdGrid\\\":{\\\"jmsdGridlb\\\":[{\\\"jejslx\\\":\\\"gxjsqy\\\",\\\"yhswsx\\\":\\\"JMSE00201\\\",\\\"ssjmxzDm\\\":\\\"0004024501\\\",\\\"ewbhgjz\\\":\\\"高新技术企业减按15%的税率征收企业所得税\\\",\\\"sxSelect\\\":true,\\\"yhjmje\\\":\\\"33211505.87\\\",\\\"zyywsrzb\\\":\\\"0.00\\\",\\\"ewbhxh\\\":\\\"2\\\",\\\"jejslxMc\\\":\\\"高新技术企业\\\"}]}},\\\"a201020Ywbd\\\":{\\\"gdzcjszjkcMxbGrid\\\":{\\\"gdzcjszjkcmxbGridlb\\\":[{\\\"yhswsx\\\":\\\"HJ_JSZJ\\\",\\\"zcyz\\\":\\\"0.00\\\",\\\"xsjszjyhjsdzjjeLj\\\":\\\"0.00\\\",\\\"ssjmxzDm\\\":\\\"HJ_JSZJ\\\",\\\"nstjjeLj\\\":\\\"0.00\\\",\\\"ewbhgjz\\\":\\\"HJ_JSZJ\\\",\\\"zzzjjeLj\\\":\\\"0.00\\\",\\\"ewbhxh\\\":\\\"1\\\",\\\"azssybgdjsdzjjeLj\\\":\\\"0.00\\\",\\\"xsjszjyhjeLj\\\":\\\"0.00\\\",\\\"hmc\\\":\\\"一、加速折旧、摊销（不含一次性扣除，2+3+4+5+6+7）\\\"},{\\\"yhswsx\\\":\\\"YCKC_HJ\\\",\\\"zcyz\\\":\\\"0.00\\\",\\\"xsjszjyhjsdzjjeLj\\\":\\\"0.00\\\",\\\"ssjmxzDm\\\":\\\"YCKC_HJ\\\",\\\"nstjjeLj\\\":\\\"0.00\\\",\\\"ewbhgjz\\\":\\\"YCKC_HJ\\\",\\\"zzzjjeLj\\\":\\\"0.00\\\",\\\"ewbhxh\\\":\\\"8\\\",\\\"azssybgdjsdzjjeLj\\\":\\\"0.00\\\",\\\"xsjszjyhjeLj\\\":\\\"0.00\\\",\\\"hmc\\\":\\\"二、固定资产、无形资产一次性扣除（9+10+11+12+13） _or_ 二、一次性扣除\\\"},{\\\"yhswsx\\\":\\\"HJ\\\",\\\"zcyz\\\":\\\"0.00\\\",\\\"xsjszjyhjsdzjjeLj\\\":\\\"0.00\\\",\\\"ssjmxzDm\\\":\\\"HJ\\\",\\\"nstjjeLj\\\":\\\"0.00\\\",\\\"ewbhgjz\\\":\\\"HJ\\\",\\\"zzzjjeLj\\\":\\\"0.00\\\",\\\"ewbhxh\\\":\\\"14\\\",\\\"azssybgdjsdzjjeLj\\\":\\\"0.00\\\",\\\"xsjszjyhjeLj\\\":\\\"0.00\\\",\\\"hmc\\\":\\\"合计（1+8）\\\"}]}},\\\"a202000Ywbd\\\":{\\\"hj\\\":{\\\"fzjggzzeHj\\\":\\\"249302997.98\\\",\\\"fpblHj\\\":\\\"\\\",\\\"fpseHj\\\":\\\"4707153.60\\\",\\\"xsdfjmjeHj\\\":\\\"\\\",\\\"fzjgsrzeHj\\\":\\\"1491779409.94\\\",\\\"fzjgzczeHj\\\":\\\"3778688629.47\\\"},\\\"zjgxxForm\\\":{\\\"zjgczjzfpsdse\\\":\\\"2353576.80\\\",\\\"xsdfjmfd\\\":\\\"\\\",\\\"zjgmc\\\":\\\"*****有限公司\\\",\\\"ynsdse\\\":\\\"9414307.20\\\",\\\"sfxsdfjm\\\":\\\"\\\",\\\"zjgnsrsbh\\\":\\\"纳税人识别号\\\",\\\"zjgftsdse\\\":\\\"2353576.80\\\",\\\"fzjgftdsdse\\\":\\\"4707153.60\\\"},\\\"fzjgxxGrid\\\":{\\\"fzjgxxGridlb\\\":[{\\\"fzjgnsrsbh\\\":\\\"纳税人识别号\\\",\\\"fzjggzze\\\":\\\"249302888.98\\\",\\\"fzjglxlb\\\":\\\"\\\",\\\"fpbl\\\":\\\"0.9841638993\\\",\\\"fzjgzgswjDm\\\":\\\"\\\",\\\"fzjgsrze\\\":\\\"1491659720.11\\\",\\\"fzjgxsqyxyhqk\\\":\\\"\\\",\\\"fzjgdjxh\\\":\\\"\\\",\\\"fpse\\\":\\\"4632610.65\\\",\\\"fzjgmc\\\":\\\"*****有限公司（独立生产经营部门）\\\",\\\"fzjgzcze\\\":\\\"3579578616.07\\\",\\\"xsdfjmfd\\\":\\\"\\\",\\\"xsdfjmje\\\":\\\"\\\",\\\"sfxsdfjm\\\":\\\"\\\"},{\\\"fzjgnsrsbh\\\":\\\"911***********\\\",\\\"fzjggzze\\\":\\\"109.00\\\",\\\"fzjglxlb\\\":\\\"\\\",\\\"fpbl\\\":\\\"0.0000416483\\\",\\\"fzjgzgswjDm\\\":\\\"\\\",\\\"fzjgsrze\\\":\\\"119689.83\\\",\\\"fzjgxsqyxyhqk\\\":\\\"\\\",\\\"fzjgdjxh\\\":\\\"\\\",\\\"fpse\\\":\\\"196.04\\\",\\\"fzjgmc\\\":\\\"*****有限公司固安分公司\\\",\\\"fzjgzcze\\\":\\\"168954.71\\\",\\\"xsdfjmfd\\\":\\\"\\\",\\\"xsdfjmje\\\":\\\"\\\",\\\"sfxsdfjm\\\":\\\"\\\"},{\\\"fzjgnsrsbh\\\":\\\"9*************\\\",\\\"fzjggzze\\\":\\\"0.00\\\",\\\"fzjglxlb\\\":\\\"\\\",\\\"fpbl\\\":\\\"0.0157944524\\\",\\\"fzjgzgswjDm\\\":\\\"\\\",\\\"fzjgsrze\\\":\\\"0.00\\\",\\\"fzjgxsqyxyhqk\\\":\\\"\\\",\\\"fzjgdjxh\\\":\\\"\\\",\\\"fpse\\\":\\\"74346.91\\\",\\\"fzjgmc\\\":\\\"*****有限公司成都分公司\\\",\\\"fzjgzcze\\\":\\\"198941058.69\\\",\\\"xsdfjmfd\\\":\\\"\\\",\\\"xsdfjmje\\\":\\\"\\\",\\\"sfxsdfjm\\\":\\\"\\\"}]}}},\\\"ssqz\\\":\\\"2024-07-31\\\"}]\",\n                    \"message\": \"pdf下载成功\"\n                }\n            ],\n            \"serviceName\": \"获取往期PDF\",\n            \"message\": \"pdf下载成功\",\n            \"taskId\": \"550683532985088\"\n        }\n    ]\n}",
+      "id": 425320612
+    },
+    {
+      "name": "任务失败示例",
+      "responseId": 525332320,
+      "data": "{\n    \"reqId\": \"dec9f26a9f064122803b84ef469601de\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行失败\",\n            \"finishTime\": \"2024-09-02 16:17:28.0\",\n            \"code\": \"4811\",\n            \"serviceCode\": \"pdf\",\n            \"businessStatus\": \"2\",\n            \"startTime\": \"2024-09-02 16:17:10.0\",\n            \"detail\": [\n                {\n                    \"result\": \"增值税及附加税(适用于一般纳税人)该税种在电子税务局找不到,无法获取报表\",\n                    \"fromDate\": \"2024-08-01\",\n                    \"code\": \"4811\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"endDate\": \"2024-09-18\",\n                    \"toDate\": \"2024-08-31\",\n                    \"pdfOssUrl\": \"\",\n                    \"message\": \"该税种在电子税务局找不到,无法获取报表\"\n                }\n            ],\n            \"serviceName\": \"获取PDF\",\n            \"message\": \"该税种在电子税务局找不到,无法获取报表\",\n            \"taskId\": \"549991270418688\"\n        }\n    ]\n}",
+      "id": 425327313
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531082,
+  "ordering": 148,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-09-06T05:59:19.000Z",
+  "updatedAt": "2026-01-29T03:41:12.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

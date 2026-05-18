@@ -1,0 +1,218 @@
+{
+  "id": 139745630,
+  "name": "现有办税人员删除记录任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "现有办税人员删除结果查询\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/bsrygl/qy/bsyDeletedTask",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "zrrxm": {
+          "type": "string"
+        },
+        "sflx": {
+          "type": "string"
+        },
+        "aggOrgId": {
+          "type": "integer"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账户登录唯一标识"
+        }
+      },
+      "required": [
+        "zrrxm",
+        "sflx",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "zrrxm",
+        "sflx",
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"zrrxm\": \"自然人1\",\r\n    \"sflx\": \"BSY\",\r\n    \"aggOrgId\": 416757501640768\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "4ydHFG09t9",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "w5PEAaz02B",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "7eJE20LaKA",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "5rybCw1X7D",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": []
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 39915328,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              }
+            },
+            "required": [
+              "taskId"
+            ],
+            "x-apifox-orders": [
+              "taskId"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 39915328,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"taskId\": 494950194417664\n    },\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"9e39c2456fed470eb56215559e139089\"\n}",
+      "id": 39915329
+    },
+    {
+      "name": "异常示例",
+      "responseId": 39915328,
+      "data": "{\n    \"code\": \"PARAMETER_ERROR\",\n    \"success\": true,\n    \"message\": \"身份证号已存在\",\n    \"reqId\": \"0e01a588abf44c2aacbb17b9d28cb5f6\"\n}",
+      "id": 39915330
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 23937671,
+  "ordering": 118,
+  "responsibleId": 0,
+  "commonResponseStatus": {
+    "168498155": false,
+    "168498156": false,
+    "168498157": false,
+    "168542879": false,
+    "168595624": false,
+    "235125880": false
+  },
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-01-08T07:25:09.000Z",
+  "updatedAt": "2024-10-16T12:08:59.000Z",
+  "creatorId": 1442097,
+  "editorId": 493984,
+  "creatorUserId": 1442097,
+  "editorUserId": 493984,
+  "responseChildren": [
+    "BLANK.39915328"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,431 @@
+{
+  "id": 98470626,
+  "name": "发起进销项归集任务",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口用于获取进销项发票数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起进销项归集任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务完成，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据\n2、通过taskId调用「获取发票数据」接口获取结构化数据\n  </Step>\n</Steps>\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/collectTask",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "fplx": {
+          "type": "string",
+          "title": "发票类型",
+          "description": "不填默认全部,传多个类型时以英文逗号( , )分隔",
+          "enum": [
+            "01-增值税专用发票",
+            "03-机动车销售统一发票",
+            "04-增值税普通发票",
+            "08-增值税专用发票(电子)",
+            "10-增值税普通发票(电子)",
+            "11-增值税普通发票(卷票)",
+            "14-通行费发票",
+            "15-二手车统一销售发票",
+            "17-海关缴款书",
+            "81-数电(增值税专用发票)",
+            "82-数电(增值税普通发票)",
+            "83-数电(机动车销售统一发票)",
+            "84-数电纸质(增值税专用发票)",
+            "85-数电纸质(增值税普通发票)",
+            "87-数电纸质(机动车销售统一发票)",
+            "70-数电(二手车销售统一发票)",
+            "88-数电纸质(二手车销售统一发票)",
+            "51-数电(铁路电子客票)",
+            "61-数电(航空运输电子客票行程单)",
+            "8208-数电(通行费发票)"
+          ],
+          "x-apifox-enum": [
+            {
+              "name": "",
+              "value": "01-增值税专用发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "03-机动车销售统一发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "04-增值税普通发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "08-增值税专用发票(电子)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "10-增值税普通发票(电子)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "11-增值税普通发票(卷票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "14-通行费发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "15-二手车统一销售发票",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "17-海关缴款书",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "81-数电(增值税专用发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "82-数电(增值税普通发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "83-数电(机动车销售统一发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "84-数电纸质(增值税专用发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "85-数电纸质(增值税普通发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "87-数电纸质(机动车销售统一发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "70-数电(二手车销售统一发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "88-数电纸质(二手车销售统一发票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "51-数电(铁路电子客票)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "61-数电(航空运输电子客票行程单)",
+              "description": ""
+            },
+            {
+              "name": "",
+              "value": "8208-数电(通行费发票)",
+              "description": ""
+            }
+          ]
+        },
+        "jxxbz": {
+          "type": "string",
+          "title": "进销项标志",
+          "description": "不填默认全部",
+          "enum": [
+            "xx-销项",
+            "jx-进项"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "xx-销项",
+              "name": "",
+              "description": ""
+            },
+            {
+              "value": "jx-进项",
+              "name": "",
+              "description": ""
+            }
+          ]
+        },
+        "kpyfq": {
+          "type": "string",
+          "title": "开票时间起",
+          "description": "支持按月/天获取数据(最早不超过2017年1月1日):\n1、按月:yyyyMM(例-202011)\n2、按天: yyyyMMdd(例-20201102)，此形式不支持跨月"
+        },
+        "kpyfz": {
+          "type": "string",
+          "title": "开票时间止",
+          "description": "支持按月/天获取数据：\n1、按月:YYYYMM(例202011)\n2、按天: YYYYMMdd(例20201102)，此形式不支持跨月"
+        },
+        "dateType": {
+          "type": "string",
+          "title": "日期类型",
+          "enum": [
+            "0-月",
+            "1-天"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "0-月",
+              "name": "",
+              "description": ""
+            },
+            {
+              "value": "1-天",
+              "name": "",
+              "description": ""
+            }
+          ],
+          "description": "开票时间起-止(kpyfq&kpyfz)对应的传参类型，不传默认按月"
+        },
+        "dataType": {
+          "type": "string",
+          "title": "数据类型",
+          "description": "默认为空，以报文形式返回",
+          "enum": [
+            "空/不传-报文形式",
+            "zip-压缩包形式"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "空/不传-报文形式",
+              "name": "",
+              "description": ""
+            },
+            {
+              "value": "zip-压缩包形式",
+              "name": "",
+              "description": ""
+            }
+          ]
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号唯一标识",
+          "description": "多账号下的账号唯一标识"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "kpyfq",
+        "kpyfz",
+        "aggOrgId",
+        "dataType"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "nsrsbh",
+        "fplx",
+        "jxxbz",
+        "kpyfq",
+        "kpyfz",
+        "dateType",
+        "dataType"
+      ],
+      "x-apifox-refs": {}
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"************PDDL2G\",\r\n    \"kpyfq\": \"202401\",\r\n    \"kpyfz\": \"202402\",\r\n    \"jxxbz\": \"jx\",\r\n    \"fplx\": \"10,14\"\r\n}",
+        "mediaType": "application/xml",
+        "description": ""
+      },
+      {
+        "name": "示例 1",
+        "value": "{\n    \"nsrsbh\": \"9131******57LQY4Y\",\n    \"fplx\": \"01,03,04,08,10,11\",\n    \"jxxbz\": \"jx,xx\",\n    \"dateType\": \"0\",\n    \"kpyfq\": \"202401\",\n    \"kpyfz\": \"202412\",\n    \"dataType\": \"zip\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "S4CQ6aHueY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "c2c8mNZDgi",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "491JAzxqeH",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947649,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code(2000成功，其他失败)"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务id"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 42947649,
+      "data": "{\n    \"reqId\": \"f650ac40f6914f328aa587116957899e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"taskId\": 1752226411192705000\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947650
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 58690822,
+  "ordering": 118,
+  "responsibleId": 2118003,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2024-07-25T02:09:05.000Z",
+  "updatedAt": "2025-08-21T08:17:50.000Z",
+  "creatorId": 887778,
+  "editorId": 2706439,
+  "creatorUserId": 887778,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.42947649"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

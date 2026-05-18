@@ -1,0 +1,17 @@
+{
+  "id": 2175638,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品概述\n\n接口支持财务报表数据上传及查询。\n\n## 流程示例\n\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/372893/image-preview)\n\n## 接口列表\n第一步：上传财务报表信息数据。\n| 接口 |  地址|  说明 | \n| --- | --- |--- |\n| 上传财报数据| v2/tax/qys/writeFiData |上传财报信息（每次只能上传一个税种）|\n\n第二步：根据上传财务报表信息数据成功后的taskID查询上传财报数据任务结果。\n\n| 接口 |  地址|  说明 | \n| --- | --- |--- |\n| 查询上传财报数据任务结果|v2/tax/qys/queryTaskInfo| 查询上传财报数据任务结果|\n\n\n\n\n## 参数说明\n\n请求参数为JSON格式。\n\n参数名称 | 参数类型 |是否必填| 说明\n---|---|---|---\naggOrgId | Long |是| 创建企业返回的 id\nyear | Integer | 是|申报年份  yyyy\nperiod | Integer | 是|申报月份 （1-12），自然月\nexAction | Integer |否| 1标识上传发起税局暂存任务 0标识上传不发起税局暂存任务\nisDirectDeclare | Boolean |否|是否上传数据直接申报；默认false；\ngzDeclare | Integer | 否 |财报覆盖申报：1表示覆盖申报；0表示不覆盖。默认及空为0； 当isDirectDeclare为true 时生效。此参数针对税局财报已申报，是否继续覆盖申报，支持升级到新版税局的税号，仍是旧版税局税号暂不支持|\nallowRepeatDeclare | Boolean |否|设置成true，不校验清册申报状态，即使清册已申报，允许重复发起申报\noverloadKjzdzz | Boolean |否|传入true，重置清册和企业信息的财报备案设置，以上传报文的准则为准\ncbData  | String |  是|财报月季度申报报文\ncbnbData  | String | 是|财报年度申报报文 \noptionCodeList            | List     | 否       | 多条弹窗设置明细 \noptionCodeList.optionCode | String   | 是       | 选项code         \noptionCodeList.memoJson   | String   | 否       | 备注信息      \n\n\n## 财报报表会计准则说明\n会计制度准则类型（kjzdzzDm） |资料报送小类类型（zlbsxlDm）  | 名称 |资料报送子类代码（templateCode）| 资料报送子类类型名称  | \n---|---|---|---|---\n101 | ZL1001001 |企业会计准则（一般企业）财务报表| 1 |适用未执行新金融准则、新收入准则和新租赁准则的一般企业\n101 | ZL1001001 |企业会计准则（一般企业）财务报表| 2 |适用已执行新金融准则、新收入准则和新租赁准则的一般企业\n102 | ZL1001003 |小企业会计准则财务报表|  |\n201 | ZL1001002 |企业会计制度财务报表|  |\n\n## \n## 推送财报报表报文value1、value2指代列说明\n|会计准则 |报表类型  | value1 |value2 |\n|---|---|---|---|\n|企业准则 | 资产负债表 |期末余额| 年初余额| \n|企业准则 | 利润表 |本期金额| 上期金额| \n|企业准则 | 现金流量表 |本期金额| 上期金额| \n| |  || |\n|小企业会计准则 | 资产负债表 |期末余额| 年初余额| \n|小企业会计准则 | 利润表-月 |本年累计金额| 本月金额| \n|小企业会计准则 | 利润表-季 |本年累计金额| 本期金额| \n|小企业会计准则 | 利润表-年 |本年累计金额| 上年金额| \n|小企业会计准则 | 现金流量表-月 |本年累计金额|本月金额| \n|小企业会计准则 | 现金流量表-季 |本年累计金额| 本期金额| \n|小企业会计准则 | 现金流量表-年 |本年累计金额| 上年金额| \n| |  || |\n|会计制度 | 资产负债表 |年初数| 期末数| \n|会计制度 | 利润表 |本月数| 本年累计数| \n|会计制度 | 现金流量表 |金额| 无| ",
+  "folderId": 13593929,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-03-13T07:09:08.000Z",
+  "updatedAt": "2026-04-07T10:08:06.000Z",
+  "creatorId": 798265,
+  "editorId": 1441586,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

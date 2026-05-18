@@ -1,0 +1,221 @@
+{
+  "id": 284944564,
+  "name": "获取三方信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "用于获取投资者的三方信息\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/payment/thirdInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssqq": {
+          "type": "string",
+          "title": "税款所属期起",
+          "description": "税款所属期起，格式：YYYYMMDD"
+        },
+        "skssqz": {
+          "type": "string",
+          "title": "税款所属期止",
+          "description": "税款所属期止，格式：YYYYMMDD"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "skssqq",
+        "skssqz"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\n    \"aggOrgId\": \"123*******111\",\n    \"accountId\": \"66***********66\",\n    \"skssqq\": \"20250401\",\n    \"skssqz\": \"20250429\"\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "path": [],
+    "query": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "yWsllnky4W",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "sampleValue": "{{req_sign}}"
+      },
+      {
+        "id": "w8fBRZrVLt",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "1FldORlmx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "HFLKZxAXXU",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "sampleValue": "application/json"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 656455795,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "01JS97C322GN3F3D8W6CDW6CK4"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {
+          "01JS97C322GN3F3D8W6CDW6CK4": {
+            "$ref": "#/definitions/141932940"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 656455795,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"1065591abf904b3d92d2d747cc561ec8\",\n    \"data\": {\n        \"taskId\": \"1**************1304\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 585415819
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 54723263,
+  "ordering": 86,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-04-16T07:42:37.000Z",
+  "updatedAt": "2025-06-25T02:04:49.000Z",
+  "creatorId": 2400309,
+  "editorId": 996549,
+  "creatorUserId": 2400309,
+  "editorUserId": 996549,
+  "responseChildren": [
+    "BLANK.656455795"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

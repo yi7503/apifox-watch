@@ -1,0 +1,277 @@
+{
+  "id": 433483777,
+  "name": "个人代开发票明细查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "9DHaW0shor3B1REJ7LpQN",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "该接口是同步接口，查询开票日期为 2023 年 1 月 1 日（含）以后个人为您提供劳务或服务产生的代开发票信息（存在 1 天的延迟，仅能查询正常报送的发票）",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/dkdj/grdkfpmxcx",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "kpyq": {
+          "type": "string",
+          "description": "开票月起，格式YYYYMM",
+          "pattern": "^\\d{6}$",
+          "examples": [
+            "202401"
+          ]
+        },
+        "kpyz": {
+          "type": "string",
+          "description": "开票月止，格式YYYYMM，与开票月起不能超过12个月",
+          "pattern": "^\\d{6}$",
+          "examples": [
+            "202412"
+          ]
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "kpyq",
+        "kpyz"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "kpyq",
+        "kpyz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"212347\",\r\n    \"accountId\": \"52345675\",\r\n    \"kpyq\": \"202401\",\r\n    \"kpyz\": \"202412\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "title": "发票明细列表响应",
+            "type": "object",
+            "properties": {
+              "fpmxlb": {
+                "type": "array",
+                "description": "发票明细列表",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dkrxm": {
+                      "type": "string",
+                      "description": "代开人姓名"
+                    },
+                    "zzlx": {
+                      "type": "string",
+                      "description": "证件类型"
+                    },
+                    "zzhm": {
+                      "type": "string",
+                      "description": "证件号码"
+                    },
+                    "fphm": {
+                      "type": "string",
+                      "description": "发票号码"
+                    },
+                    "fpdm": {
+                      "type": "string",
+                      "description": "发票代码"
+                    },
+                    "kprq": {
+                      "type": "string",
+                      "description": "开票日期"
+                    },
+                    "hwlwfwmc": {
+                      "type": "string",
+                      "description": "货物劳务服务名称"
+                    },
+                    "je": {
+                      "type": "string",
+                      "description": "金额"
+                    },
+                    "sl": {
+                      "type": "string",
+                      "description": "税率"
+                    },
+                    "se": {
+                      "type": "string",
+                      "description": "税额"
+                    },
+                    "jshj": {
+                      "type": "string",
+                      "description": "价税合计"
+                    },
+                    "sdxm": {
+                      "type": "string",
+                      "description": "所得项目"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "dkrxm",
+                    "zzlx",
+                    "zzhm",
+                    "fphm",
+                    "fpdm",
+                    "kprq",
+                    "hwlwfwmc",
+                    "je",
+                    "sl",
+                    "se",
+                    "jshj",
+                    "sdxm"
+                  ]
+                }
+              },
+              "fpwj": {
+                "type": "string",
+                "description": "发票文件, base64"
+              }
+            },
+            "x-apifox-orders": [
+              "fpmxlb",
+              "fpwj"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"fpmxlb\": [\n            {\n                \"dkrxm\": \"张三\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101199001011234\",\n                \"fphm\": \"12345678\",\n                \"fpdm\": \"110001900111\",\n                \"kprq\": \"2024-03-15\",\n                \"hwlwfwmc\": \"咨询服务费\",\n                \"je\": \"10000.00\",\n                \"sl\": \"0.06\",\n                \"se\": \"600.00\",\n                \"jshj\": \"10600.00\",\n                \"sdxm\": \"劳务报酬所得\"\n            },\n            {\n                \"dkrxm\": \"李四\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101198501015678\",\n                \"fphm\": \"12345679\",\n                \"fpdm\": \"110001900111\",\n                \"kprq\": \"2024-03-20\",\n                \"hwlwfwmc\": \"技术服务费\",\n                \"je\": \"15000.00\",\n                \"sl\": \"0.06\",\n                \"se\": \"900.00\",\n                \"jshj\": \"15900.00\",\n                \"sdxm\": \"劳务报酬所得\"\n            }\n        ],\n        \"fpwj\": \"/invoices/2024/03/fp_12345678.pdf\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 59973166,
+  "ordering": 46,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-25T09:02:47.000Z",
+  "updatedAt": "2026-04-08T03:25:24.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

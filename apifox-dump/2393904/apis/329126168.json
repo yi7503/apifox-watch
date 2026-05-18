@@ -1,0 +1,283 @@
+{
+  "id": 329126168,
+  "name": "装箱单PDF",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "获取装箱单PDF",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/customs/imex/dzh/getHQZXD_PDF",
+  "tags": [
+    "发票认证"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "jsonData": {
+          "type": "object",
+          "properties": {
+            "body": {
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "object",
+                  "properties": {
+                    "nsrsbh": {
+                      "type": "string",
+                      "title": "纳税人识别号"
+                    },
+                    "cusCiqNo": {
+                      "type": "string",
+                      "title": "统一编号"
+                    }
+                  },
+                  "required": [
+                    "cusCiqNo",
+                    "nsrsbh"
+                  ],
+                  "x-apifox-orders": [
+                    "nsrsbh",
+                    "cusCiqNo"
+                  ]
+                }
+              },
+              "required": [
+                "input"
+              ],
+              "x-apifox-orders": [
+                "input"
+              ]
+            }
+          },
+          "x-apifox-orders": [
+            "body"
+          ],
+          "required": [
+            "body"
+          ]
+        }
+      },
+      "required": [
+        "jsonData"
+      ],
+      "xml": {
+        "name": "business"
+      },
+      "x-apifox-orders": [
+        "jsonData"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n  \"jsonData\": \"\r\n    <?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n    <business comment=\"获取装箱单PDF\" id=\"HQZXD_PDF\">\r\n    <body yylxdm=\"1\">\r\n      <input>\r\n        <nsrsbh>9133060078770*****</nsrsbh>\r\n        <entryId>E2025000141*****</entryId>\r\n      </input>\r\n    </body>\r\n    </business>\r\n\"}",
+        "mediaType": "application/xml",
+        "description": ""
+      },
+      {
+        "name": "示例 1",
+        "value": "{\r\n  \"jsonData\": \"\r\n    <?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n    <business comment=\"获取装箱单PDF\" id=\"HQZXD_PDF\">\r\n    <body yylxdm=\"1\">\r\n      <input>\r\n        <nsrsbh>9133060078770*****</nsrsbh>\r\n        <entryId>E2025000141*****</entryId>\r\n      </input>\r\n    </body>\r\n    </business>\r\n\"}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "xVRhLPIwVz",
+        "name": "access_token",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "DBEDyP1YJJ",
+        "name": "req_date",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "HhfBUTNfL0",
+        "name": "req_sign",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      },
+      {
+        "id": "yOdb3ozuYy",
+        "name": "Content-Type",
+        "required": false,
+        "description": "",
+        "type": "string",
+        "schema": {
+          "type": "string"
+        },
+        "enable": true,
+        "sampleValue": "application/json"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 733195793,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "returncode": {
+                "type": "string",
+                "title": "返回code"
+              },
+              "returnmsg": {
+                "type": "string",
+                "title": "返回信息"
+              },
+              "data": {
+                "type": "string",
+                "title": "pdf二进制 base64"
+              }
+            },
+            "x-apifox-orders": [
+              "returncode",
+              "returnmsg",
+              "data"
+            ],
+            "description": "返回报文是已XML字符串形式返回，具体样式参考示例"
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "application/json",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 733195793,
+      "data": "{\n    \"reqId\": \"b79a96e3c51640c9b12ce46cd0fa8f03\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": \"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<business comment=\"退税报关单报税联打印\" id=\"TSBGD_PRINT\">\n  <body yylxdm=\"1\">\n<head>\n<cardNo>口岸卡编号</cardNo>\n<corpName>企业名称</corpName>\n<zzjgDm>企业组织机构代码证</zzjgDm>\n<certNo>证书编号</certNo>\n</head>\n\n    <output>\n      <returncode>返回code</returncode>\n      <returnmsg>返回信息</returnmsg>\n      <data>pdf二进制 base64</data>\n    </output>\n  </body>\n</business>\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650513378
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 62894296,
+  "ordering": 36,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2025-07-30T08:20:00.000Z",
+  "updatedAt": "2025-12-11T10:46:37.000Z",
+  "creatorId": 2118003,
+  "editorId": 2118003,
+  "creatorUserId": 2118003,
+  "editorUserId": 2118003,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

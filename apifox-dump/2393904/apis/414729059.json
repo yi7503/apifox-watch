@@ -1,0 +1,226 @@
+{
+  "id": 414729059,
+  "name": "风控报告申请",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "Y6-cSeAvK4sLbtyH6vqFh",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/risk/rpt/apply",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrmc": {
+          "type": "string",
+          "title": "企业名称"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "企业税号"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "所属区域码",
+          "description": "参考申请地区码"
+        },
+        "rptType": {
+          "type": "string",
+          "title": "报告格式",
+          "description": "1 pdf链接 2 json"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "登录账号id"
+        },
+        "sqInfo": {
+          "type": "string",
+          "title": "授权书pdf文件的base64字符串"
+        }
+      },
+      "required": [
+        "nsrmc",
+        "nsrsbh",
+        "areaCode",
+        "rptType",
+        "accountId",
+        "aggOrgId",
+        "sqInfo"
+      ],
+      "x-apifox-orders": [
+        "nsrmc",
+        "nsrsbh",
+        "areaCode",
+        "rptType",
+        "aggOrgId",
+        "accountId",
+        "sqInfo"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"nsrmc\": \"企享云（上海）信息技术有限公司\",\r\n    \"nsrsbh\": \"91310118MAD57LQY4Y\",\r\n    \"areaCode\": \"3100\",\r\n    \"rptType\":\"1\"\r\n}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 133709439,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "examples": [
+              "SUCCESS"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "riskRptId": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "报告id",
+                "description": "报告id，用于后面该id调用报告结果查询接口获取报告结果"
+              }
+            },
+            "x-apifox-orders": [
+              "riskRptId"
+            ],
+            "title": "业务数据",
+            "required": [
+              "riskRptId"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "reqId",
+          "success",
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 133709439,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"riskRptId\": \"5255567414997147791\"\r\n    },\r\n    \"timestamp\": \"2026-02-03 16:08:24\",\r\n    \"reqId\": \"T2e01022b737d42008775b0184fb63281\"\r\n}",
+      "id": "019c22bd-a30b-74bb-ac4d-3154303e8426"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 77906980,
+  "ordering": 10,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-02-03T08:58:46.000Z",
+  "updatedAt": "2026-04-21T12:07:20.000Z",
+  "creatorId": 887778,
+  "editorId": 887778,
+  "creatorUserId": 887778,
+  "editorUserId": 887778,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

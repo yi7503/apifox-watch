@@ -1,0 +1,17 @@
+{
+  "id": 4537369,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "# 电票平台查验简介\n\n本接口的查验结果与**电子发票服务平台**-**发票业务**-**发票查验**模块查验的结果保持一致。\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/452905/image-preview)\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/452906/image-preview)\n\n\n# 查验返回版式文件\n\n## 1、产品介绍\n\n\n```\n发票查验返回版式文件：通过查验后，返回查验结果并且获取版式文件（PDF，OFD，XML）\n```\n\n\n\n## 2、产品使用\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/448726/image-preview)\n\n## 3、流程指引\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/450313/image-preview)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "folderId": 40381104,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-06-15T09:04:58.000Z",
+  "updatedAt": "2025-01-09T09:44:17.000Z",
+  "creatorId": 1793923,
+  "editorId": 1793923,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

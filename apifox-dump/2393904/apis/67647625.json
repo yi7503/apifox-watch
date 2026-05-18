@@ -1,0 +1,183 @@
+{
+  "id": 67647625,
+  "name": "查询往期PDF数据",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于查询下载往期pdf结果。 该功能只支持查询2018年之后的数据。 \n\n下载PDF任务执行完后，可以通过【查询往期pdf数据】接口进行查询，节点pdfUrl获取文件地址。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| INTERFACE_ERROR | 接口异常,请联系管理员!|\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/queryWqPdfResult",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "x-apifox-overrides": {},
+      "type": "object",
+      "x-apifox-refs": {
+        "01JE5V395MXQKAECRFMZZWQ296": {
+          "$ref": "#/definitions/37314404",
+          "x-apifox-overrides": {
+            "aggOrgId": {
+              "type": "string",
+              "title": "企业Id"
+            }
+          },
+          "required": [
+            "aggOrgId"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "01JE5V395MXQKAECRFMZZWQ296"
+      ],
+      "properties": {}
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557441,\r\n    \"skssqq\": \"2023-02-01\",\r\n    \"skssqz\": \"2023-02-28\",\r\n    \"sbrqq\": \"\",\r\n    \"sbrqz\": \"\",\r\n    \"projectType\":0,\r\n    \"yzpzzlDms\": [\r\n        \"BDA0610606\"\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Hy8XzAyHjJ",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "9hn4MgAv3o",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "AwTawj4vYF",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "MHh4nAQEVr",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 171894175,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW3DQZ9YTBX05KF8PQA6BYB7": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "$ref": "#/definitions/37314745"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW3DQZ9YTBX05KF8PQA6BYB7"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 171894175,
+      "data": "{\"reqId\":\"7f4795932506460e8065381ef4dd0be2\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 17682317
+    },
+    {
+      "name": "成功示例",
+      "responseId": 171894175,
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": {\n        \"taskState\": \"0\",\n        \"detail\": [\n            {\n                \"fromDate\": \"2021-07-01\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"reportId\": 3817598240,\n                \"taxProjectName\": \"增值税及附加税(适用于一般纳税人)\",\n                \"endDate\": \"2021-08-16\",\n                \"toDate\": \"2021-07-31\",\n                \"pdfFileUrl\": \"https://qxy-oss...\",\n                \"projectType\": 0,\n                \"cycleId\": \"4\",\n                \"voucherDate\": \"2021-08-13\",\n                \"taxProjectCode\": \"10101\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": \"\"\n}",
+      "id": 372595173
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13531082,
+  "ordering": 142,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-03T08:45:01.000Z",
+  "updatedAt": "2024-12-03T08:45:01.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [
+    "BLANK.171894175"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

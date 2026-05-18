@@ -1,0 +1,248 @@
+{
+  "id": 433492152,
+  "name": "扫码登录-获取二维码状态",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "dUqPdGe9g1Q9ka-ABcTxR",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "工商年报-扫码登录-获取二维码状态\n注:福建地区需要进行二次验证，扫码完成需要进行短信验证，需要传入phone（联络员手机号）、smsCode（短信验证码）字段。\n第一次扫码完成后会发送短信验证码，第二次扫码需要携带发送的短信验证码进行登录。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/gsnb/login/getQrcodeStatus",
+  "tags": [],
+  "status": -2,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "properties": {
+        "loginType": {
+          "type": "string",
+          "title": "登录方式"
+        },
+        "ewmId": {
+          "type": "string",
+          "title": "二维码Id"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "cityCode": {
+          "type": "string",
+          "description": "四位数字字符串",
+          "title": "城市编码"
+        },
+        "smsCode": {
+          "type": "string",
+          "title": "短信验证码",
+          "description": "福建地区必填，第一次调用返回短信验证码。"
+        },
+        "phone": {
+          "type": "string",
+          "title": "联系电话",
+          "description": "福建地区必填"
+        }
+      },
+      "if": {
+        "properties": {
+          "bsywsx": {
+            "const": "01"
+          }
+        },
+        "required": [
+          "bsywsx"
+        ],
+        "x-apifox-orders": [
+          "bsywsx"
+        ]
+      },
+      "then": {
+        "required": [
+          "xkzbh",
+          "ywzl1",
+          "xkzyxqq",
+          "xkzyxqz"
+        ]
+      },
+      "else": {
+        "if": {
+          "properties": {
+            "bsywsx": {
+              "const": "02"
+            }
+          },
+          "required": [
+            "bsywsx"
+          ],
+          "x-apifox-orders": [
+            "bsywsx"
+          ]
+        },
+        "then": {
+          "required": [
+            "pthyycxmc",
+            "yykssj",
+            "ywlxdmjh"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "loginType",
+        "cityCode",
+        "ewmId",
+        "smsCode",
+        "phone"
+      ],
+      "x-apifox-refs": {},
+      "required": [
+        "loginType",
+        "aggOrgId",
+        "ewmId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 790300683,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "x-apifox-orders": [
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS"
+        ],
+        "x-apifox-refs": {
+          "01KMJ3JNXB0ST3M3FN6MDTY5HS": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "0",
+                      "1",
+                      "2",
+                      "3"
+                    ],
+                    "x-apifox-enum": [
+                      {
+                        "value": "0",
+                        "name": "未扫码",
+                        "description": ""
+                      },
+                      {
+                        "value": "1",
+                        "name": "扫码成功",
+                        "description": ""
+                      },
+                      {
+                        "value": "2",
+                        "name": "二维码失效",
+                        "description": ""
+                      },
+                      {
+                        "value": "3",
+                        "name": "二次认证（短信验证码）",
+                        "description": ""
+                      }
+                    ]
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "status"
+                ],
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 81308383,
+  "ordering": 92,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2026-03-25T09:06:45.000Z",
+  "updatedAt": "2026-05-11T02:43:17.000Z",
+  "creatorId": 3099717,
+  "editorId": 3250192,
+  "creatorUserId": 3099717,
+  "editorUserId": 3250192,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

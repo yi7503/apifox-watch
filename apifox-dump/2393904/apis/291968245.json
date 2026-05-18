@@ -1,0 +1,325 @@
+{
+  "id": 291968245,
+  "name": "获取其他单位股权激励信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "Xmm_0avhvv6h8Z8kZN7Tu",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/getEquityIncentiveInfo",
+  "tags": [],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "skssq": {
+          "type": "string",
+          "title": "所属期",
+          "description": "格式YYYYMM年月"
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "title": "姓名",
+                "description": "纳税人姓名"
+              },
+              "zzlx": {
+                "type": "string",
+                "title": "证件类型",
+                "description": "证件类型字典"
+              },
+              "zzhm": {
+                "type": "string",
+                "title": "证件号码"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm"
+            ],
+            "required": [
+              "xm",
+              "zzhm",
+              "zzlx"
+            ]
+          }
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "rylb"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "rylb"
+      ]
+    },
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"accountId\": \"4552900726228096\",\r\n\t\"skssq\": \"202504\",\r\n\t\"rylb\": [\r\n\t\t{\r\n\t\t\t\"xm\": \"xxXXX\",\r\n\t\t\t\"zzlx\": \"证件类型\",\r\n\t\t\t\"zzhm\": \"XXXXXXXXXXXX\"\r\n\t\t}\r\n\t]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 668751736,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "xm": {
+                  "type": "string",
+                  "title": "姓名"
+                },
+                "zzlx": {
+                  "type": "string",
+                  "title": "证件类型"
+                },
+                "zzhm": {
+                  "type": "string",
+                  "title": "证件号码"
+                },
+                "qtdwljsre": {
+                  "type": "string",
+                  "title": "其他单位累计收入"
+                },
+                "qtdwljkc": {
+                  "type": "string",
+                  "title": "其他单位累计扣除"
+                },
+                "qtdwljjmse": {
+                  "type": "string",
+                  "title": "其他单位累计减免税额"
+                },
+                "qtdwljyjse": {
+                  "type": "string",
+                  "title": "其他单位累计已缴税额"
+                }
+              },
+              "x-apifox-orders": [
+                "xm",
+                "zzlx",
+                "zzhm",
+                "qtdwljsre",
+                "qtdwljkc",
+                "qtdwljjmse",
+                "qtdwljyjse"
+              ],
+              "required": [
+                "xm",
+                "zzlx",
+                "zzhm",
+                "qtdwljkc",
+                "qtdwljsre",
+                "qtdwljyjse",
+                "qtdwljjmse"
+              ]
+            }
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 668751736,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae1981bb6d4a4a8300ac35eacf85fc\",\n    \"success\": true,\n    \"data\": [\n        {\n            \"xm\": \"马小军\",\n            \"zzlx\": \"证件类型\",\n            \"zzhm\": \"4420001990*******0922\",\n            \"qtdwljsre\": \"0\",\n            \"qtdwljkc\": \"0\",\n            \"qtdwljjmse\": \"0\",\n            \"qtdwljyjse\": \"0\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 587808274
+    },
+    {
+      "name": "异常示例",
+      "responseId": 668751736,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 587808275
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 92,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {
+    "enable": false
+  },
+  "createdAt": "2025-05-06T02:44:57.000Z",
+  "updatedAt": "2025-05-29T14:45:15.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [
+    "BLANK.668751736"
+  ],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

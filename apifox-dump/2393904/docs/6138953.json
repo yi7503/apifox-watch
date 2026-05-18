@@ -1,0 +1,17 @@
+{
+  "id": 6138953,
+  "name": "2025年2月发布内容 ",
+  "sidebarTitle": "",
+  "content": "## 2025年2月发布内容\n\n发布日期：2025-02-28\n发布版本：V1.0.14\n\n\n## 个税申报（新）\n\n:::highlight orange 💡\n新增支持能力\n1.企业人员列表査询 \n2.人员验证状态更新 \n3.个人养老金查询下载\n4.人员专项扣除信息登记报送服务\n5.申报更正&申报作废\n:::\n\n1.新增接口\n1)企业人员列表査询\n涉及接口：[企业人员列表查询](apifox://link/endpoint/253490934)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500258/image-preview)\n\n\n2)人员验证状态更新 \n涉及接口：[人员验证状态更新](apifox://link/endpoint/256562740)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500260/image-preview)\n\n3)个人养老金查询下载  \n涉及接口：[个人养老金下载接口](apifox://link/endpoint/259839668)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500263/image-preview)\n\n4)人员专项扣除信息登记报送及查询\n涉及接口：[人员专项扣除信息登记报送服务](apifox://link/endpoint/259198429)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500264/image-preview)\n\n5)申报更正&申报作废\n涉及接口：[申报作废](apifox://link/endpoint/256565005)\n[申报更正](apifox://link/endpoint/256972137)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/500265/image-preview)",
+  "folderId": 51136010,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-03-04T12:24:37.000Z",
+  "updatedAt": "2025-12-04T03:12:00.000Z",
+  "creatorId": 493303,
+  "editorId": 493303,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

@@ -1,0 +1,247 @@
+{
+  "id": 176451994,
+  "name": "获取全量发票汇总信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "根据taskId查询全量发票汇总信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/getFpsljeseHj",
+  "tags": [
+    "发票归集"
+  ],
+  "status": 1,
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "企业纳税人识别号，必填"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "taskId",
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-refs": {}
+    },
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91310118MA1JPDDL2G\",\r\n    \"taskId\":1792869769977511938\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "S4CQ6aHueY",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "c2c8mNZDgi",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "491JAzxqeH",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 455555694,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求唯一id"
+          },
+          "code": {
+            "type": "string",
+            "title": "返回code(2000成功，其他失败)"
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "返回提示信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "fpzs": {
+                "type": "string",
+                "title": "发票张数"
+              },
+              "hjje": {
+                "type": "string",
+                "title": "合计金额"
+              },
+              "hjse": {
+                "type": "string",
+                "title": "合计税额"
+              },
+              "status": {
+                "type": "string",
+                "title": "任务状态",
+                "description": "0：等待执行，1：执行中，2：失败，3：成功"
+              },
+              "failCode": {
+                "type": "string",
+                "title": "错误编码",
+                "description": "非必需"
+              },
+              "failMsg": {
+                "type": "string",
+                "title": "错误信息",
+                "description": "非必需"
+              }
+            },
+            "x-apifox-orders": [
+              "status",
+              "fpzs",
+              "hjje",
+              "hjse",
+              "failCode",
+              "failMsg"
+            ],
+            "required": [
+              "fpzs",
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 455555694,
+      "data": "{\n    \"reqId\": \"f650ac40f6914f328aa587116957899e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"status\": \"3\",\n        \"fpzs\": \"151\",\n        \"hjje\": \"133345.25\",\n        \"hjse\": \"1556.78\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 409996659
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 62797071,
+  "ordering": 137,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": null,
+  "mockScript": {},
+  "createdAt": "2024-12-03T03:36:23.000Z",
+  "updatedAt": "2025-07-29T08:52:18.000Z",
+  "creatorId": 2118003,
+  "editorId": 2706439,
+  "creatorUserId": 2118003,
+  "editorUserId": 2706439,
+  "responseChildren": [
+    "BLANK.455555694"
+  ],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}
