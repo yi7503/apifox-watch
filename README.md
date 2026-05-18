@@ -1,34 +1,139 @@
-# apifox-watch
+# apifox-watch — 七翔云开放平台 API 文档镜像
 
-定期爬取 Apifox 在线文档站，把 dump + 生成的 OpenAPI 提交到 git，
-通过 `git log` / `git diff` 跟踪接口变更。
+本仓库定期把 [Apifox 文档站 `openapi.qixiangyun.com`](https://openapi.qixiangyun.com)
+（projectId `2393904`，branchId `2914965`）爬下来存到 git，
+供 AI 在写七翔云对接代码时**离线、可 grep、可版本对比**地查阅接口定义。
 
-## 文件
+> AI 在实现某个接口对接前，**先读这里的接口定义**，再写代码。
+> 不要凭印象写字段名 —— Apifox 文档是单一事实来源。
 
-- `apifox_scrape.py` —— 主爬虫，输出 `apifox-dump/<projectId>/`
-- `apifox_to_openapi.py` —— dump → `openapi.yaml`
-- `apifox_split_openapi.py` —— `openapi.yaml` → `openapi-split/*.yaml`
-- `scrape.sh` —— 一键跑完三步，有变化则推到 `scrape/<date>` 分支并开 PR（无变化则跳过）
-- `apifox-dump/<projectId>/` —— 爬下来的产物
+---
 
-## 配置
+## 给 AI：如何用这个仓库写接口
 
-环境变量（默认值在 `scrape.sh` 里）：
+### 1. 先看模块总览
 
-- `APIFOX_DOMAIN` —— 默认 `openapi.qixiangyun.com`
-- `APIFOX_PROJECT_ID` —— 默认 `2393904`
+接口按 **13 个业务模块**组织。从 `apifox-dump/2393904/openapi-split/INDEX.md`
+开始挑模块：
 
-## 手动跑一次
+| 模块 | 接口数 | OpenAPI 文件 |
+|---|---:|---|
+| 申报业务 | 232 | `openapi-split/申报业务.yaml` |
+| 发票业务 | 223 | `openapi-split/发票业务.yaml` |
+| 数据业务 | 58 | `openapi-split/数据业务.yaml` |
+| 登录业务（旧版） | 53 | `openapi-split/登录业务_旧版.yaml` |
+| 进出口退税业务 | 25 | `openapi-split/进出口退税业务.yaml` |
+| 登录业务（新） | 16 | `openapi-split/登录业务_新.yaml` |
+| 办税小号业务 | 11 | `openapi-split/办税小号业务.yaml` |
+| 产品订购 | 5 | `openapi-split/产品订购.yaml` |
+| 法规库 | 5 | `openapi-split/法规库.yaml` |
+| 平台基础服务 | 3 | `openapi-split/平台基础服务.yaml` |
+| 平台查询 | 3 | `openapi-split/平台查询.yaml` |
+| 风控报告 | 2 | `openapi-split/风控报告.yaml` |
+| 平台接口鉴权 | 1 | `openapi-split/平台接口鉴权.yaml` |
+
+每个 split yaml 是合法 OpenAPI 3.0，可直接喂给代码生成器或直接读。
+最准的字段定义在这些 yaml 里。
+
+### 2. 按 method/path 定位单个接口
+
+整个项目 637 个接口的索引在 `apifox-dump/2393904/index.md`，按 method/path/name/folder
+列出来，**最适合 grep**：
+
+```bash
+# 找一个接口（例如查"发起企业基本信息"）
+grep -i "企业基本信息" apifox-dump/2393904/index.md
+
+# 按路径找
+grep "/v2/public/account/create" apifox-dump/2393904/index.md
+# -> | POST | `/v2/public/account/create` | 账号创建 | ... | apis/398469975.json |
+```
+
+### 3. 读原始接口定义
+
+`apifox-dump/2393904/apis/<apiId>.json` 是 Apifox 单接口的**完整原始描述**，
+比 OpenAPI 信息更全（包含 `description`、`codeSamples`、`responseExamples` 等）。
+写代码时建议同时看：
+
+- `apis/<id>.json` 的 `description` —— 业务语义、踩坑点
+- `apis/<id>.json` 的 `requestBody.jsonSchema` —— 请求字段（含中文 `title`、`type`、`required`）
+- `apis/<id>.json` 的 `responses[].jsonSchema` —— 响应字段
+- `apis/<id>.json` 的 `parameters.header` —— 必填请求头
+
+单文件示意结构：
+
+```jsonc
+{
+  "id": 398469975,
+  "name": "账号创建",
+  "method": "post",
+  "path": "/v2/public/account/create",
+  "description": "## 接口描述\n该接口用于税局已注册的登录账号信息在平台侧进行创建维护...",
+  "parameters": { "header": [...], "query": [...], "path": [...], "cookie": [] },
+  "requestBody": { "type": "application/json", "jsonSchema": {...} },
+  "responses": [ { "code": 200, "jsonSchema": {...} } ],
+  "responseExamples": [...],
+  "codeSamples": [...]
+}
+```
+
+### 4. 文档（非接口）
+
+`apifox-dump/2393904/docs/<docId>.json` 是 Apifox 文档节点：对接指引、
+公共错误码、发布日志、加密说明等。`description` / `content` 字段是 Markdown。
+做对接前**强烈建议**先看：
+
+- `开发必读 / 快速开始` 类目下的所有 doc
+- 「平台公共 code 码」「加密说明」「调用模式」
+
+入口同样是 `index.md` 末尾的 **Docs** 表。
+
+### 5. 配合 qxy-* skills 使用
+
+仓库里只是**接口定义**。要真正发请求，签名 / OAuth / RSA 加密这些公共逻辑
+建议复用：
+
+- `qxy-common` skill —— OAuth 鉴权、`req_sign` 签名、`access_token` 缓存
+- `qxy-invoice` skill —— 发票业务（223 接口）已封装
+- `qxy-declaration` skill —— 申报业务
+
+如果某个接口业务 skill 还没覆盖，按上面 1-3 步从 dump 里读定义后自己拼请求，
+鉴权和签名走 `qxy-common`。
+
+---
+
+## Dump 目录结构
+
+```
+apifox-dump/2393904/
+├── meta.json                  Apifox 项目元信息 (projectId/branchId)
+├── tree.json                  Apifox 原始目录树 (含文件夹层级)
+├── index.md                   全部 637 个 API + 294 个 doc 的可读索引
+├── failures.json              本次爬取失败的节点 (Apifox 端 403 等)
+├── openapi.yaml               全部接口的合并 OpenAPI 3.0 (8.3 MB)
+├── openapi-split/
+│   ├── INDEX.md               按业务模块拆分的索引
+│   └── <模块>.yaml × 13       每个模块一份独立 OpenAPI
+├── apis/<apiId>.json × 637    单个接口完整定义 (Apifox 原始 schema)
+└── docs/<docId>.json × 294    单个文档节点 (Markdown content)
+```
+
+---
+
+## 仓库运维（人类）
+
+- 爬虫脚本：`apifox_scrape.py` → `apifox_to_openapi.py` → `apifox_split_openapi.py`
+- 一键脚本：`scrape.sh` —— 三步串联，有变化推到 `scrape/<YYYY-MM-DD>` 分支并自动开 PR
+- 定时：crontab 每月 1 号 03:17（`17 3 1 * *`）
+- 日志：`scrape.log`（gitignored）
+- 配置（环境变量）：`APIFOX_DOMAIN`（默认 `openapi.qixiangyun.com`）、`APIFOX_PROJECT_ID`（默认 `2393904`）
+
+手动跑一次：
 
 ```bash
 ./scrape.sh
-gh pr list             # 看刚开的 PR
+gh pr list      # 查看自动开的 PR
 ```
 
-每月跑一次会在 `scrape/<YYYY-MM-DD>` 分支上开 PR 到 main，
-diff 检查后再 merge。
-
-## 定时任务
-
-已在 crontab 注册，每月 1 号 03:17 跑一次（见 `crontab -l`）。
-日志写到 `scrape.log`（已 gitignore）。
+每月的 PR 在 `git diff` 里能直接看到 Apifox 上游接口的新增 / 修改 / 删除，
+review 后 merge 即可。
