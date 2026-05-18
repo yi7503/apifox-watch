@@ -191,6 +191,9 @@ def main():
         f.write("\n".join(lines))
 
     if failures:
+        # Sort so re-runs produce a stable order (ThreadPoolExecutor completes
+        # in arbitrary order, which otherwise causes meaningless diffs).
+        failures.sort(key=lambda f: (f[0], f[1]))
         print(f"[!] {len(failures)} failures:")
         for kind, _id, name, err in failures[:20]:
             print(f"    {kind} {_id} ({name}): {err}")
