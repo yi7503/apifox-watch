@@ -1,0 +1,17 @@
+{
+  "id": 3176256,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 产品说明\n\n    ISV通过企享云提供的办税人员管理API，可以实现用户无需跳开ISV的产品，不自行操作电子税局的情况下实现增加或解除企业办税人员（办税员、开票员）的授权关联关系。\n\n    产品的核心操作流程如下：\n    1、企业法人或财务负责人添加企业办税人员（办税员、开票员）；\n    2、自然人确认企业授权，双方建立办税授权关联关系；\n    3、双方合作结束后，自然人删除已授权企业，双方解除办税授权关联关系。\n    4、目前支持两种方式：用户上传cookie和接口推送账密两种模式。\n    \n**办税人员管理是独立于申报和发票业务的产品，该产品中的接口无法使用于其他产品。**\n    \n## 业务流程\n\n![bsrygl.png](https://api.apifox.cn/api/v1/projects/2393904/resources/405767/image-preview)",
+  "folderId": 23686798,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-11-01T02:45:04.000Z",
+  "updatedAt": "2024-11-07T08:32:54.000Z",
+  "creatorId": 493984,
+  "editorId": 1748222,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

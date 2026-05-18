@@ -1,0 +1,17 @@
+{
+  "id": 7179276,
+  "name": "2025年7月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年7月发布内容\n\n发布日期：2025-07-31\n发布版本：V1.2025.07\n\n## 一. 对外投资：\n- 描述：新增「历史标记」字段，可区分返回数据是否为现有数据\n- 接口字段：历史标记-historyFlag\n- 接口文档：[对外投资](apifox://link/endpoint/243110626)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553052/image-preview)\n    \n\n## 二. 列入严重违法失信企业名单：\n- 描述：新增「列入时间、列入原因」字段，可根据列入/移出信息判断企业当前状态\n- 接口字段：列入时间-illegalTime、列入原因-illegalReason\n- 接口文档：[列入严重违法失信企业名单](apifox://link/endpoint/243154125)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/553055/image-preview)",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-08-06T02:07:49.000Z",
+  "updatedAt": "2025-08-06T02:15:01.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

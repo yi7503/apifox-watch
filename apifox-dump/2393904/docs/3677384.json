@@ -1,0 +1,17 @@
+{
+  "id": 3677384,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "\n## 应用说明\n\n**登录业务（旧版），于2026年1月1日之后不在进行推广对接，新对接的客户，勿用！！！\n新客户请对接登录业务（新）相关接口；老客户可根据自己研发资源时间安排新接口切换。新登录链接：https://openapi.qixiangyun.com/doc-7967874 ；** \n***************************************************\n\n\n登录能力是业务的入口，对外实现两种业务形态：自持模式和托管模式，ISV可以根据自身业务情况进行选择。\n\n自持模式登录：用户侧主动操作登录动作，实现自主登录授权，需要ISV在调用业务之前通过API进行登录操作，平台会在\n会话保持期间发起业务接口调用处理，若会话失效，则需要ISV再次引导用户发起登录授权。\n\n托管模式登录：ISV将登录信息登记到平台，ISV系统进行业务操作的时候，orgId和accountId为必录参数，通过这两个参数可以分别定位到唯一的登录信息和登录税号，平台内部进行自动登录并完成业务的处理。\n\n单账号登录：平台为了兼容历史用户的登录，保留之前的单账号登录模式。\n\n多账号管理：平台支持一个税号多个账号场景的复杂业务，可以同时将一个税号下多个账号推送到平台，在后续业务调用过程中进行自由选择使用哪个账号登录。\n\n办税人员管理：平台提供办税企业自助增加或解除企业办税人员（办税员、开票员）的授权关联关系，方便客户对办税人员管理。这一组API可以帮助开发者实现办税员的管理能力在自己系统的嵌入，让集团型企业或者财税服务机构更加高效管理电子税局账号。\n\n## 税务app登录与业务使用的调用流程指引\n\n**托管模式**\n\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/602116/image-preview\" style=\"width:80%\"></img>\n\n**自持模式**\n\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/541181/image-preview\" style=\"width:80%\"></img>\n\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/541182/image-preview\" style=\"width:50%\"></img>\n\n## 应用场景\n在税务应用场景中，一个办税人员可以被多个税务主体授权，典型的应用场景就是集团型企业的共享中心模式。\n\n![abc](https://api.apifox.com/api/v1/projects/2393904/resources/444702/image-preview)\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/444703/image-preview)\n",
+  "folderId": 21045073,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-01-31T12:00:52.000Z",
+  "updatedAt": "2026-01-05T02:27:47.000Z",
+  "creatorId": 493984,
+  "editorId": 493984,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

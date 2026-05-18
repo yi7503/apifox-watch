@@ -1,0 +1,17 @@
+{
+  "id": 6598732,
+  "name": "2025年4月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年4月发布内容\n\n发布日期：2025-04-30\n发布版本：V1.2025.04\n\n## 一. 新增接口-A类纳税人信息查询\n- 接口描述：可根据企业信息查询该企业被判定为A类纳税人的所属年份\n- 接口文档：[A类纳税人信息查询](apifox://link/endpoint/283005612)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520975/image-preview)\n    \n## 二. 新增接口-企业联系信息\n- 接口描述：可根据企业信息查询该企业注册时填写的地址、电话、官网及高管信息\n- 接口文档：[企业联系信息](apifox://link/endpoint/280471530)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520686/image-preview)\n    \n    \n## 三. 企业联系人信息-新增返参\n- 新增返参：职位-position\n- 接口描述：通过此字段可明确联系人姓名对应的职位\n- 接口文档：[企业联系人信息](apifox://link/endpoint/243102219)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/520688/image-preview)",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-05-06T09:51:45.000Z",
+  "updatedAt": "2025-05-07T07:00:23.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

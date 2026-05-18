@@ -1,0 +1,17 @@
+{
+  "id": 6950901,
+  "name": "2025年6月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年6月发布内容\n\n发布日期：2025-06-26\n发布版本：V1.2025.06\n\n## 一. 支持查询企业高管名下关联企业\n- 接口描述：根据企业名称/税号，查询当前企业高管及其名下任职的其他关联企业。\n- 接口文档：[高管关联企业信息](apifox://link/endpoint/306989970)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540172/image-preview)\n    \n## 二. 裁判文书相关企业接口-新增返参\n- 接口字段：contactCaseNo-案号\n- 接口文档：[裁判文书相关企业](apifox://link/endpoint/302394888)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/540175/image-preview)",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-06-30T03:52:04.000Z",
+  "updatedAt": "2025-06-30T06:30:05.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

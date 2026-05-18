@@ -1,0 +1,17 @@
+{
+  "id": 7348358,
+  "name": "2025年8月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年8月发布内容\n\n发布日期：2025-08-29\n发布版本：V1.2025.08\n\n## 一. 招投标信息：\n - 描述：新增接口\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570175/image-preview)\n\n## 二. 企业年报\n- 描述：新增接口\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570176/image-preview)\n\n## 三. 新增企业信息\n- 描述：areaCode 改为了必填，如果不传系统默认全国\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/570183/image-preview)\n",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-09-04T09:36:37.000Z",
+  "updatedAt": "2025-09-05T02:16:45.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

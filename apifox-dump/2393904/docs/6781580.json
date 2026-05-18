@@ -1,0 +1,17 @@
+{
+  "id": 6781580,
+  "name": "2025年5月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年5月发布内容\n\n发布日期：2025-05-30\n发布版本：V1.2025.05\n\n## 一. 支持查询股东出资信息\n- 接口描述：可查询该企业股东对应的实缴/认缴相关信息\n- 接口文档：[股东出资信息](apifox://link/endpoint/299636785)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529866/image-preview)\n    \n## 二. 支持查询企业分支机构信息\n- 接口描述：可根据企业信息查询该企业的分级机构名称、税号信息\n- 接口文档：[分支机构信息](apifox://link/endpoint/302311059)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529870/image-preview)\n    \n## 三. 支持查询企业执行相关信息\n- 接口描述：可根据企业信息查询司法执行阶段的相关信息\n- 接口文档：[企业执行信息](apifox://link/endpoint/302354703)\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529871/image-preview)\n\n## 四. 支持查询企业被执行对象\n- 接口描述：企业执行人的相关信息，司法执行中的责任主体情况\n- 接口文档：[被执行对象](apifox://link/endpoint/302357949)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529872/image-preview)\n    \n## 五. 支持查询企业立案公告信息\n- 接口描述：企业立案后对应的公告信息\n- 接口文档：[立案公告信息](apifox://link/endpoint/302383369)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529873/image-preview)\n\n## 六. 支持查询裁判文书相关企业\n- 接口描述：发生裁判文书相关的企业信息\n- 接口文档：[裁判文书相关企业](apifox://link/endpoint/302394888)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529875/image-preview)\n    \n## 七. 支持查询企业域名备案信息\n- 接口描述：企业域名备案的相关信息\n- 接口文档：[域名备案](apifox://link/endpoint/302400253)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529876/image-preview)\n    \n## 八. 支持查询企业软件著作权信息\n- 接口描述：获取企业软件著作权的详细信息\n- 接口文档：[软件著作权信息](apifox://link/endpoint/302377016)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/529877/image-preview)",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-05-30T09:52:04.000Z",
+  "updatedAt": "2025-05-30T10:10:45.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

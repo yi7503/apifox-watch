@@ -1,0 +1,17 @@
+{
+  "id": 8660643,
+  "name": "  2026年4月发布内容",
+  "sidebarTitle": "",
+  "content": "2026年4月发布内容\n发布日期：2026-04-29\n发布版本：V1.2026.04\n\n新增工商年报产品，包含以下功能：\n\n1.工商登录，支持多种登录方式\n①账密登录\n②短信验证码登录\n③二维码登录\n\n2.获取登录状态\n\n3.初始化话剧\n\n4.申报公示\n\n5.查询公示状态\n\n6.状态和预览截图查询\n\n完成了企业级，四川、河南、广东、北京、广州、河北、福建、江苏，8个地区的工商公示\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/649582/image-preview)",
+  "folderId": 84487791,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-04-29T09:25:33.000Z",
+  "updatedAt": "2026-04-29T09:25:38.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

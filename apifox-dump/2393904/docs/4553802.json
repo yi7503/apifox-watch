@@ -1,0 +1,17 @@
+{
+  "id": 4553802,
+  "name": "附录",
+  "sidebarTitle": "",
+  "content": "## sflx-身份类型码表\n| 代码 | 名称 | 说明 |\n| --- | --- |--- |\nAUTO | 自动|默认选择税局第一个身份登录\nFDDBR | 法定代表人 |常用\nCWFZR | 财务负责人  |常用\nBSY | 办税员  |常用\nKPY | 开票员  |常用\nBSFWRY | 涉税服务人员\nGLY | 管理员\nCTKSRY | 出口退税人员\nLPR | 领票人\nSBJBR | 社保经办人\nXSRY | 销售人员\nQTRY | 其他人员\nXZBSY | 行政办事员\n\n说明：\n1. 如税局只有一个身份类型不校验是否一致；\n2. 如多个身份类型会校验一致性，不一致失败返回，对应提示税局有哪些身份类型，接口传入的是什么身份；\n3. 如不确定使用哪个身份，可以传\"AUTO\"，自动选择税局第一个身份（税局第一个身份一般都是最大权限）登录，不校验；\n\n\n\n\n\n",
+  "folderId": 21045073,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-06-19T02:52:46.000Z",
+  "updatedAt": "2025-11-15T09:17:31.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

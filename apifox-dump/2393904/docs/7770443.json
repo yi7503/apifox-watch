@@ -1,0 +1,17 @@
+{
+  "id": 7770443,
+  "name": "维护涉税专业服务机构的协议要素信息操作流程",
+  "sidebarTitle": "",
+  "content": "涉税专业服务机构开展涉税专业服务业务应于签订合同（委托协议）后，提供涉税服务前，通过电子税务局或在非征期内通过实体办税服务厅向主管税务机关报送《涉税专业服务协议要素信息采集表》,纳入涉税专业服务实名制管理。业务委托协议发生变更或者终止的，应当自变更或者终止之日起30 日内向主管税务机关报送《涉税专业服务协议要素信息采集表》，申请变更或终止。业务委托协议的原件由涉税专业服务机构和委托人双方留存备查。\n\n    操作步骤：\n\n1.登录新电子税务局后，点击【我要办税】-【涉税专业服务】-【涉税专业服务机构管理】/【税务师事务所管理】；\n\n![W020241031467745895366.png](https://api.apifox.com/api/v1/projects/2393904/resources/599979/image-preview)\n2.点击协议信息卡片的“管理”进行操作；\n\n![W020241031467745906262.png](https://api.apifox.com/api/v1/projects/2393904/resources/599980/image-preview)\n\n3.点击“新增”可以新增协议；\n\n![W020241031467745906816.png](https://api.apifox.com/api/v1/projects/2393904/resources/599981/image-preview)\n\n4.录入相关信息后，点击“确定”；\n\n![W020241031467745903396.png](https://api.apifox.com/api/v1/projects/2393904/resources/599983/image-preview)\n\n5.需新增记录全部录入完成后，点击“提交”。提交成功后，如果服务项目中包含“纳税申报代理”或“其他税务事项代理”的，会给委托方推送确认任务。委托方登陆电子税务局接收确认任务。点击同意后，协议要素信息采集成功；\n \n![W020241031467745908007.png](https://api.apifox.com/api/v1/projects/2393904/resources/599985/image-preview)\n\n6.点击同意后，协议要素信息采集成功；\n\n![W020241031467745914223.png](https://api.apifox.com/api/v1/projects/2393904/resources/599986/image-preview)\n7.点击“编辑”可对已采集协议进行修改;\n\n![W020241031467745918241.png](https://api.apifox.com/api/v1/projects/2393904/resources/599987/image-preview)\n8.修改信息后点击“确定”；\n\n![W020241031467745919860.png](https://api.apifox.com/api/v1/projects/2393904/resources/599988/image-preview)\n9.如需终止协议，可点击“终止”进行操作；\n\n![W020241031467745917298.png](https://api.apifox.com/api/v1/projects/2393904/resources/599990/image-preview)\n10.点击确定后可终止协议。\n\n![W020241031467745915710.png](https://api.apifox.com/api/v1/projects/2393904/resources/599991/image-preview)\n",
+  "folderId": 72633980,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-02T02:15:14.000Z",
+  "updatedAt": "2025-12-02T02:15:48.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

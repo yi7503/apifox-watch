@@ -1,0 +1,17 @@
+{
+  "id": 6138967,
+  "name": "2025年2月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年2月发布内容\n\n发布日期：2025-2-27\n发布版本：V1.2025.2\n\n## 一. 企业数据查询\n- 1、对外投资新增返回信息：企业对外投资信息\n接口文档：[对外投资](api-243110626)\n![image.png](https://api.apifox.cn/api/v1/projects/2393904/resources/500262/image-preview)",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-03-04T12:32:47.000Z",
+  "updatedAt": "2025-03-04T12:35:14.000Z",
+  "creatorId": 1391922,
+  "editorId": 1391922,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}
