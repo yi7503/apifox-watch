@@ -20,7 +20,7 @@ git reset --hard origin/main --quiet
 {
   echo "===== $(date -Is)  scrape start  domain=$DOMAIN  branch=$BRANCH ====="
   python3 apifox_scrape.py "$DOMAIN"
-  python3 apifox_to_openapi.py "$DUMP_DIR" --out "$DUMP_DIR/openapi.yaml" --title "七翔云开放平台"
+  python3 apifox_to_openapi.py "$DUMP_DIR" --out "$DUMP_DIR/openapi.yaml"
   python3 apifox_split_openapi.py "$DUMP_DIR"
   echo "===== $(date -Is)  scrape done ====="
 } >> "$LOG_FILE" 2>&1
