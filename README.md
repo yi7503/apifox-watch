@@ -8,7 +8,7 @@
 - `apifox_scrape.py` —— 主爬虫，输出 `apifox-dump/<projectId>/`
 - `apifox_to_openapi.py` —— dump → `openapi.yaml`
 - `apifox_split_openapi.py` —— `openapi.yaml` → `openapi-split/*.yaml`
-- `scrape.sh` —— 一键跑完三步并 `git commit`（无变化则跳过）
+- `scrape.sh` —— 一键跑完三步，有变化则推到 `scrape/<date>` 分支并开 PR（无变化则跳过）
 - `apifox-dump/<projectId>/` —— 爬下来的产物
 
 ## 配置
@@ -22,8 +22,11 @@
 
 ```bash
 ./scrape.sh
-git log --oneline
+gh pr list             # 看刚开的 PR
 ```
+
+每月跑一次会在 `scrape/<YYYY-MM-DD>` 分支上开 PR 到 main，
+diff 检查后再 merge。
 
 ## 定时任务
 
