@@ -44,9 +44,11 @@ git push --force-with-lease origin "$BRANCH" >> "$LOG_FILE" 2>&1 && \
   echo "$(date -Is)  pushed $BRANCH" >> "$LOG_FILE" || {
     echo "$(date -Is)  push failed" >> "$LOG_FILE"; exit 1; }
 
-# Open PR (or reuse existing open PR on this branch).
-if gh pr view "$BRANCH" --json number >/dev/null 2>&1; then
-  echo "$(date -Is)  PR already open for $BRANCH" >> "$LOG_FILE"
+# Open PR (or reuse existing OPEN PR on this branch).
+# `gh pr view` also matches closed/merged PRs, so check the open list explicitly.
+EXISTING=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number' 2>/dev/null || true)
+if [ -n "$EXISTING" ]; then
+  echo "$(date -Is)  PR #$EXISTING already open for $BRANCH" >> "$LOG_FILE"
 else
   gh pr create --base main --head "$BRANCH" \
     --title "scrape: $STAMP" \
