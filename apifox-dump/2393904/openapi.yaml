@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: 七翔云开放平台
+  title: Apifox project 2393904
   version: latest
   description: Auto-converted from Apifox shared docs (projectId=2393904)
 servers: []

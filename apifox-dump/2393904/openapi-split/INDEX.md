@@ -1,4 +1,4 @@
-# 七翔云开放平台 — Split OpenAPI
+# Apifox project 2393904 — Split OpenAPI
 
 Source: `../openapi.yaml`  (637 paths total)
 

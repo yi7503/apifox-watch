@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: 七翔云开放平台 — 平台接口鉴权
+  title: Apifox project 2393904 — 平台接口鉴权
   version: latest
   description: 'Split from full spec, module: 平台接口鉴权'
 tags:
