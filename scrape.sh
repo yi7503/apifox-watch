@@ -25,6 +25,9 @@ if [ -n "$(git status --porcelain)" ]; then
   git -c user.name="apifox-watch" -c user.email="apifox-watch@localhost" \
       commit -m "scrape: $(date -Is)" >> "$LOG_FILE" 2>&1
   echo "$(date -Is)  committed changes" >> "$LOG_FILE"
+  git push origin main >> "$LOG_FILE" 2>&1 && \
+    echo "$(date -Is)  pushed" >> "$LOG_FILE" || \
+    echo "$(date -Is)  push failed (will retry next run)" >> "$LOG_FILE"
 else
   echo "$(date -Is)  no changes" >> "$LOG_FILE"
 fi

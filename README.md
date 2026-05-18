@@ -27,5 +27,5 @@ git log --oneline
 
 ## 定时任务
 
-已在 crontab 注册，每天 03:17 跑一次（见 `crontab -l`）。
+已在 crontab 注册，每月 1 号 03:17 跑一次（见 `crontab -l`）。
 日志写到 `scrape.log`（已 gitignore）。
