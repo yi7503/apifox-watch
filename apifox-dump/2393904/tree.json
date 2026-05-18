@@ -51,59 +51,14 @@
         }
       },
       {
-        "key": "doc.8506205",
+        "key": "doc.4434866",
         "type": "doc",
-        "name": "平台公共code码",
+        "name": "调用模式",
         "moduleId": 306844,
         "children": [],
         "doc": {
-          "id": 8506205,
-          "name": "平台公共code码",
-          "moduleId": 306844,
-          "folderId": 13476167,
-          "tags": [],
-          "sidebarTitle": ""
-        }
-      },
-      {
-        "key": "doc.2180025",
-        "type": "doc",
-        "name": "SDK集成",
-        "moduleId": 306844,
-        "children": [],
-        "doc": {
-          "id": 2180025,
-          "name": "SDK集成",
-          "moduleId": 306844,
-          "folderId": 13476167,
-          "tags": [],
-          "sidebarTitle": ""
-        }
-      },
-      {
-        "key": "doc.2182015",
-        "type": "doc",
-        "name": "接口调用",
-        "moduleId": 306844,
-        "children": [],
-        "doc": {
-          "id": 2182015,
-          "name": "接口调用",
-          "moduleId": 306844,
-          "folderId": 13476167,
-          "tags": [],
-          "sidebarTitle": ""
-        }
-      },
-      {
-        "key": "doc.3682852",
-        "type": "doc",
-        "name": "业务指引",
-        "moduleId": 306844,
-        "children": [],
-        "doc": {
-          "id": 3682852,
-          "name": "业务指引",
+          "id": 4434866,
+          "name": "调用模式",
           "moduleId": 306844,
           "folderId": 13476167,
           "tags": [],
@@ -126,14 +81,14 @@
         }
       },
       {
-        "key": "doc.4434866",
+        "key": "doc.2182015",
         "type": "doc",
-        "name": "调用模式",
+        "name": "接口调用",
         "moduleId": 306844,
         "children": [],
         "doc": {
-          "id": 4434866,
-          "name": "调用模式",
+          "id": 2182015,
+          "name": "接口调用",
           "moduleId": 306844,
           "folderId": 13476167,
           "tags": [],
@@ -141,18 +96,82 @@
         }
       },
       {
-        "key": "doc.8334504",
+        "key": "doc.8506205",
         "type": "doc",
-        "name": "文件上传",
+        "name": "平台公共code码",
         "moduleId": 306844,
         "children": [],
         "doc": {
-          "id": 8334504,
-          "name": "文件上传",
+          "id": 8506205,
+          "name": "平台公共code码",
           "moduleId": 306844,
           "folderId": 13476167,
           "tags": [],
           "sidebarTitle": ""
+        }
+      },
+      {
+        "key": "doc.3682852",
+        "type": "doc",
+        "name": "业务指引",
+        "moduleId": 306844,
+        "children": [],
+        "doc": {
+          "id": 3682852,
+          "name": "业务指引",
+          "moduleId": 306844,
+          "folderId": 13476167,
+          "tags": [],
+          "sidebarTitle": ""
+        }
+      },
+      {
+        "key": "apiDetailFolder.85825190",
+        "type": "apiDetailFolder",
+        "name": "SDK集成",
+        "moduleId": 306844,
+        "children": [
+          {
+            "key": "doc.2180025",
+            "type": "doc",
+            "name": "SDK集成",
+            "moduleId": 306844,
+            "children": [],
+            "doc": {
+              "id": 2180025,
+              "name": "SDK集成",
+              "moduleId": 306844,
+              "folderId": 85825190,
+              "tags": [],
+              "sidebarTitle": ""
+            }
+          },
+          {
+            "key": "doc.8334504",
+            "type": "doc",
+            "name": "SDK文件上传",
+            "moduleId": 306844,
+            "children": [],
+            "doc": {
+              "id": 8334504,
+              "name": "SDK文件上传",
+              "moduleId": 306844,
+              "folderId": 85825190,
+              "tags": [],
+              "sidebarTitle": ""
+            }
+          }
+        ],
+        "folder": {
+          "id": 85825190,
+          "name": "SDK集成",
+          "moduleId": 306844,
+          "docId": 0,
+          "parentId": 13476167,
+          "projectBranchId": 0,
+          "shareSettings": {},
+          "editorId": 2795319,
+          "type": "http"
         }
       },
       {
@@ -258,7 +277,7 @@
       "parentId": 0,
       "projectBranchId": 0,
       "shareSettings": null,
-      "editorId": 2661157,
+      "editorId": 2795319,
       "type": "http"
     }
   },
@@ -271,12 +290,12 @@
       {
         "key": "doc.2179954",
         "type": "doc",
-        "name": "认证鉴权",
+        "name": "认证鉴权简介",
         "moduleId": 306844,
         "children": [],
         "doc": {
           "id": 2179954,
-          "name": "认证鉴权",
+          "name": "认证鉴权简介",
           "moduleId": 306844,
           "folderId": 13630516,
           "tags": [],
@@ -1612,6 +1631,21 @@
         "doc": {
           "id": 4433600,
           "name": "简介",
+          "moduleId": 306844,
+          "folderId": 13281719,
+          "tags": [],
+          "sidebarTitle": ""
+        }
+      },
+      {
+        "key": "doc.8790153",
+        "type": "doc",
+        "name": "发票-常见问题",
+        "moduleId": 306844,
+        "children": [],
+        "doc": {
+          "id": 8790153,
+          "name": "发票-常见问题",
           "moduleId": 306844,
           "folderId": 13281719,
           "tags": [],
@@ -8915,6 +8949,21 @@
             }
           },
           {
+            "key": "doc.8790154",
+            "type": "doc",
+            "name": "企税申报-常见问题",
+            "moduleId": 306844,
+            "children": [],
+            "doc": {
+              "id": 8790154,
+              "name": "企税申报-常见问题",
+              "moduleId": 306844,
+              "folderId": 13304132,
+              "tags": [],
+              "sidebarTitle": ""
+            }
+          },
+          {
             "key": "apiDetailFolder.72345513",
             "type": "apiDetailFolder",
             "name": "上传报文/excel规则及部分参数业务说明",
@@ -12539,6 +12588,21 @@
             }
           },
           {
+            "key": "doc.8790158",
+            "type": "doc",
+            "name": "个税申报-常见问题",
+            "moduleId": 306844,
+            "children": [],
+            "doc": {
+              "id": 8790158,
+              "name": "个税申报-常见问题",
+              "moduleId": 306844,
+              "folderId": 47732261,
+              "tags": [],
+              "sidebarTitle": ""
+            }
+          },
+          {
             "key": "doc.5750636",
             "type": "doc",
             "name": "个税附录",
@@ -15846,7 +15910,7 @@
           "parentId": 13281753,
           "projectBranchId": 0,
           "shareSettings": {},
-          "editorId": 2795319,
+          "editorId": 1564651,
           "type": "http"
         }
       },
@@ -15865,6 +15929,21 @@
             "doc": {
               "id": 7617289,
               "name": "社保简介",
+              "moduleId": 306844,
+              "folderId": 68385480,
+              "tags": [],
+              "sidebarTitle": ""
+            }
+          },
+          {
+            "key": "doc.8790159",
+            "type": "doc",
+            "name": "社保费申报-常见问题",
+            "moduleId": 306844,
+            "children": [],
+            "doc": {
+              "id": 8790159,
+              "name": "社保费申报-常见问题",
               "moduleId": 306844,
               "folderId": 68385480,
               "tags": [],
@@ -16723,7 +16802,7 @@
           "parentId": 13281753,
           "projectBranchId": 0,
           "shareSettings": {},
-          "editorId": 2795319,
+          "editorId": 1564651,
           "type": "http"
         }
       },
@@ -16742,6 +16821,21 @@
             "doc": {
               "id": 8392815,
               "name": "简介",
+              "moduleId": 306844,
+              "folderId": 81235447,
+              "tags": [],
+              "sidebarTitle": ""
+            }
+          },
+          {
+            "key": "doc.8790160",
+            "type": "doc",
+            "name": "工商年报-常见问题",
+            "moduleId": 306844,
+            "children": [],
+            "doc": {
+              "id": 8790160,
+              "name": "工商年报-常见问题",
               "moduleId": 306844,
               "folderId": 81235447,
               "tags": [],
@@ -17283,6 +17377,21 @@
     "name": "进出口退税业务",
     "moduleId": 306844,
     "children": [
+      {
+        "key": "doc.8790155",
+        "type": "doc",
+        "name": "进出口退税-常见问题",
+        "moduleId": 306844,
+        "children": [],
+        "doc": {
+          "id": 8790155,
+          "name": "进出口退税-常见问题",
+          "moduleId": 306844,
+          "folderId": 63681676,
+          "tags": [],
+          "sidebarTitle": ""
+        }
+      },
       {
         "key": "apiDetailFolder.63867049",
         "type": "apiDetailFolder",
@@ -18229,6 +18338,21 @@
     "name": "数据业务",
     "moduleId": 306844,
     "children": [
+      {
+        "key": "doc.8790156",
+        "type": "doc",
+        "name": "数据业务-常见问题",
+        "moduleId": 306844,
+        "children": [],
+        "doc": {
+          "id": 8790156,
+          "name": "数据业务-常见问题",
+          "moduleId": 306844,
+          "folderId": 28154721,
+          "tags": [],
+          "sidebarTitle": ""
+        }
+      },
       {
         "key": "apiDetailFolder.21360308",
         "type": "apiDetailFolder",
@@ -19998,6 +20122,21 @@
         }
       },
       {
+        "key": "doc.8790157",
+        "type": "doc",
+        "name": "风控报告-常见问题",
+        "moduleId": 306844,
+        "children": [],
+        "doc": {
+          "id": 8790157,
+          "name": "风控报告-常见问题",
+          "moduleId": 306844,
+          "folderId": 77906980,
+          "tags": [],
+          "sidebarTitle": ""
+        }
+      },
+      {
         "key": "doc.8313857",
         "type": "doc",
         "name": "附录-授权书",
@@ -20078,7 +20217,7 @@
       "parentId": 0,
       "projectBranchId": 0,
       "shareSettings": {},
-      "editorId": 2795319,
+      "editorId": 1564651,
       "type": "http"
     }
   },
@@ -21661,21 +21800,6 @@
     "name": "常见问题",
     "moduleId": 306844,
     "children": [
-      {
-        "key": "doc.2857028",
-        "type": "doc",
-        "name": "公共业务",
-        "moduleId": 306844,
-        "children": [],
-        "doc": {
-          "id": 2857028,
-          "name": "公共业务",
-          "moduleId": 306844,
-          "folderId": 20242960,
-          "tags": [],
-          "sidebarTitle": ""
-        }
-      },
       {
         "key": "doc.2857030",
         "type": "doc",

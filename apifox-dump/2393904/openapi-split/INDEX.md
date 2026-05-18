@@ -1,4 +1,4 @@
-# 七翔云开放平台 API — Split OpenAPI
+# 七翔云开放平台 — Split OpenAPI
 
 Source: `../openapi.yaml`  (637 paths total)
 

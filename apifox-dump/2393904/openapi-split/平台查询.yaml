@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: 七翔云开放平台 API — 平台查询
+  title: 七翔云开放平台 — 平台查询
   version: latest
   description: 'Split from full spec, module: 平台查询'
 tags:
