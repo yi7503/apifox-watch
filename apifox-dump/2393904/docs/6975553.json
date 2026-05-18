@@ -1,0 +1,17 @@
+{
+  "id": 6975553,
+  "name": "2025年6月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. \n:::\n\n## 接口变化\n### 一、托管模式登录\n1.  托管模式自传验证码用ck做一键登录税局；\n接口：/v2/public/login/ext/getCookie\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/542174/image-preview)\n2.  托管app支持多账号合并；\nhttps://openapi.qixiangyun.com/api-164576229\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/542175/image-preview)\n \n\n3.  托管校验税局缓存接口文档\nhttps://openapi.qixiangyun.com/api-317343867 \n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/542016/image-preview)\n4.\nhttps://openapi.qixiangyun.com/api-145745008\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/542307/image-preview)\n### 二、办税助手\n4. 跳转电子税务局开票链接\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/542017/image-preview)\n ",
+  "folderId": 51136061,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-07-03T12:54:21.000Z",
+  "updatedAt": "2025-07-04T09:33:23.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

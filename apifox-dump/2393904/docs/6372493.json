@@ -1,0 +1,17 @@
+{
+  "id": 6372493,
+  "name": "2025年3月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2025年3月发布内容\n\n发布日期：2025-3-31\n发布版本：V1.2025.03\n\n## 一. 工商基本信息：返参增加\n- 新增字段：纳税人类型-taxpayerType（小规模/一般纳税人）\n- 接口文档：[工商基本信息](apifox://link/endpoint/243056813)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509000/image-preview)\n    \n## 二. 商标信息：新增接口\n- 接口描述：支持以企业维度获取到对应的商标信息\n- 接口文档：[商标信息](apifox://link/endpoint/271925231)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509005/image-preview)\n\n## 三. 专利信息：新增接口\n- 接口描述：支持以企业维度获取到对应的专利信息\n- 接口文档：[专利信息](apifox://link/endpoint/271935254)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509006/image-preview)\n\n## 四. 专利法律状态信息：新增接口\n- 接口描述：企业维度获取到对应的专利法律状态\n- 接口文档：[专利法律状态信息](apifox://link/endpoint/271952729)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509009/image-preview)\n\n## 五. 专利关系信息：新增接口\n- 接口描述：企业维度获取到对应的专利法律状态\n- 接口文档：[专利关系信息](apifox://link/endpoint/271944743)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509011/image-preview)\n\n## 六. 企业联系人信息查询：接口调整\n- 调整逻辑：\n1、返参结构数据调整\n2、增加返参字段\n- 接口文档：\n    [基本联系信息](apifox://link/endpoint/243102219)\n    [详细联系信息](apifox://link/endpoint/243103507)\n\n    ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/509016/image-preview)",
+  "folderId": 51136491,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-04-01T07:55:05.000Z",
+  "updatedAt": "2025-04-01T08:16:02.000Z",
+  "creatorId": 2706439,
+  "editorId": 2706439,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

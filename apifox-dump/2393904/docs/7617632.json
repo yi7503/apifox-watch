@@ -1,0 +1,17 @@
+{
+  "id": 7617632,
+  "name": "2025年10月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n\n\n## 接口变化\n### 一、托管模式-添加局端办税小号\n\n\n1. 局端添加版税小号，仅支持托管模式，仅支持办税小号；\n使用流程：\n1.首次调用通用账号创建/修改 或托管账号穿件 API：登录方式dlfs 14\n2.税务APP登录发送短信验证码 API\n3.税务APP登录上传短信验证码 API：完成电子税务首次登录\n4.局端添加办税小号申请\n5.局端添加办税小号上传短信\n6.首次调用通用账号创建/修改 或托管账号穿件 API：修改登录方式dlfs 为9\n\nhttps://openapi.qixiangyun.com/api-352366413\n\nhttps://openapi.qixiangyun.com/api-352455424\n\nhttps://openapi.qixiangyun.com/api-352473833\n\nhttps://openapi.qixiangyun.com/api-352476021\n\n2.支持托管企业，在税局修改电子税务局密码\n\n\n![image2025-7-8_20-3-9.png](https://api.apifox.com/api/v1/projects/2393904/resources/588672/image-preview)\n\nhttps://openapi.qixiangyun.com/api-363152132\n\n3.增加小号管理相关内部功能\n",
+  "folderId": 51136061,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-11-05T09:46:56.000Z",
+  "updatedAt": "2025-11-05T09:50:42.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

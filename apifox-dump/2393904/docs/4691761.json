@@ -1,0 +1,17 @@
+{
+  "id": 4691761,
+  "name": "简介",
+  "sidebarTitle": "",
+  "content": "## 什么情况下使用\n在现实的应用场景中，一个人会管理多个企业的业务，一个企业也会有多个角色的人员负责不同事务，因此企享云也支持ISV把企业、角色、用户三者的对应关系做管理。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/451851/image-preview)\n\n## 其他情况\n如果是在小微企业财税服务（如代记账）的场景，通常业务比较单一，不需要应用多账号体系来做管理。",
+  "folderId": 36841714,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2024-07-06T06:31:31.000Z",
+  "updatedAt": "2024-07-06T06:35:22.000Z",
+  "creatorId": 537256,
+  "editorId": 537256,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

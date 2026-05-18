@@ -1,0 +1,17 @@
+{
+  "id": 8775425,
+  "name": "2026年4月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 发票回调接口多次回调优化；\n2. 新登录新增扫码登录模式\n:::\n\n## 一、公共业务\n1.发票回调接口多次回调优化 ；一次异步请求回调一次；\n\n## 二、登录业务\n1.新登录新增扫码登录模式\n**扫码登录与业务使用的调用流程指引**\nPS:先进行账号管理创建，「登录方式」13 扫码登录 和 14：企业业务登录（自传验证码/扫码）支持扫码登录（如果已有账号无需再次创建）。\n1.调用接口--校验税局缓存是否有效（如果不校验，每次都扫码登录）\n1.1缓存有效 /v2/public/login/remote/checkCache\n-直接发起任务\n1.2缓存无效\n-调用获取税局登录二维码接口-/v2/public/login/remote/getQrcode\n-扫二维码登录税局-/v2/public/login/remote/qrcodeLogin\n2.发起业务，如果保活掉线则返回code:4999 msg:登录信息已过期，请重新登录!，此时需重新获取二维码，并进行扫码。\n\n2.开放平台支持查询登录日志信息。\n",
+  "folderId": 51136061,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-05-14T09:18:36.000Z",
+  "updatedAt": "2026-05-14T09:48:03.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

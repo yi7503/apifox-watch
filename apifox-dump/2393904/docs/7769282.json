@@ -1,0 +1,17 @@
+{
+  "id": 7769282,
+  "name": "2025年11月发布内容",
+  "sidebarTitle": "",
+  "content": "### 2025年11月发布内容\n发布日期：2025-11-30\n发布版本：V1.1\n\n\n### 2025年11月社保服务上线，包含以下内容：\n1.新增工资申报：\n- 年度缴费工资查询\n- 年度缴费工资调整\n- 月度缴费工资查询\n- 月度缴费工资调整\n- 缴费工资申报记录查询\n\n说明：要根据地区情况不同选用不同的接口，有些地区先参保和调整人员的缴费基数是用年度缴费工资功能，比如北京；有些地区则是月度缴费工资功能，比如四川。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/600148/image-preview)\n\n\n2.新增职工缴费记录打印，可打印职工缴费记录明细\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/600157/image-preview)\n\n3.新增职工缴费记录打印，可打印职工缴费记录明细\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/600168/image-preview)\n\n4.查询统计：\n- 单位参保信息查询：查询本月变动、全量职工信息\n- 社保费申报明细查询：查询职工社保费申报明细信息\n- 社保费应缴信息查询：查询税务系统生成的单位社保费应缴费信息\n- 职工参保信息查询：查询在本单位的参保登记信\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/600172/image-preview)",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2025-12-01T11:51:56.000Z",
+  "updatedAt": "2026-01-06T09:58:32.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}
