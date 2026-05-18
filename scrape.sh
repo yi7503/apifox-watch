@@ -20,7 +20,10 @@ git reset --hard origin/main --quiet
 {
   echo "===== $(date -Is)  scrape start  domain=$DOMAIN  branch=$BRANCH ====="
   python3 apifox_scrape.py "$DOMAIN"
-  python3 apifox_to_openapi.py "$DUMP_DIR" --out "$DUMP_DIR/openapi.yaml"
+  # Pin the title — must match what's already committed in the dump so scrape
+  # diffs don't show 14 title-only changes every run. Default is
+  # "Apifox project <id>", which is not what's on disk.
+  python3 apifox_to_openapi.py "$DUMP_DIR" --out "$DUMP_DIR/openapi.yaml" --title "七翔云开放平台"
   python3 apifox_split_openapi.py "$DUMP_DIR"
   echo "===== $(date -Is)  scrape done ====="
 } >> "$LOG_FILE" 2>&1
