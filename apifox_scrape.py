@@ -168,6 +168,31 @@ def main():
             if done % 20 == 0 or done == len(futs):
                 print(f"    doc {done}/{len(futs)}")
 
+    # 3b. Mop up failures sequentially. Under concurrency Apifox rate-limits
+    # with sporadic 403s; the very same ids fetch fine one-at-a-time. Retrying
+    # the leftovers serially (spaced out, a few rounds) makes the dump complete
+    # and failures.json deterministic — otherwise a random 30-80 docs go
+    # missing each run. Bail out of a round that makes no progress so a
+    # genuinely-forbidden id can't loop forever.
+    for _round in range(3):
+        if not failures:
+            break
+        print(f"[+] retry round {_round + 1}: {len(failures)} failed items (sequential) ...")
+        retried = []
+        for kind, _id, name, _err in failures:
+            try:
+                _, data = (fetch_api if kind == "api" else fetch_doc)(_id)
+                out_dir = apis_dir if kind == "api" else docs_dir
+                with open(os.path.join(out_dir, f"{_id}.json"), "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+            except Exception as e:
+                retried.append((kind, _id, name, str(e)))
+            time.sleep(1.0)
+        no_progress = len(retried) == len(failures)
+        failures = retried
+        if no_progress:
+            break
+
     # 4. index.md
     lines = [f"# Apifox dump — projectId {project_id}", ""]
     lines.append(f"- domain: `{domain}`")
@@ -194,15 +219,17 @@ def main():
     with open(os.path.join(out_root, "index.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
+    # Sort so re-runs produce a stable order (ThreadPoolExecutor completes in
+    # arbitrary order, which otherwise causes meaningless diffs). Always write
+    # the file — including an empty [] — so a clean run overwrites a stale
+    # failures.json instead of leaving last run's failures on disk.
+    failures.sort(key=lambda f: (f[0], f[1]))
     if failures:
-        # Sort so re-runs produce a stable order (ThreadPoolExecutor completes
-        # in arbitrary order, which otherwise causes meaningless diffs).
-        failures.sort(key=lambda f: (f[0], f[1]))
-        print(f"[!] {len(failures)} failures:")
+        print(f"[!] {len(failures)} failures remain after retry:")
         for kind, _id, name, err in failures[:20]:
             print(f"    {kind} {_id} ({name}): {err}")
-        with open(os.path.join(out_root, "failures.json"), "w", encoding="utf-8") as f:
-            json.dump(failures, f, ensure_ascii=False, indent=2)
+    with open(os.path.join(out_root, "failures.json"), "w", encoding="utf-8") as f:
+        json.dump(failures, f, ensure_ascii=False, indent=2)
 
     print(f"[OK] saved to {out_root}")
 
