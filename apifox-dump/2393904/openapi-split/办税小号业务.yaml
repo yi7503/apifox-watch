@@ -106,6 +106,7 @@ paths:
                     req_id: f180a18300d048b190876e20a03a2ac8
                     success: true
                     data: true
+      x-apifox-status: released
   /v2/public/sjhm/bindAxn:
     post:
       summary: 绑定实名手机号与办税小号
@@ -237,6 +238,7 @@ paths:
                     code: PARAMETER_ERROR
                     success: false
                     message: 传入参数不能为空！
+      x-apifox-status: released
   /v2/public/sjhm/updateNoA:
     post:
       summary: 更换绑定的实名手机号
@@ -376,6 +378,7 @@ paths:
                     code: PARAMETER_ERROR
                     success: false
                     message: 传入的参数-原来的实体手机号phoneNoA不能为空！
+      x-apifox-status: released
   /v2/public/sjhm/unbind:
     post:
       summary: 解除实名手机号与办税小号绑定
@@ -508,6 +511,7 @@ paths:
                     code: PARAMETER_ERROR
                     success: false
                     message: 传入参数不能为空！
+      x-apifox-status: released
   /v2/public/sjhm/queryNote:
     post:
       summary: 查询短信验证码
@@ -666,6 +670,7 @@ paths:
                     code: NO_RESULT
                     success: false
                     message: 未查到结果！
+      x-apifox-status: released
   /v2/public/sjhm/querySecretReportPageList:
     post:
       summary: 办税小号通话清单查询
@@ -919,6 +924,7 @@ paths:
                     success: false
                     code: '600001'
                     message: 参数secret_no不能为空！
+      x-apifox-status: released
   /客户提供的小号短信通知地址:
     post:
       summary: 小号短信通知回调
@@ -1033,6 +1039,7 @@ paths:
                     code: PARAMETER_ERROR
                     success: false
                     message: 传入参数不能为空！
+      x-apifox-status: released
   /v2/public/sjhm/editPushSmsConfig:
     post:
       summary: 配置小号短信通知地址
@@ -1147,6 +1154,7 @@ paths:
                     success: true
                     code: SUCCESS
                     data: true
+      x-apifox-status: released
   /v2/public/sjhm/createBsxhOrder:
     post:
       summary: 申请小号订单
@@ -1251,7 +1259,7 @@ paths:
                         title: 订单创建成功时间
                       id:
                         type: integer
-                        title: 客户系统的订单唯一标识
+                        title: 企享云系统的订单唯一标识
                       uniCode:
                         type: string
                         title: 客户系统的订单唯一标识
@@ -1300,6 +1308,7 @@ paths:
                     success: false
                     code: INTERFACE_ERROR
                     message: uniCode=a123456789的订单已存在
+      x-apifox-status: released
   /v2/public/sjhm/queryBsxhOrder:
     post:
       summary: 查询小号订单详情
@@ -1394,7 +1403,7 @@ paths:
                         title: 订单创建成功时间
                       id:
                         type: integer
-                        title: 客户系统的订单唯一标识
+                        title: 企享云系统的订单唯一标识
                       uniCode:
                         type: string
                         title: 客户系统的订单唯一标识
@@ -1459,6 +1468,7 @@ paths:
                     success: false
                     code: INTERFACE_ERROR
                     message: 参数uniCode不能为空
+      x-apifox-status: released
   /客户提供的订单开通通知地址:
     post:
       summary: 小号订单开通通知回调
@@ -1574,3 +1584,4 @@ paths:
                 required:
                 - code
                 - message
+      x-apifox-status: released

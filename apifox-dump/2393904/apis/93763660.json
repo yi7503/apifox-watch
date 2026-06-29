@@ -15,7 +15,7 @@
   "tags": [
     "发票认证"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

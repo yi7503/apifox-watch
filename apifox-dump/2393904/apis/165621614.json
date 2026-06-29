@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/queryKchztz",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -174,6 +174,31 @@
                     "bqzjkc": {
                       "type": "string",
                       "title": "本期发生库存 增加库存"
+                    },
+                    "qcjgkc": {
+                      "type": "string",
+                      "title": "期初库存-机构库存",
+                      "description": "成品油企业性质为总公司时有此值"
+                    },
+                    "bqjggj": {
+                      "type": "string",
+                      "title": "本期发生库存-机构外购",
+                      "description": "成品油企业性质为总公司时有此值"
+                    },
+                    "bqjgdb": {
+                      "type": "string",
+                      "title": "本期发生库存-机构调拨",
+                      "description": "成品油企业性质为总公司时有此值"
+                    },
+                    "bqjght": {
+                      "type": "string",
+                      "title": "本期发生库存-机构回退",
+                      "description": "成品油企业性质为总公司时有此值"
+                    },
+                    "qmjgkc": {
+                      "type": "string",
+                      "title": "期末库存-机构库存",
+                      "description": "成品油企业性质为总公司时有此值"
                     }
                   },
                   "x-apifox-orders": [
@@ -187,10 +212,12 @@
                     "bqsdkc",
                     "bqjsuokc",
                     "qmdqkc",
-                    "qmsdkc"
-                  ],
-                  "required": [
-                    "bqzjkc"
+                    "qmsdkc",
+                    "qcjgkc",
+                    "bqjggj",
+                    "bqjgdb",
+                    "bqjght",
+                    "qmjgkc"
                   ]
                 }
               }

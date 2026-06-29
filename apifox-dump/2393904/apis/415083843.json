@@ -13,21 +13,13 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/queryYkjfpHgztz",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
       "type": "object",
       "properties": {
-        "action": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "操作类型",
-          "description": "本接口传入：queryJdcxx"
-        },
         "nsrsbh": {
           "type": "string",
           "title": "税号"
@@ -58,10 +50,9 @@
         }
       },
       "x-apifox-orders": [
-        "action",
         "nsrsbh",
-        "data",
-        "01JAA099QH73978DKKD71TW15M"
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
       ],
       "x-apifox-refs": {
         "01JAA099QH73978DKKD71TW15M": {
@@ -175,7 +166,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-04T03:43:11.000Z",
-  "updatedAt": "2026-02-12T03:30:31.000Z",
+  "updatedAt": "2026-05-20T06:01:41.000Z",
   "creatorId": 3099717,
   "editorId": 3099717,
   "creatorUserId": 3099717,

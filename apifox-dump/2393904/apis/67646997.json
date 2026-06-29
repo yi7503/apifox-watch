@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/loadWqPdfTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -53,11 +53,11 @@
         "sbrqq": {
           "type": "string",
           "title": "申报日期起",
-          "description": "格式为yyyy-MM-dd"
+          "description": "格式为yyyy-MM-dd ； 对于往年申报的税种比如25年，申报日期必填，可以传25年1月1日  - 25年12月31日"
         },
         "sbrqz": {
           "type": "string",
-          "description": "格式为yyyy-MM-dd",
+          "description": "格式为yyyy-MM-dd ；； 对于往年申报的税种比如25年，申报日期必填，可以传25年1月1日  - 25年12月31日",
           "title": "申报日期止"
         },
         "projectType": {
@@ -256,11 +256,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-06T05:58:18.000Z",
-  "updatedAt": "2026-03-30T02:24:50.000Z",
+  "updatedAt": "2026-05-21T09:52:04.000Z",
   "creatorId": 1452584,
-  "editorId": 1476015,
+  "editorId": 1391922,
   "creatorUserId": 1452584,
-  "editorUserId": 1476015,
+  "editorUserId": 1391922,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

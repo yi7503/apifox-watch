@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/writeTaxDataWithGzDeclare",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -198,6 +198,25 @@
           "x-apifox-orders": [],
           "title": "定期定额申报",
           "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
+        },
+        "hsqjData": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": "汇算清缴非分支机构",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
+        },
+        "hsqjFjgData": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": "汇算清缴分机构",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
+        },
+        "disableDeclareCache": {
+          "type": "string",
+          "title": "禁用申报缓存",
+          "description": "Y/N 非必传参数，默认为空。Y=不缓存 空/N或者不传这个参数=缓存"
         }
       },
       "required": [
@@ -217,6 +236,7 @@
         "jrwc",
         "yjkgz",
         "isDirectDeclare",
+        "disableDeclareCache",
         "zsxmDm",
         "zspmDm",
         "zlbsxlDm",
@@ -232,10 +252,13 @@
         "xfsData",
         "cbData",
         "cbnbData",
+        "hsqjData",
+        "hsqjFjgData",
         "optionCodeList",
         "fjyssjlx"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -461,11 +484,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-11-29T02:09:50.000Z",
-  "updatedAt": "2026-03-26T06:37:12.000Z",
+  "updatedAt": "2026-06-02T02:51:31.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 1452584,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

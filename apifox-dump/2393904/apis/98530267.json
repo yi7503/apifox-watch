@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于获取企业进销项数电票的版式文件数据， 需要申请下载版式文件任务处理成功之后调用。\n\n\n\n:::highlight purple 💡\n各类型发票信息返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)\n:::",
+  "description": "该接口用于获取企业进销项数电票的版式文件数据， 需要申请下载版式文件任务处理成功之后调用。\n\n\n\n:::highlight purple 💡\n\n【注意事项】该接口主要是用来获取数电版式文件的。接口如带有发票相关明细数据返回，是因为有调用发票归集接口归集成功过，才会同步返回；反之则不会返回发票主票面和明细数据（默认联动返回），详见入参：filterHwxx\n\n各类型发票明细返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)\n:::",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -15,7 +15,7 @@
   "tags": [
     "发票归集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -131,7 +131,7 @@
         "filterHwxx": {
           "type": "string",
           "title": "是否获取发票明细行",
-          "description": "默认false，返回版式同时返回发票明细行(hwxx)",
+          "description": "默认false，返回版式同时返回发票明细行(hwxx) 注意：只有归集成功过的才会返回明细，数据来源自归集",
           "enum": [
             "false-获取发票明细",
             "true-无需发票明细"
@@ -728,11 +728,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-23T01:58:18.000Z",
-  "updatedAt": "2026-02-26T10:02:43.000Z",
+  "updatedAt": "2026-06-01T05:30:08.000Z",
   "creatorId": 2400309,
-  "editorId": 2118003,
+  "editorId": 1564651,
   "creatorUserId": 2400309,
-  "editorUserId": 2118003,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

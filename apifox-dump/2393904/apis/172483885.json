@@ -18,13 +18,13 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "##  接口描述\n\n该接口用于获取登录税局二维码，用户可以通过扫描该二维码进行税局登录。\n二维码有效时长为300s,请在到期前生成并扫码登录",
+  "description": "##  接口描述\n1.电子税务局app二维码登录支持：**全国各个省份**；\n2.电子营业执照扫码登录支持：**上海**；\n该接口用于获取登录税局二维码，用户可以通过扫描该二维码进行税局登录。\n二维码有效时长为300s,请在到期前生成并扫码登录。",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
   "path": "/v2/public/login/scanLogin/getQrcode",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -36,6 +36,11 @@
         },
         "nsrsbh": {
           "type": "string"
+        },
+        "scanType": {
+          "type": "integer",
+          "title": "扫码类型",
+          "description": "0-电子税务局app登录 1-电子营业执照app登录 默认0"
         }
       },
       "required": [
@@ -43,9 +48,11 @@
       ],
       "x-apifox-orders": [
         "areaCode",
-        "nsrsbh"
+        "nsrsbh",
+        "scanType"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -222,14 +229,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-30T01:38:28.000Z",
-  "updatedAt": "2025-08-11T06:23:47.000Z",
+  "updatedAt": "2026-05-20T03:59:12.000Z",
   "creatorId": 1442097,
-  "editorId": 2400309,
+  "editorId": 2795319,
   "creatorUserId": 1442097,
-  "editorUserId": 2400309,
-  "responseChildren": [
-    "BLANK.447738707"
-  ],
+  "editorUserId": 2795319,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

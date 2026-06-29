@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/dkdj/tsqxrytj",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -374,13 +374,15 @@
   },
   "customApiFields": {},
   "oasExtensions": "",
-  "mockScript": {},
+  "mockScript": {
+    "enable": false
+  },
   "createdAt": "2026-03-04T02:43:35.000Z",
-  "updatedAt": "2026-04-29T07:10:28.000Z",
+  "updatedAt": "2026-05-20T07:47:45.000Z",
   "creatorId": 1910680,
-  "editorId": 3222025,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 3222025,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

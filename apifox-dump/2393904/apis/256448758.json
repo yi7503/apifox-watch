@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/declare/batchInvalidSubmission",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -240,13 +240,15 @@
   },
   "customApiFields": {},
   "oasExtensions": "",
-  "mockScript": {},
+  "mockScript": {
+    "enable": false
+  },
   "createdAt": "2025-01-21T06:53:27.000Z",
-  "updatedAt": "2026-01-08T09:23:04.000Z",
+  "updatedAt": "2026-05-20T07:51:16.000Z",
   "creatorId": 1452584,
-  "editorId": 2795319,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 2795319,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

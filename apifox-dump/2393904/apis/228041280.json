@@ -16,7 +16,7 @@
     "发票查验",
     "结果回调"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

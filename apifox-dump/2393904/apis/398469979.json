@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/public/account/queryAccount",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -22,7 +22,8 @@
       "properties": {
         "accountId": {
           "type": "integer",
-          "title": "账户ID"
+          "title": "账户ID",
+          "description": "说明：不传默认查所有账号"
         },
         "aggOrgId": {
           "type": "integer",
@@ -37,6 +38,7 @@
         "accountId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -311,11 +313,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:03:52.000Z",
-  "updatedAt": "2026-03-06T02:02:49.000Z",
+  "updatedAt": "2026-06-01T09:16:54.000Z",
   "creatorId": 2795319,
-  "editorId": 2400309,
+  "editorId": 1391922,
   "creatorUserId": 2795319,
-  "editorUserId": 2400309,
+  "editorUserId": 1391922,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

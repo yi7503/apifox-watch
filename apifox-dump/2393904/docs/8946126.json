@@ -1,0 +1,17 @@
+{
+  "id": 8946126,
+  "name": "发票查验服务",
+  "sidebarTitle": "",
+  "content": "# 发票查验服务 MCP 文档\n\n    ## 文档信息\n\n    | 项目 | 说明 |\n    |---|---|\n    | 服务分包 | 发票查验服务 |\n    | 基础 URL | `https://mcp.qixiangyun.com` |\n    | 传输模式 | SSE、HTTP Streamable |\n    | 鉴权字段 | `client_appkey`、`client_secret` |\n\n    ## 1. 服务简介\n\n    发票查验服务用于查验税控发票、数电票和数电纸质票，同时提供普通票据 OCR 识别能力，适合做报销、入账、供应商发票验真和票据结构化识别。\n\n    ## 2. 适用场景\n\n    - 税控发票、数电票和数电纸质票验真\n- 通过图片 URL、Base64 或文件识别普通票据\n- 为报销、入账、供应商结算提供票据验真和结构化识别\n- 批量 cyList 场景下提交多张发票查验数据\n\n    ## 3. MCP URL\n\n| 子服务 | Mount Path | SSE URL | HTTP URL |\n|---|---|---|---|\n| 发票查验服务 | `/mcp/invoice_verification` | `https://mcp.qixiangyun.com/mcp/invoice_verification/sse` | `https://mcp.qixiangyun.com/mcp/invoice_verification-http` |\n\n    ## 4. 服务能力总览\n\n    | 子服务 | MCP 简介 | 核心能力 |\n|---|---|---|\n| 发票查验服务 | 同一 MCP URL 下提供发票查验与普通票据 OCR 识别工具。 | `verify_tax_control_invoice`、`verify_digital_invoice`、`verify_digital_paper_invoice`、`recognize_invoice_auto`、`recognize_invoice_by_url_auto`、`recognize_invoice_by_base64_auto` |\n\n    ## 5. MCP Tool 清单\n\n    | MCP Tool | 所属子服务 | 简介 |\n|---|---|---|\n| `verify_tax_control_invoice` | 发票查验服务 | 税控发票查验 (异步)。 |\n| `verify_digital_invoice` | 发票查验服务 | 数电票查验 (异步)。 |\n| `verify_digital_paper_invoice` | 发票查验服务 | 数电纸质票查验 (异步)。 |\n| `recognize_invoice_auto` | 发票查验服务 | 普通票据识别（自动认证版本 - 异步）。 |\n| `recognize_invoice_by_url_auto` | 发票查验服务 | 通过URL链接识别发票（便捷方法 - 自动认证版本）。 |\n| `recognize_invoice_by_base64_auto` | 发票查验服务 | 通过Base64数据识别发票（便捷方法 - 自动认证版本）。 |\n\n    ## 6. 调用与鉴权说明\n\n    - 所有 MCP Tool 调用均应携带 `client_appkey` 与 `client_secret`。部分工具 schema 中这两个字段标记为可选，是因为服务端支持从配置或鉴权上下文补齐；对外接入时建议显式传入。\n    - SSE 连接地址固定为 `https://mcp.qixiangyun.com` + `mount_path` + `/sse`，适合需要长连接或流式交互的客户端。\n    - HTTP Streamable 连接地址固定为 `https://mcp.qixiangyun.com` + `mount_path` + `-http`，适合标准请求响应式接入。\n    - 涉及验证码、人脸认证、异步任务的工具通常需要先发起任务，再使用返回的 `taskId`、`rzid` 或业务请求编号查询结果。\n    - 请勿在日志、提示词或前端页面中明文暴露 `client_secret`、纳税人敏感信息、账号密码和验证码。\n",
+  "folderId": 71129572,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-06-03T09:34:28.000Z",
+  "updatedAt": "2026-06-03T09:34:50.000Z",
+  "creatorId": 2250318,
+  "editorId": 2250318,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

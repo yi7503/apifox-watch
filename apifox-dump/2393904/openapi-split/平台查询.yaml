@@ -143,6 +143,7 @@ paths:
                     success: false
                     message: 异常信息
                     reqId: d56999744734437eb10f3369d52efc15
+      x-apifox-status: released
   /v2/public/queryOrgInfoTask:
     post:
       summary: 获取企业基本信息
@@ -393,6 +394,7 @@ paths:
                           status: 1
                         main: 1
                       status: 1
+      x-apifox-status: released
   /地址联系技术支持配置#268558627:
     post:
       summary: 回调通知-获取采集状态
@@ -524,3 +526,4 @@ paths:
                   value:
                     code: '2000'
                     msg: 已接收
+      x-apifox-status: released

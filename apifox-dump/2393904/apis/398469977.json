@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/public/account/update",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -88,12 +88,18 @@
           "type": "integer",
           "title": "地区",
           "description": "见附录：[地区代码](apifox://link/pages/2246773)"
+        },
+        "proxyNsrsbh": {
+          "type": "string",
+          "title": "代理机构税号",
+          "description": "dlfs=15必传"
         }
       },
       "required": [
         "accountId",
         "aggOrgId",
-        "dlfs"
+        "dlfs",
+        "proxyNsrsbh"
       ],
       "x-apifox-orders": [
         "aggOrgId",
@@ -104,6 +110,7 @@
         "gryhm",
         "gryhmm",
         "sjhm",
+        "proxyNsrsbh",
         "dlmm",
         "dlzh"
       ]
@@ -280,11 +287,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:03:52.000Z",
-  "updatedAt": "2026-04-22T02:56:22.000Z",
+  "updatedAt": "2026-05-20T03:58:19.000Z",
   "creatorId": 2795319,
-  "editorId": 2795319,
+  "editorId": 2400309,
   "creatorUserId": 2795319,
-  "editorUserId": 2795319,
+  "editorUserId": 2400309,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

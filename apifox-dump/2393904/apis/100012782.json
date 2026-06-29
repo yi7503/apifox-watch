@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/fpkjZzs",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -981,7 +981,8 @@
                 ],
                 "title": "不动产经营租赁信息(当特定业务类型是不动产经营租赁服务时必填)"
               },
-              "title": "不动产经营租赁信息（多个）"
+              "title": "不动产经营租赁信息（多个）",
+              "description": "说明：不动产信息需要和明细行条数对应， 三条xmmx，就需要三条不动产明细"
             },
             "bdcjyxsxxs": {
               "type": "array",
@@ -2748,6 +2749,11 @@
             "htbh": {
               "type": "string",
               "title": "合同编号"
+            },
+            "sbxmDm": {
+              "type": "string",
+              "title": "申报项目代码",
+              "description": "扣除额=0时，非必填，传空；扣除额大于0，必填；申报项目代码与开具明细的商品编码和差额征税类型必须匹配，具体参考详见：[差额征税-申报项目说明\n](doc-9026578)"
             }
           },
           "required": [
@@ -2816,6 +2822,7 @@
             "sszyfwxm",
             "cktslxDm",
             "cezslxDm",
+            "sbxmDm",
             "cepzmxList",
             "wjgs",
             "fjxxList",
@@ -2854,7 +2861,10 @@
               "$ref": "#/definitions/86113874"
             },
             "01HRREPA787TPGDRKQPHFNGNHG": {
-              "$ref": "#/definitions/86114015"
+              "$ref": "#/definitions/86114015",
+              "x-apifox-overrides": {
+                "dsccsxx": null
+              }
             },
             "01HRREPNMHK8H40HMPHF4V1CSK": {
               "$ref": "#/definitions/86116272"
@@ -3096,14 +3106,14 @@
   "oasExtensions": "",
   "mockScript": {
     "enable": true,
-    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf\",\r\n\t\"ofd_url\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd\",\r\n\t\"xml_url\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-07-24T07:28:14.000Z",
-  "updatedAt": "2026-05-14T08:00:23.000Z",
+  "updatedAt": "2026-06-25T08:15:07.000Z",
   "creatorId": 1793923,
-  "editorId": 3099717,
+  "editorId": 1391922,
   "creatorUserId": 1793923,
-  "editorUserId": 3099717,
+  "editorUserId": 1391922,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

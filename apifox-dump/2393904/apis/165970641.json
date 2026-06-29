@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/queryJdcxx",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -168,6 +168,18 @@
               "xcrs": {
                 "type": "string",
                 "title": "限乘人数"
+              },
+              "clmc": {
+                "type": "string",
+                "title": "车俩名称"
+              },
+              "clspppmc": {
+                "type": "string",
+                "title": "车辆商品品牌名称"
+              },
+              "clxh": {
+                "type": "string",
+                "title": "车俩型号"
               }
             },
             "required": [
@@ -196,7 +208,10 @@
               "scqymc",
               "sjdh",
               "wspzhm",
-              "xcrs"
+              "xcrs",
+              "clmc",
+              "clspppmc",
+              "clxh"
             ]
           }
         },

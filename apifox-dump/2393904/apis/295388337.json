@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/calculateTax/batchClearSalaryData",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -87,7 +87,7 @@
             "sxlx": {
               "type": "string",
               "title": "所得项目",
-              "description": "如果sxlx为空，则结合批次号、人员列表字段清空所有人员的薪金数据；如果sxlx传了数据，则结合批次号、人员列表字段清空sxlx对应的数据；枚举见个税附录所得项目"
+              "description": "如果sxlx为空，则结合批次号、人员列表字段清空所有人员的薪金数据；如果sxlx传了数据，则结合批次号、人员列表字段清空sxlx对应的数据；枚举见个税附录所得项目，传所得项目代码"
             },
             "sfdpc": {
               "type": "string",
@@ -293,7 +293,7 @@
     "enable": false
   },
   "createdAt": "2025-05-13T11:37:54.000Z",
-  "updatedAt": "2026-05-09T09:14:40.000Z",
+  "updatedAt": "2026-05-20T10:17:53.000Z",
   "creatorId": 1452584,
   "editorId": 493303,
   "creatorUserId": 1452584,

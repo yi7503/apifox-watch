@@ -26,7 +26,7 @@
   "tags": [
     "企业信息采集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -56,6 +56,7 @@
         "nsrsbh"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -223,7 +224,13 @@
                   },
                   "jcxx": {
                     "type": "object",
-                    "properties": {},
+                    "properties": {
+                      "taxCompanyPaymentSummaryUrl": {
+                        "type": "string",
+                        "title": "汇总完税证明文件链接",
+                        "description": "汇总完税证明文件链接"
+                      }
+                    },
                     "description": "基础信息节点",
                     "x-apifox-orders": [
                       "01HDGHQ2949K5HV2SW6SW5GBXC",
@@ -237,6 +244,7 @@
                       "01HA4TA5N1CMS2453A6SXBFS65",
                       "01HA4TA4Z3AW4JYM7AHPEYQP5S",
                       "01HA4TA3VCPZWF81453BTZWGWR",
+                      "taxCompanyPaymentSummaryUrl",
                       "01HE30ZCEFBKK5TTHR17GQ4PJ9",
                       "01HW598R03TT96J7QTSSG8G86V",
                       "01JBGPVJH8CQNG0J1X10FCST0D",
@@ -565,7 +573,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T07:14:27.000Z",
-  "updatedAt": "2025-11-25T07:44:19.000Z",
+  "updatedAt": "2026-05-27T06:32:50.000Z",
   "creatorId": 1476015,
   "editorId": 1910680,
   "creatorUserId": 1476015,

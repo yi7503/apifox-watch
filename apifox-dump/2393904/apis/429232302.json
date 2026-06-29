@@ -1,0 +1,270 @@
+{
+  "id": 429232302,
+  "name": "涉税专业服务机构协议要素信息新增结果查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n\n涉税专业服务机构协议要素信息新增结果查询\n\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/sszyfw/xyysxxAddResult",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "多账号ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "M9p43DU1T1",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "4R8TPN3AxK",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "pVgXmsJzVY",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Isa8Et6oLB",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 581534477,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识，用于关联请求与响应，追踪业务链路",
+            "minLength": 1,
+            "maxLength": 64,
+            "examples": [
+              "REQ202510160001000001",
+              "TAX_REQ_87654321"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "响应状态码，标识请求处理结果（如成功、参数错误、系统异常等）",
+            "minLength": 1,
+            "maxLength": 10,
+            "examples": [
+              "0000",
+              "1001",
+              "5000"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求处理结果标识，true 表示处理成功，false 表示处理失败",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "响应提示信息，说明处理结果或错误原因，便于问题排查",
+            "minLength": 1,
+            "maxLength": 512,
+            "examples": [
+              "涉税信息报送成功",
+              "detail数组中证件号码格式错误，请核对后重新提交"
+            ]
+          },
+          "data": {
+            "type": "object",
+            "description": "响应核心数据",
+            "additionalProperties": false,
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "businessStatus": {
+                "type": "string",
+                "description": "1：执行中；2：失败；3：已完成\n\n",
+                "title": "任务执行状态"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-orders": [
+                  "01KKXX5TRDTKGAZYMAM6VWY67X"
+                ],
+                "x-apifox-refs": {
+                  "01KKXX5TRDTKGAZYMAM6VWY67X": {
+                    "$ref": "#/definitions/254711608"
+                  }
+                },
+                "required": []
+              }
+            },
+            "x-apifox-orders": [
+              "taskId",
+              "serviceCode",
+              "businessStatus",
+              "code",
+              "message",
+              "result"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "taskId",
+              "serviceCode",
+              "businessStatus",
+              "code",
+              "message",
+              "result"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 80473745,
+  "ordering": 182,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-17T11:24:44.000Z",
+  "updatedAt": "2026-06-29T13:31:11.000Z",
+  "creatorId": 3099717,
+  "editorId": 2795319,
+  "creatorUserId": 3099717,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

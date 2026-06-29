@@ -16,13 +16,14 @@
     "发票查验",
     "版式文件下载"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
       "$ref": "#/definitions/99667779"
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -113,7 +114,8 @@
                             "null"
                           ],
                           "title": "ewm二维码地址url",
-                          "deprecated": true
+                          "deprecated": true,
+                          "description": "OSS地址有效期1个月"
                         },
                         "qdfphm": {
                           "type": "string",
@@ -124,7 +126,8 @@
                             "string",
                             "null"
                           ],
-                          "title": "xml版式文件url"
+                          "title": "xml版式文件url",
+                          "description": "OSS地址有效期1个月"
                         }
                       },
                       "required": [
@@ -170,15 +173,6 @@
   ],
   "responseExamples": [
     {
-      "name": "未查询到对应的发票查验版式文件下载记录",
-      "responseId": 554698596,
-      "data": "{\n    \"reqId\": \"19ca9336059a45198fdc37fb5e1c2018\",\n    \"code\": \"BusinessVerification\",\n    \"success\": false,\n    \"message\": \"未查询到对应的发票查验版式文件下载记录\",\n    \"data\": null\n}",
-      "description": "",
-      "oasKey": "",
-      "oasExtensions": "",
-      "id": 438736893
-    },
-    {
       "name": "成功示例",
       "responseId": 554698595,
       "data": "{\n    \"reqId\": \"df46cccec9cb4b3db93c6f266d71c25d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"qdfphm\": \"24********************04\",\n            \"zt\": \"3\",\n            \"code\": null,\n            \"message\": null,\n            \"ofdUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/0708872f7d0892a86ac409f5380e0d24.ofd?***************\",\n            \"pdfUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/b8a3b049dedeea9e43d332add31a7b52.pdf?***************\",\n            \"xmlUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/dzfp_24332000000122959604_20240520171423.xml?***************\"\n        }\n    ]\n}",
@@ -213,6 +207,15 @@
       "oasKey": "",
       "oasExtensions": "",
       "id": 438736897
+    },
+    {
+      "name": "未查询到对应的发票查验版式文件下载记录",
+      "responseId": 554698595,
+      "data": "{\n    \"reqId\": \"19ca9336059a45198fdc37fb5e1c2018\",\n    \"code\": \"BusinessVerification\",\n    \"success\": false,\n    \"message\": \"未查询到对应的发票查验版式文件下载记录\",\n    \"data\": null\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 438736893
     }
   ],
   "codeSamples": [],
@@ -226,18 +229,15 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-29T10:19:32.000Z",
-  "updatedAt": "2026-03-10T12:08:12.000Z",
+  "updatedAt": "2026-06-26T05:54:24.000Z",
   "creatorId": 1426961,
-  "editorId": 2795319,
+  "editorId": 3099717,
   "creatorUserId": 1426961,
-  "editorUserId": 2795319,
-  "responseChildren": [
-    "BLANK.554698595",
-    "BLANK.554698596"
-  ],
+  "editorUserId": 3099717,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

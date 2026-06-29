@@ -16,7 +16,7 @@
     "发票查验",
     "全电发票查验"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

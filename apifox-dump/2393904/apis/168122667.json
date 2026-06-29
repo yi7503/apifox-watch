@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：\n1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)\n2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态\"status\"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)\n3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)",
+  "description": "该接口用于发起已勾选归集任务，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起已勾选归集任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询已勾选归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）\n2、通过taskId调用「查询已勾选归集数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）\n  </Step>\n</Steps>\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -15,7 +15,7 @@
   "tags": [
     "发票归集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -81,6 +81,11 @@
         "aggOrgId": {
           "type": "string",
           "title": "企业id"
+        },
+        "gjMode": {
+          "type": "string",
+          "title": "归集方式",
+          "description": "默认值0，0:通用归集（某个属期未统计本次任务失败）；1:忽略未统计属期"
         }
       },
       "required": [
@@ -95,7 +100,8 @@
         "kpyfq",
         "kpyfz",
         "tscjbz",
-        "dataType"
+        "dataType",
+        "gjMode"
       ],
       "x-apifox-refs": {}
     },
@@ -251,7 +257,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T02:31:19.000Z",
-  "updatedAt": "2026-04-01T09:56:19.000Z",
+  "updatedAt": "2026-06-10T01:35:18.000Z",
   "creatorId": 2118003,
   "editorId": 2118003,
   "creatorUserId": 2118003,

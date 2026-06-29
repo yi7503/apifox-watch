@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/shbx/declare/querySocialSecurityFeeOmissionCheck",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -244,7 +244,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 68385480,
-  "ordering": 19,
+  "ordering": 30,
   "responsibleId": 0,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -254,7 +254,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-02T02:12:35.000Z",
-  "updatedAt": "2026-04-24T03:54:29.000Z",
+  "updatedAt": "2026-06-04T06:31:29.000Z",
   "creatorId": 1910680,
   "editorId": 3222025,
   "creatorUserId": 1910680,

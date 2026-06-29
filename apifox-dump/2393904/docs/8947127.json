@@ -1,0 +1,17 @@
+{
+  "id": 8947127,
+  "name": "风控业务服务",
+  "sidebarTitle": "",
+  "content": "# 风控业务服务 MCP 文档\n\n    ## 文档信息\n\n    | 项目 | 说明 |\n    |---|---|\n    | 服务分包 | 风控业务服务 |\n    | 基础 URL | `https://mcp.qixiangyun.com` |\n    | 传输模式 | SSE、HTTP Streamable |\n    | 鉴权字段 | `client_appkey`、`client_secret` |\n\n    ## 1. 服务简介\n\n    风控业务服务面向企业风险识别和风控报告场景，提供企业黑名单状态查询、风控报告申请及报告结果查询。\n\n    ## 2. 适用场景\n\n    - 查询企业是否命中黑名单或风险名单\n- 发起企业风控报告申请\n- 查询风控报告生成结果\n- 为授信、准入、交易审核和供应商管理提供风险数据\n\n    ## 3. MCP URL\n\n| 子服务 | Mount Path | SSE URL | HTTP URL |\n|---|---|---|---|\n| 企业黑名单查询服务 | `/mcp/enterprise_blacklist_status_enhanced` | `https://mcp.qixiangyun.com/mcp/enterprise_blacklist_status_enhanced/sse` | `https://mcp.qixiangyun.com/mcp/enterprise_blacklist_status_enhanced-http` |\n| 风控报告申请服务 | `/mcp/apply_risk_report` | `https://mcp.qixiangyun.com/mcp/apply_risk_report/sse` | `https://mcp.qixiangyun.com/mcp/apply_risk_report-http` |\n\n    ## 4. 服务能力总览\n\n    | 子服务 | MCP 简介 | 核心能力 |\n|---|---|---|\n| 企业黑名单查询服务 | 查询企业黑名单状态增强信息。 | `query_enterprise_blacklist_status_enhanced_auto` |\n| 风控报告申请服务 | 申请企业风控报告并查询报告生成结果。 | `apply_risk_report_auto`、`query_risk_report_result_auto` |\n\n    ## 5. MCP Tool 清单\n\n    | MCP Tool | 所属子服务 | 简介 |\n|---|---|---|\n| `query_enterprise_blacklist_status_enhanced_auto` | 企业黑名单查询服务 | 查询企业是否黑名单（增强版）（自动认证版本 - 异步）。 |\n| `apply_risk_report_auto` | 风控报告申请服务 | 风控报告申请（自动认证版本 - 异步）。 |\n| `query_risk_report_result_auto` | 风控报告申请服务 | 风控报告结果查询（自动认证版本 - 异步）。 |\n\n    ## 6. 调用与鉴权说明\n\n    - 所有 MCP Tool 调用均应携带 `client_appkey` 与 `client_secret`。部分工具 schema 中这两个字段标记为可选，是因为服务端支持从配置或鉴权上下文补齐；对外接入时建议显式传入。\n    - SSE 连接地址固定为 `https://mcp.qixiangyun.com` + `mount_path` + `/sse`，适合需要长连接或流式交互的客户端。\n    - HTTP Streamable 连接地址固定为 `https://mcp.qixiangyun.com` + `mount_path` + `-http`，适合标准请求响应式接入。\n    - 涉及验证码、人脸认证、异步任务的工具通常需要先发起任务，再使用返回的 `taskId`、`rzid` 或业务请求编号查询结果。\n    - 请勿在日志、提示词或前端页面中明文暴露 `client_secret`、纳税人敏感信息、账号密码和验证码。\n",
+  "folderId": 71129572,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-06-03T11:52:16.000Z",
+  "updatedAt": "2026-06-03T11:52:21.000Z",
+  "creatorId": 2250318,
+  "editorId": 2250318,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

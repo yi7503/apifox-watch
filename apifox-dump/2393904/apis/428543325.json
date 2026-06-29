@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/public/login/remote/getQrcode",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -29,17 +29,24 @@
           "type": "string",
           "title": "账户id",
           "description": "多账号id"
+        },
+        "scanType": {
+          "type": "integer",
+          "title": "扫码类型",
+          "description": "0-电子税务局app登录 1-电子营业执照app登录 默认0"
         }
       },
       "x-apifox-orders": [
         "aggOrgId",
-        "accountId"
+        "accountId",
+        "scanType"
       ],
       "required": [
         "aggOrgId",
         "accountId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -118,11 +125,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-16T10:10:51.000Z",
-  "updatedAt": "2026-04-13T06:08:01.000Z",
+  "updatedAt": "2026-05-20T02:44:06.000Z",
   "creatorId": 2400309,
-  "editorId": 2795319,
+  "editorId": 2400309,
   "creatorUserId": 2400309,
-  "editorUserId": 2795319,
+  "editorUserId": 2400309,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

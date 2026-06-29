@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/risk/rpt/apply",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -47,7 +47,7 @@
         "rptType": {
           "type": "string",
           "title": "报告格式",
-          "description": "1 pdf链接 2 json"
+          "description": "1 pdf链接 2 json 3 pdf+json"
         },
         "aggOrgId": {
           "type": "string",
@@ -214,7 +214,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-03T08:58:46.000Z",
-  "updatedAt": "2026-04-21T12:07:20.000Z",
+  "updatedAt": "2026-06-02T14:00:02.000Z",
   "creatorId": 887778,
   "editorId": 887778,
   "creatorUserId": 887778,

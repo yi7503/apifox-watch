@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/declare/getEmployeeInfoFeedback",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -302,7 +303,7 @@
       "id": 464009317
     },
     {
-      "name": "任务执行中",
+      "name": "并发同时请求任务异常",
       "responseId": 590768656,
       "data": "{\n    \"code\": \"4001\",\n    \"success\": false,\n    \"message\": \"1000000000000001304：当前任务执行中！\",\n    \"reqId\": \"238e301d9d8342bfa54ea0c8ced83fca\"\n}",
       "description": "",
@@ -332,11 +333,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-24T02:41:21.000Z",
-  "updatedAt": "2026-03-16T10:27:06.000Z",
+  "updatedAt": "2026-06-04T03:52:30.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

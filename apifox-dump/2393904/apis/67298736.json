@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/writeTaxData",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -441,6 +441,11 @@
           "x-apifox-orders": [],
           "title": "定期定额申报",
           "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
+        },
+        "disableDeclareCache": {
+          "type": "string",
+          "title": "禁用申报缓存",
+          "description": "Y/N 非必传参数，默认为空。Y=不缓存  空/N或者不传这个参数=缓存"
         }
       },
       "required": [
@@ -467,6 +472,7 @@
         "zdsysfsh",
         "sfxzyhssm",
         "zsxmDm",
+        "disableDeclareCache",
         "ybData",
         "xgmData",
         "xgmDqdeData",
@@ -716,11 +722,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-09T09:40:49.000Z",
-  "updatedAt": "2026-04-03T09:22:43.000Z",
+  "updatedAt": "2026-05-28T12:23:51.000Z",
   "creatorId": 798265,
-  "editorId": 1476015,
+  "editorId": 1452584,
   "creatorUserId": 798265,
-  "editorUserId": 1476015,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

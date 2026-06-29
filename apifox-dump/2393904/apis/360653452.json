@@ -34,7 +34,7 @@
   "method": "post",
   "path": "/v2/shbx/declare/getCompanyRegisterInfo",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

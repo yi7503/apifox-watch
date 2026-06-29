@@ -13,13 +13,117 @@
   "method": "post",
   "path": "/v2/tax/qys/loadWszmTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
-      "$ref": "#/definitions/37317067",
-      "x-apifox-overrides": {}
+      "x-apifox-overrides": {},
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "year": {
+          "type": "integer",
+          "title": "年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "月"
+        },
+        "zsxmDtos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ssqQ": {
+                "type": "string",
+                "description": "格式为yyyy-MM-dd；所属起止和缴款日期起止必须有一类请求",
+                "title": "所属期起"
+              },
+              "ssqZ": {
+                "type": "string",
+                "description": "格式为yyyy-MM-dd；所属起止和缴款日期起止必须有一类请求",
+                "title": "所属期止"
+              },
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码",
+                "description": "参考申报附录应征凭证种类代码"
+              },
+              "zspmDm": {
+                "type": "string",
+                "description": "文化事业建设费时，征收品目代码为必传项",
+                "title": "征收品目代码"
+              },
+              "zsxmDm": {
+                "type": "string",
+                "description": "工会经费=39900/水利建设专项收入=30221 合并下载则可以为空",
+                "title": "征收项目代码"
+              },
+              "bsswjg": {
+                "type": "string",
+                "title": "跨区域上传税务机关名称",
+                "description": "（上传格式 省|市|区 如“湖南省|湘潭市|岳塘区”）"
+              },
+              "kqyswjgmc": {
+                "type": "string",
+                "title": "跨区域税局机关名称",
+                "description": "税局账户中心-跨区域切换中的税务机关名称"
+              },
+              "jkrqq": {
+                "type": "string",
+                "title": "缴款日期起",
+                "description": "格式为yyyy-MM-dd  缴款日期起止不能跨年；所属起止和缴款日期起止必须有一类请求"
+              },
+              "jkrqz": {
+                "type": "string",
+                "title": "缴款日期止",
+                "description": "格式为yyyy-MM-dd  缴款日期起止不能跨年；所属起止和缴款日期起止必须有一类请求"
+              }
+            },
+            "x-apifox-orders": [
+              "ssqQ",
+              "ssqZ",
+              "jkrqq",
+              "jkrqz",
+              "yzpzzlDm",
+              "zspmDm",
+              "zsxmDm",
+              "bsswjg",
+              "kqyswjgmc"
+            ],
+            "required": [
+              "yzpzzlDm"
+            ]
+          }
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）",
+          "title": "账号ID"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "tdztswjgmc",
+        "year",
+        "period",
+        "zsxmDtos"
+      ],
+      "required": [
+        "aggOrgId",
+        "year",
+        "period"
+      ]
     },
     "required": false,
     "mediaType": "",
@@ -154,11 +258,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-11T03:27:16.000Z",
-  "updatedAt": "2026-01-08T06:55:45.000Z",
+  "updatedAt": "2026-06-05T10:51:30.000Z",
   "creatorId": 798265,
-  "editorId": 493303,
+  "editorId": 1476015,
   "creatorUserId": 798265,
-  "editorUserId": 493303,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

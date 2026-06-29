@@ -15,7 +15,7 @@
   "tags": [
     "登录"
   ],
-  "status": -1,
+  "status": "testing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

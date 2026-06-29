@@ -15,7 +15,7 @@
   "tags": [
     "数电开票"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

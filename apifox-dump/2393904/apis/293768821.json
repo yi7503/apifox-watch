@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/calculateTax/backCalculateCurrentPeriodIncome",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -60,16 +60,35 @@
                     "$ref": "#/definitions/138834666"
                   },
                   "title": "人员列表"
+                },
+                "gryljcl": {
+                  "type": "string",
+                  "description": "不传或传空默认0。0:实时下载累计个人养老金; 2:使用传入的累计个人养老金",
+                  "enum": [
+                    "0",
+                    "2"
+                  ],
+                  "title": "个人养老金策略"
+                },
+                "zcgzxjsfcrlj": {
+                  "type": "string",
+                  "description": "不传或传空默认0。0:使用下载计算专项附加累计; 1:使用传入的专项附加累计值",
+                  "enum": [
+                    "0",
+                    "1"
+                  ],
+                  "title": "专项附加扣除策略"
                 }
               },
               "x-apifox-orders": [
                 "zcgzxjlb",
-                "rylb"
+                "rylb",
+                "gryljcl",
+                "zcgzxjsfcrlj"
               ],
               "title": "正常工资薪金对象",
               "required": [
-                "zcgzxjlb",
-                "rylb"
+                "zcgzxjlb"
               ]
             },
             "lwbclb": {
@@ -110,8 +129,7 @@
               ],
               "title": "保险营销员",
               "required": [
-                "bxyxylwbclb",
-                "rylb"
+                "bxyxylwbclb"
               ]
             },
             "zqjjr": {
@@ -138,8 +156,7 @@
               ],
               "title": "证券经纪人",
               "required": [
-                "zqjjrsdlb",
-                "rylb"
+                "zqjjrsdlb"
               ]
             },
             "qtlxlwbc": {
@@ -166,8 +183,7 @@
               ],
               "title": "其他连续劳务报酬所得",
               "required": [
-                "qtlxlwbclb",
-                "rylb"
+                "qtlxlwbclb"
               ]
             }
           },
@@ -379,11 +395,11 @@
     "enable": false
   },
   "createdAt": "2025-05-09T06:41:54.000Z",
-  "updatedAt": "2026-01-19T08:38:27.000Z",
+  "updatedAt": "2026-06-02T09:38:29.000Z",
   "creatorId": 1452584,
-  "editorId": 493303,
+  "editorId": 1910680,
   "creatorUserId": 1452584,
-  "editorUserId": 493303,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

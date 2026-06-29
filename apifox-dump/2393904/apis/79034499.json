@@ -16,7 +16,7 @@
     "发票认证",
     "数字证书认证"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

@@ -1,0 +1,17 @@
+{
+  "id": 8963498,
+  "name": "2026年5月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2026年5月发布内容\n\n发布日期：2026-05-29\n发布版本：V2.2026.05\n\n\n## 一、发票开具\n1.发票开具新增htbh字段，允许开具发票时传入自定义htbh信息。\n  https://openapi.qixiangyun.com/api-100012782\n  \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664031/image-preview)\n2.发票开具增加对商品和服务税收分类编码校验，系统定时（每天）更新局端最新的商品和服务税收分类编码。\n3.发票开具时当传入的商品简称错误时自动替换为正确的简称进行开票。\n4.机动车销售统一发票开具针对国产车、进口车的判断处理。\n5.新增接口，支持查询机动车合格证列表\n  https://openapi.qixiangyun.com/api-460618065\n  \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664032/image-preview)\n6.已开发票明细查询新增对医疗服务特定业务信息的返回\n  https://openapi.qixiangyun.com/api-100012790\n  \n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664033/image-preview)\n7.不动产经营租赁业务新增对殡葬服务业开具的支持。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664034/image-preview)\n8.支持按2%简易征收优惠政策开具发票。\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664036/image-preview)\n\n## 二、发票归集\n1.针对二手车销售统一发票增加二手车经营/拍卖单位、二手车市场信息的返回，同时修正纸质发票号码、代码赋值错误的问题。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664037/image-preview)\n\n ## 三、发票查验\n1.财政电子票据查验针对部分地区优化效率\n\n## 四、发票认证\n1.无\n\n## 五、发票入账\n1.细化发票入账异常业务提示，增加已入账返回信息（入账用途、入账时间）\n  https://openapi.qixiangyun.com/api-174168816\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/664030/image-preview)\n\n## 六、乐企\n1.优化建筑服务版式文件生成，备注栏增加“土地增值税项目编号”。\n2.优化红字确认单详细信息查询逻辑，直接调用乐企接口获取，避免因查询本地数据造成的状态差异问题。\n\n\n   \n",
+  "folderId": 36975595,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-06-05T10:39:34.000Z",
+  "updatedAt": "2026-06-05T11:12:39.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

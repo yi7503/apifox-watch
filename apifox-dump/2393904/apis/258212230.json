@@ -15,7 +15,7 @@
   "tags": [
     "结果回调"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -32,21 +32,23 @@
           "title": "对应请求任务ID",
           "description": "任务唯一标识"
         },
-        "01JKF04BYB2TBRFWMBMJ7XNXJF": {
-          "x-tmp-pending-properties": true
+        "msg": {
+          "type": "string",
+          "title": "任务消息描述"
         }
       },
       "required": [
         "taskStatus",
-        "taskId",
-        "01JKF04BYB2TBRFWMBMJ7XNXJF"
+        "taskId"
       ],
       "x-apifox-orders": [
-        "01JKF04BYB2TBRFWMBMJ7XNXJF",
         "taskStatus",
-        "taskId"
+        "taskId",
+        "msg"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"taskStatus\": 3,//任务状态 2失败  3已完成\r\n    \"taskId\": \"4719559035509186654\"//对应请求任务ID\r\n}",
@@ -130,17 +132,15 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-02-07T01:28:44.000Z",
-  "updatedAt": "2025-04-10T12:03:59.000Z",
+  "updatedAt": "2026-05-19T11:59:56.000Z",
   "creatorId": 2400309,
-  "editorId": 493984,
+  "editorId": 1910680,
   "creatorUserId": 2400309,
-  "editorUserId": 493984,
-  "responseChildren": [
-    "BLANK.609277452"
-  ],
+  "editorUserId": 1910680,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

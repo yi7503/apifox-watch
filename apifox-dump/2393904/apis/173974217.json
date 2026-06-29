@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/fpruz/queryFprzxx",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -705,11 +705,12 @@
                     },
                     "kprq": {
                       "type": "string",
-                      "title": "开票日期（yyyy-MM-dd HH:mm:ss）"
+                      "title": "开票日期",
+                      "description": "yyyy-MM-dd HH:mm:ss"
                     },
                     "xsf_nsrmc": {
                       "type": "string",
-                      "title": "销售方纳税人识别号"
+                      "title": "销售方纳税人名称"
                     },
                     "je": {
                       "type": "string",
@@ -824,7 +825,8 @@
                     },
                     "rzsj": {
                       "type": "string",
-                      "title": "入账时间"
+                      "title": "入账时间",
+                      "description": "yyyy-MM-dd"
                     }
                   },
                   "required": [
@@ -943,11 +945,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-17T07:45:00.000Z",
-  "updatedAt": "2026-05-13T02:57:57.000Z",
+  "updatedAt": "2026-06-25T06:37:19.000Z",
   "creatorId": 1875505,
-  "editorId": 2118003,
+  "editorId": 1564651,
   "creatorUserId": 1875505,
-  "editorUserId": 2118003,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

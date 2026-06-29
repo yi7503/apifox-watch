@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/report/queryDeclareDetailsInfo",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -204,9 +204,6 @@
                 "type": "string",
                 "title": "页码"
               },
-              "01JVRCXXDVAR6T11MH6YS92TFS": {
-                "x-tmp-pending-properties": true
-              },
               "pageSize": {
                 "type": "string",
                 "title": "每页的数量"
@@ -228,15 +225,13 @@
               "pageNo",
               "pageSize",
               "sfhj",
-              "sfmx",
-              "01JVRCXXDVAR6T11MH6YS92TFS"
+              "sfmx"
             ],
             "title": "响应数据",
             "required": [
               "total",
               "pageSize",
               "pageNo",
-              "01JVRCXXDVAR6T11MH6YS92TFS",
               "sfmx",
               "sfhj"
             ]
@@ -301,11 +296,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-21T02:01:00.000Z",
-  "updatedAt": "2026-01-08T08:22:43.000Z",
+  "updatedAt": "2026-06-10T09:17:43.000Z",
   "creatorId": 1452584,
-  "editorId": 2795319,
+  "editorId": 1910680,
   "creatorUserId": 1452584,
-  "editorUserId": 2795319,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

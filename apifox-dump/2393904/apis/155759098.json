@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/bswjxzBatch",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -43,7 +43,7 @@
             "kprq": {
               "title": "开票日期",
               "type": "string",
-              "description": "包含时间 yyyy-MM-dd HH:mm:ss"
+              "description": "yyyy-MM-dd HH:mm:ss，需传准确的时分秒"
             },
             "wjgs": {
               "type": "string",
@@ -136,6 +136,7 @@
         }
       }
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -228,7 +229,8 @@
                     },
                     "url": {
                       "type": "string",
-                      "title": "文件内容（url格式）"
+                      "title": "文件内容（url格式）",
+                      "description": "税局地址或OSS地址长期有效"
                     },
                     "fphm": {
                       "type": "string",
@@ -316,11 +318,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T03:03:13.000Z",
-  "updatedAt": "2025-12-13T09:23:45.000Z",
+  "updatedAt": "2026-06-26T06:05:03.000Z",
   "creatorId": 887900,
-  "editorId": 2795319,
+  "editorId": 3099717,
   "creatorUserId": 887900,
-  "editorUserId": 2795319,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

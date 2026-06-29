@@ -234,6 +234,7 @@ paths:
                     success: false
                     message: 地区编码有误，请根据地区编码附录中限定的编码传参
                     data: null
+      x-apifox-status: released
   /v2/public/org/productCancel:
     post:
       summary: 订购取消
@@ -417,6 +418,7 @@ paths:
                         ]
                       }
                     }
+      x-apifox-status: released
   /v2/public/org/productList:
     post:
       summary: 订购查询
@@ -576,6 +578,7 @@ paths:
                         }
                       ]
                     }
+      x-apifox-status: released
   /v2/public/org/productPurchaseModify:
     post:
       summary: 订购修改
@@ -758,6 +761,7 @@ paths:
                     success: true
                     message: ''
                     data: null
+      x-apifox-status: released
   /v2/public/org/delete:
     post:
       summary: 企业取消授权
@@ -856,3 +860,4 @@ paths:
                     success: true
                     message: ''
                     data: true
+      x-apifox-status: released

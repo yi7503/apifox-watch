@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/hzqrxxList",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -65,10 +65,11 @@
                 "gxflx": {
                   "type": "string",
                   "title": "购销方类型",
-                  "description": "0：我是销方，1：我是购方",
+                  "description": "0：我是销方，1：我是购方，2：我是二手车市场",
                   "enum": [
                     "0",
-                    "1"
+                    "1",
+                    "2"
                   ],
                   "x-apifox-enum": [
                     {
@@ -80,6 +81,11 @@
                       "value": "1",
                       "name": "",
                       "description": "我是购方"
+                    },
+                    {
+                      "value": "2",
+                      "name": "",
+                      "description": "我是二手车市场"
                     }
                   ]
                 },
@@ -554,11 +560,11 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\nvar responseJson = {\r\n\t\"pageIndex\": 1,\r\n\t\"records\": 1,\r\n\t\"pageSize\": 10,\r\n\t\"list\": [{\r\n\t\t\"bz\": \"\",\r\n\t\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\t\"gxflx\": \"销售方\",\r\n\t\t\"hcyydm\": \"01\",\r\n\t\t\"hzFpdm\": null,\r\n\t\t\"hzFphm\": null,\r\n\t\t\"hzHjje\": -24380.54,\r\n\t\t\"hzHjse\": -3169.46,\r\n\t\t\"hzKprq\": null,\r\n\t\t\"hzkjBz\": \"N\",\r\n\t\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\t\"hzqrztDm\": \"01\",\r\n\t\t\"hzuuid\": \"8ce2e471219d4219a18e6f4984e70c3f\",\r\n\t\t\"kpr\": \"张三\",\r\n\t\t\"lrfsf\": \"0\",\r\n\t\t\"lrrq\": \"2025-10-13 18:58:06\",\r\n\t\t\"lzFpdm\": null,\r\n\t\t\"lzFphm\": \"25952000000193124888\",\r\n\t\t\"lzFplxdm\": \"030\",\r\n\t\t\"lzHjje\": 24380.54,\r\n\t\t\"lzHjse\": 3169.46,\r\n\t\t\"lzKprq\": \"2025-10-13 16:43:41\",\r\n\t\t\"lzTdyslxDm\": null,\r\n\t\t\"lzfppzDm\": \"02\",\r\n\t\t\"qrjkp\": null,\r\n\t\t\"qrrq\": null,\r\n\t\t\"rzzt\": \"00\",\r\n\t\t\"xfsYtZt\": \"00\",\r\n\t\t\"xgrq\": \"2025-10-13 18:58:06\",\r\n\t\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\t\"ydkse\": null,\r\n\t\t\"yjjdkncpse\": null,\r\n\t\t\"zzsYtzt\": \"03\"\r\n\t}]\r\n};\r\nif(uuid !== null && uuid !== undefined && uuid !== \"\"){\r\n  responseJson.list[0].hzuuid = uuid;\r\n}\r\n\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-08-10T08:11:08.000Z",
-  "updatedAt": "2026-05-12T01:45:13.000Z",
+  "updatedAt": "2026-05-27T11:02:43.000Z",
   "creatorId": 887900,
-  "editorId": 3600994,
+  "editorId": 3099717,
   "creatorUserId": 887900,
-  "editorUserId": 3600994,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

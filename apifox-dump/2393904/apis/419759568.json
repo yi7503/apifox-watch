@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/fpkjZzs",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -81,8 +81,7 @@
             },
             "gmf_nsrsbh": {
               "type": "string",
-              "title": "购方税号",
-              "description": "购方统一社会信用代码（当发票开具为全电专用发票（032）时该字段必填）"
+              "title": "购方税号"
             },
             "gmf_nsrmc": {
               "type": "string",
@@ -128,7 +127,8 @@
                   },
                   "sl": {
                     "type": "string",
-                    "title": "税率"
+                    "title": "税率",
+                    "description": "必须为零"
                   },
                   "se": {
                     "type": [
@@ -329,11 +329,13 @@
             },
             "xsf_dz": {
               "type": "string",
-              "title": "销方地址"
+              "title": "销方地址",
+              "description": "开票方为二手车市场时必填；反向开具时必填。"
             },
             "xsf_dh": {
               "type": "string",
-              "title": "销方电话"
+              "title": "销方电话",
+              "description": "开票方为二手车市场时必填；反向开具时必填。"
             },
             "xsf_yhmc": {
               "type": "string",
@@ -348,14 +350,16 @@
                 "string",
                 "null"
               ],
-              "title": "购买方地址"
+              "title": "购买方地址",
+              "description": "开票方为二手车市场时必填；正向开具时必填。"
             },
             "gmf_dh": {
               "type": [
                 "string",
                 "null"
               ],
-              "title": "购买方电话"
+              "title": "购买方电话",
+              "description": "开票方为二手车市场时必填；正向开具时必填。"
             },
             "gmf_yhmc": {
               "type": [
@@ -2303,7 +2307,10 @@
             "gmf_nsrmc",
             "xmmx",
             "ly_ddbh",
-            "xsf_nsrsbh"
+            "xsf_nsrsbh",
+            "tdyslxdm",
+            "xsf_nsrmc",
+            "gmf_nsrsbh"
           ],
           "x-apifox-orders": [
             "ly_ddbh",
@@ -2594,7 +2601,7 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2026-02-26T02:55:59.000Z",
-  "updatedAt": "2026-04-16T09:35:24.000Z",
+  "updatedAt": "2026-06-26T09:47:37.000Z",
   "creatorId": 3099717,
   "editorId": 3099717,
   "creatorUserId": 3099717,

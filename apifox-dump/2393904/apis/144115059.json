@@ -16,7 +16,7 @@
     "发票查验",
     "通用电子发票查验"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

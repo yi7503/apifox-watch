@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/report/queryPersonWithhold",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -69,10 +69,11 @@
         },
         "sfxzhzb": {
           "type": [
-            "boolean",
+            "string",
             "null"
           ],
-          "title": "是否下载汇总表"
+          "title": "是否下载汇总表",
+          "description": "传“是”、“否”\n默认否，如果需要下载则传是"
         }
       },
       "required": [
@@ -271,7 +272,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-19T07:38:10.000Z",
-  "updatedAt": "2026-05-15T08:25:22.000Z",
+  "updatedAt": "2026-06-23T09:02:29.000Z",
   "creatorId": 1910680,
   "editorId": 1910680,
   "creatorUserId": 1910680,

@@ -16,7 +16,7 @@
     "发票查验",
     "版式文件下载"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

@@ -70,10 +70,11 @@ paths:
                 hgqyDm:
                   type: string
                   title: 海关企业代码
+                  description: '[中国海关企业进出口信用信息公示平台](http://credit.customs.gov.cn ) 查询-海关备案编码'
                 ssyf:
                   type: string
                   title: 申报所属月份
-                  description: 必传yyyyMM
+                  description: yyyyMM
                 pc:
                   type: string
                   title: 批次号
@@ -96,6 +97,7 @@ paths:
               - pc
               - ywxx
               - hgqyDm
+              - accountId
               x-apifox-orders:
               - swjgdm
               - hgqyDm
@@ -103,10 +105,10 @@ paths:
               - aggOrgId
               - accountId
               - pc
+              - ywxx
               - sbVersion
               - shVersion
               - cmVersion
-              - ywxx
       responses:
         '200':
           description: 成功
@@ -133,6 +135,7 @@ paths:
                 x-apifox-orders:
                 - 01GW664NTG8DAA40CQ3926Y530
                 properties: {}
+      x-apifox-status: released
   /v2/ckts/getSelfCheckResult:
     post:
       summary: 出口退税申报自检任务结果
@@ -262,6 +265,7 @@ paths:
                     success: true
                     message: 查询无结果！
                     data: null
+      x-apifox-status: released
   /v2/ckts/loadSelfCheckFeedback:
     post:
       summary: 出口退税自检反馈查询
@@ -358,6 +362,7 @@ paths:
                 x-apifox-orders:
                 - 01GW664NTG8DAA40CQ3926Y530
                 properties: {}
+      x-apifox-status: released
   /v2/ckts/getSelfCheckFeedback:
     post:
       summary: 出口退税自检反馈查询结果
@@ -506,6 +511,7 @@ paths:
                     success: true
                     message: 查询无结果！
                     data: null
+      x-apifox-status: released
   /v2/ckts/loadReviewProgress:
     post:
       summary: 出口退税审核进度查询
@@ -599,6 +605,7 @@ paths:
                 x-apifox-orders:
                 - 01GW664NTG8DAA40CQ3926Y530
                 properties: {}
+      x-apifox-status: released
   /v2/ckts/getReviewProgress:
     post:
       summary: 出口退税审核进度查询结果
@@ -745,6 +752,7 @@ paths:
                     success: true
                     message: 查询无结果！
                     data: null
+      x-apifox-status: released
   /v2/ckts/loadDeclareConfirmation:
     post:
       summary: 出口退税申报确认提交
@@ -851,6 +859,7 @@ paths:
                     data:
                       aggOrgId: 4797560596251712
                       taskId: 600734271675392
+      x-apifox-status: released
   /v2/ckts/getDeclareConfirmationResult:
     post:
       summary: 出口退税查询申报确认提交结果
@@ -958,6 +967,7 @@ paths:
                       code: '2000'
                       success: true
                       message: 确认成功
+      x-apifox-status: released
   /v2/customs/imex/dzh/getHQTSBGD2:
     post:
       summary: 退税报关单
@@ -1269,6 +1279,7 @@ paths:
                   value: "{\r\n  \"reqId\": \"b79a96e3c51640c9b12ce46cd0fa8f03\",\r\n  \"code\": \"2000\",\r\n  \"success\": true,\r\n  \"message\": null,\r\n  \"data\":\"\r\n    <?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n    <business comment=\"获取退税报关单\" id=\"HQTSBGD2\">\r\n      <body yylxdm=\"1\">\r\n        <output>\r\n          <returncode>返回code</returncode>\r\n          <returnmsg>返回信息</returnmsg>\r\n          <data><![CDATA[\r\n          <?xml version=\"1.0\" encoding=\"gb2312\"?>\r\n          <RtxMessage>\r\n              <Dec>\r\n                  <DecHead>\r\n                      <bgd_no>4258202100009*****</bgd_no>\r\n                      <hgdjc_no></hgdjc_no>\r\n                      <Hxd_no></Hxd_no>\r\n                      <lj_date>202*****</lj_date>\r\n                      <ht_no>*****1446A</ht_no>\r\n                      <cj_type>FOB</cj_type>\r\n                      <yf>0</yf>\r\n                      <yf_type></yf_type>\r\n                      <Yf_bz></Yf_bz>\r\
                     \n                      <bf>0</bf>\r\n                      <Bf_type></Bf_type>\r\n                      <Bf_bz></Bf_bz>\r\n                      <zf>0</zf>\r\n                      <Zf_type></Zf_type>\r\n                      <Zf_bz></Zf_bz>\r\n                      <my_type>0110</my_type>\r\n                      <traf_name>***** CHENG</traf_name>\r\n                  </DecHead>\r\n                  <DecLists>\r\n                      <DecList>\r\n                          <spxh>1</spxh>\r\n                          <cmcode>390410*****</cmcode>\r\n                          <cm_name>聚氯乙烯树脂</cm_name>\r\n                          <Yb_bz>*****</Yb_bz>\r\n                          <yb_amt>90*****.75</yb_amt>\r\n                          <Fd_unit>035</Fd_unit>\r\n                          <Fd_qnt>59*****</Fd_qnt>\r\n                          <No2_Fd_unit></No2_Fd_unit>\r\n                          <No2_Fd_qnt>0</No2_Fd_qnt>\r\n                          <Cj_unit>035</Cj_unit>\r\
                     \n                          <Cj_qnt>59*****</Cj_qnt>\r\n                      </DecList>\r\n                  </DecLists>\r\n              </Dec>\r\n          </RtxMessage>\r\n              ]\r\n            ]>\r\n          </data>\r\n        </output>\r\n      <head>\r\n      <cardNo>口岸卡编号</cardNo>\r\n    <corpName>企业名称</corpName>\r\n    <zzjgDm>企业组织机构代码证</zzjgDm>\r\n    <certNo>证书编号</certNo>\r\n    </head>\r\n\r\n      </body>\r\n\r\n    </business> \r\n    \"   \r\n}"
+      x-apifox-status: released
   /v2/customs/imex/dzh/getHQJCKBGD:
     post:
       summary: 进出口报关单
@@ -3140,6 +3151,7 @@ paths:
                     \t\t\t\t\t\t\t\t\t\t\t\"TradeUnit\": \"0*****\", //成交计量单位\n\t\t\t\t\t\t\t\t\t\t\t\"Price\": \"0.*****\", //单价\n\t\t\t\t\t\t\t\t\t\t\t\"Total\": \"8*****\", //总价\n\t\t\t\t\t\t\t\t\t\t\t\"Curr\": \"*****\", //币制\n\t\t\t\t\t\t\t\t\t\t\t\"FirstQty\": \"4*****\", //第一法定数量\n\t\t\t\t\t\t\t\t\t\t\t\"FirstUnit\": \"035\", //法定第一计量单位\n\t\t\t\t\t\t\t\t\t\t\t\"Jgcpdhbbh\": \"\", //加工成品单耗版本号\n\t\t\t\t\t\t\t\t\t\t\t\"ExgNo\": \"\", //货号\n\t\t\t\t\t\t\t\t\t\t\t\"DestinationCountry\": \"USA\", //最终目的国（地区）\n\t\t\t\t\t\t\t\t\t\t\t\"SecondQty\": \"1*****\", //法定第二数量\n\t\t\t\t\t\t\t\t\t\t\t\"SecondUnit\": \"0*****\", //法定第二计量单位\n\t\t\t\t\t\t\t\t\t\t\t\"PtaOrigPlace\": \"\", //优惠贸易协定项下原产地\n\t\t\t\t\t\t\t\t\t\t\t\"OrigPlace\": \"CHN\", //原产国（地区）\n\t\t\t\t\t\t\t\t\t\t\t\"OrigPlaceCode\": \"\", //原产地区代码\n\t\t\t\t\t\t\t\t\t\t\t\"DistrictCode\": \"43*****9\", //境内目的地/境内货源地\n\t\t\t\t\t\t\t\t\t\t\t\"DestCode\": \"\", //目的地代码/产地代码\n\t\t\t\t\t\t\t\t\t\t\t\"DutyMode\": \"1\", //征免方式\n\t\t\t\t\t\t\t\
                     \t\t\t\t\"GoodsAttr\": \"\", //货物属性代码\n\t\t\t\t\t\t\t\t\t\t\t\"ProdEnnm\": \"\", //英文名称\n\t\t\t\t\t\t\t\t\t\t\t\"Purpose\": \"\", //用途代码\n\t\t\t\t\t\t\t\t\t\t\t\"NoDangFlag\": \"\", //非危险货物\n\t\t\t\t\t\t\t\t\t\t\t\"Uncode\": \"\", //UN编号\n\t\t\t\t\t\t\t\t\t\t\t\"DangPackType\": \"\", //危险类别\n\t\t\t\t\t\t\t\t\t\t\t\"PackType\": \"\", //包装类别\n\t\t\t\t\t\t\t\t\t\t\t\"PackUnFlag\": \"\", //包装UN标记\n\t\t\t\t\t\t\t\t\t\t\t\"Stuff\": \"\", //成分/原料/组分\n\t\t\t\t\t\t\t\t\t\t\t\"ProdValidDt\": \"\", //产品有效期\n\t\t\t\t\t\t\t\t\t\t\t\"ProdQgp\": \"\", //产品保质期(天)\n\t\t\t\t\t\t\t\t\t\t\t\"EngManEntCnm\": \"\", //境外生产企业\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsSpec\": \"\", //货物规格\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsModel\": \"\", //货物型号\n\t\t\t\t\t\t\t\t\t\t\t\"GoodsBrand\": \"\", //货物品牌\n\t\t\t\t\t\t\t\t\t\t\t\"ProduceDate\": \"\", //生产日期\n\t\t\t\t\t\t\t\t\t\t\t\"ProdBatchNo\": \"\", //生产批次\n\t\t\t\t\t\t\t\t\t\t\t\"MnufctrRegNo\": \"\" //生产单位代码\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t]\n\t\t\t\t\t\t\
                     \t\t}\n\t\t\t\t\t\t\t]\n\t\t\t\t\t\t]\n\t\t\t\t\t]>\n\t\t\t\t\t\t</data>\n\t\t\t\t\t</output>\n\t\t\t\t</body>\n\t\t\t</business>\n    \"\n\t}"
+      x-apifox-status: released
   /v2/customs/imex/dzh/getTSBGD_PRINT:
     post:
       summary: 退税联PDF
@@ -3304,6 +3316,7 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released
   /v2/customs/imex/dzh/getHQTGWZHCKFXTZS_PDF:
     post:
       summary: 放行通知书PDF
@@ -3468,6 +3481,7 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released
   /v2/customs/imex/dzh/getHQDZWTXY_PDF:
     post:
       summary: 电子委托协议PDF
@@ -3632,6 +3646,7 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released
   /v2/customs/imex/dzh/getHQGXHT_PDF:
     post:
       summary: 购销合同PDF
@@ -3793,6 +3808,7 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released
   /v2/customs/imex/dzh/getHQZXD_PDF:
     post:
       summary: 装箱单PDF
@@ -3957,6 +3973,7 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released
   /v2/ckts/loadAuditTaskList:
     post:
       summary: 出口退税获取审核任务清单发起
@@ -4072,6 +4089,7 @@ paths:
                     data:
                       aggOrgId: 4797560596251712
                       taskId: 600734271675392
+      x-apifox-status: released
   /v2/ckts/getAuditTaskListResult:
     post:
       summary: 出口退税获取审核任务清单结果查询
@@ -4211,6 +4229,7 @@ paths:
                         <?xml version="1.0" encoding="UTF-8"?>
                         <business comment="获取审核结果清单" id="HQSHJGQD"><body yylxdm="1"><output><returncode>0</returncode><returnmsg>成功</returnmsg><CKTSfbqd><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
                         <taxML xsi:type="cktsfbqdbw" bbh="1.0" xmlbh="fbqd" xmlmc="FBQDYWBW" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.chinatax.gov.cn/dataspec/ CKTSfbqd.xsd"><head/><cktsfbqdGrid><cktsfbqdGridlb><xh>1</xh><wjm>CKTS_0610588_0001</wjm><bzdsDm>0610588</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>2</xh><wjm>CKTS_0810015_0001</wjm><bzdsDm>0810015</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>3</xh><wjm>CKTS_0810016_0001</wjm><bzdsDm>0810016</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>4</xh><wjm>CKTS_0810090_0001</wjm><bzdsDm>0810090</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>5</xh><wjm>CKTS_0610589_0001</wjm><bzdsDm>0610589</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>6</xh><wjm>CKTS_0810066_0001</wjm><bzdsDm>0810066</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>7</xh><wjm>CKTS_0810053_0001</wjm><bzdsDm>0810053</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>8</xh><wjm>CKTS_cktsBaBaxx_0001</wjm><bzdsDm>cktsBaBaxx</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>9</xh><wjm>CKTS_0610595_0001</wjm><bzdsDm>0610595</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>10</xh><wjm>CKTS_0610586_0001</wjm><bzdsDm>0610586</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>11</xh><wjm>CKTS_0810007_0001</wjm><bzdsDm>0810007</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>12</xh><wjm>CKTS_cktsBaKz_0001</wjm><bzdsDm>cktsBaKz</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>13</xh><wjm>CKTS_0620225_0001</wjm><bzdsDm>0620225</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>14</xh><wjm>CKTS_tdcodefkxx_0001</wjm><bzdsDm>tdcodefkxx</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>15</xh><wjm>CKTS_0610590_0001</wjm><bzdsDm>0610590</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>16</xh><wjm>CKTS_0810052_0001</wjm><bzdsDm>0810052</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>17</xh><wjm>CKTS_0610587_0001</wjm><bzdsDm>0610587</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>18</xh><wjm>CKTS_0610596_0001</wjm><bzdsDm>0610596</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>19</xh><wjm>CKTS_0610231_0001</wjm><bzdsDm>0610231</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>20</xh><wjm>CKTS_9910101_0001</wjm><bzdsDm>9910101</bzdsDm></cktsfbqdGridlb><cktsfbqdGridlb><xh>21</xh><wjm>CKTS_0810009_0001</wjm><bzdsDm>0810009</bzdsDm></cktsfbqdGridlb></cktsfbqdGrid></taxML>]]></CKTSfbqd><CKTS_0610588_0001><![CDATA[<taxML xmlns="http://www.chinatax.gov.cn/dataspec/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="cktsBaXthhzgYwbw" xmlbh="String" bbh="1.0" xmlmc="" xsi:schemaLocation="http://www.chinatax.gov.cn/dataspec/ CKTS_0610588_0001.xsd"><cktsBaXthhzgGrid/></taxML>]]></CKTS_0610588_0001><CKTS_0810015_0001><![CDATA[<taxML xmlns="http://www.chinatax.gov.cn/dataspec/" ......</output></body></business>
+      x-apifox-status: released
   /v2/ckts/downloadSbForm:
     post:
       summary: 出口退税申报表下载
@@ -4275,7 +4294,8 @@ paths:
                   title: 事项种类代码
                   description: |-
                     MDS 对应事项种类代码：免抵退_汇总表（MDT_ZXSB_SB_MDT_SBDSHZ_S）、 免抵退_明细表
-                    （MDT_ZXSB_SB_MDT_TSSB_S）
+                    （MDT_ZXSB_SB_MDT_TSSB_S）、免抵退_跨境销售明细表（MDT_ZXSB_SB_MDT_YFSJ_S）、
+                    免抵退_跨境销售营业款清单（MDT_ZXSB_SB_MDT_SYYK_S）
                     MTS 对应的事项种类代码：免退税_退税出口申报明细（MTS_ZXSB_SB_MTS_TSSB_S）、免退税_退税进货明细（MTS_ZXSB_SB_MTS_TSJH_S）
               required:
               - ssyf
@@ -4320,6 +4340,7 @@ paths:
                 x-apifox-orders:
                 - 01GW664NTG8DAA40CQ3926Y530
                 properties: {}
+      x-apifox-status: released
   /v2/ckts/getDownloadSbForm:
     post:
       summary: 出口退税申报表下载结果
@@ -4471,6 +4492,7 @@ paths:
                     success: true
                     message: 下载失败
                     reqId: c470b7179f1c430fa083226870e0f758
+      x-apifox-status: released
   /v2/ckts/attachedInformationUpload:
     post:
       summary: 出口退税附列资料上传
@@ -4578,6 +4600,7 @@ paths:
                 x-apifox-orders:
                 - 01GW664NTG8DAA40CQ3926Y530
                 properties: {}
+      x-apifox-status: released
   /v2/ckts/getAttachedInformationUpload:
     post:
       summary: 出口退税附列资料上传结果
@@ -4707,6 +4730,7 @@ paths:
                     success: true
                     message: 请先进行自检申请上传申报表相关数据，再进行附列资料上传
                     reqId: c2f9201cdaaf46f8a4a13efed1528e45
+      x-apifox-status: released
   /v2/ckts/syncRefundTaxLibraryQuery:
     post:
       summary: 出口退税文库查询
@@ -4895,6 +4919,7 @@ paths:
                     success: true
                     message: 请先进行自检申请上传申报表相关数据，再进行附列资料上传
                     reqId: c2f9201cdaaf46f8a4a13efed1528e45
+      x-apifox-status: released
   /v2/ckts/cancelSbForm:
     post:
       summary: 出口退税申报作废
@@ -4986,7 +5011,7 @@ paths:
                 x-apifox-orders:
                 - 01GW664NTG8DAA40CQ3926Y530
                 properties: {}
-      x-apifox-status: -1
+      x-apifox-status: testing
   /v2/ckts/getCancelSbForm:
     post:
       summary: 出口退税申报作废结果
@@ -5116,6 +5141,7 @@ paths:
                     success: true
                     message: 请先进行自检申请上传申报表相关数据，再进行附列资料上传
                     reqId: c2f9201cdaaf46f8a4a13efed1528e45
+      x-apifox-status: released
   /v2/customs/imex/dzh/getRLR_PDF:
     post:
       summary: 获取预录入报关单PDF
@@ -5280,3 +5306,4 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released

@@ -13,29 +13,19 @@
   "method": "post",
   "path": "/v2/tax/qys/loadInitDataTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
       "title": "税局取数入参",
       "type": "object",
-      "x-apifox-refs": {
-        "01JN3PJ88DW6HEHD2PWSQTH515": {
-          "$ref": "#/definitions/36714224",
-          "x-apifox-overrides": {
-            "aggOrgId": {
-              "type": "string",
-              "title": "企业Id"
-            }
-          },
-          "required": [
-            "aggOrgId"
-          ]
-        }
-      },
+      "x-apifox-refs": {},
       "x-apifox-orders": [
-        "01JN3PJ88DW6HEHD2PWSQTH515",
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList",
         "accountId"
       ],
       "properties": {
@@ -43,8 +33,110 @@
           "type": "string",
           "title": "账号id",
           "description": "多账号场景"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "year": {
+          "type": "integer",
+          "title": "税款所属期年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "税款所属期月",
+          "description": "自然月；例如：10月份申报增值税2021-09-01到2021-09-30，period传10"
+        },
+        "zsxmList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码",
+                "description": "参考申报附录：yzpzzlDm应征凭证种类代码"
+              },
+              "ssqQ": {
+                "type": "string",
+                "title": "所属期起",
+                "description": "格式yyyy-MM-dd"
+              },
+              "ssqZ": {
+                "type": "string",
+                "title": "所属期止",
+                "description": "格式yyyy-MM-dd"
+              },
+              "zspmDm": {
+                "type": "string",
+                "title": "征收品目代码",
+                "description": "文化事业建设费时必传字段，用来区分文化业还是娱乐业，302170100娱乐业文化事业建设费、302170200广告业文化事业建设费。（税报）"
+              },
+              "zlbsxlDm": {
+                "type": "string",
+                "title": "资料报送小类代码",
+                "description": "财报必须传，ZL1001001:一般企业会计准则、ZL1001002企业会计制度、ZL1001003:小企业会计准则、ZL1001050企业会计准则金融企业"
+              },
+              "templateCode": {
+                "type": "string",
+                "title": "资料报送子类代码",
+                "description": "【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业；\n【企业会计准则金融企业】类型是必填，1：适用已执行新金融工具准则的金融企业（目前仅支持金融类型的这个子类）；\n其他准则传0"
+              },
+              "formList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "获取表单数据",
+                "description": "企业所得税汇缴初始化生效：\n[\"A000000\",\"A100000\",\"A101010\",\"A102010\",\"A104000\",\"A105050\",\"A105000\",\"A105080\",\"A106000\"]\n仅支持以下表单\n\"A000000\": \"企业所得税年度纳税申报基础信息表\", 必传\n\"A100000\": \"企业所得税年度纳税申报主表（2024年版）\", 必传\n\"A101010\": \"一般企业收入明细表\",\n\"A102010\": \"一般企业成本支出明细表\",\n\"A104000\": \"期间费用明细表\",\n\"A105050\": \"职工薪酬支出及纳税调整明细表\",\n\"A105000\": \"纳税调整项目明细表\",\n\"A105080\": \"资产折旧、摊销及纳税调整明细表\",\n\"A106000\": \"企业所得税弥补亏损明细表\""
+              },
+              "zsxmDm": {
+                "type": "string",
+                "title": "征收项目代码",
+                "description": "工会经费=39900/水利建设专项收入=30221 合并=39999 通用申报必传"
+              },
+              "fcbhList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "房产编号"
+              },
+              "tdbhList": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "城镇土地编号"
+              }
+            },
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "zsxmDm",
+              "zspmDm",
+              "zlbsxlDm",
+              "templateCode",
+              "formList",
+              "fcbhList",
+              "tdbhList"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ"
+            ]
+          },
+          "title": "征收项目列表"
         }
-      }
+      },
+      "required": [
+        "aggOrgId",
+        "year",
+        "period",
+        "zsxmList"
+      ]
     },
     "required": false,
     "mediaType": "",
@@ -197,7 +289,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 13530188,
+  "folderId": 87246692,
   "ordering": 19,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -209,11 +301,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-31T03:29:11.000Z",
-  "updatedAt": "2026-04-21T07:45:03.000Z",
+  "updatedAt": "2026-06-29T02:30:09.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

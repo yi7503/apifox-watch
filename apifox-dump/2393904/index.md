@@ -2,7 +2,7 @@
 
 - domain: `openapi.qixiangyun.com`
 - branchId: `2914965`
-- apis: 637  docs: 294
+- apis: 657  docs: 326
 
 ## APIs
 
@@ -34,6 +34,10 @@
 | POST | `/v2/public/login/ext/loginOut` | 登出 | 登录业务（新）/登录管理 | [apis/415555865.json](apis/415555865.json) |
 | POST | `/v2/public/login/queryOrglist` | 获取企业列表 | 登录业务（新）/获取企业列表 | [apis/425041879.json](apis/425041879.json) |
 | POST | `/v2/public/agent/login/proxyOrgList` | 获取代理企业列表 | 登录业务（新）/获取企业列表 | [apis/398478451.json](apis/398478451.json) |
+| POST | `/v2/public/sszyfw/xyysxxAdd` | 涉税专业服务机构协议要素信息新增 | 登录业务（新）/涉税专业服务 | [apis/428491360.json](apis/428491360.json) |
+| POST | `/v2/public/sszyfw/xyysxxAddResult` | 涉税专业服务机构协议要素信息新增结果查询 | 登录业务（新）/涉税专业服务 | [apis/429232302.json](apis/429232302.json) |
+| POST | `/v2/public/sszyfw/wtfConfirm` | 涉税专业服务委托方企业确认代理 | 登录业务（新）/涉税专业服务 | [apis/428528331.json](apis/428528331.json) |
+| POST | `/v2/public/sszyfw/wtfConfirmResult` | 涉税专业服务委托方企业确认代理结果查询 | 登录业务（新）/涉税专业服务 | [apis/429233789.json](apis/429233789.json) |
 | POST | `/v2/public/login/checkAccount` | 账密检查接口 | 登录业务（新） | [apis/398478422.json](apis/398478422.json) |
 | POST | `/v2/public/login/info/querySwitchCount` | 查询用户登录切换次数(托管) | 登录业务（新） | [apis/421071020.json](apis/421071020.json) |
 | POST | `/v2/public/sjhm/createBsxhOrder` | 申请小号订单 | 办税小号业务/申请小号 | [apis/92013219.json](apis/92013219.json) |
@@ -150,6 +154,7 @@
 | POST | `/v2/invoice/qdfp/jdcjmdc` | 机动车类专用发票申请导出 | 发票业务/数电开票/机动车业务 | [apis/417453373.json](apis/417453373.json) |
 | POST | `/v2/invoice/qdfp/jdcgetwxzwj` | 机动车类专用发票导出业务未下载文件列表 | 发票业务/数电开票/机动车业务 | [apis/417465824.json](apis/417465824.json) |
 | POST | `/v2/invoice/qdfp/jdcwxzwjxz` | 机动车类专用发票导出业务未下载文件下载 | 发票业务/数电开票/机动车业务 | [apis/417473443.json](apis/417473443.json) |
+| POST | `/v2/invoice/qdfp/queryKkjfpJdc` | 可开具发票的机动车查询 | 发票业务/数电开票/机动车业务 | [apis/460618065.json](apis/460618065.json) |
 | POST | `/v2/invoice/rz/sbxx` | 获取税款所属期 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/获取税款所属期 | [apis/79034490.json](apis/79034490.json) |
 | POST | `/v2/invoice/rz/sqSkssqCj` | 更新税款所属期 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/获取税款所属期 | [apis/121573897.json](apis/121573897.json) |
 | POST | `/v2/invoice/rz/skssqCjjg` | 更新税款所属期任务结果 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/获取税款所属期 | [apis/121573912.json](apis/121573912.json) |
@@ -248,8 +253,6 @@
 | POST | `/v2/invoice/gj/collectCheckedInvoice` | 发起已勾选归集任务 | 发票业务/发票归集/异步归集-电票平台/已勾选发票归集 | [apis/168122667.json](apis/168122667.json) |
 | POST | `/v2/invoice/gj/collectCheckedInvoiceStatus` | 查询已勾选归集任务结果 | 发票业务/发票归集/异步归集-电票平台/已勾选发票归集 | [apis/168122689.json](apis/168122689.json) |
 | POST | `/v2/invoice/gj/getCollectCheckedInvoicePageData` | 查询已勾选归集数据 | 发票业务/发票归集/异步归集-电票平台/已勾选发票归集 | [apis/168122864.json](apis/168122864.json) |
-| POST | `/v2/invoice/gj/queryYcpzJxsezc` | 发起进项税额转出查询 | 发票业务/发票归集/异步归集-电票平台/应税凭证进项税额转出 | [apis/426566068.json](apis/426566068.json) |
-| POST | `/v2/invoice/gj/collectCheckedInvoiceStatus` | 查询进项税额转出任务结果 | 发票业务/发票归集/异步归集-电票平台/应税凭证进项税额转出 | [apis/426566216.json](apis/426566216.json) |
 | POST | `/服务商CallbackURL地址` | 异步任务执行结果回调 | 发票业务/发票归集/异步归集-电票平台 | [apis/193036322.json](apis/193036322.json) |
 | POST | `/v2/invoice/gj/terminateCollectionTask` | 撤销归集待执行任务 | 发票业务/发票归集/异步归集-电票平台 | [apis/255008680.json](apis/255008680.json) |
 | POST | `/v2/invoice/gj/syncCollectTask` | 进销项发票信息 | 发票业务/发票归集/同步归集-电票平台 | [apis/177718962.json](apis/177718962.json) |
@@ -285,11 +288,11 @@
 | POST | `/v2/tax/qys/querySimplifiedDeclareTaskInfo` | 查询简易申报任务结果 | 申报业务/企业税申报/简易申报 | [apis/209615708.json](apis/209615708.json) |
 | POST | `/v2/tax/qys/queryContract` | 发起查询合同接口任务 | 申报业务/企业税申报/申报初始化/代扣代缴初始化/获取合同 | [apis/250807905.json](apis/250807905.json) |
 | POST | `/v2/tax/qys/queryContractTaskInfo` | 查询合同任务结果 | 申报业务/企业税申报/申报初始化/代扣代缴初始化/获取合同 | [apis/284502582.json](apis/284502582.json) |
-| POST | `/v2/tax/qys/loadInitDataTask` | 发起代扣代缴初始化数据任务 | 申报业务/企业税申报/申报初始化/代扣代缴初始化 | [apis/253169268.json](apis/253169268.json) |
-| POST | `/v2/tax/qys/loadInitDataTask` | 发起获取初始化数据任务 | 申报业务/企业税申报/申报初始化 | [apis/69420373.json](apis/69420373.json) |
-| POST | `/v2/tax/qys/getInitData` | 初始化数据查询 | 申报业务/企业税申报/申报初始化 | [apis/69497719.json](apis/69497719.json) |
-| POST | `/v2/tax/qys/loadTaxUnbilledCalculate` | 未开票收入算税 | 申报业务/企业税申报/申报初始化 | [apis/353356302.json](apis/353356302.json) |
-| POST | `/v2/tax/qys/queryTaxUnbilledCalculate` | 查询未开票收入算税任务 | 申报业务/企业税申报/申报初始化 | [apis/353454192.json](apis/353454192.json) |
+| POST | `/v2/tax/qys/loadInitDataTask` | 发起代扣代缴初始化数据任务 | 申报业务/企业税申报/申报初始化/代扣代缴初始化/代扣代缴报表初始化请求 | [apis/253169268.json](apis/253169268.json) |
+| POST | `/v2/tax/qys/loadInitDataTask` | 发起获取初始化数据任务 | 申报业务/企业税申报/申报初始化/税种初始化请求 | [apis/69420373.json](apis/69420373.json) |
+| POST | `/v2/tax/qys/getInitData` | 公共-初始化数据查询 | 申报业务/企业税申报/申报初始化 | [apis/69497719.json](apis/69497719.json) |
+| POST | `/v2/tax/qys/loadTaxUnbilledCalculate` | 未开票收入算税 | 申报业务/企业税申报/算税 | [apis/353356302.json](apis/353356302.json) |
+| POST | `/v2/tax/qys/queryTaxUnbilledCalculate` | 查询未开票收入算税任务 | 申报业务/企业税申报/算税 | [apis/353454192.json](apis/353454192.json) |
 | POST | `/v2/tax/qys/loadSjsbzthzTask` | 发起税局申报状态汇总查询任务 | 申报业务/企业税申报/获取税局申报状态 | [apis/432835674.json](apis/432835674.json) |
 | POST | `/v2/tax/qys/queryTaskBySjsbzthz` | 查询税局申报状态汇总任务结果 | 申报业务/企业税申报/获取税局申报状态 | [apis/432835678.json](apis/432835678.json) |
 | POST | `/v2/tax/qys/loadDeclareTask` | 发起申报任务 | 申报业务/企业税申报/申报提交 | [apis/69611258.json](apis/69611258.json) |
@@ -355,6 +358,7 @@
 | POST | `/v2/iit/declare/queryEssentialInfo` | 专项附加扣除查询 | 申报业务/个税申报/代扣代缴/专项附加扣除管理 | [apis/260920433.json](apis/260920433.json) |
 | POST | `/v2/iit/declare/queryEssentialInfoFeedback` | 专项附加扣除查询反馈 | 申报业务/个税申报/代扣代缴/专项附加扣除管理 | [apis/259290126.json](apis/259290126.json) |
 | POST | `/v2/iit/personalPension/suspendEnjoyingList` | 专项附加扣除暂停享受名单查询 | 申报业务/个税申报/代扣代缴/专项附加扣除管理 | [apis/299935355.json](apis/299935355.json) |
+| POST | `/v2/iit/dkdj/zxfjjecx` | 获取企业下所有人员的专项金额 | 申报业务/个税申报/代扣代缴/专项附加扣除管理 | [apis/463124208.json](apis/463124208.json) |
 | POST | `/v2/iit/dkdj/gycsjzxxcj` | 公益慈善捐赠信息采集 | 申报业务/个税申报/代扣代缴/公益慈善捐赠管理 | [apis/416562207.json](apis/416562207.json) |
 | POST | `/v2/iit/dkdj/gycsjzxxcjfk` | 公益慈善捐赠信息采集反馈 | 申报业务/个税申报/代扣代缴/公益慈善捐赠管理 | [apis/416663407.json](apis/416663407.json) |
 | POST | `/v2/iit/dkdj/gycsjzxxcx` | 公益慈善捐赠信息查询 | 申报业务/个税申报/代扣代缴/公益慈善捐赠管理 | [apis/416672433.json](apis/416672433.json) |
@@ -383,6 +387,7 @@
 | POST | `/v2/iit/dkdj/xzsbb` | 下载申报表 | 申报业务/个税申报/代扣代缴/个税辅助申报服务 | [apis/424605095.json](apis/424605095.json) |
 | POST | `/v2/iit/dkdj/xzsbbfk` | 下载申报表反馈 | 申报业务/个税申报/代扣代缴/个税辅助申报服务 | [apis/424753822.json](apis/424753822.json) |
 | POST | `/v2/iit/payment/sendWithholdingConfirm` | 发送扣缴确认申报申请 | 申报业务/个税申报/代扣代缴/个税辅助申报服务 | [apis/314736097.json](apis/314736097.json) |
+| POST | `/v2/iit/dkdj/rzsggxqryq` | 任职受雇关系确认邀请 | 申报业务/个税申报/代扣代缴/个税辅助申报服务 | [apis/460661762.json](apis/460661762.json) |
 | POST | `/v2/iit/payment/queryAgreement` | 获取三方信息 | 申报业务/个税申报/代扣代缴/个税辅助缴款服务 | [apis/256977531.json](apis/256977531.json) |
 | POST | `/v2/iit/payment/getAgreementQueryFeedback` | 获取三方查询反馈 | 申报业务/个税申报/代扣代缴/个税辅助缴款服务 | [apis/256977721.json](apis/256977721.json) |
 | POST | `/v2/iit/payment/declareWithholding` | 三方协议缴款 | 申报业务/个税申报/代扣代缴/个税辅助缴款服务 | [apis/247706611.json](apis/247706611.json) |
@@ -405,6 +410,7 @@
 | POST | `/v2/iit/stat/ygwzcgsappqk` | 员工未注册个税APP情况 | 申报业务/个税申报/代扣代缴/查询统计 | [apis/313541849.json](apis/313541849.json) |
 | POST | `/v2/iit/report/getDeclarationRecordScreenshot` | 单位申报记录查询截图  | 申报业务/个税申报/代扣代缴/查询统计 | [apis/387307734.json](apis/387307734.json) |
 | POST | `/v2/iit/dkdj/grdkfpmxcx` | 个人代开发票明细查询 | 申报业务/个税申报/代扣代缴/查询统计 | [apis/433483777.json](apis/433483777.json) |
+| POST | `/v2/iit/dkdj/jsjlcxjt` | 缴税记录查询截图 | 申报业务/个税申报/代扣代缴/查询统计 | [apis/464394713.json](apis/464394713.json) |
 | POST | `/v2/iit/message/xscx` | 消息查询 | 申报业务/个税申报/代扣代缴/消息查询 | [apis/313654200.json](apis/313654200.json) |
 | POST | `/v2/iit/message/xscxFeedback` | 消息查询反馈 | 申报业务/个税申报/代扣代缴/消息查询 | [apis/313656700.json](apis/313656700.json) |
 | POST | `/v2/iit/message/cxyyssssjlry` | 查询异议申诉属实记录人员 | 申报业务/个税申报/代扣代缴/消息查询 | [apis/313680170.json](apis/313680170.json) |
@@ -415,6 +421,9 @@
 | POST | `/v2/iit/tfsxfhd/queryWithdrawFee` | 查询退付手续费 | 申报业务/个税申报/代扣代缴/退付手续费核对 | [apis/401129198.json](apis/401129198.json) |
 | POST | `/v2/iit/tfsxfhd/applyWithdrawFee` | 申请手续费退付 | 申报业务/个税申报/代扣代缴/退付手续费核对 | [apis/401139582.json](apis/401139582.json) |
 | POST | `/v2/iit/tfsxfhd/cancelWithdrawFee` | 撤销退费申请 | 申报业务/个税申报/代扣代缴/退付手续费核对 | [apis/401139806.json](apis/401139806.json) |
+| POST | `/v2/iit/dkdj/gqjldybacx` | 上市公司股权激励递延备案编号查询 | 申报业务/个税申报/代扣代缴/优惠备案 | [apis/460175072.json](apis/460175072.json) |
+| POST | `/v2/iit/dkdj/getGqjldybacxFeedback` | 上市公司股权激励递延备案编号查询反馈 | 申报业务/个税申报/代扣代缴/优惠备案 | [apis/460175571.json](apis/460175571.json) |
+| POST | `/v2/iit/cx/gqjlqkbgbcx` | 股权激励情况报告表查询 | 申报业务/个税申报/代扣代缴/优惠备案 | [apis/462933146.json](apis/462933146.json) |
 | POST | `/v2/iit/report/backupfile` | 备份文件任务 | 申报业务/个税申报/代扣代缴/个税备份文件 | [apis/381701331.json](apis/381701331.json) |
 | POST | `/v2/iit/report/backupfilefk` | 备份文件反馈 | 申报业务/个税申报/代扣代缴/个税备份文件 | [apis/381701425.json](apis/381701425.json) |
 | POST | `/v2/iit/declare/getCompanyRegisterInfo` | 企业注册 | 申报业务/个税申报/生产经营/企业登记及查询服务 /企业注册 | [apis/283508607.json](apis/283508607.json) |
@@ -485,7 +494,21 @@
 | POST | `/v2/shbx/declare/querySocialSecurityFeeDeclarationDetail` | 社保费申报明细查询 | 申报业务/社保费申报/查询统计 | [apis/372510427.json](apis/372510427.json) |
 | POST | `/v2/shbx/declare/querySocialSecurityFeePayableInfo` | 社保费应缴信息查询 | 申报业务/社保费申报/查询统计 | [apis/372510614.json](apis/372510614.json) |
 | POST | `/v2/shbx/declare/queryEmployeeInsuranceInfo` | 职工参保信息查询 | 申报业务/社保费申报/查询统计 | [apis/372508267.json](apis/372508267.json) |
+| POST | `/v2/shbx/declare/shbxfjfsbbxz` | 下载社会保险费缴费申报表 | 申报业务/社保费申报/查询统计 | [apis/461396151.json](apis/461396151.json) |
+| POST | `/v2/shbx/declare/queryEmployeePaymentSalary` | 职工缴费工资查询 | 申报业务/社保费申报/查询统计 | [apis/462977726.json](apis/462977726.json) |
+| POST | `/v2/shbx/declare/queryEmployeePaymentSalaryFk` | 职工缴费工资查询反馈 | 申报业务/社保费申报/查询统计 | [apis/462977864.json](apis/462977864.json) |
+| POST | `/v2/shbx/declare/dailyDeclareScreenshot` | 日常申报截图 | 申报业务/社保费申报/社保截图 | [apis/468385332.json](apis/468385332.json) |
+| POST | `/v2/shbx/declare/specialPayDeclareScreenshot` | 特殊缴款申报截图 | 申报业务/社保费申报/社保截图 | [apis/468421231.json](apis/468421231.json) |
+| POST | `/v2/shbx/declare/declareRecordScreenshot` | 社保费申报记录截图 | 申报业务/社保费申报/社保截图 | [apis/468426058.json](apis/468426058.json) |
+| POST | `/v2/shbx/declare/arrearsScreenshot` | 欠费截图 | 申报业务/社保费申报/社保截图 | [apis/468426244.json](apis/468426244.json) |
+| POST | `/v2/shbx/declare/paymentRecordScreenshot` | 缴费记录截图 | 申报业务/社保费申报/社保截图 | [apis/468426894.json](apis/468426894.json) |
 | POST | `/callbackUrl` | 社保费回调接口 | 申报业务/社保费申报/回调接口 | [apis/412979552.json](apis/412979552.json) |
+| POST | `/v2/shbxweb/sbyl` | 社会保险费申报预览（异步任务） | 申报业务/社保费申报/ 广东社会保险业务 | [apis/475930999.json](apis/475930999.json) |
+| POST | `/v2/shbxweb/sbylfk` | 社会保险费申报预览反馈（异步任务结果查询） | 申报业务/社保费申报/ 广东社会保险业务 | [apis/475934169.json](apis/475934169.json) |
+| POST | `/v2/shbxweb/sbtj` | 社会保险费申报提交 | 申报业务/社保费申报/ 广东社会保险业务 | [apis/477718990.json](apis/477718990.json) |
+| POST | `/v2/shbxweb/sbtjfk` | 社会保险费申报提交反馈 | 申报业务/社保费申报/ 广东社会保险业务 | [apis/477719177.json](apis/477719177.json) |
+| POST | `/v2/shbxweb/sbzf` | 社会保险费申报作废 | 申报业务/社保费申报/ 广东社会保险业务 | [apis/477720959.json](apis/477720959.json) |
+| POST | `/v2/shbxweb/sbzffk` | 社会保险费申报作废反馈 | 申报业务/社保费申报/ 广东社会保险业务 | [apis/477721159.json](apis/477721159.json) |
 | POST | `/v2/shbx/declare/querySocialSecurityFeeOmissionCheck` | 社保漏报检查 | 申报业务/社保费申报 | [apis/421313592.json](apis/421313592.json) |
 | POST | `/gsnb/login/pwdLogin` | 账密登录 | 申报业务/工商年报申报/工商系统登录 | [apis/433313578.json](apis/433313578.json) |
 | POST | `/gsnb/login/sendSmsCode` | 短信登录-发送短信验证码 | 申报业务/工商年报申报/工商系统登录 | [apis/433480414.json](apis/433480414.json) |
@@ -534,10 +557,6 @@
 | POST | `/v2/collect/tax/getTaxInfo` | 获取税务数据 | 数据业务/企业数据采集/解析版 | [apis/119267313.json](apis/119267313.json) |
 | POST | `/v2/collect/invoice/getCollectTaskPageData` | 获取发票数据 | 数据业务/企业数据采集/解析版 | [apis/119239827.json](apis/119239827.json) |
 | POST | `/地址联系技术支持配置` | 采集任务（其他）-回调通知 | 数据业务/企业数据采集/解析版 | [apis/302460635.json](apis/302460635.json) |
-| POST | `/v2/collect/beginFinTask` | 发起企业数据采集 | 数据业务/企业数据采集/文件版 | [apis/170674874.json](apis/170674874.json) |
-| POST | `/v2/collect/taskStatusDetails` | 获取采集状态信息 | 数据业务/企业数据采集/文件版 | [apis/228632112.json](apis/228632112.json) |
-| POST | `/地址联系技术支持配置` | 获取采集状态-回调通知 | 数据业务/企业数据采集/文件版 | [apis/228628751.json](apis/228628751.json) |
-| POST | `/v2/collect/getTaxAndFpInfo` | 获取采集状态及全量数据 | 数据业务/企业数据采集/文件版 | [apis/167844361.json](apis/167844361.json) |
 | POST | `/v2/risk/hmd/qyfkmx` | 企业风控明细接口 | 数据业务/企业风险识别/企业黑名单 | [apis/67298640.json](apis/67298640.json) |
 | POST | `/v2/risk/hmd/jyyc` | 经营异常风险接口 | 数据业务/企业风险识别/企业黑名单 | [apis/67296618.json](apis/67296618.json) |
 | POST | `/v2/risk/hmd/yzwf` | 严重违法风险接口 | 数据业务/企业风险识别/企业黑名单 | [apis/67296658.json](apis/67296658.json) |
@@ -624,6 +643,7 @@
 | POST | `/v2/public/login/scanLogin/getQrcode` | 获取登录税局二维码 | 登录业务（旧版）/自持模式登录/多账号管理/扫码登录 | [apis/172483885.json](apis/172483885.json) |
 | POST | `/v2/public/login/scanLogin/qrcodeLogin` | 扫二维码登录税局 | 登录业务（旧版）/自持模式登录/多账号管理/扫码登录 | [apis/172483955.json](apis/172483955.json) |
 | POST | `/v2/public/login/multiacc/checkAsyncLoginDpptCache` | 校验税局缓存是否有效 | 登录业务（旧版）/自持模式登录/多账号管理/扫码登录 | [apis/196428455.json](apis/196428455.json) |
+| POST | `/v2/public/login/ext/uploadTokenByAccountId` | 上传Cookie接口 | 登录业务（旧版）/自持模式登录/多账号管理/会话登录 | [apis/168162706.json](apis/168162706.json) |
 | POST | `/v2/public/login/multiacc/dpptCookie` | 登录税局发送短信验证码 | 登录业务（旧版）/自持模式登录/多账号管理/税务APP登录 | [apis/193453624.json](apis/193453624.json) |
 | POST | `/v2/public/login/multiacc/dpptpushsms` | 登录税局上传短信验证码 | 登录业务（旧版）/自持模式登录/多账号管理/税务APP登录 | [apis/193453670.json](apis/193453670.json) |
 | POST | `/v2/public/login/multiacc/checkAsyncLoginDpptCache` | 校验税局缓存是否有效 | 登录业务（旧版）/自持模式登录/多账号管理/税务APP登录 | [apis/193454059.json](apis/193454059.json) |
@@ -652,19 +672,23 @@
 |---|---|---|
 | 基本介绍 |  | [docs/2179520.json](docs/2179520.json) |
 | 开发必读 | 快速开始 | [docs/2162821.json](docs/2162821.json) |
-| 对接地址 | 快速开始 | [docs/2179950.json](docs/2179950.json) |
-| 调用模式 | 快速开始 | [docs/4434866.json](docs/4434866.json) |
-| 加密说明 | 快速开始 | [docs/3774763.json](docs/3774763.json) |
+| 对接指引 | 快速开始 | [docs/2179950.json](docs/2179950.json) |
 | 接口调用 | 快速开始 | [docs/2182015.json](docs/2182015.json) |
+| 加密说明 | 快速开始 | [docs/3774763.json](docs/3774763.json) |
+| 调用模式 | 快速开始 | [docs/4434866.json](docs/4434866.json) |
+| 业务形态 | 快速开始 | [docs/3682852.json](docs/3682852.json) |
 | 平台公共code码 | 快速开始 | [docs/8506205.json](docs/8506205.json) |
-| 业务指引 | 快速开始 | [docs/3682852.json](docs/3682852.json) |
 | SDK集成 | 快速开始/SDK集成 | [docs/2180025.json](docs/2180025.json) |
 | SDK文件上传 | 快速开始/SDK集成 | [docs/8334504.json](docs/8334504.json) |
 | MCP集成 | 快速开始/MCP集成 | [docs/7603877.json](docs/7603877.json) |
-| 统一登录服务 | 快速开始/MCP集成 | [docs/7673497.json](docs/7673497.json) |
-| 发票开具服务 | 快速开始/MCP集成 | [docs/7662723.json](docs/7662723.json) |
-| 申报与企业管理服务 | 快速开始/MCP集成 | [docs/7797514.json](docs/7797514.json) |
-| 认证服务 | 快速开始/MCP集成 | [docs/8015513.json](docs/8015513.json) |
+| 税局登录服务 | 快速开始/MCP集成 | [docs/7673497.json](docs/7673497.json) |
+| 数电开票服务 | 快速开始/MCP集成 | [docs/7662723.json](docs/7662723.json) |
+| 企税申报服务 | 快速开始/MCP集成 | [docs/7797514.json](docs/7797514.json) |
+| 发票认证服务 | 快速开始/MCP集成 | [docs/8015513.json](docs/8015513.json) |
+| 发票归集服务 | 快速开始/MCP集成 | [docs/8945995.json](docs/8945995.json) |
+| 发票查验服务 | 快速开始/MCP集成 | [docs/8946126.json](docs/8946126.json) |
+| 查询业务服务 | 快速开始/MCP集成 | [docs/8947126.json](docs/8947126.json) |
+| 风控业务服务 | 快速开始/MCP集成 | [docs/8947127.json](docs/8947127.json) |
 | 认证鉴权简介 | 平台接口鉴权 | [docs/2179954.json](docs/2179954.json) |
 | 简介 | 产品订购 | [docs/5110463.json](docs/5110463.json) |
 | 地区代码 | 产品订购/附录 | [docs/2246773.json](docs/2246773.json) |
@@ -677,23 +701,33 @@
 | 小号申请指引 | 办税小号业务 | [docs/2906513.json](docs/2906513.json) |
 | 税局添加办税小号操作指引 | 办税小号业务 | [docs/7913513.json](docs/7913513.json) |
 | 简介 | 发票业务 | [docs/4433600.json](docs/4433600.json) |
-| 发票-常见问题 | 发票业务 | [docs/8790153.json](docs/8790153.json) |
 | 简介 | 发票业务/票据查验 | [docs/2146026.json](docs/2146026.json) |
 | 附录 | 发票业务/票据查验 | [docs/7675729.json](docs/7675729.json) |
+| 票据查验-常见问题 | 发票业务/票据查验 | [docs/8790153.json](docs/8790153.json) |
 | 简介 | 发票业务/票据查验/发票查验/其它票据查验 | [docs/5029551.json](docs/5029551.json) |
 | 简介 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台) | [docs/4537369.json](docs/4537369.json) |
 | 简介 | 发票业务/发票识别 | [docs/2146778.json](docs/2146778.json) |
+| 发票识别-常见问题 | 发票业务/发票识别 | [docs/8829377.json](docs/8829377.json) |
+| 发票票样 | 发票业务/发票识别 | [docs/2857056.json](docs/2857056.json) |
+| 附录 | 发票业务/发票识别 | [docs/8832103.json](docs/8832103.json) |
+| 数电开票-常见问题 | 发票业务/数电开票 | [docs/8829378.json](docs/8829378.json) |
 | 简介 | 发票业务/数电开票/说明 | [docs/2815824.json](docs/2815824.json) |
 | 接入指引 | 发票业务/数电开票/说明 | [docs/4533173.json](docs/4533173.json) |
+| 特定要素类型 | 发票业务/数电开票/说明 | [docs/8256394.json](docs/8256394.json) |
+| 差额征税-申报项目说明 | 发票业务/数电开票/说明 | [docs/9026578.json](docs/9026578.json) |
 | 简介 | 发票业务/发票认证 | [docs/2179908.json](docs/2179908.json) |
 | 业务流程 | 发票业务/发票认证 | [docs/2189138.json](docs/2189138.json) |
+| 发票认证-常见问题 | 发票业务/发票认证 | [docs/8829379.json](docs/8829379.json) |
 | 简介 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/农产品加计扣除 | [docs/5053438.json](docs/5053438.json) |
 | 简介 | 发票业务/发票认证/电票平台认证/异步认证/自持模式认证/抵扣勾选/农产品加计扣除勾选 | [docs/6918788.json](docs/6918788.json) |
 | 简介 | 发票业务/发票归集 | [docs/2179910.json](docs/2179910.json) |
 | 附录 | 发票业务/发票归集 | [docs/7111509.json](docs/7111509.json) |
+| 发票归集-常见问题 | 发票业务/发票归集 | [docs/8829380.json](docs/8829380.json) |
 | 简介 | 发票业务/数电版式下载 | [docs/7270798.json](docs/7270798.json) |
 | 附录 | 发票业务/数电版式下载 | [docs/7271318.json](docs/7271318.json) |
+| 数电版式下载-常见问题 | 发票业务/数电版式下载 | [docs/8829381.json](docs/8829381.json) |
 | 简介 | 发票业务/发票入账 | [docs/4532740.json](docs/4532740.json) |
+| 发票入账-常见问题 | 发票业务/发票入账 | [docs/8829382.json](docs/8829382.json) |
 | 发票附录 | 发票业务/发票附录 | [docs/2189114.json](docs/2189114.json) |
 | 数电票号码规则 | 发票业务/发票附录 | [docs/3726002.json](docs/3726002.json) |
 | 简介 | 申报业务/企业税申报 | [docs/2168925.json](docs/2168925.json) |
@@ -703,6 +737,8 @@
 | 申报 缴款部分请求业务参数说明 | 申报业务/企业税申报/上传报文/excel规则及部分参数业务说明 | [docs/5679774.json](docs/5679774.json) |
 | 简介 | 申报业务/企业税申报/应申报清册条目 | [docs/2169150.json](docs/2169150.json) |
 | 简介 | 申报业务/企业税申报/上传税报报表数据 | [docs/2228019.json](docs/2228019.json) |
+| 支持上传excel申报税种的模版下载 | 申报业务/企业税申报/上传税报报表数据 | [docs/8925533.json](docs/8925533.json) |
+| 业务弹框对接流程 | 申报业务/企业税申报/上传税报报表数据 | [docs/9042785.json](docs/9042785.json) |
 | 简介 | 申报业务/企业税申报/上传财报报表数据 | [docs/2175638.json](docs/2175638.json) |
 | 简介 | 申报业务/企业税申报/申报初始化 | [docs/2169151.json](docs/2169151.json) |
 | 简介 | 申报业务/企业税申报/获取税局申报状态 | [docs/8385154.json](docs/8385154.json) |
@@ -823,7 +859,18 @@
 | 福建表单 | 申报业务/工商年报申报/各地区表单 | [docs/8582898.json](docs/8582898.json) |
 | 江苏表单 | 申报业务/工商年报申报/各地区表单 | [docs/8599170.json](docs/8599170.json) |
 | 上海表单 | 申报业务/工商年报申报/各地区表单 | [docs/8782793.json](docs/8782793.json) |
+| 山东表单 | 申报业务/工商年报申报/各地区表单 | [docs/8818620.json](docs/8818620.json) |
+| 浙江表单 | 申报业务/工商年报申报/各地区表单 | [docs/8841955.json](docs/8841955.json) |
+| 广西表单 | 申报业务/工商年报申报/各地区表单 | [docs/8872286.json](docs/8872286.json) |
 | 个体户表单 | 申报业务/工商年报申报/各地区表单 | [docs/8788139.json](docs/8788139.json) |
+| 广西个体户表单 | 申报业务/工商年报申报/各地区表单 | [docs/8879659.json](docs/8879659.json) |
+| 工商年报附录 | 申报业务/工商年报申报/各地区表单 | [docs/8610946.json](docs/8610946.json) |
+| 湖南个体户表单 | 申报业务/工商年报申报/各地区表单 | [docs/8883382.json](docs/8883382.json) |
+| 湖南表单 | 申报业务/工商年报申报/各地区表单 | [docs/8883507.json](docs/8883507.json) |
+| 浙江个体户表单 | 申报业务/工商年报申报/各地区表单 | [docs/8885063.json](docs/8885063.json) |
+| 深圳附录 | 申报业务/工商年报申报/各地区表单 | [docs/8958827.json](docs/8958827.json) |
+| 深圳个体户表单 | 申报业务/工商年报申报/各地区表单 | [docs/8965592.json](docs/8965592.json) |
+| 深圳表单 | 申报业务/工商年报申报/各地区表单 | [docs/8965596.json](docs/8965596.json) |
 | 进出口退税-常见问题 | 进出口退税业务 | [docs/8790155.json](docs/8790155.json) |
 | 简介 | 进出口退税业务/进出口报关单 | [docs/7231909.json](docs/7231909.json) |
 | 附录 | 进出口退税业务/进出口报关单 | [docs/7807607.json](docs/7807607.json) |
@@ -832,21 +879,25 @@
 | 出口退税审核进度说明 | 进出口退税业务/出口退税申报/附录 | [docs/7151343.json](docs/7151343.json) |
 | 自检申请上传的业务报文说明 | 进出口退税业务/出口退税申报/附录 | [docs/6799230.json](docs/6799230.json) |
 | 自检反馈查询结果返回参数说明 | 进出口退税业务/出口退税申报/附录 | [docs/8019425.json](docs/8019425.json) |
-| 获取审核结果清单说明 | 进出口退税业务/出口退税申报/附录 | [docs/8019423.json](docs/8019423.json) |
-| 数据业务-常见问题 | 数据业务 | [docs/8790156.json](docs/8790156.json) |
+| 获取审核结果清单说明 | 进出口退税业务/出口退税申报/附录 | [docs/8817935.json](docs/8817935.json) |
 | 简介 | 数据业务/企业数据采集 | [docs/2990560.json](docs/2990560.json) |
+| 企业数据采集-常见问题 | 数据业务/企业数据采集 | [docs/8832091.json](docs/8832091.json) |
 | 解析表结构详情附录 | 数据业务/企业数据采集/解析版 | [docs/4223483.json](docs/4223483.json) |
 | 企业数据采集公共附录 | 数据业务/企业数据采集/附录 | [docs/3017220.json](docs/3017220.json) |
 | 简介 | 数据业务/企业风险识别 | [docs/2162788.json](docs/2162788.json) |
+| 企业风险识别-常见问题 | 数据业务/企业风险识别 | [docs/8832092.json](docs/8832092.json) |
+| 企业商务查询-常见问题 | 数据业务/企业商事查询 | [docs/8832096.json](docs/8832096.json) |
 | 地区码 | 数据业务/企业商事查询/附录 | [docs/6136969.json](docs/6136969.json) |
+| 法规库-常见问题 | 法规库 | [docs/8832097.json](docs/8832097.json) |
 | 简介 | 风控报告 | [docs/8289942.json](docs/8289942.json) |
 | 风控报告-常见问题 | 风控报告 | [docs/8790157.json](docs/8790157.json) |
 | 附录-授权书 | 风控报告 | [docs/8313857.json](docs/8313857.json) |
 | 申请地区码 | 风控报告 | [docs/8594997.json](docs/8594997.json) |
-| 2026年1月发布内容 | 版本发布/发票产品升级说明 | [docs/8184934.json](docs/8184934.json) |
-| 2026年2月发布内容 | 版本发布/发票产品升级说明 | [docs/8255921.json](docs/8255921.json) |
-| 2026年3月发布内容 | 版本发布/发票产品升级说明 | [docs/8438577.json](docs/8438577.json) |
+| 2026年5月发布内容 | 版本发布/发票产品升级说明 | [docs/8963498.json](docs/8963498.json) |
 | 2026年4月发布内容  | 版本发布/发票产品升级说明 | [docs/8721234.json](docs/8721234.json) |
+| 2026年3月发布内容 | 版本发布/发票产品升级说明 | [docs/8438577.json](docs/8438577.json) |
+| 2026年2月发布内容 | 版本发布/发票产品升级说明 | [docs/8255921.json](docs/8255921.json) |
+| 2026年1月发布内容 | 版本发布/发票产品升级说明 | [docs/8184934.json](docs/8184934.json) |
 | 2024年5月发布内容 | 版本发布/发票产品升级说明/历史发布记录 | [docs/4462686.json](docs/4462686.json) |
 | 2024年6月发布内容 | 版本发布/发票产品升级说明/历史发布记录 | [docs/4632325.json](docs/4632325.json) |
 | 2024年7月发布内容 | 版本发布/发票产品升级说明/历史发布记录 | [docs/4894643.json](docs/4894643.json) |
@@ -867,9 +918,10 @@
 | 2025年10月发布内容 | 版本发布/发票产品升级说明/历史发布记录 | [docs/7611946.json](docs/7611946.json) |
 | 2025年11月发布内容 | 版本发布/发票产品升级说明/历史发布记录 | [docs/7769636.json](docs/7769636.json) |
 | 2025年12月发布内容 | 版本发布/发票产品升级说明/历史发布记录 | [docs/7972422.json](docs/7972422.json) |
+| 2026年5月发布内容 | 版本发布/企业税申报升级说明 | [docs/8940957.json](docs/8940957.json) |
 | 2026年4月发布内容 | 版本发布/企业税申报升级说明 | [docs/8720827.json](docs/8720827.json) |
 | 2026年3月发布内容 | 版本发布/企业税申报升级说明 | [docs/8427213.json](docs/8427213.json) |
-| 20626年2月发布内容 | 版本发布/企业税申报升级说明 | [docs/8271449.json](docs/8271449.json) |
+| 2026年2月发布内容 | 版本发布/企业税申报升级说明 | [docs/8271449.json](docs/8271449.json) |
 | 2026年1月发布内容 | 版本发布/企业税申报升级说明 | [docs/8180154.json](docs/8180154.json) |
 | 2025年12月发布内容 | 版本发布/企业税申报升级说明 | [docs/7983233.json](docs/7983233.json) |
 | 2025年11月发布内容 | 版本发布/企业税申报升级说明 | [docs/7769293.json](docs/7769293.json) |
@@ -891,6 +943,7 @@
 | 2024年7月发布内容 | 版本发布/企业税申报升级说明 | [docs/4888118.json](docs/4888118.json) |
 | 2024年6月发布内容 | 版本发布/企业税申报升级说明 | [docs/4635764.json](docs/4635764.json) |
 | 2024年5月发布内容 | 版本发布/企业税申报升级说明 | [docs/4462988.json](docs/4462988.json) |
+| 2026年5月发布内容 | 版本发布/企业数据采集升级说明 | [docs/8962085.json](docs/8962085.json) |
 | 2026年4月发布内容 | 版本发布/企业数据采集升级说明 | [docs/8720838.json](docs/8720838.json) |
 | 2026年3月发布内容 | 版本发布/企业数据采集升级说明 | [docs/8427373.json](docs/8427373.json) |
 | 2026年1月发布内容 | 版本发布/企业数据采集升级说明 | [docs/8180160.json](docs/8180160.json) |
@@ -900,6 +953,7 @@
 | 2025年4月发布内容 | 版本发布/企业数据采集升级说明 | [docs/6597887.json](docs/6597887.json) |
 | 2025年3月发布的内容 | 版本发布/企业数据采集升级说明 | [docs/6376913.json](docs/6376913.json) |
 | 2025年2月发布内容 | 版本发布/企业数据采集升级说明 | [docs/6138920.json](docs/6138920.json) |
+|   2026年5月发版内容 | 版本发布/个税升级说明 | [docs/8958621.json](docs/8958621.json) |
 |   2026年4月发版内容 | 版本发布/个税升级说明 | [docs/8660417.json](docs/8660417.json) |
 | 2026年3月发版内容 | 版本发布/个税升级说明 | [docs/8431298.json](docs/8431298.json) |
 | 2026年2月发版内容 | 版本发布/个税升级说明 | [docs/8264001.json](docs/8264001.json) |
@@ -915,6 +969,7 @@
 | 2025年4月发布内容 | 版本发布/个税升级说明 | [docs/6604512.json](docs/6604512.json) |
 | 2025年3月发布内容 | 版本发布/个税升级说明 | [docs/6363320.json](docs/6363320.json) |
 | 2025年2月发布内容  | 版本发布/个税升级说明 | [docs/6138953.json](docs/6138953.json) |
+| 2026年5月发布内容 | 版本发布/社保升级说明 | [docs/8959761.json](docs/8959761.json) |
 |   2026年4月发布内容 | 版本发布/社保升级说明 | [docs/8660637.json](docs/8660637.json) |
 | 2026年3月发布内容 | 版本发布/社保升级说明 | [docs/8438950.json](docs/8438950.json) |
 | 2026年2月发布内容 | 版本发布/社保升级说明 | [docs/8264024.json](docs/8264024.json) |
@@ -923,6 +978,7 @@
 | 2025年11月发布内容 | 版本发布/社保升级说明 | [docs/7769282.json](docs/7769282.json) |
 | 2025年10月发布内容 | 版本发布/社保升级说明 | [docs/7616009.json](docs/7616009.json) |
 |   2026年4月发布内容 | 版本发布/工商年报升级说明 | [docs/8660643.json](docs/8660643.json) |
+| 2026年5月发布内容 | 版本发布/工商年报升级说明 | [docs/8961316.json](docs/8961316.json) |
 | 2025年8月发布内容 | 版本发布/企业商事查询升级说明 | [docs/7348358.json](docs/7348358.json) |
 | 2025年7月发布内容 | 版本发布/企业商事查询升级说明 | [docs/7179276.json](docs/7179276.json) |
 | 2025年6月发布内容 | 版本发布/企业商事查询升级说明 | [docs/6950901.json](docs/6950901.json) |
@@ -934,10 +990,6 @@
 | 2025年6月发布内容 | 版本发布/平台产品升级说明 | [docs/6975553.json](docs/6975553.json) |
 | 2025年9月发布内容 | 版本发布/平台产品升级说明 | [docs/7477042.json](docs/7477042.json) |
 | 2025年10月发布内容 | 版本发布/平台产品升级说明 | [docs/7617632.json](docs/7617632.json) |
-| 发票业务 | 常见问题 | [docs/2857030.json](docs/2857030.json) |
-| 申报业务 | 常见问题 | [docs/2857032.json](docs/2857032.json) |
-| 风控业务 | 常见问题 | [docs/2857033.json](docs/2857033.json) |
-| 发票票样 | 常见问题 | [docs/2857056.json](docs/2857056.json) |
 | 维护涉税专业服务机构的协议要素信息操作流程 | 税局操作指引 | [docs/7770443.json](docs/7770443.json) |
 | 税局手机号码实名认证操作指引 | 税局操作指引 | [docs/7984122.json](docs/7984122.json) |
 | 简介 | 登录业务（旧版） | [docs/3677384.json](docs/3677384.json) |

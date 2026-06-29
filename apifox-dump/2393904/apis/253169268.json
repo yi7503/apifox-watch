@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/loadInitDataTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -251,7 +251,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 48788968,
+  "folderId": 87246671,
   "ordering": 20,
   "responsibleId": 0,
   "commonResponseStatus": {
@@ -271,7 +271,7 @@
   "oasExtensions": null,
   "mockScript": {},
   "createdAt": "2025-01-10T02:23:14.000Z",
-  "updatedAt": "2025-09-19T03:35:03.000Z",
+  "updatedAt": "2026-06-01T13:37:33.000Z",
   "creatorId": 1452584,
   "editorId": 1476015,
   "creatorUserId": 1452584,

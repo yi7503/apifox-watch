@@ -26,7 +26,7 @@
   "tags": [
     "企业信息采集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -215,19 +215,140 @@
                   },
                   "jcxx": {
                     "type": "object",
-                    "properties": {},
+                    "properties": {
+                      "taxCompanyPaymentSummaryUrl": {
+                        "type": "string",
+                        "title": "汇总完税证明文件链接",
+                        "description": "汇总完税证明文件链接（下载文件按年进行拆分，返回链接是个zip包）"
+                      },
+                      "taxCompanyCreditLevelDtoPageResult": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "nsrsbh": {
+                              "type": "string",
+                              "title": "纳税人识别号",
+                              "description": "纳税人识别号"
+                            },
+                            "xydj": {
+                              "type": "string",
+                              "title": "信用等级",
+                              "description": "信用等级"
+                            },
+                            "xypffs": {
+                              "type": "string",
+                              "title": "评价分数",
+                              "description": "评价分数"
+                            },
+                            "xypfnd": {
+                              "type": "string",
+                              "title": "年份"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "nsrsbh",
+                            "xydj",
+                            "xypffs",
+                            "xypfnd"
+                          ],
+                          "x-apifox-refs": {}
+                        },
+                        "title": "纳税信用等级",
+                        "description": "纳税信用等级"
+                      },
+                      "backTaxInfo": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "nsrsbh": {
+                              "type": "string",
+                              "title": "纳税人识别号",
+                              "description": "纳税人识别号"
+                            },
+                            "zsxm": {
+                              "type": "string",
+                              "title": "征收项目",
+                              "description": "征收项目"
+                            },
+                            "sssqq": {
+                              "type": "string",
+                              "title": "所属时期起",
+                              "description": "所属时期起"
+                            },
+                            "sssqz": {
+                              "type": "string",
+                              "title": "所属时期止",
+                              "description": "所属时期止"
+                            },
+                            "xmmc": {
+                              "type": "string",
+                              "title": "项目名称",
+                              "description": "项目名称"
+                            },
+                            "zspm": {
+                              "type": "string",
+                              "title": "征收品目",
+                              "description": "征收品目"
+                            },
+                            "jkqx": {
+                              "type": "string",
+                              "title": "缴款期限",
+                              "description": "缴款期限"
+                            },
+                            "ybse": {
+                              "type": "string",
+                              "title": "应补税额",
+                              "description": "取值税局界面的欠缴税额"
+                            },
+                            "skzl": {
+                              "type": "string",
+                              "title": "税款种类",
+                              "description": "税款种类：正税、滞纳金、涉税罚款、行为罚款、，没收违法所得、利息、滞纳金、违约金、其他"
+                            },
+                            "sbrq": {
+                              "type": "string",
+                              "title": "申报日期",
+                              "description": "申报日期"
+                            },
+                            "sbbzl": {
+                              "type": "string",
+                              "title": "申报表种类",
+                              "description": "申报表种类"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "nsrsbh",
+                            "zsxm",
+                            "sssqq",
+                            "sssqz",
+                            "xmmc",
+                            "zspm",
+                            "jkqx",
+                            "ybse",
+                            "skzl",
+                            "sbrq",
+                            "sbbzl"
+                          ]
+                        },
+                        "title": "欠税信息",
+                        "description": "欠税信息"
+                      }
+                    },
                     "description": "基础信息节点",
                     "x-apifox-orders": [
                       "01HDGHQ2949K5HV2SW6SW5GBXC",
                       "01HDGJ39724AG1JJ2FY4TF9G6R",
                       "01HDGJ41C4FHXBGRB55G104705",
-                      "01HDGGZW6Q670MZQPMK4R3YWD7",
+                      "taxCompanyCreditLevelDtoPageResult",
                       "01HYCZXHSC7HTV9E4FSV1X6DXJ",
                       "01HDGJ4J6W4Z2NME5EC191QZPM",
                       "01HA4TA6BST2MGBZGWH5JSM9GC",
-                      "01HA4TA5N1CMS2453A6SXBFS65",
+                      "backTaxInfo",
                       "01HA4TA4Z3AW4JYM7AHPEYQP5S",
                       "01HA4TA3VCPZWF81453BTZWGWR",
+                      "taxCompanyPaymentSummaryUrl",
                       "01HE30ZCEFBKK5TTHR17GQ4PJ9",
                       "01HW598R03TT96J7QTSSG8G86V",
                       "01JBGR83PPCM88ZNZ8NYENYF2C",
@@ -240,9 +361,6 @@
                     "x-apifox-refs": {
                       "01HA4TA6BST2MGBZGWH5JSM9GC": {
                         "$ref": "#/definitions/60712671"
-                      },
-                      "01HA4TA5N1CMS2453A6SXBFS65": {
-                        "$ref": "#/definitions/60713722"
                       },
                       "01HA4TA4Z3AW4JYM7AHPEYQP5S": {
                         "$ref": "#/definitions/60714097"
@@ -335,9 +453,6 @@
                             "description": "完税证明 （获取税局文书式完税证明）"
                           }
                         }
-                      },
-                      "01HDGGZW6Q670MZQPMK4R3YWD7": {
-                        "$ref": "#/definitions/66006890"
                       },
                       "01HDGHQ2949K5HV2SW6SW5GBXC": {
                         "$ref": "#/definitions/66012252"
@@ -664,11 +779,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T09:10:34.000Z",
-  "updatedAt": "2026-04-07T02:58:00.000Z",
+  "updatedAt": "2026-06-05T10:56:32.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 1476015,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：\n1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)\n2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态\"status\"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)\n3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)",
+  "description": "该接口用于获取已勾选归集发票数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起已勾选归集任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询已勾选归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）\n2、通过taskId调用「查询已勾选归集数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）\n  </Step>\n</Steps>\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -15,7 +15,7 @@
   "tags": [
     "发票归集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -53,6 +53,7 @@
       ],
       "x-apifox-refs": {}
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -1008,7 +1009,7 @@
     },
     {
       "name": "示例 1",
-      "responseId": 679831859,
+      "responseId": 438821231,
       "data": "{\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"page\": null,\n        \"list\": [\n            {\n                \"fplx\": \"17\",\n                \"gfmc\": \"\",\n                \"gxsj\": \"2025-03-11 12:27:20\",\n                \"gxztDm\": \"1\",\n                \"hxytDm\": \"1\",\n                \"jkdw1nsrsbh\": \"91310000************\",\n                \"jkshm\": \"22442025100******-L02\",\n                \"kpr\": \"\",\n                \"seYxdk\": 10281.29,\n                \"sjlyBz\": \"FPYDKXZ100\",\n                \"sjlyDm\": \"FPYDKXZ100\",\n                \"skje\": 10281.29,\n                \"skssq\": 202502,\n                \"slv\": \"\",\n                \"tfrq\": \"2025-02-05 00:00:00\",\n                \"tfyf\": 202502,\n                \"xfmc\": \"\"\n            }\n        ]\n    },\n    \"jsonUrl\": null\n}",
       "description": "",
       "oasKey": "",
@@ -1017,7 +1018,7 @@
     },
     {
       "name": "成功",
-      "responseId": 738908456,
+      "responseId": 438821231,
       "data": "{\n    \"reqId\": \"0f32b889dfcb463590a51c0e8258fc03\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=4EWWrRGrrvLx*************\",\n        \"list\": [\n            {\n                \"kpyf\": \"202507\",\n                \"xfsbh\": \"915111815864****\",\n                \"gxztDm\": \"1\",\n                \"gfmc\": \"****全技术服务有限公司\",\n                \"sdphm\": \"25519147729********\",\n                \"fpfxdj\": \"正常\",\n                \"jxxbz\": \"jx\",\n                \"se\": 3.39,\n                \"kprq\": \"2025-07-31 00:00:00\",\n                \"fpztDm\": \"0\",\n                \"hxytDm\": \"1\",\n                \"gfsbh\": \"91510106MA6****\",\n                \"fpdm\": \"\",\n                \"fplx\": \"51\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"\",\n                \"seYxdk\": 3.39,\n                \"gxsj\": \"2025-08-06 16:33:32\",\n                \"jshj\": 41,\n                \"je\": 37.61,\n                \"slv\": \"\",\n                \"xfmc\": \"中国铁路成都局集团有限公司****\",\n                \"fphm\": \"25519147729000****\",\n                \"skssq\": 202507\n            }\n        ]\n    }\n}",
       "description": "",
       "oasKey": "",
@@ -1039,11 +1040,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T03:17:26.000Z",
-  "updatedAt": "2026-01-22T08:54:18.000Z",
+  "updatedAt": "2026-05-20T05:53:34.000Z",
   "creatorId": 887778,
-  "editorId": 2118003,
+  "editorId": 1564651,
   "creatorUserId": 887778,
-  "editorUserId": 2118003,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

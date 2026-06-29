@@ -1,0 +1,147 @@
+{
+  "id": 475930999,
+  "name": "社会保险费申报预览（异步任务）",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbxweb/sbyl",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id",
+          "description": "多账户场景"
+        },
+        "fkssq": {
+          "type": "string",
+          "title": "费款所属期"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "fkssq"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssq"
+      ]
+    },
+    "required": true,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 180235707,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GW1T4YF3HAVG0EVNQQQNDBRK": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "aggOrgId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "企业id"
+                  },
+                  "taskId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "任务id"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "aggOrgId",
+                  "taskId"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GW1T4YF3HAVG0EVNQQQNDBRK"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 88927022,
+  "ordering": 10,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-06-22T01:50:47.000Z",
+  "updatedAt": "2026-06-25T14:22:16.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

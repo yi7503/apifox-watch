@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/public/sjhm/queryBsxhOrder",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -32,6 +32,7 @@
         "uniCode"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -149,7 +150,7 @@
               },
               "id": {
                 "type": "integer",
-                "title": "客户系统的订单唯一标识"
+                "title": "企享云系统的订单唯一标识"
               },
               "uniCode": {
                 "type": "string",
@@ -238,17 +239,15 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-06-29T06:02:45.000Z",
-  "updatedAt": "2025-04-09T07:56:15.000Z",
+  "updatedAt": "2026-06-24T03:21:44.000Z",
   "creatorId": 1659553,
-  "editorId": 1452584,
+  "editorId": 2400309,
   "creatorUserId": 1659553,
-  "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.42947017"
-  ],
+  "editorUserId": 2400309,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

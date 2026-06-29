@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/queryTaxFundGainInfo",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -153,6 +153,7 @@
             "x-apifox-orders": [
               "aggOrgId",
               "taskId",
+              "code",
               "businessStatus",
               "businessStatusName",
               "serviceCode",
@@ -160,6 +161,8 @@
               "detail",
               "detail‘",
               "detail''",
+              "detail'''",
+              "detail''''",
               "01J8Z5ZQ38286KGBGTNTE83P8F"
             ],
             "properties": {
@@ -859,6 +862,20 @@
                   "yzpzzlDm",
                   "dataList"
                 ]
+              },
+              "code": {
+                "type": "string",
+                "title": "错误码"
+              },
+              "detail'''": {
+                "$ref": "#/definitions/279421033",
+                "title": "水资源税",
+                "description": "字段detail根据请求的税源类型不同，detail的格式不同"
+              },
+              "detail''''": {
+                "title": "资源税",
+                "description": "字段detail根据请求的税源类型不同，detail的格式不同",
+                "$ref": "#/definitions/288777772"
               }
             },
             "required": [
@@ -867,7 +884,8 @@
               "taskId",
               "serviceCode",
               "aggOrgId",
-              "serviceName"
+              "serviceName",
+              "code"
             ]
           },
           "success": {
@@ -920,6 +938,12 @@
       "oasKey": "",
       "oasExtensions": "",
       "id": 22152476
+    },
+    {
+      "name": "水资源报文",
+      "responseId": 218634814,
+      "data": "{\r\n    \"req_id\": \"55f7808aeb0f466eb7f110d89db85845\",\r\n    \"success\": true,\r\n    \"code\": \"SUCCESS\",\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"aggOrgId\": 464528606622016,\r\n        \"taskId\": 468224438862336,\r\n        \"businessStatus\": 3,\r\n        \"businessStatusName\": \"已成功\",\r\n        \"serviceCode\": \"tax-fund-gain\",\r\n        \"serviceName\": \"税源信息获取\",\r\n        \"detail\": {\r\n            \"nsrsbh\": \"*******771937Q\",\r\n            \"nsrmc\": \"深******有限公司\",\r\n            \"yzpzzlDm\": \"BDA0610987SYCJ\",\r\n            \"dataList\": [\r\n                {\r\n                    \"symxxx\": {\r\n                        \"bqnfsb\": \"Y\",\r\n                        \"sybh\": \"S34010720250002\",\r\n                        \"sylx\": \"地下水\",\r\n                        \"qsdd\": \"****工业园\",\r\n                        \"syyxqq\": \"2026-05-01\",\r\n                        \"syyxqz\": \"9999-12-31\",\r\n                        \"skssqq\": \"2026-05-15\",\r\n                        \"skssqz\": \"2026-05-15\",\r\n                        \"qsxkzblqk\": \"已办理\",\r\n                        \"qsxkzbh\": \"02030166\",\r\n                        \"qskszxzqh\": \"****县\",\r\n                        \"qskszjdxx\": \"****县经济开发区\",\r\n                        \"zgsws\": \"13401074000\",\r\n                        \"qskjtdd\": \"****工业园\",\r\n                        \"qsxkfzjg\": \"****县局第二税务分局\",\r\n                        \"qsxkfzjgxzjb\": \"省级\",\r\n                        \"qsxkyxqq\": \"2024-02-01\",\r\n                        \"qsxkyxqz\": \"2025-02-21\",\r\n                        \"tsyslb\": \"农村集中饮水工程\",\r\n                        \"qyshy\": \"\",\r\n                        \"sfsyyszqdc\": \"否\",\r\n                        \"sysedc\": \"202412010003\",\r\n                        \"nxkqsl\": \"0\",\r\n                        \"njhqsl\": \"987665\",\r\n                        \"syxxbgsxrq\": \"\",\r\n                        \"syxxzxrq\": \"\"\r\n                    },\r\n                    \"sbjsmx\": {\r\n                        \"zm\": \"农村人口集中式饮水工程\",\r\n                        \"jldw\": \"立方米\",\r\n                        \"sqljqysl\": \"1000.00\",\r\n                        \"bqsjqysl\": \"54379.00\",\r\n                        \"hllsl\": \"0.09\",\r\n                        \"bqjsqysl\": \"49484.89\",\r\n                        \"bqljqysl\": \"55379.00\",\r\n                        \"ljcxkqsl\": \"0.00\",\r\n                        \"ljcxkbl\": \"0.00\",\r\n                        \"syse\": \"0.15\",\r\n                        \"bqynse\": \"7422.73\"\r\n                    },\r\n                    \"jmsjsmx\": {\r\n                        \"zm\": \"农村人口集中式饮水工程\",\r\n                        \"jldw\": \"立方米\",\r\n                        \"jmxzDm\": \"0006061001\",\r\n                        \"jmxzDmMc\": \"《财政部 税务总局 水利部关于印发<水资源税改革试点实施办法>的通知》 财税〔2024〕28号 第十六条第（五）款\",\r\n                        \"swsxdm\": \"SXA031901345\",\r\n                        \"swsxmc\": \"国土绿化、地下水回灌、河湖生态补水等生态取用水免征水资源税\",\r\n                        \"bqjmsqysl\": \"3000.00\",\r\n                        \"syse\": \"0.15\",\r\n                        \"jzbl\": \"1.00\",\r\n                        \"bqjmse\": \"450.00\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+      "id": "019e71c1-7f42-76f5-9319-d2b7a737412f"
     }
   ],
   "codeSamples": [],
@@ -937,11 +961,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T03:49:50.000Z",
-  "updatedAt": "2026-05-11T09:07:28.000Z",
+  "updatedAt": "2026-05-29T03:18:08.000Z",
   "creatorId": 2122743,
-  "editorId": 1391922,
+  "editorId": 1452584,
   "creatorUserId": 2122743,
-  "editorUserId": 1391922,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

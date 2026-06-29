@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/personalPension/suspendEnjoyingList",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -55,10 +55,11 @@
         "year"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
-        "value": "{\n    \"aggOrgId\": \"4539696148287232\",\n    \"accountId\": \"4552900726228096\",\n    \"year\": \"202412\"\n}",
+        "value": "{\n    \"aggOrgId\": \"4539696148287232\",\n    \"accountId\": \"4552900726228096\",\n    \"year\": \"2025\"\n}",
         "mediaType": "application/json",
         "description": ""
       }
@@ -224,14 +225,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-23T07:02:39.000Z",
-  "updatedAt": "2025-05-30T01:58:22.000Z",
+  "updatedAt": "2026-06-05T06:10:34.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 3222025,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
-  "responseChildren": [
-    "BLANK.682426371"
-  ],
+  "editorUserId": 3222025,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

@@ -16,7 +16,7 @@
     "发票查验",
     "文件上传"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

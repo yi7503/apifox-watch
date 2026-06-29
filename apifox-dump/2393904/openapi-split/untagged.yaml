@@ -1,0 +1,1443 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 — _untagged
+  version: latest
+  description: 'Split from full spec, module: _untagged'
+tags: []
+paths:
+  /v2/collect/getTaxAndFpInfo:
+    post:
+      summary: 获取采集状态及全量数据
+      operationId: api-167844361
+      tags: []
+      description: |
+        描述：该接口用于获取采集状态及税务和发票信息数据
+        注：发票数据量会过多一个月发票明细返回一个joson进行整体压缩，返回压缩文件文件进行加密，解密方式参考附录示例
+
+        调用流程：
+        1. 通过发起采集任务时返回的taskId，轮询该接口的状态；
+        2. 判断采集状态是否完成，获取data节点下的status状态；
+        3. 获取结果，当采集状态为3时采集完成，获取result节点下的数据；
+
+
+        | **错误代码** | **错误信息**  | **解决方案**|
+        | --- | --- |---|
+        | 2000 | 成功 | |
+        | 5000 | 异常 | |
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskId:
+                  type: string
+                  title: 任务id
+                  description: 任务成功后任务ID
+                  x-apifox-mock: '1698948417616556034'
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                  description: 纳税人识别号
+                  x-apifox-mock: 91440111MACHRDGB9W
+              x-apifox-orders:
+              - taskId
+              - nsrsbh
+              x-apifox-refs: {}
+              required:
+              - taskId
+              - nsrsbh
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求唯一id
+                    description: 请求唯一id
+                    x-apifox-mock: '1702594054403760130'
+                  code:
+                    type: string
+                    title: 返回code码
+                    description: 返回code码
+                    x-apifox-mock: '2000'
+                  success:
+                    type: boolean
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 返回信息描述
+                    description: 返回信息描述
+                    x-apifox-mock: 成功
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      status:
+                        type: integer
+                        description: -1：任务创建失败，0:无任务，1:进行中，3:完成
+                        title: 任务完成状态
+                      result:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          sb:
+                            description: 税表节点
+                            type: object
+                            x-apifox-refs:
+                              01HW50V4HX8FY1QMHC5Y7GJHE2:
+                                $ref: '#/definitions/93983155'
+                                x-apifox-overrides: {}
+                            properties: {}
+                            x-apifox-orders:
+                            - 01HW50V4HX8FY1QMHC5Y7GJHE2
+                          jcxx:
+                            type: object
+                            properties: {}
+                            description: 基础信息节点
+                            x-apifox-orders:
+                            - 01HDGHQ2949K5HV2SW6SW5GBXC
+                            - 01HDGJ39724AG1JJ2FY4TF9G6R
+                            - 01HDGJ41C4FHXBGRB55G104705
+                            - 01HDGGZW6Q670MZQPMK4R3YWD7
+                            - 01HYCZXHSC7HTV9E4FSV1X6DXJ
+                            - 01HDGJ4J6W4Z2NME5EC191QZPM
+                            - 01HA4TA6BST2MGBZGWH5JSM9GC
+                            - 01HA4TA5N1CMS2453A6SXBFS65
+                            - 01HA4TA4Z3AW4JYM7AHPEYQP5S
+                            - 01HA4TA3VCPZWF81453BTZWGWR
+                            - 01HE30ZCEFBKK5TTHR17GQ4PJ9
+                            - 01HW598R03TT96J7QTSSG8G86V
+                            - 01JBGR83PPCM88ZNZ8NYENYF2C
+                            - 01JBGR8NAT2N6YCX155ZWZ5WCG
+                            - 01JK7W8P7M06H4H7G9TW1WAB9E
+                            - 01JN3ZH1VKYTX2VMDQX0DTB1MD
+                            - 01JTJAG732G86QEPE6YJEXBKQT
+                            - 01JYNHD401EPSR3SSEXR2T0BGJ
+                            x-apifox-refs:
+                              01HA4TA6BST2MGBZGWH5JSM9GC:
+                                $ref: '#/definitions/60712671'
+                              01HA4TA5N1CMS2453A6SXBFS65:
+                                $ref: '#/definitions/60713722'
+                              01HA4TA4Z3AW4JYM7AHPEYQP5S:
+                                $ref: '#/definitions/60714097'
+                              01HA4TA3VCPZWF81453BTZWGWR:
+                                $ref: '#/definitions/60714198'
+                              01HDGGZW6Q670MZQPMK4R3YWD7:
+                                $ref: '#/definitions/66006890'
+                              01HDGHQ2949K5HV2SW6SW5GBXC:
+                                $ref: '#/definitions/66012252'
+                              01HDGJ39724AG1JJ2FY4TF9G6R:
+                                $ref: '#/definitions/66014735'
+                              01HDGJ41C4FHXBGRB55G104705:
+                                $ref: '#/definitions/66015006'
+                              01HDGJ4J6W4Z2NME5EC191QZPM:
+                                $ref: '#/definitions/66015020'
+                              01HE30ZCEFBKK5TTHR17GQ4PJ9:
+                                $ref: '#/definitions/60664446'
+                              01HW598R03TT96J7QTSSG8G86V:
+                                $ref: '#/definitions/94046136'
+                              01HYCZXHSC7HTV9E4FSV1X6DXJ:
+                                $ref: '#/definitions/66001464'
+                              01JBGR83PPCM88ZNZ8NYENYF2C:
+                                $ref: '#/definitions/128054519'
+                              01JBGR8NAT2N6YCX155ZWZ5WCG:
+                                $ref: '#/definitions/128055065'
+                              01JK7W8P7M06H4H7G9TW1WAB9E:
+                                $ref: '#/definitions/144673091'
+                              01JN3ZH1VKYTX2VMDQX0DTB1MD:
+                                $ref: '#/definitions/149385768'
+                              01JTJAG732G86QEPE6YJEXBKQT:
+                                $ref: '#/definitions/165415548'
+                              01JYNHD401EPSR3SSEXR2T0BGJ:
+                                $ref: '#/definitions/179395277'
+                          fp:
+                            description: 发票节点
+                            type: object
+                            x-apifox-refs: {}
+                            x-apifox-orders:
+                            - jxxFileDownLoad
+                            - ygxFileDownLoad
+                            - fpLimit
+                            - jxsezcFileDownLoad
+                            properties:
+                              jxxFileDownLoad:
+                                type: object
+                                x-apifox-refs:
+                                  01HYD5XPZZBTQ12Z5X6D6X27FA:
+                                    $ref: '#/definitions/98674583'
+                                    x-apifox-overrides:
+                                      bigDataMark: null
+                                x-apifox-orders:
+                                - 01HYD5XPZZBTQ12Z5X6D6X27FA
+                                properties: {}
+                                title: 进销项发票
+                                description: 进销项发票
+                              ygxFileDownLoad:
+                                type: object
+                                x-apifox-refs:
+                                  01HYD5XMW1SHM60DYMF53358GW:
+                                    $ref: '#/definitions/98674583'
+                                    x-apifox-overrides:
+                                      bigDataMark: null
+                                x-apifox-orders:
+                                - 01HYD5XMW1SHM60DYMF53358GW
+                                properties: {}
+                                title: 已勾选发票
+                                description: 已勾选发票
+                              fpLimit:
+                                type: object
+                                properties: {}
+                                x-apifox-orders:
+                                - 01JN3VCJ1GHTAV3KJX4N9BBZ35
+                                description: 发票额度
+                                title: 发票额度
+                                x-apifox-refs:
+                                  01JN3VCJ1GHTAV3KJX4N9BBZ35:
+                                    $ref: '#/definitions/149384796'
+                              jxsezcFileDownLoad:
+                                type: object
+                                properties:
+                                  jsonUrl:
+                                    type: string
+                                    title: 链接文件地址
+                                    description: txt格式，详情查看解析版-获取发票数据接口示例
+                                x-apifox-orders:
+                                - jsonUrl
+                                title: 进项税额转出发票
+                                description: 进项税额转出节点
+                          syhq:
+                            type: object
+                            properties:
+                              syhqTd:
+                                description: 土地-税源获取
+                                $ref: '#/definitions/111688801'
+                              syhqFc:
+                                description: 房产-税源获取
+                                $ref: '#/definitions/111690103'
+                              syhqHb:
+                                description: 环保-税源获取
+                                $ref: '#/definitions/111691703'
+                            x-apifox-orders:
+                            - syhqTd
+                            - syhqFc
+                            - syhqHb
+                            description: 税源获取节点
+                          db:
+                            $ref: '#/definitions/128059214'
+                          tx:
+                            $ref: '#/definitions/128057392'
+                        x-apifox-orders:
+                        - jcxx
+                        - sb
+                        - fp
+                        - syhq
+                        - db
+                        - tx
+                        x-apifox-refs: {}
+                        description: 任务结果内容
+                        title: 任务结果内容
+                      statusMsg:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务完成状态描述
+                        description: 任务完成状态描述
+                      statusDetails:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          main:
+                            type: string
+                            title: 分组总处理状态
+                            description: 1：进行中，2：失败，3：成功
+                          mainStatusCode:
+                            type: string
+                            title: 分组总code
+                            description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                          sb、fp、jcxx、syhq、db、tx:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                title: 分组任务处理状态
+                                description: 1：进行中，2：失败，3：成功
+                              loginCode:
+                                type: string
+                                title: 登录失效状态
+                                description: 登录失效（8000），其他：2000
+                            x-apifox-orders:
+                            - status
+                            - loginCode
+                            required:
+                            - status
+                            - loginCode
+                            title: 分组任务状态详情节点
+                            description: 类型及下节点类型参考上级目录中的《企业数据采集公共附录》
+                        title: 任务状态详情节点
+                        x-apifox-orders:
+                        - sb、fp、jcxx、syhq、db、tx
+                        - main
+                        - mainStatusCode
+                    x-apifox-orders:
+                    - status
+                    - statusMsg
+                    - statusDetails
+                    - result
+                    required:
+                    - status
+                required:
+                - reqId
+                - code
+                - success
+                x-apifox-orders:
+                - reqId
+                - code
+                - message
+                - success
+                - data
+                x-apifox-refs: {}
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    msg: null
+                    code: '2000'
+                    data:
+                      result:
+                        jcxx:
+                          taxCompanyCreditLevelDtoPageResult:
+                          - nsrsbh: 91XXXXXXXXXXXXXX01
+                            xydj: A
+                            xypfnd: '2022'
+                            xypffs: '90'
+                            taskId: 17826942852867586
+                          contactInfo:
+                          - nsrsbh: 91XXXXXXXXXXXXXX01
+                            dbrmc: XXX
+                            dbrdhhm: '13000000001'
+                            dbryddhhm: '13000000001'
+                            dbrdydz: ''
+                            dbrzjlxdm: '201'
+                            dbrzjlxmc: 居民身份证
+                            dbrzjhm: 身份证号码
+                            bssf: '1'
+                            taskId: 17826942849991616
+                          taxCompanyEnterpriseChangeDtoPageResult:
+                          - nsrsbh: 91XXXXXXXXXXXXXX01
+                            bgxmmc: 财务负责人姓名
+                            bgxmdm: '036'
+                            bgqnr: XXX
+                            bghnr: XXX
+                            bgrq: ''
+                            taskId: 17826942824432130
+                          taxFeeIdentify:
+                          - ZSXM: 个人所得税
+                            ZSPM: 工资薪金所得
+                            SL: '0.03'
+                            NSQX: 月
+                            RDYXQQ: '2019-03-01'
+                            RDYXQZ: '9999-12-31'
+                            ZSDLFS: 代扣代缴
+                            ZSZM: ''
+                          taxCompanyInfoDtoPageResult:
+                            nsrsbh: 91XXXXXXXXXXXXXX01
+                            nsrmc: XXXXX（省）有限公司
+                            swjgmc: 国XXXX局XX市XX区XX局
+                            xydj: A
+                          taxSocialSecurityDtoPageResult:
+                          - nsrsbh: 91XXXXXXXXXXXXXX01
+                            ssswj: 国XXXX局XX市XX区XX局
+                            zsxm: 企业职工基本养老保险费
+                            sbrq: '2022-12-08'
+                            nssbq: 2022-11
+                            nssbz: 2022-11
+                            bblx: 正常申报
+                            fz: 企业职工基本养老保险费
+                            zspm: 职工基本养老保险(单位缴纳)
+                            zszm: ''
+                            jfjs: '1000002.0'
+                            fl: '0.14'
+                            yjfe: '100780.28'
+                            jfrs: '121'
+                            sbqx: ''
+                            taskId: 17821506
+                          backTaxInfo: []
+                          taxCompanyEnterpriseInfoDtoPageResult:
+                            nsrsbh: 91XXXXXXXXXXXXXX01
+                            nsrmc: XXXXX（省）有限公司
+                            zcdz: XX省XX市XX区XX中心
+                            yydz: XX省XX市XX区XX中心
+                            dhhm: '13000000001'
+                            yb: ''
+                            qyhgdm: ''
+                            sshydm: '000'
+                            sshymc: 供应
+                            djzclxdm: '000'
+                            djzclxmc: 港、澳、台商独资经营企业
+                            nslxdm: '1'
+                            nslxmc: 一般纳税人
+                            xydj: ''
+                            gszch: ''
+                            scjyqxz: ''
+                            zczb: '200000.00'
+                            sykjzd: '000'
+                            sykjzdmc: 小企业会计准则
+                            lsgxdm: ''
+                            lsgxmc: ''
+                            nsztdm: '01'
+                            nsztmc: 正常
+                            swjgdm: '10000000000'
+                            swjgmc: 国XXXX局XX市XX区XX局
+                            zgy: ''
+                            kyrq: '20100101'
+                            zczbbz: ''
+                            cyrs: '0'
+                            jyfw: ''
+                            xypfsj: ''
+                            xypffs: ''
+                            zcddhhm: ''
+                            zczbbzmc: ''
+                            zzjgdm: ''
+                            hzdjrq: ''
+                            ssdm: '32'
+                            ssmc: XX省
+                            dsdm: '3201'
+                            dsmc: XX省XX市
+                            dbrmc: XXX
+                            dbrdhhm: ''
+                            dbryddhhm: '13000000001'
+                            dbrzjlxdm: '201'
+                            dbrzjlxmc: 居民身份证
+                            dbrzjhm: 身份证号码
+                            scjyqxq: ''
+                            cwfzrxm: XX
+                            cwfzrzjhm: '0000000000000000'
+                            cwfzrzjlx: 居民身份证
+                            cwfzryddh: '13000000001'
+                            bsrzjmc: 居民身份证
+                            bsrzjhm: '000000000000000000'
+                            bsryddh: ''
+                            bsrmc: XXX
+                            ssswj: 国XXXX局XX市XX区XX局
+                            xfcy: 供应
+                            taskId: 17826942787201
+                          taxCompanyEnterpriseIllegalDtoPageResult: []
+                          taxCompanyPaymentListDtoPageResult:
+                          - taskId: 178260971394
+                            nsrsbh: 91XXXXXXXXXXXXXX01
+                            dq: '0000'
+                            skssqq: '2021-01-01'
+                            skssqz: '2021-01-31'
+                            xmmc: ''
+                            zspm: ''
+                            jkrq: '2021-02-05'
+                            yjsk: ''
+                            skzl: 增值税
+                            sksx: ''
+                            skzt: ''
+                            dyxx: ''
+                            jkqx: ''
+                            sl: ''
+                            jsyj: ''
+                            xxsr: ''
+                          ticketIdentify: []
+                          tzfxxDtoPageResult:
+                          - nsrsbh: 91XXXXXXXXXXXXXX01
+                            tzfmc: XXXXX投资（XX）有限公司
+                            tzfjjxzdm: ''
+                            tzfjjxzmc: ''
+                            tzbl: '100.0'
+                            zjzldm: '113'
+                            zjzlmc: XX登记证
+                            zjhm: 91XXXXXXXXXXXXXX01
+                            gjdz: 中华人民共和国
+                            tzje: ''
+                            taskId: 17826942289730
+                          paymentInfo:
+                          - taskId: 1782525826
+                            nsrsbh: 91XXXXXXXXXXXXXX01
+                            sssqq: '2024-01-01'
+                            sssqz: '2024-03-31'
+                            jkqx: ''
+                            jkfsrq: '2024-04-11'
+                            zsxmmc: 印花税
+                            zsxmdm: '10111'
+                            skzlmc: 正税
+                            skzldm: '10'
+                            skztmc: 已入库
+                            skztdm: '4'
+                            xxsr: ''
+                            sl: ''
+                            se: '43.57'
+                        fp:
+                          jxxFileDownLoad:
+                            downloadLink: http://xxxxxx
+                            cxrqq: '202310'
+                            bigDataMark: '0'
+                            isFileAvailable: true
+                            cxrqz: '202403'
+                          ygxFileDownLoad:
+                            downloadLink: http://xxxxxx
+                            cxrqq: '202310'
+                            isFileAvailable: true
+                            cxrqz: '202403'
+                        sb:
+                          fullFileDownLoad:
+                            downloadLogs:
+                            - tableCode: BDA0610600
+                              code: '1'
+                              message: 下载税表成功
+                              ssqq: '2021-03-01'
+                              tableName: 《增值税纳税申报表（一般纳税人适用）》
+                              ssqz: '2021-03-31'
+                            nsrsbh: 91XXXXXXXXXXXXXX01
+                            downloadLink: http://91XXXXXXXXXXXXXX01_2021-01-01_2024-04-24.zip
+                            cxrqq: '2021-01-01'
+                            isFileAvailable: true
+                            isZip: '1'
+                            cxrqz: '2024-04-24'
+                      statusDetails:
+                        jcxx:
+                          groupStatusDetail:
+                            ORG_ILLEGAL_INFO: 3
+                            CREDIT_LEVEL_DETAIL: 3
+                            CONTACT_INFO: 3
+                            CHANGE_INFO: 3
+                            ORG_BACK_TAX_INFO: 3
+                            INVESTOR_INFO: 3
+                            BASIC_INFO: 3
+                            TAX_SBF: 3
+                            CREDIT_LEVEL: 3
+                            TICKET_IDENTIFY: 3
+                            TAX_FEE_IDENTIFY: 3
+                            DUTY_PAID_PROOF: 3
+                            TAX_PAYMENT: 3
+                          status: 3
+                        fp:
+                          groupStatusDetail:
+                            XGJFP: 3
+                          status: 3
+                        main: 3
+                        sb:
+                          groupStatusDetail:
+                            FULL_FILE_ZIP: 3
+                          status: 3
+                      statusMsg: 完成
+                      status: 3
+                异常返回结果:
+                  summary: 异常返回结果
+                  value:
+                    code: '50002'
+                    success: false
+                    message: 字段nsrsbh的格式不正确
+                    reqId: d56999744734437eb10f3369d52efc15
+                执行中:
+                  summary: 执行中
+                  value:
+                    msg: null
+                    code: '2000'
+                    data:
+                      statusMsg: 执行中
+                      statusDetails:
+                        jcxx:
+                          groupStatusDetail:
+                            ORG_ILLEGAL_INFO: 3
+                            CREDIT_LEVEL_DETAIL: 1
+                            CONTACT_INFO: 3
+                            CHANGE_INFO: 3
+                            ORG_BACK_TAX_INFO: 3
+                            INVESTOR_INFO: 3
+                            BASIC_INFO: 3
+                            TAX_SBF: 1
+                            CREDIT_LEVEL: 1
+                            TICKET_IDENTIFY: 1
+                            TAX_FEE_IDENTIFY: 1
+                            DUTY_PAID_PROOF: 3
+                            TAX_PAYMENT: 1
+                          status: 1
+                        fp:
+                          groupStatusDetail:
+                            XGJFP: 1
+                          status: 1
+                        main: 1
+                        sb:
+                          groupStatusDetail:
+                            FULL_FILE_ZIP: 1
+                          status: 1
+                      status: 1
+  /v2/collect/beginFinTask#170674874:
+    post:
+      summary: 发起企业数据采集
+      operationId: api-170674874
+      tags: []
+      description: |-
+        该接口用于发起企业数据采集（需区分自持和托管）：
+        1. 自持账号模式下：自行异步登录后再调用该接口；
+        2. 托管模式下：传入账号必要信息直接调用。
+
+
+        | **错误代码** | **错误信息**  | **解决方案**|
+        | --- | --- |---|
+        | 2000 | 成功 | |
+        | 4xxx| 获取失败 | |
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              x-apifox-refs:
+                01HV0TJ5317Q3J9WJ7Z3ZJ5B6F:
+                  $ref: '#/definitions/86364451'
+                  x-apifox-overrides:
+                    filter: null
+                    reqType: null
+                    aggOrgId: null
+                    collectCycle: null
+                    accountId: null
+              x-apifox-orders:
+              - 01HV0TJ5317Q3J9WJ7Z3ZJ5B6F
+              properties: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求唯一id
+                    description: 请求唯一id
+                    mock:
+                      mock: '1695797461872951298'
+                  code:
+                    type: string
+                    title: 请求code
+                    description: 请求code(2000 成功,其他失败)
+                    mock:
+                      mock: '2000'
+                  success:
+                    type: boolean
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息描述
+                    description: 错误信息描述
+                    mock:
+                      mock: 接口调用成功
+                  data:
+                    type: object
+                    properties:
+                      taskId:
+                        type: string
+                        description: 主任务ID
+                    x-apifox-orders:
+                    - taskId
+                    description: 数据结果
+                    required:
+                    - taskId
+                required:
+                - reqId
+                - success
+                - code
+                x-apifox-orders:
+                - reqId
+                - code
+                - message
+                - success
+                - data
+                x-apifox-refs: {}
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    reqId: 19399fbf85694c71bc5448a392ad8dd0
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      taskId: '12345678'
+                异常返回结果:
+                  summary: 异常返回结果
+                  value:
+                    code: '5000'
+                    success: false
+                    message: 异常信息
+                    reqId: d56999744734437eb10f3369d52efc15
+  /地址联系技术支持配置#228628751:
+    post:
+      summary: 获取采集状态-回调通知
+      operationId: api-228628751
+      tags: []
+      description: |-
+        描述：采集任务完成时回调通知客户。
+        调用流程：
+        1. 客户提供自己的接口回调地址；
+        2. 发起企业数据采集，采集完成后会推送数据到回调地址，客户返回成功响应；
+        3. 判断采集状态是否完成，获取status状态；
+        4. 获取结果，当采集状态为3时采集完成，调用获取全量数据接口获取数据；
+
+        客户回调返回查看响应参数及示例
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  description: -1：任务创建失败，0:无任务，1:进行中，3:完成
+                  title: 任务完成状态
+                statusMsg:
+                  type: string
+                  title: 任务完成状态描述
+                  description: 任务完成状态描述
+                statusDetails:
+                  type: object
+                  properties:
+                    main:
+                      type: string
+                      title: 分组总状态
+                      description: 1：进行中，2：失败（任一失败），3：成功
+                    sb、fp、jcxx、syhq:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        status:
+                          type: string
+                          title: 分组任务处理状态
+                          description: 1：进行中，2：失败，3：成功
+                        loginCode:
+                          type: string
+                          title: 子任务登录失效状态码
+                          description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                      x-apifox-orders:
+                      - status
+                      - loginCode
+                      title: 分组任务状态详情节点
+                    mainStatusCode:
+                      type: string
+                      title: 分组总code
+                      description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                  x-apifox-orders:
+                  - sb、fp、jcxx、syhq
+                  - main
+                  - mainStatusCode
+                  title: 任务状态详情
+                  required:
+                  - mainStatusCode
+                  - main
+                taskId:
+                  type: string
+                  description: 任务ID
+                  title: 任务ID
+              required:
+              - taskId
+              - status
+              - statusDetails
+              x-apifox-orders:
+              - taskId
+              - status
+              - statusMsg
+              - statusDetails
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 接收响应Code
+                  msg:
+                    type: string
+                    description: 接收响应消息
+                x-apifox-orders:
+                - code
+                - msg
+                required:
+                - code
+                - msg
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    code: '2000'
+                    msg: 已接收
+  /v2/collect/taskStatusDetails#228632112:
+    post:
+      summary: 获取采集状态信息
+      operationId: api-228632112
+      tags: []
+      description: |-
+        描述：该接口用于获取采集状态。
+        调用流程：
+        1. 通过发起采集任务时返回的taskId，轮询该接口的状态；
+        2. 判断采集状态是否完成，获取data节点下的status状态；
+        3. 获取结果，当采集状态为3时采集完成，调用获取全量数据接口获取数据；
+
+
+        | **错误代码** | **错误信息**  | **解决方案**|
+        | --- | --- |---|
+        | 2000 | 成功 | |
+        | 5000 | 异常 | |
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskId:
+                  type: string
+                  title: 任务id
+                  mock:
+                    mock: '1698948417616556034'
+                  description: 任务成功后任务ID
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                  mock:
+                    mock: 91440111MACHRDGB9W
+                  description: 纳税人识别号
+              x-apifox-orders:
+              - taskId
+              - nsrsbh
+              x-apifox-refs: {}
+              required:
+              - taskId
+              - nsrsbh
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求唯一id
+                    mock:
+                      mock: '1702594054403760130'
+                    description: 请求唯一id
+                  code:
+                    type: string
+                    title: 返回code码
+                    mock:
+                      mock: '2000'
+                    description: 返回code码
+                  success:
+                    type: boolean
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 返回信息描述
+                    description: 返回信息描述
+                    mock:
+                      mock: 成功
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      status:
+                        type: integer
+                        description: -1：任务创建失败，0:无任务，1:进行中，3:完成
+                        title: 任务完成状态
+                      statusMsg:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务完成状态描述
+                        description: 任务完成状态描述
+                      statusDetails:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          main:
+                            type: string
+                            title: 分组总状态
+                            description: 1：进行中，2：失败（任何失败），3：成功
+                          mainStatusCode:
+                            type: string
+                            title: 分组总code
+                            description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败
+                          sb、fp、jcxx、syhq、db、tx:
+                            type: object
+                            properties:
+                              status:
+                                type: string
+                                title: 分组任务处理状态
+                                description: 1：进行中，2：失败，3：成功
+                              loginCode:
+                                type: string
+                                title: 登录失效状态
+                                description: 登录失效（8000），其他：2000
+                            x-apifox-orders:
+                            - status
+                            - loginCode
+                            required:
+                            - status
+                            - loginCode
+                            title: 分组任务状态详情节点
+                            description: 类型及下节点类型参考上级目录中的《企业数据采集公共附录》
+                        title: 任务状态详情
+                        x-apifox-orders:
+                        - sb、fp、jcxx、syhq、db、tx
+                        - main
+                        - mainStatusCode
+                    x-apifox-orders:
+                    - status
+                    - statusMsg
+                    - statusDetails
+                    required:
+                    - status
+                required:
+                - reqId
+                - code
+                - success
+                x-apifox-orders:
+                - reqId
+                - code
+                - message
+                - success
+                - data
+                x-apifox-refs: {}
+              examples:
+                成功返回结果:
+                  summary: 成功返回结果
+                  value:
+                    msg: null
+                    code: '2000'
+                    data:
+                      statusDetails:
+                        jcxx:
+                          groupStatusDetail:
+                            ORG_ILLEGAL_INFO: 3
+                            CREDIT_LEVEL_DETAIL: 3
+                            CONTACT_INFO: 3
+                            CHANGE_INFO: 3
+                            ORG_BACK_TAX_INFO: 3
+                            INVESTOR_INFO: 3
+                            BASIC_INFO: 3
+                            TAX_SBF: 3
+                            CREDIT_LEVEL: 3
+                            TICKET_IDENTIFY: 3
+                            TAX_FEE_IDENTIFY: 3
+                            DUTY_PAID_PROOF: 3
+                            TAX_PAYMENT: 3
+                          status: 3
+                        fp:
+                          groupStatusDetail:
+                            XGJFP: 3
+                          status: 3
+                        main: 3
+                        sb:
+                          groupStatusDetail:
+                            FULL_FILE_ZIP: 3
+                          status: 3
+                      statusMsg: 完成
+                      status: 3
+                异常返回结果:
+                  summary: 异常返回结果
+                  value:
+                    code: '50002'
+                    success: false
+                    message: 字段nsrsbh的格式不正确
+                    reqId: d56999744734437eb10f3369d52efc15
+                执行中:
+                  summary: 执行中
+                  value:
+                    msg: null
+                    code: '2000'
+                    data:
+                      statusMsg: 执行中
+                      statusDetails:
+                        jcxx:
+                          groupStatusDetail:
+                            ORG_ILLEGAL_INFO: 3
+                            CREDIT_LEVEL_DETAIL: 1
+                            CONTACT_INFO: 3
+                            CHANGE_INFO: 3
+                            ORG_BACK_TAX_INFO: 3
+                            INVESTOR_INFO: 3
+                            BASIC_INFO: 3
+                            TAX_SBF: 1
+                            CREDIT_LEVEL: 1
+                            TICKET_IDENTIFY: 1
+                            TAX_FEE_IDENTIFY: 1
+                            DUTY_PAID_PROOF: 3
+                            TAX_PAYMENT: 1
+                          status: 1
+                        fp:
+                          groupStatusDetail:
+                            XGJFP: 1
+                          status: 1
+                        main: 1
+                        sb:
+                          groupStatusDetail:
+                            FULL_FILE_ZIP: 1
+                          status: 1
+                      status: 1
+  /v2/invoice/gj/queryYcpzJxsezc#426566068:
+    post:
+      summary: 发起进项税额转出查询
+      operationId: api-426566068
+      tags: []
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                aggOrgId:
+                  type: string
+                  title: 企业id
+                accountId:
+                  type: string
+                  title: 账号唯一标识
+                skssq:
+                  type: string
+                  title: 税款所属期
+              required:
+              - nsrsbh
+              - aggOrgId
+              - skssq
+              x-apifox-orders:
+              - nsrsbh
+              - skssq
+              - aggOrgId
+              - accountId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  code:
+                    type: string
+                  success:
+                    type: boolean
+                  message:
+                    type: 'null'
+                  data:
+                    type: object
+                    properties:
+                      taskId:
+                        type: integer
+                        title: 任务id
+                    required:
+                    - taskId
+                    x-apifox-orders:
+                    - taskId
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: b33ad285f760435bbc3c813abf494992
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      taskId: 2655552188466659328
+  /v2/invoice/gj/collectCheckedInvoiceStatus#426566216:
+    post:
+      summary: 查询进项税额转出任务结果
+      operationId: api-426566216
+      tags: []
+      parameters:
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskId:
+                  type: string
+                  title: 任务id
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                aggOrgId:
+                  type: string
+                  title: 企业id
+              required:
+              - taskId
+              - nsrsbh
+              - aggOrgId
+              x-apifox-orders:
+              - aggOrgId
+              - nsrsbh
+              - taskId
+              x-apifox-refs: {}
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                    title: 请求唯一id
+                    description: 每次请求生成的唯一标识，建议保存，接口异常时方便排查
+                  code:
+                    type: string
+                    description: 返回2000成功，其他表示失败
+                    title: 任务状态
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type: 'null'
+                    title: 返回提示信息
+                  data:
+                    type: object
+                    properties:
+                      appKey:
+                        type: integer
+                        title: appkey
+                      createTime:
+                        type: string
+                        title: 创建时间
+                        description: YYYY-MM-DD HH:MM:SS
+                      failCode:
+                        type: string
+                        title: 失败code
+                      failMsg:
+                        type: string
+                        title: 失败提示信息
+                      fplxStr:
+                        type: string
+                        title: 发票类型
+                        description: 见「发票归集-附录-发票类型代码」
+                      jsonUrl:
+                        type: string
+                        title: 采集到发票存储到的ossUrl
+                        description: 具体报文查看同步接口中【应税凭证进项税额转出】返回值
+                      jxxbz:
+                        type: string
+                        title: 进销项标志
+                        enum:
+                        - xx-销项
+                        - jx-进项
+                        x-apifox-enum:
+                        - value: xx-销项
+                          name: ''
+                          description: ''
+                        - value: jx-进项
+                          name: ''
+                          description: ''
+                      kpyfq:
+                        type: integer
+                        title: 所属期起
+                        description: YYYYMMDD
+                      kpyfz:
+                        type: integer
+                        title: 所属期止
+                        description: YYYYMMDD
+                      nsrsbh:
+                        type: string
+                        title: 纳税人识别号
+                      status:
+                        type: string
+                        title: 任务状态
+                        enum:
+                        - 0-待执行
+                        - 1-进行中
+                        - 2-失败
+                        - 3-成功
+                        x-apifox-enum:
+                        - value: 0-待执行
+                          name: ''
+                          description: ''
+                        - value: 1-进行中
+                          name: ''
+                          description: ''
+                        - value: 2-失败
+                          name: ''
+                          description: ''
+                        - value: 3-成功
+                          name: ''
+                          description: ''
+                      updateTime:
+                        type: string
+                        title: 更新时间
+                        description: YYYY-MM-DD HH:MM:SS
+                    required:
+                    - appKey
+                    - createTime
+                    - failCode
+                    - failMsg
+                    - fplxStr
+                    - jsonUrl
+                    - jxxbz
+                    - kpyfq
+                    - kpyfz
+                    - nsrsbh
+                    - status
+                    - updateTime
+                    x-apifox-orders:
+                    - status
+                    - failCode
+                    - failMsg
+                    - appKey
+                    - nsrsbh
+                    - fplxStr
+                    - jxxbz
+                    - kpyfq
+                    - kpyfz
+                    - createTime
+                    - updateTime
+                    - jsonUrl
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value: |-
+                    {
+                        "reqId": "278ae26be2004e9ea641fe4fb4784714",
+                        "code": "2000",
+                        "success": true,
+                        "message": null,
+                        "data": {
+                            "appKey": 1000****,
+                            "collectType": "1",
+                            "createTime": "2026-01-30 17:18:36",
+                            "failCode": "2000",
+                            "failMsg": "操作成功",
+                            "fplxStr": null,
+                            "jsonUrl": ""http: //qxy-oss-robot-product.qixiangyun.com/91370000********/26548675294********_jxseZccx.txt?Expires=1804735480&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=i6MLuPgNPEXbe4********"",
+                            "jxxbz": "jx",
+                            "kpyfq": 202312,
+                            "kpyfz": 202312,
+                            "nsrsbh": "91310118M*******",
+                            "status": "3",
+                            "updateTime": "2026-01-30 17:18:54"
+                        }
+                    }

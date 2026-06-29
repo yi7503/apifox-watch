@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/querySsflbm",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -92,10 +92,6 @@
                 "items": {
                   "type": "object",
                   "properties": {
-                    "fjbm": {
-                      "type": "string",
-                      "title": "父级编码"
-                    },
                     "spbm": {
                       "type": "string",
                       "title": "商品编码"
@@ -179,10 +175,13 @@
                       "type": "string",
                       "title": "停用日期",
                       "description": "格式：yyyy-MM-dd"
+                    },
+                    "gjz": {
+                      "type": "string",
+                      "title": "关键字"
                     }
                   },
                   "x-apifox-orders": [
-                    "fjbm",
                     "spbm",
                     "tdyslxdm",
                     "cezsbz",
@@ -202,7 +201,8 @@
                     "dytjjbm",
                     "hgjcksppm",
                     "qyrq",
-                    "tyrq"
+                    "tyrq",
+                    "gjz"
                   ]
                 }
               }
@@ -239,7 +239,7 @@
     {
       "name": "成功示例",
       "responseId": 339981033,
-      "data": "{\n    \"reqId\": \"4f1a1d3a1a25483789714ca86e6e536d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"list\": [\n            {\n                \"fjbm\": \"3040502020300000256\",\n                \"spmc\": \"桥梁通行服务\",\n                \"zzstsnrdm\": \"1\",\n                \"spfwjc\": \"经营租赁\",\n                \"qyrq\": \"2019-04-01\",\n                \"zzsslv\": \"9%\",\n                \"sfhzx\": \"N\",\n                \"zzszcyj\": \"《交通运输部国家税务总局关于收费公路通行费增值税电子普通发票开具等有关事项的公告》（2017年第66号）\",\n                \"bzs\": \"Y\",\n                \"sm\": null,\n                \"zslv\": \"5%\",\n                \"spbm\": \"3040502020303000000\",\n                \"zsstsgl\": \"按5%简易征收、不征税\"\n            }\n        ]\n    }\n}",
+      "data": "{\n    \"reqId\": \"4f1a1d3a1a25483789714ca86e6e536d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"list\": [\n            {\n                \"xfsgl\": null,\n                \"zzstsgl\": \"免税\",\n                \"spmc\": \"谷子\",\n                \"tdyslxdm\": \"11\",\n                \"hgjcksppm\": \"10082900【税则品名】其他谷子\",\n                \"jzjtdm\": null,\n                \"cezsbz\": null,\n                \"zzstsnrdm\": \"1011606.0\",\n                \"spfwjc\": \"谷物\",\n                \"qyrq\": \"2018-12-04\",\n                \"tyrq\": null,\n                \"gjz\": \"谷子、硬谷子、糯谷子\",\n                \"zzsslv\": \"9%\",\n                \"dytjjbm\": null,\n                \"sfhzx\": \"N\",\n                \"xfszcyj\": null,\n                \"zzszcyj\": \"《财政部 国家税务总局关于粮食企业增值税征免问题的通知》（财税字〔1999〕198号）\",\n                \"bzs\": \"N\",\n                \"sm\": \"包括硬谷子、糯谷子、其他谷子。\",\n                \"zslv\": \"3%\",\n                \"spbm\": \"1010101040000000000\"\n            }\n        ]\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",

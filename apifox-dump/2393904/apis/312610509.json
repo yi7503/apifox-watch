@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/fpkjZzs",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -2259,8 +2259,7 @@
             "xsf_dh",
             "xsf_yhzh",
             "xsf_yhmc",
-            "gmf_nsrsbh",
-            "ncpzrcgzConfirm"
+            "gmf_nsrsbh"
           ],
           "x-apifox-orders": [
             "ly_ddbh",
@@ -2544,7 +2543,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-23T10:25:57.000Z",
-  "updatedAt": "2026-04-16T09:35:00.000Z",
+  "updatedAt": "2026-06-17T08:21:50.000Z",
   "creatorId": 887900,
   "editorId": 3099717,
   "creatorUserId": 887900,

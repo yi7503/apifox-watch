@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/message/cxyyssssjlry",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -170,11 +170,22 @@
                     },
                     "zt": {
                       "type": "string",
-                      "title": "状态"
+                      "title": "状态",
+                      "description": "0-未发送,1-待确认,2-同意,3-不同意,9-失败 "
                     },
                     "fknr": {
                       "type": "string",
                       "title": "反馈内容"
+                    },
+                    "sssj": {
+                      "type": "string",
+                      "title": "申诉时间",
+                      "description": "格式：YYYY-MM-DD HH:MM:SS\t"
+                    },
+                    "fkrq": {
+                      "type": "string",
+                      "title": "申诉回复时间",
+                      "description": "格式：YYYY-MM-DD HH:MM:SS 反馈日期"
                     }
                   },
                   "required": [
@@ -182,14 +193,18 @@
                     "zzlx",
                     "zzhm",
                     "zt",
-                    "fknr"
+                    "fknr",
+                    "sssj",
+                    "fkrq"
                   ],
                   "x-apifox-orders": [
                     "xm",
                     "zzlx",
                     "zzhm",
                     "zt",
-                    "fknr"
+                    "fknr",
+                    "sssj",
+                    "fkrq"
                   ]
                 },
                 "title": "人员列表"
@@ -270,11 +285,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-25T08:27:50.000Z",
-  "updatedAt": "2026-05-11T07:48:05.000Z",
+  "updatedAt": "2026-05-21T10:29:36.000Z",
   "creatorId": 1442097,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1442097,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/ckts/selfCheck",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -35,12 +35,13 @@
         },
         "hgqyDm": {
           "type": "string",
-          "title": "海关企业代码"
+          "title": "海关企业代码",
+          "description": "[中国海关企业进出口信用信息公示平台](http://credit.customs.gov.cn ) 查询-海关备案编码"
         },
         "ssyf": {
           "type": "string",
           "title": "申报所属月份",
-          "description": "必传yyyyMM"
+          "description": "yyyyMM"
         },
         "pc": {
           "type": "string",
@@ -69,7 +70,8 @@
         "aggOrgId",
         "pc",
         "ywxx",
-        "hgqyDm"
+        "hgqyDm",
+        "accountId"
       ],
       "x-apifox-orders": [
         "swjgdm",
@@ -78,10 +80,10 @@
         "aggOrgId",
         "accountId",
         "pc",
+        "ywxx",
         "sbVersion",
         "shVersion",
-        "cmVersion",
-        "ywxx"
+        "cmVersion"
       ]
     },
     "required": false,
@@ -209,11 +211,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-04T10:19:57.000Z",
-  "updatedAt": "2026-04-14T03:49:34.000Z",
+  "updatedAt": "2026-05-23T09:19:33.000Z",
   "creatorId": 1442097,
-  "editorId": 1442097,
+  "editorId": 1564651,
   "creatorUserId": 1442097,
-  "editorUserId": 1442097,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

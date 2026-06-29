@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/hzqrxxSave",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -72,19 +72,37 @@
               "title": "发票类型代码",
               "description": "税控发票无需传值",
               "enum": [
-                "030：数电普票",
-                "032：数电专票"
+                "030",
+                "032",
+                "83",
+                "87",
+                "70"
               ],
               "x-apifox-enum": [
                 {
-                  "value": "030：数电普票",
-                  "name": "",
+                  "value": "030",
+                  "name": "数电票（增值税普通发票）",
                   "description": ""
                 },
                 {
-                  "value": "032：数电专票",
-                  "name": "",
+                  "value": "032",
+                  "name": "数电票（增值税专用发票）",
                   "description": ""
+                },
+                {
+                  "value": "83",
+                  "name": "机动车销售电子统一发票",
+                  "description": "数电电子发票"
+                },
+                {
+                  "value": "87",
+                  "name": "数电纸票（机动车销售统一发票）",
+                  "description": "数电纸质发票"
+                },
+                {
+                  "value": "70",
+                  "name": "二手车销售电子统一发票",
+                  "description": "数电电子发票"
                 }
               ]
             },
@@ -172,7 +190,7 @@
                       "hcje": {
                         "type": "string",
                         "title": "本次红冲金额",
-                        "description": "当红冲原因是\"销货退回\"时可不传，其它红冲原因需根据\"部分红冲计税方式\"及\"本次红冲税额\"判断：\n1、部分红冲计税方式(hsslbs)为不含税时，此字段需传不含税金额；\n2、部分红冲计税方式(hsslbs)为含税时，此字段需传含税金额；\n3、如需传红冲税额(hcse)，此字段需传不含税金额；"
+                        "description": "根据\"部分红冲计税方式\"及\"本次红冲税额\"判断：\n1、部分红冲计税方式(hsslbs)为不含税时，此字段需传不含税金额；\n2、部分红冲计税方式(hsslbs)为含税时，此字段需传含税金额；\n3、如需传红冲税额(hcse)，此字段需传不含税金额；"
                       },
                       "hcse": {
                         "type": [
@@ -201,7 +219,8 @@
                       "hcje"
                     ]
                   },
-                  "title": "部分红冲明细"
+                  "title": "部分红冲明细",
+                  "description": "税控带清单已部分红冲发票部分红冲明细有且只能有一条，且lzmxxh=0"
                 }
               },
               "x-apifox-orders": [
@@ -233,23 +252,29 @@
                 "null"
               ],
               "title": "录入方身份",
+              "description": "默认0-销方发起",
               "enum": [
                 "0-销方发起",
-                "1-购方发起"
+                "1-购方发起",
+                "2-二手车市场发起"
               ],
               "x-apifox-enum": [
                 {
+                  "value": "0-销方发起",
                   "name": "",
-                  "value": "0",
-                  "description": "销方发起"
+                  "description": ""
                 },
                 {
+                  "value": "1-购方发起",
                   "name": "",
-                  "value": "1",
-                  "description": "购方发起"
+                  "description": ""
+                },
+                {
+                  "value": "2-二手车市场发起",
+                  "name": "",
+                  "description": "仅适用于经营性质包含二手车市场性质的企业"
                 }
-              ],
-              "description": "默认0-销方发起"
+              ]
             },
             "wjgs": {
               "type": "string",
@@ -270,6 +295,28 @@
               "type": "string",
               "description": "指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。",
               "title": "来源订单编号"
+            },
+            "vinInfos": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "mxxh": {
+                    "type": "string",
+                    "title": "蓝票明细序号"
+                  },
+                  "vin": {
+                    "type": "string",
+                    "title": "VIN码"
+                  }
+                },
+                "x-apifox-orders": [
+                  "mxxh",
+                  "vin"
+                ]
+              },
+              "title": "VIN码信息",
+              "description": "当蓝字发票为汇总开具的机动车专用发票，且红冲原因为开票有误或销货退回时，必填。"
             }
           },
           "required": [
@@ -289,7 +336,8 @@
             "wjgs",
             "hcjshj",
             "bfhc",
-            "ly_ddbh"
+            "ly_ddbh",
+            "vinInfos"
           ]
         }
       },
@@ -683,11 +731,11 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar lzFphm =   eval(\"(\" + request.raw + \")\").data.lzFphm;\r\nvar gmfNsrsbh =   eval(\"(\" + request.raw + \")\").data.gmfNsrsbh;\r\nvar lrfsf =   eval(\"(\" + request.raw + \")\").data.lrfsf;\r\nvar xsfNsrsbh =   eval(\"(\" + request.raw + \")\").data.xsfNsrsbh;\r\nvar lzKprq =   eval(\"(\" + request.raw + \")\").data.lzKprq;\r\nvar fplxdm =   eval(\"(\" + request.raw + \")\").data.fplxdm;\r\nvar hcyydm =   eval(\"(\" + request.raw + \")\").data.hcyydm;\r\n\r\nvar responseJson = {\r\n\t\"hzfpCode\": \"710002\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"hzkjBz\": \"Y\",\r\n\t\"hzuuid\": \"892bf52e21b4417f9f365e970138c0b3\",\r\n\t\"hzfpMsg\": \"自动开票处理成功\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\"hzqrztDm\": \"01\",\r\n\t\"qrjkpbz\": \"Y\",\r\n\t\"lzFphm\": \"25952000000193124888\",\r\n\t\"lrrq\": \"2024-09-20 12:01:08\",\r\n\t\"hzfpxx\": {\r\n\t\t\"kplx\": \"1\",\r\n\t\t\"kplsh\": \"202407211032369994199505\",\r\n\t\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\t\"fplxdm\": \"030\",\r\n\t\t\"kprq\": \"\",\r\n\t\t\"jshj\": -2970.27,\r\n\t\t\"fphm\": \"\"\r\n\t}\r\n};\r\nvar fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.lrrq = kprq;\r\nresponseJson.lzFphm = lzFphm;\r\n\r\nresponseJson.hzfpxx.kprq = kprq;\r\nresponseJson.hzfpxx.fphm = fphm;\r\nresponseJson.hzfpxx.kplsh = kplsh;\r\nif(fplxdm !== null && fplxdm !== undefined && fplxdm !== \"\"){\r\n    responseJson.hzfpxx.fplxdm = fplxdm;\r\n}\r\n\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-07-18T08:56:36.000Z",
-  "updatedAt": "2025-12-13T09:14:30.000Z",
+  "updatedAt": "2026-06-23T05:47:40.000Z",
   "creatorId": 887900,
-  "editorId": 2795319,
+  "editorId": 3099717,
   "creatorUserId": 887900,
-  "editorUserId": 2795319,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

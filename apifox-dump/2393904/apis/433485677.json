@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/gsnb/login/uploadSmsCode",
   "tags": [],
-  "status": -2,
+  "status": "developing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -43,7 +43,7 @@
         "cityCode": {
           "type": "string",
           "title": "城市编码",
-          "description": "四位数字字符串"
+          "description": "2个地区必须传城市编码：广州：4401，深圳：4403，其他地区可不传"
         }
       },
       "if": {
@@ -183,7 +183,7 @@
     "enable": false
   },
   "createdAt": "2026-03-25T09:03:31.000Z",
-  "updatedAt": "2026-04-28T10:10:03.000Z",
+  "updatedAt": "2026-06-05T10:39:39.000Z",
   "creatorId": 3099717,
   "editorId": 3222025,
   "creatorUserId": 3099717,
