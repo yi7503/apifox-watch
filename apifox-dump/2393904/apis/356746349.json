@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/gj/fpmx",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -53,15 +53,17 @@
         "sdphm": {
           "type": "string",
           "title": "数电票号码",
-          "description": "数电票传此值"
+          "description": "数电票时必填"
         },
         "fpdm": {
           "type": "string",
-          "title": "发票代码"
+          "title": "发票代码",
+          "description": "增值税发票必填"
         },
         "fphm": {
           "type": "string",
-          "title": "发票号码"
+          "title": "发票号码",
+          "description": "增值税发票必填"
         },
         "gjlx ": {
           "type": "string",
@@ -730,7 +732,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-09-28T14:10:16.000Z",
-  "updatedAt": "2026-03-31T01:48:39.000Z",
+  "updatedAt": "2026-06-05T03:47:30.000Z",
   "creatorId": 887900,
   "editorId": 2118003,
   "creatorUserId": 887900,

@@ -15,7 +15,7 @@
   "tags": [
     "发票认证"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -125,6 +125,16 @@
           ],
           "title": "排序方式",
           "description": "非必填，为空时默认按搜索结果相关度降序"
+        },
+        "publicationTimeStart": {
+          "type": "string",
+          "description": "格式yyyy-MM-dd\n示例值：\"2026-05-13\"",
+          "title": "发文日期-开始"
+        },
+        "publicationTimeEnd": {
+          "type": "string",
+          "title": "发文日期-结束",
+          "description": "格式yyyy-MM-dd\n示例值：\"2026-05-18\""
         }
       },
       "required": [
@@ -137,7 +147,9 @@
         "taxes",
         "effectives",
         "agencies",
-        "sortPropertyDTO"
+        "sortPropertyDTO",
+        "publicationTimeStart",
+        "publicationTimeEnd"
       ],
       "x-apifox-orders": [
         "pageNo",
@@ -149,14 +161,17 @@
         "taxes",
         "effectives",
         "agencies",
-        "sortPropertyDTO"
+        "sortPropertyDTO",
+        "publicationTimeStart",
+        "publicationTimeEnd"
       ],
       "x-apifox-refs": {}
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
-        "value": "{\n    \"pageNo\": 1,\n    \"pageSize\": 20,\n    \"appPolicyKeywordDTOs\": [\n        {\n            \"type\": 2,\n            \"text\": \"营改增\"\n        },\n        {\n            \"type\": 2,\n            \"text\": \"财政部\"\n        }\n    ],\n    \"categories\": [\n        \"4\",\n        \"5\"\n    ],\n    \"industries\": [\n        \"农、林、牧、渔业\",\n        \"金融业\"\n    ],\n    \"areas\": [\n        \"全国适用\"\n    ],\n    \"taxes\": [\n        \"增值税\"\n    ],\n    \"effectives\": [\n        \"现行有效\"\n    ],\n    \"agencies\": [\n        \"国家税务总局\"\n    ],\n    \"sortPropertyDTO\": {\n        \"sortType\": \"asc\",\n        \"property\": \"publicationTime\"\n    }\n}",
+        "value": "{\n    \"pageNo\": 1,\n    \"pageSize\": 20,\n    \"appPolicyKeywordDTOs\": [\n        {\n            \"type\": 2,\n            \"text\": \"营改增\"\n        },\n        {\n            \"type\": 2,\n            \"text\": \"财政部\"\n        }\n    ],\n    \"categories\": [\n        \"4\",\n        \"5\"\n    ],\n    \"industries\": [\n        \"农、林、牧、渔业\",\n        \"金融业\"\n    ],\n    \"areas\": [\n        \"全国适用\"\n    ],\n    \"taxes\": [\n        \"增值税\"\n    ],\n    \"effectives\": [\n        \"现行有效\"\n    ],\n    \"agencies\": [\n        \"国家税务总局\"\n    ],\n    \"sortPropertyDTO\": {\n        \"sortType\": \"asc\",\n        \"property\": \"publicationTime\"\n    },\n    \"publicationTimeStart\": \"2026-05-01\",\n    \"publicationTimeEnd\": \"2026-06-30\"\n}",
         "mediaType": "application/json",
         "description": ""
       },
@@ -385,14 +400,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-18T03:45:17.000Z",
-  "updatedAt": "2025-09-03T03:19:40.000Z",
+  "updatedAt": "2026-05-20T08:22:22.000Z",
   "creatorId": 2118003,
   "editorId": 2118003,
   "creatorUserId": 2118003,
   "editorUserId": 2118003,
-  "responseChildren": [
-    "BLANK.700360171"
-  ],
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

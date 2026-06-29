@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/gsnb/login/getLoginStatus",
   "tags": [],
-  "status": -2,
+  "status": "developing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -91,8 +91,7 @@
       ],
       "x-apifox-refs": {},
       "required": [
-        "aggOrgId",
-        "cityCode"
+        "aggOrgId"
       ]
     },
     "required": false,
@@ -208,11 +207,11 @@
     "enable": false
   },
   "createdAt": "2026-04-27T10:06:15.000Z",
-  "updatedAt": "2026-05-16T03:44:24.000Z",
+  "updatedAt": "2026-05-21T01:48:49.000Z",
   "creatorId": 3099717,
-  "editorId": 1534873,
+  "editorId": 3250192,
   "creatorUserId": 3099717,
-  "editorUserId": 1534873,
+  "editorUserId": 3250192,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

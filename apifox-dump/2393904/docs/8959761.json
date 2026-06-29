@@ -1,0 +1,17 @@
+{
+  "id": 8959761,
+  "name": "2026年5月发布内容",
+  "sidebarTitle": "",
+  "content": "2026年5月发布内容\n发布日期：2026-05-28\n发布版本：V2.2026.05\n\n# 社保新增功能\n##  社保申报记录查询，支持导出文件\n社保申报记录，支持下载社会保险费缴费申报表\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663889/image-preview)\n##  新增职工缴费工资查询，仅福建地区使用\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663894/image-preview)\n\n\n# 社保功能优化\n### 优化上海社保费缴费记录打印，返回文件格式不正确问题\n### 优化社保漏报功能，若当月无特殊缴款数据，则漏报在特殊缴款节点返回空信息\n### 优化完税证明打印，支持使用用缴款书开具日期查询进行开具\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663896/image-preview)",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-06-05T06:35:10.000Z",
+  "updatedAt": "2026-06-05T06:35:26.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

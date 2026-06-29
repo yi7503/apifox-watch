@@ -7,13 +7,13 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n\n   该接口用于发起采集企业税务信息任务，任务创建成功后会返回一个taskId，此taskId可以用于查询任务状态信息。\n\n\n## 调用流程\n\n<Steps>\n  <Step title=\"调用「发起采集企业税务信息」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询多个任务执行结果」接口\">\n    [查询多个任务执行结果](api-69721501)\n \n     （1）若任务成功状态，则调用「查询企业信息」接口获取结构化数据；\n     （2）若任务成功状态，查看失败原因，无需调用「查询企业信息」接口；\n  </Step>\n  <Step title=\"调用「查询企业信息」接口\">\n\n  </Step>\n</Steps>\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ |\n| INTERFACE_ERROR | 接口异常,请联系管理员！|\n\n\n\n\n",
+  "description": "## 接口描述\n\n   该接口用于发起采集企业税务信息任务，任务创建成功后会返回一个taskId，此taskId可以用于查询任务状态信息。\n 需要当月发起采集企业税务信息任务，获取企业税务信息\n\n\n## 调用流程\n\n<Steps>\n  <Step title=\"调用「发起采集企业税务信息」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询多个任务执行结果」接口\">\n    [查询多个任务执行结果](api-69721501)\n \n     （1）若任务成功状态，则调用「查询企业信息」接口获取结构化数据；\n     （2）若任务成功状态，查看失败原因，无需调用「查询企业信息」接口；\n  </Step>\n  <Step title=\"调用「查询企业信息」接口\">\n \n  </Step>\n</Steps>\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空！ |\n| INTERFACE_ERROR | 接口异常,请联系管理员！|\n\n\n\n\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
   "path": "/v2/public/org/loadOrgTaxInfo",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -38,6 +38,7 @@
         "accountId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -184,14 +185,14 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T08:30:27.000Z",
-  "updatedAt": "2026-04-04T07:45:07.000Z",
+  "updatedAt": "2026-06-24T02:48:36.000Z",
   "creatorId": 1452584,
-  "editorId": 1564651,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1564651,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

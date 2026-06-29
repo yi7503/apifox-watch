@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/public/agent/login/etaxpushsms",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

@@ -13,14 +13,119 @@
   "method": "post",
   "path": "/v2/tax/qys/loadWszmIncludeDetailTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
-      "$ref": "#/definitions/37317067",
-      "x-apifox-overrides": {}
+      "x-apifox-overrides": {},
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "year": {
+          "type": "integer",
+          "title": "年"
+        },
+        "period": {
+          "type": "integer",
+          "title": "月"
+        },
+        "zsxmDtos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ssqQ": {
+                "type": "string",
+                "description": "格式为yyyy-MM-dd；所属起止和缴款日期起止必须有一类日期请求",
+                "title": "所属期起"
+              },
+              "ssqZ": {
+                "type": "string",
+                "description": "格式为yyyy-MM-dd；所属起止和缴款日期起止必须有一类日期请求",
+                "title": "所属期止"
+              },
+              "yzpzzlDm": {
+                "type": "string",
+                "title": "应征凭证种类代码",
+                "description": "参考申报附录应征凭证种类代码"
+              },
+              "zspmDm": {
+                "type": "string",
+                "description": "文化事业建设费时，征收品目代码为必传项",
+                "title": "征收品目代码"
+              },
+              "zsxmDm": {
+                "type": "string",
+                "description": "工会经费=39900/水利建设专项收入=30221 合并下载则可以为空",
+                "title": "征收项目代码"
+              },
+              "bsswjg": {
+                "type": "string",
+                "title": "跨区域上传税务机关名称",
+                "description": "（上传格式 省|市|区 如“湖南省|湘潭市|岳塘区”）"
+              },
+              "kqyswjgmc": {
+                "type": "string",
+                "title": "跨区域税局机关名称"
+              },
+              "jkrqq": {
+                "type": "string",
+                "title": "缴款日期起",
+                "description": "格式为yyyy-MM-dd  缴款日期起止不能跨年；所属起止和缴款日期起止必须有一类日期请求"
+              },
+              "jkrqz": {
+                "type": "string",
+                "title": "缴款日期止",
+                "description": "格式为yyyy-MM-dd  缴款日期起止不能跨年；所属起止和缴款日期起止必须有一类日期请求"
+              }
+            },
+            "x-apifox-orders": [
+              "ssqQ",
+              "ssqZ",
+              "jkrqq",
+              "jkrqz",
+              "yzpzzlDm",
+              "zspmDm",
+              "zsxmDm",
+              "bsswjg",
+              "kqyswjgmc"
+            ],
+            "required": [
+              "yzpzzlDm"
+            ]
+          }
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）",
+          "title": "账号ID"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "tdztswjgmc",
+        "year",
+        "period",
+        "zsxmDtos"
+      ],
+      "required": [
+        "aggOrgId",
+        "year",
+        "period"
+      ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"year\":2023,\r\n    \"period\":3,\r\n    \"zsxmDtos\":[\r\n        {\r\n            \"ssqQ\": \"2023-02-01\",\r\n            \"ssqZ\": \"2023-02-28\",\r\n            \"yzpzzlDm\": \"BDA0610606\",\r\n            \"zspmDm\":\"\"\r\n        }\r\n    ]\r\n}",
@@ -77,7 +182,20 @@
     "query": [],
     "body": [],
     "cookie": [],
-    "header": []
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
   },
   "auth": {},
   "responses": [
@@ -88,21 +206,125 @@
       "contentType": "json",
       "jsonSchema": {
         "type": "object",
-        "x-apifox-refs": {
-          "01GW3E5ATTZFMYYJBSTKHNX45K": {
-            "$ref": "#/definitions/35327531",
-            "x-apifox-overrides": {
-              "data": {
-                "title": "业务数据",
-                "$ref": "#/definitions/37317334"
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": "object",
+            "properties": {
+              "taskIds": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "taskId": {
+                      "title": "任务id；可以通过查询任务状态接口来查询任务执行的情况",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "yzpzzlDm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "应征凭证种类代码"
+                    },
+                    "ssqQ": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "日期起"
+                    },
+                    "ssqZ": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "日期止"
+                    },
+                    "zspmDm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "征收品目代码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "taskId",
+                    "yzpzzlDm",
+                    "ssqQ",
+                    "ssqZ",
+                    "zspmDm"
+                  ]
+                },
+                "title": "任务明细集合"
+              },
+              "taskId": {
+                "type": "string",
+                "description": "任务id；可以通过查询任务状态接口来查询任务执行的情况",
+                "title": "任务id"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业 id"
               }
-            }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "aggOrgId",
+              "taskId",
+              "taskIds"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
           }
         },
-        "x-apifox-orders": [
-          "01GW3E5ATTZFMYYJBSTKHNX45K"
-        ],
-        "properties": {}
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
       },
       "itemSchema": {},
       "description": "",
@@ -128,32 +350,23 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 13531071,
-  "ordering": 109,
+  "ordering": 112,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-05-06T03:24:13.000Z",
-  "updatedAt": "2026-01-08T06:55:45.000Z",
+  "updatedAt": "2026-06-05T10:52:25.000Z",
   "creatorId": 887778,
-  "editorId": 1910680,
+  "editorId": 1476015,
   "creatorUserId": 887778,
-  "editorUserId": 1910680,
-  "responseChildren": [
-    "BLANK.201044129"
-  ],
+  "editorUserId": 1476015,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

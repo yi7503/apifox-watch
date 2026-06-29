@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/loadPaymentTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -130,6 +130,11 @@
         "tdztswjgmc": {
           "type": "string",
           "description": "特定主体税务机关名称"
+        },
+        "disableDeclareCache": {
+          "type": "string",
+          "title": "禁用申报缓存",
+          "description": "Y/N 非必传参数，默认为空。Y=不缓存  空/N或者不传这个参数=缓存"
         }
       },
       "required": [
@@ -145,9 +150,11 @@
         "year",
         "period",
         "duration",
+        "disableDeclareCache",
         "detail"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -286,7 +293,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-26T09:33:28.000Z",
-  "updatedAt": "2025-12-30T02:40:45.000Z",
+  "updatedAt": "2026-05-28T12:24:37.000Z",
   "creatorId": 1452584,
   "editorId": 1452584,
   "creatorUserId": 1452584,

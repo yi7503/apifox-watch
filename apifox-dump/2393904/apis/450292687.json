@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/gsnb/business/gsztAndYljtResult",
   "tags": [],
-  "status": -2,
+  "status": "developing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

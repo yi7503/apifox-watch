@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/risk/hmd/standard",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

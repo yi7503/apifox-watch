@@ -28,7 +28,7 @@
   "method": "post",
   "path": "/v2/ckts/syncRefundTaxLibraryQuery",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

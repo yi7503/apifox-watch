@@ -159,6 +159,7 @@ paths:
                     reqId: 7eeae4c409ec404eab3d7908c64e9fd3
                     message: 成功
                     code: '0'
+      x-apifox-status: released
   /v2/legislation/attrList:
     post:
       summary: 政策属性查询接口
@@ -342,6 +343,7 @@ paths:
                     message: 成功
                     code: '0'
                     reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+      x-apifox-status: released
   /v2/legislation/listPage:
     post:
       summary: 政策列表分页接口
@@ -503,6 +505,18 @@ paths:
                   - property
                   title: 排序方式
                   description: 非必填，为空时默认按搜索结果相关度降序
+                publicationTimeStart:
+                  type: string
+                  description: |-
+                    格式yyyy-MM-dd
+                    示例值："2026-05-13"
+                  title: 发文日期-开始
+                publicationTimeEnd:
+                  type: string
+                  title: 发文日期-结束
+                  description: |-
+                    格式yyyy-MM-dd
+                    示例值："2026-05-18"
               required:
               - pageNo
               - pageSize
@@ -514,6 +528,8 @@ paths:
               - effectives
               - agencies
               - sortPropertyDTO
+              - publicationTimeStart
+              - publicationTimeEnd
               x-apifox-orders:
               - pageNo
               - pageSize
@@ -525,6 +541,8 @@ paths:
               - effectives
               - agencies
               - sortPropertyDTO
+              - publicationTimeStart
+              - publicationTimeEnd
               x-apifox-refs: {}
             examples:
               example_0:
@@ -667,6 +685,7 @@ paths:
                     message: 成功
                     code: '0'
                     reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+      x-apifox-status: released
   /v2/legislation/detail:
     post:
       summary: 政策详情查询接口
@@ -871,6 +890,7 @@ paths:
                     message: 成功
                     code: '0'
                     reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+      x-apifox-status: released
   /v2/legislation/getFileUrl:
     post:
       summary: 获取政策附件文件下载地址
@@ -971,3 +991,4 @@ paths:
                     message: 成功
                     code: '0'
                     reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+      x-apifox-status: released

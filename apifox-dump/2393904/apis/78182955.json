@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/writeTaxExcelData",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -102,7 +102,7 @@
               "templateCode": {
                 "type": "string",
                 "title": "资料报送子类代码",
-                "description": "【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业；其他准则传0"
+                "description": "【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业；\n【企业会计准则金融企业】类型是必填，1：适用已执行新金融工具准则的金融企业（目前仅支持金融类型的这个子类）；\n其他准则传0"
               },
               "isDirectDeclare": {
                 "type": "boolean",
@@ -208,6 +208,11 @@
           ],
           "description": "财报专用，Y=是/N=否 ；备注：非必传字段，请求Y则会对请求的表单节点与税局报表列表进行比对是否一致，税局要求申报的表单未请求则失败返回。默认传空，或者传N则是维持现状只校验必填表单（资产、利润），其他表单不上传默认以税种申报",
           "title": "是否进行表单校验"
+        },
+        "disableDeclareCache": {
+          "type": "string",
+          "title": "禁用申报缓存",
+          "description": "Y/N 非必传参数，默认为空。Y=不缓存 空/N或者不传这个参数=缓存"
         }
       },
       "x-apifox-refs": {},
@@ -225,6 +230,7 @@
         "bsswjg",
         "kqyswjgmc",
         "sfxzyhssm",
+        "disableDeclareCache",
         "sfjxbdjy",
         "zsxmDm",
         "zsxmList",
@@ -466,7 +472,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T02:00:18.000Z",
-  "updatedAt": "2026-05-08T13:24:02.000Z",
+  "updatedAt": "2026-06-29T02:27:40.000Z",
   "creatorId": 2122743,
   "editorId": 1476015,
   "creatorUserId": 2122743,

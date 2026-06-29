@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/spxxZnFm",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -65,6 +65,8 @@
         }
       }
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"action\": \"spxx_znfm\",\r\n    \"nsrsbh\": \"913****************2G\",\r\n    \"data\": {\r\n        \"xmmc\": \"技术服务\"\r\n    }\r\n}",
@@ -139,7 +141,7 @@
                         "string",
                         "null"
                       ],
-                      "title": "应税类型代码"
+                      "title": "特定要素类型代码"
                     },
                     "zzscezsbj": {
                       "type": [
@@ -177,7 +179,7 @@
                         "string",
                         "null"
                       ],
-                      "title": "应税类型名称"
+                      "title": "特定要素类型名称"
                     },
                     "zslList": {
                       "type": [
@@ -288,17 +290,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-11-21T05:57:10.000Z",
-  "updatedAt": "2025-06-19T01:43:14.000Z",
+  "updatedAt": "2026-05-21T03:58:14.000Z",
   "creatorId": 493303,
-  "editorId": 2706439,
+  "editorId": 3600994,
   "creatorUserId": 493303,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.338437399"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

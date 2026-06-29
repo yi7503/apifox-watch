@@ -15,7 +15,7 @@
   "tags": [
     "本地化"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

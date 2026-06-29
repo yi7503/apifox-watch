@@ -36,7 +36,7 @@
   "tags": [
     "获取token"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -72,6 +72,7 @@
         "client_secret"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -86,17 +87,7 @@
     "query": [],
     "path": [],
     "cookie": [],
-    "header": [
-      {
-        "required": false,
-        "description": "",
-        "type": "string",
-        "id": "kb9FXDWiys",
-        "enable": true,
-        "name": "req_sign",
-        "sampleValue": "API-SV1:10001990:ZTY1MzBjYmNkMWU1YzhmOTU4MDdmYTdjMTE2MzcwNmQ="
-      }
-    ]
+    "header": []
   },
   "commonParameters": {
     "query": [],
@@ -218,15 +209,7 @@
   "folderId": 13630516,
   "ordering": 0,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
@@ -235,14 +218,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-07T05:01:05.000Z",
-  "updatedAt": "2025-09-10T13:42:32.000Z",
+  "updatedAt": "2026-06-17T06:37:34.000Z",
   "creatorId": 887778,
-  "editorId": 1564651,
+  "editorId": 2400309,
   "creatorUserId": 887778,
-  "editorUserId": 1564651,
-  "responseChildren": [
-    "BLANK.396502988"
-  ],
+  "editorUserId": 2400309,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

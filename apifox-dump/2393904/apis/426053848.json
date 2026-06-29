@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/gj/queryYcpzJxsezc",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -127,7 +127,7 @@
                     },
                     "kdkse": {
                       "type": "number",
-                      "title": "可抵扣税额"
+                      "title": "应转出税额"
                     },
                     "nsrmc": {
                       "type": [
@@ -269,7 +269,7 @@
                     "pjlbDm"
                   ]
                 },
-                "title": "发票信息"
+                "title": "应转出明细信息"
               }
             },
             "required": [
@@ -326,11 +326,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-11T05:44:54.000Z",
-  "updatedAt": "2026-03-25T05:45:28.000Z",
+  "updatedAt": "2026-06-13T06:18:36.000Z",
   "creatorId": 2118003,
-  "editorId": 2118003,
+  "editorId": 3600994,
   "creatorUserId": 2118003,
-  "editorUserId": 2118003,
+  "editorUserId": 3600994,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

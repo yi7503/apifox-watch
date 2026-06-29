@@ -17,6 +17,7 @@ tags:
 - name: 登录业务（旧版） / 自持模式登录 / 单账号登录 / 扫码登录
 - name: 登录业务（旧版） / 自持模式登录 / 单账号登录 / 税务APP登录
 - name: 登录业务（旧版） / 自持模式登录 / 单账号登录 / 账密登录
+- name: 登录业务（旧版） / 自持模式登录 / 多账号管理 / 会话登录
 - name: 登录业务（旧版） / 自持模式登录 / 多账号管理 / 扫码登录
 - name: 登录业务（旧版） / 自持模式登录 / 多账号管理 / 税务APP登录
 - name: 登录业务（旧版） / 自持模式登录 / 多账号管理 / 账密登录
@@ -173,6 +174,7 @@ paths:
                     success: true
                     message: 身份证号已存在
                     reqId: 0e01a588abf44c2aacbb17b9d28cb5f6
+      x-apifox-status: released
   /v2/bsrygl/qy/queryBsyTask:
     post:
       summary: 企业添加办税人员结果查询
@@ -330,6 +332,7 @@ paths:
                     success: true
                     message: 该任务Id不存在
                     reqId: a909e74a59d94e9bab8cc10b2e58d844
+      x-apifox-status: released
   /v2/bsrygl/qy/bsyInfoTask:
     post:
       summary: 企业现有办税人员获取
@@ -455,6 +458,7 @@ paths:
                     success: true
                     message: 身份证号已存在
                     reqId: 0e01a588abf44c2aacbb17b9d28cb5f6
+      x-apifox-status: released
   /v2/bsrygl/qy/queryBsyInfoTask:
     post:
       summary: 企业现有办税人员结果查询
@@ -619,6 +623,7 @@ paths:
                     success: true
                     message: 该任务Id不存在
                     reqId: a909e74a59d94e9bab8cc10b2e58d844
+      x-apifox-status: released
   /v2/public/login/multiacc/dpptCookie:
     post:
       summary: 登录税局发送短信验证码
@@ -820,6 +825,7 @@ paths:
                     success: true
                     message: 税务数字账户登录成功
                     reqId: b66d8f6b8f7d4ed28cc6a787c36c2de9
+      x-apifox-status: released
   /v2/public/login/multiacc/dpptpushsms:
     post:
       summary: 登录税局上传短信验证码
@@ -990,6 +996,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/multiacc/checkAsyncLoginDpptCache:
     post:
       summary: 校验税局缓存是否有效
@@ -1108,6 +1115,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/account/create:
     post:
       summary: 托管账号创建
@@ -1344,6 +1352,7 @@ paths:
                     success: true
                     message: 账户已经存在
                     reqId: 97b7dad00e80430d9641c49af8e882a6
+      x-apifox-status: released
   /v2/public/account/update:
     post:
       summary: 托管账号修改
@@ -1518,6 +1527,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/public/account/delete:
     post:
       summary: 托管账号删除
@@ -1631,6 +1641,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/public/account/queryAccount:
     post:
       summary: 托管账号查询
@@ -1855,6 +1866,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/public/account/bindAccountProduct:
     post:
       summary: 账号产品绑定
@@ -2016,6 +2028,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/public/account/unbindAccountProduct:
     post:
       summary: 账号产品解绑
@@ -2160,6 +2173,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/bsrygl/qy/delBsyTask:
     post:
       summary: 企业删除办税人员
@@ -2288,6 +2302,7 @@ paths:
                     success: true
                     message: 身份证号已存在
                     reqId: 0e01a588abf44c2aacbb17b9d28cb5f6
+      x-apifox-status: released
   /v2/bsrygl/qy/queryDelBsyTask:
     post:
       summary: 企业删除办税人员结果查询
@@ -2437,6 +2452,7 @@ paths:
                     success: true
                     message: 未登录或登录缓存已失效，请重新发起！
                     reqId: c0a795030f724fc5b76223844a41be3e
+      x-apifox-status: released
   /v2/bsrygl/qy/bsyDeletedTask:
     post:
       summary: 现有办税人员删除记录任务
@@ -2564,6 +2580,7 @@ paths:
                     success: true
                     message: 身份证号已存在
                     reqId: 0e01a588abf44c2aacbb17b9d28cb5f6
+      x-apifox-status: released
   /v2/bsrygl/qy/queryBsyDeletedTask:
     post:
       summary: 现有办税人员删除记录任务查询
@@ -2737,6 +2754,7 @@ paths:
                     success: true
                     message: 未登录或登录缓存已失效，请重新发起！
                     reqId: c0a795030f724fc5b76223844a41be3e
+      x-apifox-status: released
   /v2/public/login/ext/uploadToken:
     post:
       summary: 上传Cookie接口
@@ -2899,6 +2917,7 @@ paths:
                     code: '40101'
                     success: false
                     message: 登录信息过期!
+      x-apifox-status: released
   /v2/public/account/createBaseAccount:
     post:
       summary: 通用账号创建/修改
@@ -3107,6 +3126,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/public/login/scanLogin/getQrcode:
     post:
       summary: 获取登录税局二维码
@@ -3115,9 +3135,10 @@ paths:
       - 登录业务（旧版） / 自持模式登录 / 单账号登录 / 扫码登录
       description: |-
         ##  接口描述
-
+        1.电子税务局app二维码登录支持：**全国各个省份**；
+        2.电子营业执照扫码登录支持：**上海**；
         该接口用于获取登录税局二维码，用户可以通过扫描该二维码进行税局登录。
-        二维码有效时长为300s,请在到期前生成并扫码登录
+        二维码有效时长为300s,请在到期前生成并扫码登录。
       parameters:
       - name: access_token
         in: header
@@ -3153,13 +3174,20 @@ paths:
               properties:
                 areaCode:
                   type: string
+                  title: 地区
                 nsrsbh:
                   type: string
+                  title: 税号
+                scanType:
+                  type: integer
+                  title: 扫码类型
+                  description: 0-电子税务局app登录 1-电子营业执照app登录 默认0
               required:
               - areaCode
               x-apifox-orders:
               - areaCode
               - nsrsbh
+              - scanType
             examples:
               example_0:
                 summary: ''
@@ -3240,6 +3268,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/scanLogin/qrcodeLogin:
     post:
       summary: 扫二维码登录税局
@@ -3437,6 +3466,7 @@ paths:
                     success: true
                     message: 登录任务已过期，请重新发起！
                     reqId: 1ea15ddf9d7545ac84813fd35b6eac5b
+      x-apifox-status: released
   /v2/public/login/remote/etaxcookie:
     post:
       summary: 税务APP登录发送短信验证码
@@ -3550,6 +3580,7 @@ paths:
                     code: '2000'
                     data:
                       taskId: 1671038727830339600
+      x-apifox-status: released
   /v2/public/login/remote/pushsms:
     post:
       summary: 税务APP登录上传短信验证码
@@ -3659,6 +3690,7 @@ paths:
                     code: '4006'
                     success: true
                     message: 登录方式不正确！
+      x-apifox-status: released
   /v2/public/login/remote/checkRomoteAppCache:
     post:
       summary: 校验税务APP是否能快速登录
@@ -3768,6 +3800,159 @@ paths:
                     success: true
                     message: 账号频繁登录失败，原因：已连续次输入个人用户密码错误，您可以通过“忘记密码”设置新密码。如果再次输入错误，您的账户会被锁定 该账号ID 524320096505856已被锁定，请修改登录信息后，调用启用接口进行账号解锁。
                     reqId: 2b0719302b1242f9bad0bd0189e550d2
+      x-apifox-status: released
+  /v2/public/login/ext/uploadTokenByAccountId:
+    post:
+      summary: 上传Cookie接口
+      operationId: api-168162706
+      tags:
+      - 登录业务（旧版） / 自持模式登录 / 多账号管理 / 会话登录
+      description: |-
+        ##  接口描述
+
+        用于用户自行登录获取税局Cookie后，通过该接口直接上传税局有效Cookie进行登录。
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: |
+          待签名字符串 = HTTPMethod + "_" + Content-Md5 + "_" + req_date + "_" + access_token + "_" + AppSecret
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                  description: 该值必填
+                accountId:
+                  type: string
+                  title: 账户ID
+                  description: |-
+                    客户提供唯一md5；
+                    使用账密加验证码登录方式，生成规则MD5("个人用户名"+"[a%b@q]"+"手机号"+"[a%b@q]"+"身份类型名称")；
+                    示例：MD5("12345674321[a%b@q]12345674321[a%b@q]开票员")
+                areaCode:
+                  type: string
+                  title: 地区编码
+                  description: 四川传值5100，青岛为3702。该值必填
+                cookie:
+                  type: string
+                  title: cookie值
+              x-apifox-orders:
+              - nsrsbh
+              - accountId
+              - areaCode
+              - cookie
+              required:
+              - nsrsbh
+              - accountId
+              - areaCode
+              - cookie
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      valid:
+                        type: boolean
+                        title: cookie是否有效
+                        description: cookie是否有效，true有效，false无效
+                      errorCode:
+                        type:
+                        - string
+                        - 'null'
+                        title: cookie无效时的错误编码
+                        description: cookie无效时的错误编码
+                      errorMsg:
+                        type:
+                        - string
+                        - 'null'
+                        title: cookie无效时的错误信息
+                        description: cookie无效时的错误编码
+                    title: cookie有效性校验结果
+                    description: cookie有效性校验结果
+                    x-apifox-orders:
+                    - valid
+                    - errorCode
+                    - errorMsg
+                    required:
+                    - valid
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                x-apifox-orders:
+                - code
+                - message
+                - data
+                required:
+                - code
+                - message
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    data:
+                      valid: true
+                    success: true
+                    reqId: c2e810316c64419b80ce0cf096b08757
+                异常示例:
+                  summary: 异常示例
+                  value:
+                    code: '4000'
+                    success: true
+                    message: 参数gryhm不能为空！
+                    reqId: 8b2991d73f924e85994670564975aa42
+                异常示例2:
+                  summary: 异常示例2
+                  value:
+                    code: '2000'
+                    data:
+                      valid: false
+                      errorCode: '8888'
+                      errorMsg: 会话失效,请重新登录
+                    success: true
+                    reqId: a699e01c4bc5423e81edeea4c8387483
+      x-apifox-status: released
   /v2/public/login/scanLogin/getQrcode#172483885:
     post:
       summary: 获取登录税局二维码
@@ -3776,9 +3961,10 @@ paths:
       - 登录业务（旧版） / 自持模式登录 / 多账号管理 / 扫码登录
       description: |-
         ##  接口描述
-
+        1.电子税务局app二维码登录支持：**全国各个省份**；
+        2.电子营业执照扫码登录支持：**上海**；
         该接口用于获取登录税局二维码，用户可以通过扫描该二维码进行税局登录。
-        二维码有效时长为300s,请在到期前生成并扫码登录
+        二维码有效时长为300s,请在到期前生成并扫码登录。
       parameters:
       - name: access_token
         in: header
@@ -3816,11 +4002,16 @@ paths:
                   type: string
                 nsrsbh:
                   type: string
+                scanType:
+                  type: integer
+                  title: 扫码类型
+                  description: 0-电子税务局app登录 1-电子营业执照app登录 默认0
               required:
               - areaCode
               x-apifox-orders:
               - areaCode
               - nsrsbh
+              - scanType
             examples:
               example_0:
                 summary: ''
@@ -3901,6 +4092,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/scanLogin/qrcodeLogin#172483955:
     post:
       summary: 扫二维码登录税局
@@ -4094,6 +4286,7 @@ paths:
                     success: true
                     message: 登录任务已过期，请重新发起！
                     reqId: 1ea15ddf9d7545ac84813fd35b6eac5b
+      x-apifox-status: released
   /v2/public/login/app/checkAppCache:
     post:
       summary: 校验税务APP是否可快速登录
@@ -4230,6 +4423,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/ext/etaxcookie:
     post:
       summary: 登录税局发送短信验证码
@@ -4451,6 +4645,7 @@ paths:
                       individualId: e6aa08e183728981ad2115f63e8e0870
                       dppt:
                         cookie: gizqLgxJ4gkhO=6013Bos1JkS.bv0lCUNq4vI50jH0x4sCOXkIRU6ElkdPej62atozKj1XsNlO04ku_miOCsoNMpAiIhZvLYRwdPaA;gizqLgxJ4gkhP=0fYduJV3QzHupdrA9KVVwvqamf9FsrDn4luWG8SziMIo1OPaxneJYmU07kJygpFI.AhA66e0VQHqAjeR8YgaR62fIr1mWDqI6XS.fBE3R3T7ZpyeArXsQ9Sg2gf_yo09EMQ7zMVBHjhuwc1ezAglXMEZcnEzTnjhqs4tk.vOuZm18F54WQw9fZ3zIJxDgyLLUA_2s1qKiYtrRShMECGXoAnbgOF6P5zeL8dTGbZil4e9;tpass_vt8337t23tv94cdvbdb875e7t8a357e2=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImUyMjA4MDVkMmIyYzQxNjA4ZTkzODFkNWJkMzBkMmJmIn0.jlohtM4LkwM2Vi0cEfPegKfIYQ0gUYRQr0U-fRj5490MULc4XvNL7JqrM3KH-gZx8qEYt1CiGwftNC95TgC6GA;tpass_f5d843e943fd4f7692ff953f35f7fccd=eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImE2NjQ4ZjNmNTA5YzQ5NzNhYzlhYzIyOTEzNDgzYzlkIn0.S6z8cJQNw_CuW_t5FVLfbOK1Y2BEc0NsxVlYcyT63Ievw1ogVeim4Q2qyIJYVr0KfTRC9eLAE9q02wn2EHZPy;oauth2_referer=etax.qingdao.chinatax.gov.cn;DTSwUOYx7MiWN=22c38a563cff748b11d6d856870928a3b04cddad3ca5f3797cda34e1ac4f49e0;lzkqow39189=d6248e73bd8841d08d59a946d0fd8f50;SSO_SECURITY_CHECK_TOKEN=58d2f986b54f4124a53d82a90ef2fb9e;dzfp-ssotoken=50dd639d8b09496f91825019c94a5d34
+      x-apifox-status: released
   /v2/public/login/ext/etaxpushsms:
     post:
       summary: 登录税局上传短信验证码
@@ -4634,6 +4829,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/ext/checkAsyncLoginSjCache:
     post:
       summary: 校验税局缓存是否有效
@@ -4788,6 +4984,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/multiacc/dpptCookie#193453624:
     post:
       summary: 登录税局发送短信验证码
@@ -4984,6 +5181,7 @@ paths:
                     success: true
                     message: 税务数字账户登录成功
                     reqId: b66d8f6b8f7d4ed28cc6a787c36c2de9
+      x-apifox-status: released
   /v2/public/login/multiacc/dpptpushsms#193453670:
     post:
       summary: 登录税局上传短信验证码
@@ -5154,6 +5352,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/multiacc/checkAsyncLoginDpptCache#193454059:
     post:
       summary: 校验税局缓存是否有效
@@ -5272,6 +5471,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/app/checkAppCache#193454185:
     post:
       summary: 校验税务APP是否可快速登录
@@ -5391,6 +5591,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/multiacc/checkAsyncLoginDpptCache#196428362:
     post:
       summary: 校验税局缓存是否有效
@@ -5503,6 +5704,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/multiacc/checkAsyncLoginDpptCache#196428455:
     post:
       summary: 校验税局缓存是否有效
@@ -5615,6 +5817,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/checkAccount:
     post:
       summary: 账密检查接口
@@ -5716,6 +5919,7 @@ paths:
                     success: true
                     message: 账号频繁登录失败，原因：已连续次输入个人用户密码错误，您可以通过“忘记密码”设置新密码。如果再次输入错误，您的账户会被锁定 该账号ID 524320096505856已被锁定，请修改登录信息后，调用启用接口进行账号解锁。
                     reqId: 2b0719302b1242f9bad0bd0189e550d2
+      x-apifox-status: released
   /v2/public/account/bindAccountProducts:
     post:
       summary: 账号批量绑定产品
@@ -5873,6 +6077,7 @@ paths:
                     code: '40100'
                     success: false
                     message: 未登录!
+      x-apifox-status: released
   /v2/bsrygl/common/getQrcode:
     post:
       summary: 获取二维码
@@ -6005,6 +6210,7 @@ paths:
                     success: true
                     message: 身份证号已存在
                     reqId: 0e01a588abf44c2aacbb17b9d28cb5f6
+      x-apifox-status: released
   /v2/bsrygl/common/getQrcodeState:
     post:
       summary: 二维码状态确认
@@ -6114,6 +6320,7 @@ paths:
                     success: true
                     message: 身份证号已存在
                     reqId: 0e01a588abf44c2aacbb17b9d28cb5f6
+      x-apifox-status: released
   /v2/public/agent/login/proxyOrgList:
     post:
       summary: 代理登录获取企业列表
@@ -6255,6 +6462,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数aggOrgId不能为空！
+      x-apifox-status: released
   /v2/public/login/ext/loginOut:
     post:
       summary: 登出
@@ -6394,6 +6602,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/zc/checkAccount:
     post:
       summary: 账密检查接口
@@ -6514,6 +6723,7 @@ paths:
                     message: 账号密码正确
                     reqId: 1515cc8e7f714813a774581839956a5f
                     data: {}
+      x-apifox-status: released
   /v2/public/login/zc/getCacheCookie:
     post:
       summary: '获取自持业务缓存 登录cookie '
@@ -6661,6 +6871,7 @@ paths:
                     code: '40101'
                     success: false
                     message: 登录信息过期!
+      x-apifox-status: released
   /v2/public/login/remote/checkCache:
     post:
       summary: 校验税局缓存是否有效
@@ -6772,6 +6983,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/zc/checkCache:
     post:
       summary: 校验税局缓存是否有效多合一
@@ -6931,7 +7143,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
-      x-apifox-status: -1
+      x-apifox-status: testing
   /v2/public/agent/login/etaxCookie:
     post:
       summary: 代理登录发送验证码
@@ -7124,6 +7336,7 @@ paths:
                     code: '4006'
                     success: true
                     message: 登录方式不正确！
+      x-apifox-status: released
   /v2/public/agent/login/etaxpushsms:
     post:
       summary: '代理登录上传短信验证码 '
@@ -7282,6 +7495,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/app/checkAppCache#448852998:
     post:
       summary: 校验税务APP是否可快速登录
@@ -7423,6 +7637,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/ext/etaxcookie#91527429:
     post:
       summary: 登录税局发送短信验证码
@@ -7670,6 +7885,7 @@ paths:
                     success: true
                     message: 税务数字账户登录成功
                     reqId: 6f37c2c5a424454f99b4decb6c0cfb30
+      x-apifox-status: released
   /v2/public/login/ext/etaxpushsms#91546280:
     post:
       summary: 登录税局上传短信验证码
@@ -7856,6 +8072,7 @@ paths:
                     code: '4000'
                     data: ''
                     message: 参数nsrsbh不能为空！
+      x-apifox-status: released
   /v2/public/login/ext/checkAsyncLoginSjCache#91708966:
     post:
       summary: 校验税局缓存是否有效
@@ -8006,6 +8223,7 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
   /v2/public/login/recoveryLogin:
     post:
       summary: 停用账号启用
@@ -8104,3 +8322,4 @@ paths:
                     code: '4006'
                     success: true
                     message: 企业不存在！
+      x-apifox-status: released

@@ -1,0 +1,265 @@
+{
+  "id": 460661762,
+  "name": "任职受雇关系确认邀请",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "z0pV0hIW_0UctlTtV3ala",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "调用个税申报接口，错误反馈为当前扣缴义务人提交的申报明细数据中存在需进行任职受雇关系确认的纳税人信息，请进一步核实。可调用该接口进行任职受雇关系确认，员工在个税app上确认完毕后可正常进行个税申报。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/dkdj/rzsggxqryq",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "rylb": {
+          "type": "array",
+          "description": "人员列表，一次最多请求50个人",
+          "maxItems": 50,
+          "items": {
+            "type": "object",
+            "required": [
+              "xm",
+              "zzlx",
+              "zzhm"
+            ],
+            "properties": {
+              "xm": {
+                "type": "string",
+                "description": "姓名"
+              },
+              "zzlx": {
+                "type": "string",
+                "description": "证件类型"
+              },
+              "zzhm": {
+                "type": "string",
+                "description": "证件号码"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm"
+            ]
+          }
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "rylb"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "rylb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"1234567\",\r\n    \"accountId\": \"123456789\",\r\n    \"rylb\": [\r\n        {\r\n            \"xm\": \"张三\",\r\n            \"zzlx\": \"201\",\r\n            \"zzhm\": \"110101199001011234\"\r\n        },\r\n        {\r\n            \"xm\": \"李四\",\r\n            \"zzlx\": \"201\",\r\n            \"zzhm\": \"110101199202022345\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "cgrs": {
+                "type": "integer",
+                "description": "成功人数"
+              },
+              "sbrs": {
+                "type": "integer",
+                "description": "失败人数"
+              },
+              "sblb": {
+                "type": "array",
+                "description": "失败列表",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "xm": {
+                      "type": "string",
+                      "description": "姓名"
+                    },
+                    "zzlx": {
+                      "type": "string",
+                      "description": "证件类型"
+                    },
+                    "zzhm": {
+                      "type": "string",
+                      "description": "证件号码"
+                    },
+                    "tjcljg": {
+                      "type": "string",
+                      "description": "提交处理结果。提交失败：具体的失败原因；提交成功：发送成功，请及时通知纳税人进行确认"
+                    },
+                    "qrrq": {
+                      "type": "string",
+                      "description": "确认日期，格式：YYYY-MM-DD，如果不返回则无"
+                    },
+                    "qrztmc": {
+                      "type": "string",
+                      "description": "确认状态名称：0-待确认；1-已同意；2-不同意；3-未发送，如果不返回则无"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "xm",
+                    "zzlx",
+                    "zzhm",
+                    "tjcljg",
+                    "qrrq",
+                    "qrztmc"
+                  ]
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "cgrs",
+              "sbrs",
+              "sblb"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"cgrs\": 1,\n        \"sbrs\": 1,\n        \"sblb\": [\n            {\n                \"xm\": \"李四\",\n                \"zzlx\": \"201\",\n                \"zzhm\": \"110101199202022345\",\n                \"tjcljg\": \"该纳税人不存在任职受雇关系\",\n                \"qrrq\": \"\",\n                \"qrztmc\": \"\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153106,
+  "ordering": 46,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-05-20T06:32:45.000Z",
+  "updatedAt": "2026-05-25T05:41:36.000Z",
+  "creatorId": 1910680,
+  "editorId": 493303,
+  "creatorUserId": 1910680,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

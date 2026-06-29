@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/服务商CallbackURL地址",
   "tags": [],
-  "status": -2,
+  "status": "developing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/public/account/create",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -23,7 +23,7 @@
         "gryhm": {
           "type": "string",
           "title": "个人用户名",
-          "description": "dlfs=9时需传办税小号；dlfs=14或15时，可为身份证号/手机号码/用户名，建议统一用手机号码；"
+          "description": "dlfs=9时需传办税小号；dlfs=14或15时，可为身份证号/手机号码/用户名，建议统一用手机号码；如果传用户名那么sjhm必传"
         },
         "dlmm": {
           "type": "string",
@@ -92,11 +92,11 @@
         "loginType": {
           "type": "integer",
           "title": "特定主体标识",
-          "description": "1表示特定主体"
+          "description": "1表示特定主体，目前仅支持小号业务（dlfs=9）"
         },
         "specType": {
           "type": "integer",
-          "description": "2 跨区税源登记纳税人 「当前只支持2」",
+          "description": "1 跨区域报验户(只支持登录，不支持业务)\n2 跨区税源登记纳税人 「支持登录和业务」",
           "title": "特定主体类型"
         },
         "proxyNsrsbh": {
@@ -218,10 +218,14 @@
             "properties": {
               "accountId": {
                 "type": "integer",
-                "title": "账户ID"
+                "title": "账户ID",
+                "description": "账号唯一id，需存储，其他接口入参需要用到"
               }
             },
             "x-apifox-orders": [
+              "accountId"
+            ],
+            "required": [
               "accountId"
             ]
           },
@@ -314,11 +318,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:03:52.000Z",
-  "updatedAt": "2026-05-14T05:49:02.000Z",
+  "updatedAt": "2026-06-12T02:01:21.000Z",
   "creatorId": 2795319,
-  "editorId": 2795319,
+  "editorId": 2400309,
   "creatorUserId": 2795319,
-  "editorUserId": 2795319,
+  "editorUserId": 2400309,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

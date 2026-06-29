@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/shbx/declare/printTaxProof",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -33,11 +33,23 @@
         },
         "kjrqq": {
           "type": "string",
-          "description": "完税证首次开具日期起: 1.完税证明补开必填 2.格式为YYYY-MM-DD  3.只支持一个月"
+          "description": "1.首次打印完税证明时，费款所属期起止或缴款书开具日期起止，必须有一组必填 2.格式为YYYY-MM-DD  3.只支持一个月",
+          "title": "完税证首次开具日期起"
         },
         "kjrqz": {
           "type": "string",
-          "description": "完税证首次开具日期止: 1.完税证明补开必填 2.格式为YYYY-MM-DD 3.只支持一个月"
+          "description": "1.完税证明补开必填 2.格式为YYYY-MM-DD 3.只支持一个月",
+          "title": "完税证首次开具日期止"
+        },
+        "jkskjrqq": {
+          "type": "string",
+          "description": "1.首次打印完税证明时，费款所属期起止或缴款书开具日期起止，必须有一组必填\n2.若费款所属期起止和缴款书开具日期起止都填写，则以缴款书开具日期为准查询\n3.只有首次开具完税证明可用\n4.格式YYYY-MM-DD\n5.最多允许一个月",
+          "title": "缴款书开具日期起"
+        },
+        "jkskjrqz": {
+          "type": "string",
+          "description": "1.首次打印完税证明时，费款所属期起止或缴款书开具日期起止，必须有一组必填\n2.若费款所属期起止和缴款书开具日期起止都填写，则以缴款书开具日期为准查询\n3.只有首次开具完税证明可用\n4.格式YYYY-MM-DD\n5.最多允许一个月",
+          "title": "缴款书开具日期止"
         },
         "cxlx": {
           "type": "string",
@@ -45,11 +57,13 @@
         },
         "fkssqq": {
           "type": "string",
-          "description": "费款所属期起: 1.首次打印完税证明必传 2.格式为YYYYMM 3.只支持一个月"
+          "description": "1.首次打印完税证明时，费款所属期起止或缴款书开具日期起止，必须有一组必填 2.格式为YYYYMM 3.只支持一个月",
+          "title": "费款所属期起"
         },
         "fkssqz": {
           "type": "string",
-          "description": "费款所属期止: 1.首次打印完税证明必传 2.格式为YYYYMM 3.只支持一个月"
+          "description": "1.首次打印完税证明必传，费款所属期起止或缴款书开具日期起止，必须有一组必填 2.格式为YYYYMM 3.只支持一个月",
+          "title": "费款所属期止"
         }
       },
       "required": [
@@ -64,10 +78,13 @@
         "cxlx",
         "fkssqq",
         "fkssqz",
+        "jkskjrqq",
+        "jkskjrqz",
         "kjrqq",
         "kjrqz"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -171,7 +188,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-17T09:07:28.000Z",
-  "updatedAt": "2025-12-02T03:13:14.000Z",
+  "updatedAt": "2026-05-25T06:34:59.000Z",
   "creatorId": 1910680,
   "editorId": 1910680,
   "creatorUserId": 1910680,

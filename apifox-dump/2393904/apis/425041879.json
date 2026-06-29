@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/public/login/queryOrglist",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -148,7 +148,7 @@
                 "glzt": {
                   "type": "string",
                   "title": "关联状态 ",
-                  "description": "00：已启用"
+                  "description": "00：已启用；01：待确认"
                 },
                 "dqbm": {
                   "type": "string",
@@ -237,11 +237,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-09T11:55:35.000Z",
-  "updatedAt": "2026-05-16T06:45:47.000Z",
+  "updatedAt": "2026-05-28T03:26:29.000Z",
   "creatorId": 2400309,
-  "editorId": 2795319,
+  "editorId": 493303,
   "creatorUserId": 2400309,
-  "editorUserId": 2795319,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

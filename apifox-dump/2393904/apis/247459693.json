@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/check/checkPassword",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -46,7 +46,7 @@
         },
         "mmlx": {
           "type": "string",
-          "title": "登录方式",
+          "title": "密码类型",
           "description": "0表示申报密码登录\n2表示实名登录"
         },
         "smzh": {
@@ -299,11 +299,11 @@
     "enable": false
   },
   "createdAt": "2024-12-23T09:36:40.000Z",
-  "updatedAt": "2026-04-16T08:17:20.000Z",
+  "updatedAt": "2026-06-05T09:21:53.000Z",
   "creatorId": 1452584,
-  "editorId": 3222025,
+  "editorId": 2795319,
   "creatorUserId": 1452584,
-  "editorUserId": 3222025,
+  "editorUserId": 2795319,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

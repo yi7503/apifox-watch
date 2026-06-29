@@ -1,0 +1,17 @@
+{
+  "id": 8962085,
+  "name": "2026年5月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 支持跨区域和特定主体登录异地场景的企业数据采集\n2. 支持完税证明下载文书式汇总文件\n:::\n## 一、支持跨区域和特定主体登录异地场景的企业数据采集\n1. 涉及接口：发起企业数据采集：https://openapi.qixiangyun.com/api-148769453\n2. 调整：新增参数跨区域税务机关名称kqyswjgmc、特定主体税务机关名称tdztswjgmc\n- 账户中心-跨区域切换的业务上传kqyswjgmc\n- 特定主体登录采集客户需要再创建一个特定主体账号，需要上传账号id和特定主体税务机关名称。只支持跨区域登记纳税人的特定主体类型\n- 这两个参数不能同时有值\n- 本主体、特定主体登录、跨区域都存在业务要采集的情况是必须上传3个任务的，无法一个任务完成采集\n- 无论是跨区域还是特定主体每次都只能采集一个税务机关的业务，存在多个税务机关的情况需要多次采集\n4. 支持场景：跨区域和特定主体登录采集的业务返回：\n- 基础信息节点中的基础信息-taxCompanyEnterpriseInfoDtoPageResult节点\n- 申报表节点：只采集房产税、土地的申报表结构化数据\n- 税源获取节点：只采集土地-税源获取=syhqTd、房产-税源获取=syhqFc；\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663935/image-preview)\n跨区域税务机关名称对应税局路径：账户中心-身份切换-跨区域办税\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663936/image-preview)\n特定主体登录采集：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663938/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663939/image-preview)\n\n## 二、支持完税证明下载文书式汇总文件\n1. 涉及接口：发起企业数据采集、获取数据结果接口\n2. 调整：\n- 请求接口：新增一个参数sfxzhzwszm是否下载汇总完税证明，非必传，传空或者不传默认则是返回明细结构化数据，不会下载汇总完税证明文件返回\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663941/image-preview)\n- 返回结果接口：新增一个返回汇总完税证明文件链接参数：taxCompanyPaymentSummaryUrl\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663940/image-preview)\n下载文件按年进行拆分，返回链接是个zip包，按年进行文件压缩\n对应税局截图：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/663943/image-preview)\n",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-06-05T07:37:05.000Z",
+  "updatedAt": "2026-06-05T10:50:27.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

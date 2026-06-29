@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/qdfp/fpkjZzs",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -2464,6 +2464,16 @@
                 }
               ],
               "description": "开具报废产品收购：且商品和服务编码包含“报废机动车”类（即1110700000000000000、1110701000000000000、1110702000000000000、1110799000000000000之一）时，此值必填。“报废产品销售类型”：请根据真实业务情况选择（如为向出售者收购其自用的报废机动车，选择“销售自己使用过的报废产品”，其他情形请选择“销售收购的报废产品”"
+            },
+            "xzqhszDm": {
+              "type": "string",
+              "title": "省市行政区划代码",
+              "description": "例如：410522 [行政区划代码](https://dmfw.mca.gov.cn/XzqhVersionPublish.html)"
+            },
+            "jdxzDm": {
+              "type": "string",
+              "title": "街道行政区划代码",
+              "description": "例如：410522111 [行政区划代码](https://dmfw.mca.gov.cn/XzqhVersionPublish.html)"
             }
           },
           "required": [
@@ -2472,7 +2482,9 @@
             "gmf_nsrmc",
             "xmmx",
             "ly_ddbh",
-            "xsf_nsrsbh"
+            "xsf_nsrsbh",
+            "xzqhszDm",
+            "jdxzDm"
           ],
           "x-apifox-orders": [
             "ly_ddbh",
@@ -2509,6 +2521,8 @@
             "zfxxes",
             "xmmx",
             "tdyslxdm",
+            "xzqhszDm",
+            "jdxzDm",
             "sfzsgmfyhzh",
             "sfzsxsfyhzh",
             "sfzsgmfdzdh",
@@ -2766,11 +2780,11 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2025-10-17T08:37:56.000Z",
-  "updatedAt": "2026-04-16T09:35:13.000Z",
+  "updatedAt": "2026-06-01T07:07:23.000Z",
   "creatorId": 887900,
-  "editorId": 3099717,
+  "editorId": 1564651,
   "creatorUserId": 887900,
-  "editorUserId": 3099717,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

@@ -11,7 +11,6 @@ tags:
 - name: 发票业务 / 发票归集 / 同步归集-电票平台
 - name: 发票业务 / 发票归集 / 异步归集-电票平台
 - name: 发票业务 / 发票归集 / 异步归集-电票平台 / 已勾选发票归集
-- name: 发票业务 / 发票归集 / 异步归集-电票平台 / 应税凭证进项税额转出
 - name: 发票业务 / 发票归集 / 异步归集-电票平台 / 进销项发票归集
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 其他信息查询 / 不得抵扣发票信息
@@ -217,6 +216,7 @@ paths:
                       kpr: null
                     timestamp: '2026-01-23 09:39:21'
                     reqId: ecb3c034ac012b8567e5c20cd1a685a2
+      x-apifox-status: released
   /v2/invoice/qdfp/rzztcx:
     post:
       summary: 获取人脸识别结果
@@ -339,6 +339,7 @@ paths:
                     data:
                       nsrsbh: '**************4PDDL2G'
                       slzt: '1'
+      x-apifox-status: released
   /v2/invoice/qdfp/sxlbCx:
     post:
       summary: 扫脸时长查询
@@ -483,6 +484,7 @@ paths:
                       itsScanFlag: N
                       sfsl: Y
                       sxlb: '3'
+      x-apifox-status: released
   /v2/invoice/qdfp/qyjbxxcx:
     post:
       summary: 企业基本信息
@@ -1019,6 +1021,7 @@ paths:
                         YhyywdDm: '********3861'
                       Zcdyzbm: null
                       Ssglydm: '********3861'
+      x-apifox-status: released
   /v2/invoice/qdfp/kptjxxcx:
     post:
       summary: 开票额度查询
@@ -1133,6 +1136,7 @@ paths:
                     ysyfpzs: '0'
                     fphjje: '5.48'
                     bykjlpzs: '4'
+      x-apifox-status: released
   /v2/invoice/qdfp/fpkjZzs:
     post:
       summary: 蓝字发票开具
@@ -1886,6 +1890,7 @@ paths:
                         - cph
                         title: 不动产经营租赁信息(当特定业务类型是不动产经营租赁服务时必填)
                       title: 不动产经营租赁信息（多个）
+                      description: 说明：不动产信息需要和明细行条数对应， 三条xmmx，就需要三条不动产明细
                     bdcjyxsxxs:
                       type: array
                       items:
@@ -3095,6 +3100,12 @@ paths:
                     htbh:
                       type: string
                       title: 合同编号
+                    sbxmDm:
+                      type: string
+                      title: 申报项目代码
+                      description: |-
+                        扣除额=0时，非必填，传空；扣除额大于0，必填；申报项目代码与开具明细的商品编码和差额征税类型必须匹配，具体参考详见：[差额征税-申报项目说明
+                        ](doc-9026578)
                   required:
                   - fplxdm
                   - gmf_lx
@@ -3160,6 +3171,7 @@ paths:
                   - sszyfwxm
                   - cktslxDm
                   - cezslxDm
+                  - sbxmDm
                   - cepzmxList
                   - wjgs
                   - fjxxList
@@ -3190,6 +3202,8 @@ paths:
                       $ref: '#/definitions/86113874'
                     01HRREPA787TPGDRKQPHFNGNHG:
                       $ref: '#/definitions/86114015'
+                      x-apifox-overrides:
+                        dsccsxx: null
                     01HRREPNMHK8H40HMPHF4V1CSK:
                       $ref: '#/definitions/86116272'
                     01KQ6TH770JX79SP3MKVD66BJY:
@@ -3349,6 +3363,7 @@ paths:
                     data:
                       requestId: '202402292121066743305698'
                       message: 异步调用完成，请稍后调用asynResult进行结果查询
+      x-apifox-status: released
   /v2/invoice/qdfp/hzqrxxSave:
     post:
       summary: 申请红字信息表
@@ -3426,15 +3441,27 @@ paths:
                       title: 发票类型代码
                       description: 税控发票无需传值
                       enum:
-                      - 030：数电普票
-                      - 032：数电专票
+                      - '030'
+                      - '032'
+                      - '83'
+                      - '87'
+                      - '70'
                       x-apifox-enum:
-                      - value: 030：数电普票
-                        name: ''
+                      - value: '030'
+                        name: 数电票（增值税普通发票）
                         description: ''
-                      - value: 032：数电专票
-                        name: ''
+                      - value: '032'
+                        name: 数电票（增值税专用发票）
                         description: ''
+                      - value: '83'
+                        name: 机动车销售电子统一发票
+                        description: 数电电子发票
+                      - value: '87'
+                        name: 数电纸票（机动车销售统一发票）
+                        description: 数电纸质发票
+                      - value: '70'
+                        name: 二手车销售电子统一发票
+                        description: 数电电子发票
                     gmfNsrsbh:
                       type: string
                       title: 购买方识别号
@@ -3498,7 +3525,7 @@ paths:
                                 type: string
                                 title: 本次红冲金额
                                 description: |-
-                                  当红冲原因是"销货退回"时可不传，其它红冲原因需根据"部分红冲计税方式"及"本次红冲税额"判断：
+                                  根据"部分红冲计税方式"及"本次红冲税额"判断：
                                   1、部分红冲计税方式(hsslbs)为不含税时，此字段需传不含税金额；
                                   2、部分红冲计税方式(hsslbs)为含税时，此字段需传含税金额；
                                   3、如需传红冲税额(hcse)，此字段需传不含税金额；
@@ -3522,6 +3549,7 @@ paths:
                             - lzmxxh
                             - hcje
                           title: 部分红冲明细
+                          description: 税控带清单已部分红冲发票部分红冲明细有且只能有一条，且lzmxxh=0
                       x-apifox-orders:
                       - bfhcbz
                       - hsslbs
@@ -3546,17 +3574,21 @@ paths:
                       - string
                       - 'null'
                       title: 录入方身份
+                      description: 默认0-销方发起
                       enum:
                       - 0-销方发起
                       - 1-购方发起
+                      - 2-二手车市场发起
                       x-apifox-enum:
-                      - name: ''
-                        value: '0'
-                        description: 销方发起
-                      - name: ''
-                        value: '1'
-                        description: 购方发起
-                      description: 默认0-销方发起
+                      - value: 0-销方发起
+                        name: ''
+                        description: ''
+                      - value: 1-购方发起
+                        name: ''
+                        description: ''
+                      - value: 2-二手车市场发起
+                        name: ''
+                        description: 仅适用于经营性质包含二手车市场性质的企业
                     wjgs:
                       type: string
                       description: （OFD,PDF,XML,EWM)多个以,隔开
@@ -3573,6 +3605,22 @@ paths:
                       type: string
                       description: 指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。
                       title: 来源订单编号
+                    vinInfos:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          mxxh:
+                            type: string
+                            title: 蓝票明细序号
+                          vin:
+                            type: string
+                            title: VIN码
+                        x-apifox-orders:
+                        - mxxh
+                        - vin
+                      title: VIN码信息
+                      description: 当蓝字发票为汇总开具的机动车专用发票，且红冲原因为开票有误或销货退回时，必填。
                   required:
                   - lzKprq
                   - hcyydm
@@ -3590,6 +3638,7 @@ paths:
                   - hcjshj
                   - bfhc
                   - ly_ddbh
+                  - vinInfos
               required:
               - nsrsbh
               - data
@@ -3921,6 +3970,7 @@ paths:
                         "message": "业务提示：蓝票没有可红冲的金额，不可再次红冲!",
                         "reqId": "88224fe36592447e98122609a4a8b1e2"
                     }
+      x-apifox-status: released
   /v2/invoice/qdfp/hzqrxxCancel:
     post:
       summary: 撤销红字信息表
@@ -4035,6 +4085,7 @@ paths:
                     reqId: e8855fbab3f44d1997f3a113c559163f
                     code: '2000'
                     success: false
+      x-apifox-status: released
   /v2/invoice/qdfp/hzqrxxDetail:
     post:
       summary: 查询红字信息明细
@@ -4495,6 +4546,7 @@ paths:
                       lrrq: '2024-09-23 15:05:11'
                       rzzt: '00'
                       hzHjje: -0.1
+      x-apifox-status: released
   /v2/invoice/qdfp/hzqrxxConfirm:
     post:
       summary: 确认红字信息表
@@ -4555,8 +4607,8 @@ paths:
                       description: Y/N, Y表示确认， N表示拒绝
                   required:
                   - hzuuid
-                  - xsfNsrsbh
                   - qrlx
+                  - xsfNsrsbh
                   x-apifox-orders:
                   - hzuuid
                   - xsfNsrsbh
@@ -4616,6 +4668,7 @@ paths:
                     data:
                       hzuuid: 1f4f398d3adf45d88e11c0223d26e97e
                       code: Y
+      x-apifox-status: released
   /v2/invoice/qdfp/fpcx:
     post:
       summary: 已开发票列表查询
@@ -4950,6 +5003,7 @@ paths:
                         xsf_nsrsbh: '************PDDL2G'
                         zz_fpdm: ''
                         zz_fphm: ''
+      x-apifox-status: released
   /v2/invoice/qdfp/fptjcx:
     post:
       summary: 已开发票统计查询
@@ -5245,6 +5299,7 @@ paths:
                         kjlzfpje: '28.54'
                         sl: '0.06'
                         kjhzfpse: '-1.75'
+      x-apifox-status: released
   /v2/invoice/qdfp/fpmx:
     post:
       summary: 已开发票明细查询
@@ -6019,6 +6074,7 @@ paths:
                       fphm: '************54513944'
                       lzFphm: '************54513666'
                       lzKprq: '2024-02-29 00:00:00'
+      x-apifox-status: released
   /v2/invoice/qdfp/bswjxz:
     post:
       summary: 下载版式文件-废弃
@@ -6201,6 +6257,7 @@ paths:
                       wjgs: XML
                       url: ''
                       fphm: '************54513944'
+      x-apifox-status: deprecated
   /v2/invoice/qdfp/asynResult:
     post:
       summary: 异步请求结果查询
@@ -6420,6 +6477,7 @@ paths:
                         fphm: 2******************1
                     success: true
                     reqId: c1aebbc7517846b8a89d4cfb3120f00f
+      x-apifox-status: released
   /服务商CallbackURL地址:
     post:
       summary: 业务请求回调通知
@@ -6556,6 +6614,7 @@ paths:
                   value:
                     code: '9999'
                     msg: 内部处理异常
+      x-apifox-status: released
   /服务商CallbackURL地址#100012795:
     post:
       summary: 扫脸认证回调通知
@@ -6703,6 +6762,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /v2/invoice/rz/sqTjqrxxCj:
     post:
       summary: 最新统计信息采集
@@ -6817,6 +6877,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/tjqrxxCjjg:
     post:
       summary: 最新统计信息采集结果查询
@@ -6922,6 +6983,7 @@ paths:
                       tsqrjgzt: null
                       tstjxx: null
                       tsfpxx: null
+      x-apifox-status: released
   /v2/invoice/rz/sqLsydkxxCj:
     post:
       summary: 申请历史已抵扣信息采集
@@ -7024,6 +7086,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/lsydkxxCjjg:
     post:
       summary: 历史已抵扣信息采集结果查询
@@ -13612,6 +13675,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/qdfp/hzqrxxList:
     post:
       summary: 查询红字信息列表
@@ -13684,10 +13748,11 @@ paths:
                         gxflx:
                           type: string
                           title: 购销方类型
-                          description: 0：我是销方，1：我是购方
+                          description: 0：我是销方，1：我是购方，2：我是二手车市场
                           enum:
                           - '0'
                           - '1'
+                          - '2'
                           x-apifox-enum:
                           - value: '0'
                             name: ''
@@ -13695,6 +13760,9 @@ paths:
                           - value: '1'
                             name: ''
                             description: 我是购方
+                          - value: '2'
+                            name: ''
+                            description: 我是二手车市场
                         hzqrztDm:
                           type:
                           - string
@@ -14102,6 +14170,7 @@ paths:
                         ydkse: null
                         yjjdkncpse: null
                         zzsYtzt: '03'
+      x-apifox-status: released
   /v2/invoice/rz/sqTjqrxxCj#114546870:
     post:
       summary: 最新统计信息采集
@@ -14216,6 +14285,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/tjqrxxCjjg#114546884:
     post:
       summary: 最新统计信息采集结果查询
@@ -14315,6 +14385,7 @@ paths:
                       tjsj: ''
                       tjxx: []
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/sqLsydkxxCj#114546906:
     post:
       summary: 申请历史已抵扣信息采集
@@ -14424,6 +14495,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/lsydkxxCjjg#114546923:
     post:
       summary: 历史已抵扣信息采集结果查询
@@ -15341,6 +15413,7 @@ paths:
                           qtfpfs: 105
                           qtyxdksehj: 2085553.99
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/sqHzfpCj:
     post:
       summary: 申请红字发票采集
@@ -15451,6 +15524,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hzfpCjjg:
     post:
       summary: 红字发票采集结果查询
@@ -15639,6 +15713,7 @@ paths:
                         totalCount: 101
                     success: true
                     reqId: 2bc23cbec88d41afb9176d431c0b1b96
+      x-apifox-status: released
   /v2/invoice/rz/sqHgjksCj:
     post:
       summary: 申请海关缴款书采集
@@ -15750,6 +15825,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hgjksCjjg:
     post:
       summary: 海关缴款书采集结果查询
@@ -15889,6 +15965,7 @@ paths:
                         totalCount: 101
                     success: true
                     reqId: 2bc23cbec88d41afb9176d431c0b1b96
+      x-apifox-status: released
   /v2/invoice/rz/sqHzfpCj#118200640:
     post:
       summary: 申请红字发票采集
@@ -15999,6 +16076,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hzfpCjjg#118200643:
     post:
       summary: 红字发票采集结果查询
@@ -16321,6 +16399,7 @@ paths:
                         totalCount: 3
                         totalPage: 1
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxCx:
     post:
       summary: 查询商品
@@ -16546,6 +16625,7 @@ paths:
                 x-apifox-refs:
                   01HRHAX433CWDTRRP1MAJC4GMY:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxFlcx:
     post:
       summary: 查询商品分类
@@ -16786,6 +16866,7 @@ paths:
                         flmc: 项目信息分类
                     success: true
                     reqId: 9006e9c0ee1843abb8401cb90e16d7fc
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxFladd:
     post:
       summary: 新增商品分类
@@ -16863,6 +16944,7 @@ paths:
                 x-apifox-refs:
                   01HRHAQWRQQ62CVGPG5BX1TWHZ:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxAdd:
     post:
       summary: 新增商品
@@ -17013,6 +17095,7 @@ paths:
                 x-apifox-refs:
                   01HRHAYXAXVZP1DEVVTPB20H60:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxDel:
     post:
       summary: 删除商品
@@ -17088,6 +17171,7 @@ paths:
                 x-apifox-refs:
                   01HRHB57CJHGXD1YT0X7YNGPBQ:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxZnFm:
     post:
       summary: 品名查询税收分类信息
@@ -17190,7 +17274,7 @@ paths:
                               type:
                               - string
                               - 'null'
-                              title: 应税类型代码
+                              title: 特定要素类型代码
                             zzscezsbj:
                               type:
                               - string
@@ -17218,7 +17302,7 @@ paths:
                               type:
                               - string
                               - 'null'
-                              title: 应税类型名称
+                              title: 特定要素类型名称
                             zslList:
                               type:
                               - array
@@ -17423,6 +17507,7 @@ paths:
                         zsljh: 3%
                         hyjh: L725
                         hwhlwmc: 非专利技术
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxUpdate:
     post:
       summary: 编辑商品
@@ -17577,6 +17662,7 @@ paths:
                 x-apifox-refs:
                   01HRHB2F5CA34WJ2Q907DVT4BN:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxFldel:
     post:
       summary: 删除商品分类
@@ -17649,6 +17735,7 @@ paths:
                 x-apifox-refs:
                   01HRHASYCKRP3BZ13DZ4MKP7C2:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxFmxx:
     post:
       summary: 税编查询税收分类信息
@@ -17746,7 +17833,7 @@ paths:
                         type:
                         - string
                         - 'null'
-                        title: 应税类型代码
+                        title: 特定要素类型代码
                       zzscezsbj:
                         type:
                         - string
@@ -17774,7 +17861,7 @@ paths:
                         type:
                         - string
                         - 'null'
-                        title: 应税类型名称
+                        title: 特定要素类型名称
                       zslList:
                         type:
                         - array
@@ -17858,6 +17945,7 @@ paths:
                       zsljh: 3%
                       hyjh: '3121990000'
                       hwhlwmc: 其他技术陶瓷制品
+      x-apifox-status: released
   /v2/invoice/qdfp/spxxFlrename:
     post:
       summary: 修改商品分类
@@ -17969,6 +18057,7 @@ paths:
                       result: true
                     success: true
                     reqId: 209ca10c80e74fe7bd5629341f02670c
+      x-apifox-status: released
   /v2/invoice/rz/sqJxfpCj:
     post:
       summary: 申请进项发票采集
@@ -18082,6 +18171,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/jxfpCjjg:
     post:
       summary: 进项发票采集结果查询
@@ -18498,6 +18588,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/sqSkssqCj:
     post:
       summary: 更新税款所属期
@@ -18611,6 +18702,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/skssqCjjg:
     post:
       summary: 更新税款所属期任务结果
@@ -18772,6 +18864,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/qdfp/fpjf:
     post:
       summary: 税局邮箱交付
@@ -18924,6 +19017,7 @@ paths:
                     success: false
                     message: 开票日期格式错误!
                     reqId: e9b4926b074148a9a3e54bee47bbc077
+      x-apifox-status: released
   /v2/invoice/qdfp/smsc:
     post:
       summary: 扫脸时长设置
@@ -19026,6 +19120,7 @@ paths:
                     data: {}
                     success: true
                     reqId: 2f102e6303c244d69af3fabb61afbf1b
+      x-apifox-status: released
   /v2/invoice/cy/cltxffpCy:
     post:
       summary: 车辆通行费发票查验(江苏)
@@ -19201,6 +19296,7 @@ paths:
                       tydz: null
                       xzpj: null
                       ylpjFile: null
+      x-apifox-status: released
   /v2/invoice/gj/redInvoiceCollectTask:
     post:
       summary: 发起作废/红冲归集任务
@@ -19215,9 +19311,9 @@ paths:
             调用接口成功后，获取到任务ID-taskId
           </Step>
           <Step title="调用「查询归集任务结果」接口">
-        通过taskId调用接口，返回任务状态"status"=3则表示归集任务完成，此时有两种方式获取发票结构化数据：
-        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据
-        2、通过taskId调用「获取发票数据」接口获取结构化数据
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
           </Step>
         </Steps>
       parameters:
@@ -19461,6 +19557,7 @@ paths:
                     message: null
                     data:
                       taskId: 1752226411192705000
+      x-apifox-status: released
   /v2/invoice/qdfp/bswjxzBatch:
     post:
       summary: 下载版式文件
@@ -19520,7 +19617,7 @@ paths:
                     kprq:
                       title: 开票日期
                       type: string
-                      description: 包含时间 yyyy-MM-dd HH:mm:ss
+                      description: yyyy-MM-dd HH:mm:ss，需传准确的时分秒
                     wjgs:
                       type: string
                       title: 文件格式
@@ -19633,6 +19730,7 @@ paths:
                             url:
                               type: string
                               title: 文件内容（url格式）
+                              description: 税局地址或OSS地址长期有效
                             fphm:
                               type: string
                               title: 发票号码
@@ -19718,6 +19816,7 @@ paths:
                         wjgs: OFD
                         url: ''
                         fphm: '************54513944'
+      x-apifox-status: released
   /v2/invoice/rz/sqDkdjwspzCj:
     post:
       summary: '申请代扣代缴凭证采集 '
@@ -19829,6 +19928,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/dkdjwspzCjjg:
     post:
       summary: 代扣代缴凭证采集结果查询
@@ -20048,6 +20148,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/sqTsytqrCj:
     post:
       summary: 申请退税用途确认发票采集
@@ -20159,6 +20260,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/tsytqrCjjg:
     post:
       summary: 退税用途确认采集结果查询
@@ -20515,6 +20617,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/sqDkdjwspzCj#159761318:
     post:
       summary: 申请代扣代缴凭证采集
@@ -20626,6 +20729,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/dkdjwspzCjjg#159761390:
     post:
       summary: 代扣代缴凭证采集结果查询
@@ -20845,6 +20949,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/sqTsytqrCj#159761392:
     post:
       summary: 申请退税用途确认发票采集
@@ -20949,6 +21054,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/tsytqrCjjg#159761414:
     post:
       summary: 退税用途确认采集结果查询
@@ -21305,6 +21411,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/qdfp/queryKchztz:
     post:
       summary: 查询成品油库存汇总台账
@@ -21433,6 +21540,26 @@ paths:
                             bqzjkc:
                               type: string
                               title: 本期发生库存 增加库存
+                            qcjgkc:
+                              type: string
+                              title: 期初库存-机构库存
+                              description: 成品油企业性质为总公司时有此值
+                            bqjggj:
+                              type: string
+                              title: 本期发生库存-机构外购
+                              description: 成品油企业性质为总公司时有此值
+                            bqjgdb:
+                              type: string
+                              title: 本期发生库存-机构调拨
+                              description: 成品油企业性质为总公司时有此值
+                            bqjght:
+                              type: string
+                              title: 本期发生库存-机构回退
+                              description: 成品油企业性质为总公司时有此值
+                            qmjgkc:
+                              type: string
+                              title: 期末库存-机构库存
+                              description: 成品油企业性质为总公司时有此值
                           x-apifox-orders:
                           - xh
                           - ypbm
@@ -21445,8 +21572,11 @@ paths:
                           - bqjsuokc
                           - qmdqkc
                           - qmsdkc
-                          required:
-                          - bqzjkc
+                          - qcjgkc
+                          - bqjggj
+                          - bqjgdb
+                          - bqjght
+                          - qmjgkc
                     required:
                     - list
                     x-apifox-orders:
@@ -21486,6 +21616,7 @@ paths:
                         ypmc: 汽油
                         bqjskc: '1.47859963'
                         ypbm: '1070101010100000000'
+      x-apifox-status: released
   /v2/invoice/qdfp/queryCpySpbms:
     post:
       summary: 查询成品油换算标准(税收商品查询)
@@ -21731,6 +21862,7 @@ paths:
                         dzDysm: 汽油
                         dzSpbm: '1070101010100000000'
                         dzSyqyLx: '0'
+      x-apifox-status: released
   /v2/invoice/qdfp/queryCpySpbmhgs:
     post:
       summary: '查询成品油换算标准(海关商品查询) '
@@ -21925,6 +22057,7 @@ paths:
                         DzYxbs: Y
                         DzSyqyLx: '0'
                         Lrrq: '2022-02-23 15:00:00'
+      x-apifox-status: released
   /v2/invoice/qdfp/queryCpySpbmmx:
     post:
       summary: 查询成品油授权编码
@@ -22093,6 +22226,7 @@ paths:
                         dyzspm: 汽油
                         sphfwfljc: 汽油
                         sphfwssflhbbm: '1070101010100000000'
+      x-apifox-status: released
   /v2/invoice/qdfp/queryCpydysm:
     post:
       summary: 查询成品油对应品目列表
@@ -22215,6 +22349,7 @@ paths:
                       list:
                       - smmc: 汽油
                         smbm: '101020609'
+      x-apifox-status: released
   /v2/invoice/qdfp/queryMhcxfyxx:
     post:
       summary: 不动产房源信息查询
@@ -22479,6 +22614,7 @@ paths:
                         ycjzmj: 预测建筑面积
                         yctnmj: 预测套内面积
                         yxbz: 有效标志
+      x-apifox-status: released
   /v2/invoice/qdfp/queryJdcxx:
     post:
       summary: 查询车架号信息
@@ -22602,6 +22738,15 @@ paths:
                       xcrs:
                         type: string
                         title: 限乘人数
+                      clmc:
+                        type: string
+                        title: 车俩名称
+                      clspppmc:
+                        type: string
+                        title: 车辆商品品牌名称
+                      clxh:
+                        type: string
+                        title: 车俩型号
                     required:
                     - cd
                     - cldw
@@ -22628,6 +22773,9 @@ paths:
                     - sjdh
                     - wspzhm
                     - xcrs
+                    - clmc
+                    - clspppmc
+                    - clxh
                 required:
                 - data
                 x-apifox-orders:
@@ -22657,17 +22805,26 @@ paths:
                       sjdh: 商检单号
                       wspzhm: 完税凭证号码
                       xcrs: 限乘人数
+      x-apifox-status: released
   /v2/invoice/gj/collectCheckedInvoice:
     post:
       summary: 发起已勾选归集任务
       operationId: api-168122667
       tags:
       - 发票业务 / 发票归集 / 异步归集-电票平台 / 已勾选发票归集
-      description: |-
-        该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：
-        1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)
-        2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态"status"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)
-        3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)
+      description: |
+        该接口用于发起已勾选归集任务，调用流程如下：
+
+        <Steps>
+          <Step title="调用「发起已勾选归集任务」接口">
+            调用接口成功后，获取到任务ID-taskId
+          </Step>
+          <Step title="调用「查询已勾选归集任务结果」接口">
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「查询已勾选归集数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
+          </Step>
+        </Steps>
       parameters:
       - name: access_token
         in: header
@@ -22741,6 +22898,10 @@ paths:
                 aggOrgId:
                   type: string
                   title: 企业id
+                gjMode:
+                  type: string
+                  title: 归集方式
+                  description: 默认值0，0:通用归集（某个属期未统计本次任务失败）；1:忽略未统计属期
               required:
               - nsrsbh
               - kpyfq
@@ -22753,6 +22914,7 @@ paths:
               - kpyfz
               - tscjbz
               - dataType
+              - gjMode
               x-apifox-refs: {}
             examples:
               示例 1:
@@ -22810,17 +22972,26 @@ paths:
                     message: null
                     data:
                       taskId: 1752226411192705000
+      x-apifox-status: released
   /v2/invoice/gj/collectCheckedInvoiceStatus:
     post:
       summary: 查询已勾选归集任务结果
       operationId: api-168122689
       tags:
       - 发票业务 / 发票归集 / 异步归集-电票平台 / 已勾选发票归集
-      description: |-
-        该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：
-        1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)
-        2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态"status"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)
-        3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)
+      description: |
+        该接口用于获取已勾选归集发票数据，调用流程如下：
+
+        <Steps>
+          <Step title="调用「发起已勾选归集任务」接口">
+            调用接口成功后，获取到任务ID-taskId
+          </Step>
+          <Step title="调用「查询已勾选归集任务结果」接口">
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「查询已勾选归集数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
+          </Step>
+        </Steps>
       parameters:
       - name: access_token
         in: header
@@ -22923,6 +23094,14 @@ paths:
                       jsonUrl:
                         type: string
                         title: 采集到发票存储到的ossUrl
+                        description: |-
+                          1.正常票量返回链接(文件内容为发票结构化数据)：
+                          http://qxy-oss-robot-product.qixiangyun.com/9131************75W/2703******5936.txt?Expires=1810569651&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=qmvej4nW1gf6oJBgvDA8D2%2FHdeY%3D
+
+                          2.大票量返回链接含有"bigDataMark"（链接打开含有多个正常票量链接，每个链接文件打开为发票结构化数据）：
+                          http://qxy-oss-robot-product.qixiangyun.com/9132********908F/2634********952/bigDataMark.txt?Expires=1802338309&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=vwB7taAXaEVSIUB1smcdU8i5uOU%3D
+
+                          3.无数据的链接同正常票量链接一样，文件内容为空数组：[]
                       jxxbz:
                         type: string
                         title: 进销项标志
@@ -23034,17 +23213,26 @@ paths:
                       nsrsbh: 91310118MA1ADDDDL2G
                       status: '3'
                       updateTime: '2024-01-30 17:18:54'
+      x-apifox-status: released
   /v2/invoice/gj/getCollectCheckedInvoicePageData:
     post:
       summary: 查询已勾选归集数据
       operationId: api-168122864
       tags:
       - 发票业务 / 发票归集 / 异步归集-电票平台 / 已勾选发票归集
-      description: |-
-        该接口用于获取近5年内的进项已勾选发票数据，调用流程如下：
-        1、调用「发起已勾选归集任务」接口成功后，获取到任务ID-taskId(https://openapi.qixiangyun.com/api-168122667)
-        2、通过taskId调用「查询已勾选归集任务结果」接口，返任务状态"status"=3则表示归集任务完成，再通过taskId调用「查询已勾选归集数据」接口获取结构化数据(https://openapi.qixiangyun.com/api-168122689)
-        3、通过taskId调用「查询已勾选归集数据」接口，获取到对应发票数据(https://openapi.qixiangyun.com/api-168122864)
+      description: |
+        该接口用于获取已勾选归集发票数据，调用流程如下：
+
+        <Steps>
+          <Step title="调用「发起已勾选归集任务」接口">
+            调用接口成功后，获取到任务ID-taskId
+          </Step>
+          <Step title="调用「查询已勾选归集任务结果」接口">
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「查询已勾选归集数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
+          </Step>
+        </Steps>
       parameters:
       - name: Content-Type
         in: header
@@ -23306,6 +23494,7 @@ paths:
                 - success
                 - message
                 - data
+      x-apifox-status: released
   /v2/invoice/rz/dkdjwspzgx:
     post:
       summary: 代扣代缴凭证勾选
@@ -23430,6 +23619,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/dkdjwspzgxjg:
     post:
       summary: 代扣代缴凭证勾选结果查询
@@ -23626,6 +23816,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/dkdjwspzgx#170670317:
     post:
       summary: 代扣代缴凭证勾选
@@ -23736,6 +23927,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/dkdjwspzgxjg#170670318:
     post:
       summary: 代扣代缴凭证勾选结果查询
@@ -23950,6 +24142,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/fpruz/queryFprzxx:
     post:
       summary: 发票入账信息查询
@@ -24438,10 +24631,11 @@ paths:
                                 description: 数电票(航空)
                             kprq:
                               type: string
-                              title: 开票日期（yyyy-MM-dd HH:mm:ss）
+                              title: 开票日期
+                              description: yyyy-MM-dd HH:mm:ss
                             xsf_nsrmc:
                               type: string
-                              title: 销售方纳税人识别号
+                              title: 销售方纳税人名称
                             je:
                               type: string
                               title: 金额
@@ -24525,6 +24719,7 @@ paths:
                             rzsj:
                               type: string
                               title: 入账时间
+                              description: yyyy-MM-dd
                           required:
                           - zz_fpdm
                           - fplxmc
@@ -24628,6 +24823,7 @@ paths:
                         fphm: ''
                         fprzztDm: '00'
                         zhbz: N
+      x-apifox-status: released
   /v2/invoice/fpruz/fprzbc:
     post:
       summary: 发票入账
@@ -24704,19 +24900,19 @@ paths:
                             x-apifox-enum:
                             - value: '02'
                               name: ''
-                              description: 已入账（企业所得税税前扣除）
+                              description: 入账（企业所得税税前扣除）
                             - value: '03'
                               name: ''
-                              description: 已入账（企业所得税不扣除）
+                              description: 入账（企业所得税不扣除）
                             - value: '06'
                               name: ''
                               description: 入账撤销
                             - value: '04'
                               name: ''
-                              description: 已入账(个体工商企业所得税税前扣除)
+                              description: 入账(个体工商企业所得税税前扣除)
                             - value: '05'
                               name: ''
-                              description: 已入账(个体工商所得税不扣除)
+                              description: 入账(个体工商所得税不扣除)
                           rzsj:
                             type: string
                             title: 入账时间（yyyy-MM-dd）
@@ -24919,17 +25115,76 @@ paths:
                             kprq:
                               type: string
                               title: 开票日期
+                              description: 格式：yyyy-MM-dd HH:mm:ss
                             errorCode:
                               type: string
                               title: 错误码
+                              enum:
+                              - '720002'
+                              - '721000'
+                              - '721001'
+                              - '721002'
+                              - '721003'
+                              x-apifox-enum:
+                              - value: '720002'
+                                name: 未查询到入账信息!
+                                description: ''
+                              - value: '721000'
+                                name: 发票已红冲，不允许入账
+                                description: ''
+                              - value: '721001'
+                                name: 发票已作废，不允许入账
+                                description: ''
+                              - value: '721002'
+                                name: 当前为“已入账”，不允许重复发起入账
+                                description: ''
+                              - value: '721003'
+                                name: 已入账撤销状态无需撤销 / 未入账状态无需撤销
+                                description: ''
                             errorMsg:
                               type: string
                               title: 提示信息
+                            rzytDm:
+                              type: string
+                              title: 入账用途代码
+                              description: 01或null 代表未入账
+                              enum:
+                              - '01'
+                              - '02'
+                              - '03'
+                              - '04'
+                              - '05'
+                              - '06'
+                              x-apifox-enum:
+                              - value: '01'
+                                name: ''
+                                description: 未入账
+                              - value: '02'
+                                name: ''
+                                description: 已入账（企业所得税税前扣除）
+                              - value: '03'
+                                name: ''
+                                description: 已入账（企业所得税不扣除）
+                              - value: '04'
+                                name: ''
+                                description: 已入账（个体工商企业所得税税前扣除）
+                              - value: '05'
+                                name: ''
+                                description: 已入账（个体工商所得税不扣除）
+                              - value: '06'
+                                name: ''
+                                description: 入账撤销
+                            rzsj:
+                              type: string
+                              title: 入账时间
+                              description: 格式：yyyy-MM-dd
                           x-apifox-orders:
                           - zz_fpdm
                           - zz_fphm
                           - fphm
                           - kprq
+                          - rzytDm
+                          - rzsj
                           - errorCode
                           - errorMsg
                           required:
@@ -24939,6 +25194,8 @@ paths:
                           - fphm
                           - zz_fphm
                           - zz_fpdm
+                          - rzytDm
+                          - rzsj
                         description: 入参中rzType为1时返回
                     x-apifox-orders:
                     - rzuuid
@@ -24963,6 +25220,17 @@ paths:
                     message: null
                     data:
                       rzuuid: bcb87699dfd94478a462e2ad0c09ad17
+                请求超时转异步示例:
+                  summary: 请求超时转异步示例
+                  value:
+                    success: true
+                    code: '2000'
+                    message: null
+                    reqId: 476030dc57824fa1bd622f186f18da48
+                    data:
+                      requestId: 1d5d8c5a1d02441493b8a2c57810xxxx
+                      message: 异步调用完成，请等待回调结果或主动调用asynResult进行业务结果查询
+      x-apifox-status: released
   /v2/invoice/qdfp/fjysxxList:
     post:
       summary: 附加要素列表查询
@@ -25110,6 +25378,7 @@ paths:
                         ],
                         "pageIndex": 1
                     }
+      x-apifox-status: released
   /v2/invoice/qdfp/fjysxxAdd:
     post:
       summary: 附加要素信息添加
@@ -25199,6 +25468,7 @@ paths:
                     reqId: 75e20c4a7eec4ac0b42f9b3cdf2233303
                     data:
                       result: 88ea04dfe1554bafbce02f6a9d7a077f
+      x-apifox-status: released
   /v2/invoice/qdfp/fjysxxUpdate:
     post:
       summary: 附加要素信息编辑
@@ -25288,6 +25558,7 @@ paths:
                     reqId: 75e20c4a7eec4ac0b42f9b3cdf2233303
                     data:
                       result: 88ea04dfe1554bafbce02f6a9d7a077f
+      x-apifox-status: released
   /v2/invoice/qdfp/fjysxxDel:
     post:
       summary: 附加要素信息删除
@@ -25391,6 +25662,7 @@ paths:
                     reqId: 75e20c4a7eec4ac0b42f9b3cdf2233303
                     data:
                       result: true
+      x-apifox-status: released
   /v2/invoice/qdfp/cjmbList:
     post:
       summary: 场景模版查询
@@ -25517,6 +25789,7 @@ paths:
                       xgrsfid: 44003ca914af46384dcabc61558d9a104fba
                       lrrsfid: 44003ca914af46384dcabc61558d9a104fba
                     pageIndex: 1
+      x-apifox-status: released
   /v2/invoice/qdfp/cjmbAdd:
     post:
       summary: 场景模版添加
@@ -25612,6 +25885,7 @@ paths:
                     reqId: 75e20c4a7eec4ac0b42f9b3cdf2233303
                     data:
                       result: 8d181e62f4424320bc5a18cc15c19594
+      x-apifox-status: released
   /v2/invoice/qdfp/cjmbUpdate:
     post:
       summary: 场景模版编辑
@@ -25701,6 +25975,7 @@ paths:
                     reqId: 75e20c4a7eec4ac0b42f9b3cdf2233303
                     data:
                       result: 8d181e62f4424320bc5a18cc15c19594
+      x-apifox-status: released
   /v2/invoice/qdfp/cjmbDel:
     post:
       summary: 场景模版删除
@@ -25806,6 +26081,7 @@ paths:
                     reqId: 75e20c4a7eec4ac0b42f9b3cdf2233303
                     data:
                       result: true
+      x-apifox-status: released
   /v2/invoice/qdfp/hzfptjxxcx:
     post:
       summary: 红字发票概况统计
@@ -25897,6 +26173,7 @@ paths:
                       bysddqrd: 0
                       dqdcl: 0
                       bysddhpje: 0
+      x-apifox-status: released
   /v2/invoice/gj/queryFpsljeseHj:
     post:
       summary: 申请全量发票汇总信息
@@ -26190,6 +26467,7 @@ paths:
                       hjse: '0.37'
                       success: 'true'
                       hjje: '3.1'
+      x-apifox-status: released
   /v2/invoice/qdfp/hzFpkj:
     post:
       summary: 红字发票开具
@@ -26434,6 +26712,7 @@ paths:
                       jshj: '-106.6'
                       xsfNsrsbh: 91***************C
                       fphm: 2432***************6936
+      x-apifox-status: released
   /v2/invoice/qdfp/queryFphcztxx:
     post:
       summary: 购销蓝票可红冲信息
@@ -26816,6 +27095,7 @@ paths:
                       lzhjje: 283018.87
                       hzcxje: -283018.87
                       fprzztDm: '00'
+      x-apifox-status: released
   /v2/invoice/cy/bsxzJgCx:
     post:
       summary: 查验版式下载任务结果查询
@@ -26894,6 +27174,7 @@ paths:
                     success: false
                     message: 未查询到对应的发票查验版式文件下载记录
                     data: null
+      x-apifox-status: released
   /v2/invoice/gj/getFpsljeseHj:
     post:
       summary: 获取全量发票汇总信息
@@ -27036,6 +27317,7 @@ paths:
                       fpzs: '151'
                       hjje: '133345.25'
                       hjse: '1556.78'
+      x-apifox-status: released
   /v2/invoice/cy/zzsfpCy:
     post:
       summary: 数电票查验并获取版式文件
@@ -27227,6 +27509,7 @@ paths:
                       ofdUrl: http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/6c90c9453d3f53130dce874a054745bd.ofd?**************
                       pdfUrl: http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/2c4039944ed63ac7d417bb58d74f647f.pdf?**************
                       xmlUrl: http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/dzfp_23319130671000000237_20240521174733.xml?**************
+      x-apifox-status: released
   /v2/invoice/gj/syncCollectTask:
     post:
       summary: 进销项发票信息
@@ -27653,63 +27936,57 @@ paths:
                 二手车统一销售发票:
                   summary: 二手车统一销售发票
                   value:
-                    result:
-                      success: true
-                      req_id: f3b60e96629141dc82a15947971870b5
-                      timestamp: 1753342231276
-                      time: 472
-                    value:
-                      code: '2000'
-                      data:
-                        page:
-                          pageSize: 1
-                          currentPage: 1
-                          totalPage: 198
-                          totalCount: 198
-                        list:
-                        - fplx: '70'
-                          kpyf: 202505
-                          fpztDm: '0'
-                          fpdm: qd
-                          fphm: null
-                          kprq: '2025-05-12 00:00:00'
-                          xfDm: 52242619**********
-                          xfMc: '**********'
-                          xfDz: '**********'
-                          xfDh: null
-                          gfDm: 91522620MA**********
-                          gfMc: 贵州**********销售服务有限公司
-                          gfDz: 贵州省黔东南苗族侗族自治州凯里经济开发区经纬汽车城3号地块内
-                          gfDh: 0855-8659111
-                          skm: null
-                          bz: ''
-                          kpr: 黄**
-                          fply: 电子发票服务平台
-                          fpfxdj: 正常
-                          kjlx: '1'
-                          spbm: '1090305010300000000'
-                          cpzh: 贵**********
-                          djzh: 33002**********
-                          cllx: 小型轿车
-                          clsbdm: LB37844Z**********
-                          cpxh: '**********'
-                          zrdclglsMc: 黔东南州车管所
-                          cjhj: 22600
-                          jyPmSbh: '**********'
-                          jyPmMc: '**********有限公司'
-                          escSbh: ''
-                          escMc: ''
-                          kpfLx: null
-                          kpfNsrsbh: null
-                          zfr: null
-                          zfrq: null
-                          sdphm: 255220000000**********
-                          sfzsfp: '0'
+                    reqId: 7eeae4c409ec404eab3d7908c64e9fd3
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      jsonUrl: http://qxy-oss-robot-product.qixiangyun.com/91310118MAD57LQY4Y/2494898449049255936.txt?Expires=1785665679&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=O%2BlJ6sT8O0Wv0H2RFZ**********
+                      list:
+                      - fplx: '70'
+                        kpyf: 202505
+                        fpztDm: '0'
+                        fpdm: qd
+                        fphm: null
+                        kprq: '2025-05-12 00:00:00'
+                        xfDm: 52242619**********
+                        xfMc: '**********'
+                        xfDz: '**********'
+                        xfDh: null
+                        gfDm: 91522620MA**********
+                        gfMc: 贵州**********销售服务有限公司
+                        gfDz: 贵州省黔东南苗族侗族自治州凯里经济开发区经纬汽车城3号地块内
+                        gfDh: 0855-8659111
+                        skm: null
+                        bz: ''
+                        kpr: 黄**
+                        fply: 电子发票服务平台
+                        fpfxdj: 正常
+                        kjlx: '1'
+                        spbm: '1090305010300000000'
+                        cpzh: 贵**********
+                        djzh: 33002**********
+                        cllx: 小型轿车
+                        clsbdm: LB37844Z**********
+                        cpxh: '**********'
+                        zrdclglsMc: 黔东南州车管所
+                        cjhj: 22600
+                        jyPmSbh: '**********'
+                        jyPmMc: '**********有限公司'
+                        escSbh: ''
+                        escMc: ''
+                        kpfLx: null
+                        kpfNsrsbh: null
+                        zfr: null
+                        zfrq: null
+                        sdphm: 255220000000**********
+                        sfzsfp: '0'
                 海关缴款书:
                   summary: 海关缴款书
                   value: "{\r\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"page\": {\r\n            \"totalPage\": 1,\r\n            \"pageSize\": 20,\r\n            \"currentPage\": 1,\r\n            \"totalCount\": 9\r\n        },\r\n        \"list\": [\r\n            {\r\n                \"fplx\": \"17\", // 发票代码\r\n                \"gfmc\": \"\", //购方名称\r\n                \"hwxx\": [\r\n                    {\r\n                        \"dw\": \"035\", // 单位\r\n                        \"hwmc\": \"碳酸钙粉\", // 货物名称\r\n                        \"jkshm\": \"42582025100****-L01\", // 缴款书号码\r\n                        \"mc\": \"\", // 商品名称\r\n                        \"mxxh\": \"1\", // 明细序号\r\n                        \"shxx\": \"2836500000\", // 税号信息\r\n                        \"skje\": 15214.65, // 税款金额\r\n                        \"sl\": \"275000\", // 数量\r\n               \
                     \         \"slv\": 0.13, // 税率\r\n                        \"spbm\": \"\", // 商品编码\r\n                        \"tfyf\": 202505, // 填发月份\r\n                        \"wsjg\": \"117035.77\" // 完税价格\r\n                    }\r\n                ],\r\n                \"jkdw1mc\": \"****际贸易有限公司\", // 缴款单位一名称\r\n                \"jkdw1nsrsbh\": \"91371300MA****\", // 缴款单位一税号\r\n                \"jkshm\": \"425820251000****-L01\", // 缴款书号码\r\n                \"jkdw2nsrsbh\": \"91320691MA1R****\", // 缴款单位二税号\r\n                \"jkdw2mc\": \"****有限公司\", // 缴款单位二名称\r\n                \"kpr\": \"\", //开票人\r\n                \"sjlyBz\": \"FPYXZ101\", //数据来源标志\r\n                \"sjlyDm\": \"FPYXZ101\", //数据来源标志\r\n                \"skje\": 15214.65, // 税款金额\r\n                \"slv\": \"\", //税率\r\n                \"tfrq\": \"2025-05-07 00:00:00\", // 填发日期\r\n                \"tfyf\": 202505, // 填发月份\r\n                \"xfmc\": \"\" //销方名称\r\n            }\r\n        ]\r\n    }\r\n\
                     }"
+      x-apifox-status: released
   /v2/invoice/gj/syncFpjbxx:
     post:
       summary: 发票基础信息
@@ -28359,6 +28636,7 @@ paths:
                         Xsfnsrsbh: 91330110MA2H0****
                         Hjje: 415.88
                         Tdyslxmc: ''
+      x-apifox-status: released
   /v2/invoice/sdfile/syncLayoutFile:
     post:
       summary: 单张数电版式下载
@@ -28681,6 +28959,7 @@ paths:
                     error:
                       code: xxxx
                       message: xxx
+      x-apifox-status: released
   /服务商CallbackURL地址#193036322:
     post:
       summary: 异步任务执行结果回调
@@ -28800,6 +29079,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /服务商CallbackURL地址#193036791:
     post:
       summary: 异步任务结果回调
@@ -28911,6 +29191,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /服务商CallbackURL地址#193040992:
     post:
       summary: 版式下载任务执行结果回调
@@ -29006,6 +29287,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /服务商CallbackURL地址#193123565:
     post:
       summary: 异步任务执行结果回调
@@ -29149,6 +29431,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /v2/invoice/cy/dpptCy:
     post:
       summary: 数电票查验
@@ -29288,84 +29571,7 @@ paths:
                 x-apifox-orders:
                 - 01JXV89QT7PCHX7QKGXEXT1BJK
                 properties: {}
-              examples:
-                电子发票（二手车销售统一发票）:
-                  summary: 电子发票（二手车销售统一发票）
-                  value:
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                    - customReqId: 10001999bfe8a3753977405f8eae539ecaaeacb1
-                      czpjMxcx: null
-                      data:
-                        bz: ''
-                        cjhj: 100
-                        cjhjcn: 壹佰圆整
-                        cllx: 小型普通客车
-                        clsbdm: LF************98
-                        cpxh: 丰田牌SC*******R7
-                        cpzh: 川A98NR3
-                        djzh: 51********55
-                        dq: null
-                        escDh: 028-85****67
-                        escDz: 四川**********************号
-                        escMc: 成都******************公司
-                        escSbh: 91**************X0
-                        escYhzh: 中国****************支行51****************25
-                        fpfxdj: 正常
-                        fplx: 0940
-                        fpztDm: '8'
-                        gfDh: '-'
-                        gfDm: 51****************13
-                        gfDz: 四川**************号
-                        gfMc: 张*
-                        jyPmDh: ''
-                        jyPmDz: ''
-                        jyPmMc: ''
-                        jyPmSbh: ''
-                        jyPmYhzh: ''
-                        kjlx: '1'
-                        kpfLx: null
-                        kpfNsrsbh: null
-                        kpr: 张*
-                        kprq: '2025-05-08 00:00:00'
-                        lslbs: null
-                        mxzb: []
-                        qdfphm: 25*************89
-                        sbbh: ''
-                        skm: null
-                        spbm: null
-                        xfDh: 028-85****67
-                        xfDm: 91****************X0
-                        xfDz: 四川*****************号
-                        xfMc: 成都*******************公司
-                        yfpdm: null
-                        yfphm: null
-                        ytbqxx:
-                          fpdm: ''
-                          fphm: ''
-                          fplyDm: '2'
-                          fplymc: 电子发票服务平台
-                          fprzzt: 未入账
-                          qdfphm: 25*************89
-                          xfsytbq: 未使用
-                          zzsgxsq: null
-                          zzsytbq: 未使用
-                        zrdclglsMc: 成都****所
-                      dq: '51'
-                      fpdm: null
-                      fphm: 25*************89
-                      fplx: 0940
-                      je: null
-                      jshj: 100
-                      jym: null
-                      kprq: '2025-05-08 00:00:00'
-                      success: true
-                      time: '2025-06-13 18:38:50'
-                      times: 4
-                    timestamp: '2025-06-13 18:38:53'
-                    reqId: T8338865c98644e8ead80773cc7965f60
+      x-apifox-status: released
   /v2/invoice/cy/ytbqCx:
     post:
       summary: 入账状态及用途标签查询
@@ -29524,6 +29730,7 @@ paths:
                       kprq: '2020-04-01 00:00:00'
                       message: 请求参数不正确,电票平台查询增值税普通发票入账状态及用途标签时，校验码不能为空！
                       success: false
+      x-apifox-status: released
   /v2/invoice/cy/bswjxz:
     post:
       summary: 同步获取数电票版式文件
@@ -29689,6 +29896,7 @@ paths:
                       kprq: '2024-07-15 00:00:00'
                       message: 暂不支持非数电票版式文件下载！
                       success: false
+      x-apifox-status: released
   /v2/invoice/rz/sqDclNcpfpCj:
     post:
       summary: 待处理农产品采集
@@ -29787,6 +29995,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/dclNcpfpCjjg:
     post:
       summary: 待处理农产品采集结果查询
@@ -29966,6 +30175,7 @@ paths:
                         totalCount: 0
                         totalPage: 1
                       zt: '2'
+      x-apifox-status: released
   /v2/invoice/rz/sqNcpfpCl:
     post:
       summary: 申请农产品发票处理
@@ -30064,6 +30274,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/ncpfpCljg:
     post:
       summary: 农产品发票处理结果查询
@@ -30129,6 +30340,7 @@ paths:
                 x-apifox-orders:
                 - 01J69EBWHNVHV4T6R4YD1P65GC
                 properties: {}
+      x-apifox-status: released
   /v2/invoice/rz/sqJjkcNcpCj:
     post:
       summary: 申请加计扣除农产品采集
@@ -30228,6 +30440,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/jjkcNcpCjjg:
     post:
       summary: 加计扣除农产品采集结果查询
@@ -30306,6 +30519,7 @@ paths:
                         properties: {}
                 x-apifox-orders:
                 - 01J6REA0E5W93G6GQMP9Y68KA6
+      x-apifox-status: released
   /v2/invoice/rz/sqNcpJjkc:
     post:
       summary: 农产品加计扣除勾选
@@ -30404,6 +30618,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/ncpJjkcjg:
     post:
       summary: 农产品加计扣除勾选结果查询
@@ -30483,6 +30698,7 @@ paths:
                 x-apifox-orders:
                 - 01J6RTFMK5N55HH0M2QF9PCNPE
                 properties: {}
+      x-apifox-status: released
   /v2/invoice/cy/asyncBswjxz:
     post:
       summary: 异步获取数电票版式文件
@@ -30614,6 +30830,7 @@ paths:
                       kprq: '2024-07-15 00:00:00'
                       message: 暂不支持非数电票版式文件下载！
                       success: false
+      x-apifox-status: released
   /v2/invoice/qdfp/queryKqysssxbyglbhcx:
     post:
       summary: 跨区域涉税事项报验管理编号信息查询
@@ -30865,6 +31082,7 @@ paths:
                         wcjydxzqhsz: 北京市怀柔区
                         wcjyhdssglzmbh: 海地税外证〔2000〕0000号
                         xgrq: '2018-09-18 09:00:00'
+      x-apifox-status: released
   /v2/invoice/cy/bsxzJgCx#228040874:
     post:
       summary: 查验版式下载任务结果查询
@@ -30934,15 +31152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/definitions/35327531'
-              examples:
-                未查询到对应的发票查验版式文件下载记录:
-                  summary: 未查询到对应的发票查验版式文件下载记录
-                  value:
-                    reqId: 19ca9336059a45198fdc37fb5e1c2018
-                    code: BusinessVerification
-                    success: false
-                    message: 未查询到对应的发票查验版式文件下载记录
-                    data: null
+      x-apifox-status: released
   /服务商CallbackURL地址#228041280:
     post:
       summary: 版式下载任务执行结果回调
@@ -31038,6 +31248,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /v2/invoice/fpruz/asynResult:
     post:
       summary: 异步请求结果查询
@@ -31526,6 +31737,7 @@ paths:
                 - data
                 x-apifox-orders:
                 - data
+      x-apifox-status: released
   /服务商CallbackURL地址#233989453:
     post:
       summary: 业务请求回调通知
@@ -31655,6 +31867,7 @@ paths:
                   value:
                     code: '9999'
                     msg: 内部处理异常
+      x-apifox-status: released
   /v2/invoice/cy/czpjCy:
     post:
       summary: 财政票据(明细版)
@@ -48974,6 +49187,7 @@ paths:
                       success: false
                     timestamp: '2025-06-18 15:30:14'
                     reqId: inv-check5aa7e788-5fd8-40fc-8309-89d50efe6cc8
+      x-apifox-status: released
   /v2/invoice/gj/terminateCollectionTask:
     post:
       summary: 撤销归集待执行任务
@@ -49125,6 +49339,7 @@ paths:
                         status: '2'
                       - taskId: '2349917850082803712'
                         status: '3'
+      x-apifox-status: released
   /v2/invoice/cy/dpptCy#271508610:
     post:
       summary: 数电票查验并获取版式文件
@@ -49415,6 +49630,7 @@ paths:
                       success: true
                       time: '2025-01-09 20:03:02'
                       times: 1
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxFlcx:
     post:
       summary: 客户分类查询
@@ -49605,6 +49821,7 @@ paths:
                         flmc: 测试1
                     success: true
                     reqId: 9006e9c0ee1843abb8401cb88e16d7fc
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxFladd:
     post:
       summary: 客户分类新增
@@ -49711,6 +49928,7 @@ paths:
                 x-apifox-refs:
                   01HRHAQWRQQ62CVGPG5BX1TWHZ:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxFldel:
     post:
       summary: 客户分类删除
@@ -49804,6 +50022,7 @@ paths:
                 x-apifox-refs:
                   01HRHASYCKRP3BZ13DZ4MKP7C2:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxFlrename:
     post:
       summary: 客户分类修改
@@ -49915,6 +50134,7 @@ paths:
                       result: true
                     success: true
                     reqId: 209ca10c80e74fe7bd5629341f02670c
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxCx:
     post:
       summary: 客户信息查询
@@ -50135,6 +50355,7 @@ paths:
                 x-apifox-refs:
                   01HRHAX433CWDTRRP1MAJC4GMY:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxAdd:
     post:
       summary: 客户信息新增
@@ -50271,6 +50492,7 @@ paths:
                 x-apifox-refs:
                   01HRHAYXAXVZP1DEVVTPB20H60:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxUpdate:
     post:
       summary: 客户信息修改
@@ -50424,6 +50646,7 @@ paths:
                 x-apifox-refs:
                   01HRHB2F5CA34WJ2Q907DVT4BN:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/qdfp/khxxDel:
     post:
       summary: 客户信息删除
@@ -50520,6 +50743,7 @@ paths:
                 x-apifox-refs:
                   01HRHB57CJHGXD1YT0X7YNGPBQ:
                     $ref: '#/definitions/85577914'
+      x-apifox-status: released
   /v2/invoice/rz/sqHgjksLr:
     post:
       summary: 申请海关缴款书录入
@@ -50629,6 +50853,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hgjksLrjg:
     post:
       summary: 海关缴款书录入结果查询
@@ -50820,6 +51045,7 @@ paths:
                         tfrq: '2023-12-07 00:00:00'
                       message: '[HgjksxxcjLrfailVO(hgjkshm=23***************39-L02, message=海关缴款书填发日期不合法！)]'
                       zt: '2'
+      x-apifox-status: released
   /v2/invoice/rz/sqLrHgjksCj:
     post:
       summary: 已录入海关缴款书查询
@@ -50931,6 +51157,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/lrHgjksCjjg:
     post:
       summary: 已录入缴款书查询任务结果
@@ -51081,6 +51308,7 @@ paths:
                         totalCount: 2
                         totalPage: 1
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/sqHgjksLr#298043257:
     post:
       summary: 申请海关缴款书录入
@@ -51189,6 +51417,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hgjksLrjg#298043420:
     post:
       summary: 海关缴款书录入结果查询
@@ -51380,6 +51609,7 @@ paths:
                         tfrq: '2023-12-07 00:00:00'
                       message: '[HgjksxxcjLrfailVO(hgjkshm=23***************39-L02, message=海关缴款书填发日期不合法！)]'
                       zt: '2'
+      x-apifox-status: released
   /v2/invoice/rz/sqLrHgjksCj#298043472:
     post:
       summary: 已录入海关缴款书查询
@@ -51491,6 +51721,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/lrHgjksCjjg#298043487:
     post:
       summary: 已录入缴款书查询任务结果
@@ -51641,6 +51872,7 @@ paths:
                         totalCount: 2
                         totalPage: 1
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/fpruz/hgjksrzbc:
     post:
       summary: 海关缴款书入账
@@ -51841,6 +52073,7 @@ paths:
                     message: null
                     data:
                       rzuuid: bcb87699dfd94478a462e2ad0c09ad17
+      x-apifox-status: released
   /v2/invoice/fpruz/dkdjrzbc:
     post:
       summary: 代扣代缴入账
@@ -52052,6 +52285,7 @@ paths:
                     message: null
                     data:
                       rzuuid: bcb87699dfd94478a462e2ad0c09ad17
+      x-apifox-status: released
   /v2/invoice/fpruz/queryHgjksrzxx:
     post:
       summary: 海关缴款书入账信息查询
@@ -52353,6 +52587,7 @@ paths:
                         rzytDm: '01'
                     success: true
                     reqId: 9531c10148bb4d968ca8f38ca038add6
+      x-apifox-status: released
   /v2/invoice/fpruz/queryDkdjrzxx:
     post:
       summary: 代扣代缴入账信息查询
@@ -52663,6 +52898,7 @@ paths:
                         rzytDm: '06'
                     success: true
                     reqId: 44382012b99142a18f62adfc0e2d041c
+      x-apifox-status: released
   /v2/invoice/qdfp/querySxedtzSqxx:
     post:
       summary: 查询申请额度列表
@@ -52878,6 +53114,7 @@ paths:
                       shsj: '2025-06-09 18:18:12'
                       shrxm: '0.00'
                       lcslid: 131000000***
+      x-apifox-status: released
   /v2/invoice/qdfp/saveSxedsqSqxx:
     post:
       summary: 申请发票额度调整
@@ -53099,6 +53336,7 @@ paths:
                     code: string
                     success: true
                     message: string
+      x-apifox-status: released
   /v2/invoice/qdfp/fpkjZzs#312610509:
     post:
       summary: 农产品收购发票
@@ -54664,7 +54902,6 @@ paths:
                   - xsf_yhzh
                   - xsf_yhmc
                   - gmf_nsrsbh
-                  - ncpzrcgzConfirm
                   x-apifox-orders:
                   - ly_ddbh
                   - fplxdm
@@ -54866,6 +55103,7 @@ paths:
                     data:
                       requestId: '202402292121066743305698'
                       message: 异步调用完成，请稍后调用asynResult进行结果查询
+      x-apifox-status: released
   /v2/invoice/rz/sqNcpfpCl#313248466:
     post:
       summary: 申请农产品发票处理
@@ -54964,6 +55202,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/ncpfpCljg#313248467:
     post:
       summary: 农产品发票处理结果查询
@@ -55029,6 +55268,7 @@ paths:
                 x-apifox-orders:
                 - 01J69EBWHNVHV4T6R4YD1P65GC
                 properties: {}
+      x-apifox-status: released
   /v2/invoice/rz/sqNcpJjkc#313248501:
     post:
       summary: 农产品加计扣除勾选
@@ -55127,6 +55367,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/ncpJjkcjg#313248502:
     post:
       summary: 农产品加计扣除勾选结果查询
@@ -55206,6 +55447,7 @@ paths:
                 x-apifox-orders:
                 - 01J6RTFMK5N55HH0M2QF9PCNPE
                 properties: {}
+      x-apifox-status: released
   /v2/invoice/rz/zxgx:
     post:
       summary: 注销勾选
@@ -55312,6 +55554,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/zxgxjg:
     post:
       summary: 注销勾选结果查询
@@ -55424,6 +55667,7 @@ paths:
                       skssq: '202309'
                       zt: 3
                       zxgxlx: '2'
+      x-apifox-status: released
   /v2/invoice/rz/sqBddkFpCj:
     post:
       summary: 申请不得抵扣发票信息采集
@@ -55532,6 +55776,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/bddkFpCjjg:
     post:
       summary: 不得抵扣发票信息采集结果查询
@@ -56178,6 +56423,7 @@ paths:
                           qtfpfs: 105
                           qtyxdksehj: 2085553.99
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/sqBddkFpCj#342314193:
     post:
       summary: 申请不得抵扣发票信息采集
@@ -56287,6 +56533,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/bddkFpCjjg#342314213:
     post:
       summary: 不得抵扣发票信息采集结果查询
@@ -56933,6 +57180,7 @@ paths:
                           qtfpfs: 105
                           qtyxdksehj: 2085553.99
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/queryBddkFp:
     post:
       summary: 不得抵扣发票查询
@@ -57069,6 +57317,7 @@ paths:
                         currentPage: 1
                     reqId: 9e9daea2ed8e4d6597d5d0d26b764a02
                     success: true
+      x-apifox-status: released
   /v2/invoice/rz/queryBddkFp#344534205:
     post:
       summary: 不得抵扣发票查询
@@ -57205,6 +57454,7 @@ paths:
                         currentPage: 1
                     reqId: 9e9daea2ed8e4d6597d5d0d26b764a02
                     success: true
+      x-apifox-status: released
   /v2/invoice/rz/sqDclNcpfpCj#355750655:
     post:
       summary: 待处理农产品采集
@@ -57303,6 +57553,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/dclNcpfpCjjg#355750656:
     post:
       summary: 待处理农产品采集结果查询
@@ -57482,6 +57733,7 @@ paths:
                         totalCount: 0
                         totalPage: 1
                       zt: '2'
+      x-apifox-status: released
   /v2/invoice/rz/sqJjkcNcpCj#355750658:
     post:
       summary: 申请加计扣除农产品采集
@@ -57580,6 +57832,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/jjkcNcpCjjg#355750659:
     post:
       summary: 加计扣除农产品采集结果查询
@@ -57658,6 +57911,7 @@ paths:
                         properties: {}
                 x-apifox-orders:
                 - 01J6REA0E5W93G6GQMP9Y68KA6
+      x-apifox-status: released
   /v2/invoice/gj/fpmx:
     post:
       summary: 发票详情归集
@@ -57716,13 +57970,15 @@ paths:
                 sdphm:
                   type: string
                   title: 数电票号码
-                  description: 数电票传此值
+                  description: 数电票时必填
                 fpdm:
                   type: string
                   title: 发票代码
+                  description: 增值税发票必填
                 fphm:
                   type: string
                   title: 发票号码
+                  description: 增值税发票必填
                 'gjlx ':
                   type: string
                   description: 1发票详情，2发票使用状态，3发票入账状态，4发票红冲列表（多个逗号隔开）
@@ -58252,6 +58508,7 @@ paths:
                     data:
                       code: '4999'
                       message: 登录信息已过期，无法快速登录，请重新登录再办理业务
+      x-apifox-status: released
   /v2/invoice/qdfp/fpkjZzs#362676959:
     post:
       summary: 报废产品收购发票
@@ -59967,6 +60224,14 @@ paths:
                         name: 销售收购的报废产品
                         description: ''
                       description: 开具报废产品收购：且商品和服务编码包含“报废机动车”类（即1110700000000000000、1110701000000000000、1110702000000000000、1110799000000000000之一）时，此值必填。“报废产品销售类型”：请根据真实业务情况选择（如为向出售者收购其自用的报废机动车，选择“销售自己使用过的报废产品”，其他情形请选择“销售收购的报废产品”
+                    xzqhszDm:
+                      type: string
+                      title: 省市行政区划代码
+                      description: 例如：410522 [行政区划代码](https://dmfw.mca.gov.cn/XzqhVersionPublish.html)
+                    jdxzDm:
+                      type: string
+                      title: 街道行政区划代码
+                      description: 例如：410522111 [行政区划代码](https://dmfw.mca.gov.cn/XzqhVersionPublish.html)
                   required:
                   - fplxdm
                   - gmf_lx
@@ -59974,6 +60239,8 @@ paths:
                   - xmmx
                   - ly_ddbh
                   - xsf_nsrsbh
+                  - xzqhszDm
+                  - jdxzDm
                   x-apifox-orders:
                   - ly_ddbh
                   - fplxdm
@@ -60009,6 +60276,8 @@ paths:
                   - zfxxes
                   - xmmx
                   - tdyslxdm
+                  - xzqhszDm
+                  - jdxzDm
                   - sfzsgmfyhzh
                   - sfzsxsfyhzh
                   - sfzsgmfdzdh
@@ -60182,6 +60451,7 @@ paths:
                     data:
                       requestId: '202402292121066743305698'
                       message: 异步调用完成，请稍后调用asynResult进行结果查询
+      x-apifox-status: released
   /v2/invoice/qdfp/jysssdqy:
     post:
       summary: 查询是否金银首饰试点企业
@@ -60281,6 +60551,7 @@ paths:
                       result: N
                     timestamp: '2025-10-31 11:18:33'
                     reqId: 6df0218e9d8288b51cf107fe056b07b2
+      x-apifox-status: released
   /v2/invoice/qdfp/jyssjyqy:
     post:
       summary: '查询是金银首饰经营企业 '
@@ -60382,6 +60653,7 @@ paths:
                       result: N
                     timestamp: '2025-10-31 11:18:33'
                     reqId: 6df0218e9d8288b51cf107fe056b07b2
+      x-apifox-status: released
   /v2/invoice/qdfp/saveKqysssxbg:
     post:
       summary: 提交跨区域涉税事项报验管理
@@ -60485,6 +60757,7 @@ paths:
                     data:
                       result: true
                       msg: 跨区域涉税事项报告信息保存成功。
+      x-apifox-status: released
   /v2/invoice/qdfp/querySszyfwxyysxxcjb:
     post:
       summary: 查询涉税专业服务协议要素采集信息表
@@ -60629,6 +60902,7 @@ paths:
                         fwqxz: '2025-12-01 00:00:00'
                         sszyfwxm: '010000'
                         zzrq: '2025-12-01 00:00:00'
+      x-apifox-status: released
   /v2/invoice/qdfp/dqsqzzssfsb:
     post:
       summary: 当前属期增值税是否申报
@@ -60726,6 +61000,7 @@ paths:
                     success: true
                     message: null
                     reqId: ''
+      x-apifox-status: released
   /v2/invoice/qdfp/exportHzfpxxqrd:
     post:
       summary: 红字确认单下载
@@ -60837,6 +61112,7 @@ paths:
                     message: null
                     data:
                       url: 红字确认单URL
+      x-apifox-status: released
   /v2/invoice/qdfp/queryLzfpList:
     post:
       summary: 购销蓝字发票列表查询
@@ -60954,6 +61230,7 @@ paths:
                     message: null
                     timestamp: '2026-01-06 16:26:32'
                     reqId: ''
+      x-apifox-status: released
   /v2/invoice/qdfp/cxsbbd:
     post:
       summary: 查询企业未申报税目
@@ -61077,6 +61354,7 @@ paths:
                     success: true
                     message: null
                     reqId: ''
+      x-apifox-status: released
   /v2/invoice/qdfp/querySsflbm:
     post:
       summary: 查询税收分类编码信息
@@ -61143,9 +61421,6 @@ paths:
                         items:
                           type: object
                           properties:
-                            fjbm:
-                              type: string
-                              title: 父级编码
                             spbm:
                               type: string
                               title: 商品编码
@@ -61210,8 +61485,10 @@ paths:
                               type: string
                               title: 停用日期
                               description: 格式：yyyy-MM-dd
+                            gjz:
+                              type: string
+                              title: 关键字
                           x-apifox-orders:
-                          - fjbm
                           - spbm
                           - tdyslxdm
                           - cezsbz
@@ -61232,6 +61509,7 @@ paths:
                           - hgjcksppm
                           - qyrq
                           - tyrq
+                          - gjz
                     x-apifox-orders:
                     - list
                     required:
@@ -61254,19 +61532,28 @@ paths:
                     message: null
                     data:
                       list:
-                      - fjbm: '3040502020300000256'
-                        spmc: 桥梁通行服务
-                        zzstsnrdm: '1'
-                        spfwjc: 经营租赁
-                        qyrq: '2019-04-01'
+                      - xfsgl: null
+                        zzstsgl: 免税
+                        spmc: 谷子
+                        tdyslxdm: '11'
+                        hgjcksppm: 10082900【税则品名】其他谷子
+                        jzjtdm: null
+                        cezsbz: null
+                        zzstsnrdm: '1011606.0'
+                        spfwjc: 谷物
+                        qyrq: '2018-12-04'
+                        tyrq: null
+                        gjz: 谷子、硬谷子、糯谷子
                         zzsslv: 9%
+                        dytjjbm: null
                         sfhzx: N
-                        zzszcyj: 《交通运输部国家税务总局关于收费公路通行费增值税电子普通发票开具等有关事项的公告》（2017年第66号）
-                        bzs: Y
-                        sm: null
-                        zslv: 5%
-                        spbm: '3040502020303000000'
-                        zsstsgl: 按5%简易征收、不征税
+                        xfszcyj: null
+                        zzszcyj: 《财政部 国家税务总局关于粮食企业增值税征免问题的通知》（财税字〔1999〕198号）
+                        bzs: N
+                        sm: 包括硬谷子、糯谷子、其他谷子。
+                        zslv: 3%
+                        spbm: '1010101040000000000'
+      x-apifox-status: released
   /v2/invoice/qdfp/queryYkjfpHgztz:
     post:
       summary: 已开具发票的合格证台账信息查询
@@ -61303,12 +61590,6 @@ paths:
             schema:
               type: object
               properties:
-                action:
-                  type:
-                  - string
-                  - 'null'
-                  title: 操作类型
-                  description: 本接口传入：queryJdcxx
                 nsrsbh:
                   type: string
                   title: 税号
@@ -61331,10 +61612,9 @@ paths:
                   - pageNumber
                   - pageSize
               x-apifox-orders:
-              - action
               - nsrsbh
-              - data
               - 01JAA099QH73978DKKD71TW15M
+              - data
               x-apifox-refs:
                 01JAA099QH73978DKKD71TW15M:
                   $ref: '#/definitions/79273658'
@@ -61398,6 +61678,7 @@ paths:
                     success: true
                     message: null
                     reqId: 832ab1b361f462a2869f66b3f523ad81
+      x-apifox-status: released
   /v2/invoice/qdfp/jdcjmdcgetList:
     post:
       summary: 机动车类专用发票列表查询
@@ -61434,12 +61715,6 @@ paths:
             schema:
               type: object
               properties:
-                action:
-                  type:
-                  - string
-                  - 'null'
-                  title: 操作类型
-                  description: 本接口传入：queryJdcxx
                 nsrsbh:
                   type: string
                   title: 税号
@@ -61448,15 +61723,13 @@ paths:
                   properties: {}
                   x-apifox-orders:
                   - 01KH0T77A90RHAXS9X085JD6TT
-                  required: []
                   x-apifox-refs:
                     01KH0T77A90RHAXS9X085JD6TT:
                       $ref: '#/definitions/246472054'
               x-apifox-orders:
-              - action
               - nsrsbh
-              - data
               - 01JAA099QH73978DKKD71TW15M
+              - data
               x-apifox-refs:
                 01JAA099QH73978DKKD71TW15M:
                   $ref: '#/definitions/79273658'
@@ -61517,6 +61790,7 @@ paths:
                     success: true
                     message: null
                     reqId: 832ab1b361f462a2869f66b3f523ad81
+      x-apifox-status: released
   /v2/invoice/qdfp/jdcjmdc:
     post:
       summary: 机动车类专用发票申请导出
@@ -61552,12 +61826,6 @@ paths:
             schema:
               type: object
               properties:
-                action:
-                  type:
-                  - string
-                  - 'null'
-                  title: 操作类型
-                  description: 本接口传入：queryJdcxx
                 nsrsbh:
                   type: string
                   title: 税号
@@ -61569,12 +61837,10 @@ paths:
                   x-apifox-refs:
                     01KH2QD4677NCPJER47BXJDJCZ:
                       $ref: '#/definitions/246616675'
-                  required: []
               x-apifox-orders:
-              - action
               - nsrsbh
-              - data
               - 01JAA099QH73978DKKD71TW15M
+              - data
               x-apifox-refs:
                 01JAA099QH73978DKKD71TW15M:
                   $ref: '#/definitions/79273658'
@@ -61623,6 +61889,7 @@ paths:
                     success: true
                     message: null
                     reqId: 832ab1b361f462a2869f66b3f523ad81
+      x-apifox-status: released
   /v2/invoice/qdfp/jdcgetwxzwj:
     post:
       summary: 机动车类专用发票导出业务未下载文件列表
@@ -61658,17 +61925,10 @@ paths:
             schema:
               type: object
               properties:
-                action:
-                  type:
-                  - string
-                  - 'null'
-                  title: 操作类型
-                  description: 本接口传入：queryJdcxx
                 nsrsbh:
                   type: string
                   title: 税号
               x-apifox-orders:
-              - action
               - nsrsbh
               - 01JAA099QH73978DKKD71TW15M
               x-apifox-refs:
@@ -61719,6 +61979,7 @@ paths:
                     success: true
                     message: null
                     reqId: 832ab1b361f462a2869f66b3f523ad81
+      x-apifox-status: released
   /v2/invoice/qdfp/jdcwxzwjxz:
     post:
       summary: 机动车类专用发票导出业务未下载文件下载
@@ -61754,12 +62015,6 @@ paths:
             schema:
               type: object
               properties:
-                action:
-                  type:
-                  - string
-                  - 'null'
-                  title: 操作类型
-                  description: 本接口传入：queryJdcxx
                 nsrsbh:
                   type: string
                   title: 税号
@@ -61776,10 +62031,9 @@ paths:
                   required:
                   - uuid
               x-apifox-orders:
-              - action
               - nsrsbh
-              - data
               - 01JAA099QH73978DKKD71TW15M
+              - data
               x-apifox-refs:
                 01JAA099QH73978DKKD71TW15M:
                   $ref: '#/definitions/79273658'
@@ -61833,6 +62087,7 @@ paths:
                     success: true
                     message: null
                     reqId: 832ab1b361f462a2869f66b3f523ad81
+      x-apifox-status: released
   /v2/invoice/qdfp/fpkjZzs#419759568:
     post:
       summary: 二手车销售统一发票
@@ -61913,7 +62168,6 @@ paths:
                     gmf_nsrsbh:
                       type: string
                       title: 购方税号
-                      description: 购方统一社会信用代码（当发票开具为全电专用发票（032）时该字段必填）
                     gmf_nsrmc:
                       type: string
                       title: 购方名称
@@ -61951,6 +62205,7 @@ paths:
                           sl:
                             type: string
                             title: 税率
+                            description: 必须为零
                           se:
                             type:
                             - string
@@ -62113,9 +62368,11 @@ paths:
                     xsf_dz:
                       type: string
                       title: 销方地址
+                      description: 开票方为二手车市场时必填；反向开具时必填。
                     xsf_dh:
                       type: string
                       title: 销方电话
+                      description: 开票方为二手车市场时必填；反向开具时必填。
                     xsf_yhmc:
                       type: string
                       title: 销方开户银行
@@ -62127,11 +62384,13 @@ paths:
                       - string
                       - 'null'
                       title: 购买方地址
+                      description: 开票方为二手车市场时必填；正向开具时必填。
                     gmf_dh:
                       type:
                       - string
                       - 'null'
                       title: 购买方电话
+                      description: 开票方为二手车市场时必填；正向开具时必填。
                     gmf_yhmc:
                       type:
                       - string
@@ -63458,6 +63717,9 @@ paths:
                   - xmmx
                   - ly_ddbh
                   - xsf_nsrsbh
+                  - tdyslxdm
+                  - xsf_nsrmc
+                  - gmf_nsrsbh
                   x-apifox-orders:
                   - ly_ddbh
                   - fplxdm
@@ -63663,6 +63925,7 @@ paths:
                     data:
                       requestId: '202402292121066743305698'
                       message: 异步调用完成，请稍后调用asynResult进行结果查询
+      x-apifox-status: released
   /v2/invoice/cy/bsxzJgCx#425759266:
     post:
       summary: 查验版式下载任务结果查询
@@ -63741,6 +64004,7 @@ paths:
                     success: false
                     message: 未查询到对应的发票查验版式文件下载记录
                     data: null
+      x-apifox-status: released
   /服务商CallbackURL地址#425759273:
     post:
       summary: 版式下载任务执行结果回调
@@ -63836,6 +64100,7 @@ paths:
                   value:
                     code: '2000'
                     msg: 成功
+      x-apifox-status: released
   /v2/invoice/gj/queryYcpzJxsezc:
     post:
       summary: 应税凭证进项税额转出
@@ -63933,7 +64198,7 @@ paths:
                               title: 发票类型代码
                             kdkse:
                               type: number
-                              title: 可抵扣税额
+                              title: 应转出税额
                             nsrmc:
                               type:
                               - string
@@ -64036,7 +64301,7 @@ paths:
                           - jshj
                           - fpztDm
                           - pjlbDm
-                        title: 发票信息
+                        title: 应转出明细信息
                     required:
                     - total
                     - tjxxList
@@ -64199,331 +64464,7 @@ paths:
                         jshj: 36867.98
                         fpztDm: '0 '
                         pjlbDm: '1 '
-  /v2/invoice/gj/queryYcpzJxsezc#426566068:
-    post:
-      summary: 发起进项税额转出查询
-      operationId: api-426566068
-      tags:
-      - 发票业务 / 发票归集 / 异步归集-电票平台 / 应税凭证进项税额转出
-      parameters:
-      - name: Content-Type
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: access_token
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: req_date
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: req_sign
-        in: header
-        required: false
-        schema:
-          type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                nsrsbh:
-                  type: string
-                  title: 纳税人识别号
-                aggOrgId:
-                  type: string
-                  title: 企业id
-                accountId:
-                  type: string
-                  title: 账号唯一标识
-                skssq:
-                  type: string
-                  title: 税款所属期
-              required:
-              - nsrsbh
-              - aggOrgId
-              - skssq
-              x-apifox-orders:
-              - nsrsbh
-              - skssq
-              - aggOrgId
-              - accountId
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  reqId:
-                    type: string
-                  code:
-                    type: string
-                  success:
-                    type: boolean
-                  message:
-                    type: 'null'
-                  data:
-                    type: object
-                    properties:
-                      taskId:
-                        type: integer
-                        title: 任务id
-                    required:
-                    - taskId
-                    x-apifox-orders:
-                    - taskId
-                required:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: b33ad285f760435bbc3c813abf494992
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      taskId: 2655552188466659328
-  /v2/invoice/gj/collectCheckedInvoiceStatus#426566216:
-    post:
-      summary: 查询进项税额转出任务结果
-      operationId: api-426566216
-      tags:
-      - 发票业务 / 发票归集 / 异步归集-电票平台 / 应税凭证进项税额转出
-      parameters:
-      - name: access_token
-        in: header
-        required: false
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: false
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: false
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      - name: Content-Type
-        in: header
-        required: false
-        schema:
-          type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                taskId:
-                  type: string
-                  title: 任务id
-                nsrsbh:
-                  type: string
-                  title: 纳税人识别号
-                aggOrgId:
-                  type: string
-                  title: 企业id
-              required:
-              - taskId
-              - nsrsbh
-              - aggOrgId
-              x-apifox-orders:
-              - aggOrgId
-              - nsrsbh
-              - taskId
-              x-apifox-refs: {}
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  reqId:
-                    type: string
-                    title: 请求唯一id
-                    description: 每次请求生成的唯一标识，建议保存，接口异常时方便排查
-                  code:
-                    type: string
-                    description: 返回2000成功，其他表示失败
-                    title: 任务状态
-                  success:
-                    type: boolean
-                    title: 是否成功标记
-                    description: 接口是否成功（是否发生业务异常）
-                  message:
-                    type: 'null'
-                    title: 返回提示信息
-                  data:
-                    type: object
-                    properties:
-                      appKey:
-                        type: integer
-                        title: appkey
-                      createTime:
-                        type: string
-                        title: 创建时间
-                        description: YYYY-MM-DD HH:MM:SS
-                      failCode:
-                        type: string
-                        title: 失败code
-                      failMsg:
-                        type: string
-                        title: 失败提示信息
-                      fplxStr:
-                        type: string
-                        title: 发票类型
-                        description: 见「发票归集-附录-发票类型代码」
-                      jsonUrl:
-                        type: string
-                        title: 采集到发票存储到的ossUrl
-                        description: 具体报文查看同步接口中【应税凭证进项税额转出】返回值
-                      jxxbz:
-                        type: string
-                        title: 进销项标志
-                        enum:
-                        - xx-销项
-                        - jx-进项
-                        x-apifox-enum:
-                        - value: xx-销项
-                          name: ''
-                          description: ''
-                        - value: jx-进项
-                          name: ''
-                          description: ''
-                      kpyfq:
-                        type: integer
-                        title: 所属期起
-                        description: YYYYMMDD
-                      kpyfz:
-                        type: integer
-                        title: 所属期止
-                        description: YYYYMMDD
-                      nsrsbh:
-                        type: string
-                        title: 纳税人识别号
-                      status:
-                        type: string
-                        title: 任务状态
-                        enum:
-                        - 0-待执行
-                        - 1-进行中
-                        - 2-失败
-                        - 3-成功
-                        x-apifox-enum:
-                        - value: 0-待执行
-                          name: ''
-                          description: ''
-                        - value: 1-进行中
-                          name: ''
-                          description: ''
-                        - value: 2-失败
-                          name: ''
-                          description: ''
-                        - value: 3-成功
-                          name: ''
-                          description: ''
-                      updateTime:
-                        type: string
-                        title: 更新时间
-                        description: YYYY-MM-DD HH:MM:SS
-                    required:
-                    - appKey
-                    - createTime
-                    - failCode
-                    - failMsg
-                    - fplxStr
-                    - jsonUrl
-                    - jxxbz
-                    - kpyfq
-                    - kpyfz
-                    - nsrsbh
-                    - status
-                    - updateTime
-                    x-apifox-orders:
-                    - status
-                    - failCode
-                    - failMsg
-                    - appKey
-                    - nsrsbh
-                    - fplxStr
-                    - jxxbz
-                    - kpyfq
-                    - kpyfz
-                    - createTime
-                    - updateTime
-                    - jsonUrl
-                required:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value: |-
-                    {
-                        "reqId": "278ae26be2004e9ea641fe4fb4784714",
-                        "code": "2000",
-                        "success": true,
-                        "message": null,
-                        "data": {
-                            "appKey": 1000****,
-                            "collectType": "1",
-                            "createTime": "2026-01-30 17:18:36",
-                            "failCode": "2000",
-                            "failMsg": "操作成功",
-                            "fplxStr": null,
-                            "jsonUrl": ""http: //qxy-oss-robot-product.qixiangyun.com/91370000********/26548675294********_jxseZccx.txt?Expires=1804735480&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=i6MLuPgNPEXbe4********"",
-                            "jxxbz": "jx",
-                            "kpyfq": 202312,
-                            "kpyfz": 202312,
-                            "nsrsbh": "91310118M*******",
-                            "status": "3",
-                            "updateTime": "2026-01-30 17:18:54"
-                        }
-                    }
+      x-apifox-status: released
   /v2/invoice/qdfp/fpkjZzs#451385883:
     post:
       summary: 医疗服务发票开具
@@ -66266,6 +66207,8 @@ paths:
                           type: string
                           title: 性别
                           description: 1：男；2：女
+                          examples:
+                          - 上传数字 1 或者 2
                         ybtcjjzfje:
                           type: number
                           title: 医保统筹基金支付
@@ -66632,6 +66575,120 @@ paths:
                     data:
                       requestId: '202402292121066743305698'
                       message: 异步调用完成，请稍后调用asynResult进行结果查询
+      x-apifox-status: released
+  /v2/invoice/qdfp/queryKkjfpJdc:
+    post:
+      summary: 可开具发票的机动车查询
+      operationId: api-460618065
+      tags:
+      - 发票业务 / 数电开票 / 机动车业务
+      description: |
+        机动车业务-可开具发票的机动车查询。
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nsrsbh:
+                  type: string
+                  title: 税号
+                data:
+                  type: object
+                  properties:
+                    pageNumber:
+                      type: integer
+                      title: 页码
+                      description: 默认：1
+                    pageSize:
+                      type: integer
+                      title: 每页记录数
+                      description: 默认：10，最大：50
+                    vin:
+                      type: string
+                      title: 车辆识别代号/车架号码
+                  x-apifox-orders:
+                  - vin
+                  - pageNumber
+                  - pageSize
+              x-apifox-orders:
+              - nsrsbh
+              - 01JAA099QH73978DKKD71TW15M
+              - data
+              x-apifox-refs:
+                01JAA099QH73978DKKD71TW15M:
+                  $ref: '#/definitions/79273658'
+              required:
+              - nsrsbh
+              - data
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                    x-apifox-orders:
+                    - 01KS1ZABN0FEV8NXSXYN517ETW
+                    x-apifox-refs:
+                      01KS1ZABN0FEV8NXSXYN517ETW:
+                        $ref: '#/definitions/275978442'
+                    required: []
+                x-apifox-orders:
+                - 01HVKDS7N9RXXVA81489RZ05WM
+                - data
+                x-apifox-refs:
+                  01HVKDS7N9RXXVA81489RZ05WM:
+                    $ref: '#/definitions/85577914'
+                required:
+                - data
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: '2000'
+                    data:
+                      pageNumber: 1
+                      pageSize: 1
+                      total: 43680
+                      list:
+                      - vin: LK**********6714
+                        sfKkjfp: true
+                        bkkjfpYy: ''
+                    success: true
+                    message: null
+                    reqId: 832ab1b361f462a2869f66b3f523ad81
+      x-apifox-status: released
   /v2/invoice/cy/zzsfpCy#66282957:
     post:
       summary: 数电票查验
@@ -66766,82 +66823,7 @@ paths:
                 x-apifox-orders:
                 - 01JXV98PXB45N9XZB70S42H34K
                 properties: {}
-              examples:
-                电子发票（二手车销售统一发票）:
-                  summary: 电子发票（二手车销售统一发票）
-                  value:
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                    - customReqId: 10001999d4016b92e1c948b4b6f6a315bb7316d3
-                      czpjMxcx: null
-                      data:
-                        bz: ''
-                        cjhj: 100.0
-                        cjhjcn: 壹佰元整
-                        cllx: 小型普通客车
-                        clsbdm: LF************98
-                        cpxh: 丰田**********R7
-                        cpzh: 川A*****3
-                        djzh: 51********55
-                        dq: null
-                        escDh: 028-85****67
-                        escDz: 四川********************号
-                        escMc: 成都*******************公司
-                        escSbh: 91**************X0
-                        escYhzh: 中国********************支行 51***************25
-                        fplx: 0940
-                        fpztBz: null
-                        fpztDm: '8'
-                        gfDh: '-'
-                        gfDm: 51************************13
-                        gfDz: 四川********************号
-                        gfMc: 张*
-                        hzfpxx:
-                        - hzfpdm: 25********01
-                          hzfphm: 06****51
-                          hzfpzt: '0'
-                          hzkprq: '2025-05-09 00:00:00'
-                        jyPmDh: ''
-                        jyPmDz: ''
-                        jyPmMc: ''
-                        jyPmSbh: ''
-                        jyPmYhzh: ''
-                        kjlx: '1'
-                        kpfLx: null
-                        kpfNsrsbh: null
-                        kpr: null
-                        kprq: '2025-05-08 00:00:00'
-                        kpyf: null
-                        lslbs: null
-                        qdfphm: 25****************89
-                        sbbh: ''
-                        skm: null
-                        spbm: null
-                        xfDh: 028-85*****67
-                        xfDm: 91****************X0
-                        xfDz: 四川*****************号
-                        xfMc: 成都*****************公司
-                        yfpdm: null
-                        yfphm: null
-                        zfr: null
-                        zfrq: null
-                        zrdclglsMc: 成都******所
-                        zxbm: null
-                      dq: '51'
-                      fpdm: null
-                      fphm: 25******************89
-                      fplx: 0940
-                      je: null
-                      jshj: 100.0
-                      jym: null
-                      kprq: '2025-05-08 00:00:00'
-                      success: true
-                      time: '2025-06-13 18:45:44'
-                      times: 16
-                    timestamp: '2025-06-13 18:39:24'
-                    reqId: T2125933a18b742a591af220249887c7c
+      x-apifox-status: released
   /v2/invoice/cy/zzsfpCy#66282961:
     post:
       summary: 税控发票查验
@@ -67001,6 +66983,7 @@ paths:
                       success: true
                       time: '2024-04-18 18:28:12'
                       times: 3
+      x-apifox-status: released
   /v2/invoice/cy/qklfpCy:
     post:
       summary: 区块链发票(北京)
@@ -67156,6 +67139,7 @@ paths:
                       tydz: null
                       xzpj: null
                       ylpjFile: null
+      x-apifox-status: released
   /v2/invoice/cy/tydzfpCy:
     post:
       summary: 通用电子发票(浙江/宁波)
@@ -67330,14 +67314,29 @@ paths:
                       success: true
                       time: null
                       times: null
+      x-apifox-status: released
   /v2/invoice/ocr/sb:
     post:
       summary: 普通票据识别
       operationId: api-66365912
       tags:
       - 发票业务 / 发票识别
-      description: "该接口用于票据识别。目前支持：\n 01-增值税专用发票 \n 03-机动车销售统一发票\n 04-增值税普通发票 \n 08-增值税专用发票（电子）\n 10-增值税普通发票（电子）\n 11-增值税普通发票（卷票）\n 14-通行费发票\n 15-二手车统一销售发票 \n 17-海关缴款书\n 0910-电子发票（普通发票）\n 0920-电子发票（增值税专用发票）\n 0901-全电纸质发票（增值税专用发票）\n 0904-全电纸质发票（增值税普通发票）\n 61-电子发票（航空运输电子客票行程单）\n 83-电子发票（铁路电子客票）\n 8208-数电发票（通行费发票）\n 100-区块链发票\n 101-财政票据（目前仅支持财政类型01-**非税收入票据**、财政类型03-**电子医疗票据**） \n 102-通用（电子）发票\n 801-定额发票\n 900-出租车发票\n 901-火车票\n 902-航空运输电子客票行程单\n 903-机打发票\n 904-过路费发票(通行费)\n 905-客运汽车\n 906-购物小票\n 907-行程单（支持滴滴出行、T3、高德地图打车、花小猪打车，**仅支持pdf原件识别**）\n 908-完税证明\n 909-船票（目前**仅支持深圳地区**）\n 910-可报销其他发票（无法识别为其他类型的票据统一归类为该类型）\n 911-海关出口货物报关单\n 912-海关进口货物报关单\n 0930-电子发票(机动车销售统一发票)\n 0940-电子发票(二手车统一销售发票)\n0903-全电纸质发票（机动车销售统一发票）\n0915-全电纸质发票（二手车统一销售发票）\n103-车辆通行费发票\n \n\n\n::: highlight red \U0001F4A1\n发票图片信息相关参数**imageUrl**、**imageData**、**imageFile**只需传入一项，任选一项上传即可\n支持识别的文件类型：jpg、pdf、ofd、png、xml、jpeg、tiff、bmp\n:::\n\n\n#### 错误码\n\n| **错误代码**    | **错误信息**                                      | **解决方案**    \
-        \         |\n| --------------- | ------------------------------------------------- | ------------------------ |\n| ParameterIsNull | 发票识别参数不能为空                              | 传入不为空的发票识别参数 |\n| ImageIsNull     | 发票图片信息不能全部为空（图片链接、Base64 数据） | 传入不为空的发票识别参数 |\n| ImageIsInvalid  | 发票图片信息无效                                  | 传入有效的发票图片       |\n| NotSupport      | 暂不支持的发票类型                                | 传入支持的发票类型文件                 |\n| Failed          | 发票识别失败，请联系管理员                        | 联系管理员               |\n| ServerError     | 服务器异常，请稍后重试                            | 稍后重试                 |"
+      description: |-
+        ::: highlight red 💡
+        发票图片信息相关参数**imageUrl**、**imageData**、**imageFile**只需传入一项，任选一项上传即可
+        支持识别的文件类型：jpg、pdf、ofd、png、xml、jpeg、tiff、bmp
+        :::
+
+        #### 错误码
+
+        | **错误代码**    | **错误信息**                                      | **解决方案**             |
+        | --------------- | ------------------------------------------------- | ------------------------ |
+        | ParameterIsNull | 发票识别参数不能为空                              | 传入不为空的发票识别参数 |
+        | ImageIsNull     | 发票图片信息不能全部为空（图片链接、Base64 数据） | 传入不为空的发票识别参数 |
+        | ImageIsInvalid  | 发票图片信息无效                                  | 传入有效的发票图片       |
+        | NotSupport      | 暂不支持的发票类型                                | 传入支持的发票类型文件                 |
+        | Failed          | 发票识别失败，请联系管理员                        | 联系管理员               |
+        | ServerError     | 服务器异常，请稍后重试                            | 稍后重试                 |
       parameters:
       - name: access_token
         in: header
@@ -67478,6 +67477,7 @@ paths:
                 - reqId
                 - message
                 x-apifox-refs: {}
+      x-apifox-status: released
   /v2/invoice/cy/qklfpCy#67646592:
     post:
       summary: 区块链发票(云南)
@@ -67662,6 +67662,7 @@ paths:
                       tydz: null
                       xzpj: null
                       ylpjFile: null
+      x-apifox-status: released
   /v2/invoice/cy/qklfpCy#67646673:
     post:
       summary: 区块链发票(深圳)
@@ -67835,6 +67836,7 @@ paths:
                       skm: null
                       success: true
                       xfsbh: 92****************5J
+      x-apifox-status: released
   /v2/invoice/cy/tydzfpCy#67646895:
     post:
       summary: 通用电子发票(广东)
@@ -67956,6 +67958,7 @@ paths:
                       tydz: true
                       xzpj: null
                       ylpjFile: null
+      x-apifox-status: deprecated
   /v2/invoice/cy/zzsfpCy#68533683:
     post:
       summary: 数电纸质发票查验
@@ -68157,6 +68160,7 @@ paths:
                       success: true
                       time: '2024-07-29 17:34:36'
                       times: 36
+      x-apifox-status: released
   /v2/invoice/rz/tjqrsqjg:
     post:
       summary: 统计确认/撤销统计结果查询
@@ -68250,6 +68254,7 @@ paths:
                       tjxx: []
                       ywlx: '2'
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/tjqrjg:
     post:
       summary: 最新统计确认信息查询
@@ -68653,6 +68658,7 @@ paths:
                         qtyxdksehj: null
                       ywlx: '3'
                       zt: '2'
+      x-apifox-status: released
   /v2/invoice/cy/uploadCy:
     post:
       summary: 上传文件查验
@@ -68831,6 +68837,7 @@ paths:
                       jym: '509791'
                     success: true
                     reqId: 1f7d8d89b55641fe8f4075f2f01119d3
+      x-apifox-status: released
   /v2/invoice/rz/sbxx:
     post:
       summary: 获取税款所属期
@@ -68994,6 +69001,7 @@ paths:
                     success: false
                     message: 接口调用异常，请联系管理员!
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/jxfpqs:
     post:
       summary: 进项发票取数
@@ -69213,6 +69221,7 @@ paths:
                     success: false
                     message: 接口调用异常，请联系管理员!
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/hgjksqs:
     post:
       summary: 海关缴款书取数
@@ -69616,6 +69625,7 @@ paths:
                     success: false
                     message: 接口调用异常，请联系管理员!
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/jxfpgx:
     post:
       summary: 发票勾选
@@ -69707,6 +69717,7 @@ paths:
                           01K5FX29BTXP3D3TTKTEBHBHHN:
                             $ref: '#/definitions/104050184'
                     required: []
+      x-apifox-status: released
   /v2/invoice/rz/jxfpgxjg:
     post:
       summary: 发票勾选结果查询
@@ -69826,6 +69837,7 @@ paths:
                         zt: '3'
                       message: null
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/hgjksgx:
     post:
       summary: 海关缴款书勾选
@@ -69939,6 +69951,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hgjksgxjg:
     post:
       summary: 海关缴款书勾选结果
@@ -70052,6 +70065,7 @@ paths:
                         zt: '3'
                       message: null
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/sqtjqr:
     post:
       summary: 申请统计
@@ -70169,6 +70183,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/sqtjqr#79034498:
     post:
       summary: 撤销统计确认
@@ -70286,6 +70301,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/sqtjqr#79034499:
     post:
       summary: 统计确认
@@ -70403,6 +70419,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/cy/czpjCy#89495807:
     post:
       summary: 财政票据
@@ -87515,6 +87532,7 @@ paths:
                       success: true
                       time: '2024-10-30 22:36:41'
                       times: 3
+      x-apifox-status: released
   /v2/invoice/rz/sqSkssqCj#93748239:
     post:
       summary: 获取税款所属期
@@ -87628,6 +87646,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/skssqCjjg#93748240:
     post:
       summary: 获取税款所属期任务结果
@@ -87790,6 +87809,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/sqJxfpCj#93748241:
     post:
       summary: 申请进项发票采集
@@ -87901,6 +87921,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/sqHgjksCj#93748242:
     post:
       summary: 申请海关缴款书采集
@@ -88012,6 +88033,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/jxfpCjjg#93748243:
     post:
       summary: 进项发票采集结果查询
@@ -88428,6 +88450,7 @@ paths:
                     success: false
                     message: 未查到对应的任务信息！
                     data: null
+      x-apifox-status: released
   /v2/invoice/rz/hgjksCjjg#93748244:
     post:
       summary: 海关缴款书采集结果查询
@@ -88571,6 +88594,7 @@ paths:
                         totalCount: 101
                     success: true
                     reqId: 2bc23cbec88d41afb9176d431c0b1b96
+      x-apifox-status: released
   /v2/invoice/rz/jxfpgxjg#93763337:
     post:
       summary: 发票勾选结果查询
@@ -88686,6 +88710,7 @@ paths:
                         zt: '3'
                       message: null
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/jxfpgx#93763660:
     post:
       summary: 发票勾选
@@ -88816,6 +88841,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hgjksgx#93763981:
     post:
       summary: 海关缴款书勾选
@@ -88939,6 +88965,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/hgjksgxjg#93764408:
     post:
       summary: 海关缴款书勾选结果
@@ -89047,6 +89074,7 @@ paths:
                         zt: '3'
                       message: null
                       zt: '3'
+      x-apifox-status: released
   /v2/invoice/rz/sqtjqr#93764848:
     post:
       summary: 申请统计
@@ -89169,6 +89197,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/sqtjqr#93765364:
     post:
       summary: 撤销统计确认
@@ -89291,6 +89320,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/sqtjqr#93765487:
     post:
       summary: 统计确认
@@ -89413,6 +89443,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/tjqrsqjg#93765552:
     post:
       summary: 统计确认/撤销统计结果查询
@@ -89511,6 +89542,7 @@ paths:
                       tsqrjgzt: null
                       tstjxx: null
                       tsfpxx: null
+      x-apifox-status: released
   /v2/invoice/rz/zxgx#98380104:
     post:
       summary: 注销勾选
@@ -89616,6 +89648,7 @@ paths:
                       message: 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果
                       taskId: 534457481415296
                       nsrsbh: 91************2G
+      x-apifox-status: released
   /v2/invoice/rz/zxgxjg#98395622:
     post:
       summary: 注销勾选结果查询
@@ -89728,13 +89761,14 @@ paths:
                       skssq: '202309'
                       zt: 3
                       zxgxlx: '2'
+      x-apifox-status: released
   /v2/invoice/gj/collectTask:
     post:
       summary: 发起进销项归集任务
       operationId: api-98470626
       tags:
       - 发票业务 / 发票归集 / 异步归集-电票平台 / 进销项发票归集
-      description: |
+      description: |-
         该接口用于获取进销项发票数据，调用流程如下：
 
         <Steps>
@@ -89742,9 +89776,9 @@ paths:
             调用接口成功后，获取到任务ID-taskId
           </Step>
           <Step title="调用「查询归集任务结果」接口">
-        通过taskId调用接口，返回任务状态"status"=3则表示归集任务完成，此时有两种方式获取发票结构化数据：
-        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据
-        2、通过taskId调用「获取发票数据」接口获取结构化数据
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
           </Step>
         </Steps>
       parameters:
@@ -90006,23 +90040,24 @@ paths:
                     message: null
                     data:
                       taskId: 1752226411192705000
+      x-apifox-status: released
   /v2/invoice/gj/collectTaskStatus:
     post:
       summary: 查询归集任务结果
       operationId: api-98521304
       tags:
       - 发票业务 / 发票归集 / 异步归集-电票平台 / 进销项发票归集
-      description: |
+      description: |-
         该接口用于获取进销项发票数据，调用流程如下：
 
         <Steps>
-          <Step title="调用「发起进销项归集任务」接口">
+          <Step title="调用「发起进销项归集任务」/「发起作废/红冲归集任务」 接口">
             调用接口成功后，获取到任务ID-taskId
           </Step>
           <Step title="调用「查询归集任务结果」接口">
-        通过taskId调用接口，返回任务状态"status"=3则表示归集任务完成，此时有两种方式获取发票结构化数据：
-        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据
-        2、通过taskId调用「获取发票数据」接口获取结构化数据
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
           </Step>
         </Steps>
       parameters:
@@ -90125,6 +90160,14 @@ paths:
                       jsonUrl:
                         type: string
                         title: 采集到发票存储到的ossUrl
+                        description: |-
+                          1.正常票量返回链接(文件内容为发票结构化数据)：
+                          http://qxy-oss-robot-product.qixiangyun.com/9131************75W/2703******5936.txt?Expires=1810569651&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=qmvej4nW1gf6oJBgvDA8D2%2FHdeY%3D
+
+                          2.大票量返回链接含有"bigDataMark"（链接打开含有多个正常票量链接，每个链接文件打开为发票结构化数据）：
+                          http://qxy-oss-robot-product.qixiangyun.com/9132********908F/2634********952/bigDataMark.txt?Expires=1802338309&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=vwB7taAXaEVSIUB1smcdU8i5uOU%3D
+
+                          3.无数据的链接同正常票量链接一样，文件内容为空数组：[]
                       jxxbz:
                         type: string
                         title: 进销项标志
@@ -90216,6 +90259,7 @@ paths:
                       nsrsbh: '************PDDL2G'
                       status: '3'
                       updateTime: '2024-01-30 17:18:54'
+      x-apifox-status: released
   /v2/invoice/gj/getCollectTaskPageData:
     post:
       summary: 获取发票数据
@@ -90226,13 +90270,13 @@ paths:
         该接口用于获取进销项发票数据，调用流程如下：
 
         <Steps>
-          <Step title="调用「发起进销项归集任务」接口">
+          <Step title="调用「发起进销项归集任务」/「发起作废/红冲归集任务」接口">
             调用接口成功后，获取到任务ID-taskId
           </Step>
           <Step title="调用「查询归集任务结果」接口">
-        通过taskId调用接口，返回任务状态"status"=3则表示归集任务完成，此时有两种方式获取发票结构化数据：
-        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据
-        2、通过taskId调用「获取发票数据」接口获取结构化数据
+        通过taskId调用接口，返回任务状态"status"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：
+        1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）
+        2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）
           </Step>
         </Steps>
       parameters:
@@ -90664,6 +90708,7 @@ paths:
                 - success
                 - message
                 - data
+      x-apifox-status: released
   /v2/invoice/sdfile/applyLayoutFile:
     post:
       summary: 发起获取数电版式任务
@@ -91024,6 +91069,7 @@ paths:
                     error:
                       code: xxxx
                       message: xxx
+      x-apifox-status: released
   /v2/invoice/sdfile/getLayoutFile:
     post:
       summary: 获取数电票版式文件
@@ -91036,7 +91082,10 @@ paths:
 
 
         :::highlight purple 💡
-        各类型发票信息返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)
+
+        【注意事项】该接口主要是用来获取数电版式文件的。接口如带有发票相关明细数据返回，是因为有调用发票归集接口归集成功过，才会同步返回；反之则不会返回发票主票面和明细数据（默认联动返回），详见入参：filterHwxx
+
+        各类型发票明细返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)
         :::
       parameters:
       - name: Content-Type
@@ -91143,7 +91192,7 @@ paths:
                 filterHwxx:
                   type: string
                   title: 是否获取发票明细行
-                  description: 默认false，返回版式同时返回发票明细行(hwxx)
+                  description: 默认false，返回版式同时返回发票明细行(hwxx) 注意：只有归集成功过的才会返回明细，数据来源自归集
                   enum:
                   - false-获取发票明细
                   - true-无需发票明细
@@ -91731,3 +91780,4 @@ paths:
                     error:
                       code: xxxx
                       message: xxx
+      x-apifox-status: released

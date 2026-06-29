@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于获取进销项发票数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起进销项归集任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务完成，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据\n2、通过taskId调用「获取发票数据」接口获取结构化数据\n  </Step>\n</Steps>\n",
+  "description": "该接口用于获取进销项发票数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起进销项归集任务」/「发起作废/红冲归集任务」 接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）\n2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）\n  </Step>\n</Steps>",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -15,7 +15,7 @@
   "tags": [
     "发票归集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -165,7 +165,8 @@
               },
               "jsonUrl": {
                 "type": "string",
-                "title": "采集到发票存储到的ossUrl"
+                "title": "采集到发票存储到的ossUrl",
+                "description": "1.正常票量返回链接(文件内容为发票结构化数据)：\nhttp://qxy-oss-robot-product.qixiangyun.com/9131************75W/2703******5936.txt?Expires=1810569651&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=qmvej4nW1gf6oJBgvDA8D2%2FHdeY%3D\n\n2.大票量返回链接含有\"bigDataMark\"（链接打开含有多个正常票量链接，每个链接文件打开为发票结构化数据）：\nhttp://qxy-oss-robot-product.qixiangyun.com/9132********908F/2634********952/bigDataMark.txt?Expires=1802338309&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=vwB7taAXaEVSIUB1smcdU8i5uOU%3D\n\n3.无数据的链接同正常票量链接一样，文件内容为空数组：[]"
               },
               "jxxbz": {
                 "type": "string",
@@ -289,11 +290,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-08T06:12:57.000Z",
-  "updatedAt": "2026-02-24T01:37:38.000Z",
+  "updatedAt": "2026-05-20T05:55:50.000Z",
   "creatorId": 537256,
-  "editorId": 2118003,
+  "editorId": 1564651,
   "creatorUserId": 537256,
-  "editorUserId": 2118003,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -23,12 +23,6 @@ paths:
 
         对接请参考：[认证鉴权](https://openapi.qixiangyun.com/doc-2179954)
       parameters:
-      - name: req_sign
-        in: header
-        required: false
-        schema:
-          type: string
-        example: API-SV1:10001990:ZTY1MzBjYmNkMWU1YzhmOTU4MDdmYTdjMTE2MzcwNmQ=
       - name: Content-Type
         in: header
         required: false
@@ -40,6 +34,11 @@ paths:
         schema:
           type: string
       - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
         in: header
         required: false
         schema:
@@ -143,3 +142,4 @@ paths:
                       access_token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJbLTEsLTEsLTEsMTAwLFwiXCIsMTAwMDE5OTksbnVsbCxcIlwiLC0xLG51bGxdIiwiZXhwIjoxNjc5NjI2MjI1LCJpYXQiOjE2NzgzMzAyMjV9.vrjbsmJv4Fi9FtpfI2x8DOxWwQGsiDNd75aIiR0Wy0VJvFtjy_7QMFIz4lmibud5LSoPMY7sGdC1_6KQ-fYrIw
                       expires_in: 1296000000
                       refresh_token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJbLTEsLTEsLTEsMTAwLFwiXCIsMTAwMDE5OTksbnVsbCxcIlwiLC0xLG51bGxdIiwiZXhwIjoxNzQyMDA2NDI3LCJpYXQiOjE3Mzk0MTQ0Mjd9.z26qUDMXRb5hOq_H75rhStGgWUaaHsGALoNyCLyViv7Uv2ZCZvNCm0rjB1Zv2Ob7hd-G9klgBBT3keg
+      x-apifox-status: released

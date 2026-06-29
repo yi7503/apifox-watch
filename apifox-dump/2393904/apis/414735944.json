@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/risk/rpt/queryResult",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -205,6 +205,28 @@
                   "zfx": {
                     "type": "integer",
                     "title": "中风险数"
+                  },
+                  "bgbh": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "报告编号"
+                  },
+                  "jcsjfw": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "检测时间范围"
+                  },
+                  "bgjcsj": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "报告检测时间",
+                    "description": "格式yyyy-MM-dd HH:mm:ss"
                   }
                 },
                 "required": [
@@ -223,7 +245,10 @@
                   "gfx",
                   "zfx",
                   "dfx",
-                  "fxmxList"
+                  "fxmxList",
+                  "bgbh",
+                  "jcsjfw",
+                  "bgjcsj"
                 ],
                 "title": "报告的json格式内容",
                 "description": "当风险报告申请接口的入参rptType=1时，该字段为空"
@@ -309,11 +334,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-03T09:04:36.000Z",
-  "updatedAt": "2026-03-14T03:09:31.000Z",
+  "updatedAt": "2026-06-03T03:53:40.000Z",
   "creatorId": 887778,
-  "editorId": 2795319,
+  "editorId": 887778,
   "creatorUserId": 887778,
-  "editorUserId": 2795319,
+  "editorUserId": 887778,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

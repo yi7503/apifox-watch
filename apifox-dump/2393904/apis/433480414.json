@@ -18,20 +18,26 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "工商年报短信登录发送短信验证码\n注：\n1、广东地区有省、市共4个工商系统，广东省地区只需在订购时填入44编码即可，广州市、中山市需在本接口传入地市级编码（cityCode），广州：4401，中山：4420\n2、企业登录和个体工商户登录需传入不同的登录方式（loginType  1:企业登录    2:个体工商户）",
+  "description": "工商年报短信登录发送短信验证码\n注：\n1、广东地区有省、市共4个工商系统，广东省地区只需在订购时填入44编码即可，广州市、中山市需在本接口传入地市级编码（cityCode），广州：4401，中山：4420，深圳：4403\n2、企业登录和个体工商户登录需传入不同的登录方式（loginType  1:企业登录    2:个体工商户）",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
   "path": "/gsnb/login/sendSmsCode",
   "tags": [],
-  "status": -2,
+  "status": "developing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "type": "object",
-      "properties": {},
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "手机号码",
+          "description": "注意：福建、厦门地区需要"
+        }
+      },
       "if": {
         "properties": {
           "bsywsx": {
@@ -76,14 +82,14 @@
         }
       },
       "x-apifox-orders": [
-        "01KN1KJ3WK1EQYEEXX0GXXJFAV"
+        "01KN1KJ3WK1EQYEEXX0GXXJFAV",
+        "phone"
       ],
       "x-apifox-refs": {
         "01KN1KJ3WK1EQYEEXX0GXXJFAV": {
           "$ref": "#/definitions/257583547"
         }
-      },
-      "required": []
+      }
     },
     "required": false,
     "mediaType": "",
@@ -172,11 +178,11 @@
     "enable": false
   },
   "createdAt": "2026-03-25T09:01:07.000Z",
-  "updatedAt": "2026-04-28T11:54:30.000Z",
+  "updatedAt": "2026-06-02T07:41:28.000Z",
   "creatorId": 3099717,
-  "editorId": 1534873,
+  "editorId": 3250192,
   "creatorUserId": 3099717,
-  "editorUserId": 1534873,
+  "editorUserId": 3250192,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

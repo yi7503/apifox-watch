@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/fpruz/fprzbc",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -66,12 +66,12 @@
                       {
                         "value": "02",
                         "name": "",
-                        "description": "已入账（企业所得税税前扣除）"
+                        "description": "入账（企业所得税税前扣除）"
                       },
                       {
                         "value": "03",
                         "name": "",
-                        "description": "已入账（企业所得税不扣除）"
+                        "description": "入账（企业所得税不扣除）"
                       },
                       {
                         "value": "06",
@@ -81,12 +81,12 @@
                       {
                         "value": "04",
                         "name": "",
-                        "description": "已入账(个体工商企业所得税税前扣除)"
+                        "description": "入账(个体工商企业所得税税前扣除)"
                       },
                       {
                         "value": "05",
                         "name": "",
-                        "description": "已入账(个体工商所得税不扣除)"
+                        "description": "入账(个体工商所得税不扣除)"
                       }
                     ]
                   },
@@ -435,15 +435,100 @@
                     },
                     "kprq": {
                       "type": "string",
-                      "title": "开票日期"
+                      "title": "开票日期",
+                      "description": "格式：yyyy-MM-dd HH:mm:ss"
                     },
                     "errorCode": {
                       "type": "string",
-                      "title": "错误码"
+                      "title": "错误码",
+                      "enum": [
+                        "720002",
+                        "721000",
+                        "721001",
+                        "721002",
+                        "721003"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "720002",
+                          "name": "未查询到入账信息!",
+                          "description": ""
+                        },
+                        {
+                          "value": "721000",
+                          "name": "发票已红冲，不允许入账",
+                          "description": ""
+                        },
+                        {
+                          "value": "721001",
+                          "name": "发票已作废，不允许入账",
+                          "description": ""
+                        },
+                        {
+                          "value": "721002",
+                          "name": "当前为“已入账”，不允许重复发起入账",
+                          "description": ""
+                        },
+                        {
+                          "value": "721003",
+                          "name": "已入账撤销状态无需撤销 / 未入账状态无需撤销",
+                          "description": ""
+                        }
+                      ]
                     },
                     "errorMsg": {
                       "type": "string",
                       "title": "提示信息"
+                    },
+                    "rzytDm": {
+                      "type": "string",
+                      "title": "入账用途代码",
+                      "description": "01或null 代表未入账",
+                      "enum": [
+                        "01",
+                        "02",
+                        "03",
+                        "04",
+                        "05",
+                        "06"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "01",
+                          "name": "",
+                          "description": "未入账"
+                        },
+                        {
+                          "value": "02",
+                          "name": "",
+                          "description": "已入账（企业所得税税前扣除）"
+                        },
+                        {
+                          "value": "03",
+                          "name": "",
+                          "description": "已入账（企业所得税不扣除）"
+                        },
+                        {
+                          "value": "04",
+                          "name": "",
+                          "description": "已入账（个体工商企业所得税税前扣除）"
+                        },
+                        {
+                          "value": "05",
+                          "name": "",
+                          "description": "已入账（个体工商所得税不扣除）"
+                        },
+                        {
+                          "value": "06",
+                          "name": "",
+                          "description": "入账撤销"
+                        }
+                      ]
+                    },
+                    "rzsj": {
+                      "type": "string",
+                      "title": "入账时间",
+                      "description": "格式：yyyy-MM-dd"
                     }
                   },
                   "x-apifox-orders": [
@@ -451,6 +536,8 @@
                     "zz_fphm",
                     "fphm",
                     "kprq",
+                    "rzytDm",
+                    "rzsj",
                     "errorCode",
                     "errorMsg"
                   ],
@@ -460,7 +547,9 @@
                     "kprq",
                     "fphm",
                     "zz_fphm",
-                    "zz_fpdm"
+                    "zz_fpdm",
+                    "rzytDm",
+                    "rzsj"
                   ]
                 },
                 "description": "入参中rzType为1时返回"
@@ -501,6 +590,12 @@
       "responseId": 451074672,
       "data": "{\n    \"reqId\": \"23f8b9b8de834e1aa96f86f0fe67d1b5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"rzuuid\": \"bcb87699dfd94478a462e2ad0c09ad17\"\n    }\n}",
       "id": 410435905
+    },
+    {
+      "name": "请求超时转异步示例",
+      "responseId": 451074672,
+      "data": "{\r\n    \"success\": true,\r\n    \"code\": \"2000\",\r\n    \"message\": null,\r\n    \"reqId\": \"476030dc57824fa1bd622f186f18da48\",\r\n    \"data\": {\r\n        \"requestId\": \"1d5d8c5a1d02441493b8a2c57810xxxx\",\r\n        \"message\": \"异步调用完成，请等待回调结果或主动调用asynResult进行业务结果查询\"\r\n    }\r\n}",
+      "id": "019e6773-9eac-70e9-8c46-5a34fc9050e6"
     }
   ],
   "codeSamples": [],
@@ -518,11 +613,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-12T11:18:06.000Z",
-  "updatedAt": "2026-04-08T03:55:55.000Z",
+  "updatedAt": "2026-05-27T03:21:31.000Z",
   "creatorId": 887900,
-  "editorId": 2118003,
+  "editorId": 1391922,
   "creatorUserId": 887900,
-  "editorUserId": 2118003,
+  "editorUserId": 1391922,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

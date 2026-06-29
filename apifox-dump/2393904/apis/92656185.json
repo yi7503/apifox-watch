@@ -15,7 +15,7 @@
   "tags": [
     "任务终止接口"
   ],
-  "status": 0,
+  "status": "deprecated",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

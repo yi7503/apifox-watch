@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/shbx/declare/queryPaymentSalaryDeclarationRecord",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -65,6 +65,7 @@
         "sbsjz"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -153,7 +154,7 @@
     {
       "name": "成功示例",
       "responseId": 807895830,
-      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jfgzsblb\": [\n            {\n                \"sbsj\": \"2025-10-01 17:10:59\",\n                \"sbjlmx\": [\n                    {\n                        \"xm\": \"XX\",\n                        \"ysbgz\": \"\",\n                        \"zjlx\": \"201\",\n                        \"sxnyz\": \"2026-06\",\n                        \"sbyy\": \"\",\n                        \"zt\": \"\",\n                        \"xjfgz\": \"6326\",\n                        \"zjhm\": \"142000000000032\",\n                        \"sxnyq\": \"2025-07\"\n                    }\n                ],\n                \"qysj\": \"\",\n                \"zt\": \"\",\n                \"sblx\": \"01\",\n                \"zgzs\": \"1\"\n            }\n        ]\n    },\n    \"timestamp\": \"2025-11-11 14:45:28\",\n    \"reqId\": \"T56d9a52d65ff4433ba56a9836d9b17bd\"\n}",
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jfgzsblb\": [\n            {\n                \"sbsj\": \"2025-10-01 17:10:59\",\n                \"sbjlmx\": [\n                    {\n                        \"xm\": \"XX\",\n                        \"ysbgz\": \"\",\n                        \"zjlx\": \"201\",\n                        \"sxnyz\": \"2026-06\",\n                        \"sbyy\": \"\",\n                        \"zt\": \"\",\n                        \"xjfgz\": \"6326\",\n                        \"zjhm\": \"142000000000032\",\n                        \"sxnyq\": \"2025-07\"\n                    }\n                ],\n                \"qysj\": \"\",\n                \"zt\": \"成功\",\n                \"sblx\": \"01\",\n                \"zgzs\": \"1\"\n            }\n        ]\n    },\n    \"timestamp\": \"2025-11-11 14:45:28\",\n    \"reqId\": \"T56d9a52d65ff4433ba56a9836d9b17bd\"\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -174,11 +175,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-11-06T03:35:36.000Z",
-  "updatedAt": "2025-11-27T09:03:29.000Z",
+  "updatedAt": "2026-05-29T05:57:22.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

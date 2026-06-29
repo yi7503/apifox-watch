@@ -53,7 +53,7 @@ paths:
                 rptType:
                   type: string
                   title: 报告格式
-                  description: 1 pdf链接 2 json
+                  description: 1 pdf链接 2 json 3 pdf+json
                 aggOrgId:
                   type: string
                   title: 企业id
@@ -149,6 +149,7 @@ paths:
                       riskRptId: '5255567414997147791'
                     timestamp: '2026-02-03 16:08:24'
                     reqId: T2e01022b737d42008775b0184fb63281
+      x-apifox-status: released
   /v2/risk/rpt/queryResult:
     post:
       summary: 风控报告结果查询
@@ -305,6 +306,22 @@ paths:
                           zfx:
                             type: integer
                             title: 中风险数
+                          bgbh:
+                            type:
+                            - string
+                            - 'null'
+                            title: 报告编号
+                          jcsjfw:
+                            type:
+                            - string
+                            - 'null'
+                            title: 检测时间范围
+                          bgjcsj:
+                            type:
+                            - string
+                            - 'null'
+                            title: 报告检测时间
+                            description: 格式yyyy-MM-dd HH:mm:ss
                         required:
                         - nsrsbh
                         - dfx
@@ -321,6 +338,9 @@ paths:
                         - zfx
                         - dfx
                         - fxmxList
+                        - bgbh
+                        - jcsjfw
+                        - bgjcsj
                         title: 报告的json格式内容
                         description: 当风险报告申请接口的入参rptType=1时，该字段为空
                       rptUrls:
@@ -415,3 +435,4 @@ paths:
                       status: 3
                     timestamp: '2026-02-03 16:32:43'
                     reqId: T7e1cf615f8974adc9********44
+      x-apifox-status: released

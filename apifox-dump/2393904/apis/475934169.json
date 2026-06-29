@@ -1,0 +1,240 @@
+{
+  "id": 475934169,
+  "name": "社会保险费申报预览反馈（异步任务结果查询）",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbxweb/sbylfk",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "required": true,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 180235707,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://tax-report.example.com/platform-tax-response.schema.json",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识，用于关联请求与响应，追踪业务链路",
+            "minLength": 1,
+            "maxLength": 64,
+            "examples": [
+              "REQ202510160001000001",
+              "TAX_REQ_87654321"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "响应状态码，标识请求处理结果（如成功、参数错误、系统异常等）",
+            "minLength": 1,
+            "maxLength": 10,
+            "examples": [
+              "0000",
+              "1001",
+              "5000"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求处理结果标识，true 表示处理成功，false 表示处理失败",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "响应提示信息，说明处理结果或错误原因，便于问题排查",
+            "minLength": 1,
+            "maxLength": 512,
+            "examples": [
+              "涉税信息报送成功",
+              "detail数组中证件号码格式错误，请核对后重新提交"
+            ]
+          },
+          "data": {
+            "type": "object",
+            "description": "响应核心数据",
+            "additionalProperties": false,
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "result": {
+                "type": "object",
+                "x-apifox-refs": {},
+                "properties": {
+                  "sbylurl": {
+                    "type": "string",
+                    "title": "申报预览链接",
+                    "description": "返回url，压缩后的json数组，参考本节点下内容结构\n返回链接统一用https\n压缩后的json数组，参考本节点下sbylurlckjd\n"
+                  },
+                  "sbylurl内容结构": {
+                    "title": "参考节点",
+                    "$ref": "#/definitions/286739299"
+                  }
+                },
+                "required": [
+                  "sbylurl"
+                ],
+                "x-apifox-orders": [
+                  "sbylurl",
+                  "sbylurl内容结构"
+                ]
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "信息"
+              },
+              "businessStatus": {
+                "type": "string",
+                "description": "\n\n",
+                "title": "任务执行状态"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId",
+              "code",
+              "serviceCode",
+              "businessStatus",
+              "message",
+              "result"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "taskId",
+              "result",
+              "code",
+              "serviceCode",
+              "businessStatus",
+              "message"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "示例 1",
+      "responseId": 180235707,
+      "data": "{\r\n    \"reqId\": \"TAX_REQ_87654321\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": \"\",\r\n    \"data\": {\r\n        \"taskId\": \"46\",\r\n        \"code\": \"98\",\r\n        \"serviceCode\": \"34\",\r\n        \"businessStatus\": \"mollit esse in eiusmod\",\r\n        \"message\": \"est laborum esse irure adipisicing\",\r\n        \"result\": {\r\n            \"sbylurl\": \"https://lazy-climb.net/\",\r\n        }\r\n    }\r\n}",
+      "id": "019ef45b-f919-775b-b0b5-59d4ea860731"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 88927022,
+  "ordering": 16,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-06-22T01:51:25.000Z",
+  "updatedAt": "2026-06-25T14:22:20.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

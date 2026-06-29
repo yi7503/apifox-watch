@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/queryTaskInfo",
   "tags": [],
-  "status": 0,
+  "status": "deprecated",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

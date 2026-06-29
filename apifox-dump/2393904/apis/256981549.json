@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/payment/getWithheldVoucher",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -46,11 +46,13 @@
         },
         "jkyfq": {
           "type": "string",
-          "title": "缴款月份起"
+          "title": "缴款月份起",
+          "description": "默认不传，查询的所属期+1月份的记录。如果存在更正，需要指定更正申报的月份；例如：3月所属期在5月份更正的，那么缴款月份止就需要传到5月；缴款日期起止必须为同一年度"
         },
         "jkyfz": {
           "type": "string",
-          "title": "缴款月份止"
+          "title": "缴款月份止",
+          "description": "默认不传，查询的所属期+1月份的记录。如果存在更正，需要指定更正申报的月份；例如：3月所属期在5月份更正的，那么缴款月份止就需要传到5月；缴款日期起止必须为同一年度"
         }
       },
       "required": [
@@ -324,11 +326,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-23T03:13:15.000Z",
-  "updatedAt": "2026-01-08T08:50:50.000Z",
+  "updatedAt": "2026-05-28T02:14:48.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

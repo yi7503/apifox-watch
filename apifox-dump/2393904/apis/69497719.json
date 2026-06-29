@@ -1,6 +1,6 @@
 {
   "id": 69497719,
-  "name": "初始化数据查询",
+  "name": "公共-初始化数据查询",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/tax/qys/getInitData",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -171,14 +171,12 @@
   "oasExtensions": null,
   "mockScript": {},
   "createdAt": "2024-10-31T03:30:12.000Z",
-  "updatedAt": "2024-10-31T03:30:12.000Z",
+  "updatedAt": "2026-06-01T13:41:09.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.176404637"
-  ],
+  "editorUserId": 1476015,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

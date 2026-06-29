@@ -18,13 +18,13 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "工商年报-扫码登录-获取二维码",
+  "description": "工商年报-扫码登录-获取二维码\n注：\n1、广东地区有省、市共4个工商系统，广东省地区只需在订购时填入44编码即可，广州市、中山市需在本接口传入地市级编码（cityCode），广州：4401，中山：4420\n返回报文：\newmId：获取二维码状态接口的参数\nimg：二维码图片base64，需要转成图片进行扫码，扫码完成调用获取二维码状态接口",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
   "path": "/gsnb/login/getQrcode",
   "tags": [],
-  "status": -2,
+  "status": "developing",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -32,26 +32,6 @@
       "$schema": "http://json-schema.org/draft-07/schema#",
       "type": "object",
       "properties": {
-        "loginType": {
-          "type": "string",
-          "title": "登录方式",
-          "enum": [
-            "1",
-            "2"
-          ],
-          "x-apifox-enum": [
-            {
-              "value": "1",
-              "name": "企业电子营业执照",
-              "description": ""
-            },
-            {
-              "value": "2",
-              "name": "个体电子营业执照",
-              "description": ""
-            }
-          ]
-        },
         "aggOrgId": {
           "type": "string",
           "title": "企业Id"
@@ -107,12 +87,10 @@
       },
       "x-apifox-orders": [
         "aggOrgId",
-        "loginType",
         "cityCode"
       ],
       "x-apifox-refs": {},
       "required": [
-        "loginType",
         "aggOrgId"
       ]
     },
@@ -176,14 +154,20 @@
                   "ewmId": {
                     "type": "string",
                     "title": "二维码Id"
+                  },
+                  "img": {
+                    "type": "string",
+                    "title": "二维码图片base64"
                   }
                 },
                 "title": "业务数据",
                 "x-apifox-orders": [
-                  "ewmId"
+                  "ewmId",
+                  "img"
                 ],
                 "required": [
-                  "ewmId"
+                  "ewmId",
+                  "img"
                 ]
               }
             }
@@ -213,7 +197,7 @@
     "enable": false
   },
   "createdAt": "2026-03-25T09:05:03.000Z",
-  "updatedAt": "2026-05-11T02:39:59.000Z",
+  "updatedAt": "2026-05-25T09:14:55.000Z",
   "creatorId": 3099717,
   "editorId": 3250192,
   "creatorUserId": 3099717,

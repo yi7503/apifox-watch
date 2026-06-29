@@ -1,0 +1,222 @@
+{
+  "id": 468426894,
+  "name": "缴费记录截图",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "z2YbkZ6wws7s11NwP7jEv",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbx/declare/paymentRecordScreenshot",
+  "tags": [],
+  "status": "designing",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "fkssqq": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "费款所属期起",
+          "description": "格式：YYYYMM；"
+        },
+        "fkssqz": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "费款所属期止",
+          "description": "格式：YYYYMM；\n费款所属期起止必须两个同时填写；\n费款所属期起止和申报日期起止至少填写一组；"
+        },
+        "jfrqq": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "缴费日期起",
+          "description": "格式：YYYYMM；"
+        },
+        "jfrqz": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "缴费日期止",
+          "description": "格式：YYYYMM；\n交费日期起止必须两个同时填写；\n交费日期起止和申报日期起止至少填写一组；\n若费款所属期起止和交费日期起止都填写，则以缴费日期起止为准；"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz",
+        "jfrqq",
+        "jfrqz"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz",
+        "jfrqq",
+        "jfrqz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "screenshot": {
+                "type": "string",
+                "title": "截图",
+                "description": "截图url链接"
+              }
+            },
+            "x-apifox-orders": [
+              "screenshot"
+            ],
+            "required": [
+              "screenshot"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"screenshot\": \"https://...\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 87564633,
+  "ordering": 27,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-06-04T06:31:58.000Z",
+  "updatedAt": "2026-06-05T02:39:38.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

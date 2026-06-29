@@ -7,13 +7,13 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n目前支持房产税、城镇土地使用税、环保税、车船税发起税源信息获取的任务。 该接口返回taskId，可以通过[查询税源获取任务结果接口]来查询任务执行的情况和获取的税源信息。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\nPARAMETER_ERROR\t| 企业Id(aggOrgId)不能为空！\t\t\t\t|参数错误 |\nPARAMETER_ERROR\t| 请求参数不能为空\t\t\t\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 参数格式不正确，请参考文档!\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 当前已存在税源明细任务执行中，请稍后再试!\t|业务错误 |\nBUSINESS_ERROR\t| 当前已存在申报任务执行中，请稍后再试！\t|业务错误 |\nBUSINESS_ERROR\t| 当前不支持操作，敬请期待上线！\t\t\t|业务错误 |\nINTERFACE_ERROR\t| 接口异常，请联系技术人员\t\t\t\t\t|程序错误 |",
+  "description": "## 接口描述\n目前支持房产税、城镇土地使用税、环保税、车船税、水资源、资源税发起税源信息获取的任务。 该接口返回taskId，可以通过[查询税源获取任务结果接口]来查询任务执行的情况和获取的税源信息。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\nPARAMETER_ERROR\t| 企业Id(aggOrgId)不能为空！\t\t\t\t|参数错误 |\nPARAMETER_ERROR\t| 请求参数不能为空\t\t\t\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 参数格式不正确，请参考文档!\t\t\t\t|参数错误 |\nBUSINESS_ERROR\t| 当前已存在税源明细任务执行中，请稍后再试!\t|业务错误 |\nBUSINESS_ERROR\t| 当前已存在申报任务执行中，请稍后再试！\t|业务错误 |\nBUSINESS_ERROR\t| 当前不支持操作，敬请期待上线！\t\t\t|业务错误 |\nINTERFACE_ERROR\t| 接口异常，请联系技术人员\t\t\t\t\t|程序错误 |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
   "path": "/v2/tax/qys/loadTaxFundGainTask",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -47,7 +47,7 @@
         "yzpzzlDm": {
           "type": "string",
           "title": "应征凭证种类代码",
-          "description": "BDA0610790SYCJ城镇土地使用税税源采集 BDA0610791SYCJ房产税税源采集 BDA0610980SYCJ环保税税源采集 BDA0610005SYCJ车船税税源采集"
+          "description": "BDA0610790SYCJ城镇土地使用税税源采集 BDA0610791SYCJ房产税税源采集 BDA0610980SYCJ环保税税源采集 BDA0610005SYCJ车船税税源采集\nBDA0610987SYCJ\t水资源税源采集\nBDA0610036SYCJ   资源税税源采集\n"
         },
         "bsswjg": {
           "type": "string",
@@ -231,11 +231,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T05:47:20.000Z",
-  "updatedAt": "2025-11-27T03:51:17.000Z",
+  "updatedAt": "2026-06-26T08:16:58.000Z",
   "creatorId": 2122743,
-  "editorId": 1442097,
+  "editorId": 1452584,
   "creatorUserId": 2122743,
-  "editorUserId": 1442097,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

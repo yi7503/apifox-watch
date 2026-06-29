@@ -24,7 +24,7 @@
   "method": "post",
   "path": "/v2/iit/account/modifyPassword",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],

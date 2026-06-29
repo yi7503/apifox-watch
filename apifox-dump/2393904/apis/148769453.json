@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于发起企业数据采集（需区分自持和托管）：\n1. 自持账号模式下：自行异步登录后再调用该接口；\n2. 托管模式下：传入账号必要信息直接调用。\n\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| 2000 | 成功 | |\n| 4xxx| 获取失败 | |",
+  "description": "该接口用于发起企业数据采集（需区分自持和托管）：\n1. 自持账号模式下：自行异步登录后再调用该接口；\n2. 托管模式下：传入账号必要信息直接调用。\n3. 跨区域、特定主体登录、本主体采集必须分开采集（一次只能提交一个主体类型任务进来）\n4. 跨区域和特定主体登录采集的业务，只会返回：\n1)基础信息节点中的基础信息-taxCompanyEnterpriseInfoDtoPageResult节点\n2)申报表节点：只采集房产税、土地的申报表结构化数据\n3)税源获取节点：只采集土地-税源获取=syhqTd、房产-税源获取=syhqFc；\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| 2000 | 成功 | |\n| 4xxx| 获取失败 | |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -26,7 +26,7 @@
   "tags": [
     "企业信息采集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -49,6 +49,7 @@
       ],
       "properties": {}
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -233,11 +234,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-26T10:15:31.000Z",
-  "updatedAt": "2026-02-10T06:07:46.000Z",
+  "updatedAt": "2026-06-08T09:28:08.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 1476015,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
