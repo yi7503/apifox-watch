@@ -35,6 +35,10 @@ def session_for(domain: str) -> requests.Session:
         "Accept": "application/json",
         "Origin": f"https://{domain}",
         "Referer": f"https://{domain}/",
+        # Apifox gates several endpoints (e.g. http-api-tree) behind a client
+        # version and returns 400105 "Client version too low" without this.
+        # The exact value isn't validated — any modern-looking version passes.
+        "X-Client-Version": "2.0.0",
     })
     return s
 
