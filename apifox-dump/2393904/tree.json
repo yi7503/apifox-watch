@@ -3581,7 +3581,7 @@
                   "status": "released",
                   "responsibleId": 0,
                   "customApiFields": {},
-                  "editorId": 1391922
+                  "editorId": 3099717
                 }
               },
               {
@@ -5353,7 +5353,7 @@
                                   "status": "released",
                                   "responsibleId": 0,
                                   "customApiFields": {},
-                                  "editorId": 1564651
+                                  "editorId": 3099717
                                 }
                               },
                               {
@@ -7659,7 +7659,7 @@
                               "status": "released",
                               "responsibleId": 0,
                               "customApiFields": {},
-                              "editorId": 2706439
+                              "editorId": 3099717
                             }
                           }
                         ],
@@ -9346,7 +9346,7 @@
                   "status": "released",
                   "responsibleId": 0,
                   "customApiFields": {},
-                  "editorId": 1452584
+                  "editorId": 1442097
                 }
               },
               {
@@ -11159,7 +11159,7 @@
                   "status": "released",
                   "responsibleId": 0,
                   "customApiFields": {},
-                  "editorId": 1452584
+                  "editorId": 1442097
                 }
               },
               {
@@ -11180,7 +11180,7 @@
                   "status": "released",
                   "responsibleId": 0,
                   "customApiFields": {},
-                  "editorId": 1452584
+                  "editorId": 1442097
                 }
               }
             ],
@@ -14402,7 +14402,7 @@
                       "status": "released",
                       "responsibleId": 0,
                       "customApiFields": {},
-                      "editorId": 1442097
+                      "editorId": 1452584
                     }
                   },
                   {
@@ -17924,21 +17924,6 @@
                 "doc": {
                   "id": 8599170,
                   "name": "江苏表单",
-                  "moduleId": 306844,
-                  "folderId": 82037833,
-                  "tags": [],
-                  "sidebarTitle": ""
-                }
-              },
-              {
-                "key": "doc.8782793",
-                "type": "doc",
-                "name": "上海表单",
-                "moduleId": 306844,
-                "children": [],
-                "doc": {
-                  "id": 8782793,
-                  "name": "上海表单",
                   "moduleId": 306844,
                   "folderId": 82037833,
                   "tags": [],
@@ -23064,7 +23049,7 @@
                       "status": "released",
                       "responsibleId": 1442097,
                       "customApiFields": {},
-                      "editorId": 2400309
+                      "editorId": 493303
                     }
                   },
                   {
@@ -23106,7 +23091,7 @@
                       "status": "released",
                       "responsibleId": 1442097,
                       "customApiFields": {},
-                      "editorId": 1442097
+                      "editorId": 493303
                     }
                   }
                 ],

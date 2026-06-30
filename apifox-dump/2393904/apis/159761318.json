@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口用于发起企业电子发票服务平台（发票云）进项发票采集任务。最多可采集开票日期在2017年01月01日至当前日期的**所有发票**（包含**未勾选发票**和**已勾选发票**），也可单采限定时间范围内（2017年01月01日至当前日期的任意时时间段）的未勾选发票和当前税款所属期的已勾选发票。\n\n\n## 错误码\n| **错误代码**               | **错误消息**                                                 | **解决方案**                                                 |\n| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                     | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                     | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的填发日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起kprqq是否小于填发日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |\n| FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |\n| FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |\n| FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代扣代缴凭证采集结果查询](https://openapi.qixiangyun.com/api-159761390)接口查询任务转异步后执行结果。 |",
+  "description": "## 接口描述\n该接口用于发起企业电子发票服务平台（发票云）进项发票采集任务。最多可采集开票日期在2017年01月01日至当前日期的**所有发票**（包含**未勾选发票**和**已勾选发票**），也可单采限定时间范围内（2017年01月01日至当前日期的任意时时间段）的未勾选发票和当前税款所属期的已勾选发票。\n\n\n## 错误码\n| **错误代码**               | **错误消息**                                                 | **解决方案**                                                 |\n| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                     | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                     | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的填发日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起kprqq是否小于填发日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |\n| FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |\n| FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代扣代缴凭证采集结果查询](https://openapi.qixiangyun.com/api-159761390)接口查询任务转异步后执行结果。 |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -32,6 +32,7 @@
         "01K5G85NEXRVERPPD9H6CVKRDD"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -330,15 +331,7 @@
   "folderId": 58871918,
   "ordering": 733,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
@@ -347,16 +340,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T08:46:29.000Z",
-  "updatedAt": "2025-09-19T07:40:46.000Z",
+  "updatedAt": "2026-06-30T08:07:23.000Z",
   "creatorId": 1426961,
   "editorId": 3099717,
   "creatorUserId": 1426961,
   "editorUserId": 3099717,
-  "responseChildren": [
-    "BLANK.422376660",
-    "BLANK.773347162",
-    "BLANK.773347163"
-  ],
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

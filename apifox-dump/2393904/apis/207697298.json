@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0005\t数电票版式文件下载(企业版)\n",
+  "description": "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0053\t社保(企业版)\n0054\t社保(代账版)\n0005\t数电票版式文件下载(企业版)\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -44,6 +44,7 @@
         "productCodes"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -252,17 +253,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-30T02:39:10.000Z",
-  "updatedAt": "2025-03-28T06:30:13.000Z",
+  "updatedAt": "2026-06-30T06:30:26.000Z",
   "creatorId": 1442097,
-  "editorId": 1442097,
+  "editorId": 493303,
   "creatorUserId": 1442097,
-  "editorUserId": 1442097,
-  "responseChildren": [
-    "BLANK.515798626"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

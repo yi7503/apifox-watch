@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n\n该接口用于申请企业电子发票服务平台（发票云）发票统计。\n\n::: highlight red 💡\n注意：仅在申报期内、企业未申报时可调用此接口\n:::\n\n\n## 错误码\n| **错误代码**        | **错误消息**                           | **解决方案**                             |\n| ------------------- | -------------------------------------- | ---------------------------------------- |\n| 600004              | 未开通权限，请联系管理员！             | 与运营沟通申请开通对应权限               |\n| 505002              | 接口调用异常，请联系管理员!            | 请联系管理员                             |\n| FprzNotSupportDq    | 暂不支持该地区进行发票云认证！         |                                          |\n| 50008               | 参数不能为空                           | 请检查入参是否不为空                     |\n| FprzYwlxIsNull      | 申请标识不能为空                       | 请检查入参ywlx是否不为空                 |\n| FprzNsrsbhIsNull    | 纳税人识别号为空                       | 请检查入参里的纳税人识别号nsrsbh是否为空 |\n| FprzNsrsbhNotExist  | 纳税人识别号不存在                     | 请检查入参里的纳税人识别号nsrsbh是否正确 |\n| FprzSbxxIsNull      | 企业申报信息为空                       | 请先获取税款所属期                       |\n| FprzYwlxIsInvalid   | 无效的申请标识                         | 请检查ywlx是否在支持的范围内             |\n| FprzYjsqtjqr        | 已经申请统计确认，处理中               | 请等待上一次统计确认任务完成             |\n| FprzSqqrSjIsInvalid | 未到统计确认日期无法统计确认           | 请检查当前日期是否允许当前属期确认       |\n| 8600                | 申请统计确认操作发生异常，请联系管理员 | 请联系管理员                             |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-93765552)接口查询任务转异步后执行结果。 |",
+  "description": "## 接口描述\n\n该接口用于申请企业电子发票服务平台（发票云）发票统计。\n\n::: highlight red 💡\n注意：仅在申报期内、企业未申报时可调用此接口\n:::\n\n\n## 错误码\n| **错误代码**        | **错误消息**                           | **解决方案**                             |\n| ------------------- | -------------------------------------- | ---------------------------------------- |\n| 600004              | 未开通权限，请联系管理员！             | 与运营沟通申请开通对应权限               |\n| 505002              | 接口调用异常，请联系管理员!            | 请联系管理员                             |\n| FprzNotSupportDq    | 暂不支持该地区进行发票云认证！         |                                          |\n| 50008               | 参数不能为空                           | 请检查入参是否不为空                     |\n| FprzYwlxIsNull      | 申请标识不能为空                       | 请检查入参ywlx是否不为空                 |\n| FprzNsrsbhIsNull    | 纳税人识别号为空                       | 请检查入参里的纳税人识别号nsrsbh是否为空 |\n| FprzNsrsbhNotExist  | 纳税人识别号不存在                     | 请检查入参里的纳税人识别号nsrsbh是否正确 |\n| FprzSbxxIsNull      | 企业申报信息为空                       | 请先获取税款所属期                       |\n| FprzYwlxIsInvalid   | 无效的申请标识                         | 请检查ywlx是否在支持的范围内             |\n| FprzYjsqtjqr        | 已经申请统计确认，处理中               | 请等待上一次统计确认任务完成             |\n| FprzSqqrSjIsInvalid | 未到统计确认日期无法统计确认           | 请检查当前日期是否允许当前属期确认       |\n| 8600                | 申请统计确认操作发生异常，请联系管理员 | 请联系管理员                             |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-93765552)接口查询任务转异步后执行结果。 |\n| FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -32,6 +32,7 @@
         "01K5G9J7HY66671K2BD2WHT076"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -266,15 +267,7 @@
   "folderId": 58874243,
   "ordering": 367,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
@@ -283,16 +276,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T08:46:59.000Z",
-  "updatedAt": "2025-09-19T07:44:58.000Z",
+  "updatedAt": "2026-06-30T08:56:10.000Z",
   "creatorId": 1426961,
   "editorId": 3099717,
   "creatorUserId": 1426961,
   "editorUserId": 3099717,
-  "responseChildren": [
-    "BLANK.234122841",
-    "BLANK.773428443",
-    "BLANK.773428444"
-  ],
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

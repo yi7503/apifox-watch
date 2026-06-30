@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n\n该接口用于申请企业电子发票服务平台（发票云）发票统计。\n\n::: highlight red 💡\n注意：仅在申报期内、企业未申报时可调用此接口\n:::\n\n\n## **错误码**\n\n| 错误代码              | 错误消息                                       | 说明                                        |\n| --------------------- | ---------------------------------------------- | ------------------------------------------- |\n| FprzYwlxIsNull        | 申请标识不能为空                               | 按照文档说明传入对应的申请标识              |\n| FprzSbxxIsNull        | 企业申报信息为空                               | 没有获取到企业当前的申报信息                |\n| FprzSqtjqrSjIsInvalid | 当前税款所属期所在月不允许申请统计确认         | 例如，当前所属期为202108，那么只能在9月申请 |\n| FprzYwlxIsInvalid     | 无效的申请标识                                 | 按照说明传入对应的申请标识                  |\n| FprzQrmmTjsjIsNull    | 申请确认时，抵扣统计确认密码、统计时间不能为空 |                                             |\n| FprzYjsqtjqr          | 已经申请统计确认，处理中                       | 等待之前的申请处理完成                      |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-69718250)接口查询任务转异步后执行结果。 |",
+  "description": "## 接口描述\n\n该接口用于申请企业电子发票服务平台（发票云）发票统计。\n\n::: highlight red 💡\n注意：仅在申报期内、企业未申报时可调用此接口\n:::\n\n\n## **错误码**\n\n| 错误代码              | 错误消息                                       | 说明                                        |\n| --------------------- | ---------------------------------------------- | ------------------------------------------- |\n| FprzYwlxIsNull        | 申请标识不能为空                               | 按照文档说明传入对应的申请标识              |\n| FprzSbxxIsNull        | 企业申报信息为空                               | 没有获取到企业当前的申报信息                |\n| FprzSqtjqrSjIsInvalid | 当前税款所属期所在月不允许申请统计确认         | 例如，当前所属期为202108，那么只能在9月申请 |\n| FprzYwlxIsInvalid     | 无效的申请标识                                 | 按照说明传入对应的申请标识                  |\n| FprzQrmmTjsjIsNull    | 申请确认时，抵扣统计确认密码、统计时间不能为空 |                                             |\n| FprzYjsqtjqr          | 已经申请统计确认，处理中                       | 等待之前的申请处理完成                      |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-69718250)接口查询任务转异步后执行结果。 |\n| FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -33,6 +33,7 @@
         "01K5FZHECS8FQF7049GE4BJ4FQ"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -258,15 +259,7 @@
   "folderId": 58717973,
   "ordering": 375,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
@@ -278,7 +271,7 @@
     "value": "var requestJsonData = $$.mockRequest.body.toJSON();\r\nvar ywlx = requestJsonData['ywlx'];\r\n// 1-申请统计； 2-撤销统计 ；3-申请确认； 7-退税确认(退税);\r\n// 获取系统自动生成的 JSON 格式响应数据\r\nvar responseJsonData = $$.mockResponse.json();\r\n// 申请统计\r\n    // 设置接口返回 JSON 格式 Body\r\nif (ywlx == \"1\") {\r\n    $$.mockResponse.setBody({\r\n        \"data\": 459948965835072\r\n    });\r\n}\r\n// 撤销统计\r\nif(ywlx == \"2\"){\r\n    $$.mockResponse.setBody({\r\n        \"data\": 459948965835073\r\n    });\r\n}\r\n// 申请确认\r\nif(ywlx == \"3\"){\r\n    $$.mockResponse.setBody({\r\n        \"data\": 459948965835074\r\n    });\r\n}"
   },
   "createdAt": "2024-12-03T08:44:19.000Z",
-  "updatedAt": "2025-10-13T03:42:01.000Z",
+  "updatedAt": "2026-06-30T08:55:38.000Z",
   "creatorId": 1426961,
   "editorId": 3099717,
   "creatorUserId": 1426961,
