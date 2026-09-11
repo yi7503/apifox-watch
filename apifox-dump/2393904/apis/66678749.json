@@ -28,6 +28,14 @@
           "type": "string",
           "title": "账号ID",
           "description": "多账号场景"
+        },
+        "kqyswjgmc": {
+          "type": "string",
+          "title": "跨区域税局机关名称("
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称"
         }
       },
       "required": [
@@ -35,7 +43,9 @@
       ],
       "x-apifox-orders": [
         "aggOrgId",
-        "accountId"
+        "accountId",
+        "kqyswjgmc",
+        "tdztswjgmc"
       ]
     },
     "required": false,
@@ -188,7 +198,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T08:30:27.000Z",
-  "updatedAt": "2026-06-24T02:48:36.000Z",
+  "updatedAt": "2026-06-30T05:50:58.000Z",
   "creatorId": 1452584,
   "editorId": 1442097,
   "creatorUserId": 1452584,

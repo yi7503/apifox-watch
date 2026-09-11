@@ -38,6 +38,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -119,20 +120,194 @@
       "contentType": "json",
       "jsonSchema": {
         "type": "object",
-        "x-apifox-refs": {
-          "01GW3Y4EXHPAVAV9E7ZSBVQCNR": {
-            "$ref": "#/definitions/35327531",
-            "x-apifox-overrides": {
-              "data": {
-                "$ref": "#/definitions/37418374"
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务执行结果"
+              },
+              "finishTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务结束时间"
+              },
+              "businessStatusName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务执行状态名称"
+              },
+              "pdfFileUrl": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "PDF文件路径"
+              },
+              "startTime": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务发起时间"
+              },
+              "businessStatus": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "任务执行状态",
+                "description": "0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功"
+              },
+              "detail": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "成功信息"
+                    },
+                    "yzpzzlDm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "税费种的应征凭证种类代码"
+                    },
+                    "screenshot": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "截图或pdf文件地址"
+                    },
+                    "message": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "任务提示信息"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "result",
+                    "yzpzzlDm",
+                    "screenshot",
+                    "message"
+                  ]
+                }
+              },
+              "serviceName": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "服务名称"
+              },
+              "resultMessage": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务执行明细信息"
+              },
+              "taskId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "任务id "
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "任务信息"
+              },
+              "jtOssUrl": {
+                "type": "string",
+                "title": "截图url",
+                "description": "任务code=4811是返回"
               }
-            }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "result",
+              "finishTime",
+              "businessStatusName",
+              "pdfFileUrl",
+              "jtOssUrl",
+              "startTime",
+              "businessStatus",
+              "detail",
+              "serviceName",
+              "resultMessage",
+              "taskId",
+              "code",
+              "message"
+            ],
+            "required": [
+              "code",
+              "message"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
           }
         },
-        "x-apifox-orders": [
-          "01GW3Y4EXHPAVAV9E7ZSBVQCNR"
-        ],
-        "properties": {}
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
       },
       "itemSchema": {},
       "description": "",
@@ -184,17 +359,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-03T06:40:57.000Z",
-  "updatedAt": "2025-01-03T06:40:57.000Z",
+  "updatedAt": "2026-06-30T05:42:47.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.172687176"
-  ],
+  "editorUserId": 1442097,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

@@ -39,6 +39,7 @@
         "aggOrgId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -252,6 +253,11 @@
                     ]
                   },
                   "title": "明细"
+                },
+                "jtOssUrl": {
+                  "type": "string",
+                  "title": "截图url",
+                  "description": "任务code=4811是返回"
                 }
               },
               "x-apifox-orders": [
@@ -262,6 +268,7 @@
                 "serviceCode",
                 "taskId",
                 "code",
+                "jtOssUrl",
                 "message",
                 "detail"
               ],
@@ -325,14 +332,14 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-06T05:59:19.000Z",
-  "updatedAt": "2026-01-29T03:41:12.000Z",
+  "updatedAt": "2026-06-30T05:43:38.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

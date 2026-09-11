@@ -3216,7 +3216,9 @@ paths:
                       title: 煤炭品质信息
                       description: |-
                         当商品和税收服务分类编码是1020101000000000000(原煤)、102010200000000000(选煤)、1020199000000000000(煤炭)时,且开票金额超过一千万时，若传递此值，优先以此值为准。不再校验mtfrl、gjql、gzwhjhff字段。
-                        格式：每千克煤炭发热量：{mtfrl}千卡、干基全硫：{gjql}、干燥无灰基挥发分：{gzwhjhff}
+                        格式：每千克煤炭发热量：{mtfrl}千卡、干基全硫：{gjql}、干燥无灰基挥发分：{gzwhjhff}。
+                        例如：每千克煤炭发热量：6751千卡、干基全硫：0.46%、干燥无灰基挥发分：31.63%。
+                        注意：需要将此信息拼接到备注最前方，使用中文逗号分隔。
                     cktslxDm:
                       type: string
                       title: 出口退税类型代码
@@ -16254,7 +16256,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br>不支持的勾选状态gxzt<br>错误的填发日期起止 | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起tfrqq是否小于填发日期止tfrqz |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请海关缴款书采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[海关缴款书采集结果查询](https://openapi.qixiangyun.com/api-118200636)接口查询任务转异步后执行结果。 |
       parameters:
@@ -23733,7 +23734,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的开票日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查开票日期起kprqq是否小于开票日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[进项发票采集结果查询](https://openapi.qixiangyun.com/api-120631815)接口查询任务转异步后执行结果。 |
       parameters:
@@ -25770,7 +25770,7 @@ paths:
       operationId: api-134780549
       tags:
       - 登录业务（旧版） / 托管模式登录 / 多账号管理 / 账号管理
-      description: "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0005\t数电票版式文件下载(企业版)\n"
+      description: "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0005\t数电票版式文件下载(企业版)\n0053\t社保(企业版)\n0054\t社保(代账版)"
       parameters:
       - name: Content-Type
         in: header
@@ -30028,7 +30028,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的填发日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起kprqq是否小于填发日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代扣代缴凭证采集结果查询](https://openapi.qixiangyun.com/api-157959747)接口查询任务转异步后执行结果。 |
       parameters:
@@ -30829,7 +30828,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的填发日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起kprqq是否小于填发日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代扣代缴凭证采集结果查询](https://openapi.qixiangyun.com/api-159761390)接口查询任务转异步后执行结果。 |
       parameters:
@@ -44809,7 +44807,7 @@ paths:
       operationId: api-207697298
       tags:
       - 登录业务（旧版） / 托管模式登录 / 多账号管理 / 账号管理
-      description: "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0005\t数电票版式文件下载(企业版)\n"
+      description: "账号产品绑定接口\n~~0002~~\t~~归集~~（将要弃用，历史用户沿用）\n0009    发票归集（企业版）\n0017    发票归集（代账版）\n0003\t认证\n0004\t数电开票\n0024\t小企业申报\n0020\t小企业申报(含归集)\n0022\t大企业申报\n0018\t数电票版式文件下载(代账版)\n0053\t社保(企业版)\n0054\t社保(代账版)\n0005\t数电票版式文件下载(企业版)\n"
       parameters:
       - name: Content-Type
         in: header
@@ -46550,6 +46548,10 @@ paths:
                             - fromDate
                             - message
                           title: 明细
+                        jtOssUrl:
+                          type: string
+                          title: 截图url
+                          description: 任务code=4811是返回
                       x-apifox-orders:
                       - startTime
                       - finishTime
@@ -46558,6 +46560,7 @@ paths:
                       - serviceCode
                       - taskId
                       - code
+                      - jtOssUrl
                       - message
                       - detail
                       required:
@@ -76247,7 +76250,6 @@ paths:
                   description: 格式：YYYYMM
               required:
               - aggOrgId
-              - skssq
               - accountId
               x-apifox-orders:
               - aggOrgId
@@ -143560,11 +143562,19 @@ paths:
                   type: string
                   title: 账号ID
                   description: 多账号场景
+                kqyswjgmc:
+                  type: string
+                  title: 跨区域税局机关名称(
+                tdztswjgmc:
+                  type: string
+                  title: 特定主体税务机关名称
               required:
               - aggOrgId
               x-apifox-orders:
               - aggOrgId
               - accountId
+              - kqyswjgmc
+              - tdztswjgmc
             examples:
               example_0:
                 summary: ''
@@ -143841,10 +143851,15 @@ paths:
                 aggOrgId:
                   type: string
                   title: 企业Id
+                taskId:
+                  type: string
+                  title: 任务Id
+                  description: 跨区域和特定主体查询必须传taskid，不传入本主体查询未变，不传入taskId会将当月最新的企业税务信息任务结果返回
               required:
               - aggOrgId
               x-apifox-orders:
               - aggOrgId
+              - taskId
             examples:
               example_0:
                 summary: ''
@@ -149228,15 +149243,147 @@ paths:
             application/json:
               schema:
                 type: object
-                x-apifox-refs:
-                  01GW3Y4EXHPAVAV9E7ZSBVQCNR:
-                    $ref: '#/definitions/35327531'
-                    x-apifox-overrides:
-                      data:
-                        $ref: '#/definitions/37418374'
+                x-apifox-refs: {}
                 x-apifox-orders:
-                - 01GW3Y4EXHPAVAV9E7ZSBVQCNR
-                properties: {}
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    type: object
+                    properties:
+                      result:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务执行结果
+                      finishTime:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务结束时间
+                      businessStatusName:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务执行状态名称
+                      pdfFileUrl:
+                        type:
+                        - string
+                        - 'null'
+                        title: PDF文件路径
+                      startTime:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务发起时间
+                      businessStatus:
+                        type:
+                        - integer
+                        - 'null'
+                        title: 任务执行状态
+                        description: 0未开始 1任务执行中 2执行失败 3执行成功 4撤销成功
+                      detail:
+                        type:
+                        - array
+                        - 'null'
+                        items:
+                          type: object
+                          properties:
+                            result:
+                              type:
+                              - string
+                              - 'null'
+                              title: 成功信息
+                            yzpzzlDm:
+                              type:
+                              - string
+                              - 'null'
+                              title: 税费种的应征凭证种类代码
+                            screenshot:
+                              type:
+                              - string
+                              - 'null'
+                              title: 截图或pdf文件地址
+                            message:
+                              type:
+                              - string
+                              - 'null'
+                              title: 任务提示信息
+                          x-apifox-orders:
+                          - result
+                          - yzpzzlDm
+                          - screenshot
+                          - message
+                      serviceName:
+                        type:
+                        - string
+                        - 'null'
+                        title: 服务名称
+                      resultMessage:
+                        type:
+                        - string
+                        - 'null'
+                        title: 任务执行明细信息
+                      taskId:
+                        type:
+                        - string
+                        - 'null'
+                        title: '任务id '
+                      code:
+                        type: string
+                        title: 任务code
+                      message:
+                        type: string
+                        title: 任务信息
+                      jtOssUrl:
+                        type: string
+                        title: 截图url
+                        description: 任务code=4811是返回
+                    x-apifox-refs: {}
+                    x-apifox-orders:
+                    - result
+                    - finishTime
+                    - businessStatusName
+                    - pdfFileUrl
+                    - jtOssUrl
+                    - startTime
+                    - businessStatus
+                    - detail
+                    - serviceName
+                    - resultMessage
+                    - taskId
+                    - code
+                    - message
+                    required:
+                    - code
+                    - message
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                required:
+                - code
+                - success
+                - reqId
+                - message
               examples:
                 企业不存在:
                   summary: 企业不存在
@@ -150557,6 +150704,7 @@ paths:
         | ------------- | --------------- | ---------------------------------------------------- |
         | FprzIdIsNull  | id 不能为空     | 请传入申请统计确认返回的 id                          |
         | FprzIdIsValid | 请传入正确的 id | 没有找到对应统计确认申请数据，请检查传入 id 是否正确 |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -155676,6 +155824,7 @@ paths:
         | FprzQrmmTjsjIsNull    | 申请确认时，抵扣统计确认密码、统计时间不能为空 |                                             |
         | FprzYjsqtjqr          | 已经申请统计确认，处理中                       | 等待之前的申请处理完成                      |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-69718250)接口查询任务转异步后执行结果。 |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -176730,7 +176879,6 @@ paths:
         | 505002                     | 接口调用异常，请联系管理员!                                  | 请联系管理员                                        |
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                     |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！ | 请检查参数是否不为空<br/>请检查参数nsrsbh是否不为空 |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                  |
         | FprzServerError            | 申请获取税款所属期操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                          |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[获取税款所属期任务结果](https://openapi.qixiangyun.com/api-93748240)接口查询任务转异步后执行结果。 |
       parameters:
@@ -177009,7 +177157,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的开票日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查开票日期起kprqq是否小于开票日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[进项发票采集结果查询](https://openapi.qixiangyun.com/api-93748243)接口查询任务转异步后执行结果。 |
       parameters:
@@ -177121,7 +177268,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br>不支持的勾选状态gxzt<br>错误的填发日期起止 | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起tfrqq是否小于填发日期止tfrqz |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请海关缴款书采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[海关缴款书采集结果查询](https://openapi.qixiangyun.com/api-93748244)接口查询任务转异步后执行结果。 |
       parameters:
@@ -178287,6 +178433,7 @@ paths:
         | FprzSqqrSjIsInvalid | 未到统计确认日期无法统计确认           | 请检查当前日期是否允许当前属期确认       |
         | 8600                | 申请统计确认操作发生异常，请联系管理员 | 请联系管理员                             |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-93765552)接口查询任务转异步后执行结果。 |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -178644,6 +178791,7 @@ paths:
         | FprzIdIsValid    | 请传入正确的 id                                | 请检查入参id是否正确       |
         | FprzWsqtjqr      | 尚未申请统计确认，请先申请统计确认             | 请先申请统计确认           |
         | 8600             | 获取申请统计确认结果操作发生异常，请联系管理员 | 请联系管理员               |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -178666,6 +178814,11 @@ paths:
         schema:
           type: string
         example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
       requestBody:
         required: false
         content:

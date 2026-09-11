@@ -23,13 +23,19 @@
         "aggOrgId": {
           "type": "string",
           "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务Id",
+          "description": "跨区域和特定主体查询必须传taskid，不传入本主体查询未变，不传入taskId会将当月最新的企业税务信息任务结果返回"
         }
       },
       "required": [
         "aggOrgId"
       ],
       "x-apifox-orders": [
-        "aggOrgId"
+        "aggOrgId",
+        "taskId"
       ]
     },
     "required": false,
@@ -166,11 +172,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-29T15:33:02.000Z",
-  "updatedAt": "2026-03-24T13:11:10.000Z",
+  "updatedAt": "2026-06-30T06:07:03.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

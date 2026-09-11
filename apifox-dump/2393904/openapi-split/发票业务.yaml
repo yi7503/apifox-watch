@@ -3088,7 +3088,9 @@ paths:
                       title: 煤炭品质信息
                       description: |-
                         当商品和税收服务分类编码是1020101000000000000(原煤)、102010200000000000(选煤)、1020199000000000000(煤炭)时,且开票金额超过一千万时，若传递此值，优先以此值为准。不再校验mtfrl、gjql、gzwhjhff字段。
-                        格式：每千克煤炭发热量：{mtfrl}千卡、干基全硫：{gjql}、干燥无灰基挥发分：{gzwhjhff}
+                        格式：每千克煤炭发热量：{mtfrl}千卡、干基全硫：{gjql}、干燥无灰基挥发分：{gzwhjhff}。
+                        例如：每千克煤炭发热量：6751千卡、干基全硫：0.46%、干燥无灰基挥发分：31.63%。
+                        注意：需要将此信息拼接到备注最前方，使用中文逗号分隔。
                     cktslxDm:
                       type: string
                       title: 出口退税类型代码
@@ -15733,7 +15735,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br>不支持的勾选状态gxzt<br>错误的填发日期起止 | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起tfrqq是否小于填发日期止tfrqz |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请海关缴款书采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[海关缴款书采集结果查询](https://openapi.qixiangyun.com/api-118200636)接口查询任务转异步后执行结果。 |
       parameters:
@@ -18077,7 +18078,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的开票日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查开票日期起kprqq是否小于开票日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[进项发票采集结果查询](https://openapi.qixiangyun.com/api-120631815)接口查询任务转异步后执行结果。 |
       parameters:
@@ -19836,7 +19836,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的填发日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起kprqq是否小于填发日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代扣代缴凭证采集结果查询](https://openapi.qixiangyun.com/api-157959747)接口查询任务转异步后执行结果。 |
       parameters:
@@ -20637,7 +20636,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的填发日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起kprqq是否小于填发日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代扣代缴凭证采集结果查询](https://openapi.qixiangyun.com/api-159761390)接口查询任务转异步后执行结果。 |
       parameters:
@@ -68177,6 +68175,7 @@ paths:
         | ------------- | --------------- | ---------------------------------------------------- |
         | FprzIdIsNull  | id 不能为空     | 请传入申请统计确认返回的 id                          |
         | FprzIdIsValid | 请传入正确的 id | 没有找到对应统计确认申请数据，请检查传入 id 是否正确 |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -70093,6 +70092,7 @@ paths:
         | FprzQrmmTjsjIsNull    | 申请确认时，抵扣统计确认密码、统计时间不能为空 |                                             |
         | FprzYjsqtjqr          | 已经申请统计确认，处理中                       | 等待之前的申请处理完成                      |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-69718250)接口查询任务转异步后执行结果。 |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -87550,7 +87550,6 @@ paths:
         | 505002                     | 接口调用异常，请联系管理员!                                  | 请联系管理员                                        |
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                     |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！ | 请检查参数是否不为空<br/>请检查参数nsrsbh是否不为空 |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                  |
         | FprzServerError            | 申请获取税款所属期操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                          |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[获取税款所属期任务结果](https://openapi.qixiangyun.com/api-93748240)接口查询任务转异步后执行结果。 |
       parameters:
@@ -87829,7 +87828,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>不支持的勾选状态gxzt<br>错误的开票日期起止<br>不支持的发票类型fplx<br>不支持的发票状态fpzt | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查开票日期起kprqq是否小于开票日期止kprqz<br>请检查参数fplx是否正确<br>请检查参数fpzt是否正确 |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请进项发票采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[进项发票采集结果查询](https://openapi.qixiangyun.com/api-93748243)接口查询任务转异步后执行结果。 |
       parameters:
@@ -87941,7 +87939,6 @@ paths:
         | FprzNotSupportDq           | 暂不支持该地区进行发票云认证！                               |                                                              |
         | FprzParameterVerification  | 传入参数不能为空！<br>传入的参数-企业纳税人识别号nsrsbh不能为空！<br>不支持的勾选状态gxzt<br>错误的填发日期起止 | 请检查参数是否不为空<br>请检查参数nsrsbh是否不为空<br>请检查参数gxzt是否正确<br>请检查填发日期起tfrqq是否小于填发日期止tfrqz |
         | FprzBusinessVerification   | 税款所属期为空，请先申请获取税款所属期！                     | 请先申请获取税款所属期！                                     |
-        | FprzExceededCallCountLimit | 超过当天可申请次数，请次日发起申请！                         | 请检查任务发起次数，保持合理频率！                           |
         | FprzServerError            | 申请海关缴款书采集操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[海关缴款书采集结果查询](https://openapi.qixiangyun.com/api-93748244)接口查询任务转异步后执行结果。 |
       parameters:
@@ -89107,6 +89104,7 @@ paths:
         | FprzSqqrSjIsInvalid | 未到统计确认日期无法统计确认           | 请检查当前日期是否允许当前属期确认       |
         | 8600                | 申请统计确认操作发生异常，请联系管理员 | 请联系管理员                             |
         | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[统计确认/撤销统计结果查询](https://openapi.qixiangyun.com/api-93765552)接口查询任务转异步后执行结果。 |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -89464,6 +89462,7 @@ paths:
         | FprzIdIsValid    | 请传入正确的 id                                | 请检查入参id是否正确       |
         | FprzWsqtjqr      | 尚未申请统计确认，请先申请统计确认             | 请先申请统计确认           |
         | 8600             | 获取申请统计确认结果操作发生异常，请联系管理员 | 请联系管理员               |
+        | FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |
       parameters:
       - name: access_token
         in: header
@@ -89486,6 +89485,11 @@ paths:
         schema:
           type: string
         example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
       requestBody:
         required: false
         content:
