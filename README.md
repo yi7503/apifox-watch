@@ -89,6 +89,9 @@ grep "/v2/public/account/create" apifox-dump/2393904/index.md
 
 入口同样是 `index.md` 末尾的 **Docs** 表。
 
+2026 新版增值税的完整接口变化、动态表单和业务校验规则另见原始附件：
+[`attachments/外部-新版增值税对接流程与业务规则.xlsx`](apifox-dump/2393904/attachments/外部-新版增值税对接流程与业务规则.xlsx)（12 个工作表）。
+
 ### 5. 配合 qxy-* skills 使用
 
 仓库里只是**接口定义**。要真正发请求，签名 / OAuth / RSA 加密这些公共逻辑
@@ -116,7 +119,8 @@ apifox-dump/2393904/
 │   ├── INDEX.md               按业务模块拆分的索引
 │   └── <模块>.yaml × 14       每个模块一份独立 OpenAPI
 ├── apis/<apiId>.json × 648    单个接口完整定义 (Apifox 原始 schema)
-└── docs/<docId>.json × 362    单个文档节点 (Markdown content)
+├── docs/<docId>.json × 362    单个文档节点 (Markdown content)
+└── attachments/               Apifox 文档引用的离线附件
 ```
 
 ---
