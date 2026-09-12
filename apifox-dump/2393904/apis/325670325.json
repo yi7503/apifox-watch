@@ -115,11 +115,6 @@
                 "title": "税延养老保险",
                 "default": 0
               },
-              "qt": {
-                "type": "number",
-                "title": "其他",
-                "default": 0
-              },
               "zykfjze": {
                 "type": "number",
                 "title": "准予扣除的捐赠额",
@@ -187,7 +182,6 @@
               "nj",
               "syjkbx",
               "syylbx",
-              "qt",
               "zykfjze",
               "jmse",
               "ljsre",
@@ -398,11 +392,11 @@
     "enable": false
   },
   "createdAt": "2025-07-23T02:25:26.000Z",
-  "updatedAt": "2026-04-02T03:03:50.000Z",
+  "updatedAt": "2026-08-26T02:30:36.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

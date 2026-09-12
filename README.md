@@ -13,17 +13,17 @@
 
 ### 1. 先看模块总览
 
-接口按 **13 个业务模块**组织。从 `apifox-dump/2393904/openapi-split/INDEX.md`
+接口按 **14 个业务模块**组织。从 `apifox-dump/2393904/openapi-split/INDEX.md`
 开始挑模块：
 
 | 模块 | 接口数 | OpenAPI 文件 |
 |---|---:|---|
-| 申报业务 | 232 | `openapi-split/申报业务.yaml` |
-| 发票业务 | 223 | `openapi-split/发票业务.yaml` |
-| 数据业务 | 58 | `openapi-split/数据业务.yaml` |
-| 登录业务（旧版） | 53 | `openapi-split/登录业务_旧版.yaml` |
-| 进出口退税业务 | 25 | `openapi-split/进出口退税业务.yaml` |
-| 登录业务（新） | 16 | `openapi-split/登录业务_新.yaml` |
+| 申报业务 | 277 | `openapi-split/申报业务.yaml` |
+| 发票业务 | 192 | `openapi-split/发票业务.yaml` |
+| 数据业务 | 47 | `openapi-split/数据业务.yaml` |
+| 登录业务（旧版） | 44 | `openapi-split/登录业务_旧版.yaml` |
+| 登录业务（新） | 30 | `openapi-split/登录业务_新.yaml` |
+| 进出口退税业务 | 27 | `openapi-split/进出口退税业务.yaml` |
 | 办税小号业务 | 11 | `openapi-split/办税小号业务.yaml` |
 | 产品订购 | 5 | `openapi-split/产品订购.yaml` |
 | 法规库 | 5 | `openapi-split/法规库.yaml` |
@@ -31,13 +31,14 @@
 | 平台查询 | 3 | `openapi-split/平台查询.yaml` |
 | 风控报告 | 2 | `openapi-split/风控报告.yaml` |
 | 平台接口鉴权 | 1 | `openapi-split/平台接口鉴权.yaml` |
+| 办税助手 | 1 | `openapi-split/办税助手.yaml` |
 
 每个 split yaml 是合法 OpenAPI 3.0，可直接喂给代码生成器或直接读。
 最准的字段定义在这些 yaml 里。
 
 ### 2. 按 method/path 定位单个接口
 
-整个项目 637 个接口的索引在 `apifox-dump/2393904/index.md`，按 method/path/name/folder
+整个项目 648 个接口的索引在 `apifox-dump/2393904/index.md`，按 method/path/name/folder
 列出来，**最适合 grep**：
 
 ```bash
@@ -88,13 +89,16 @@ grep "/v2/public/account/create" apifox-dump/2393904/index.md
 
 入口同样是 `index.md` 末尾的 **Docs** 表。
 
+2026 新版增值税的完整接口变化、动态表单和业务校验规则另见原始附件：
+[`attachments/外部-新版增值税对接流程与业务规则.xlsx`](apifox-dump/2393904/attachments/外部-新版增值税对接流程与业务规则.xlsx)（12 个工作表）。
+
 ### 5. 配合 qxy-* skills 使用
 
 仓库里只是**接口定义**。要真正发请求，签名 / OAuth / RSA 加密这些公共逻辑
 建议复用：
 
 - `qxy-common` skill —— OAuth 鉴权、`req_sign` 签名、`access_token` 缓存
-- `qxy-invoice` skill —— 发票业务（223 接口）已封装
+- `qxy-invoice` skill —— 发票业务（192 接口）已封装
 - `qxy-declaration` skill —— 申报业务
 
 如果某个接口业务 skill 还没覆盖，按上面 1-3 步从 dump 里读定义后自己拼请求，
@@ -108,14 +112,15 @@ grep "/v2/public/account/create" apifox-dump/2393904/index.md
 apifox-dump/2393904/
 ├── meta.json                  Apifox 项目元信息 (projectId/branchId)
 ├── tree.json                  Apifox 原始目录树 (含文件夹层级)
-├── index.md                   全部 637 个 API + 294 个 doc 的可读索引
+├── index.md                   全部 648 个 API + 362 个 doc 的可读索引
 ├── failures.json              本次爬取失败的节点 (Apifox 端 403 等)
-├── openapi.yaml               全部接口的合并 OpenAPI 3.0 (8.3 MB)
+├── openapi.yaml               全部接口的合并 OpenAPI 3.0 (7.8 MB)
 ├── openapi-split/
 │   ├── INDEX.md               按业务模块拆分的索引
-│   └── <模块>.yaml × 13       每个模块一份独立 OpenAPI
-├── apis/<apiId>.json × 637    单个接口完整定义 (Apifox 原始 schema)
-└── docs/<docId>.json × 294    单个文档节点 (Markdown content)
+│   └── <模块>.yaml × 14       每个模块一份独立 OpenAPI
+├── apis/<apiId>.json × 648    单个接口完整定义 (Apifox 原始 schema)
+├── docs/<docId>.json × 362    单个文档节点 (Markdown content)
+└── attachments/               Apifox 文档引用的离线附件
 ```
 
 ---
@@ -127,6 +132,8 @@ apifox-dump/2393904/
 - 定时：crontab 每月 1 号 03:17（`17 3 1 * *`）
 - 日志：`scrape.log`（gitignored）
 - 配置（环境变量）：`APIFOX_DOMAIN`（默认 `openapi.qixiangyun.com`）、`APIFOX_PROJECT_ID`（默认 `2393904`）
+- 完整性：任一节点重试后仍失败或目录异常大幅收缩时停止，不生成或发布可疑快照；完整抓取后自动删除已下架节点和失效 split 文件
+- 安全性：上游示例中的 Alibaba AccessKey ID 形态值会替换为 `<ALIBABA_ACCESS_KEY_ID>`
 
 手动跑一次：
 

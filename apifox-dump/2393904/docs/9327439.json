@@ -1,0 +1,17 @@
+{
+  "id": 9327439,
+  "name": "API鉴权-常见问题",
+  "sidebarTitle": "",
+  "content": "**1. 获取access_token时候 提示“应用的密钥无效!”**\n答：login接口的client_secret需要MD5(appSecret)后32位小写，req_sign签名中的直接使用appSecret。\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/686134/image-preview)\n\n**2. 鉴权调用注意事项**\n（1）header中的req_date和req_sign签名中的req_date需要相同。\n（2）确认MD5函数的结果是否正确，校验使用https://www.sojson.com/encrypt_md5.html\n（3）body中请求参数和req_sign签名中的请求参数要一致，使用字符串，尽量不要有空格和回车。\n（4）login请求参数：\n{\n\"grant_type\":\"client_credentials\",\n\"client_appkey\":\"appkey\",\n\"client_secret\":\"md5(appsecret)32位小写\"\n}\n（5）业务接口请求头中四个参数如下：\nheader: {\n'content-type': 'application/json',\n'access_token': access_token,\n'req_date': req_date,\n'req_sign': req_sign\n}\n\n**3. \"code\":\"40100\",\"success\":false,\"message\":\"未登录!\"**\n（1）http调用未调用获取access_token接口；\n（2）nginx转发时头部信息中如果有下划线会默认过滤掉,所以导致access_token被过滤了。nginx.conf配置文件添加：underscores_in_headers on; （默认underscores_in_headers 为off）\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/686135/image-preview)\n\n**4. \"code\":\"505018\",\"success\":false,\"message\":\"req_date字段与服务器时间存在过大时差!\"**\n（1）看看是不是时间格式问题，应该是时间戳，不是日期格式；\n（2）如果格式没错，那就是时差过大；\n（3）确认服务器时区，保证时区为UTC+8",
+  "folderId": 13630516,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-08-15T04:06:14.000Z",
+  "updatedAt": "2026-08-24T09:28:13.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

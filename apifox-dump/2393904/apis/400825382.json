@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整本年度或历史年度缴费工资。\n该接口于2026年1月6日将调整为异步接口，请各位客户做好适配。具体参数请看文档https://doc.weixin.qq.com/doc/w3_AT4AdwZQAO0CNBtloKvNbTUqq41KB?scode=AM4ARwdGAA4P4hFlBNAT4AdwZQAO0",
+  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整本年度或历史年度缴费工资。\n备注：本接口可能存在部分成功的情况，因此需要对每一个人员返回的失败原因做判断，如果人员信息异常则失败原因不会空",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -55,11 +55,12 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
         "name": "示例 1",
-        "value": "{\r\n    \"aggOrgId\": \"498736\",\r\n    \"accountId\": \"504653\",\r\n    \"taskId\": \"2345678345\"\r\n}",
+        "value": "{\r\n    \"aggOrgId\": \"5420354673593600\",\r\n    \"accountId\": \"5153901037974936454\",\r\n    \"taskId\": \"5154099431104277754\"\r\n}",
         "mediaType": "application/json"
       }
     ],
@@ -132,7 +133,29 @@
               },
               "taskStatus": {
                 "type": "string",
-                "title": "任务执行状态"
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
               },
               "taskStatusName": {
                 "type": "string",
@@ -193,7 +216,7 @@
     {
       "name": "成功示例",
       "responseId": 807917507,
-      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"code\": \"2000\",\n        \"message\": \"申报成功\",\n        \"result\": {\n            \"cbjstjlb\": [\n                {\n                    \"xm\": \"XX\",\n                    \"zjlx\": \"201\",\n                    \"zjhm\": \"140023456780017\",\n                    \"xjfgz\": \"6326.00\",\n                    \"sxyf\": \"2025-07\",\n                    \"sbyy\": \"\"\n                }\n            ]\n        },\n        \"taskId\": \"5009000000\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"taskTypeCode\": \"shbx-rcsb\",\n        \"taskTypeName\": \"日常申报申请\"\n    }\n}",
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"code\": \"2000\",\n        \"message\": \"操作成功\",\n        \"result\": {\n            \"cbjstjlb\": [\n                {\n                    \"sxyf\": \"2026-01\",\n                    \"xm\": \"XXX\",\n                    \"zjlx\": \"201\",\n                    \"zjlxmc\": \"居民身份证\",\n                    \"sbyy\": \"\",\n                    \"xjfgz\": 3000.0,\n                    \"zjhm\": \"3203456789089966\"\n                },\n                {\n                    \"xz\": {\n                        \"102031101\": 0.0,\n                        \"102040101\": 0.0,\n                        \"102020101\": 0.0,\n                        \"102011101\": 344.88\n                    },\n                    \"sxyf\": \"\",\n                    \"xm\": \"XXX\",\n                    \"zjlx\": \"201\",\n                    \"zjlxmc\": \"居民身份证\",\n                    \"sbyy\": \"缴费工资录入金额需大于0\",\n                    \"zjhm\": \"30401001802345672\"\n                }\n            ]\n        },\n        \"taskId\": \"512200000030\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"taskTypeCode\": \"shbx-ndjfgztz\",\n        \"taskTypeName\": \"年度缴费工资调整\"\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -214,11 +237,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-01-05T09:45:38.000Z",
-  "updatedAt": "2026-01-06T14:29:25.000Z",
+  "updatedAt": "2026-09-09T13:42:50.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 1534873,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 1534873,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

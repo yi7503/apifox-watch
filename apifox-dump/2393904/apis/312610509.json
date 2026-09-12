@@ -2228,7 +2228,7 @@
             "ncpzrcgzConfirm": {
               "type": "string",
               "title": "农产品收购票合规提示",
-              "description": "农产品开票不合规局端开票会提示预警",
+              "description": "农产品开票不合规局端开票会提示预警（开票返回失败提示：尊敬的纳税人，从贵公司开具的农产品收购发票分析，可能存在农产品收购发票开具不规范的情况，请按照《中华人民共和国增值税暂行条例》及其实施细则、《中华人民共和国发票管理办法》及其实施细则等规定开具农产品收购发票。）",
               "enum": [
                 "1-忽略提示 ",
                 "空/不传-合规预警提示"
@@ -2543,11 +2543,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-23T10:25:57.000Z",
-  "updatedAt": "2026-06-17T08:21:50.000Z",
+  "updatedAt": "2026-08-04T06:07:33.000Z",
   "creatorId": 887900,
-  "editorId": 3099717,
+  "editorId": 1564651,
   "creatorUserId": 887900,
-  "editorUserId": 3099717,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

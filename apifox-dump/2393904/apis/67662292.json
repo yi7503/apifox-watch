@@ -74,7 +74,7 @@
               },
               "jkfs": {
                 "type": "string",
-                "description": "缴款方式 0-三方协议号缴款 1 银行账号缴款 2-二维码缴款;不传则默认三方协议缴款"
+                "description": "缴款方式 ：\n0=三方协议号缴款 \n1=银行端缴款 \n2=二维码缴款;\n不传则默认三方协议缴款"
               },
               "zsxmDm": {
                 "type": "string",
@@ -293,11 +293,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-26T09:33:28.000Z",
-  "updatedAt": "2026-05-28T12:24:37.000Z",
+  "updatedAt": "2026-08-14T08:05:18.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

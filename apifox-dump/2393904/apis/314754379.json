@@ -56,6 +56,7 @@
         "skssq"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -209,13 +210,16 @@
       "id": 617797955
     },
     {
-      "name": "查询失败",
+      "name": "未认定对应税费种",
       "responseId": 708511311,
-      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"reqId\": \"8c0d33d2ffba437380a1f33abad05562\"\n}",
-      "description": "",
-      "oasKey": "",
-      "oasExtensions": "",
-      "id": 617797956
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到核定信息\",\n    \"data\": null,\n    \"timestamp\": \"2026-09-08 16:02:23\",\n    \"reqId\": \"204792b913fc8b988f11a8d7af9aeaa0\"\n}",
+      "id": "01a08025-0830-75cc-afeb-d40874b2ed35"
+    },
+    {
+      "name": "已认定但当期未申报",
+      "responseId": 708511311,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"未查询到申报信息, 请检查\",\n    \"data\": null,\n    \"timestamp\": \"2026-09-08 15:55:53\",\n    \"reqId\": \"cc67019a4049b9aef6d381fdbced0ece\"\n}",
+      "id": "01a08025-0830-75cc-afeb-d8d08e42bbb6"
     }
   ],
   "codeSamples": [],
@@ -233,14 +237,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-27T06:56:40.000Z",
-  "updatedAt": "2025-09-03T04:04:29.000Z",
+  "updatedAt": "2026-09-08T08:31:46.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
-  "responseChildren": [
-    "BLANK.708511311"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

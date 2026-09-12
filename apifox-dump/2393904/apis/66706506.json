@@ -117,21 +117,1287 @@
       "contentType": "json",
       "jsonSchema": {
         "type": "object",
-        "x-apifox-refs": {
-          "01GW1PNKPA7HHF8SR5ERZK9C2T": {
-            "$ref": "#/definitions/35327531",
-            "x-apifox-overrides": {
-              "data": {
-                "title": "业务数据",
-                "$ref": "#/definitions/37175755"
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "title": "业务数据",
+            "type": "object",
+            "properties": {
+              "openSjState": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "title": "企业税务信息采集状态",
+                "description": "true 采集成功，false 采集失败"
+              },
+              "vatTaxpayer": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "title": "纳税人身份",
+                "description": "2000010001：一般纳税人；2000010002：小规模纳税人"
+              },
+              "sfzxxDtos": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "yxqz": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "有效期止",
+                      "description": "格式yyyy-MM-dd"
+                    },
+                    "sbxm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "申报项目代码",
+                      "description": "参考附录"
+                    },
+                    "slhdwse": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "税率或单位税额"
+                    },
+                    "nsqxdmName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "纳税期限名称"
+                    },
+                    "yxqq": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "有效期起",
+                      "description": "格式yyyy-MM-dd"
+                    },
+                    "sbpm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "申报品目代码",
+                      "description": "参考附录"
+                    },
+                    "sbpmName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "申报品目名称"
+                    },
+                    "sbxmName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "申报项目名称"
+                    },
+                    "nsqxdm": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "纳税期限代码"
+                    },
+                    "zsfs": {
+                      "type": "string",
+                      "title": "征收方式"
+                    },
+                    "zszm": {
+                      "type": "string",
+                      "title": "征收子目"
+                    },
+                    "zszmdm": {
+                      "type": "string",
+                      "title": "征收子目代码"
+                    },
+                    "sbqx": {
+                      "type": "string",
+                      "title": "申报期限"
+                    },
+                    "zsl": {
+                      "type": "string",
+                      "title": "征收率"
+                    },
+                    "jkqx": {
+                      "type": "string",
+                      "title": "缴款期限"
+                    },
+                    "hy": {
+                      "type": "string",
+                      "title": "行业"
+                    },
+                    "zfsbz": {
+                      "type": "string",
+                      "title": "主附税标志"
+                    },
+                    "sfyx": {
+                      "type": "string",
+                      "title": "是否有效",
+                      "description": "有效/无效"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "yxqq",
+                    "yxqz",
+                    "sbxm",
+                    "sbxmName",
+                    "sbpm",
+                    "sbpmName",
+                    "nsqxdm",
+                    "nsqxdmName",
+                    "slhdwse",
+                    "zsfs",
+                    "zszm",
+                    "zszmdm",
+                    "sbqx",
+                    "zsl",
+                    "jkqx",
+                    "hy",
+                    "zfsbz",
+                    "sfyx"
+                  ],
+                  "required": [
+                    "zfsbz",
+                    "sfyx"
+                  ]
+                },
+                "title": "税费种信息"
+              },
+              "nsxxDto": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "cwfzr": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "财务负责人"
+                  },
+                  "nsrsbh": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "纳税人识别号"
+                  },
+                  "bsyTel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "办税员电话"
+                  },
+                  "cwfzrTel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "财务负责人电话"
+                  },
+                  "nsrmc": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "纳税人名称"
+                  },
+                  "djzclx": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "登记注册类型代码"
+                  },
+                  "djzclxName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "登记注册类型名称"
+                  },
+                  "bsy": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "办税员"
+                  },
+                  "fdfzrTel": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "法定负责人电话"
+                  },
+                  "fdfzr": {
+                    "type": "string",
+                    "title": "法定负责人"
+                  },
+                  "zfjgBz": {
+                    "type": "string",
+                    "title": "总分机构标志",
+                    "description": " \"0\" 非总分机构；\"1\" 总机构；\"2\" 分支机构；\"3\" 分总机构"
+                  },
+                  "fdfzrSfzjlx": {
+                    "type": "string",
+                    "title": "法定负责人身份证件类型"
+                  },
+                  "fdfzrSfzjhm": {
+                    "type": "string",
+                    "title": "法定负责人身份证件号码"
+                  },
+                  "cwfzrSfzjlx": {
+                    "type": "string",
+                    "title": "财务负责人身份证件类型"
+                  },
+                  "cwfzrSfzjhm": {
+                    "type": "string",
+                    "title": "财务负责人身份证件号码"
+                  },
+                  "bsySfzjlx": {
+                    "type": "string",
+                    "title": "办税员身份证件类型"
+                  },
+                  "bsySfzjhm": {
+                    "type": "string",
+                    "title": "办税员身份证件号码"
+                  },
+                  "hydl": {
+                    "type": "string",
+                    "title": "行业大类"
+                  },
+                  "zhymxhy": {
+                    "type": "string",
+                    "title": "主行业明细行业"
+                  },
+                  "xydj": {
+                    "type": "string",
+                    "title": "信用等级"
+                  },
+                  "hsfs": {
+                    "type": "string",
+                    "title": "核算方式"
+                  },
+                  "kyrq": {
+                    "type": "string",
+                    "title": "开业日期"
+                  },
+                  "qysdszsfs": {
+                    "type": "string",
+                    "title": "企业所得税征收方式"
+                  },
+                  "sfqhjt": {
+                    "type": "string",
+                    "title": "是否千户集团"
+                  },
+                  "zcdz": {
+                    "type": "string",
+                    "title": "注册地址"
+                  },
+                  "zjgmc": {
+                    "type": "string",
+                    "title": "总机构名称"
+                  },
+                  "qybj": {
+                    "type": "string",
+                    "title": "企业标记",
+                    "description": "A 级纳税人\nB 级纳税人\nC 级纳税人\nD 级纳税人\nM 级纳税人\n定期定额\n查账征收"
+                  },
+                  "pjnd": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "评价年度"
+                  },
+                  "nsrst": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "纳税人状态"
+                  },
+                  "swdjrq": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "税务登记日期"
+                  },
+                  "sfcktsqy": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "是否出口退税企业"
+                  },
+                  "ckzh": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "存款账户"
+                  },
+                  "qybz": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "企业标志"
+                  },
+                  "kqyccsdjztbz": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "跨区域财产税登记主体标志"
+                  },
+                  "ssgly": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "税收管理员"
+                  },
+                  "zcdyzbm": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "注册地邮政编码"
+                  },
+                  "zcdlxdh": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "注册地联系电话"
+                  },
+                  "djxh": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "登记序号"
+                  },
+                  "scjydz": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "生产经营地址"
+                  },
+                  "scjyyzbm": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "生产经营邮政编码"
+                  },
+                  "zzjgdm": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "组织机构代码"
+                  },
+                  "zzsqylx": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "增值税企业类型"
+                  },
+                  "jyfw": {
+                    "type": "string",
+                    "title": "经营范围"
+                  },
+                  "cyrs": {
+                    "type": "string",
+                    "title": "从业人数"
+                  },
+                  "zgswjgksfj": {
+                    "type": "string",
+                    "title": "主管税务所科分局"
+                  },
+                  "sfdqde": {
+                    "type": "string",
+                    "title": "是否定期定额"
+                  }
+                },
+                "title": "企业基本信息",
+                "required": [
+                  "fdfzr",
+                  "zfjgBz",
+                  "fdfzrSfzjhm",
+                  "fdfzrSfzjlx",
+                  "cwfzrSfzjhm",
+                  "cwfzrSfzjlx",
+                  "bsySfzjhm",
+                  "bsySfzjlx",
+                  "zhymxhy",
+                  "hydl",
+                  "xydj",
+                  "zcdz",
+                  "sfqhjt",
+                  "qysdszsfs",
+                  "kyrq",
+                  "hsfs",
+                  "zjgmc",
+                  "qybj"
+                ],
+                "x-apifox-orders": [
+                  "nsrsbh",
+                  "nsrmc",
+                  "djzclx",
+                  "djzclxName",
+                  "zfjgBz",
+                  "hydl",
+                  "zhymxhy",
+                  "xydj",
+                  "hsfs",
+                  "kyrq",
+                  "qysdszsfs",
+                  "sfqhjt",
+                  "zcdz",
+                  "zjgmc",
+                  "fdfzr",
+                  "fdfzrTel",
+                  "fdfzrSfzjlx",
+                  "fdfzrSfzjhm",
+                  "cwfzr",
+                  "cwfzrTel",
+                  "cwfzrSfzjlx",
+                  "cwfzrSfzjhm",
+                  "bsy",
+                  "bsyTel",
+                  "bsySfzjlx",
+                  "bsySfzjhm",
+                  "qybj",
+                  "pjnd",
+                  "nsrst",
+                  "swdjrq",
+                  "sfcktsqy",
+                  "ckzh",
+                  "qybz",
+                  "kqyccsdjztbz",
+                  "ssgly",
+                  "zcdyzbm",
+                  "zcdlxdh",
+                  "djxh",
+                  "scjydz",
+                  "scjyyzbm",
+                  "zzjgdm",
+                  "zzsqylx",
+                  "jyfw",
+                  "cyrs",
+                  "zgswjgksfj",
+                  "sfdqde"
+                ]
+              },
+              "zgrdDtos": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "sjzzrq": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "实际中止日期"
+                    },
+                    "zgrdlx": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "资格认定类型代码"
+                    },
+                    "yxqksrq": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "有效期开始日期"
+                    },
+                    "yxqjsrq": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "有效期结束日期"
+                    },
+                    "zgrdlxName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "资格认定类型名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "yxqksrq",
+                    "yxqjsrq",
+                    "zgrdlx",
+                    "zgrdlxName",
+                    "sjzzrq"
+                  ]
+                },
+                "title": "资格认定信息"
+              },
+              "financeReportSettingDto": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "reportingsubcategorycode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "资料报送子类代码"
+                  },
+                  "reportingSubCategoryCodeName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "资料报送子类名称"
+                  },
+                  "reportingcategorycode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "资料报送小类代码"
+                  },
+                  "reportingCategoryCodeName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "料报送小类名称"
+                  },
+                  "reportingperiod": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "title": "报送期间代码"
+                  },
+                  "reportingPeriodName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "报送期间名称"
+                  },
+                  "accountingstandardsid": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "title": "会计制度代码"
+                  },
+                  "accountingStandardsIdName": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "会计制度名称"
+                  },
+                  "yxqq": {
+                    "type": "string",
+                    "title": "有效期起"
+                  },
+                  "yxqz": {
+                    "type": "string",
+                    "title": "有效期止"
+                  },
+                  "bdbaxx": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "nsqx": {
+                          "type": "string",
+                          "description": "纳税期限   06=月报  08=季报  10=年",
+                          "title": "纳税期限"
+                        },
+                        "zcfzb": {
+                          "type": "string",
+                          "title": "资产负债表",
+                          "description": "Y=已备案  N=未备案"
+                        },
+                        "lrb": {
+                          "type": "string",
+                          "title": "利润表",
+                          "description": "Y=已备案  N=未备案"
+                        },
+                        "xjllb": {
+                          "type": "string",
+                          "title": "现金流量表",
+                          "description": "Y=已备案  N=未备案"
+                        },
+                        "syzqybdb": {
+                          "type": "string",
+                          "title": "所有者权益变动表",
+                          "description": "Y=已备案  N=未备案"
+                        },
+                        "fz": {
+                          "type": "string",
+                          "title": "附注",
+                          "description": "Y=已备案  N=未备案"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "nsqx",
+                        "zcfzb",
+                        "lrb",
+                        "xjllb",
+                        "syzqybdb",
+                        "fz"
+                      ]
+                    },
+                    "title": "表单备案信息列表"
+                  }
+                },
+                "title": "会计备案信息",
+                "x-apifox-orders": [
+                  "yxqq",
+                  "yxqz",
+                  "reportingsubcategorycode",
+                  "reportingSubCategoryCodeName",
+                  "reportingcategorycode",
+                  "reportingCategoryCodeName",
+                  "reportingperiod",
+                  "reportingPeriodName",
+                  "accountingstandardsid",
+                  "accountingStandardsIdName",
+                  "bdbaxx"
+                ],
+                "required": [
+                  "yxqz",
+                  "yxqq"
+                ],
+                "description": "对应税局路径：财务会计制度及核算软件备案报告。只返回当前最新的备案信息"
+              },
+              "zgswjg": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "defaultState": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ],
+                      "title": "是否是默认主管税务机关",
+                      "description": " true 是，false 否"
+                    },
+                    "zgswjgmc": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "主管税务机关名称"
+                    },
+                    "id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "主管税务机关代码"
+                    },
+                    "zgswjdm": {
+                      "type": "string",
+                      "title": "主管税务局代码"
+                    },
+                    "zgswskfjdm": {
+                      "type": "string",
+                      "title": "主管税务所科分局代码"
+                    },
+                    "kzztdjlxdm": {
+                      "type": "string",
+                      "title": "课征主体登记类型代码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "defaultState",
+                    "zgswjgmc",
+                    "id",
+                    "zgswjdm",
+                    "zgswskfjdm",
+                    "kzztdjlxdm"
+                  ]
+                },
+                "title": "主管税务机关信息"
+              },
+              "jjdjxx": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "jjdj_HY": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "加计抵减_行业"
+                  },
+                  "jjdj_BAND": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "加计抵减_备案年度"
+                  },
+                  "jjdj_SYJJDJL": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "加计抵减_适用加计抵减率"
+                  }
+                },
+                "title": "加计抵减信息",
+                "x-apifox-orders": [
+                  "jjdj_HY",
+                  "jjdj_BAND",
+                  "jjdj_SYJJDJL"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "企业名称"
+              },
+              "taxPaymentMessageDtos": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "bankNumber": {
+                      "type": "string",
+                      "title": "银行号码"
+                    },
+                    "bankName": {
+                      "type": "string",
+                      "title": "银行名称"
+                    },
+                    "tripleAgreement": {
+                      "type": "string",
+                      "title": "三方协议号"
+                    },
+                    "accountNature": {
+                      "type": "string",
+                      "title": "帐号性质"
+                    },
+                    "signDate": {
+                      "type": "string",
+                      "title": "签订日期"
+                    },
+                    "agreementStatus": {
+                      "type": "string",
+                      "title": "三方协议状态"
+                    },
+                    "jkzhmc": {
+                      "type": "string",
+                      "title": "缴款账户名称"
+                    },
+                    "khyhhh": {
+                      "type": "string",
+                      "title": "开户银行行号"
+                    },
+                    "qsyhhh": {
+                      "type": "string",
+                      "title": "清算银行号"
+                    },
+                    "pkbzmc": {
+                      "type": "string",
+                      "title": "批扣标志"
+                    },
+                    "skssswjgMc": {
+                      "type": "string",
+                      "title": "税务机关 "
+                    },
+                    "yhyywdMc": {
+                      "type": "string",
+                      "title": "开户银行"
+                    },
+                    "yhhbMc": {
+                      "type": "string",
+                      "title": "银行行别"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "bankNumber",
+                    "bankName",
+                    "tripleAgreement",
+                    "accountNature",
+                    "signDate",
+                    "agreementStatus",
+                    "jkzhmc",
+                    "khyhhh",
+                    "pkbzmc",
+                    "qsyhhh",
+                    "skssswjgMc",
+                    "yhhbMc",
+                    "yhyywdMc"
+                  ],
+                  "required": [
+                    "bankNumber",
+                    "bankName",
+                    "tripleAgreement",
+                    "accountNature",
+                    "signDate",
+                    "agreementStatus",
+                    "jkzhmc",
+                    "khyhhh",
+                    "pkbzmc",
+                    "qsyhhh",
+                    "skssswjgMc",
+                    "yhhbMc",
+                    "yhyywdMc"
+                  ]
+                },
+                "title": "存款账号备案"
+              },
+              "kqyxxDtos": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productionAndOperationAddress": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "生产经营地址"
+                    },
+                    "competentTaxOfficeName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "主管税务机关"
+                    },
+                    "legalRepresentativeName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "法定代表人姓名"
+                    },
+                    "taxpayerStatus": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "title": "纳税人状态",
+                      "description": "\"01\": \"受理\",\n\"02\": \"筹建期\",\n\"03\": \"正常\",\n\"04\": \"停业\",\n\"05\": \"非正常\",\n\"06\": \"清算\",\n\"07\": \"注销\",\n\"08\": \"非正常户注销\",\n\"09\": \"报验\",\n\"10\": \"核销报验\",\n\"11\": \"中断缴费\",\n\"12\": \"恢复缴费\",\n\"99\": \"其他\""
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "productionAndOperationAddress",
+                    "competentTaxOfficeName",
+                    "legalRepresentativeName",
+                    "taxpayerStatus"
+                  ]
+                },
+                "title": "跨区域信息",
+                "description": "对应税局路径：账户中心-身份切换-跨区域办税-税源登记选择"
+              },
+              "tzfxx": {
+                "$ref": "#/definitions/257189986"
+              },
+              "hdzsxx": {
+                "title": "定期定额核定征收",
+                "type": "object",
+                "properties": {
+                  "dqdehdxx": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xh": {
+                          "type": "string",
+                          "title": "序号"
+                        },
+                        "hdzxqz": {
+                          "type": "string",
+                          "title": "核定执行期止"
+                        },
+                        "ynsjye": {
+                          "type": "string",
+                          "title": "应纳税所得额/应纳税营业额"
+                        },
+                        "zsxm": {
+                          "type": "string",
+                          "title": "征收项目"
+                        },
+                        "hdzxqq": {
+                          "type": "string",
+                          "title": "核定执行期起"
+                        },
+                        "sl": {
+                          "type": "string",
+                          "title": "税率"
+                        },
+                        "zxhdbz": {
+                          "type": "string",
+                          "title": "执行核定标志"
+                        },
+                        "wdqzdbz": {
+                          "type": "string",
+                          "title": "未到期标志"
+                        },
+                        "hdse": {
+                          "type": "string",
+                          "title": "核定税额"
+                        },
+                        "zspm": {
+                          "type": "string",
+                          "title": "征收品目"
+                        },
+                        "zsxmDm": {
+                          "type": "string",
+                          "title": "征收项目代码"
+                        },
+                        "zspmDm": {
+                          "type": "string",
+                          "title": "征收品目代码"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xh",
+                        "zsxm",
+                        "zspm",
+                        "ynsjye",
+                        "sl",
+                        "hdse",
+                        "zxhdbz",
+                        "hdzxqq",
+                        "hdzxqz",
+                        "wdqzdbz",
+                        "zsxmDm",
+                        "zspmDm"
+                      ]
+                    },
+                    "title": "定期定额核定征收信息"
+                  },
+                  "hdzxqz": {
+                    "type": "string",
+                    "title": "核定执行期止"
+                  },
+                  "hdzxqq": {
+                    "type": "string",
+                    "title": "核定执行期起"
+                  }
+                },
+                "x-apifox-refs": {},
+                "x-apifox-orders": [
+                  "hdzxqq",
+                  "hdzxqz",
+                  "dqdehdxx"
+                ],
+                "description": "对应税局路径：账户中心-身份切换-跨区域办税-税源登记选择"
+              },
+              "zfzjg": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "zfjglx": {
+                      "type": "string",
+                      "title": "总分机构类型",
+                      "description": "总机构/分支机构/分总机构/非总分机构"
+                    },
+                    "yxqq": {
+                      "type": "string",
+                      "title": " 有效期起 ",
+                      "description": " 格式：YYYY-MM-DD"
+                    },
+                    "yxqz": {
+                      "type": "string",
+                      "title": "有效期止",
+                      "description": "  格式：YYYY-MM-DD，9999-12-31代表长期"
+                    },
+                    "kdqzylx": {
+                      "type": "string",
+                      "title": " 跨地区转移类型 ",
+                      "description": "枚举值：跨地市/非跨地市"
+                    },
+                    "fzjgdc": {
+                      "type": "string",
+                      "title": "分支机构层级",
+                      "description": " 枚举值：1级/2级/3级等"
+                    },
+                    "fzjgjxfp": {
+                      "type": "string",
+                      "title": "分支机构是否继续分配",
+                      "description": "是/否"
+                    },
+                    "jdjnbz": {
+                      "type": "string",
+                      "title": " 就地缴纳标识",
+                      "description": "是/否"
+                    },
+                    "bgrq": {
+                      "type": "string",
+                      "title": "报告日期  ",
+                      "description": "  格式：YYYY-MM-DD"
+                    },
+                    "blzt": {
+                      "type": "string",
+                      "description": "枚举值：办结/未办结等",
+                      "title": " 办理状态"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "zfjglx",
+                    "yxqq",
+                    "yxqz",
+                    "kdqzylx",
+                    "fzjgdc",
+                    "fzjgjxfp",
+                    "jdjnbz",
+                    "bgrq",
+                    "blzt"
+                  ],
+                  "required": [
+                    "zfjglx",
+                    "yxqq",
+                    "yxqz",
+                    "kdqzylx",
+                    "fzjgdc",
+                    "fzjgjxfp",
+                    "jdjnbz",
+                    "bgrq",
+                    "blzt"
+                  ]
+                },
+                "title": "企业所得税汇总纳税报告信息",
+                "description": "可以用来判断分支结构企业是否需要申报企业所得税。\n二级分支机构 + 可继续分配 + 就地缴纳 = 需申报\n其余情况都不需要申报"
+              },
+              "cwbbba": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "yxqq": {
+                      "type": "string",
+                      "title": "有效期起"
+                    },
+                    "yxqz": {
+                      "type": "string",
+                      "title": "有效期止"
+                    },
+                    "reportingsubcategorycode": {
+                      "type": "string",
+                      "title": "资料报送子类代码 "
+                    },
+                    "reportingSubCategoryCodeName": {
+                      "type": "string",
+                      "title": "资料报送子类名称"
+                    },
+                    "reportingcategorycode": {
+                      "type": "string",
+                      "title": "资料报送小类代码"
+                    },
+                    "reportingCategoryCodeName": {
+                      "type": "string",
+                      "title": "资料报送小类名称"
+                    },
+                    "nsqx": {
+                      "type": "string",
+                      "title": "纳税期限",
+                      "description": "纳税期限 06=月报 08=季报 10=年"
+                    },
+                    "zcfzb": {
+                      "type": "string",
+                      "title": "资产负债表",
+                      "description": " Y=备案  N未备案"
+                    },
+                    "lrb": {
+                      "type": "string",
+                      "title": "利润表",
+                      "description": " Y=备案  N未备案"
+                    },
+                    "xjllb": {
+                      "type": "string",
+                      "title": "现金流量表",
+                      "description": " Y=备案  N未备案"
+                    },
+                    "syzqybdb": {
+                      "type": "string",
+                      "title": "所有者权益变动表",
+                      "description": " Y=备案  N未备案"
+                    },
+                    "fz": {
+                      "type": "string",
+                      "title": "附注",
+                      "description": " Y=备案  N未备案"
+                    },
+                    "accountingStandardName": {
+                      "type": "string",
+                      "title": "企业会计制度名称"
+                    },
+                    "accountingstandardCode": {
+                      "type": "string",
+                      "title": "企业会计制度编码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "yxqq",
+                    "yxqz",
+                    "accountingstandardCode",
+                    "accountingStandardName",
+                    "reportingsubcategorycode",
+                    "reportingSubCategoryCodeName",
+                    "reportingcategorycode",
+                    "reportingCategoryCodeName",
+                    "nsqx",
+                    "zcfzb",
+                    "lrb",
+                    "xjllb",
+                    "syzqybdb",
+                    "fz"
+                  ],
+                  "required": [
+                    "yxqq",
+                    "yxqz",
+                    "reportingsubcategorycode",
+                    "reportingSubCategoryCodeName",
+                    "reportingcategorycode",
+                    "reportingCategoryCodeName",
+                    "nsqx",
+                    "zcfzb",
+                    "lrb",
+                    "xjllb",
+                    "syzqybdb",
+                    "fz",
+                    "accountingStandardName",
+                    "accountingstandardCode"
+                  ]
+                },
+                "title": "财报全部备案信息",
+                "description": "对应税局路径：财务会计制度及核算软件备案报告。包含历史备案信息"
+              },
+              "sdshd": {
+                "$ref": "#/definitions/294636872"
               }
-            }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "openSjState",
+              "vatTaxpayer",
+              "name",
+              "sfzxxDtos",
+              "nsxxDto",
+              "zgrdDtos",
+              "financeReportSettingDto",
+              "zgswjg",
+              "jjdjxx",
+              "taxPaymentMessageDtos",
+              "kqyxxDtos",
+              "tzfxx",
+              "hdzsxx",
+              "sdshd",
+              "zfzjg",
+              "cwbbba"
+            ],
+            "required": [
+              "taxPaymentMessageDtos",
+              "tzfxx",
+              "hdzsxx",
+              "sdshd"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
           }
         },
-        "x-apifox-orders": [
-          "01GW1PNKPA7HHF8SR5ERZK9C2T"
-        ],
-        "properties": {}
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
       },
       "itemSchema": {},
       "description": "",
@@ -144,7 +1410,7 @@
     {
       "name": "成功示例",
       "responseId": 42947915,
-      "data": "{\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"3292926052d94235b065f87b73061338\",\n    \"data\": {\n        \"openSjState\": true,\n        \"vatTaxpayer\": 2000010002,\n        \"name\": \"**********有限公司\",\n        \"sfzxxDtos\": [\n            {\n                \"yxqq\": \"2024-01-01\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10101\",\n                \"sbxmName\": \"增值税\",\n                \"sbpm\": \"101014001\",\n                \"sbpmName\": \"商业(17%、16%、13%)\",\n                \"nsqxdm\": \"08\",\n                \"nsqxdmName\": \"季\",\n                \"slhdwse\": \"0.13\",\n                \"zsfs\": \"自行申报\",\n                \"zszm\": \"征收子目\",\n                \"zszmdm\": \"征收子目代码\"\n            }\n        ],\n        \"nsxxDto\": {\n            \"nsrsbh\": \"91***************X8\",\n            \"nsrmc\": \"*****限公司\",\n            \"djzclx\": \"173\",\n            \"djzclxName\": \"私营有限责任公司\",\n            \"zfjgBz\": \"3\",\n            \"hydl\": \"职业中介服务\",\n            \"zhymxhy\": \"职***服务\",\n            \"xydj\": \"B\",\n            \"hsfs\": \"0\",\n            \"kyrq\": \"2024-01-19\",\n            \"qysdszsfs\": \"1\",\n            \"sfqhjt\": \"1\",\n            \"zcdz\": \"云南省*****************栋407号\",\n            \"zjgmc\": \"总机构名称\",\n            \"fdfzr\": \"*****\",\n            \"fdfzrTel\": \"13**********\",\n            \"fdfzrSfzjlx\": \"201\",\n            \"fdfzrSfzjhm\": \"5202***************\",\n            \"cwfzr\": \"***\",\n            \"cwfzrTel\": \"1918*********\",\n            \"cwfzrSfzjlx\": \"201\",\n            \"cwfzrSfzjhm\": \"5303***************\",\n            \"bsy\": \"***\",\n            \"bsyTel\": \"136**********\",\n            \"bsySfzjlx\": \"201\",\n            \"bsySfzjhm\": \"520*************1X\"\n        },\n        \"zgrdDtos\": [\n            {\n                \"yxqksrq\": \"2021-04-01 00:00:00\",\n                \"yxqjsrq\": \"9999-12-31 00:00:00\",\n                \"zgrdlx\": \"201\",\n                \"zgrdlxName\": \"增值税一般纳税人\",\n                \"sjzzrq\": \"2024-03-19 00:00:00\"\n            }\n        ],\n        \"financeReportSettingDto\": {\n            \"yxqz\": \"9999-12-31\",\n            \"yxqq\": \"2023-09-05\",\n            \"reportingsubcategorycode\": \"ZL100100101\",\n            \"reportingSubCategoryCodeName\": \"适用未执行新金融准则、新收入准则和新租赁准则的一般企业\",\n            \"reportingcategorycode\": \"ZL1001001\",\n            \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则一般企业）\",\n            \"reportingperiod\": 2000270004,\n            \"reportingPeriodName\": \"月报\",\n            \"accountingstandardsid\": 102,\n            \"accountingStandardsIdName\": \"小企业会计准则\",\n            \"bdbaxx\": [\n                {\n                    \"zcfzb\": \"Y\",\n                    \"fz\": \"N\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"08\"\n                },\n                {\n                    \"zcfzb\": \"Y\",\n                    \"fz\": \"Y\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"10\"\n                }\n            ]\n        },\n        \"zgswjg\": [\n            {\n                \"zgswjgmc\": \"国家税务总局曲靖市麒麟区税务局寥廓税务分局\",\n                \"id\": 525740106790144\n            }\n        ],\n        \"jjdjxx\": {\n            \"jjdj_HY\": \"加计抵减_行业\",\n            \"jjdj_BAND\": \"加计抵减_备案年度\",\n            \"jjdj_SYJJDJL\": \"加计抵减_适用加计抵减率\"\n        },\n        \"taxPaymentMessageDtos\": [\n            {\n                \"bankNumber\": \"3******************67\",\n                \"bankName\": \"中****银行\",\n                \"tripleAgreement\": \"13******************0\",\n                \"accountNature\": \"基本存款账户\",\n                \"agreementStatus\": \"验证通过\",\n                \"signDate\": \"2021-04-06\"\n            }\n        ],\n        \"tzfxx\": {\n            \"bz\": \"人民币\",\n            \"bzje\": \"5000000.00\",\n            \"tzfList\": [\n                {\n                    \"tzfjjxz\": \"国有企业\",\n                    \"tzbl\": \"100\",\n                    \"gj\": \"中国\",\n                    \"dz\": \"大道****号\",\n                    \"zjzl\": \"营业执照\",\n                    \"zjhm\": \"91440300*****23456\",\n                    \"tzfmc\": \"团有限公司\"\n                }\n            ]\n        },\n        \"hdzsxx\": {\n            \"dqdehdxx\": [\n                {\n                    \"xh\": \"1\",\n                    \"hdzxqz\": \"2024-12-31\",\n                    \"ynsjye\": \"1000000.00\",\n                    \"zsxm\": \"增值税\",\n                    \"hdzxqq\": \"2024-01-01\",\n                    \"sl\": \"0.09\",\n                    \"zxhdbz\": \"是\",\n                    \"wdqzdbz\": \"否\",\n                    \"hdse\": \"90000.00\",\n                    \"zspm\": \"不动产销售\"\n                }\n            ],\n            \"hdzxqz\": \"2024-12-31\",\n            \"hdzxqq\": \"2024-01-01\"\n        }\n    }\n}",
+      "data": "{\n    \"reqId\": \"***\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"jjdjxx\": {\n            \"jjdj_HY\": \"\",\n            \"jjdj_BAND\": \"\",\n            \"jjdj_SYJJDJL\": \"\"\n        },\n        \"newEtaxFlag\": 1,\n        \"nsxxDto\": {\n            \"cwfzr\": \"***\",\n            \"pjnd\": \"2025\",\n            \"cwfzrTel\": \"***\",\n            \"qybj\": \"A级纳税人\",\n            \"zcdz\": \"***\",\n            \"djzclx\": \"159\",\n            \"bsy\": \"***\",\n            \"zhymxhy\": \"证券经纪交易服务\",\n            \"sfcktsqy\": \"\",\n            \"zgswjgksfj\": \"西安高新区税务局第三税务所\",\n            \"djzclxName\": \"其他有限责任公司\",\n            \"swdjrq\": \"1997-07-21 00:00:00\",\n            \"jyfw\": \"许可经营项目：证券经纪、证券自营；证券投资咨询；证券资产管理；融资融券；证券投资基金销售（凭许可证在有效期内经营）；证券承销与保荐；代理销售金融产品；与证券交易、证券投资活动有关的财务顾问业务。(依法须经批准的项目，经相关部门批准后方可开展经营活动)\",\n            \"bsySfzjlx\": \"201\",\n            \"bsySfzjhm\": \"***\",\n            \"zzsqylx\": \"劳务型\",\n            \"scjydz\": \"***\",\n            \"djxh\": \"***\",\n            \"cyrs\": \"110\",\n            \"ssgly\": \"\",\n            \"zzjgdm\": \"***\",\n            \"zfjgBz\": \"1\",\n            \"kyrq\": \"2002-09-17\",\n            \"qysdszsfs\": \"\",\n            \"zjgmc\": \"\",\n            \"zcdyzbm\": \"710001\",\n            \"nsrmc\": \"***\",\n            \"hydl\": \"证券经纪交易服务\",\n            \"sfdqde\": \"否\",\n            \"hsfs\": \"独立核算自负盈亏\",\n            \"fdfzrSfzjhm\": \"***\",\n            \"nsrst\": \"正常\",\n            \"fdfzr\": \"***\",\n            \"kqyccsdjztbz\": \"否\",\n            \"fdfzrSfzjlx\": \"201\",\n            \"nsrsbh\": \"***\",\n            \"bsyTel\": \"***\",\n            \"cwfzrSfzjhm\": \"***\",\n            \"qybz\": \"居民企业\",\n            \"zcdlxdh\": \"***\",\n            \"ckzh\": \"***\",\n            \"scjyyzbm\": \"710001\",\n            \"fdfzrTel\": \"***\",\n            \"sfqhjt\": \"否\",\n            \"cwfzrSfzjlx\": \"201\",\n            \"xydj\": \"A\"\n        },\n        \"hdzsxx\": {},\n        \"zgrdDtos\": [\n            {\n                \"sjzzrq\": \"9999-12-31 00:00:00\",\n                \"zgrdlx\": \"201\",\n                \"yxqksrq\": \"2016-05-01 00:00:00\",\n                \"yxqjsrq\": \"9999-12-31 00:00:00\",\n                \"zgrdlxName\": \"增值税一般纳税人\"\n            },\n            {\n                \"sjzzrq\": \"9999-12-31 00:00:00\",\n                \"zgrdlx\": \"543\",\n                \"yxqksrq\": \"2016-05-01 00:00:00\",\n                \"yxqjsrq\": \"9999-12-31 00:00:00\",\n                \"zgrdlxName\": \"增值税汇总纳税企业\"\n            }\n        ],\n        \"openSjState\": true,\n        \"zfzjg\": [\n            {\n                \"yxqz\": \"2025-03-31\",\n                \"kdqzylx\": \"全额上缴中央国库的非跨地区税收转移企业\",\n                \"jdjnbz\": \"是\",\n                \"fzjgjxfp\": \"\",\n                \"yxqq\": \"2013-01-01\",\n                \"fzjgdc\": \"2级\",\n                \"bgrq\": \"2016-07-07\",\n                \"blzt\": \"办结\",\n                \"zfjglx\": \"总机构\"\n            },\n            {\n                \"yxqz\": \"2025-09-30\",\n                \"kdqzylx\": \"全额上缴中央国库的非跨地区税收转移企业\",\n                \"jdjnbz\": \"是\",\n                \"fzjgjxfp\": \"\",\n                \"yxqq\": \"2025-04-01\",\n                \"fzjgdc\": \"\",\n                \"bgrq\": \"2025-10-15\",\n                \"blzt\": \"办结\",\n                \"zfjglx\": \"总机构\"\n            },\n            {\n                \"yxqz\": \"2025-12-31\",\n                \"kdqzylx\": \"全额上缴中央国库的非跨地区税收转移企业\",\n                \"jdjnbz\": \"是\",\n                \"fzjgjxfp\": \"\",\n                \"yxqq\": \"2025-10-01\",\n                \"fzjgdc\": \"\",\n                \"bgrq\": \"2025-12-24\",\n                \"blzt\": \"办结\",\n                \"zfjglx\": \"总机构\"\n            },\n            {\n                \"yxqz\": \"9999-12-31\",\n                \"kdqzylx\": \"全额上缴中央国库的非跨地区税收转移企业\",\n                \"jdjnbz\": \"是\",\n                \"fzjgjxfp\": \"\",\n                \"yxqq\": \"2026-01-01\",\n                \"fzjgdc\": \"\",\n                \"bgrq\": \"2025-12-31\",\n                \"blzt\": \"办结\",\n                \"zfjglx\": \"总机构\"\n            }\n        ],\n        \"vatTaxpayer\": 2000010001,\n        \"groupKey\": \"***\",\n        \"sfzxxDtos\": [\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2026-01-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2099-12-31\",\n                \"sbxm\": \"10101\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0.03\",\n                \"slhdwse\": \"0.03\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101014006\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"商业(3%)\",\n                \"sbxmName\": \"增值税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2025-04-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10104\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.25\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101040001\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"应纳税所得额\",\n                \"sbxmName\": \"企业所得税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2024-03-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2099-12-31\",\n                \"sbxm\": \"10101\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0.03\",\n                \"slhdwse\": \"0.13\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101014001\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"商业(17%、16%、13%)\",\n                \"sbxmName\": \"增值税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"次年12月31日\",\n                \"nsqxdmName\": \"年\",\n                \"yxqq\": \"2023-01-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"10\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"30218\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"1\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"302180100\",\n                \"jkqx\": \"申报日后15天\",\n                \"sbpmName\": \"残疾人就业保障金\",\n                \"sbxmName\": \"残疾人就业保障金\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"年\",\n                \"yxqq\": \"2023-01-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"10\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.00025\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110502\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"营业账簿\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"次\",\n                \"yxqq\": \"2022-11-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"11 \",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10101\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0.03\",\n                \"slhdwse\": \"0.06\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101016303\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"信息系统服务\",\n                \"sbxmName\": \"增值税\",\n                \"zsfs\": \"代扣代缴\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"次\",\n                \"yxqq\": \"2022-10-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"11 \",\n                \"yxqz\": \"2099-12-31\",\n                \"sbxm\": \"10104\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.25\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101040001\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"应纳税所得额\",\n                \"sbxmName\": \"企业所得税\",\n                \"zsfs\": \"代扣代缴\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2022-07-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.001\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110114\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"租赁合同\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2022-07-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.0003\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110113\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"建设工程合同\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2022-07-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.0003\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110112\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"承揽合同\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2022-07-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.0003\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110111\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"买卖合同\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2022-07-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.0003\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110110\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"技术合同\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"季\",\n                \"yxqq\": \"2022-07-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"08\",\n                \"yxqz\": \"9999-12-31\",\n                \"sbxm\": \"10111\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.001\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101110109\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"财产保险合同\",\n                \"sbxmName\": \"印花税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2021-06-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"30216\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.02\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"增值税附税\",\n                \"sbpm\": \"302160100\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"增值税地方教育附加\",\n                \"sbxmName\": \"地方教育附加\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2021-06-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"30203\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.03\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"增值税附税\",\n                \"sbpm\": \"302030100\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"增值税教育费附加\",\n                \"sbxmName\": \"教育费附加\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2021-06-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"10109\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.07\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"增值税附税\",\n                \"sbpm\": \"101090101\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"市区（增值税附征）\",\n                \"sbxmName\": \"城市维护建设税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2021-06-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"10101\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0.03\",\n                \"slhdwse\": \"0.06\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101017205\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"金融商品转让\",\n                \"sbxmName\": \"增值税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2021-06-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"10101\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0.05\",\n                \"slhdwse\": \"0.09\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101016606\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"不动产经营租赁（11%、10%、9%、5%）\",\n                \"sbxmName\": \"增值税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2021-06-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"10101\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0.03\",\n                \"slhdwse\": \"0.09\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101016603\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"不动产融资租赁（11%、10%、9%、3%）\",\n                \"sbxmName\": \"增值税\",\n                \"zsfs\": \"自行申报\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"次\",\n                \"yxqq\": \"2019-02-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"11 \",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"10106\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.2\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101060901\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"限售股转让所得\",\n                \"sbxmName\": \"个人所得税\",\n                \"zsfs\": \"代扣代缴\"\n            },\n            {\n                \"sbqx\": \"期满之日起15日内\",\n                \"nsqxdmName\": \"月\",\n                \"yxqq\": \"2019-02-01\",\n                \"zszmdm\": \"\",\n                \"nsqxdm\": \"06\",\n                \"yxqz\": \"2999-12-31\",\n                \"sbxm\": \"10106\",\n                \"hy\": \"证券经纪交易服务\",\n                \"zsl\": \"0\",\n                \"slhdwse\": \"0.1\",\n                \"zszm\": \"\",\n                \"zfsbz\": \"主税\",\n                \"sbpm\": \"101060100\",\n                \"jkqx\": \"税款所属时期后15天\",\n                \"sbpmName\": \"工资薪金所得\",\n                \"sbxmName\": \"个人所得税\",\n                \"zsfs\": \"代扣代缴\"\n            }\n        ],\n        \"kqyxxDtos\": [],\n        \"taxPaymentMessageDtos\": [\n            {\n                \"bankNumber\": \"***\",\n                \"yhyywdMc\": \"***\",\n                \"khyhhh\": \"***\",\n                \"agreementStatus\": \"验证通过\",\n                \"skssswjgMc\": \"国家税务总局西安市新城区税务局\",\n                \"bankName\": \"中国工商银行\",\n                \"signDate\": \"\",\n                \"qsyhhh\": \"***\",\n                \"accountNature\": \"\",\n                \"pkbzmc\": \"所有非批扣\",\n                \"tripleAgreement\": \"***\",\n                \"jkzhmc\": \"***\",\n                \"yhhbMc\": \"中国工商银行\"\n            }\n        ],\n        \"name\": \"***\",\n        \"cwbbba\": [\n            {\n                \"zcfzb\": \"Y\",\n                \"yxqq\": \"2025-07-01\",\n                \"reportingSubCategoryCodeName\": \"\",\n                \"reportingcategorycode\": \"ZL1001050\",\n                \"yxqz\": \"9999-12-31\",\n                \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则金融企业）\",\n                \"fz\": \"Y\",\n                \"reportingsubcategorycode\": \"\",\n                \"xjllb\": \"Y\",\n                \"lrb\": \"Y\",\n                \"syzqybdb\": \"Y\",\n                \"nsqx\": \"08\"\n            },\n            {\n                \"zcfzb\": \"Y\",\n                \"yxqq\": \"2025-07-01\",\n                \"reportingSubCategoryCodeName\": \"\",\n                \"reportingcategorycode\": \"ZL1001050\",\n                \"yxqz\": \"9999-12-31\",\n                \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则金融企业）\",\n                \"fz\": \"Y\",\n                \"reportingsubcategorycode\": \"\",\n                \"xjllb\": \"Y\",\n                \"lrb\": \"Y\",\n                \"syzqybdb\": \"Y\",\n                \"nsqx\": \"10\"\n            },\n            {\n                \"zcfzb\": \"N\",\n                \"yxqq\": \"2016-04-20\",\n                \"reportingSubCategoryCodeName\": \"\",\n                \"reportingcategorycode\": \"ZL1001037\",\n                \"yxqz\": \"2025-06-30\",\n                \"reportingCategoryCodeName\": \"\",\n                \"fz\": \"N\",\n                \"reportingsubcategorycode\": \"\",\n                \"xjllb\": \"N\",\n                \"lrb\": \"Y\",\n                \"syzqybdb\": \"N\",\n                \"nsqx\": \"08\"\n            },\n            {\n                \"zcfzb\": \"Y\",\n                \"yxqq\": \"2016-04-20\",\n                \"reportingSubCategoryCodeName\": \"\",\n                \"reportingcategorycode\": \"ZL1001037\",\n                \"yxqz\": \"2025-06-30\",\n                \"reportingCategoryCodeName\": \"\",\n                \"fz\": \"Y\",\n                \"reportingsubcategorycode\": \"\",\n                \"xjllb\": \"Y\",\n                \"lrb\": \"Y\",\n                \"syzqybdb\": \"Y\",\n                \"nsqx\": \"10\"\n            }\n        ],\n        \"tzfxx\": {\n            \"bz\": \"人民币元\",\n            \"bzje\": 0.0,\n            \"tzfList\": [\n                {\n                    \"tzfjjxz\": \"国有企业\",\n                    \"gj\": \"中华人民共和国\",\n                    \"tzbl\": \"61.9500%\",\n                    \"dz\": \"***\",\n                    \"zjzl\": \"营业执照\",\n                    \"zjhm\": \"***\",\n                    \"tzfmc\": \"***\"\n                },\n                {\n                    \"tzfjjxz\": \"国有企业\",\n                    \"gj\": \"中华人民共和国\",\n                    \"tzbl\": \"30.2900%\",\n                    \"dz\": \"***\",\n                    \"zjzl\": \"营业执照\",\n                    \"zjhm\": \"***\",\n                    \"tzfmc\": \"***\"\n                },\n                {\n                    \"tzfjjxz\": \"其他有限责任公司\",\n                    \"gj\": \"中华人民共和国\",\n                    \"tzbl\": \"7.7600%\",\n                    \"dz\": \"***\",\n                    \"zjzl\": \"营业执照\",\n                    \"zjhm\": \"***\",\n                    \"tzfmc\": \"***\"\n                }\n            ]\n        },\n        \"financeReportSettingDto\": {\n            \"yxqz\": \"9999-12-31\",\n            \"accountingStandardsIdName\": \"企业会计准则\",\n            \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则一般企业）\",\n            \"reportingSubCategoryCodeName\": \"\",\n            \"yxqq\": \"2025-07-01\",\n            \"reportingsubcategorycode\": \"\",\n            \"reportingcategorycode\": \"ZL1001001\",\n            \"reportingperiod\": 2000270003,\n            \"reportingPeriodName\": \"季报\",\n            \"accountingstandardsid\": 101,\n            \"bdbaxx\": [\n                {\n                    \"zcfzb\": \"Y\",\n                    \"yxqq\": \"2025-07-01\",\n                    \"reportingSubCategoryCodeName\": \"\",\n                    \"reportingcategorycode\": \"ZL1001050\",\n                    \"yxqz\": \"9999-12-31\",\n                    \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则金融企业）\",\n                    \"fz\": \"Y\",\n                    \"reportingsubcategorycode\": \"\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"08\"\n                },\n                {\n                    \"zcfzb\": \"Y\",\n                    \"yxqq\": \"2025-07-01\",\n                    \"reportingSubCategoryCodeName\": \"\",\n                    \"reportingcategorycode\": \"ZL1001050\",\n                    \"yxqz\": \"9999-12-31\",\n                    \"reportingCategoryCodeName\": \"财务报表报送与信息采集（企业会计准则金融企业）\",\n                    \"fz\": \"Y\",\n                    \"reportingsubcategorycode\": \"\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"10\"\n                },\n                {\n                    \"zcfzb\": \"N\",\n                    \"yxqq\": \"2016-04-20\",\n                    \"reportingSubCategoryCodeName\": \"\",\n                    \"reportingcategorycode\": \"ZL1001037\",\n                    \"yxqz\": \"2025-06-30\",\n                    \"reportingCategoryCodeName\": \"\",\n                    \"fz\": \"N\",\n                    \"reportingsubcategorycode\": \"\",\n                    \"xjllb\": \"N\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"N\",\n                    \"nsqx\": \"08\"\n                },\n                {\n                    \"zcfzb\": \"Y\",\n                    \"yxqq\": \"2016-04-20\",\n                    \"reportingSubCategoryCodeName\": \"\",\n                    \"reportingcategorycode\": \"ZL1001037\",\n                    \"yxqz\": \"2025-06-30\",\n                    \"reportingCategoryCodeName\": \"\",\n                    \"fz\": \"Y\",\n                    \"reportingsubcategorycode\": \"\",\n                    \"xjllb\": \"Y\",\n                    \"lrb\": \"Y\",\n                    \"syzqybdb\": \"Y\",\n                    \"nsqx\": \"10\"\n                }\n            ]\n        },\n        \"zgswjg\": [\n            {\n                \"zgswjgmc\": \"西安高新区税务局\",\n                \"id\": 16101980000\n            }\n        ]\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -172,11 +1438,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-29T15:33:02.000Z",
-  "updatedAt": "2026-06-30T06:07:03.000Z",
+  "updatedAt": "2026-09-11T03:46:55.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

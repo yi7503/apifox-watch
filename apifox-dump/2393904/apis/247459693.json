@@ -1,6 +1,6 @@
 {
   "id": 247459693,
-  "name": "账号信息上传并校验（申报密码校验）",
+  "name": "申报密码创建",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口用于上传并校验密码是否正确(同步接口)\n1. 如能保证密码正确，可以不进行校验；\n2. 校验返回密码正确后有12小时缓存，缓存时间内只返回正确，到期后重新登录检查；\n\n「对照自然人税务局扣缴客户端登录页面」\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/575277/image-preview)\n\n密码加密参见：[加密说明](doc-3774763)\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口用于创建密码并校验密码是否正确(同步接口)\n1. 如能保证密码正确，可以不进行校验；\n2. 校验返回密码正确后有12小时缓存，缓存时间内只返回正确，到期后重新登录检查；\n3. 如果密码登记错误，可以再次请求本接口进行修改。\n\n「对照自然人税务局扣缴客户端登录页面」\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/575277/image-preview)\n\n密码加密参见：[加密说明](doc-3774763)\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -299,11 +299,11 @@
     "enable": false
   },
   "createdAt": "2024-12-23T09:36:40.000Z",
-  "updatedAt": "2026-06-05T09:21:53.000Z",
+  "updatedAt": "2026-08-15T02:12:20.000Z",
   "creatorId": 1452584,
-  "editorId": 2795319,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 2795319,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

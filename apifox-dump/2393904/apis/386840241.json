@@ -19,17 +19,34 @@
     "parameters": [],
     "jsonSchema": {
       "type": "object",
-      "properties": {},
+      "properties": {
+        "pageSize": {
+          "type": "string",
+          "title": "每页显示条数",
+          "description": "最大20\n"
+        },
+        "pageIndex": {
+          "type": "string",
+          "title": "页码"
+        }
+      },
       "x-apifox-orders": [
-        "01KBP54Q4QRBQCJK00HY318R27"
+        "01KBP54Q4QRBQCJK00HY318R27",
+        "pageSize",
+        "pageIndex"
       ],
-      "required": [],
       "x-apifox-refs": {
         "01KBP54Q4QRBQCJK00HY318R27": {
           "$ref": "#/definitions/226029776"
         }
-      }
+      },
+      "required": [
+        "pageSize",
+        "pageIndex"
+      ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "mediaType": "application/json",
@@ -128,7 +145,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 50629818,
+  "folderId": 92200542,
   "ordering": 306,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -139,11 +156,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-05T03:27:00.000Z",
-  "updatedAt": "2025-12-05T03:30:11.000Z",
+  "updatedAt": "2026-08-27T03:38:26.000Z",
   "creatorId": 887900,
-  "editorId": 887900,
+  "editorId": 1391922,
   "creatorUserId": 887900,
-  "editorUserId": 887900,
+  "editorUserId": 1391922,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

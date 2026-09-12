@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口用于查询企业电子发票服务平台（发票云）最新统计确认信息采集的结果。\n\n## 错误码\n| **错误代码**              | **错误消息**                                                 | **解决方案**                                                 |\n| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                    | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                    | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq          | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification | 传入参数不能为空！<br/>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>传入的参数-任务id-taskId不能为空 | 请检查参数是否不为空<br/>请检查参数nsrsbh是否不为空<br/>请检查参数taskId是否不为空 |\n| FprzTaxLoginFailed        | 登录相关错误导致认证任务失败                                 | 根据对应的错误信息重新登录或确认登录信息是否正确             |\n| FprzSqTaskFailed          | 申请任务发起失败！                                           | 请重新发起任务                                               |\n| FprzTaxFailed             | 税局操作失败！                                               | 请联系管理员                                                 |\n| FprzServerError           | 最新统计确认信息采集结果查询操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |",
+  "description": "## 接口描述\n该接口用于查询企业电子发票服务平台（发票云）最新统计确认信息采集的结果。\n\n## 错误码\n| **错误代码**              | **错误消息**                                                 | **解决方案**                                                 |\n| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                    | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                    | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzNotSupportDq          | 暂不支持该地区进行发票云认证！                               |                                                              |\n| FprzParameterVerification | 传入参数不能为空！<br/>传入的参数-企业纳税人识别号nsrsbh不能为空！<br/>传入的参数-任务id-taskId不能为空 | 请检查参数是否不为空<br/>请检查参数nsrsbh是否不为空<br/>请检查参数taskId是否不为空 |\n| FprzTaxLoginFailed        | 登录相关错误导致认证任务失败                                 | 根据对应的错误信息重新登录或确认登录信息是否正确             |\n| FprzSqTaskFailed          | 申请任务发起失败！                                           | 请重新发起任务                                               |\n| FprzTaxFailed             | 税局操作失败！                                               | 请联系管理员                                                 |\n| FprzServerError           | 最新统计确认信息采集结果查询操作发生异常，请联系管理员                 | 认证服务出错，请联系管理员                                   |\n| FprzTaxASync| 本属期您已勾选的抵扣凭证数量较大，税局已自动转后台处理，请求10分钟后查看统计结果 | 稍等片刻，再做查询 |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -22,6 +22,7 @@
     "jsonSchema": {
       "$ref": "#/definitions/56280364"
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -219,15 +220,6 @@
   ],
   "responseExamples": [
     {
-      "name": "未统计",
-      "responseId": 661501337,
-      "data": "{\n    \"reqId\": \"8707da91db8d41e8b3b2d18799f3c9dd\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"customReqId\": \"100019995bf123a1bd814e3fb353ba9d51332372\",\n        \"fpxx\": [],\n        \"jglx\": null,\n        \"jgzt\": \"0\",\n        \"jxdkhz\": [],\n        \"message\": null,\n        \"ncptjxx\": [],\n        \"nsrsbh\": \"91***************4Y\",\n        \"skssq\": \"202504\",\n        \"tjsj\": \"\",\n        \"tjxx\": [],\n        \"zt\": \"3\"\n    }\n}",
-      "description": "",
-      "oasKey": "",
-      "oasExtensions": "",
-      "id": 585908657
-    },
-    {
       "name": "发票统计成功示例",
       "responseId": 329472989,
       "data": "{\n    \"reqId\": \"fb024f14f6c1446cbbbec38ec112831f\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"id\": 452313361840256,\n        \"ywlx\": \"1\",\n        \"nsrsbh\": \"91**************2G\",\n        \"skssq\": \"202302\",\n        \"zt\": \"3\",\n        \"cljg\": \"1\",\n        \"jglx\": null,\n        \"jgzt\": \"1\",\n        \"time\": 1677570739000,\n        \"tjsj\": null,\n        \"tjxx\": [\n            {\n                \"bdkfpfs\": 0,\n                \"bdkzje\": 0,\n                \"bdkzyxse\": 0,\n                \"ckznxsehj\": null,\n                \"ckznxzmfs\": null,\n                \"dkfpfs\": 1,\n                \"dkzje\": 97699.12,\n                \"dkzyxse\": 12700.88,\n                \"fplx\": \"99\",\n                \"qtfpfs\": 1,\n                \"qtyxdksehj\": 12700.88\n            }\n        ],\n        \"fpxx\": [\n            {\n                \"fpdm\": \"45******30\",\n                \"fphm\": \"10****83\",\n                \"fpje\": \"97699.12\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"jkshm\": null,\n                \"kprq\": \"2023-01-31 00:00:00\",\n                \"qdfphm\": null,\n                \"se\": \"12700.88\",\n                \"xfmc\": \"贵港********公司\",\n                \"xfnsrsbh\": \"91************7W\",\n                \"yxse\": \"12700.88\",\n                \"znxbh\": null\n            }\n        ],\n        \"cyfpxx\": [\n            {\n                \"fpdm\": \"45******30\",\n                \"fphm\": \"10****83\",\n                \"fpje\": \"97699.12\",\n                \"fplx\": \"01\",\n                \"fpzt\": \"0\",\n                \"glzt\": \"0\",\n                \"gxlx\": \"1\",\n                \"jkshm\": null,\n                \"kprq\": \"2023-01-31 00:00:00\",\n                \"qdfphm\": null,\n                \"se\": \"12700.88\",\n                \"xfmc\": \"贵港******公司\",\n                \"xfnsrsbh\": \"91*************7W\",\n                \"yxse\": \"12700.88\",\n                \"znxbh\": null\n            }\n        ],\n        \"jxdkhz\": [\n            {\n                \"fplx\": \"15\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            },\n            {\n                \"fplx\": \"16\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            },\n            {\n                \"fplx\": \"17\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            },\n            {\n                \"fplx\": \"18\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            },\n            {\n                \"fplx\": \"19\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            },\n            {\n                \"fplx\": \"20\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            },\n            {\n                \"fplx\": \"yc15\",\n                \"hjfs\": 0,\n                \"hjje\": 0,\n                \"sehj\": 0\n            }\n        ],\n        \"ncptjxx\": [\n            {\n                \"fplx\": \"9\",\n                \"fsfpfs\": 0,\n                \"fsyxdksehj\": 0,\n                \"zsfpfs\": 0,\n                \"zsyxdksehj\": 0\n            },\n            {\n                \"fplx\": \"10\",\n                \"fsfpfs\": 0,\n                \"fsyxdksehj\": 0,\n                \"zsfpfs\": 0,\n                \"zsyxdksehj\": 0\n            },\n            {\n                \"fplx\": \"11\",\n                \"fsfpfs\": 0,\n                \"fsyxdksehj\": 0,\n                \"zsfpfs\": 0,\n                \"zsyxdksehj\": 0\n            },\n            {\n                \"fplx\": \"12\",\n                \"fsfpfs\": 0,\n                \"fsyxdksehj\": 0,\n                \"zsfpfs\": 0,\n                \"zsyxdksehj\": 0\n            },\n            {\n                \"fplx\": \"13\",\n                \"fsfpfs\": 0,\n                \"fsyxdksehj\": 0,\n                \"zsfpfs\": 0,\n                \"zsyxdksehj\": 0\n            },\n            {\n                \"fplx\": \"14\",\n                \"fsfpfs\": 0,\n                \"fsyxdksehj\": 0,\n                \"zsfpfs\": 0,\n                \"zsyxdksehj\": 0\n            }\n        ],\n        \"tszt\": null,\n        \"tsqrjgzt\": null,\n        \"tstjxx\": null,\n        \"tsfpxx\": null\n    }\n}",
@@ -298,6 +290,15 @@
       "oasKey": "",
       "oasExtensions": "",
       "id": 30014787
+    },
+    {
+      "name": "未统计",
+      "responseId": 661501337,
+      "data": "{\n    \"reqId\": \"8707da91db8d41e8b3b2d18799f3c9dd\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"code\": null,\n        \"customReqId\": \"100019995bf123a1bd814e3fb353ba9d51332372\",\n        \"fpxx\": [],\n        \"jglx\": null,\n        \"jgzt\": \"0\",\n        \"jxdkhz\": [],\n        \"message\": null,\n        \"ncptjxx\": [],\n        \"nsrsbh\": \"91***************4Y\",\n        \"skssq\": \"202504\",\n        \"tjsj\": \"\",\n        \"tjxx\": [],\n        \"zt\": \"3\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 585908657
     }
   ],
   "codeSamples": [],
@@ -312,20 +313,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-10-07T05:46:37.000Z",
-  "updatedAt": "2025-06-10T09:58:23.000Z",
+  "updatedAt": "2026-07-06T02:06:37.000Z",
   "creatorId": 1426961,
-  "editorId": 2706439,
+  "editorId": 1564651,
   "creatorUserId": 1426961,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.661501337",
-    "BLANK.329472989",
-    "BLANK.329472990",
-    "BLANK.329472991"
-  ],
+  "editorUserId": 1564651,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

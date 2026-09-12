@@ -1,0 +1,17 @@
+{
+  "id": 9116046,
+  "name": "2026年6月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 企业数据采集支持申报表数据根据申报日期进行数据采集\n:::\n\n\n## 一、企业数据采集支持申报表数据根据申报日期进行数据采集\n1. 运用场景：存在当月来更正历史往期报表情况，想要着重分析当月申报表情况，会考虑把往期所属期更正的情况也列入本月的范围，则需要根据申报日期来采集数据\n2. 涉及接口：发起企业数据采集接口\n3. 接口变化：新增一个参数，报表采集时间：0=按照所属期采集  1=按照申报日期采集。这个参数非必传，默认采集类型是所属期采集，不传这个字段或者不传值=所属期采集\n\n![企业微信截图_17830455285330(1).png](https://api.apifox.com/api/v1/projects/2393904/resources/672495/image-preview)\n5. 在采集的时候财务报表、企税报表下载需要根据请求的参数判断是按照所属期范围去采集还是直接按照申报日期进行采集。他业务数据采集仍然默认是所属期采集\n税局财务报表采集界面：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/672338/image-preview)\n税局申报表采集界面：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/672339/image-preview)\n",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-07-03T05:17:49.000Z",
+  "updatedAt": "2026-07-03T10:36:58.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -158,7 +158,572 @@
               },
               "detail": {
                 "title": "明细数据",
-                "$ref": "#/definitions/257185444"
+                "type": "object",
+                "x-apifox-refs": {
+                  "01KZR06X66A8DWCJF3ZN5Q6KZZ": {
+                    "$ref": "#/definitions/257185444",
+                    "x-apifox-overrides": {
+                      "sfzrd": {
+                        "type": "object",
+                        "title": "税费种认定节点",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "sfzrdGridlb": {
+                            "type": "array",
+                            "title": "税费种认定列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "zsxm": {
+                                  "type": "string",
+                                  "title": "征收项目"
+                                },
+                                "zspm": {
+                                  "type": "string",
+                                  "title": "征收品目"
+                                },
+                                "zszm": {
+                                  "type": "string",
+                                  "title": "征收子目"
+                                },
+                                "nsqx": {
+                                  "type": "string",
+                                  "title": "纳税期限"
+                                },
+                                "sbqx": {
+                                  "type": "string",
+                                  "title": "申报期限"
+                                },
+                                "zsl": {
+                                  "type": "string",
+                                  "title": "征收率"
+                                },
+                                "slhwdse": {
+                                  "type": "string",
+                                  "title": "税率或单位税额"
+                                },
+                                "zfsbz": {
+                                  "type": "string",
+                                  "title": "主附税标志"
+                                },
+                                "zsdlfs": {
+                                  "type": "string",
+                                  "title": "征收代理方式"
+                                },
+                                "hy": {
+                                  "type": "string",
+                                  "title": "行业"
+                                },
+                                "jkqx": {
+                                  "type": "string",
+                                  "title": "缴款期限"
+                                },
+                                "rdyxqq": {
+                                  "type": "string",
+                                  "title": "认定有效期起"
+                                },
+                                "rdyxqz": {
+                                  "type": "string",
+                                  "title": "认定有效期止"
+                                }
+                              },
+                              "required": [
+                                "zsxm",
+                                "zspm",
+                                "nsqx",
+                                "sbqx",
+                                "zfsbz",
+                                "zsdlfs",
+                                "rdyxqq",
+                                "rdyxqz"
+                              ],
+                              "x-apifox-orders": [
+                                "zsxm",
+                                "zspm",
+                                "zszm",
+                                "nsqx",
+                                "sbqx",
+                                "zsl",
+                                "slhwdse",
+                                "zfsbz",
+                                "zsdlfs",
+                                "hy",
+                                "jkqx",
+                                "rdyxqq",
+                                "rdyxqz"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "sfzrdGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "sfzrdGridlb"
+                        ],
+                        "description": "税局查询路径：纳税人信息查询-税费种认定界面"
+                      },
+                      "bqysb": {
+                        "type": "object",
+                        "title": "本期应申报",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "bqysbGridlb": {
+                            "type": "array",
+                            "title": "本期应申报列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "sxmc": {
+                                  "type": "string",
+                                  "title": "事项名称"
+                                },
+                                "bllx": {
+                                  "type": "string",
+                                  "title": "办理期限"
+                                },
+                                "bzzt": {
+                                  "type": "string",
+                                  "title": "标签状态"
+                                }
+                              },
+                              "required": [
+                                "sxmc",
+                                "bllx",
+                                "bzzt"
+                              ],
+                              "x-apifox-orders": [
+                                "sxmc",
+                                "bllx",
+                                "bzzt"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "bqysbGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "bqysbGridlb"
+                        ],
+                        "description": " 税局查询路径：进入首页-我的待办信息"
+                      },
+                      "sbcx": {
+                        "type": "object",
+                        "title": "申报查询",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "sbcxGridlb": {
+                            "type": "array",
+                            "title": "申报查询列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "zsxm": {
+                                  "type": "string",
+                                  "title": "征收项目"
+                                },
+                                "sbblx": {
+                                  "type": "string",
+                                  "title": "申报表种类"
+                                },
+                                "sbrq": {
+                                  "type": "string",
+                                  "title": "申报日期"
+                                },
+                                "skssqq": {
+                                  "type": "string",
+                                  "title": "税款所属期起"
+                                },
+                                "skssqz": {
+                                  "type": "string",
+                                  "title": "税款所属期止"
+                                },
+                                "ybtse": {
+                                  "type": "number",
+                                  "title": "应补退税额",
+                                  "description": "保留两位小数"
+                                },
+                                "gglx": {
+                                  "type": "string",
+                                  "title": "更正类型"
+                                },
+                                "zfbz": {
+                                  "type": "string",
+                                  "title": "作废标志"
+                                },
+                                "zfrq": {
+                                  "type": "string",
+                                  "title": "作废日期"
+                                }
+                              },
+                              "required": [
+                                "zsxm",
+                                "sbblx",
+                                "sbrq",
+                                "skssqq",
+                                "skssqz",
+                                "ybtse"
+                              ],
+                              "x-apifox-orders": [
+                                "zsxm",
+                                "sbblx",
+                                "sbrq",
+                                "skssqq",
+                                "skssqz",
+                                "ybtse",
+                                "gglx",
+                                "zfbz",
+                                "zfrq"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "sbcxGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "sbcxGridlb"
+                        ],
+                        "description": "税局查询路径：我要查询-申报信息查询界面。查询口径：请求的查询年月，对应税局的申报日期起止。如：请求202603，税局申报日期起止就是2026-03-01到2026-3-30"
+                      },
+                      "jkxxcx": {
+                        "type": "object",
+                        "title": "缴款信息查询",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "jkxxcxGridlb": {
+                            "type": "array",
+                            "title": "缴款信息查询列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "zsxm": {
+                                  "type": "string",
+                                  "title": "征收项目"
+                                },
+                                "zspm": {
+                                  "type": "string",
+                                  "title": "征收品目"
+                                },
+                                "skssqq": {
+                                  "type": "string",
+                                  "title": "税款所属期起"
+                                },
+                                "skssqz": {
+                                  "type": "string",
+                                  "title": "税款所属期止"
+                                },
+                                "sjjine": {
+                                  "type": "number",
+                                  "title": "实缴金额",
+                                  "description": "保留两位小数"
+                                },
+                                "skzl": {
+                                  "type": "string",
+                                  "title": "税款种类",
+                                  "description": "正税、滞纳金、涉税罚款、行为罚款\n没收违法所得、利息、违约金、其他"
+                                },
+                                "jkqr": {
+                                  "type": "string",
+                                  "title": "缴款日期"
+                                },
+                                "skjnsf": {
+                                  "type": "string",
+                                  "title": "税款缴纳方式"
+                                },
+                                "pzzl": {
+                                  "type": "string",
+                                  "title": "票证种类"
+                                },
+                                "pzhm": {
+                                  "type": "string",
+                                  "title": "票证号码"
+                                },
+                                "dzsphm": {
+                                  "type": "string",
+                                  "title": "电子税票号码"
+                                }
+                              },
+                              "required": [
+                                "zsxm",
+                                "zspm",
+                                "skssqq",
+                                "skssqz",
+                                "sjjine",
+                                "jkqr"
+                              ],
+                              "x-apifox-orders": [
+                                "zsxm",
+                                "zspm",
+                                "skssqq",
+                                "skssqz",
+                                "sjjine",
+                                "skzl",
+                                "jkqr",
+                                "skjnsf",
+                                "pzzl",
+                                "pzhm",
+                                "dzsphm"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "jkxxcxGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "jkxxcxGridlb"
+                        ],
+                        "description": "税局查询路径：我要查询-缴款信息查询界面。查询口径：请求的查询年月，对应税局的缴款日期起止。如：请求202603，税局缴款日期就是2026-03-01到2026-3-30"
+                      },
+                      "wsbxxcx": {
+                        "type": "object",
+                        "title": "未申报信息查询",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "wsbxxcxGridlb": {
+                            "type": "array",
+                            "title": "未申报信息查询列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "zsdlfs": {
+                                  "type": "string",
+                                  "title": "征收代理方式"
+                                },
+                                "zsxm": {
+                                  "type": "string",
+                                  "title": "征收项目"
+                                },
+                                "zspm": {
+                                  "type": "string",
+                                  "title": "征收品目"
+                                },
+                                "sfwcbzb": {
+                                  "type": "string",
+                                  "title": "是否为财务报表"
+                                },
+                                "skssqq": {
+                                  "type": "string",
+                                  "title": "税款所属期起"
+                                },
+                                "skssqz": {
+                                  "type": "string",
+                                  "title": "税款所属期止"
+                                },
+                                "sbqx": {
+                                  "type": "string",
+                                  "title": "申报期限"
+                                },
+                                "nsqx": {
+                                  "type": "string",
+                                  "title": "纳税期限"
+                                }
+                              },
+                              "required": [
+                                "zsxm",
+                                "zspm",
+                                "skssqq",
+                                "skssqz",
+                                "sbqx",
+                                "nsqx"
+                              ],
+                              "x-apifox-orders": [
+                                "zsdlfs",
+                                "zsxm",
+                                "zspm",
+                                "sfwcbzb",
+                                "skssqq",
+                                "skssqz",
+                                "sbqx",
+                                "nsqx"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "wsbxxcxGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "wsbxxcxGridlb"
+                        ],
+                        "description": "税局查询路径：我要查询-未申报信息查询界面。查询口径：时间上不进行任何的过滤筛选，默认以税局带出来的记录为主，过滤掉记录中征收项目为空的记录"
+                      },
+                      "qsxxcx": {
+                        "type": "object",
+                        "title": "欠税信息查询",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "qsxxcxGridlb": {
+                            "type": "array",
+                            "title": "欠税信息查询列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "skssqq": {
+                                  "type": "string",
+                                  "title": "税款所属期起"
+                                },
+                                "skssqz": {
+                                  "type": "string",
+                                  "title": "税款所属期止"
+                                },
+                                "zsxm": {
+                                  "type": "string",
+                                  "title": "征收项目"
+                                },
+                                "zspm": {
+                                  "type": "string",
+                                  "title": "征收品目"
+                                },
+                                "jkqx": {
+                                  "type": "string",
+                                  "title": "缴款期限"
+                                },
+                                "qjje": {
+                                  "type": "number",
+                                  "title": "欠缴金额",
+                                  "description": "保留两位小数"
+                                },
+                                "sbblx": {
+                                  "type": "string",
+                                  "title": "申报表种类"
+                                },
+                                "skzl": {
+                                  "type": "string",
+                                  "title": "税款种类",
+                                  "description": "正税、滞纳金、涉税罚款、行为罚款\n没收违法所得、利息、违约金、其他"
+                                },
+                                "sbrq": {
+                                  "type": "string",
+                                  "title": "申报日期"
+                                }
+                              },
+                              "required": [
+                                "skssqq",
+                                "skssqz",
+                                "zsxm",
+                                "zspm",
+                                "jkqx",
+                                "qjje"
+                              ],
+                              "x-apifox-orders": [
+                                "skssqq",
+                                "skssqz",
+                                "zsxm",
+                                "zspm",
+                                "jkqx",
+                                "qjje",
+                                "sbblx",
+                                "skzl",
+                                "sbrq"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "qsxxcxGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "qsxxcxGridlb"
+                        ],
+                        "description": "税局查询路径：我要查询-欠税信息查询界面。查询口径：不进行任何筛选，默认将所有记录都返回。（可以作为待缴款记录查询）"
+                      },
+                      "cwbbxxcx": {
+                        "type": "object",
+                        "title": "财务报表信息查询",
+                        "properties": {
+                          "jtUrl": {
+                            "type": "string",
+                            "title": "截图信息"
+                          },
+                          "cwbbxxcxGridlb": {
+                            "type": "array",
+                            "title": "财务报表信息查询列表",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "cwbblx": {
+                                  "type": "string",
+                                  "title": "财务报表种类"
+                                },
+                                "bbssqq": {
+                                  "type": "string",
+                                  "title": "报表所属期起"
+                                },
+                                "bbssqz": {
+                                  "type": "string",
+                                  "title": "报表所属期止"
+                                },
+                                "lrq": {
+                                  "type": "string",
+                                  "title": "录入日期"
+                                }
+                              },
+                              "required": [
+                                "cwbblx",
+                                "bbssqq",
+                                "bbssqz",
+                                "lrq"
+                              ],
+                              "x-apifox-orders": [
+                                "cwbblx",
+                                "bbssqq",
+                                "bbssqz",
+                                "lrq"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "jtUrl",
+                          "cwbbxxcxGridlb"
+                        ],
+                        "x-apifox-orders": [
+                          "jtUrl",
+                          "cwbbxxcxGridlb"
+                        ],
+                        "description": "税局查询路径：我要查询-财务报表信息查询界面。查询口径：请求年月作为录入日期去查询，如：请求202603，税局录入日期起止就是2026-03-01到2026-3-30"
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "01KZR06X66A8DWCJF3ZN5Q6KZZ"
+                ],
+                "properties": {}
               },
               "message": {
                 "type": "string",
@@ -231,7 +796,7 @@
     {
       "name": "任务执行成功-已申报",
       "responseId": 172669562,
-      "data": "{\n    \"reqId\": \"194e10a49beb404099f06e883ba6b6bf\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"tax-sjsbzthz\",\n        \"businessStatus\": 3,\n        \"detail\": {\n            \"sbcx\": {\n                \"sbcxGridlb\": [\n                    {\n                        \"zsxm\": \"增值税\",\n                        \"zfrq\": \"2026-01-31\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"ybtse\": 1568.90,\n                        \"sbrq\": \"2026-01-10\",\n                        \"gglx\": \"正常更正\",\n                        \"sbblx\": \"增值税及附加税费申报表（一般纳税人适用）\",\n                        \"zfbz\": \"否\",\n                        \"skssqq\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"bqysb\": {\n                \"bqysbGridlb\": [\n                    {\n                        \"bllx\": \"2026-01-05\",\n                        \"bzzt\": \"已生效\",\n                        \"sxmc\": \"增值税一般纳税人资格登记\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"qsxxcx\": {\n                \"qsxxcxGridlb\": [\n                    {\n                        \"qjje\": 1250.80,\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"jkqx\": \"2026-02-18\",\n                        \"sbrq\": \"2026-02-10\",\n                        \"sbblx\": \"增值税及附加税费申报表（一般纳税人）\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"zspm\": \"销售货物\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"jkxxcx\": {\n                \"jkxxcxGridlb\": [\n                    {\n                        \"jkqr\": \"2026-02-10\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"pzzl\": \"税收电子缴款书\",\n                        \"sjjine\": 2896.50,\n                        \"dzsphm\": \"98765432109876543210\",\n                        \"pzhm\": \"0100000123456789\",\n                        \"skjnsf\": \"银行端查询缴款\",\n                        \"zspm\": \"销售货物\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"wsbxxcx\": {\n                \"wsbxxcxGridlb\": [\n                    {\n                        \"sbqx\": \"2026-02-15\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"zsdlfs\": \"自行申报\",\n                        \"sfwcbzb\": \"否\",\n                        \"zspm\": \"销售货物\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"nsqx\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"cwbbxxcx\": {\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\",\n                \"cwbbxxcxGridlb\": [\n                    {\n                        \"bbssqq\": \"2026-01-01\",\n                        \"cwbblx\": \"财务报表报送与信息采集（企业会计准则一般企业）\",\n                        \"lrq\": \"2026-02-15\",\n                        \"bbssqz\": \"2026-01-31\"\n                    }\n                ]\n            },\n            \"sfzrd\": {\n                \"sfzrdGridlb\": [\n                    {\n                        \"sbqx\": \"2026-01-15\",\n                        \"slhwdse\": \"13.00%\",\n                        \"zspm\": \"销售货物\",\n                        \"hy\": \"批发和零售业\",\n                        \"zsl\": \"3%\",\n                        \"rdyxqq\": \"2026-01-01\",\n                        \"zszm\": \"一般货物销售\",\n                        \"zsxm\": \"增值税\",\n                        \"zfsbz\": \"主税\",\n                        \"rdyxqz\": \"2026-12-31\",\n                        \"jkqx\": \"2026-01-18\",\n                        \"zsdlfs\": \"自行申报\",\n                        \"nsqx\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            }\n        },\n        \"aggOrgId\": \"482734358988800\",\n        \"serviceName\": \"企税-税局申报状态汇总查询\",\n        \"message\": \"税局申报状态汇总查询成功\",\n        \"taskId\": 650510476234240\n    }\n}",
+      "data": "{\n    \"reqId\": \"194e10a49beb404099f06e883ba6b6bf\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"tax-sjsbzthz\",\n        \"businessStatus\": 3,\n        \"detail\": {\n            \"sbcx\": {\n                \"sbcxGridlb\": [\n                    {\n                        \"zsxm\": \"增值税\",\n                        \"zfrq\": \"2026-01-31\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"ybtse\": 1568.90,\n                        \"sbrq\": \"2026-01-10\",\n                        \"gglx\": \"正常更正\",\n                        \"sbblx\": \"增值税及附加税费申报表（一般纳税人适用）\",\n                        \"zfbz\": \"否\",\n                        \"skssqq\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"bqysb\": {\n                \"bqysbGridlb\": [\n                    {\n                        \"bllx\": \"2026-01-05\",\n                        \"bzzt\": \"已申报\",\n                        \"sxmc\": \"增值税及附加税费申报（一般纳税人适用）\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"qsxxcx\": {\n                \"qsxxcxGridlb\": [\n                    {\n                        \"qjje\": 1250.80,\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"jkqx\": \"2026-02-18\",\n                        \"sbrq\": \"2026-02-10\",\n                        \"sbblx\": \"增值税及附加税费申报表（一般纳税人）\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"zspm\": \"销售货物\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"jkxxcx\": {\n                \"jkxxcxGridlb\": [\n                    {\n                        \"jkqr\": \"2026-02-10\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"pzzl\": \"税收电子缴款书\",\n                        \"sjjine\": 2896.50,\n                        \"dzsphm\": \"98765432109876543210\",\n                        \"pzhm\": \"0100000123456789\",\n                        \"skjnsf\": \"银行端查询缴款\",\n                        \"zspm\": \"销售货物\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"skzl\": \"正税\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"wsbxxcx\": {\n                \"wsbxxcxGridlb\": [\n                    {\n                        \"sbqx\": \"2026-02-15\",\n                        \"skssqz\": \"2026-01-31\",\n                        \"zsxm\": \"增值税\",\n                        \"zsdlfs\": \"自行申报\",\n                        \"sfwcbzb\": \"否\",\n                        \"zspm\": \"销售货物\",\n                        \"skssqq\": \"2026-01-01\",\n                        \"nsqx\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            },\n            \"cwbbxxcx\": {\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\",\n                \"cwbbxxcxGridlb\": [\n                    {\n                        \"bbssqq\": \"2026-01-01\",\n                        \"cwbblx\": \"财务报表报送与信息采集（企业会计准则一般企业）\",\n                        \"lrq\": \"2026-02-15\",\n                        \"bbssqz\": \"2026-01-31\"\n                    }\n                ]\n            },\n            \"sfzrd\": {\n                \"sfzrdGridlb\": [\n                    {\n                        \"sbqx\": \"2026-01-15\",\n                        \"slhwdse\": \"13.00%\",\n                        \"zspm\": \"销售货物\",\n                        \"hy\": \"批发和零售业\",\n                        \"zsl\": \"3%\",\n                        \"rdyxqq\": \"2026-01-01\",\n                        \"zszm\": \"一般货物销售\",\n                        \"zsxm\": \"增值税\",\n                        \"zfsbz\": \"主税\",\n                        \"rdyxqz\": \"2026-12-31\",\n                        \"jkqx\": \"2026-01-18\",\n                        \"zsdlfs\": \"自行申报\",\n                        \"nsqx\": \"2026-01-01\"\n                    }\n                ],\n                \"jtUrl\": \"https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxx.png\"\n            }\n        },\n        \"aggOrgId\": \"482734358988800\",\n        \"serviceName\": \"企税-税局申报状态汇总查询\",\n        \"message\": \"税局申报状态汇总查询成功\",\n        \"taskId\": 650510476234240\n    }\n}",
       "id": 17579386
     }
   ],
@@ -250,7 +815,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-24T09:47:01.000Z",
-  "updatedAt": "2026-04-22T09:54:10.000Z",
+  "updatedAt": "2026-08-12T10:19:10.000Z",
   "creatorId": 1452584,
   "editorId": 1452584,
   "creatorUserId": 1452584,

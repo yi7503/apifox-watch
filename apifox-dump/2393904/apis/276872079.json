@@ -1,6 +1,6 @@
 {
   "id": 276872079,
-  "name": "打印缴款凭证",
+  "name": "打印银行端缴款书缴款",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口是异步接口。\n1.用于线下缴款，可以打印银行端凭证去银行缴款\n2.已打印缴款凭证，若更换其他缴款方式，需要先作废缴款凭证\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口是异步接口。\n用于打印银行端缴款凭证，供企业持银行端缴款书前往银行线下缴款。调用后返回 taskId，需通过任务查询接口获取缴款书打印结果。注意：已打印银行端缴款书后，若更换其他缴款方式（如三方协议缴款、银联缴款），需要先作废已打印的银行端缴款书。\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -56,6 +56,7 @@
         "skssq"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -222,17 +223,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-03-27T03:12:38.000Z",
-  "updatedAt": "2025-05-07T01:45:31.000Z",
+  "updatedAt": "2026-08-21T03:37:12.000Z",
   "creatorId": 1452584,
   "editorId": 493303,
   "creatorUserId": 1452584,
   "editorUserId": 493303,
-  "responseChildren": [
-    "BLANK.642416268"
-  ],
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

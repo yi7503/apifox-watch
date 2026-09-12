@@ -163,6 +163,7 @@
               "detail''",
               "detail'''",
               "detail''''",
+              "detail'''''",
               "01J8Z5ZQ38286KGBGTNTE83P8F"
             ],
             "properties": {
@@ -501,7 +502,8 @@
                               "qzczmj",
                               "qzczfyz"
                             ]
-                          }
+                          },
+                          "title": "从价计征"
                         },
                         "syzt": {
                           "type": "string",
@@ -876,6 +878,11 @@
                 "title": "资源税",
                 "description": "字段detail根据请求的税源类型不同，detail的格式不同",
                 "$ref": "#/definitions/288777772"
+              },
+              "detail'''''": {
+                "$ref": "#/definitions/300153974",
+                "title": "印花税",
+                "description": "字段detail根据请求的税源类型不同，detail的格式不同"
               }
             },
             "required": [
@@ -961,11 +968,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T03:49:50.000Z",
-  "updatedAt": "2026-05-29T03:18:08.000Z",
+  "updatedAt": "2026-09-10T12:55:25.000Z",
   "creatorId": 2122743,
-  "editorId": 1452584,
+  "editorId": 1476015,
   "creatorUserId": 2122743,
-  "editorUserId": 1452584,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

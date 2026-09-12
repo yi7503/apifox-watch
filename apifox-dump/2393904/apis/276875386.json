@@ -1,6 +1,6 @@
 {
   "id": 276875386,
-  "name": "缴款凭证反馈",
+  "name": "打印银行端缴款书缴款反馈",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口为同步接口\n用于查询打印银行端缴款书任务的执行结果。配合【打印银行端缴款书缴款】接口使用，【打印银行端缴款书缴款】为异步接口，调用后返回 taskId，通过本接口传入 taskId 获取缴款书打印的最终结果，包括综合所得（zhsd）、分类所得（flsd）、非居民所得（fjmsd）、限售股所得（xsgsd）四类所得的缴款凭证信息及 base64 格式的凭证文件内容。\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -309,11 +310,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-03-27T03:18:49.000Z",
-  "updatedAt": "2026-03-10T06:13:31.000Z",
+  "updatedAt": "2026-08-21T06:13:29.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

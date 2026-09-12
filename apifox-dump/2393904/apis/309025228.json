@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "1.\t支持发起生产型业务出口退税申报确认提交任务，以及申报提交结果的返回",
+  "description": "1.支持发起生产型业务出口退税申报确认提交任务，以及申报提交结果的返回\n2.自检反馈查询ktgydbz =Y则表示自检通过无疑点，才能进行申报确认提交，存在疑点ktgydbz =N情况是不能进行申报确认提交的",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -52,6 +52,7 @@
         "pc"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -190,14 +191,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-16T02:42:11.000Z",
-  "updatedAt": "2025-08-06T06:05:36.000Z",
+  "updatedAt": "2026-07-10T09:17:13.000Z",
   "creatorId": 1452584,
   "editorId": 1476015,
   "creatorUserId": 1452584,
   "editorUserId": 1476015,
-  "responseChildren": [
-    "BLANK.698115232"
-  ],
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

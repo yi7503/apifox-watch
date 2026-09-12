@@ -51,7 +51,12 @@
               "title": "分组总状态",
               "description": "1：进行中，2：失败（任一失败），3：成功"
             },
-            "sb、fp、jcxx、syhq": {
+            "mainStatusCode": {
+              "type": "string",
+              "title": "分组总code",
+              "description": "8000：存在登录失效任务，2000：全部成功，5000：部分失败，4500：无权限"
+            },
+            "sb、fp、jcxx、syhq、db、tx、fx": {
               "type": [
                 "object",
                 "null"
@@ -73,15 +78,10 @@
                 "loginCode"
               ],
               "title": "分组任务状态详情节点"
-            },
-            "mainStatusCode": {
-              "type": "string",
-              "title": "分组总code",
-              "description": "8000：存在登录失效任务，2000：全部成功，5000：部分失败，4500：无权限"
             }
           },
           "x-apifox-orders": [
-            "sb、fp、jcxx、syhq",
+            "sb、fp、jcxx、syhq、db、tx、fx",
             "main",
             "mainStatusCode"
           ],
@@ -110,6 +110,7 @@
       ],
       "x-apifox-refs": {}
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -203,7 +204,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T10:21:04.000Z",
-  "updatedAt": "2025-11-25T07:46:59.000Z",
+  "updatedAt": "2026-09-02T06:18:26.000Z",
   "creatorId": 1910680,
   "editorId": 1910680,
   "creatorUserId": 1910680,

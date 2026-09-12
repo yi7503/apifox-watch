@@ -293,8 +293,9 @@
             },
             "ly_ddbh": {
               "type": "string",
+              "title": "来源订单编号",
               "description": "指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。",
-              "title": "来源订单编号"
+              "maxLength": 50
             },
             "vinInfos": {
               "type": "array",
@@ -448,8 +449,7 @@
               "hzfpMsg": {
                 "type": "string",
                 "title": "开红票错误信息",
-                "description": "当qrjkpbz=Y时有效且hzfpCode不等于0时的错误信息",
-                "deprecated": true
+                "description": "当qrjkpbz=Y时有效且hzfpCode不等于0时的错误信息"
               },
               "hzfpxx": {
                 "type": "object",
@@ -504,19 +504,23 @@
                   },
                   "pdf_url": {
                     "type": "string",
-                    "title": "红字发票pdf文件"
+                    "title": "红字发票pdf文件",
+                    "description": "pdf格式文件下载链接--入参wjgs传入对应格式才会返回;\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。"
                   },
                   "xml_url": {
                     "type": "string",
-                    "title": "红字发票xml文件"
+                    "title": "红字发票xml文件",
+                    "description": "xml格式文件下载链接--入参wjgs传入对应格式才会返回；zip包解压后为xml文件。\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。"
                   },
                   "ofd_url": {
                     "type": "string",
-                    "title": "红字发票ofd文件"
+                    "title": "红字发票ofd文件",
+                    "description": "ofd格式文件下载链接--入参wjgs传入对应格式才会返回；\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。"
                   },
                   "ewm_url": {
                     "type": "string",
-                    "title": "红字发票二维码url"
+                    "title": "红字发票二维码url",
+                    "description": "二维码下载链接（税局原始链接） --入参wjgs传入对应格式才会返回"
                   }
                 },
                 "x-apifox-orders": [
@@ -731,7 +735,7 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar lzFphm =   eval(\"(\" + request.raw + \")\").data.lzFphm;\r\nvar gmfNsrsbh =   eval(\"(\" + request.raw + \")\").data.gmfNsrsbh;\r\nvar lrfsf =   eval(\"(\" + request.raw + \")\").data.lrfsf;\r\nvar xsfNsrsbh =   eval(\"(\" + request.raw + \")\").data.xsfNsrsbh;\r\nvar lzKprq =   eval(\"(\" + request.raw + \")\").data.lzKprq;\r\nvar fplxdm =   eval(\"(\" + request.raw + \")\").data.fplxdm;\r\nvar hcyydm =   eval(\"(\" + request.raw + \")\").data.hcyydm;\r\n\r\nvar responseJson = {\r\n\t\"hzfpCode\": \"710002\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"hzkjBz\": \"Y\",\r\n\t\"hzuuid\": \"892bf52e21b4417f9f365e970138c0b3\",\r\n\t\"hzfpMsg\": \"自动开票处理成功\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"hzqrdbh\": \"44040225061000009423\",\r\n\t\"hzqrztDm\": \"01\",\r\n\t\"qrjkpbz\": \"Y\",\r\n\t\"lzFphm\": \"25952000000193124888\",\r\n\t\"lrrq\": \"2024-09-20 12:01:08\",\r\n\t\"hzfpxx\": {\r\n\t\t\"kplx\": \"1\",\r\n\t\t\"kplsh\": \"202407211032369994199505\",\r\n\t\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\t\"fplxdm\": \"030\",\r\n\t\t\"kprq\": \"\",\r\n\t\t\"jshj\": -2970.27,\r\n\t\t\"fphm\": \"\"\r\n\t}\r\n};\r\nvar fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.lrrq = kprq;\r\nresponseJson.lzFphm = lzFphm;\r\n\r\nresponseJson.hzfpxx.kprq = kprq;\r\nresponseJson.hzfpxx.fphm = fphm;\r\nresponseJson.hzfpxx.kplsh = kplsh;\r\nif(fplxdm !== null && fplxdm !== undefined && fplxdm !== \"\"){\r\n    responseJson.hzfpxx.fplxdm = fplxdm;\r\n}\r\n\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-07-18T08:56:36.000Z",
-  "updatedAt": "2026-06-23T05:47:40.000Z",
+  "updatedAt": "2026-07-14T09:01:07.000Z",
   "creatorId": 887900,
   "editorId": 3099717,
   "creatorUserId": 887900,

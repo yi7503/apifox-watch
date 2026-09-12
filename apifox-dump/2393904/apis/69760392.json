@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n获取助手客户端下载地址。\n\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| SUCCESS| 成功 | |\n| BUSINESS_ERROR| 未获取到客户端信息 | |\n| BUSINESS_ERROR| 未获取到客户端版本号 | |",
+  "description": "## 接口描述\n获取助手客户端下载地址。\n\n\n\n:::highlight green 💡\n办税助手使用手册：[点我下载](https://static.qixiangyun.com/sb/%E4%BC%81%E4%BA%AB%E4%BA%91%E5%8A%9E%E7%A8%8E%E5%8A%A9%E6%89%8B%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C(1).pdf )\n:::\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| SUCCESS| 成功 | |\n| BUSINESS_ERROR| 未获取到客户端信息 | |\n| BUSINESS_ERROR| 未获取到客户端版本号 | |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -19,11 +19,7 @@
     "parameters": [],
     "jsonSchema": {
       "type": "object",
-      "properties": {
-        "01GWRKH496ABCVP9YCJFD3Y8Z5": {
-          "x-tmp-pending-properties": true
-        }
-      },
+      "properties": {},
       "x-apifox-orders": [
         "01GWRKH496ABCVP9YCJFD3Y8Z5"
       ],
@@ -31,6 +27,8 @@
         "01GWRKH496ABCVP9YCJFD3Y8Z5"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{}",
@@ -84,10 +82,24 @@
     "query": [],
     "body": [],
     "cookie": [],
-    "header": []
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
   },
   "auth": {
-    "type": "noauth"
+    "type": "noauth",
+    "noauth": {}
   },
   "responses": [
     {
@@ -119,13 +131,23 @@
                   "string",
                   "null"
                 ],
-                "title": "办税助手客户端下载地址"
+                "title": "办税助手客户端下载地址",
+                "description": "windows版"
+              },
+              "macurl": {
+                "type": "string",
+                "title": "税助手客户端下载地址",
+                "description": "mac版"
               }
             },
             "title": "业务数据",
             "x-apifox-refs": {},
             "x-apifox-orders": [
-              "zsurl"
+              "zsurl",
+              "macurl"
+            ],
+            "required": [
+              "macurl"
             ]
           },
           "success": {
@@ -162,15 +184,15 @@
     {
       "name": "成功示例",
       "responseId": 177067239,
-      "data": "{\n    \"reqId\": \"3f8eb0c0c17a46a48279ef494d8c25f5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"zsurl\": \"https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/tool/TaxAssistant-windows-1.1.5.exe\"\n    }\n}",
+      "data": "{\n    \"reqId\": \"80c17729384c4b94a4f72b7851defc2d\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"macurl\": \"https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/tool/TaxAssistant-macos-1.9.4.dmg\",\n        \"zsurl\": \"https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/tool/TaxAssistant-windows-1.9.5.exe\"\n    }\n}",
       "id": 17635597
     }
   ],
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 13945512,
-  "ordering": 80,
+  "folderId": 94972660,
+  "ordering": 81,
   "responsibleId": 0,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -178,14 +200,14 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-21T06:34:58.000Z",
-  "updatedAt": "2024-07-12T02:13:47.000Z",
+  "updatedAt": "2026-09-03T08:01:10.000Z",
   "creatorId": 791813,
-  "editorId": 791813,
+  "editorId": 1564651,
   "creatorUserId": 791813,
-  "editorUserId": 791813,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

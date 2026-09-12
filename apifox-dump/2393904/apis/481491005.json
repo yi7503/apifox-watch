@@ -1,0 +1,170 @@
+{
+  "id": 481491005,
+  "name": "成品油调拨",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "成品油业务-成品油调拨\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/cpyDb",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [
+            "01KWGW6N5A2HKWM74WQ50QKKQH"
+          ],
+          "required": [],
+          "x-apifox-refs": {
+            "01KWGW6N5A2HKWM74WQ50QKKQH": {
+              "$ref": "#/definitions/290526342"
+            }
+          }
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**************4Y\",\r\n    \"data\": {\r\n        \"dbfs\": \"1\",\r\n        \"cpyKcAgsDbInfo\": {\r\n            \"fzjgnsrsbh\": \"91**************4Y\",\r\n            \"dbInfos\": [\r\n                {\r\n                    \"ypbm\": \"1070101030100000000\",\r\n                    \"dbsl\": 20\r\n                }\r\n            ]\r\n        },\r\n        \"cpyKcAypDbInfo\": {}\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功-增值税发票",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "string",
+                "title": "成功调拨数量"
+              }
+            },
+            "x-apifox-orders": [
+              "result"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "result"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"result\": \"2\"\n    },\n    \"success\": true,\n    \"message\": null,\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32480793,
+  "ordering": 83,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-02T07:32:06.000Z",
+  "updatedAt": "2026-07-08T06:03:12.000Z",
+  "creatorId": 3099717,
+  "editorId": 3600994,
+  "creatorUserId": 3099717,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

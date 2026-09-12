@@ -280,6 +280,11 @@
                       ]
                     },
                     "title": "失败人员列表"
+                  },
+                  "ywzt": {
+                    "type": "string",
+                    "title": "业务状态",
+                    "description": "1申报成功，2人员失败，3申报失败"
                   }
                 },
                 "x-apifox-orders": [
@@ -291,12 +296,14 @@
                   "nsrc",
                   "ykjse",
                   "fknr",
+                  "ywzt",
                   "ybtse",
                   "sbrylb"
                 ],
                 "title": "任务返回业务结果",
                 "required": [
-                  "bbmc"
+                  "bbmc",
+                  "ywzt"
                 ]
               }
             },
@@ -412,7 +419,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 48153106,
-  "ordering": 54,
+  "ordering": 89,
   "responsibleId": 0,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -423,11 +430,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-25T03:31:23.000Z",
-  "updatedAt": "2026-04-08T03:27:49.000Z",
+  "updatedAt": "2026-07-30T02:38:21.000Z",
   "creatorId": 1452584,
-  "editorId": 3222025,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 3222025,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

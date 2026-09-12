@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "",
+  "description": "自检申请返回自检申请通过后再调此接口查询自检反馈的结果",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -58,6 +58,7 @@
         "pc"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -182,14 +183,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-14T01:45:09.000Z",
-  "updatedAt": "2025-08-06T06:04:45.000Z",
+  "updatedAt": "2026-07-10T09:14:59.000Z",
   "creatorId": 1910680,
   "editorId": 1476015,
   "creatorUserId": 1910680,
   "editorUserId": 1476015,
-  "responseChildren": [
-    "BLANK.697575623"
-  ],
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

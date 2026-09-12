@@ -176,7 +176,7 @@
     {
       "name": "新增kprq、fplx、jshj返回示例",
       "responseId": 455029168,
-      "data": "{\r\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"code\": null,\r\n            \"fplx\": \"0910\",\r\n            \"jshj\": 32814.07,\r\n            \"kprq\": \"2024-06-30 12:37:07\",\r\n            \"message\": null,\r\n            \"ofdUrl\": null,\r\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\r\n            \"qdfphm\": \"24****************39\",\r\n            \"xmlUrl\": null,\r\n            \"zt\": \"3\"\r\n        }\r\n    ]\r\n}",
+      "data": "{\r\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"chargingNsrsbh\": null,\r\n            \"code\": null,\r\n            \"fplx\": \"0910\",\r\n            \"jshj\": 32814.07,\r\n            \"kprq\": \"2024-06-30 12:37:07\",\r\n            \"message\": null,\r\n            \"ofdUrl\": null,\r\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\r\n            \"qdfphm\": \"24****************39\",\r\n            \"xmlUrl\": null,\r\n            \"zt\": \"3\"\r\n        }\r\n    ]\r\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",

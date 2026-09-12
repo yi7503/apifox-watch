@@ -53,7 +53,7 @@ paths:
                 rptType:
                   type: string
                   title: 报告格式
-                  description: 1 pdf链接 2 json 3 pdf+json
+                  description: 1 简版和详细版的pdf链接 ，2 详细版 json ，3 简版和详细pdf+详细版json
                 aggOrgId:
                   type: string
                   title: 企业id
@@ -342,13 +342,13 @@ paths:
                         - jcsjfw
                         - bgjcsj
                         title: 报告的json格式内容
-                        description: 当风险报告申请接口的入参rptType=1时，该字段为空
+                        description: 当风险报告申请接口的入参rptType=1时，该字段为空。为2时仅返回详细版Json。
                       rptUrls:
                         type: array
                         items:
                           type: string
                         title: 报告的pdfurl信息
-                        description: 当风险报告申请接口的入参rptType=2时，该字段为空
+                        description: 当风险报告申请接口的入参rptType=2时，该字段为空。URL链接的尾号01是简版、02是详细版。链接长期有效。
                       status:
                         type: integer
                         title: 报告生成状态

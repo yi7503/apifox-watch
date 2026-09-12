@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n上传各税种整表的EXCEL数据（每次只能上传一个税种），需要整表数据。\n目前支持以下excel上传：\nBDA0610606增值税及附加税(适用于一般纳税人)\nBDA0610611增值税及附加税(适用于小规模纳税人)\nBDA0000000财产行为税合并纳税申报（房土）\nBDA0610005车船税\nBDA0610036资源税\nBDA0610100通用申报\nBDA0610334文化事业建设费\nBDA0610794印花税\nBDA0610980环境保护税纳税申报表\nBDA0610987水资源税\nBDA0611054非税收入通用申报表\nBDA0611111消费税及附加税费申报表\nBDA0611159企业所得税A类\nBDA0610790SYCJ城镇土地使用税税源采集\nBDA0610791SYCJ房产税税源采集\nCWBBSB财务报表申报（月季报）：小企业、企业会计准则未执行/已执行、企业会计制度、金融类企业会计准则已执行\nCWBBNDSB财务报表年度申报（年报）：小企业、企业会计准则未执行/已执行、企业会计制度、金融类企业会计准则已执行\nBDA0610865增值税预缴\nBDA0610857 残保金\nZDSY 重点税源\nBDA0610791房产税\nBDA0610790城镇土地使用税\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 请求参数不能为空! |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| PARAMETER_ERROR | 请求参数zsxmList不能为空！ |\n| PARAMETER_ERROR | 请求参数year或period不能为空！ |\n| BUSINESS_ERROR | 增值税主表错误，请检查数据！ |确认主表sheet页存在且名称“主表”\n| INTERFACE_ERROR | 接口异常,请联系管理员 |\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|\n| BUSINESS_ERROR|预约扣款情况，预约扣款日期必填并且是yyyy-MM-dd格式，当前错误值：XXX |",
+  "description": "## 接口描述\n上传各税种整表的EXCEL数据（每次只能上传一个税种），需要整表数据。\n目前支持以下excel上传：\nBDA0610606增值税及附加税(适用于一般纳税人)\nBDA0610611增值税及附加税(适用于小规模纳税人)\nBDA0000000财产行为税合并纳税申报（房土）\nBDA0610005车船税\nBDA0610036资源税\nBDA0610100通用申报\nBDA0610334文化事业建设费\nBDA0610334HB  文化使用建设费合并申报\nBDA0610794印花税\nBDA0610980环境保护税纳税申报表\nBDA0610987水资源税\nBDA0611054非税收入通用申报表\nBDA0611111消费税及附加税费申报表\nBDA0611159企业所得税A类\nBDA0610790SYCJ城镇土地使用税税源采集\nBDA0610791SYCJ房产税税源采集\nCWBBSB财务报表申报（月季报）：小企业、企业会计准则未执行/已执行、企业会计制度、金融类企业会计准则已执行\nCWBBNDSB财务报表年度申报（年报）：小企业、企业会计准则未执行/已执行、企业会计制度、金融类企业会计准则已执行\nBDA0610865增值税预缴\nBDA0610857 残保金\nZDSY 重点税源\nBDA0610791房产税\nBDA0610790城镇土地使用税\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 请求参数不能为空! |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| PARAMETER_ERROR | 请求参数zsxmList不能为空！ |\n| PARAMETER_ERROR | 请求参数year或period不能为空！ |\n| BUSINESS_ERROR | 增值税主表错误，请检查数据！ |确认主表sheet页存在且名称“主表”\n| INTERFACE_ERROR | 接口异常,请联系管理员 |\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|\n| BUSINESS_ERROR|预约扣款情况，预约扣款日期必填并且是yyyy-MM-dd格式，当前错误值：XXX |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -107,7 +107,7 @@
               "isDirectDeclare": {
                 "type": "boolean",
                 "title": "是否上传后直接申报",
-                "description": "默认false"
+                "description": "默认传true，目前接口无暂存能力，只支持上传后直接申报。"
               },
               "attachEncode": {
                 "type": "string",
@@ -150,17 +150,17 @@
         "usePresetDialog": {
           "type": "boolean",
           "title": "使用预置弹窗信息",
-          "description": "true=使用 flase = 不使用（以当期上传弹窗为准，未上传则认定为未预置）默认tru"
+          "description": "true=使用 flase = 不使用（以当期上传弹窗为准，未上传则认定为未预置）默认true"
         },
         "kkfs": {
           "type": "integer",
           "title": "扣款方式",
-          "description": "1：手动扣款，2：预约扣款。仅浙江、海南、云南需要，其它地区忽略该字段"
+          "description": "已下架参数，1：手动扣款，2：预约扣款。仅浙江、海南、云南需要，其它地区忽略该字段"
         },
         "yykkrq": {
           "type": "string",
           "title": "预约扣款日期",
-          "description": "yyyy-MM-dd格式，如2023-12-13，仅当扣款方式(kkfs)为2时必传"
+          "description": "已下架参数，yyyy-MM-dd格式，如2023-12-13，仅当扣款方式(kkfs)为2时必传"
         },
         "bsswjg": {
           "type": "string",
@@ -175,7 +175,7 @@
         "sfxzyhssm": {
           "type": "boolean",
           "title": "是否新增印花税税目",
-          "description": "按期申报税局未认定仍需要新增税目 (true新增/false不新增)"
+          "description": "按期申报税局未认定或者一个税目需要申报多条税源明细需要操作新增税目 (true新增/false不新增)"
         },
         "zsxmDm": {
           "type": "string",
@@ -472,11 +472,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T02:00:18.000Z",
-  "updatedAt": "2026-06-29T02:27:40.000Z",
+  "updatedAt": "2026-09-04T05:48:45.000Z",
   "creatorId": 2122743,
-  "editorId": 1476015,
+  "editorId": 1442097,
   "creatorUserId": 2122743,
-  "editorUserId": 1476015,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

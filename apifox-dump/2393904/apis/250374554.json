@@ -39,6 +39,8 @@
         "taskId"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"taskId\": \"234567\",\r\n    \"aggOrgId\": \"550600000336\"\r\n}",
@@ -269,13 +271,122 @@
                               "status": {
                                 "type": "string",
                                 "title": "状态"
+                              },
+                              "contentDescriptionXq": {
+                                "type": "object",
+                                "properties": {
+                                  "shbxjjmqk": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "xh": {
+                                          "type": "string",
+                                          "title": "序号"
+                                        },
+                                        "yhsx": {
+                                          "type": "string",
+                                          "title": "优惠事项"
+                                        },
+                                        "jmje": {
+                                          "type": "string",
+                                          "title": "减免金额"
+                                        },
+                                        "syzcmc": {
+                                          "type": "string",
+                                          "title": "适用政名称"
+                                        },
+                                        "syzctk": {
+                                          "type": "string",
+                                          "title": "适用政策条款"
+                                        }
+                                      },
+                                      "x-apifox-orders": [
+                                        "xh",
+                                        "yhsx",
+                                        "jmje",
+                                        "syzcmc",
+                                        "syzctk"
+                                      ],
+                                      "required": [
+                                        "xh",
+                                        "yhsx",
+                                        "jmje",
+                                        "syzcmc",
+                                        "syzctk"
+                                      ]
+                                    },
+                                    "title": "社保优惠"
+                                  },
+                                  "qtsfyh": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "xh": {
+                                          "type": "string",
+                                          "title": "序号"
+                                        },
+                                        "sz": {
+                                          "type": "string",
+                                          "title": "税种"
+                                        },
+                                        "yhsx": {
+                                          "type": "string",
+                                          "title": "优惠事项"
+                                        },
+                                        "jmje": {
+                                          "type": "string",
+                                          "title": "减免金额"
+                                        },
+                                        "syzcmc": {
+                                          "type": "string",
+                                          "title": "适用政策名称"
+                                        },
+                                        "syzctk": {
+                                          "type": "string",
+                                          "title": "适用政策名称"
+                                        }
+                                      },
+                                      "x-apifox-orders": [
+                                        "xh",
+                                        "sz",
+                                        "yhsx",
+                                        "jmje",
+                                        "syzcmc",
+                                        "syzctk"
+                                      ],
+                                      "required": [
+                                        "xh",
+                                        "yhsx",
+                                        "jmje",
+                                        "syzcmc",
+                                        "syzctk"
+                                      ]
+                                    },
+                                    "title": "其他优惠"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "shbxjjmqk",
+                                  "qtsfyh"
+                                ],
+                                "title": "内容详情",
+                                "required": [
+                                  "shbxjjmqk",
+                                  "qtsfyh"
+                                ]
                               }
                             },
                             "x-apifox-orders": [
                               "title",
                               "contentDescription",
+                              "contentDescriptionXq",
                               "receptionTime",
                               "status"
+                            ],
+                            "required": [
+                              "contentDescriptionXq"
                             ]
                           },
                           "title": "服务提醒",
@@ -336,7 +447,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 48191782,
+  "folderId": 92612375,
   "ordering": 42,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -345,17 +456,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-02T01:46:16.000Z",
-  "updatedAt": "2025-01-02T11:31:30.000Z",
+  "updatedAt": "2026-08-04T07:40:27.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 1476015,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
-  "responseChildren": [
-    "BLANK.595586066"
-  ],
+  "editorUserId": 1476015,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

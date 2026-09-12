@@ -1,0 +1,202 @@
+{
+  "id": 487259196,
+  "name": "局端忘记密码上传短信",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/forgetPassw/pushSms",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "taskId": {
+          "type": "string",
+          "title": "发送短信接口返回的taskId"
+        },
+        "smsCode": {
+          "type": "string",
+          "title": "短信验证码",
+          "description": "有效期3分钟"
+        }
+      },
+      "x-apifox-orders": [
+        "taskId",
+        "smsCode"
+      ],
+      "required": [
+        "taskId",
+        "smsCode"
+      ]
+    },
+    "required": true,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "上传短信",
+        "value": "{\r\n    \"taskId\": \"1111276695558251609\",\r\n    \"smsCode\": \"125465\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 174001943,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "sjhmList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sjhm": {
+                      "type": "string",
+                      "title": "手机号码",
+                      "description": "脱敏后的手机号局端也是脱敏后的"
+                    },
+                    "default_flag": {
+                      "type": "integer",
+                      "title": "是否默认",
+                      "description": "1-默认 0-不是默认"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "sjhm",
+                    "default_flag"
+                  ]
+                }
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "sjhmList"
+            ],
+            "description": "如果code返回4059则返回下面手机号码列表"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "登录人手机号不一致",
+      "responseId": 174001943,
+      "data": "{\r\n    \"code\": \"4059\",\r\n    \"success\": false,\r\n    \"message\": \"当前登录人使用的手机号码与已确认的唯一手机号不一致！\",\r\n    \"data\": {\r\n        \"sjhmList\": [\r\n            {\r\n                \"sjhm\": \"1*******1234\",\r\n                \"default_flag\": 0\r\n            },\r\n            {\r\n                \"sjhm\": \"1*******1235\",\r\n                \"default_flag\": 1\r\n            }\r\n        ]\r\n    },\r\n    \"timestamp\": \"2026-07-15 11:39:34\",\r\n    \"reqId\": \"948444b4409b2759d2d8f78f2faf5c45\"\r\n}",
+      "id": "01a02260-a01d-7428-be2e-bbf1689224ea"
+    },
+    {
+      "name": "成功",
+      "responseId": 174001943,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": \"修改成功\",\r\n    \"data\": null,\r\n    \"timestamp\": \"2026-07-15 11:39:34\",\r\n    \"reqId\": \"948444b4409b2759d2d8f78f2faf5c45\"\r\n}",
+      "id": "01a02260-a01e-7448-83b2-af05c4cba3c7"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 90941605,
+  "ordering": 20,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-15T03:02:12.000Z",
+  "updatedAt": "2026-07-27T03:25:07.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "creatorUserId": 2400309,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

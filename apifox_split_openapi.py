@@ -94,6 +94,7 @@ def main():
         "|---|---:|---:|---|",
     ]
 
+    expected_files = set()
     for top, b in sorted(buckets.items(), key=lambda x: -x[1]["ops"]):
         sub = OrderedDict()
         sub["openapi"] = spec.get("openapi", "3.0.3")
@@ -108,12 +109,19 @@ def main():
         sub["paths"] = b["paths"]
 
         fname = f"{slug(top)}.yaml"
+        if fname in expected_files:
+            sys.exit(f"split filename collision for module {top}: {fname}")
+        expected_files.add(fname)
         fpath = os.path.join(out_dir, fname)
         with open(fpath, "w", encoding="utf-8") as f:
             yaml.dump(sub, f, Dumper=_Dumper, allow_unicode=True, sort_keys=False, width=1000)
         size_kb = os.path.getsize(fpath) / 1024
         print(f"  {top:30s}  {b['ops']:4d} ops  {len(b['tags']):3d} tags  -> {fname}  ({size_kb:.0f} KB)")
         index_lines.append(f"| {top} | {b['ops']} | {len(b['tags'])} | [{fname}]({fname}) |")
+
+    for filename in os.listdir(out_dir):
+        if filename.endswith(".yaml") and filename not in expected_files:
+            os.remove(os.path.join(out_dir, filename))
 
     with open(os.path.join(out_dir, "INDEX.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(index_lines))

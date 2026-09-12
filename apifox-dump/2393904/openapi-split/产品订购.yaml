@@ -703,44 +703,24 @@ paths:
                     - 'null'
                     properties:
                       aggOrgId:
-                        type:
-                        - integer
-                        - 'null'
+                        type: integer
                         title: 企业id
-                      purchaseDetailList:
-                        type:
-                        - array
-                        - 'null'
-                        items:
-                          type:
-                          - object
-                          - 'null'
-                          properties:
-                            productCode:
-                              type:
-                              - string
-                              - 'null'
-                              title: 产品码
-                            success:
-                              type:
-                              - boolean
-                              - 'null'
-                              title: 订购成功标识
-                            message:
-                              type:
-                              - string
-                              - 'null'
-                              title: 订购返回描述
-                              description: 订购成功、订购失败、订购成功(已订购)
-                          x-apifox-orders:
-                          - productCode
-                          - success
-                          - message
-                        title: 订购详情
+                      nsrsbh:
+                        type: string
+                        title: 税号
+                      aggOrgName:
+                        type: string
+                        title: 企业名称
                     x-apifox-orders:
                     - aggOrgId
-                    - purchaseDetailList
+                    - nsrsbh
+                    - aggOrgName
                     title: 业务数据
+                    required:
+                    - nsrsbh
+                    - aggOrgId
+                    - aggOrgName
+                    description: 当修改失败时，该节点有值，里面的aggOrgId等信息是当前系统已有的信息，当修改成功时，data=null
                 x-apifox-orders:
                 - reqId
                 - code
@@ -753,14 +733,17 @@ paths:
                 - code
                 - message
               examples:
-                订购返回示例:
-                  summary: 订购返回示例
+                订购修改成功返回示例:
+                  summary: 订购修改成功返回示例
                   value:
                     reqId: c835d3478de34f17b479e269fe96c826
                     code: SUCCESS
                     success: true
                     message: ''
                     data: null
+                订购修改失败返回示例:
+                  summary: 订购修改失败返回示例
+                  value: "{\r\n    \"reqId\": \"68237a0659854da985483615a56c561c\",\r\n    \"code\": \"PARAMETER_ERROR\",\r\n    \"success\": true,\r\n    \"message\": \"企业名称重复!\",\r\n    \"data\": {\r\n        \"nsrsbh\": \"9144060******H9C\",\r\n        \"aggOrgName\": \"91440604****9C-zxy测试\",\r\n        \"aggOrgId\": 4678442****528\r\n    }\r\n}"
       x-apifox-status: released
   /v2/public/org/delete:
     post:

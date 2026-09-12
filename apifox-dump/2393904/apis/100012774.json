@@ -1,13 +1,13 @@
 {
   "id": 100012774,
-  "name": "扫脸时长查询",
+  "name": "扫脸认证时长查询",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "通过本接口可获取当前登录纳税人的风险等级，预警等级等授信信息。\n\n特别提示：”办税(开票)人授信类别查询“接口，返回参数scanTime是扫脸二维码能设置的最大时长，然后在”设置二维码有效时长“接口里设置phxxz参数值与scanTime保持一致，就可以最大限度设置扫脸二维码有效时间，提升开票体验。",
+  "description": "通过本接口可获取当前登录纳税人的税局扫脸认证时长和当前是否需要扫脸等信息。\n\n:::tip[]\n1. 此接口返回参数scanTime是扫脸认证能设置的最大时长；\n2. 可定期（例如按月1次）检查最大可设置时长和已设置的时长是否一致，再通过「扫脸认证时长设置」接口中设置phxxz参数值与scanTime保持一致。这样可以最大化使用扫脸认证频次，提升开票体验。\n:::\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -47,6 +47,8 @@
         }
       }
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"action\": \"sxlb_cx\",\r\n    \"nsrsbh\": \"************PDDL2G\"\r\n}",
@@ -199,17 +201,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-27T01:57:14.000Z",
-  "updatedAt": "2025-12-13T09:11:00.000Z",
+  "updatedAt": "2026-07-13T04:28:52.000Z",
   "creatorId": 887900,
-  "editorId": 2795319,
+  "editorId": 1564651,
   "creatorUserId": 887900,
-  "editorUserId": 2795319,
-  "responseChildren": [
-    "BLANK.248847708"
-  ],
+  "editorUserId": 1564651,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

@@ -39,8 +39,7 @@
           "description": "企业ID"
         },
         "accountId": {
-          "type": "string",
-          "description": "账号ID，多账户场景"
+          "type": "string"
         },
         "fkssq": {
           "type": "string",
@@ -50,7 +49,8 @@
       },
       "required": [
         "aggOrgId",
-        "fkssq"
+        "fkssq",
+        "accountId"
       ],
       "additionalProperties": false,
       "x-apifox-orders": [
@@ -146,7 +146,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 88927022,
+  "folderId": 89937037,
   "ordering": 27,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -157,11 +157,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-06-24T10:07:35.000Z",
-  "updatedAt": "2026-06-26T06:32:39.000Z",
+  "updatedAt": "2026-07-07T07:24:31.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 3222025,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

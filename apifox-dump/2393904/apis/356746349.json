@@ -69,34 +69,32 @@
           "type": "string",
           "description": "1发票详情，2发票使用状态，3发票入账状态，4发票红冲列表（多个逗号隔开）",
           "title": "归集类型"
-        },
-        "aggOrgId": {
-          "type": "string",
-          "title": "企业id"
-        },
-        "accountId": {
-          "type": "string",
-          "title": "账号唯一标识"
         }
       },
       "required": [
         "jxxbz",
         "kprq",
         "nsrsbh",
-        "gjlx ",
-        "aggOrgId"
+        "gjlx "
       ],
       "x-apifox-orders": [
+        "01KY4RSFZCKR9P0HX56K5XC57W",
         "jxxbz",
         "kprq",
         "nsrsbh",
         "sdphm",
         "fpdm",
         "fphm",
-        "gjlx ",
-        "aggOrgId",
-        "accountId"
-      ]
+        "gjlx "
+      ],
+      "x-apifox-refs": {
+        "01KY4RSFZCKR9P0HX56K5XC57W": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
     },
     "required": false,
     "mediaType": "",
@@ -662,14 +660,23 @@
                   "txfList",
                   "bdcTdysfpList",
                   "hkysdzkpxcd",
-                  "tldzkpxcd"
+                  "tldzkpxcd",
+                  "01KY48Z16Z701TT0D9670PV7KS",
+                  "01KY48XQ1CTY097H0FR00QN1KS"
                 ],
                 "title": "发票详情",
                 "required": [
                   "hkysdzkpxcd",
                   "tldzkpxcd"
                 ],
-                "x-apifox-refs": {}
+                "x-apifox-refs": {
+                  "01KY48XQ1CTY097H0FR00QN1KS": {
+                    "$ref": "#/definitions/270850708"
+                  },
+                  "01KY48Z16Z701TT0D9670PV7KS": {
+                    "$ref": "#/definitions/270874361"
+                  }
+                }
               }
             },
             "x-apifox-orders": [
@@ -732,7 +739,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-09-28T14:10:16.000Z",
-  "updatedAt": "2026-06-05T03:47:30.000Z",
+  "updatedAt": "2026-07-22T11:19:09.000Z",
   "creatorId": 887900,
   "editorId": 2118003,
   "creatorUserId": 887900,

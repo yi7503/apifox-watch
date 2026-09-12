@@ -78,10 +78,6 @@
             }
           ]
         },
-        "aggOrgId": {
-          "type": "string",
-          "title": "企业id"
-        },
         "gjMode": {
           "type": "string",
           "title": "归集方式",
@@ -91,11 +87,10 @@
       "required": [
         "nsrsbh",
         "kpyfq",
-        "kpyfz",
-        "aggOrgId"
+        "kpyfz"
       ],
       "x-apifox-orders": [
-        "aggOrgId",
+        "01KY4S0TR30018WCRAM6GABP56",
         "nsrsbh",
         "kpyfq",
         "kpyfz",
@@ -103,7 +98,14 @@
         "dataType",
         "gjMode"
       ],
-      "x-apifox-refs": {}
+      "x-apifox-refs": {
+        "01KY4S0TR30018WCRAM6GABP56": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
     },
     "required": false,
     "mediaType": "",
@@ -257,7 +259,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T02:31:19.000Z",
-  "updatedAt": "2026-06-10T01:35:18.000Z",
+  "updatedAt": "2026-07-22T11:23:05.000Z",
   "creatorId": 2118003,
   "editorId": 2118003,
   "creatorUserId": 2118003,

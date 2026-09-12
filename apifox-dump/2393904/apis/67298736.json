@@ -35,7 +35,7 @@
             "null"
           ],
           "title": "是否上传后直接申报",
-          "description": "默认false"
+          "description": "默认true"
         },
         "exAction": {
           "type": [
@@ -43,15 +43,7 @@
             "null"
           ],
           "title": "发起税局暂存任务",
-          "description": "即将下架参数，新版税局无此功能 0 上传不发起税局暂存任务；1 上传发起税局暂存任务 "
-        },
-        "allowRepeatDeclare": {
-          "type": [
-            "boolean",
-            "null"
-          ],
-          "title": "是否允许重复申报",
-          "description": "true 表示不校验清册申报状态，即使清册已申报，允许重复发起申报；\nfalse 表示校验清册申报状态，如果清册状态显示已申报，则不允许重复申报"
+          "description": "已下架参数，0 上传不发起税局暂存任务；1 上传发起税局暂存任务 "
         },
         "ybData": {
           "type": [
@@ -316,17 +308,17 @@
         "waitResult": {
           "type": "boolean",
           "title": "是否等待结果",
-          "description": "（仅针对浙江、云南、海南地区）即将下架参数，新版税局无此功能"
+          "description": "已下架参数，新版税局无此功能（仅针对浙江、云南、海南地区）"
         },
         "kkfs": {
           "type": "integer",
           "title": "扣款方式",
-          "description": "即将下架参数，新版税局无此功能 1：手动扣款，2：预约扣款。仅浙江、海南、云南需要，其它地区忽略该字段"
+          "description": "已下架参数，新版税局无此功能 1：手动扣款，2：预约扣款。仅浙江、海南、云南需要，其它地区忽略该字段"
         },
         "yykkrq": {
           "type": "string",
           "title": "预约扣款日期",
-          "description": "即将下架参数，新版税局无此功能 yyyy-MM-dd格式，如2023-12-13，仅当扣款方式(kkfs)为2时必传"
+          "description": "已下架参数，yyyy-MM-dd格式，如2023-12-13，仅当扣款方式(kkfs)为2时必传"
         },
         "cbnbData": {
           "type": "string",
@@ -356,7 +348,7 @@
         "sfxzyhssm": {
           "type": "boolean",
           "title": "是否新增印花税税目 ",
-          "description": "按期申报税局未认定仍需要新增税目 (true新增/false不新增)"
+          "description": "按期申报税局未认定或者一个税目需要申报多条税源明细需要操作新增税目 (true新增/false不新增)"
         },
         "zsxmDm": {
           "type": "string",
@@ -446,6 +438,27 @@
           "type": "string",
           "title": "禁用申报缓存",
           "description": "Y/N 非必传参数，默认为空。Y=不缓存  空/N或者不传这个参数=缓存"
+        },
+        "fcbhList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "房产编号"
+        },
+        "tdbhList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "城镇土地编号"
+        },
+        "zzsData": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": "新版增值税2026",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
         }
       },
       "required": [
@@ -464,7 +477,6 @@
         "bsswjg",
         "kqyswjgmc",
         "exAction",
-        "allowRepeatDeclare",
         "waitResult",
         "kkfs",
         "yykkrq",
@@ -474,6 +486,7 @@
         "zsxmDm",
         "disableDeclareCache",
         "ybData",
+        "zzsData",
         "xgmData",
         "xgmDqdeData",
         "sdsaData",
@@ -505,7 +518,9 @@
         "whsyjsfhbData",
         "yhshbData",
         "optionCodeList",
-        "tcExcelList"
+        "tcExcelList",
+        "fcbhList",
+        "tdbhList"
       ]
     },
     "required": false,
@@ -722,11 +737,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-09T09:40:49.000Z",
-  "updatedAt": "2026-05-28T12:23:51.000Z",
+  "updatedAt": "2026-08-31T03:01:06.000Z",
   "creatorId": 798265,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 798265,
-  "editorUserId": 1452584,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

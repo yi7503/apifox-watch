@@ -1,6 +1,6 @@
 {
   "id": 475930999,
-  "name": "社会保险费申报预览（异步任务）",
+  "name": "社会保险费申报预览",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -36,7 +36,8 @@
       },
       "required": [
         "aggOrgId",
-        "fkssq"
+        "fkssq",
+        "accountId"
       ],
       "x-apifox-orders": [
         "aggOrgId",
@@ -124,7 +125,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 88927022,
+  "folderId": 89937037,
   "ordering": 10,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -135,11 +136,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-06-22T01:50:47.000Z",
-  "updatedAt": "2026-06-25T14:22:16.000Z",
+  "updatedAt": "2026-07-07T07:23:39.000Z",
   "creatorId": 1442097,
-  "editorId": 1442097,
+  "editorId": 3222025,
   "creatorUserId": 1442097,
-  "editorUserId": 1442097,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

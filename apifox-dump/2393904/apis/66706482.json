@@ -3,7 +3,18 @@
   "name": "企业取消授权",
   "type": "http",
   "serverId": "",
-  "preProcessors": [],
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "3JRDL_bey4SLfhNBCBZjp",
+      "executionTiming": "prerequest"
+    }
+  ],
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
@@ -32,6 +43,7 @@
         "aggOrgId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -165,11 +177,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-07T09:43:02.000Z",
-  "updatedAt": "2026-03-20T11:29:34.000Z",
+  "updatedAt": "2026-09-03T07:15:15.000Z",
   "creatorId": 887778,
-  "editorId": 2400309,
+  "editorId": 493303,
   "creatorUserId": 887778,
-  "editorUserId": 2400309,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

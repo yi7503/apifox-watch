@@ -1,0 +1,594 @@
+{
+  "id": 490008936,
+  "name": "企业基本信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "通过本接口获取当前登录的企业基本信息，\n本接口数据从局端实时获取，企享云未做任何加工处理。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/qyjbxxcx",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "操作类型",
+          "description": "本接口传：qyjbxxcx"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "action",
+        "nsrsbh",
+        "01HMB92P72WW66359B29SKXB0E"
+      ],
+      "x-apifox-refs": {
+        "01HMB92P72WW66359B29SKXB0E": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"action\": \"qyjbxxcx\",\r\n    \"nsrsbh\": \"************PDDL2G\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 248847712,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "Nsrmc": {
+                "type": "string",
+                "title": "纳税人名称"
+              },
+              "Yxqz": {
+                "type": "string",
+                "title": "有效期止"
+              },
+              "JdxzDm": {
+                "type": "string"
+              },
+              "Nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "Sfkkjzzfp": {
+                "type": "string",
+                "title": "是否可开具增值税发票"
+              },
+              "Qyhyxz": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "企业行业性质"
+              },
+              "Kpr": {
+                "type": "string",
+                "title": "默认开票人"
+              },
+              "Tdys": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Xybz": {
+                      "type": "null"
+                    },
+                    "Tdyslxdm": {
+                      "type": "string",
+                      "title": "特定业务类型代码"
+                    },
+                    "Yxbz": {
+                      "type": "null"
+                    },
+                    "Tdyslxmc": {
+                      "type": "string",
+                      "title": "特定业务类型名称"
+                    }
+                  },
+                  "required": [
+                    "Xybz",
+                    "Tdyslxdm",
+                    "Yxbz",
+                    "Tdyslxmc"
+                  ],
+                  "x-apifox-orders": [
+                    "Xybz",
+                    "Tdyslxdm",
+                    "Yxbz",
+                    "Tdyslxmc"
+                  ]
+                }
+              },
+              "Bsrxm": {
+                "type": "string",
+                "title": "办税人姓名"
+              },
+              "Fpzldms": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Fpzldm": {
+                      "type": "string",
+                      "title": "发票种类代码",
+                      "description": "01：增值税专用发票， 02：普通发票"
+                    },
+                    "Fpzlmc": {
+                      "type": "string",
+                      "title": "发票种类名称"
+                    }
+                  },
+                  "required": [
+                    "Fpzldm",
+                    "Fpzlmc"
+                  ],
+                  "x-apifox-orders": [
+                    "Fpzldm",
+                    "Fpzlmc"
+                  ]
+                },
+                "title": "可开具的发票种类代码"
+              },
+              "ProvinceId": {
+                "type": "string",
+                "title": "所在省市"
+              },
+              "Nsrztdm": {
+                "type": "string",
+                "title": "纳税人状态代码"
+              },
+              "Fxnsrlx": {
+                "type": "string"
+              },
+              "Qysxed": {
+                "type": "null",
+                "title": "授信额度"
+              },
+              "Xdpsdqybz": {
+                "type": "string",
+                "title": "新电票试点企业标识",
+                "description": "Y：新电票试点企业    N：不是新电票试点企业"
+              },
+              "Djzclxdm": {
+                "type": "string",
+                "title": "登记注册类型代码"
+              },
+              "Jyfw": {
+                "type": "string",
+                "title": "经营范围"
+              },
+              "Ssdabh": {
+                "type": "string",
+                "title": "税收档案编号"
+              },
+              "Qxjswjgdm": {
+                "type": "string",
+                "title": "区县级税务机关代码"
+              },
+              "Ckqyfldm": {
+                "type": "string",
+                "title": "出口企业分类"
+              },
+              "Shxydm": {
+                "type": "string"
+              },
+              "Province": {
+                "type": "string",
+                "title": "所在省或市"
+              },
+              "Dqskssq": {
+                "type": "string",
+                "title": "当前税款所属期"
+              },
+              "ZgswskfjDm": {
+                "type": "string",
+                "title": "税务机关代码"
+              },
+              "Khhmc": {
+                "type": "string",
+                "title": "账户名称"
+              },
+              "Xfsnsrlx": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "Zcdz": {
+                "type": "string",
+                "title": "注册地址"
+              },
+              "Yxqq": {
+                "type": "string",
+                "title": "有效期起"
+              },
+              "Djxh": {
+                "type": "string",
+                "title": "纳税人登记序号"
+              },
+              "Yhzh": {
+                "type": "null",
+                "title": "银行账户"
+              },
+              "Rylb": {
+                "type": "string",
+                "title": "人员类别"
+              },
+              "Zfjglxdm": {
+                "type": "null",
+                "title": "总分机构类型"
+              },
+              "Jzjtbz": {
+                "type": "string",
+                "title": "即征即退",
+                "description": "Y/N"
+              },
+              "Fddbrxm": {
+                "type": "null",
+                "title": "法人名称(法定代表人姓名"
+              },
+              "Djrq": {
+                "type": "string",
+                "title": "登记日期"
+              },
+              "Xydj": {
+                "type": "string"
+              },
+              "Fxnsrbz": {
+                "type": "string",
+                "title": "纳税人标志"
+              },
+              "Sbzt": {
+                "type": "string"
+              },
+              "Scjydz": {
+                "type": "string",
+                "mock": {
+                  "mock": "生产经营地址"
+                },
+                "title": "生产经营地址"
+              },
+              "Scjydlxdh": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "生产经营地联系电话"
+              },
+              "ProviceId": {
+                "type": "string",
+                "title": "地区代码"
+              },
+              "Nsryjjb": {
+                "type": "string"
+              },
+              "Cwfzrxm": {
+                "type": "null",
+                "title": "财务负责人姓名"
+              },
+              "Hydm": {
+                "type": "string",
+                "title": "行业代码"
+              },
+              "Zcdlxdh": {
+                "type": "string",
+                "title": "注册地联系电话"
+              },
+              "Dsjswjgdm": {
+                "type": "string",
+                "title": "地市级税务机关代码"
+              },
+              "Xfdzdhyhzh": {
+                "type": "string"
+              },
+              "Dqsj": {
+                "type": "string",
+                "title": "当前时间"
+              },
+              "Ssglyxm": {
+                "type": "string"
+              },
+              "Swjgdm": {
+                "type": "string",
+                "title": "税务机关代码"
+              },
+              "Qdbz": {
+                "type": "string",
+                "title": "全电标志",
+                "description": "Y/N"
+              },
+              "Smkpid": {
+                "type": "string",
+                "title": "扫码开票id"
+              },
+              "Ssjswjgdm": {
+                "type": "string",
+                "title": "所属局税务机关代码"
+              },
+              "Swjgmc": {
+                "type": "string",
+                "title": "税务机关名称"
+              },
+              "Nsrlx": {
+                "type": "string",
+                "title": "纳税人类型",
+                "description": "1：一般纳税人 2：小规模纳税人 3：转登记小规模纳税人 4：辅导期一般纳税人 5：自然人"
+              },
+              "YhxxList": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Yhzh": {
+                      "type": "string",
+                      "title": "银行账户"
+                    },
+                    "YhzhxzDm": {
+                      "type": "string",
+                      "title": "银行账户行政代码"
+                    },
+                    "Yhyywdmc": {
+                      "type": "string",
+                      "title": "银行营业网点名称"
+                    },
+                    "YhyywdDm": {
+                      "type": "string",
+                      "title": "银行营业网点代码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "Yhzh",
+                    "YhzhxzDm",
+                    "Yhyywdmc",
+                    "YhyywdDm"
+                  ],
+                  "required": [
+                    "Yhzh",
+                    "YhyywdDm",
+                    "Yhyywdmc",
+                    "YhzhxzDm"
+                  ]
+                },
+                "title": "对公账号信息"
+              },
+              "Zcdyzbm": {
+                "type": "string",
+                "title": "注册地邮政编码"
+              },
+              "Ssglydm": {
+                "type": "string",
+                "title": "所属税管员代码"
+              }
+            },
+            "required": [
+              "Nsrmc",
+              "Nsrsbh",
+              "Sfkkjzzfp",
+              "Qyhyxz",
+              "Kpr",
+              "Bsrxm",
+              "Fpzldms",
+              "ProvinceId",
+              "Nsrztdm",
+              "Fxnsrlx",
+              "Qysxed",
+              "Xdpsdqybz",
+              "Djzclxdm",
+              "Jyfw",
+              "Ssdabh",
+              "Qxjswjgdm",
+              "Ckqyfldm",
+              "Shxydm",
+              "Province",
+              "Dqskssq",
+              "ZgswskfjDm",
+              "Khhmc",
+              "Xfsnsrlx",
+              "Zcdz",
+              "Yxqq",
+              "Djxh",
+              "Yhzh",
+              "Rylb",
+              "Zfjglxdm",
+              "Jzjtbz",
+              "Fddbrxm",
+              "Djrq",
+              "Xydj",
+              "Fxnsrbz",
+              "Sbzt",
+              "Scjydz",
+              "Scjydlxdh",
+              "ProviceId",
+              "Nsryjjb",
+              "Cwfzrxm",
+              "Hydm",
+              "Zcdlxdh",
+              "Dsjswjgdm",
+              "Xfdzdhyhzh",
+              "Dqsj",
+              "Ssglyxm",
+              "Swjgdm",
+              "Qdbz",
+              "Smkpid",
+              "Ssjswjgdm",
+              "Swjgmc",
+              "Nsrlx",
+              "YhxxList",
+              "Zcdyzbm",
+              "Ssglydm"
+            ],
+            "x-apifox-orders": [
+              "Nsrmc",
+              "Yxqz",
+              "JdxzDm",
+              "Nsrsbh",
+              "Sfkkjzzfp",
+              "Qyhyxz",
+              "Kpr",
+              "Tdys",
+              "Bsrxm",
+              "Fpzldms",
+              "ProvinceId",
+              "Nsrztdm",
+              "Fxnsrlx",
+              "Qysxed",
+              "Xdpsdqybz",
+              "Djzclxdm",
+              "Jyfw",
+              "Ssdabh",
+              "Qxjswjgdm",
+              "Ckqyfldm",
+              "Shxydm",
+              "Province",
+              "Dqskssq",
+              "ZgswskfjDm",
+              "Khhmc",
+              "Xfsnsrlx",
+              "Zcdz",
+              "Yxqq",
+              "Djxh",
+              "Yhzh",
+              "Rylb",
+              "Zfjglxdm",
+              "Jzjtbz",
+              "Fddbrxm",
+              "Djrq",
+              "Xydj",
+              "Fxnsrbz",
+              "Sbzt",
+              "Scjydz",
+              "Scjydlxdh",
+              "ProviceId",
+              "Nsryjjb",
+              "Cwfzrxm",
+              "Hydm",
+              "Zcdlxdh",
+              "Dsjswjgdm",
+              "Xfdzdhyhzh",
+              "Dqsj",
+              "Ssglyxm",
+              "Swjgdm",
+              "Qdbz",
+              "Smkpid",
+              "Ssjswjgdm",
+              "Swjgmc",
+              "Nsrlx",
+              "YhxxList",
+              "Zcdyzbm",
+              "Ssglydm"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HREHA4NST14K0ZYTDFB49JGF"
+        ],
+        "x-apifox-refs": {
+          "01HREHA4NST14K0ZYTDFB49JGF": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 248847712,
+      "data": "{\n    \"reqId\": \"1f349ace904b481182c494844a82f467\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"Nsrmc\": \"********信息有限公司\",\n        \"Yxqz\": \"\",\n        \"JdxzDm\": \"310118105\",\n        \"Nsrsbh\": \"************PDDL2G\",\n        \"Sfkkjzzfp\": \"Y\",\n        \"Qyhyxz\": [],\n        \"Kpr\": \"**鑫\",\n        \"Tdys\": [\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"03\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"建筑服务\"\n            },\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"04\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"货物运输服务\"\n            },\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"05\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"不动产销售\"\n            },\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"31\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"二手车*\"\n            },\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"13\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"拖拉机和联合收割机\"\n            },\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"06\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"不动产经营租赁服务\"\n            },\n            {\n                \"Xybz\": null,\n                \"Tdyslxdm\": \"09\",\n                \"Yxbz\": null,\n                \"Tdyslxmc\": \"旅客运输服务\"\n            }\n        ],\n        \"Bsrxm\": \"*磊\",\n        \"Fpzldms\": [\n            {\n                \"Fpzldm\": \"01\",\n                \"Fpzlmc\": \"增值税专用发票\"\n            },\n            {\n                \"Fpzldm\": \"02\",\n                \"Fpzlmc\": \"普通发票\"\n            }\n        ],\n        \"ProvinceId\": \"3100\",\n        \"Nsrztdm\": \"03\",\n        \"Fxnsrlx\": \"\",\n        \"Qysxed\": null,\n        \"Xdpsdqybz\": \"\",\n        \"Djzclxdm\": \"173\",\n        \"Jyfw\": \"许可项目：互联网信息服务。（依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以相关部门批准文件或许可证件为准） 一般项目：数据处理服务；软件开发；技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广；广告设计、代理；广告制作；广告发布（非广播电台、电视台、报刊出版单位）；社会经济咨询服务；企业形象策划；销售计算机、软件及辅助设备、电子产品、通讯设备、安全技术防范产品。（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）\",\n        \"Ssdabh\": \"************PDDL2G\",\n        \"Qxjswjgdm\": \"13102290000\",\n        \"Ckqyfldm\": \"\",\n        \"Shxydm\": null,\n        \"Province\": \"上海\",\n        \"Dqskssq\": \"202403\",\n        \"ZgswskfjDm\": null,\n        \"Khhmc\": null,\n        \"Xfsnsrlx\": [],\n        \"Zcdz\": \"******************弄1-72号B座12层\",\n        \"Yxqq\": \"\",\n        \"Djxh\": \"************00644278\",\n        \"Yhzh\": null,\n        \"Rylb\": \"09\",\n        \"Zfjglxdm\": \"0\",\n        \"Jzjtbz\": \"N\",\n        \"Fddbrxm\": null,\n        \"Djrq\": \"2021-07-19 00:00:00\",\n        \"Xydj\": \"\",\n        \"Fxnsrbz\": \"\",\n        \"Sbzt\": \"\",\n        \"Scjydz\": \"******************弄1-72号B座12层\",\n        \"Scjydlxdh\": \"******98617\",\n        \"ProviceId\": \"3100\",\n        \"Nsryjjb\": \"\",\n        \"Cwfzrxm\": \"*敏\",\n        \"Hydm\": \"6599\",\n        \"Zcdlxdh\": \"******98617\",\n        \"Dsjswjgdm\": \"13100000000\",\n        \"Xfdzdhyhzh\": null,\n        \"Dqsj\": \"20240308\",\n        \"Ssglyxm\": \"\",\n        \"Swjgdm\": \"13102295000\",\n        \"Qdbz\": \"Y\",\n        \"Smkpid\": \"\",\n        \"Ssjswjgdm\": \"13100000000\",\n        \"Swjgmc\": \"**************局第十八税务所\",\n        \"Nsrlx\": \"1\",\n        \"YhxxList\": [\n            {\n                \"Yhzh\": \"**********10301\",\n                \"YhzhxzDm\": \"1110\",\n                \"Yhyywdmc\": \"**********上海青浦支行\",\n                \"YhyywdDm\": \"********3861\"\n            }\n        ],\n        \"Zcdyzbm\": null,\n        \"Ssglydm\": \"********3861\"\n    }\n}",
+      "id": 400176306
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 62797071,
+  "ordering": 315,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-21T02:25:32.000Z",
+  "updatedAt": "2026-07-22T06:20:59.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "creatorUserId": 3600994,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

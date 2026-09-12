@@ -1,0 +1,178 @@
+{
+  "id": 481426965,
+  "name": "查询成品油下级纳税人信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "成品油业务-查询成品油下级纳税人信息\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryXjNsrxx",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageNumber": {
+              "type": "integer",
+              "title": "页码",
+              "description": "默认：1"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页记录数",
+              "description": "默认：10，最大：50"
+            },
+            "fzjgnsrsbh": {
+              "type": "string",
+              "title": "分公司税号"
+            }
+          },
+          "x-apifox-orders": [
+            "fzjgnsrsbh",
+            "pageNumber",
+            "pageSize"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**********QY4Y\",\r\n    \"data\": {\r\n        \"fzjgnsrsbh\": \"\",\r\n        \"pageNumber\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KWGSRKMX8DCTGS85MTXNRSGQ"
+            ],
+            "x-apifox-refs": {
+              "01KWGSRKMX8DCTGS85MTXNRSGQ": {
+                "$ref": "#/definitions/290481185"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"pageNumber\": 1,\n        \"pageSize\": 1,\n        \"total\": 43680,\n        \"list\": [\n            {\n                \"nsrsbh\": \"LK**********6714\",\n                \"nsrmc\": \"***公司\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": null,\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32480793,
+  "ordering": 71,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-02T06:50:39.000Z",
+  "updatedAt": "2026-07-08T06:03:12.000Z",
+  "creatorId": 3099717,
+  "editorId": 3600994,
+  "creatorUserId": 3099717,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

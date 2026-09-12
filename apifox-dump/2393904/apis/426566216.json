@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "",
+  "description": "该接口用于获取进项税额转出数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起进项税额转出查询任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询进项税额转出任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）\n2、通过taskId调用「获取进项税额转出任务数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）\n  </Step>\n</Steps>\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -15,7 +15,7 @@
   "tags": [
     "发票归集"
   ],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -295,7 +295,7 @@
     {
       "name": "成功示例",
       "responseId": 438797981,
-      "data": "{\n    \"reqId\": \"278ae26be2004e9ea641fe4fb4784714\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"appKey\": 1000****,\n        \"collectType\": \"1\",\n        \"createTime\": \"2026-01-30 17:18:36\",\n        \"failCode\": \"2000\",\n        \"failMsg\": \"操作成功\",\n        \"fplxStr\": null,\n        \"jsonUrl\": \"\"http: //qxy-oss-robot-product.qixiangyun.com/91370000********/26548675294********_jxseZccx.txt?Expires=1804735480&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=i6MLuPgNPEXbe4********\"\",\n        \"jxxbz\": \"jx\",\n        \"kpyfq\": 202312,\n        \"kpyfz\": 202312,\n        \"nsrsbh\": \"91310118M*******\",\n        \"status\": \"3\",\n        \"updateTime\": \"2026-01-30 17:18:54\"\n    }\n}",
+      "data": "{\n    \"reqId\": \"278ae26be2004e9ea641fe4fb4784714\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"appKey\": 1000****,\n        \"collectType\": \"1\",\n        \"createTime\": \"2026-01-30 17:18:36\",\n        \"failCode\": \"2000\",\n        \"failMsg\": \"操作成功\",\n        \"fplxStr\": null,\n        \"jsonUrl\": \"\"http: //qxy-oss-robot-product.qixiangyun.com/91370000********/26548675294********_jxseZccx.txt?Expires=1804735480&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=i6MLuPgNPEXbe4********\"\",\n        \"jxxbz\": \"jx\",\n        \"kpyfq\": 202312,\n        \"kpyfz\": 202312,\n        \"nsrsbh\": \"91310118M*******\",\n        \"status\": \"3\",\n        \"updateTime\": \"2026-01-30 17:18:54\"\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -307,7 +307,7 @@
   "moduleId": 306844,
   "folderId": 80020650,
   "ordering": 230,
-  "responsibleId": 0,
+  "responsibleId": 2118003,
   "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
@@ -317,11 +317,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-12T02:02:55.000Z",
-  "updatedAt": "2026-03-12T03:54:51.000Z",
+  "updatedAt": "2026-08-17T05:20:10.000Z",
   "creatorId": 2118003,
-  "editorId": 2118003,
+  "editorId": 3600994,
   "creatorUserId": 2118003,
-  "editorUserId": 2118003,
+  "editorUserId": 3600994,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: 七翔云开放平台 — 办税助手
+  version: latest
+  description: 'Split from full spec, module: 办税助手'
+tags:
+- name: 办税助手
+paths:
+  /v2/public/bszs/getZsClientUrl:
+    post:
+      summary: 获取助手客户端下载地址
+      operationId: api-69760392
+      tags:
+      - 办税助手
+      description: |-
+        ## 接口描述
+        获取助手客户端下载地址。
+
+
+
+        :::highlight green 💡
+        办税助手使用手册：[点我下载](https://static.qixiangyun.com/sb/%E4%BC%81%E4%BA%AB%E4%BA%91%E5%8A%9E%E7%A8%8E%E5%8A%A9%E6%89%8B%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C(1).pdf )
+        :::
+        ## 错误码
+        | **错误代码** | **错误信息**  | **解决方案**|
+        | --- | --- |---|
+        | SUCCESS| 成功 | |
+        | BUSINESS_ERROR| 未获取到客户端信息 | |
+        | BUSINESS_ERROR| 未获取到客户端版本号 | |
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+              x-apifox-orders:
+              - 01GWRKH496ABCVP9YCJFD3Y8Z5
+              required:
+              - 01GWRKH496ABCVP9YCJFD3Y8Z5
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                x-apifox-refs: {}
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                properties:
+                  code:
+                    description: 错误码
+                    type: string
+                    title: 错误码
+                  data:
+                    type: object
+                    properties:
+                      zsurl:
+                        type:
+                        - string
+                        - 'null'
+                        title: 办税助手客户端下载地址
+                        description: windows版
+                      macurl:
+                        type: string
+                        title: 税助手客户端下载地址
+                        description: mac版
+                    title: 业务数据
+                    x-apifox-refs: {}
+                    x-apifox-orders:
+                    - zsurl
+                    - macurl
+                    required:
+                    - macurl
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                required:
+                - code
+                - success
+                - reqId
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: 80c17729384c4b94a4f72b7851defc2d
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    data:
+                      macurl: https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/tool/TaxAssistant-macos-1.9.4.dmg
+                      zsurl: https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/tool/TaxAssistant-windows-1.9.5.exe
+      x-apifox-status: released

@@ -1,0 +1,274 @@
+{
+  "id": 497059835,
+  "name": "查询跨税源登记列表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n查询跨税源登记列表，从个人账号里面进去的",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/info/specific/crossTaxSourceList",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "多账号id"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"accountId\": \"5358******5696\",\r\n\t\"aggOrgId\": \"538*****40864\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "M9p43DU1T1",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "4R8TPN3AxK",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "pVgXmsJzVY",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Isa8Et6oLB",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 581534477,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "title": "企业数量"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "zgswjgmc": {
+                      "type": "string",
+                      "title": "主管税务机关名称"
+                    },
+                    "legalPerson": {
+                      "type": "string",
+                      "title": "法定代表人姓名"
+                    },
+                    "productionAndOperationAddress": {
+                      "type": "string",
+                      "title": "生产经营地址"
+                    },
+                    "taxpayerStatus": {
+                      "type": "string",
+                      "title": "纳税人状态",
+                      "enum": [
+                        "03",
+                        "07"
+                      ],
+                      "x-apifox-enum": [
+                        {
+                          "value": "03",
+                          "name": "正常",
+                          "description": ""
+                        },
+                        {
+                          "value": "07",
+                          "name": "注销",
+                          "description": ""
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "zgswjgmc",
+                    "legalPerson",
+                    "productionAndOperationAddress",
+                    "taxpayerStatus"
+                  ],
+                  "x-apifox-orders": [
+                    "zgswjgmc",
+                    "legalPerson",
+                    "productionAndOperationAddress",
+                    "taxpayerStatus"
+                  ]
+                },
+                "title": "明细"
+              }
+            },
+            "required": [
+              "total",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "list"
+            ]
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误 信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "登录成功示例",
+      "responseId": 581534477,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"操作成功\",\n    \"data\": {\n        \"list\": [\n            {\n                \"areaCode\": \"4100\",\n                \"legalPerson\": \"石**\",\n                \"productionAndOperationAddress\": \"****政府院内\",\n                \"taxpayerStatus\": \"07\",\n                \"zgswjgmc\": \"国家税务总局*****税务分局\"\n            },\n            {\n                \"areaCode\": \"4100\",\n                \"legalPerson\": \"李**\",\n                \"productionAndOperationAddress\": \"*****政府院内\",\n                \"taxpayerStatus\": \"03\",\n                \"zgswjgmc\": \"国家税务总局*******税务分局\"\n            }\n        ],\n        \"total\": 2\n    },\n    \"timestamp\": \"2026-08-04 18:53:27\",\n    \"reqId\": \"0082461b524ac4b42aaf50cf7cf650b84\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 445674336
+    },
+    {
+      "name": "异常示例",
+      "responseId": 581534477,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数aggOrgId不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 445674337
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 92868035,
+  "ordering": 188,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-08-04T10:35:12.000Z",
+  "updatedAt": "2026-08-07T02:34:04.000Z",
+  "creatorId": 2400309,
+  "editorId": 2795319,
+  "creatorUserId": 2400309,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

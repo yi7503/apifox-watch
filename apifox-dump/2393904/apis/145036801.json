@@ -42,6 +42,7 @@
         "taskIds"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -236,6 +237,63 @@
                     "toDate": {
                       "type": "string",
                       "title": "税款起止日期止"
+                    },
+                    "pzxhList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "zsxmDm": {
+                            "type": "string",
+                            "title": "征收项目代码"
+                          },
+                          "zsxmDmName": {
+                            "type": "string",
+                            "title": "征收项目名称"
+                          },
+                          "yhdjspzxh": {
+                            "type": "string",
+                            "title": "银行端查询缴税凭证序号"
+                          },
+                          "sjje": {
+                            "type": "string",
+                            "title": "银行端查询缴款金额"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "zsxmDm",
+                          "zsxmDmName",
+                          "yhdjspzxh",
+                          "sjje"
+                        ]
+                      },
+                      "title": "缴款凭证序号集合"
+                    },
+                    "ewmjkList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "dzspxh": {
+                            "type": "string",
+                            "title": "电子税票序号"
+                          },
+                          "je": {
+                            "type": "string",
+                            "title": "金额"
+                          },
+                          "ewmurl": {
+                            "type": "string",
+                            "title": "二维码截图URL"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "dzspxh",
+                          "je",
+                          "ewmurl"
+                        ]
+                      },
+                      "title": "二维码缴款结果列表"
                     }
                   },
                   "x-apifox-orders": [
@@ -251,7 +309,9 @@
                     "bqybtsejyfj",
                     "bqybtsecjs",
                     "bqybtsedfjyfj",
-                    "jkScreenUrl"
+                    "jkScreenUrl",
+                    "pzxhList",
+                    "ewmjkList"
                   ]
                 },
                 "title": "明细"
@@ -334,7 +394,7 @@
     {
       "name": "任务执行成功",
       "responseId": 42948155,
-      "data": "{\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"962ee5d69f624347b5f88143a6452d83\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行成功\",\n            \"finishTime\": \"2024-01-24 15:59:17.0\",\n            \"serviceCode\": \"jk\",\n            \"businessStatus\": \"3\",\n            \"startTime\": \"2024-01-24 15:58:40.0\",\n            \"detail\": [\n                {\n                    \"code\": \"2000\",\n                    \"bqybtse\": \"2.0\",\n                    \"bqybtsecjs\": \"4.0\",\n                    \"toDate\": \"2023-12-31\",\n                    \"jkScreenUrl\": \"https://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/0/365932316316672-510706775148032-etax-agg-product_79kc_swx4_cinp_1uav_xwkx__1706083147754.png?Expires=1708842282&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=UcpLCu9OPVXPi1aZnWWOfWTeAjc%3D\",\n                    \"payState\": \"1\",\n                    \"message\": \"缴款成功\",\n                    \"result\": \"增值税及附加税(适用于一般纳税人)缴款成功\",\n                    \"fromDate\": \"2023-12-01\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"bqybtsejyfj\": \"6.0\",\n                    \"bqybtsedfjyfj\": \"8.0\",\n                    \"taxAmount\": \"20.00\"\n                }\n            ],\n            \"serviceName\": \"多税种缴款\",\n            \"taskId\": \"510706717584896\"\n        }\n    ]\n}",
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"962ee5d69f624347b5f88143a6452d83\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行成功\",\n            \"finishTime\": \"2024-01-24 15:59:17.0\",\n            \"serviceCode\": \"jk\",\n            \"businessStatus\": \"3\",\n            \"startTime\": \"2024-01-24 15:58:40.0\",\n            \"detail\": [\n                {\n                    \"code\": \"2000\",\n                    \"bqybtse\": \"2.0\",\n                    \"bqybtsecjs\": \"4.0\",\n                    \"toDate\": \"2023-12-31\",\n                    \"jkScreenUrl\": \"https://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/0/365932316316672-510706775148032-etax-agg-product_79kc_swx4_cinp_1uav_xwkx__1706083147754.png?Expires=1708842282&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=UcpLCu9OPVXPi1aZnWWOfWTeAjc%3D\",\n                    \"payState\": \"1\",\n                    \"message\": \"缴款成功\",\n                    \"result\": \"增值税及附加税(适用于一般纳税人)缴款成功\",\n                    \"fromDate\": \"2023-12-01\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"bqybtsejyfj\": \"6.0\",\n                    \"bqybtsedfjyfj\": \"8.0\",\n                    \"taxAmount\": \"20.00\"\n                }\n            ],\n            \"serviceName\": \"多税种缴款\",\n            \"taskId\": \"510706717584896\"\n        }\n    ]\n}",
       "id": 42948158
     },
     {
@@ -346,7 +406,7 @@
     {
       "name": "缴款失败示例",
       "responseId": 42948155,
-      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行失败\",\n            \"finishTime\": \"2024-01-26 15:05:33.0\",\n            \"serviceCode\": \"jk\",\n            \"businessStatus\": \"2\",\n            \"startTime\": \"2024-01-26 15:02:25.0\",\n            \"detail\": [\n                {\n                    \"code\": \"4020\",\n                    \"bqybtse\": \"0.0\",\n                    \"bqybtsecjs\": \"0.0\",\n                    \"toDate\": \"2023-12-31\",\n                    \"jkScreenUrl\": \"https://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/0/365932316316672-511053925215744-etax-agg-product_ka5c_oyju_tr2f_wrty_rafb__1706252654612.png?Expires=1708844741&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=JT6O4Jj2%2BwmF200OnFziGTSWJkQ%3D\",\n                    \"payState\": \"0\",\n                    \"message\": \"缴款失败：缴款失败，余额不足...\",\n                    \"result\": \"增值税及附加税(适用于一般纳税人)缴款失败：缴款失败，余额不足...\",\n                    \"fromDate\": \"2023-12-01\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"bqybtsejyfj\": \"0.0\",\n                    \"bqybtsedfjyfj\": \"0.0\",\n                    \"taxAmount\": \"0.00\"\n                }\n            ],\n            \"serviceName\": \"多税种缴款\",\n            \"taskId\": \"511053702391296\"\n        }\n    ],\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"53e22b0050de4cf4b201cb002639b074\"\n}",
+      "data": "{\n    \"code\": \"SUCCESS\",\n    \"data\": [\n        {\n            \"businessStatusName\": \"执行失败\",\n            \"finishTime\": \"2024-01-26 15:05:33.0\",\n            \"serviceCode\": \"jk\",\n            \"businessStatus\": \"2\",\n            \"startTime\": \"2024-01-26 15:02:25.0\",\n            \"detail\": [\n                {\n                    \"code\": \"4020\",\n                    \"bqybtse\": \"0.0\",\n                    \"bqybtsecjs\": \"0.0\",\n                    \"toDate\": \"2023-12-31\",\n                    \"jkScreenUrl\": \"https://qxy-oss-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/0/365932316316672-511053925215744-etax-agg-product_ka5c_oyju_tr2f_wrty_rafb__1706252654612.png?Expires=1708844741&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=JT6O4Jj2%2BwmF200OnFziGTSWJkQ%3D\",\n                    \"payState\": \"0\",\n                    \"message\": \"缴款失败：缴款失败，余额不足...\",\n                    \"result\": \"增值税及附加税(适用于一般纳税人)缴款失败：缴款失败，余额不足...\",\n                    \"fromDate\": \"2023-12-01\",\n                    \"yzpzzlDm\": \"BDA0610606\",\n                    \"bqybtsejyfj\": \"0.0\",\n                    \"bqybtsedfjyfj\": \"0.0\",\n                    \"taxAmount\": \"0.00\"\n                }\n            ],\n            \"serviceName\": \"多税种缴款\",\n            \"taskId\": \"511053702391296\"\n        }\n    ],\n    \"success\": true,\n    \"message\": \"\",\n    \"reqId\": \"53e22b0050de4cf4b201cb002639b074\"\n}",
       "id": 42948160
     }
   ],
@@ -362,17 +422,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-03T06:36:15.000Z",
-  "updatedAt": "2025-01-03T06:36:15.000Z",
+  "updatedAt": "2026-09-08T08:06:58.000Z",
   "creatorId": 1452584,
   "editorId": 1452584,
   "creatorUserId": 1452584,
   "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.42948155"
-  ],
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

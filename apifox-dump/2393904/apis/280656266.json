@@ -53,6 +53,37 @@
           "type": "string",
           "title": "报表名称\t",
           "description": "1:预缴纳税;2:年度汇缴\n默认1预缴纳税"
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "xm": {
+                "type": "string",
+                "title": "姓名\t"
+              },
+              "zzlx": {
+                "type": "string",
+                "title": "证件类型\t"
+              },
+              "zzhm": {
+                "type": "string",
+                "title": "证件号码\t"
+              }
+            },
+            "x-apifox-orders": [
+              "xm",
+              "zzlx",
+              "zzhm"
+            ],
+            "required": [
+              "xm",
+              "zzlx",
+              "zzhm"
+            ]
+          },
+          "title": "人员列表\t"
         }
       },
       "required": [
@@ -66,7 +97,8 @@
         "accountId",
         "bbmc",
         "skssqq",
-        "skssqz"
+        "skssqz",
+        "rylb"
       ]
     },
     "required": false,
@@ -261,11 +293,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-07T05:56:56.000Z",
-  "updatedAt": "2026-01-23T06:38:44.000Z",
+  "updatedAt": "2026-07-30T09:17:19.000Z",
   "creatorId": 1910680,
-  "editorId": 3222025,
+  "editorId": 1452584,
   "creatorUserId": 1910680,
-  "editorUserId": 3222025,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

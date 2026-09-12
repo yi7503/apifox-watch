@@ -1,0 +1,832 @@
+{
+  "id": 431038998,
+  "name": "增值税发票查验",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于数电票查验。\nnewFlag 是否使用新平台查验 为“否”，与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致。\nnewFlag 是否使用新平台查验 为“是”，与[国家税务总局全国增值税查验平台（新）](https://inv-veri.chinatax.gov.cn) 保持一致。 \n\n\n:::highlight red 💡\n[企享云-增值税发票查验升级切换通知](https://static.qixiangyun.com/FP/%E4%BC%81%E4%BA%AB%E4%BA%91-%E5%A2%9E%E5%80%BC%E7%A8%8E%E5%8F%91%E7%A5%A8%E6%9F%A5%E9%AA%8C%E5%8D%87%E7%BA%A7%E5%88%87%E6%8D%A2%E9%80%9A%E7%9F%A5(1).pdf)\n:::\n\n\n【**支持发票票种**】 \n税控发票\n04        增值税普通发票        \n01        增值税专用发票        \n10        增值税普通发票（电子）        \n11        增值税普通发票（卷票）        \n14        道路通行费电子普通发票        \n08        增值税专用发票（电子）        \n03        机动车销售统一发票        \n15        二手车统一销售发票     \n数电发票\n0910\t数电发票（普通发票）\n0920\t数电发票（增值税专用发票）\n0904\t数电纸质发票（普通发票）\t\n0901\t数电纸质发票（增值税专用发票）\n61\t        数电发票（航空运输电子客票行程单）\n83\t         数电发票（铁路电子客票）\n0903\t数电纸质发票（机动车销售统一发票）\n0930\t数电发票（机动车销售统一发票）\n0915\t数电纸质发票(二手车统一销售发票)\n0940\t数电发票（二手车统一销售发票）\n\n注意事项：\n1、新旧平台存在发票状态不一致的情况，老平台页面显示正常，新平台是部分红冲；\n--税局数据同步机制导致，可隔天在查验。\n2、备注内容不一样，一个是两边对于特殊字符的处理和转义方式不同，第二个是新平台把特定要素的一些内容、购销方地址电话的内容当成了独立的字段返回，旧平台是直接放到了备注里；\n-- 详见购销方信息的独立字段；\n3、税率精度存在不同的情况，不过不影响，老平台会出现精度补位，新平台不补位；\n--业务上没有影响\n4、特殊票种标志不同，新平台的特殊票种从80-99开始，共20种类型\n-- 参考原附录的tspzDm-特殊票种代码 https://openapi.qixiangyun.com/doc-7675729 。\n5、新平台没有代开标志\n6、times字段查验次数，旧查验平台返回是累计查验次数；新查验平台新版返回的是当日查验次数；\n\n::: highlight red 💡\n注意：不同的数电票价税合计取值不同\n:::\n\n## 错误码\n| **错误代码**                                     | **错误信息**                                   | **说明**                                                     |\n| ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |\n| CheckInvoiceOverSupportCount                     | 超过当前接口支持最大查验张数!                  | 超过接口限制的单次请求张数，请调整单次请求张数。             |\n| CheckInvoiceForTheSameFrequent                   | 当前发票正在查验中,请不要频繁请求              | 当前发票正在查验中,请稍后重试                                |\n| CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| IllegalParameter                                 | 请求参数不正确                                 | 请核对请求参数                                               |\n| IllegalParameter.IllegalInvoiceCode              | 请求参数不正确,参数fpdm发票代码不正确！        | 请核对fpdm发票代码是否符合参数规范                           |\n| IllegalParameter.IllegalInvoiceNumber            | 请求参数不正确,参数fphm发票号码不正确！        | 请核对fphm发票号码是否符合参数规范                           |\n| IllegalParameter.IllegalBillingDate              | 请求参数不正确,参数kprq开票日期不正确！        | 请核对kprq开票日期是否符合参数规范                           |\n| IllegalParameter.IllegalCheckCode                | 参数jym[发票校验码后6位]不正确                 | 请核对jym校验码是否符合参数规范                              |\n| IllegalParameter.IllegalTotalAmount              | 参数je[不含税金额]不正确                       | 请核对je金额是否符合参数规范                                 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！                  | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh                    | 请求参数不正确,销售方识别号为空！              | 请核对xfsbh销方识别号是否符合参数规范                        |\n| IllegalParameter.IllegalArea                     | 请求参数不正确,参数dq地区不正确！              | 请核对dq地区是否符合参数规范                                 |\n| CheckInvoicesMoreThanToday                       | 开票日期超过当前日期                           | 请核对开票日期是否正确                                       |\n| CheckInvoicesOverFiveYears                       | 超过五年的发票不能查验                         | 请核对开票日期是否正确                                       |\n| CheckInvoiceNotSupport                           | 暂不支持该（省市）电子票据查验                 | 该地区暂不支持该票种查验                                     |\n| CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| CheckInvoiceMoreFiveTimes                        | 超过该张票当天查验次数                         | 请确认在调用接口前是否已经通过官方平台查验超过5次            |\n| CheckInvoiceNotExistence                         | 查验成功所查发票不存在                         | 发票代码或发票号码在税局查不到，请核对代码、号码是否正确  <br>注：可能原因如下：(1)输入的查验项有误；(2)查询的发票开票日期距当前日期超过5年；(3)由于开票方离线开票，发票数据未上传至税务局；(4)非增值税发票管理系统开具的发票。 |\n| CheckInvoiceNotSame                              | 查验成功所查发票不一致                         | 请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票 |\n| CheckInvoiceNotStandard                          | 查询发票不规范                                 | 请核对四要素是否符合发票规范                                 |\n| CheckInvoiceRequestNonStandard                   | 请求不规范                                     | 请核对请求参数                                               |\n| CheckInvoiceException                            | 税局服务异常，建议15-20分钟后重试              | 税局服务异常，建议15-20分钟后重试                            |\n| CheckAbnormal                                    | 查验异常（错误信息不固定）                     | 税局服务异常，建议15-20分钟后重试                            |\n| CheckExceedingLimit                              | 查验发票张数超过限制                           | 发票剩余查验量不足，请与运营负责人沟通确认                   |\n| CheckInvoiceSingular                             | 请求太频繁或超过服务器最大请求数，请稍后访问！ | 当前请求数达到服务最大并发数                                 |\n| ServerError                                      | 服务器异常，请稍后重试                         | 服务器异常                                                   |\n| InternalServerError                              | 服务遇到未知错误，请稍后重试                   | 请联系管理员                                                 |\n| RemoteDataException                              | 税局数据异常                                   | 请联系管理员                                                 |\n| RemoteResultFail                                 | 调用税局异常，请稍后重试。                     | 请联系管理员                                                 |\n| 50008                                            | 字段文件名称不能为空(name)                     | 请联系管理员                                                 |\n| 50014                                            | 超过并发限制                                   | 请降低并发                                                   |\n| 59999                                            | 未知异常                                       | 请联系管理员                                                 |\n| 505002                                           | 接口调用异常!                                  | 请联系管理员                                                 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/zzsfpCy",
+  "tags": [
+    "发票查验",
+    "数电发票查验"
+  ],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {},
+      "properties": {
+        "customReqId": {
+          "type": "string",
+          "description": "传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb"
+        },
+        "cyList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fphm": {
+                "type": "string",
+                "title": "发票号码",
+                "description": "发票号码，必填"
+              },
+              "kprq": {
+                "type": "string",
+                "examples": [
+                  "20230301",
+                  "2023-03-01"
+                ],
+                "title": "开票日期",
+                "description": "开票日期，必填，格式 yyyy-MM-dd / yyyyMMdd"
+              },
+              "jshj": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "title": "价税合计",
+                "description": "价税合计，数电发票必填",
+                "examples": [
+                  100
+                ]
+              },
+              "newFlag": {
+                "type": "boolean",
+                "title": "是否使用新平台查验",
+                "description": "true：是；false 或 不传 ： 否"
+              },
+              "fpdm": {
+                "type": "string",
+                "title": "发票代码",
+                "description": "发票代码，必填"
+              },
+              "jym": {
+                "type": "string",
+                "title": "校验码后 6 位",
+                "description": "增值税普通发票、增值税电子普通发票、增值税普通发票（卷式）、增值税电子普通发票（通行费）、数电纸质（增值税普通发票）时必填"
+              },
+              "je": {
+                "type": "string",
+                "title": "不含税金额",
+                "description": "（增值税专用发票、增值税电子专用发票、机动车销售统一发票、数电纸质（增值税专用发票）、数电纸质（机动车销售统一发票））/车价合计（二手车销售统一发票）、数电纸质（二手车销售统一发票）时必填"
+              }
+            },
+            "x-apifox-orders": [
+              "fpdm",
+              "fphm",
+              "kprq",
+              "jshj",
+              "je",
+              "jym",
+              "newFlag"
+            ],
+            "required": [
+              "fphm",
+              "kprq",
+              "newFlag",
+              "fpdm"
+            ],
+            "description": "单张发票查验入参"
+          },
+          "title": "查验发票列表",
+          "description": "查验发票列表，必填"
+        }
+      },
+      "x-apifox-orders": [
+        "cyList",
+        "customReqId"
+      ],
+      "required": [
+        "cyList"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"cyList\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"fphm\": \"2131700000000000****\",\r\n            \"kprq\": \"2021-12-01\",\r\n            \"jshj\": \"1129.99\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "Xp1PFkxoym",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "qGOlDbwQ1w",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "VlwydZoHPX",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 42947073,
+      "name": "电子发票（增值税专用发票/普通发票）查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "x-apifox-refs": {
+                "01HNAM0E05DRGBE9SVDRDXKQT0": {
+                  "$ref": "#/definitions/35326710",
+                  "x-apifox-overrides": {
+                    "data": {
+                      "title": "查验结果",
+                      "$ref": "#/definitions/255905033"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              },
+              "x-apifox-orders": [
+                "01HNAM0E05DRGBE9SVDRDXKQT0"
+              ],
+              "properties": {}
+            },
+            "title": "业务数据"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 42947075,
+      "name": "电子发票（铁路电子客票）查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01GXZJBWH28CMV8SKJJ1FBR46H": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01HNAM3BF4RPAR3GVGD8YW9ERF": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01KXZGKP2RB05KTBSXAHWS57DV"
+                          ],
+                          "title": "查验结果",
+                          "required": [],
+                          "x-apifox-refs": {
+                            "01KXZGKP2RB05KTBSXAHWS57DV": {
+                              "$ref": "#/definitions/296333872"
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HNAM3BF4RPAR3GVGD8YW9ERF"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01GXZJBWH28CMV8SKJJ1FBR46H"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 414935084,
+      "name": "电子发票（航空运输电子客票行程单）查验成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01HS0NKTS2TR1VB9QG9JQVRMSH": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JDTZH3BHWTWE3YJ145W4M3YB": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01KX5H6DVJ0D7WE8B7C84EMH3Q"
+                          ],
+                          "title": "查验结果",
+                          "x-apifox-refs": {
+                            "01KX5H6DVJ0D7WE8B7C84EMH3Q": {
+                              "$ref": "#/definitions/293421933",
+                              "x-apifox-overrides": {
+                                "hkysdzkphwxx": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "mxxh": {
+                                        "type": "string",
+                                        "title": "明细序号"
+                                      },
+                                      "mc": {
+                                        "type": "string",
+                                        "title": "货物服务名称"
+                                      },
+                                      "ggxh": {
+                                        "type": "string",
+                                        "title": "规格型号"
+                                      },
+                                      "jldw": {
+                                        "type": "string",
+                                        "title": "计量单位"
+                                      },
+                                      "sl": {
+                                        "type": "string",
+                                        "title": "数量"
+                                      },
+                                      "dj": {
+                                        "type": "string",
+                                        "title": "单价"
+                                      },
+                                      "je": {
+                                        "type": "number",
+                                        "title": "金额"
+                                      },
+                                      "se": {
+                                        "type": "number",
+                                        "title": "税额"
+                                      },
+                                      "slv": {
+                                        "type": "string",
+                                        "title": "税率"
+                                      },
+                                      "ysse": {
+                                        "type": "string",
+                                        "title": "原始税额"
+                                      },
+                                      "ysslv": {
+                                        "type": "string",
+                                        "title": "原始税率"
+                                      },
+                                      "spbm": {
+                                        "type": "string",
+                                        "title": "商品编码"
+                                      },
+                                      "lslbs": {
+                                        "type": "string",
+                                        "title": "零税率标识"
+                                      }
+                                    },
+                                    "x-apifox-orders": [
+                                      "mxxh",
+                                      "mc",
+                                      "ggxh",
+                                      "jldw",
+                                      "sl",
+                                      "dj",
+                                      "je",
+                                      "se",
+                                      "slv",
+                                      "ysse",
+                                      "ysslv",
+                                      "spbm",
+                                      "lslbs"
+                                    ]
+                                  },
+                                  "title": "航空运输电子客票货物或服务信息"
+                                },
+                                "hwxx": null
+                              },
+                              "required": [
+                                "hwxx",
+                                "hkysdzkphwxx"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JDTZH3BHWTWE3YJ145W4M3YB"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01HS0NKTS2TR1VB9QG9JQVRMSH"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 499202553,
+      "name": "电子发票（机动车销售统一发票）查验",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01J3YYBYD224NVAS5C87P9KDHT": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JQN3A944P08YSPRDAK1Z339X": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/156803644"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JQN3A944P08YSPRDAK1Z339X"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01J3YYBYD224NVAS5C87P9KDHT"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 643756142,
+      "name": "电子发票（通行费发票）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JQN3EMV6SEPSR3VBM7S284BP": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JQN3F7XJYD8XC24K11ZG7EAB": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/156756243"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JQN3F7XJYD8XC24K11ZG7EAB"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01JQN3EMV6SEPSR3VBM7S284BP"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 698104884,
+      "name": "电子发票(二手车销售统一发票)",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JXV98PXB45N9XZB70S42H34K": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JXV99512Q3T4TAST7VHC187F": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/176185678"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JXV99512Q3T4TAST7VHC187F"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01JXV98PXB45N9XZB70S42H34K"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "电子发票（增值税专用发票）（0901、0904、0910、0920）",
+      "responseId": 42947073,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": [\n        {\n            \"fpdm\": \"\",\n            \"data\": {\n                \"xfsbh\": \"9131********PX80\",\n                \"hzfpxx\": [],\n                \"gfmc\": \"北京********公司\",\n                \"gmfyhzh\": \"\",\n                \"dkXsfmc\": null,\n                \"tspzDm\": \"\",\n                \"purl\": \"\",\n                \"dq\": \"上海\",\n                \"xsfdzdh\": \"上海市********\",\n                \"jshjcn\": \"壹佰肆拾肆圆整\",\n                \"yfphm\": null,\n                \"se\": 8.15,\n                \"skm\": null,\n                \"yfpdm\": null,\n                \"kprq\": \"2026-03-31 00:00:00\",\n                \"bz\": \"\",\n                \"kjlx\": \"1\",\n                \"mxts\": null,\n                \"skr\": \"\",\n                \"fpztDm\": \"0\",\n                \"sbbh\": \"\",\n                \"gfsbh\": \"9111********N17U\",\n                \"fpdm\": \"\",\n                \"fplx\": \"0920\",\n                \"qdfphm\": \"2631********6001\",\n                \"dkXsfsbh\": null,\n                \"qdlx\": \"20\",\n                \"kpr\": \"向欣月\",\n                \"url\": \"\",\n                \"fhr\": \"\",\n                \"gmfdzdh\": \"\",\n                \"xsfyhzh\": \"中国********264\",\n                \"jshj\": 144.00,\n                \"je\": 135.85,\n                \"xfmc\": \"上海********公司\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"jldw\": \"\",\n                        \"dj\": \"135.849056603774\",\n                        \"mxxh\": 1,\n                        \"lslbs\": null,\n                        \"se\": 8.15,\n                        \"ysse\": \"8.15\",\n                        \"mc\": \"*信息系统服务*信息服务费\",\n                        \"sl\": \"1\",\n                        \"je\": 135.85,\n                        \"slv\": 0.06,\n                        \"ysslv\": \"6%\",\n                        \"spbm\": \"3040203000000000000\"\n                    }\n                ],\n                \"fphm\": \"26312000001975386001\",\n                \"jym\": \"26312000001975386001\"\n            },\n            \"fplx\": \"0920\",\n            \"customReqId\": \"10001999368850fee7434c0a9839054e8403faf8\",\n            \"dq\": \"31\",\n            \"times\": 1,\n            \"mxcxMessage\": null,\n            \"czpjMxcx\": null,\n            \"kprq\": \"2026-03-31 00:00:00\",\n            \"success\": true,\n            \"newFlag\": true,\n            \"jshj\": 144,\n            \"je\": null,\n            \"time\": \"2026-08-13 09:54:24\",\n            \"fphm\": \"2631********6001\",\n            \"jym\": null\n        }\n    ],\n    \"success\": true,\n    \"message\": null,\n    \"timestamp\": \"2026-08-13 09:54:24\",\n    \"reqId\": \"53894ac586d5ad74d559f4527273cc29\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947076
+    },
+    {
+      "name": "电子发票（铁路电子客票）（83）",
+      "responseId": 42947073,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": [\n        {\n            \"fpdm\": \"\",\n            \"data\": {\n                \"xfsbh\": \"9131*********9180\",\n                \"hzfpxx\": [],\n                \"gfmc\": \"*********有限公司\",\n                \"pz\": null,\n                \"dq\": \"上海\",\n                \"jshjcn\": \"柒佰陆拾陆圆整\",\n                \"yfphm\": null,\n                \"se\": 63.25,\n                \"ywlx\": \"1\",\n                \"cfsj\": \"15:00\",\n                \"yfpdm\": null,\n                \"kprq\": \"2026-02-06 00:00:00\",\n                \"fpztDm\": \"0\",\n                \"kttz\": \"\",\n                \"cc\": \"G22\",\n                \"gfsbh\": \"9131*********827A\",\n                \"fpdm\": \"\",\n                \"fplx\": \"83\",\n                \"qdfphm\": null,\n                \"xb\": \"一等座\",\n                \"ccrq\": \"20260204\",\n                \"cx\": \"02车\",\n                \"cfz\": \"上海虹桥\",\n                \"dzkph\": \"661006*********362026\",\n                \"name\": \"王书纲\",\n                \"zjh\": \"370203********4810\",\n                \"jshj\": 766.00,\n                \"ddz\": \"济南西\",\n                \"je\": 702.75,\n                \"slv\": 0.09,\n                \"xfmc\": \"中国铁路上海局集团有限公司上海站\",\n                \"ysslv\": \"9.0\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"lslbs\": null,\n                        \"se\": 63.25,\n                        \"jldw\": \"\",\n                        \"ysse\": \"63.25\",\n                        \"dj\": \"\",\n                        \"mc\": \"*运输服务*票价\",\n                        \"mxxh\": 1,\n                        \"je\": 702.75,\n                        \"slv\": 0.09,\n                        \"ysslv\": \"9%\",\n                        \"spbm\": \"3010101010100000000\"\n                    }\n                ],\n                \"fphm\": \"26319166100001666818\",\n                \"xw\": \"04D号\"\n            },\n            \"fplx\": \"83\",\n            \"customReqId\": \"100019994cd427b676fa434b9ebe9b129d8b870e\",\n            \"dq\": \"31\",\n            \"times\": 1,\n            \"mxcxMessage\": null,\n            \"czpjMxcx\": null,\n            \"kprq\": \"2026-02-06 00:00:00\",\n            \"success\": true,\n            \"newFlag\": true,\n            \"jshj\": 766,\n            \"je\": null,\n            \"time\": \"2026-08-13 09:49:17\",\n            \"fphm\": \"2631*********6818\",\n            \"jym\": null\n        }\n    ],\n    \"success\": true,\n    \"message\": null,\n    \"timestamp\": \"2026-08-13 09:49:17\",\n    \"reqId\": \"dba4112b8abe3477bea945ea49a6ae4e\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947078
+    },
+    {
+      "name": "超过该张票当天查验次数",
+      "responseId": 42947073,
+      "data": "{\r\n    \"reqId\": \"2e8ac8fbad1c4983bd05a3471be9211a\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": [\r\n        {\r\n            \"code\": \"CheckInvoiceMoreFiveTimes\",\r\n            \"czpj\": null,\r\n            \"czpjCyAndGetFile\": null,\r\n            \"data\": null,\r\n            \"dq\": \"44\",\r\n            \"fpdm\": null,\r\n            \"fphm\": \"23448784110000000660\",\r\n            \"fplx\": \"09\",\r\n            \"je\": null,\r\n            \"jshj\": 1080.00,\r\n            \"jym\": null,\r\n            \"kprq\": \"2023-03-15 00:00:00\",\r\n            \"message\": \"超过该张票当天查验次数\",\r\n            \"qkl\": null,\r\n            \"skm\": null,\r\n            \"success\": false,\r\n            \"time\": null,\r\n            \"times\": null,\r\n            \"tydz\": null,\r\n            \"xzpj\": null,\r\n            \"ylpjFile\": null\r\n        }\r\n    ]\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 42947079
+    },
+    {
+      "name": "电子发票（航空运输电子客票行程单）（61）",
+      "responseId": 42947073,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": [\n        {\n            \"fpdm\": \"\",\n            \"data\": {\n                \"hzfpxx\": [],\n                \"qtsf\": \"\",\n                \"ryfjf\": \"18.35\",\n                \"gfmc\": \"北京********有限公司\",\n                \"lkxm\": \"任峰\",\n                \"mhfzjj\": \"50.00\",\n                \"cycs\": \"1\",\n                \"dq\": \"海南\",\n                \"dzkphm\": \"88********71\",\n                \"bxf\": \"0.00\",\n                \"yfphm\": null,\n                \"yfpdm\": null,\n                \"kprq\": \"2026-03-23 00:00:00\",\n                \"sfzjhm\": \"211382********041X\",\n                \"fpztDm\": \"0\",\n                \"gpdh\": \"\",\n                \"hkysdzkpxcdmxList\": [\n                    {\n                        \"mdz\": \"北京 首都 T2\",\n                        \"sfz\": \"深圳 宝安 T3\",\n                        \"mfxle\": \"20K\",\n                        \"qfsj\": \"09:20\",\n                        \"yxjzrq\": \"\",\n                        \"zwdj\": \"X\",\n                        \"cyrq\": \"2026-03-20\",\n                        \"hdxh\": \"1\",\n                        \"cyr\": \"海航\",\n                        \"hbh\": \"HU7704\",\n                        \"kpjb\": \"X\",\n                        \"kpsxrq\": \"\"\n                    }\n                ],\n                \"gfsbh\": \"9111********63XF\",\n                \"cysj\": \"2026-08-13 09:51:52\",\n                \"fpdm\": \"\",\n                \"gngjbz\": \"国内\",\n                \"hjse\": 149.45,\n                \"fplx\": \"61\",\n                \"qdfphm\": null,\n                \"dkbz\": \"\",\n                \"zzsse\": \"149.45\",\n                \"jshj\": 1860.00,\n                \"pj\": \"1642.20\",\n                \"je\": 1710.55,\n                \"zzssl\": \"9%\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"se\": 147.8,\n                        \"jldw\": \"\",\n                        \"ysse\": \"147.80\",\n                        \"dj\": \"\",\n                        \"mc\": \"*运输服务*票价\",\n                        \"mxxh\": 1,\n                        \"je\": 1642.20,\n                        \"slv\": 0.09,\n                        \"ysslv\": \"9%\",\n                        \"spbm\": \"3010301010100000000\"\n                    },\n                    {\n                        \"ggxh\": \"\",\n                        \"lslbs\": \"2\",\n                        \"se\": 0.0,\n                        \"jldw\": \"\",\n                        \"ysse\": \"***\",\n                        \"dj\": \"\",\n                        \"mc\": \"*代收民航发展基金*民航发展基金\",\n                        \"mxxh\": 2,\n                        \"je\": 50.00,\n                        \"slv\": 0.0,\n                        \"ysslv\": \"不征税\",\n                        \"spbm\": \"6130000000000000000\"\n                    },\n                    {\n                        \"ggxh\": \"\",\n                        \"se\": 1.65,\n                        \"jldw\": \"\",\n                        \"ysse\": \"1.65\",\n                        \"dj\": \"\",\n                        \"mc\": \"*运输服务*燃油附加费\",\n                        \"mxxh\": 3,\n                        \"je\": 18.35,\n                        \"slv\": 0.09,\n                        \"ysslv\": \"9%\",\n                        \"spbm\": \"3010301010100000000\"\n                    }\n                ],\n                \"fphm\": \"2646********1395\"\n            },\n            \"fplx\": \"61\",\n            \"customReqId\": \"1000199929e803cac9c6449fadbed57d14f2adba\",\n            \"dq\": \"46\",\n            \"times\": 1,\n            \"mxcxMessage\": null,\n            \"czpjMxcx\": null,\n            \"kprq\": \"2026-03-23 00:00:00\",\n            \"success\": true,\n            \"newFlag\": true,\n            \"jshj\": 1860,\n            \"je\": null,\n            \"time\": \"2026-08-13 09:51:52\",\n            \"fphm\": \"2646********1395\",\n            \"jym\": null\n        }\n    ],\n    \"success\": true,\n    \"message\": null,\n    \"timestamp\": \"2026-08-13 09:51:52\",\n    \"reqId\": \"4c7f1bcb2335c2968a53d013ee9576ad\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 401251046
+    },
+    {
+      "name": "电子发票（机动车销售统一发票）（0903、0930）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"data\": {\r\n                \"cjhm\": \"LVGB********2734\",\r\n                \"hzfpxx\": [],\r\n                \"dh\": \"06********33\",\r\n                \"gfmc\": \"钟亚妹\",\r\n                \"dkdwmc\": null,\r\n                \"sfzhm\": \"\",\r\n                \"xhdwsbh\": \"9144********474W\",\r\n                \"dq\": \"广东\",\r\n                \"jshjcn\": \"壹拾肆万伍仟捌佰元整\",\r\n                \"yfphm\": null,\r\n                \"dw\": \"\",\r\n                \"dkdwdm\": null,\r\n                \"xcrs\": \"5\",\r\n                \"yszzsse\": \"16773.45\",\r\n                \"yfpdm\": null,\r\n                \"dz\": \"阳江市********南侧\",\r\n                \"kprq\": \"2026-03-31 00:00:00\",\r\n                \"kjlx\": \"1\",\r\n                \"cllx\": \"混合动力轿车\",\r\n                \"fpztDm\": \"0\",\r\n                \"hgzh\": \"YE8042003047956\",\r\n                \"spbm\": null,\r\n                \"khyh\": \"中国********支行\",\r\n                \"sbbh\": \"\",\r\n                \"cd\": \"广州\",\r\n                \"gfsbh\": \"4408********1727\",\r\n                \"fplx\": \"0930\",\r\n                \"qdfphm\": \"2644********0476\",\r\n                \"kpr\": \"曾诗桃\",\r\n                \"swjgMc\": \"国家税务总局********税务分局\",\r\n                \"sjdh\": \"\",\r\n                \"zh\": \"4454********9942\",\r\n                \"lslbs\": null,\r\n                \"swjgDm\": \"14417020200\",\r\n                \"wspzhm\": \"\",\r\n                \"cpxh\": \"丰田牌/TOYOTAGTM7200CHEVR\",\r\n                \"zzsse\": 16773.45,\r\n                \"jkzmsh\": \"\",\r\n                \"xhdwmc\": \"********有限公司\",\r\n                \"jshj\": 145800.00,\r\n                \"je\": 129026.55,\r\n                \"slv\": 0.13,\r\n                \"ysslv\": \"13%\",\r\n                \"fdjhm\": \"HL28443\"\r\n            },\r\n            \"fplx\": \"0930\",\r\n            \"customReqId\": \"10001999577f6c22b803469db39b917bde8410bc\",\r\n            \"dq\": \"44\",\r\n            \"times\": 2,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-03-31 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 145800,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 09:57:04\",\r\n            \"fphm\": \"2644********0476\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 09:57:04\",\r\n    \"reqId\": \"27582127475ad3b3870245eb9c025319\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 548824046
+    },
+    {
+      "name": "电子发票（通行费发票）（8208）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": null,\r\n            \"data\": {\r\n                \"kpyf\": null,\r\n                \"xfsbh\": \"9133********528R\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"广州通********公司\",\r\n                \"gmfyhzh\": \"\",\r\n                \"xhqdBz\": \"N\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"06\",\r\n                \"dq\": \"浙江\",\r\n                \"fpztBz\": null,\r\n                \"xsfdzdh\": \"********222\",\r\n                \"jshjcn\": \"壹拾陆圆肆分\",\r\n                \"kpjh\": null,\r\n                \"yfphm\": null,\r\n                \"se\": 0.47,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-01-01 00:00:00\",\r\n                \"bz\": \"\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"\",\r\n                \"txfbz\": \"Y\",\r\n                \"gfsbh\": \"9144********057T\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"8208\",\r\n                \"qdfphm\": \"2633********2147\",\r\n                \"dkXsfsbh\": null,\r\n                \"kpr\": \"徐红燕\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"广州市********号\",\r\n                \"xsfyhzh\": \"中国工商银行股份有限公司**********82\",\r\n                \"jshj\": 16.04,\r\n                \"je\": 15.57,\r\n                \"slv\": null,\r\n                \"xfmc\": \"********高速公路投资有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"浙AFA5706\",\r\n                        \"jldw\": \"客车\",\r\n                        \"dj\": \"20251215\",\r\n                        \"mxxh\": 1,\r\n                        \"txrqz\": \"20251215\",\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.47,\r\n                        \"txrqq\": \"20251209\",\r\n                        \"ysse\": \"0.47\",\r\n                        \"mc\": \"*经营租赁*通行费\",\r\n                        \"sl\": \"20251209\",\r\n                        \"cph\": \"浙AFA5706\",\r\n                        \"cllx\": \"客车\",\r\n                        \"je\": 15.57,\r\n                        \"slv\": 0.03,\r\n                        \"ysslv\": \"3%\",\r\n                        \"spbm\": \"3040502020301000000\",\r\n                        \"qdbz\": null\r\n                    }\r\n                ],\r\n                \"fphm\": \"2633********2147\",\r\n                \"jym\": \"\"\r\n            },\r\n            \"fplx\": \"8208\",\r\n            \"customReqId\": \"10001999a7afb6f93e1547768c7b6bbf24ca3ba1\",\r\n            \"dq\": \"33\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-01-01 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 16.04,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 09:59:06\",\r\n            \"fphm\": \"2633********2147\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 09:59:06\",\r\n    \"reqId\": \"a0b0741e20b9b3d0aa1eb311dbf6c8d2\"\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 548824055
+    },
+    {
+      "name": "电子发票（二手车销售统一发票）（0915、0940）",
+      "responseId": 42947073,
+      "data": "{\n\t\"code\": \"2000\",\n\t\"data\": [\n\t\t{\n\t\t\t\"fpdm\": null,\n\t\t\t\"data\": {\n\t\t\t\t\"kpyf\": null,\n\t\t\t\t\"hzfpxx\": [],\n\t\t\t\t\"jyPmSbh\": \"\",\n\t\t\t\t\"cjhj\": 3000.00,\n\t\t\t\t\"zfr\": null,\n\t\t\t\t\"dq\": \"广西\",\n\t\t\t\t\"fpztBz\": null,\n\t\t\t\t\"zrdclglsMc\": \"来宾市车辆管理所\",\n\t\t\t\t\"yfphm\": null,\n\t\t\t\t\"jyPmDz\": \"\",\n\t\t\t\t\"jyPmMc\": \"\",\n\t\t\t\t\"zfrq\": null,\n\t\t\t\t\"skm\": null,\n\t\t\t\t\"kpfLx\": null,\n\t\t\t\t\"yfpdm\": null,\n\t\t\t\t\"clsbdm\": \"LS6A********7401\",\n\t\t\t\t\"kprq\": \"2026-02-05 00:00:00\",\n\t\t\t\t\"bz\": \"\",\n\t\t\t\t\"escSbh\": \"9145********DF42\",\n\t\t\t\t\"kjlx\": \"1\",\n\t\t\t\t\"cllx\": \"小型轿车\",\n\t\t\t\t\"djzh\": \"450020317288\",\n\t\t\t\t\"escDh\": \"18378292233\",\n\t\t\t\t\"fpztDm\": \"0\",\n\t\t\t\t\"xfDz\": \"广西********1号\",\n\t\t\t\t\"xfMc\": \"刘璐茜\",\n\t\t\t\t\"spbm\": null,\n\t\t\t\t\"jyPmDh\": \"\",\n\t\t\t\t\"sbbh\": \"\",\n\t\t\t\t\"cjhjcn\": \"叁仟元整\",\n\t\t\t\t\"gfDz\": \"广西********号\",\n\t\t\t\t\"gfMc\": \"郑茂煜\",\n\t\t\t\t\"fplx\": \"0940\",\n\t\t\t\t\"qdfphm\": \"2645********4211\",\n\t\t\t\t\"xfDh\": \"13237895280\",\n\t\t\t\t\"kpr\": \"廖诚\",\n\t\t\t\t\"escDz\": \"广西壮族自治区来********\",\n\t\t\t\t\"escMc\": \"广西********二手车交易市场有限公司\",\n\t\t\t\t\"xfDm\": \"4522********02X\",\n\t\t\t\t\"kpfNsrsbh\": null,\n\t\t\t\t\"zxbm\": null,\n\t\t\t\t\"lslbs\": null,\n\t\t\t\t\"cpxh\": \"长安牌SC7001ABGBEV\",\n\t\t\t\t\"gfDh\": \"158****2520\",\n\t\t\t\t\"cpzh\": \"桂****68\",\n\t\t\t\t\"jyPmYhzh\": \"\",\n\t\t\t\t\"gfDm\": \"4522********0912\",\n\t\t\t\t\"escYhzh\": \"中国工商银行股份有限公司********\"\n\t\t\t},\n\t\t\t\"fplx\": \"0940\",\n\t\t\t\"customReqId\": \"1000199953dd0abe3f0541e6ab3d9e46b4282088\",\n\t\t\t\"dq\": \"45\",\n\t\t\t\"times\": 1,\n\t\t\t\"mxcxMessage\": null,\n\t\t\t\"czpjMxcx\": null,\n\t\t\t\"kprq\": \"2026-02-05 00:00:00\",\n\t\t\t\"success\": true,\n\t\t\t\"newFlag\": true,\n\t\t\t\"jshj\": 3000,\n\t\t\t\"je\": null,\n\t\t\t\"time\": \"2026-08-13 10:01:07\",\n\t\t\t\"fphm\": \"26452********4211\",\n\t\t\t\"jym\": null\n\t\t}\n\t],\n\t\"success\": true,\n\t\"message\": null,\n\t\"timestamp\": \"2026-08-13 10:01:07\",\n\t\"reqId\": \"7ff31bcee6a585c969981f60d21afc3e\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 604352697
+    },
+    {
+      "name": "电子发票（建筑服务）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9162********4Q68\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"********有限公司\",\r\n                \"gmfyhzh\": \"招商银行********\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"83\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"甘肃\",\r\n                \"xsfdzdh\": \"甘肃省********87\",\r\n                \"jshjcn\": \"伍万圆整\",\r\n                \"yfphm\": null,\r\n                \"se\": 1456.31,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2025-08-26 00:00:00\",\r\n                \"bz\": \"土地增值税项目编号：-  跨地（市）标志：否\\n工程名称：兰州新区********项目\\n工程地点：甘肃省兰州新区\\n收款人：陈会斌  复核人：李洋\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"陈会斌\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"9162********386J\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0920\",\r\n                \"qdfphm\": \"2562********1710\",\r\n                \"dkXsfsbh\": null,\r\n                \"jzfwTdysList\": [\r\n                    {\r\n                        \"xh\": 1,\r\n                        \"kdsbz\": \"N\",\r\n                        \"xzqhszDm\": \"620121\",\r\n                        \"xmmc\": \"工程服务\",\r\n                        \"jzxmmc\": \"兰州********项目\",\r\n                        \"jzfwfsd\": \"甘肃省兰州市永登县兰州新区\"\r\n                    }\r\n                ],\r\n                \"qdlx\": \"20\",\r\n                \"kpr\": \"刘家辉\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"李洋\",\r\n                \"gmfdzdh\": \"甘肃省********19\",\r\n                \"xsfyhzh\": \"招商银行股份有限公司********01\",\r\n                \"jshj\": 50000.00,\r\n                \"je\": 48543.69,\r\n                \"xfmc\": \"甘肃省********有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 1456.31,\r\n                        \"ysse\": \"1456.31\",\r\n                        \"mc\": \"*建筑服务*工程服务\",\r\n                        \"sl\": \"\",\r\n                        \"je\": 48543.69,\r\n                        \"slv\": 0.03,\r\n                        \"ysslv\": \"3%\",\r\n                        \"spbm\": \"3050100000000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2562********1710\",\r\n                \"jym\": \"2562********1710\"\r\n            },\r\n            \"fplx\": \"0920\",\r\n            \"customReqId\": \"10001999376679b57be540f488a01ebc4295b957\",\r\n            \"dq\": \"62\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-08-26 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 50000,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:22:18\",\r\n            \"fphm\": \"2562********1710\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:22:18\",\r\n    \"reqId\": \"4900f7f4058eec8102c0ab896b628ce2\"\r\n}",
+      "id": "019ff8f5-7aa9-76bf-a7a0-df7d6d56e09c"
+    },
+    {
+      "name": "电子发票（旅客运输服务）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9163********268L\",\r\n                \"hzfpxx\": [\r\n                    {\r\n                        \"hzkprq\": \"2025-12-17 00:00:00\",\r\n                        \"hzfpzt\": \"0\",\r\n                        \"hzfpdm\": \"\",\r\n                        \"hzfphm\": \"2563********5093\"\r\n                    }\r\n                ],\r\n                \"gfmc\": \"上海********有限公司\",\r\n                \"gmfyhzh\": \"上海浦东建设********82\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"89\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"青海\",\r\n                \"lkysfwTdysList\": [\r\n                    {\r\n                        \"cfd\": \"河南省安阳市林州市\",\r\n                        \"cxrzjlxDm\": \"201\",\r\n                        \"xh\": 1,\r\n                        \"ddd\": \"上海市崇明区\",\r\n                        \"dj\": \"1\",\r\n                        \"chuxrq\": \"2025-12-15 00:00:00\",\r\n                        \"sfzjhm\": \"4102********3437\",\r\n                        \"cxr\": \"孙向东\",\r\n                        \"jtgjlx\": \"4\"\r\n                    },\r\n                    {\r\n                        \"cfd\": \"河南省安阳市林州市\",\r\n                        \"cxrzjlxDm\": \"201\",\r\n                        \"xh\": 2,\r\n                        \"ddd\": \"上海市崇明区\",\r\n                        \"dj\": \"1\",\r\n                        \"chuxrq\": \"2025-12-15 00:00:00\",\r\n                        \"sfzjhm\": \"4102********3437\",\r\n                        \"cxr\": \"李永来\",\r\n                        \"jtgjlx\": \"4\"\r\n                    }\r\n                ],\r\n                \"xsfdzdh\": \"西宁市********357\",\r\n                \"jshjcn\": \"壹佰圆整\",\r\n                \"yfphm\": null,\r\n                \"se\": 8.26,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2025-12-15 00:00:00\",\r\n                \"bz\": \"购方开户银行：上海浦东建设银行  银行账号：2050********82\\n销方开户银行：中国银行股份有限公司********  银行账号：105********85\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"\",\r\n                \"fpztDm\": \"8\",\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"9131********445Y\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0920\",\r\n                \"qdfphm\": \"2563********2136\",\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"20\",\r\n                \"kpr\": \"张亮亮\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"上海 180********790\",\r\n                \"xsfyhzh\": \"中国银行股份有限公司********85\",\r\n                \"jshj\": 100.00,\r\n                \"je\": 91.74,\r\n                \"xfmc\": \"青海********有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"91.7431192661\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 8.26,\r\n                        \"ysse\": \"8.26\",\r\n                        \"mc\": \"*运输服务*旅客运输\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 91.74,\r\n                        \"slv\": 0.09,\r\n                        \"ysslv\": \"9%\",\r\n                        \"spbm\": \"3010101020101010000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2563********2136\",\r\n                \"jym\": \"2563********2136\"\r\n            },\r\n            \"fplx\": \"0920\",\r\n            \"customReqId\": \"1000199927c364674e8a4a16bf743272b985112c\",\r\n            \"dq\": \"63\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-12-15 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 100,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:24:50\",\r\n            \"fphm\": \"2563********2136\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:24:50\",\r\n    \"reqId\": \"7050d9d8d053803eef051c6288c55f3a\"\r\n}",
+      "id": "019ff8f5-7aa9-76bf-a7a0-e273ea6e5be0"
+    },
+    {
+      "name": "电子发票（货物运输服务）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9131********L16H\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"吉林省********有限公司\",\r\n                \"gmfyhzh\": \"072********920\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"84\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"上海\",\r\n                \"xsfdzdh\": \"上海市********759\",\r\n                \"jshjcn\": \"贰拾伍万肆仟壹佰柒拾肆圆玖角玖分\",\r\n                \"yfphm\": null,\r\n                \"se\": 20986.93,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2025-09-30 00:00:00\",\r\n                \"bz\": \"货物名称:电芯、防水材料等\\n起止地址:湖北省宜昌市夷陵区 - 北京市北京市房山区、湖北省黄冈市黄州区 - 山东省济宁市任城区等\\n车辆种类:重型半挂牵引车\\n车牌号码:冀J6********、冀FL********等\\n其他备注: C202509290548\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"912********29X0\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0920\",\r\n                \"qdfphm\": \"253********1779\",\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"20\",\r\n                \"kpr\": \"吴胜凯\",\r\n                \"url\": \"\",\r\n                \"hwysfwTdysList\": [\r\n                    {\r\n                        \"xh\": 1,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀FL****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 2,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀FN****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 3,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省济宁市任城区\",\r\n                        \"ysgjph\": \"鲁H2****\",\r\n                        \"qyd\": \"湖北省黄冈市黄州区\",\r\n                        \"yshwmc\": \"防水材料\"\r\n                    },\r\n                    {\r\n                        \"xh\": 4,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀J9****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 5,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省济南市槐荫区\",\r\n                        \"ysgjph\": \"鲁NJ****\",\r\n                        \"qyd\": \"湖北省黄冈市黄州区\",\r\n                        \"yshwmc\": \"防水材料\"\r\n                    },\r\n                    {\r\n                        \"xh\": 6,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀FP****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 7,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省滨州市无棣县\",\r\n                        \"ysgjph\": \"蒙L4****\",\r\n                        \"qyd\": \"内蒙古自治区巴彦淖尔市乌拉特后旗\",\r\n                        \"yshwmc\": \"硫酸亚铁\"\r\n                    },\r\n                    {\r\n                        \"xh\": 8,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省滨州市无棣县\",\r\n                        \"ysgjph\": \"蒙L8****\",\r\n                        \"qyd\": \"内蒙古自治区巴彦淖尔市乌拉特后旗\",\r\n                        \"yshwmc\": \"纸箱\"\r\n                    },\r\n                    {\r\n                        \"xh\": 9,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"安徽省合肥市蜀山区\",\r\n                        \"ysgjph\": \"宁E8****\",\r\n                        \"qyd\": \"宁夏回族自治区中卫市中宁县\",\r\n                        \"yshwmc\": \"车毂\"\r\n                    },\r\n                    {\r\n                        \"xh\": 10,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀FT****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 11,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀J7****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 12,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"黑龙江省哈尔滨市平房区\",\r\n                        \"ysgjph\": \"鲁NJ****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"100托纸\"\r\n                    },\r\n                    {\r\n                        \"xh\": 13,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省滨州市无棣县\",\r\n                        \"ysgjph\": \"蒙L9****\",\r\n                        \"qyd\": \"内蒙古自治区巴彦淖尔市乌拉特后旗\",\r\n                        \"yshwmc\": \"硫酸亚铁\"\r\n                    },\r\n                    {\r\n                        \"xh\": 14,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省滨州市无棣县\",\r\n                        \"ysgjph\": \"蒙L6****\",\r\n                        \"qyd\": \"内蒙古自治区巴彦淖尔市乌拉特后旗\",\r\n                        \"yshwmc\": \"硫酸亚铁\"\r\n                    },\r\n                    {\r\n                        \"xh\": 15,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"安徽省安庆市迎江区\",\r\n                        \"ysgjph\": \"皖A5****\",\r\n                        \"qyd\": \"安徽省黄山市休宁县\",\r\n                        \"yshwmc\": \"车毂\"\r\n                    },\r\n                    {\r\n                        \"xh\": 16,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"河南省郑州市新郑市\",\r\n                        \"ysgjph\": \"冀EX****7\",\r\n                        \"qyd\": \"湖北省黄冈市黄州区\",\r\n                        \"yshwmc\": \"防水材料\"\r\n                    },\r\n                    {\r\n                        \"xh\": 17,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省济宁市任城区\",\r\n                        \"ysgjph\": \"鲁H2****\",\r\n                        \"qyd\": \"湖北省黄冈市黄州区\",\r\n                        \"yshwmc\": \"防水材料\"\r\n                    },\r\n                    {\r\n                        \"xh\": 18,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省滨州市无棣县\",\r\n                        \"ysgjph\": \"宁AP****\",\r\n                        \"qyd\": \"内蒙古自治区巴彦淖尔市乌拉特后旗\",\r\n                        \"yshwmc\": \"硫酸亚铁\"\r\n                    },\r\n                    {\r\n                        \"xh\": 19,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省滨州市无棣县\",\r\n                        \"ysgjph\": \"蒙J3****\",\r\n                        \"qyd\": \"内蒙古自治区巴彦淖尔市乌拉特后旗\",\r\n                        \"yshwmc\": \"硫酸亚铁\"\r\n                    },\r\n                    {\r\n                        \"xh\": 20,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"鲁AL****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 21,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"鲁ND****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 22,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"安徽省芜湖市镜湖区\",\r\n                        \"ysgjph\": \"辽AF****\",\r\n                        \"qyd\": \"湖北省黄冈市黄州区\",\r\n                        \"yshwmc\": \"防水材料\"\r\n                    },\r\n                    {\r\n                        \"xh\": 23,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"浙江省杭州市钱塘区\",\r\n                        \"ysgjph\": \"鲁H7****\",\r\n                        \"qyd\": \"湖北省孝感市汉川市\",\r\n                        \"yshwmc\": \"纸箱\"\r\n                    },\r\n                    {\r\n                        \"xh\": 24,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省青岛市即墨区\",\r\n                        \"ysgjph\": \"宁AR****\",\r\n                        \"qyd\": \"宁夏回族自治区中卫市中宁县\",\r\n                        \"yshwmc\": \"车毂\"\r\n                    },\r\n                    {\r\n                        \"xh\": 25,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀JY****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 26,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀A1****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 27,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀T2****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 28,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"北京市北京市房山区\",\r\n                        \"ysgjph\": \"冀AM****\",\r\n                        \"qyd\": \"湖北省宜昌市夷陵区\",\r\n                        \"yshwmc\": \"电芯\"\r\n                    },\r\n                    {\r\n                        \"xh\": 29,\r\n                        \"ysgjzl\": \"公路运输\",\r\n                        \"ddd\": \"山东省济南市济阳区\",\r\n                        \"ysgjph\": \"鲁FS****\",\r\n                        \"qyd\": \"宁夏回族自治区中卫市中宁县\",\r\n                        \"yshwmc\": \"车毂\"\r\n                    }\r\n                ],\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"0432-66****89\",\r\n                \"xsfyhzh\": \"中国光大银行股份有限公司****支行 76260****2594\",\r\n                \"jshj\": 254174.99,\r\n                \"je\": 233188.06,\r\n                \"xfmc\": \"****有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"车\",\r\n                        \"dj\": \"8040.967586206897\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 20986.93,\r\n                        \"ysse\": \"20986.93\",\r\n                        \"mc\": \"*运输服务*运费\",\r\n                        \"sl\": \"29\",\r\n                        \"je\": 233188.06,\r\n                        \"slv\": 0.09,\r\n                        \"ysslv\": \"9%\",\r\n                        \"spbm\": \"3010102020100000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2531********1779\",\r\n                \"jym\": \"2531********1779\"\r\n            },\r\n            \"fplx\": \"0920\",\r\n            \"customReqId\": \"1000199907ec500e1b1d4794985b4b1c97c58b0a\",\r\n            \"dq\": \"31\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-09-30 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 254174.99,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:27:28\",\r\n            \"fphm\": \"2531********1779\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:27:28\",\r\n    \"reqId\": \"a3d90ba66047c2ad043a3ebdf5b55ec7\"\r\n}",
+      "id": "019ff8f5-7aa9-76bf-a7a0-e7d4dfc594a3"
+    },
+    {
+      "name": "电子发票（不动产销售）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": null,\r\n            \"data\": {\r\n                \"xfsbh\": \"9133*********H453\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"宁波市*********有限公司\",\r\n                \"gmfyhzh\": \"\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"85\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"宁波\",\r\n                \"xsfdzdh\": \"浙江省宁波市*********\",\r\n                \"jshjcn\": \"伍万贰仟圆整\",\r\n                \"yfphm\": null,\r\n                \"se\": 4293.58,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-01-27 00:00:00\",\r\n                \"bz\": \"不动产单元代码/网签合同备案编号：-  不动产地址：浙江省宁波市鄞州区姜山镇  跨地（市）标志：否  土地增值税项目编号：-  核定计税价格：-  实际成交含税金额：52000\\n宁波市*********山郡B1-B2号地下车库760号车位，面积：13.2平方米，不动产总价：52000元，购房款已结清.\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"9133*********034W\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0920\",\r\n                \"qdfphm\": \"2693*********5901\",\r\n                \"bdcxsTdysList\": [\r\n                    {\r\n                        \"xh\": 1,\r\n                        \"kdsbz\": \"N\",\r\n                        \"xzqhszDm\": \"330212\",\r\n                        \"bdcdz\": \"浙江省宁波市鄞州区姜山镇\",\r\n                        \"cqzsh\": \"\",\r\n                        \"wqhtbabh\": null\r\n                    }\r\n                ],\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"20\",\r\n                \"kpr\": \"谢芳芳\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"\",\r\n                \"xsfyhzh\": \"天津*********0298\",\r\n                \"jshj\": 52000.00,\r\n                \"je\": 47706.42,\r\n                \"xfmc\": \"*********有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"㎡\",\r\n                        \"dj\": \"3614.122880177926\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 4293.58,\r\n                        \"ysse\": \"4293.58\",\r\n                        \"mc\": \"*不动产*水印山郡\",\r\n                        \"sl\": \"13.2\",\r\n                        \"je\": 47706.42,\r\n                        \"slv\": 0.09,\r\n                        \"ysslv\": \"9%\",\r\n                        \"spbm\": \"5010101000000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2693*********5901\",\r\n                \"jym\": \"2693*********5901\"\r\n            },\r\n            \"fplx\": \"0920\",\r\n            \"customReqId\": \"10001999c516f9e0cf8e467f919ca7e32aaed4a4\",\r\n            \"dq\": \"3302\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-01-27 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 52000,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:32:58\",\r\n            \"fphm\": \"2693*********5901\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:32:58\",\r\n    \"reqId\": \"430060f745f75f4b3a24f7f0a2e13537\"\r\n}",
+      "id": "019ff904-3382-738c-a1ec-8dfdbe09156b"
+    },
+    {
+      "name": "电子发票（不动产租赁）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": null,\r\n            \"data\": {\r\n                \"xfsbh\": \"9121********494C\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"沈阳********公司\",\r\n                \"gmfyhzh\": \"中信银行股份有限公司********8069\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"86\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"辽宁\",\r\n                \"xsfdzdh\": \"沈阳市********982\",\r\n                \"jshjcn\": \"叁万零玖佰捌拾玖圆叁角\",\r\n                \"yfphm\": null,\r\n                \"se\": 1475.68,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-01-30 00:00:00\",\r\n                \"bz\": \"不动产地址：辽宁省沈阳市和平区中华路63号  租赁期起止：2025-12-01 2025-12-31  跨地（市）标志：否\\n销方开户银行：建行沈中支行  银行账号：21001********5058\\n联营餐厅\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"\",\r\n                \"fpztDm\": \"0\",\r\n                \"bdcjyzlTdysList\": [\r\n                    {\r\n                        \"xh\": 1,\r\n                        \"kdsbz\": \"N\",\r\n                        \"xzqhszDm\": \"\",\r\n                        \"zlqz\": \"2025-12-31 00:00:00\",\r\n                        \"bdcdz\": \"辽宁省沈阳市和平区中华路63号\",\r\n                        \"cqzsh\": \"沈房权********686号\",\r\n                        \"zlqq\": \"2025-12-01 00:00:00\"\r\n                    }\r\n                ],\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"9121********628T\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0920\",\r\n                \"qdfphm\": \"2621********3881\",\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"20\",\r\n                \"kpr\": \"刘薇\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"沈阳市********\",\r\n                \"xsfyhzh\": \"建行沈********5058\",\r\n                \"jshj\": 30989.30,\r\n                \"je\": 29513.62,\r\n                \"xfmc\": \"欧亚********有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"平方米\",\r\n                        \"dj\": \"45.1969663822651\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 1475.68,\r\n                        \"ysse\": \"1475.68\",\r\n                        \"mc\": \"*经营租赁*场地租赁费\",\r\n                        \"sl\": \"653\",\r\n                        \"je\": 29513.62,\r\n                        \"slv\": 0.05,\r\n                        \"ysslv\": \"5%\",\r\n                        \"spbm\": \"3040502029902000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2621********3881\",\r\n                \"jym\": \"2621********3881\"\r\n            },\r\n            \"fplx\": \"0920\",\r\n            \"customReqId\": \"10001999037e33d56e6e4629b16a7a786e8aec8a\",\r\n            \"dq\": \"21\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-01-30 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 30989.3,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:35:45\",\r\n            \"fphm\": \"2621********3881\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:35:45\",\r\n    \"reqId\": \"4363f54d765fde431dd6492d238775b4\"\r\n}",
+      "id": "019ff904-3383-752e-ab31-13e0620afd52"
+    },
+    {
+      "name": "电子发票（拖拉机联合收割机）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": null,\r\n            \"data\": {\r\n                \"xfsbh\": \"9253********3K0P\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"主主\",\r\n                \"gmfyhzh\": \"\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"93\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"云南\",\r\n                \"xsfdzdh\": \"云南省****************70002\",\r\n                \"jshjcn\": \"叁万陆仟圆整\",\r\n                \"yfphm\": null,\r\n                \"se\": 0.00,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2025-12-19 00:00:00\",\r\n                \"bz\": \"发动机号码：Y25********92  底盘号/机架号：RWS1015807\\n生产厂家：洛阳万年红拖拉机有限公司\\n出厂编号：RWS********807\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"5334********1738\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0910\",\r\n                \"qdfphm\": \"2553********1460\",\r\n                \"tljhLhsgj\": {\r\n                    \"dphgzbh\": \"RWS****807\",\r\n                    \"fdjhm\": \"Y25****3992\"\r\n                },\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"10\",\r\n                \"kpr\": \"李绍春\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"\",\r\n                \"xsfyhzh\": \"中国农业********776\",\r\n                \"jshj\": 36000.00,\r\n                \"je\": 36000.00,\r\n                \"xfmc\": \"香格里********销售部\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"万年红504(G4)\",\r\n                        \"jldw\": \"辆\",\r\n                        \"dj\": \"36000.00\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": \"1\",\r\n                        \"se\": 0.0,\r\n                        \"ysse\": \"***\",\r\n                        \"mc\": \"*拖拉机*轮式拖拉机\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 36000.00,\r\n                        \"slv\": 0.0,\r\n                        \"ysslv\": \"免税\",\r\n                        \"spbm\": \"1090235010000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2553********1460\",\r\n                \"jym\": \"2553********1460\"\r\n            },\r\n            \"fplx\": \"0910\",\r\n            \"customReqId\": \"100019991eb7a08a49c24c34b53d1403bff5e07c\",\r\n            \"dq\": \"53\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-12-19 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 36000,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:39:06\",\r\n            \"fphm\": \"2553********1460\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:39:06\",\r\n    \"reqId\": \"9f6ba9a55f0e02a5fecc66a13e634877\"\r\n}",
+      "id": "019ff904-3383-752e-ab31-170444e31eb7"
+    },
+    {
+      "name": "电子发票（医疗服务（住院））",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9131********503F\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"TAI,DEYING,邰德英\",\r\n                \"gmfyhzh\": \"\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"90\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"上海\",\r\n                \"xsfdzdh\": \"上海市********1588\",\r\n                \"jshjcn\": \"玖万圆整\",\r\n                \"yfphm\": null,\r\n                \"se\": 5094.34,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-07-03 00:00:00\",\r\n                \"bz\": \"业务流水号：PSH-H-IP20********05-B-1  病历号：10285703  住院号：0000786757  住院科别：骨科  住院时间：20260627-20260701  预缴金额：  补缴金额：  退费金额：  医疗机构类型：综合医院  医保类型：城乡居民基本医疗保险  医保编号：B69512813  性别：女  医保统筹基金支付：21300.45  其他支付：  个人账户支付：  个人现金支付：68699.55  个人自付：21296.44  个人自费：\\n现金支付:68699.55元，医保账户支付:0.00元(其中共济支付0.00元)，统筹支付:21300.45元，附加支付:0.00元;现金支付中:自负：20807.11元，分类自负：489.33元， 自费：47403.11元，当年账户余额:0.00元;历年账户余额:0.00元;流水号:26YD021********77542;社(医)保卡号：B69512813;\\n收款人：虞轶辰 Ethan Yu\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"虞轶辰 Ethan Yu\",\r\n                \"fpztDm\": \"0\",\r\n                \"ylfwzyTdys\": {\r\n                    \"sszdyyssl\": 0,\r\n                    \"yljglx\": \"综合医院\",\r\n                    \"ybtcjjzf\": 21300.45,\r\n                    \"ywlsh\": \"PS********-1\",\r\n                    \"grzhzf\": 0,\r\n                    \"hzsfzjlxDm\": \"201\",\r\n                    \"grxjzf\": 68699.55,\r\n                    \"zyh\": \"0000786757\",\r\n                    \"zysjz\": \"2026-07-01 00:00:00\",\r\n                    \"grzfje\": 47403.11,\r\n                    \"jkr\": \"TAI,DEYING,邰德英\",\r\n                    \"tfje\": 0,\r\n                    \"hzsfzjhm\": \"3402********2027\",\r\n                    \"skdw\": \"上海********公司\",\r\n                    \"blh\": \"10285703\",\r\n                    \"grzf\": 21296.44,\r\n                    \"qtyljglx\": \"\",\r\n                    \"xb\": \"女\",\r\n                    \"xbDm\": \"2\",\r\n                    \"bjje\": 0,\r\n                    \"yblx\": \"城乡居民基本医疗保险\",\r\n                    \"sszdyysjson\": \"{}\",\r\n                    \"ylfwzysfmxVO\": {\r\n                        \"hjse\": \"5094.34\",\r\n                        \"zys\": \"1\",\r\n                        \"zysfmxVOList\": [\r\n                            {\r\n                                \"dysfmxVOList\": [\r\n                                    {\r\n                                        \"se\": \"108.97\",\r\n                                        \"zysfmxxh\": \"1\",\r\n                                        \"ylfwzyfpmxxh\": \"1\",\r\n                                        \"je\": \"1816.25\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*护理费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"7.13\",\r\n                                        \"zysfmxxh\": \"2\",\r\n                                        \"ylfwzyfpmxxh\": \"3\",\r\n                                        \"je\": \"118.87\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*中成药\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"100.59\",\r\n                                        \"zysfmxxh\": \"3\",\r\n                                        \"ylfwzyfpmxxh\": \"4\",\r\n                                        \"je\": \"1676.5\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*西药费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"331.06\",\r\n                                        \"zysfmxxh\": \"4\",\r\n                                        \"ylfwzyfpmxxh\": \"5\",\r\n                                        \"je\": \"5517.66\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*床位费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"287.03\",\r\n                                        \"zysfmxxh\": \"5\",\r\n                                        \"ylfwzyfpmxxh\": \"7\",\r\n                                        \"je\": \"4783.8\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*检查费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"1355.97\",\r\n                                        \"zysfmxxh\": \"6\",\r\n                                        \"ylfwzyfpmxxh\": \"9\",\r\n                                        \"je\": \"22599.43\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*手术费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"99.31\",\r\n                                        \"zysfmxxh\": \"7\",\r\n                                        \"ylfwzyfpmxxh\": \"11\",\r\n                                        \"je\": \"1655.29\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*诊疗费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"53.14\",\r\n                                        \"zysfmxxh\": \"8\",\r\n                                        \"ylfwzyfpmxxh\": \"13\",\r\n                                        \"je\": \"885.56\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*检验费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"404.34\",\r\n                                        \"zysfmxxh\": \"9\",\r\n                                        \"ylfwzyfpmxxh\": \"15\",\r\n                                        \"je\": \"6739.07\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*麻醉费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"41.39\",\r\n                                        \"zysfmxxh\": \"10\",\r\n                                        \"ylfwzyfpmxxh\": \"17\",\r\n                                        \"je\": \"689.7\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*治疗费\"\r\n                                    },\r\n                                    {\r\n                                        \"se\": \"2305.41\",\r\n                                        \"zysfmxxh\": \"11\",\r\n                                        \"ylfwzyfpmxxh\": \"19\",\r\n                                        \"je\": \"38423.53\",\r\n                                        \"slv\": \"6%\",\r\n                                        \"fymx\": \"*生产生活服务*材料费\"\r\n                                    }\r\n                                ],\r\n                                \"xjje\": \"84905.66\",\r\n                                \"xjse\": \"5094.34\",\r\n                                \"dqym\": \"1\"\r\n                            }\r\n                        ],\r\n                        \"hjje\": \"84905.66\"\r\n                    },\r\n                    \"zykb\": \"骨科\",\r\n                    \"zysj\": \"20260627-20260701\",\r\n                    \"yjje\": 0,\r\n                    \"zysjq\": \"2026-06-27 00:00:00\",\r\n                    \"hzxm\": \"TAI,DEYING,邰德英\",\r\n                    \"ybbh\": \"B69512813\",\r\n                    \"qtzf\": 0\r\n                },\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0910\",\r\n                \"qdfphm\": \"2631********3216\",\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"10\",\r\n                \"kpr\": \"王盼盼\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"\",\r\n                \"xsfyhzh\": \"中国银行********9297\",\r\n                \"jshj\": 90000.00,\r\n                \"je\": 84905.66,\r\n                \"xfmc\": \"上海********公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"3726.4150943396\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 223.58,\r\n                        \"ysse\": \"223.58\",\r\n                        \"mc\": \"*生产生活服务*护理费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 3726.42,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 2,\r\n                        \"lslbs\": null,\r\n                        \"se\": -114.61,\r\n                        \"ysse\": \"-114.61\",\r\n                        \"mc\": \"*生产生活服务*护理费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -1910.17,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"118.8679245283\",\r\n                        \"mxxh\": 3,\r\n                        \"lslbs\": null,\r\n                        \"se\": 7.13,\r\n                        \"ysse\": \"7.13\",\r\n                        \"mc\": \"*生产生活服务*中成药\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 118.87,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"1676.50\",\r\n                        \"mxxh\": 4,\r\n                        \"lslbs\": null,\r\n                        \"se\": 100.59,\r\n                        \"ysse\": \"100.59\",\r\n                        \"mc\": \"*生产生活服务*西药费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 1676.50,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"11320.7547169811\",\r\n                        \"mxxh\": 5,\r\n                        \"lslbs\": null,\r\n                        \"se\": 679.25,\r\n                        \"ysse\": \"679.25\",\r\n                        \"mc\": \"*生产生活服务*床位费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 11320.75,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 6,\r\n                        \"lslbs\": null,\r\n                        \"se\": -348.19,\r\n                        \"ysse\": \"-348.19\",\r\n                        \"mc\": \"*生产生活服务*床位费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -5803.09,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"9815.0943396226\",\r\n                        \"mxxh\": 7,\r\n                        \"lslbs\": null,\r\n                        \"se\": 588.91,\r\n                        \"ysse\": \"588.91\",\r\n                        \"mc\": \"*生产生活服务*检查费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 9815.09,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 8,\r\n                        \"lslbs\": null,\r\n                        \"se\": -301.88,\r\n                        \"ysse\": \"-301.88\",\r\n                        \"mc\": \"*生产生活服务*检查费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -5031.29,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"46367.9245283019\",\r\n                        \"mxxh\": 9,\r\n                        \"lslbs\": null,\r\n                        \"se\": 2782.08,\r\n                        \"ysse\": \"2782.08\",\r\n                        \"mc\": \"*生产生活服务*手术费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 46367.92,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 10,\r\n                        \"lslbs\": null,\r\n                        \"se\": -1426.11,\r\n                        \"ysse\": \"-1426.11\",\r\n                        \"mc\": \"*生产生活服务*手术费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -23768.49,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"3396.2264150943\",\r\n                        \"mxxh\": 11,\r\n                        \"lslbs\": null,\r\n                        \"se\": 203.77,\r\n                        \"ysse\": \"203.77\",\r\n                        \"mc\": \"*生产生活服务*诊疗费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 3396.23,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 12,\r\n                        \"lslbs\": null,\r\n                        \"se\": -104.46,\r\n                        \"ysse\": \"-104.46\",\r\n                        \"mc\": \"*生产生活服务*诊疗费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -1740.94,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"1816.9811320755\",\r\n                        \"mxxh\": 13,\r\n                        \"lslbs\": null,\r\n                        \"se\": 109.02,\r\n                        \"ysse\": \"109.02\",\r\n                        \"mc\": \"*生产生活服务*检验费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 1816.98,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 14,\r\n                        \"lslbs\": null,\r\n                        \"se\": -55.88,\r\n                        \"ysse\": \"-55.88\",\r\n                        \"mc\": \"*生产生活服务*检验费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -931.42,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"13826.6509433962\",\r\n                        \"mxxh\": 15,\r\n                        \"lslbs\": null,\r\n                        \"se\": 829.6,\r\n                        \"ysse\": \"829.60\",\r\n                        \"mc\": \"*生产生活服务*麻醉费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 13826.65,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 16,\r\n                        \"lslbs\": null,\r\n                        \"se\": -425.26,\r\n                        \"ysse\": \"-425.26\",\r\n                        \"mc\": \"*生产生活服务*麻醉费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -7087.58,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"1415.0943396226\",\r\n                        \"mxxh\": 17,\r\n                        \"lslbs\": null,\r\n                        \"se\": 84.91,\r\n                        \"ysse\": \"84.91\",\r\n                        \"mc\": \"*生产生活服务*治疗费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 1415.09,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 18,\r\n                        \"lslbs\": null,\r\n                        \"se\": -43.52,\r\n                        \"ysse\": \"-43.52\",\r\n                        \"mc\": \"*生产生活服务*治疗费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": -725.39,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"38423.5283018868\",\r\n                        \"mxxh\": 19,\r\n                        \"lslbs\": null,\r\n                        \"se\": 2305.41,\r\n                        \"ysse\": \"2305.41\",\r\n                        \"mc\": \"*生产生活服务*材料费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 38423.53,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2631********3216\",\r\n                \"jym\": \"2631********3216\"\r\n            },\r\n            \"fplx\": \"0910\",\r\n            \"customReqId\": \"100019998ce985dd688248d3a0da5f84629785f1\",\r\n            \"dq\": \"31\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-07-03 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 90000,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:42:37\",\r\n            \"fphm\": \"2631********3216\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:42:37\",\r\n    \"reqId\": \"05722f86cc535c99674afd9f6c1bf5ce\"\r\n}",
+      "id": "019ff904-3383-752e-ab31-1af909505b2e"
+    },
+    {
+      "name": "电子发票（医疗服务（门诊））",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9142********W60Q\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"陆华艮\",\r\n                \"gmfyhzh\": \"\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"91\",\r\n                \"ylfwmzTdys\": {\r\n                    \"sszdyyssl\": 0,\r\n                    \"yljglx\": \"\",\r\n                    \"ybtcjjzf\": 0,\r\n                    \"ywlsh\": \"260704666000133\",\r\n                    \"grzf\": 0,\r\n                    \"grzhzf\": 0,\r\n                    \"hzsfzjlxDm\": \"201\",\r\n                    \"grxjzf\": 0,\r\n                    \"qtyljglx\": \"\",\r\n                    \"xb\": \"男\",\r\n                    \"yljglxDm\": null,\r\n                    \"xbDm\": \"1\",\r\n                    \"jzrq1\": \"2026-07-04 07:37:59\",\r\n                    \"yblx\": \"\",\r\n                    \"sszdyysjson\": \"{}\",\r\n                    \"grzfje\": 0,\r\n                    \"hzxm\": \"陆华艮\",\r\n                    \"ybbh\": \"\",\r\n                    \"mzh\": \"260704011\",\r\n                    \"qtzf\": 0,\r\n                    \"hzsfzjhm\": \"4290********1579\"\r\n                },\r\n                \"purl\": \"\",\r\n                \"dq\": \"湖北\",\r\n                \"xsfdzdh\": \"仙桃市********\",\r\n                \"jshjcn\": \"伍佰肆拾肆圆陆角\",\r\n                \"yfphm\": null,\r\n                \"se\": 0.00,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-07-07 00:00:00\",\r\n                \"bz\": \"业务流水号：260704666000133  门诊号：260704011  就诊时间：2026-07-04 07:37:59  医疗机构类型：  医保类型：  医保编号：  性别：男  医保统筹基金支付：  其他支付：  个人账户支付：  个人现金支付：  个人自付：  个人自费：\\n统筹支付:501.03 个人账户:0 个人现金43.57 账户余额:0\\n收款人：住院管理  复核人：住院管理\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"住院管理\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"\",\r\n                \"gfsbh\": \"\",\r\n                \"fpdm\": \"\",\r\n                \"fplx\": \"0910\",\r\n                \"qdfphm\": \"2642********6246\",\r\n                \"dkXsfsbh\": null,\r\n                \"qdlx\": \"10\",\r\n                \"kpr\": \"吴会\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"住院管理\",\r\n                \"gmfdzdh\": \"\",\r\n                \"xsfyhzh\": \"中国银行仙桃南区支行 566480824333\",\r\n                \"jshj\": 544.60,\r\n                \"je\": 544.60,\r\n                \"xfmc\": \"仙桃江汉医院有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"117.70\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.0,\r\n                        \"ysse\": \"0.00\",\r\n                        \"mc\": \"*生产生活服务*材料费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 117.70,\r\n                        \"slv\": 0.0,\r\n                        \"ysslv\": \"\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"2.20\",\r\n                        \"mxxh\": 2,\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.0,\r\n                        \"ysse\": \"0.00\",\r\n                        \"mc\": \"*生产生活服务*西药费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 2.20,\r\n                        \"slv\": 0.0,\r\n                        \"ysslv\": \"\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"416.30\",\r\n                        \"mxxh\": 3,\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.0,\r\n                        \"ysse\": \"0.00\",\r\n                        \"mc\": \"*生产生活服务*治疗费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 416.30,\r\n                        \"slv\": 0.0,\r\n                        \"ysslv\": \"\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    },\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"8.40\",\r\n                        \"mxxh\": 4,\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.0,\r\n                        \"ysse\": \"0.00\",\r\n                        \"mc\": \"*生产生活服务*注射费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 8.40,\r\n                        \"slv\": 0.0,\r\n                        \"ysslv\": \"\",\r\n                        \"spbm\": \"3070202000000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"2642********6246\",\r\n                \"jym\": \"2642********6246\"\r\n            },\r\n            \"fplx\": \"0910\",\r\n            \"customReqId\": \"10001999732a6ea7c8b44f7ba95028e0e8aa9409\",\r\n            \"dq\": \"42\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-07-07 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": 544.60,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 10:45:31\",\r\n            \"fphm\": \"2642********6246\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:45:31\",\r\n    \"reqId\": \"b517e216ab537e7f309df4cc2da73468\"\r\n}",
+      "id": "019ff904-3383-752e-ab31-1c19e4b6a716"
+    },
+    {
+      "name": "增值税专用发票（01）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"31****3130\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9131********883Y\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"上海********有限公司\",\r\n                \"gmfyhzh\": \"建行********1679\",\r\n                \"xhqdBz\": \"N\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"\",\r\n                \"dq\": \"上海\",\r\n                \"xsfdzdh\": \"上海********3651\",\r\n                \"jshjcn\": \"陆拾圆整\",\r\n                \"kpjh\": null,\r\n                \"yfphm\": null,\r\n                \"se\": 3.40,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2023-04-05 00:00:00\",\r\n                \"bz\": \"\",\r\n                \"kjlx\": \"1\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"661500310901\",\r\n                \"gfsbh\": \"9131********79XD\",\r\n                \"fpdm\": \"31****3130\",\r\n                \"fplx\": \"01\",\r\n                \"dkXsfsbh\": null,\r\n                \"kpr\": \"陈恬欣\",\r\n                \"fhr\": \"葛鑫鑫\",\r\n                \"gmfdzdh\": \"上海********6999\",\r\n                \"xsfyhzh\": \"中国工商银行********3005\",\r\n                \"jshj\": 60.00,\r\n                \"je\": 56.60,\r\n                \"xfmc\": \"顺丰********有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"月\",\r\n                        \"dj\": \"56.60377358\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 3.40,\r\n                        \"ysse\": \"3.40\",\r\n                        \"mc\": \"*物流辅助服务*收派服务费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 56.60,\r\n                        \"slv\": 0.06,\r\n                        \"ysslv\": \"6%\",\r\n                        \"spbm\": \"3040409010000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"19827417\",\r\n                \"jym\": \"7381********1337\"\r\n            },\r\n            \"fplx\": \"01\",\r\n            \"customReqId\": \"1000199929bd8dd988d542aebe634b18b5ff555b\",\r\n            \"dq\": \"31\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2023-04-05 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": 56.6,\r\n            \"time\": \"2026-08-13 10:51:50\",\r\n            \"fphm\": \"19827417\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:51:50\",\r\n    \"reqId\": \"11c532e5db848282ac5b982cfc0b0bd7\"\r\n}",
+      "id": "019ff922-6119-767a-8584-824d0b042701"
+    },
+    {
+      "name": "机动车销售统一发票（03）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"13********64\",\r\n            \"data\": {\r\n                \"cjhm\": \"\",\r\n                \"hzfpxx\": [],\r\n                \"dh\": \"\",\r\n                \"gfmc\": \"\",\r\n                \"dkdwmc\": null,\r\n                \"sfzhm\": \"\",\r\n                \"xhdwsbh\": \"9132********305D\",\r\n                \"dq\": \"江苏\",\r\n                \"jshjcn\": \"零圆整\",\r\n                \"yfphm\": null,\r\n                \"dw\": \"\",\r\n                \"dkdwdm\": null,\r\n                \"skm\": null,\r\n                \"xcrs\": \"\",\r\n                \"yszzsse\": \"0.00\",\r\n                \"yfpdm\": null,\r\n                \"dz\": \"\",\r\n                \"kprq\": \"2025-07-25 00:00:00\",\r\n                \"kjlx\": \"1\",\r\n                \"cllx\": \"\",\r\n                \"fpztDm\": \"2\",\r\n                \"hgzh\": \"\",\r\n                \"spbm\": null,\r\n                \"khyh\": \"\",\r\n                \"sbbh\": \"539903604912\",\r\n                \"cd\": \"\",\r\n                \"gfsbh\": \"\",\r\n                \"fpdm\": \"13********64\",\r\n                \"fplx\": \"03\",\r\n                \"kpr\": \"\",\r\n                \"swjgMc\": \"\",\r\n                \"sjdh\": \"\",\r\n                \"zh\": \"\",\r\n                \"lslbs\": null,\r\n                \"swjgDm\": \"13204120100\",\r\n                \"wspzhm\": \"\",\r\n                \"cpxh\": \"\",\r\n                \"zzsse\": 0.00,\r\n                \"jkzmsh\": \"\",\r\n                \"xhdwmc\": \"\",\r\n                \"jshj\": 0.00,\r\n                \"je\": 0.00,\r\n                \"slv\": 0.00,\r\n                \"ysslv\": \"0%\",\r\n                \"fdjhm\": \"\",\r\n                \"fphm\": \"00169512\"\r\n            },\r\n            \"fplx\": \"03\",\r\n            \"customReqId\": \"10001999cf80ddc565234d21a36e34504b967d11\",\r\n            \"dq\": \"32\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-07-25 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": 0,\r\n            \"time\": \"2026-08-13 10:55:23\",\r\n            \"fphm\": \"00169512\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 10:55:23\",\r\n    \"reqId\": \"2b8002487a9de9989d2997bdee12ffdc\"\r\n}",
+      "id": "019ff922-6119-767a-8584-86e4a6e45bfc"
+    },
+    {
+      "name": "增值税普通发票（04）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"05********04\",\r\n            \"data\": {\r\n                \"xfsbh\": \"5227********242X\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"********有限公司\",\r\n                \"gmfyhzh\": \"\",\r\n                \"xhqdBz\": \"N\",\r\n                \"dkXsfmc\": \"罗干\",\r\n                \"tspzDm\": \"\",\r\n                \"dq\": \"贵州\",\r\n                \"xsfdzdh\": \"18********35\",\r\n                \"jshjcn\": \"贰万壹仟圆整\",\r\n                \"kpjh\": null,\r\n                \"yfphm\": null,\r\n                \"se\": 207.92,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-03-30 00:00:00\",\r\n                \"bz\": \"代开企业税号:5227********19 代开企业名称:罗干\\r\\n备注:[建筑服务发生地:国家税务总局都匀市 项目名称:厂房漏水维修] 经营所得个人所得税应自行申报\",\r\n                \"kjlx\": \"2\",\r\n                \"skr\": null,\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"661926970754\",\r\n                \"gfsbh\": \"9152********FY9T\",\r\n                \"fpdm\": \"05********04\",\r\n                \"fplx\": \"04\",\r\n                \"dkXsfsbh\": \"5227********1619\",\r\n                \"kpr\": \"自助代开15\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": \"贵州省********148号\",\r\n                \"xsfyhzh\": \"3522********1292\",\r\n                \"jshj\": 21000.00,\r\n                \"je\": 20792.08,\r\n                \"slv\": null,\r\n                \"xfmc\": \"国家税务总局都匀市税务局第一税务分局\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"20792.07920792\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 207.92,\r\n                        \"ysse\": \"207.92\",\r\n                        \"mc\": \"工程服务\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 20792.08,\r\n                        \"slv\": 0.01,\r\n                        \"ysslv\": \"1%\",\r\n                        \"spbm\": \"\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"33377780\",\r\n                \"jym\": \"8519********7422\"\r\n            },\r\n            \"fplx\": \"04\",\r\n            \"customReqId\": \"1000199993d4393bcb7d4ed0acc44919acba758c\",\r\n            \"dq\": \"52\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-03-30 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 11:00:43\",\r\n            \"fphm\": \"33377780\",\r\n            \"jym\": \"957422\"\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 11:00:43\",\r\n    \"reqId\": \"9602c6db0ac79956e6fb14da79ba1db8\"\r\n}",
+      "id": "019ff922-6119-767a-8584-89f25d78eaf2"
+    },
+    {
+      "name": "增值税电子专用发票（08）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"01********13\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9111********3N8P\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"北京********有限公司\",\r\n                \"gmfyhzh\": \"招商银行********0902\",\r\n                \"xhqdBz\": \"N\",\r\n                \"tspzDm\": \"\",\r\n                \"purl\": \"https://tysl.beijing.chinatax.gov.cn:9443/api?action=getDoc&code=01********13_00673794_20221022_G0G8B7C1&type=12\",\r\n                \"dq\": \"北京\",\r\n                \"xsfdzdh\": \"北京市********8456\",\r\n                \"jshjcn\": \"壹拾柒圆柒角玖分\",\r\n                \"se\": 0.52,\r\n                \"kprq\": \"2022-10-22 00:00:00\",\r\n                \"bz\": \"202209300400024710\",\r\n                \"kjlx\": \"1\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"927005561020\",\r\n                \"gfsbh\": \"9111********L25J\",\r\n                \"fpdm\": \"01********13\",\r\n                \"fplx\": \"08\",\r\n                \"url\": \"https://tysl.beijing.chinatax.gov.cn:9443/api?action=getDoc&code=01********13_00673794_20221022_G0G8B7C1&type=3\",\r\n                \"gmfdzdh\": \"北京市********1810\",\r\n                \"xsfyhzh\": \"工行北京********6045\",\r\n                \"jshj\": 17.79,\r\n                \"je\": 17.27,\r\n                \"xfmc\": \"北京********公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"\",\r\n                        \"jldw\": \"\",\r\n                        \"dj\": \"\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.52,\r\n                        \"ysse\": \"0.52\",\r\n                        \"mc\": \"*现代服务*服务费\",\r\n                        \"sl\": \"\",\r\n                        \"je\": 17.27,\r\n                        \"slv\": 0.03,\r\n                        \"ysslv\": \"3%\",\r\n                        \"spbm\": \"3049900000000000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"00673794\",\r\n                \"jym\": \"1137********8162\"\r\n            },\r\n            \"fplx\": \"08\",\r\n            \"customReqId\": \"100019993b993e78a85b4cc09045c252ff3fba4c\",\r\n            \"dq\": \"11\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2022-10-22 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": 17.27,\r\n            \"time\": \"2026-08-13 11:04:43\",\r\n            \"fphm\": \"00673794\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 11:04:43\",\r\n    \"reqId\": \"357b22c557a921a97977647bdf615cdd\"\r\n}",
+      "id": "019ff922-6119-767a-8584-8d94b9121899"
+    },
+    {
+      "name": "增值税电子普通发票（10）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"05********11\",\r\n            \"data\": {\r\n                \"kpyf\": null,\r\n                \"xfsbh\": \"9151********5Y4T\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"杭州********公司\",\r\n                \"gmfyhzh\": \"\",\r\n                \"xhqdBz\": \"N\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"\",\r\n                \"purl\": \"\",\r\n                \"dq\": \"四川\",\r\n                \"fpztBz\": null,\r\n                \"xsfdzdh\": \"四川省********2171\",\r\n                \"jshjcn\": \"玖圆玖角\",\r\n                \"kpjh\": null,\r\n                \"yfphm\": null,\r\n                \"se\": 0.82,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2026-03-31 00:00:00\",\r\n                \"bz\": \"客运服务费\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"马盟\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"499098815229\",\r\n                \"gfsbh\": \"9133********6668\",\r\n                \"fpdm\": \"05********11\",\r\n                \"fplx\": \"10\",\r\n                \"dkXsfsbh\": null,\r\n                \"kpr\": \"唐晓川\",\r\n                \"url\": \"\",\r\n                \"fhr\": \"赵海生\",\r\n                \"gmfdzdh\": \"\",\r\n                \"xsfyhzh\": \"中国********1841\",\r\n                \"jshj\": 9.90,\r\n                \"je\": 9.08,\r\n                \"slv\": null,\r\n                \"xfmc\": \"成都********公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"无\",\r\n                        \"jldw\": \"无\",\r\n                        \"dj\": \"9.082568807339449\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 0.82,\r\n                        \"ysse\": \"0.82\",\r\n                        \"mc\": \"*运输服务*地铁运输服务费\",\r\n                        \"sl\": \"1\",\r\n                        \"je\": 9.08,\r\n                        \"slv\": 0.09,\r\n                        \"ysslv\": \"9%\",\r\n                        \"spbm\": \"3010101020202000000\",\r\n                        \"qdbz\": null\r\n                    }\r\n                ],\r\n                \"fphm\": \"31465459\",\r\n                \"jym\": \"0821********0822\"\r\n            },\r\n            \"fplx\": \"10\",\r\n            \"customReqId\": \"10001999c047263e8e4a4152b53aab71d7b04ab4\",\r\n            \"dq\": \"51\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2026-03-31 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 11:07:34\",\r\n            \"fphm\": \"31465459\",\r\n            \"jym\": \"480822\"\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 11:07:34\",\r\n    \"reqId\": \"0dfead86d7d3be86a13038b23e066d55\"\r\n}",
+      "id": "019ff922-6119-767a-8584-910977022941"
+    },
+    {
+      "name": "增值税普通发票（卷式）（11）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"03********07\",\r\n            \"data\": {\r\n                \"kpyf\": null,\r\n                \"xfsbh\": \"9136********106T\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"上海********公司\",\r\n                \"gmfyhzh\": \"\",\r\n                \"xhqdBz\": \"N\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": \"08\",\r\n                \"dq\": \"江西\",\r\n                \"fpztBz\": null,\r\n                \"xsfdzdh\": \"\",\r\n                \"jshjcn\": \"肆佰玖拾圆整\",\r\n                \"kpjh\": null,\r\n                \"yfphm\": null,\r\n                \"se\": 56.37,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2025-02-06 00:00:00\",\r\n                \"bz\": \"\",\r\n                \"kjlx\": \"1\",\r\n                \"mxts\": null,\r\n                \"skr\": \"林厚立\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"661015045322\",\r\n                \"gfsbh\": \"9131********496M\",\r\n                \"fpdm\": \"03********07\",\r\n                \"fplx\": \"11\",\r\n                \"dkXsfsbh\": null,\r\n                \"kpr\": \"\",\r\n                \"fhr\": \"\",\r\n                \"gmfdzdh\": null,\r\n                \"xsfyhzh\": \"\",\r\n                \"jshj\": 490.00,\r\n                \"je\": 433.63,\r\n                \"slv\": null,\r\n                \"xfmc\": \"南昌市********加油城\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": null,\r\n                        \"hsdj\": \"7.73\",\r\n                        \"jldw\": null,\r\n                        \"dj\": \"7.73\",\r\n                        \"mxxh\": 1,\r\n                        \"lslbs\": null,\r\n                        \"se\": 61.09,\r\n                        \"ysse\": null,\r\n                        \"mc\": \"*汽油*汽油92#（VIB)\",\r\n                        \"hsje\": 531.00,\r\n                        \"sl\": \"68.69340233\",\r\n                        \"je\": 469.91,\r\n                        \"slv\": 0.13,\r\n                        \"ysslv\": \"13%\",\r\n                        \"spbm\": \"1070101010100000000\",\r\n                        \"qdbz\": null\r\n                    },\r\n                    {\r\n                        \"ggxh\": null,\r\n                        \"hsdj\": \"0.00\",\r\n                        \"jldw\": null,\r\n                        \"dj\": \"0.00\",\r\n                        \"mxxh\": 2,\r\n                        \"lslbs\": null,\r\n                        \"se\": -4.72,\r\n                        \"ysse\": null,\r\n                        \"mc\": \"*汽油*汽油92#（VIB)\",\r\n                        \"hsje\": -41.00,\r\n                        \"sl\": \"\",\r\n                        \"je\": -36.28,\r\n                        \"slv\": 0.13,\r\n                        \"ysslv\": \"13%\",\r\n                        \"spbm\": \"1070101010100000000\",\r\n                        \"qdbz\": null\r\n                    }\r\n                ],\r\n                \"fphm\": \"00287674\",\r\n                \"jym\": \"6834********4240\"\r\n            },\r\n            \"fplx\": \"11\",\r\n            \"customReqId\": \"1000199961e89ee5473d4528850583888ce3102d\",\r\n            \"dq\": \"36\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-02-06 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": 433.63,\r\n            \"time\": \"2026-08-13 11:10:01\",\r\n            \"fphm\": \"00287674\",\r\n            \"jym\": \"104240\"\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 11:10:01\",\r\n    \"reqId\": \"1c48344b7ad6c9e2849f7b7e07234812\"\r\n}",
+      "id": "019ff922-6119-767a-8584-965a650242c6"
+    },
+    {
+      "name": "增值税电子普通发票（通行费）（14）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"03********12\",\r\n            \"data\": {\r\n                \"xfsbh\": \"9133********3530\",\r\n                \"hzfpxx\": [],\r\n                \"gfmc\": \"********有限公司\",\r\n                \"gmfyhzh\": \"\",\r\n                \"xhqdBz\": \"N\",\r\n                \"dkXsfmc\": null,\r\n                \"tspzDm\": null,\r\n                \"dq\": \"浙江\",\r\n                \"xsfdzdh\": \"浙江省********6885\",\r\n                \"jshjcn\": \"壹佰零贰圆肆角叁分\",\r\n                \"kpjh\": null,\r\n                \"yfphm\": null,\r\n                \"se\": 2.98,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"kprq\": \"2025-05-31 00:00:00\",\r\n                \"bz\": \"汇总开具\",\r\n                \"kjlx\": \"1\",\r\n                \"skr\": \"吴峥鋹\",\r\n                \"fpztDm\": \"0\",\r\n                \"sbbh\": \"499098026852\",\r\n                \"txfbz\": \"Y\",\r\n                \"gfsbh\": \"9133********5539\",\r\n                \"fpdm\": \"03********12\",\r\n                \"fplx\": \"14\",\r\n                \"dkXsfsbh\": null,\r\n                \"kpr\": \"陈文娟\",\r\n                \"fhr\": \"潘梦瑶\",\r\n                \"gmfdzdh\": \"\",\r\n                \"xsfyhzh\": \"招商********0666\",\r\n                \"jshj\": 102.43,\r\n                \"je\": 99.45,\r\n                \"slv\": null,\r\n                \"xfmc\": \"********有限公司\",\r\n                \"hwxx\": [\r\n                    {\r\n                        \"ggxh\": \"浙BU****\",\r\n                        \"jldw\": \"客车\",\r\n                        \"dj\": \"20250329\",\r\n                        \"mxxh\": 1,\r\n                        \"txrqz\": \"20250329\",\r\n                        \"lslbs\": null,\r\n                        \"se\": 2.98,\r\n                        \"txrqq\": \"20250324\",\r\n                        \"ysse\": \"2.98\",\r\n                        \"mc\": \"*经营租赁*通行费\",\r\n                        \"sl\": \"20250324\",\r\n                        \"je\": 99.45,\r\n                        \"slv\": 0.03,\r\n                        \"ysslv\": \"3%\",\r\n                        \"spbm\": \"3040502020301000000\"\r\n                    }\r\n                ],\r\n                \"fphm\": \"65240401\",\r\n                \"jym\": \"098********6003\"\r\n            },\r\n            \"fplx\": \"14\",\r\n            \"customReqId\": \"10001999c73f9170d707460d8791eaa09ba8a4d6\",\r\n            \"dq\": \"33\",\r\n            \"times\": 1,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2025-05-31 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": null,\r\n            \"time\": \"2026-08-13 11:12:19\",\r\n            \"fphm\": \"65240401\",\r\n            \"jym\": \"986003\"\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 11:12:19\",\r\n    \"reqId\": \"5d2cbd969f4fe0de133f0b7fd214ca71\"\r\n}",
+      "id": "019ff922-6119-767a-8584-9beaa40d52b7"
+    },
+    {
+      "name": "二手车销售统一发票（15）",
+      "responseId": 42947073,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": [\r\n        {\r\n            \"fpdm\": \"05********17\",\r\n            \"data\": {\r\n                \"hzfpxx\": [],\r\n                \"jyPmSbh\": \"\",\r\n                \"cjhj\": 26000.00,\r\n                \"zfr\": null,\r\n                \"dq\": \"云南\",\r\n                \"zrdclglsMc\": \"0\",\r\n                \"yfphm\": null,\r\n                \"jyPmDz\": \"\",\r\n                \"jyPmMc\": \"\",\r\n                \"zfrq\": null,\r\n                \"skm\": null,\r\n                \"yfpdm\": null,\r\n                \"clsbdm\": \"LJ8E********3016\",\r\n                \"kprq\": \"2022-04-14 00:00:00\",\r\n                \"bz\": \"\",\r\n                \"escSbh\": \"9153********443R\",\r\n                \"kjlx\": \"1\",\r\n                \"cllx\": \"小型轿车\",\r\n                \"djzh\": \"53********45\",\r\n                \"escDh\": \"0871-63828860\",\r\n                \"fpztDm\": \"0\",\r\n                \"xfDz\": \"云南********号\",\r\n                \"xfMc\": \"昆明********公司\",\r\n                \"spbm\": null,\r\n                \"jyPmDh\": \"\",\r\n                \"sbbh\": \"661729095022\",\r\n                \"cjhjcn\": \"贰万陆仟元整\",\r\n                \"fpdm\": \"053002100117\",\r\n                \"gfDz\": \"云南省********3号\",\r\n                \"gfMc\": \"仇光荣\",\r\n                \"fplx\": \"15\",\r\n                \"xfDh\": \"13*******04\",\r\n                \"kpr\": \"程文超\",\r\n                \"escDz\": \"云南省********旁\",\r\n                \"escMc\": \"********二手车交易市场有限公司\",\r\n                \"xfDm\": \"91530100MA6K98HU0U\",\r\n                \"cpxh\": \"众泰牌JNJ7000EVC1\",\r\n                \"gfDh\": \"13888254682\",\r\n                \"cpzh\": \"云AD02798\",\r\n                \"jyPmYhzh\": \"\",\r\n                \"gfDm\": \"5301********073X\",\r\n                \"escYhzh\": \"广发行********6917\",\r\n                \"fphm\": \"00538061\"\r\n            },\r\n            \"fplx\": \"15\",\r\n            \"customReqId\": \"10001999422bbdc79c744a659106202a9096b244\",\r\n            \"dq\": \"53\",\r\n            \"times\": 2,\r\n            \"mxcxMessage\": null,\r\n            \"czpjMxcx\": null,\r\n            \"kprq\": \"2022-04-14 00:00:00\",\r\n            \"success\": true,\r\n            \"newFlag\": true,\r\n            \"jshj\": null,\r\n            \"je\": 26000,\r\n            \"time\": \"2026-08-13 11:14:37\",\r\n            \"fphm\": \"00538061\",\r\n            \"jym\": null\r\n        }\r\n    ],\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"timestamp\": \"2026-08-13 11:14:37\",\r\n    \"reqId\": \"45928045e4055176bc8b029ee7999a90\"\r\n}",
+      "id": "019ff922-6119-767a-8584-9cb2db533190"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 80836530,
+  "ordering": 54,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-03-20T06:21:50.000Z",
+  "updatedAt": "2026-09-05T11:39:12.000Z",
+  "creatorId": 1534873,
+  "editorId": 2795319,
+  "creatorUserId": 1534873,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

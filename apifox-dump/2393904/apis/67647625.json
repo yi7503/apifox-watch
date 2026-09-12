@@ -1,6 +1,6 @@
 {
   "id": 67647625,
-  "name": "查询往期PDF数据",
+  "name": "查询往期PDF任务结果",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -157,7 +157,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 13531082,
+  "folderId": 91995593,
   "ordering": 142,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -169,14 +169,12 @@
   "oasExtensions": null,
   "mockScript": {},
   "createdAt": "2024-12-03T08:45:01.000Z",
-  "updatedAt": "2024-12-03T08:45:01.000Z",
+  "updatedAt": "2026-07-27T12:27:10.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.171894175"
-  ],
+  "editorUserId": 1476015,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

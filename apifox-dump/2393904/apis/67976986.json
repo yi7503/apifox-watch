@@ -1,6 +1,6 @@
 {
   "id": 67976986,
-  "name": "查询税款缴纳任务结果",
+  "name": "查询税款缴纳任务结果（老接口-不维护）",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -193,7 +193,7 @@
     {
       "name": "成功示例",
       "responseId": 42948151,
-      "data": "{\n    \"reqId\": \"6eaa33ed499c4b028ea8444fc485ed0e\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": \"多税种缴款成功\",\n        \"finishTime\": \"2023-03-14 10:35:56\",\n        \"businessStatusName\": \"执行成功\",\n        \"jkScreenUrl\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com//454751700892928-454751700892927-screen.jpg?Expires=*****43502&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=N9Jj066SIoVTUL2eCyRarY7eTzY%3D\",\n        \"startTime\": \"2023-03-14 10:33:05\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"result\": \"2000\",\n                \"code\": \"2000\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"screenshot\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com//454751700892928-454751700892927-screen.jpg?Expires=*****3502&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=N9Jj066SIoVTUL2eCyRarY7eTzY%3D\",\n                \"payState\": \"1\",\n                \"message\": \"缴款成功\",\n                \"taxAmount\": \"10.0\",\n                \"taxAmountOfPaying\": \"10.0\"\n            }\n        ],\n        \"serviceName\": \"多税种缴款\",\n        \"resultMessage\": \"多税种缴款成功\",\n        \"taskId\": \"454751396338944\"\n    }\n}",
+      "data": "{\n    \"reqId\": \"6eaa33ed499c4b028ea8444fc485ed0e\",\n    \"code\": \"SUCCESS\",\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"result\": \"多税种缴款成功\",\n        \"finishTime\": \"2023-03-14 10:35:56\",\n        \"businessStatusName\": \"执行成功\",\n        \"jkScreenUrl\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com//454751700892928-454751700892927-screen.jpg?Expires=*****43502&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=N9Jj066SIoVTUL2eCyRarY7eTzY%3D\",\n        \"startTime\": \"2023-03-14 10:33:05\",\n        \"businessStatus\": 3,\n        \"detail\": [\n            {\n                \"result\": \"2000\",\n                \"code\": \"2000\",\n                \"yzpzzlDm\": \"BDA0610606\",\n                \"screenshot\": \"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com//454751700892928-454751700892927-screen.jpg?Expires=*****3502&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=N9Jj066SIoVTUL2eCyRarY7eTzY%3D\",\n                \"payState\": \"1\",\n                \"message\": \"缴款成功\",\n                \"taxAmount\": \"10.0\",\n                \"taxAmountOfPaying\": \"10.0\"\n            }\n        ],\n        \"serviceName\": \"多税种缴款\",\n        \"resultMessage\": \"多税种缴款成功\",\n        \"taskId\": \"454751396338944\"\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -215,14 +215,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-03T06:35:49.000Z",
-  "updatedAt": "2025-06-19T05:54:23.000Z",
+  "updatedAt": "2026-09-08T08:08:53.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.42948151"
-  ],
+  "editorUserId": 1476015,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

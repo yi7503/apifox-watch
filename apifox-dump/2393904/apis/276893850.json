@@ -1,6 +1,6 @@
 {
   "id": 276893850,
-  "name": "缴款凭证作废",
+  "name": "银行端缴款书缴款作废",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口是同步接口。\n使用场景：作废未返回电子税票号的缴款凭证；\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口为同步接口\n用于作废未完成缴款的银行端缴款书缴款凭证。调用后立即返回作废结果，无需通过反馈接口轮询查询。\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -63,6 +63,7 @@
         "sblx"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -242,14 +243,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-03-27T03:37:11.000Z",
-  "updatedAt": "2025-07-15T04:02:52.000Z",
+  "updatedAt": "2026-08-21T06:53:23.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
-  "responseChildren": [
-    "BLANK.642431225"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

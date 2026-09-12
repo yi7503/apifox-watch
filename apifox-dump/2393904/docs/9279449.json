@@ -1,0 +1,17 @@
+{
+  "id": 9279449,
+  "name": "2026年7月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级亮点：\n1. 涉税专业服务希望增加停止代理协议的接口；\n2. 重置税局密码功能\n:::\n\n## 一、登录业务\n1.涉税专业服务希望增加停止代理协议的接口\n--https://openapi.qixiangyun.com/api-491360919\n--https://openapi.qixiangyun.com/api-491381129\n \n2.重置税局密码功能 \n--https://openapi.qixiangyun.com/api-487256885\n--https://openapi.qixiangyun.com/api-487259196\n3.查询用户最后一次登录税号(托管）\n--支持按省查询最后一个登录的企业，不填按全国查最后一个登录的税号\n\n## 二、开放平台\n--开放平台-新增根据用户分配appkey数据权限\n--开放平台-新增分组管理数据权限\n--个人用户修改密码 增加图形验证码，旧密码错误直接锁账号，5次密码错误锁住，然后第二天释放锁。\n--注册发验证码也是需要图形验证码，验证码错误3次直接锁账号，第二天自动解锁，提示该账号已锁定，请联系管理员或明天重试。\n--账密登录-输入密码错误5次直接锁定账号，第二天自动解锁\n\n\n\n",
+  "folderId": 51136061,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-08-04T10:06:27.000Z",
+  "updatedAt": "2026-08-04T11:00:30.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -351,11 +352,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-07-23T02:37:51.000Z",
-  "updatedAt": "2026-03-08T07:08:02.000Z",
+  "updatedAt": "2026-08-26T02:30:55.000Z",
   "creatorId": 1452584,
-  "editorId": 2795319,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 2795319,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

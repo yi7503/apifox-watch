@@ -1,0 +1,17 @@
+{
+  "id": 8963549,
+  "name": "2026年6月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2026年6月发布内容\n\n发布日期：2026-06-30\n发布版本：V2.2026.06\n\n\n## 一、发票开具\n1.优化对机动车类专用发票申请红字确认单逻辑。\n  https://openapi.qixiangyun.com/api-100012783\n  ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671338/image-preview)\n\n2.红字确认单申请支持二手车市场的角色发起。\n  https://openapi.qixiangyun.com/api-100012783\n  ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671340/image-preview)\n\n3.红字确认单列表查询支持二手车市场的角色。\n  https://openapi.qixiangyun.com/api-107636830\n  ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671342/image-preview)\n\n4.差额征税开票适配申报项目信息。\n  https://openapi.qixiangyun.com/api-100012782\n  ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671344/image-preview)\n  \n5.发票开具对税率的校验补全历史税率\n  https://openapi.qixiangyun.com/api-100012782\n\n6.报废产品收购针对自然人累计开票金额的校验优化。\n7.机动车销售统一发票针对进口车、国产车填写规则的优化。\n8.机动车查询车架号信息新增车辆名称、车辆商品品牌名称、车辆型号的信息返回。\n  https://openapi.qixiangyun.com/api-165970641\n  ![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671354/image-preview)\n\n## 二、发票归集\n1.已勾选发票归集接口增加非必填参数“gjMode：0/1，默认0”，支持跳过未统计属期完成发票数据归集。\nhttps://openapi.qixiangyun.com/api-168122667\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671346/image-preview)\n\n ## 三、发票查验\n1.不查验获取版式文件优化\nhttps://openapi.qixiangyun.com/api-206461616\n\n2.江苏车辆通行费查验：发票被红冲状态的适配优化\nhttps://openapi.qixiangyun.com/api-144115059\n\n3.优化河北省医疗票据查验（明细）结果和已作废状态不支持文件下载的适配\nhttps://openapi.qixiangyun.com/api-241358209\n\n\n## 四、发票认证\n1.优化因勾选发票数据量大时转异步的提示（新增错误码）\nhttps://openapi.qixiangyun.com/api-79034497\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671357/image-preview)\n\n## 五、发票入账\n1.发票入账信息查询补全返回结果中的销售方纳税人名称信息。\n  https://openapi.qixiangyun.com/api-173974217\n  \n2.发票入账支持对入账用途直接进行变更，无需撤销入账后再次入账处理。\n  https://openapi.qixiangyun.com/api-174168816\n  \n## 六、乐企\n1.优化授信额度查询接口处理逻辑，当调用/v1/base/credit/get接口的时候，调整为直接查询税局并更新授信额度的缓存。\n\n\n   \n",
+  "folderId": 36975595,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-06-05T11:22:49.000Z",
+  "updatedAt": "2026-07-06T01:37:12.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

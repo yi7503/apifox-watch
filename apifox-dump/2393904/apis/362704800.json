@@ -33,7 +33,7 @@
         },
         "kjrqq": {
           "type": "string",
-          "description": "1.首次打印完税证明时，费款所属期起止或缴款书开具日期起止，必须有一组必填 2.格式为YYYY-MM-DD  3.只支持一个月",
+          "description": "1.完税证明补开必填 2.格式为YYYY-MM-DD 3.只支持一个月",
           "title": "完税证首次开具日期起"
         },
         "kjrqz": {
@@ -188,11 +188,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-17T09:07:28.000Z",
-  "updatedAt": "2026-05-25T06:34:59.000Z",
+  "updatedAt": "2026-09-03T07:12:13.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

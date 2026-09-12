@@ -63,6 +63,7 @@
         "skssqz"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -167,19 +168,60 @@
               "type": "object",
               "properties": {
                 "zhsd": {
-                  "$ref": "#/definitions/139231506"
+                  "$ref": "#/definitions/139231506",
+                  "title": "综合所得单位申报记录"
                 },
                 "flsd": {
-                  "$ref": "#/definitions/139231506"
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01KYREC4JWS80BW0NF5X4G5ZX2": {
+                      "$ref": "#/definitions/139231506",
+                      "x-apifox-overrides": {
+                        "sblsmxfklb": null
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01KYREC4JWS80BW0NF5X4G5ZX2"
+                  ],
+                  "properties": {}
                 },
                 "fjmsd": {
-                  "$ref": "#/definitions/139231506"
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01KYREC01TXHAAAX6J0F7WV341": {
+                      "$ref": "#/definitions/139231506",
+                      "x-apifox-overrides": {
+                        "sblsmxfklb": null
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01KYREC01TXHAAAX6J0F7WV341"
+                  ],
+                  "properties": {}
+                },
+                "xsgsd": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01KYREC9WJBHTM4F02JTC7HWQY": {
+                      "$ref": "#/definitions/139231506",
+                      "x-apifox-overrides": {
+                        "sblsmxfklb": null
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01KYREC9WJBHTM4F02JTC7HWQY"
+                  ],
+                  "properties": {}
                 }
               },
               "x-apifox-orders": [
                 "zhsd",
                 "flsd",
-                "fjmsd"
+                "fjmsd",
+                "xsgsd"
               ]
             }
           },
@@ -250,11 +292,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-11-12T02:49:11.000Z",
-  "updatedAt": "2026-01-27T07:24:09.000Z",
+  "updatedAt": "2026-07-30T02:45:55.000Z",
   "creatorId": 1452584,
-  "editorId": 3222025,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 3222025,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

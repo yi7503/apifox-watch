@@ -32,22 +32,186 @@
     "parameters": [],
     "jsonSchema": {
       "type": "object",
-      "x-apifox-refs": {
-        "01HV0TJ5317Q3J9WJ7Z3ZJ5B6F": {
-          "$ref": "#/definitions/86364451",
-          "x-apifox-overrides": {
-            "filter": null,
-            "reqType": null,
-            "aggOrgId": null,
-            "collectCycle": null,
-            "respondStatusMark": null
-          }
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "nsrsbh",
+        "accountId",
+        "areaCode",
+        "kqyswjgmc",
+        "tdztswjgmc",
+        "cjyfq",
+        "cjyfz",
+        "updateCache",
+        "ywqqmxModel",
+        "ywqqmx",
+        "sfxzhzwszm",
+        "bbcjrqlx"
+      ],
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号",
+          "description": "纳税人识别号"
+        },
+        "areaCode": {
+          "type": "string",
+          "title": "地区编码",
+          "description": "地区编码（二位或四位地区编码）"
+        },
+        "cjyfq": {
+          "type": "string",
+          "title": "采集月份起",
+          "description": "格式：yyyyMM，\nsb节点可以通过bbcjrqlx字段选择按申报日期或所属期采集；\njcxx节点-申报查询 按申报日期采集；\njcxx节点-税款征收信息 按缴款日期采集；\n其他节点数据默认按所属期采集；\n"
+        },
+        "cjyfz": {
+          "type": "string",
+          "title": "采集月份止",
+          "description": "格式：yyyyMM，\nsb节点可以通过bbcjrqlx字段选择按申报日期或所属期采集；\njcxx节点-申报查询 按申报日期采集；\njcxx节点-税款征收信息 按缴款日期采集；\n其他节点数据默认按所属期采集；\n"
+        },
+        "updateCache": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "更新缓存",
+          "description": "更新缓存数据（默认0：不更新，1：更新）"
+        },
+        "ywqqmx": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "sb": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "description": "查看附录 企业数据采集-用户自定义采集代码描述"
+              },
+              "description": "采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集",
+              "title": "自定义税表类型列表"
+            },
+            "jcxx": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "description": "查看附录 企业数据采集-用户自定义采集代码描述"
+              },
+              "description": "采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集",
+              "title": "自定义基础信息类型列表"
+            },
+            "fp": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "description": "查看附录 企业数据采集-用户自定义采集代码描述"
+              },
+              "description": "采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集",
+              "title": "自定义发票类型列表"
+            },
+            "syhq": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "description": "查看附录 企业数据采集-用户自定义采集代码描述"
+              },
+              "title": "自定义税源获取类型",
+              "description": "采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集"
+            },
+            "tx": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "description": "查看附录 企业数据采集-用户自定义采集代码描述"
+              },
+              "title": "自定义提醒类型",
+              "description": "采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集"
+            },
+            "db": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "description": "查看附录 企业数据采集-用户自定义采集代码描述"
+              },
+              "title": "自定义待办类型",
+              "description": "采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集"
+            }
+          },
+          "x-apifox-orders": [
+            "sb",
+            "jcxx",
+            "fp",
+            "syhq",
+            "tx",
+            "db"
+          ],
+          "title": "自定义采集",
+          "description": "查看示例及《解析表结构详情附录》- 用户自定义采集代码描述"
+        },
+        "ywqqmxModel": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "自定义采集模式",
+          "description": "当ywqqmx有自定义时生效，'0'： 默认-全自定义模式，'1'：部分定义模式（只自定义其中某项）"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "accountId",
+          "description": "多账号ID"
+        },
+        "sfxzhzwszm": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Y=是、N=否",
+          "title": "是否下载汇总完税证明"
+        },
+        "kqyswjgmc": {
+          "type": "string",
+          "title": "跨区域税务机关名称",
+          "description": "1. 跨区域采集专用；\n2. 跨区域业务和特定主体业务需要分开采集不能同时有值；"
+        },
+        "tdztswjgmc": {
+          "type": "string",
+          "title": "特定主体税务机关名称",
+          "description": "1. 特定主体采集专用；\n2. 跨区域业务和特定主体业务需要分开采集不能同时有值；\n3. tdztswjgmc有值的时候accountId必须有值；"
+        },
+        "bbcjrqlx": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "0=按照所属期采集  1=按照申报日期采集；\n默认采集类型是0，不传这个字段或者不传值=0；\n注意：此参数只针对sb节点有效！",
+          "title": "报表采集日期类型"
         }
       },
-      "x-apifox-orders": [
-        "01HV0TJ5317Q3J9WJ7Z3ZJ5B6F"
-      ],
-      "properties": {}
+      "required": [
+        "nsrsbh",
+        "areaCode",
+        "cjyfq",
+        "cjyfz"
+      ]
     },
     "required": false,
     "mediaType": "",
@@ -234,11 +398,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-26T10:15:31.000Z",
-  "updatedAt": "2026-06-08T09:28:08.000Z",
+  "updatedAt": "2026-07-04T03:13:43.000Z",
   "creatorId": 1910680,
-  "editorId": 1476015,
+  "editorId": 1564651,
   "creatorUserId": 1910680,
-  "editorUserId": 1476015,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

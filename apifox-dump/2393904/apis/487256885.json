@@ -1,0 +1,220 @@
+{
+  "id": 487256885,
+  "name": "局端忘记密码发送短信",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "如果是企享云购买的小号，调用此接口直接完成密码修改，不需要上传短信\n如果不是小号，调用此接口则会完成发送短信\n托管账号修改完局端密码后还需要维护账号关系，调用账号管理-账号修改接口",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/forgetPassw/sendSms",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "dq": {
+          "type": "string",
+          "title": "地区",
+          "description": "见附录"
+        },
+        "zjlx": {
+          "type": "string",
+          "title": "证件类型代码",
+          "description": "目前仅支持201-身份证 默认值201"
+        },
+        "zjhm": {
+          "type": "string",
+          "title": "证件号码",
+          "description": "目前仅支持身份证号"
+        },
+        "gryhmm": {
+          "type": "string",
+          "title": "个人用户名密码",
+          "description": "新密码使用RSA加密\n校验规则：长度为8-16个字符，必须包含数字、字母（区分大小写）、特殊字符（包括 . @ $ %* # _ + - ~ & ^ ）三者中至少两种"
+        },
+        "sjhm": {
+          "type": "string",
+          "title": "手机号码",
+          "description": "用户接受短信验证"
+        },
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "x-apifox-orders": [
+        "dq",
+        "zjlx",
+        "zjhm",
+        "sjhm",
+        "gryhmm",
+        "nsrsbh"
+      ],
+      "required": [
+        "dq",
+        "zjhm",
+        "gryhmm",
+        "sjhm",
+        "nsrsbh"
+      ]
+    },
+    "required": true,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "成功",
+        "value": "{\r\n    \"dq\": \"31\",\r\n    \"gryhmm\": \"XXXXXXbujQnA/0cD/TPn8ppCL9oxCLN0TY1dW3XXXXXXXxW5Z6XRLearRx0Knxh+SVUeUYqcwIUm16O2jDAXXXXXXck9ukYSLZpI3aLPeS9XXXXXky5N8oEMI/2f0iTZ30ymsSEHXooQd1sPS4c=\",\r\n    \"sjhm\": \"***910*****\",\r\n    \"zjhm\": \"**********\",\r\n    \"zjlx\": \"201\",\r\n    \"nsrsbh\": \"910*************\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 163612186,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "返回任务id",
+                "description": "如果是真实手机号则需要调用上传短信接口时用到该字段"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "taskId"
+            ],
+            "required": [
+              "taskId"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "小号修改密码成功",
+      "responseId": 163612186,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": \"修改成功\",\r\n    \"data\": {\r\n        \"msg\": \"成功\"\r\n    },\r\n    \"timestamp\": \"2026-07-15 11:39:34\",\r\n    \"reqId\": \"948444b4409b2759d2d8f78f2faf5c45\"\r\n}",
+      "id": "019f63dd-cc90-7799-ab99-b3f3e13574c0"
+    },
+    {
+      "name": "真实手机号发送短信成功",
+      "responseId": 163612186,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"msg\": \"成功\",\r\n        \"mobile\": \"1******1107\",\r\n        \"taskId\": 5122276644018646520\r\n    },\r\n    \"timestamp\": \"2026-07-15 11:39:34\",\r\n    \"reqId\": \"948444b4409b2759d2d8f78f2faf5c45\"\r\n}",
+      "id": "019f63dd-cc90-7799-ab99-b48759e19f4f"
+    },
+    {
+      "name": "登录人和手机号不一致错误",
+      "responseId": 163612186,
+      "data": "{\n    \"code\": \"4059\",\n    \"success\": false,\n    \"message\": \"当前登录人使用的手机号码与已确认的唯一手机号不一致！\",\n    \"data\": {\n        \"sjhmList\": [\n            {\n                \"sjhm\": \"1*******1234\",\n                \"default_flag\": 0\n            },\n            {\n                \"sjhm\": \"1*******1235\",\n                \"default_flag\": 1\n            }\n        ]\n    },\n    \"timestamp\": \"2026-07-15 11:39:34\",\n    \"reqId\": \"948444b4409b2759d2d8f78f2faf5c45\"\n}",
+      "id": "01a0225f-34b8-742f-b077-beec8220ec20"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 90941605,
+  "ordering": 10,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-15T03:00:13.000Z",
+  "updatedAt": "2026-07-27T03:41:25.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "creatorUserId": 2400309,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,0 +1,212 @@
+{
+  "id": 506198506,
+  "name": "查询账户中心登录日志",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "仅限托管用户进行查询，需要先登录后才可以查询，使用小号的可以直接调用改接口\n此接口主要用于排查掉线原因，请不要频繁调用\n查询昨天凌晨到今天的登录日志",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/queryTaxLog",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "integer",
+          "title": "企业id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号id"
+        },
+        "backDays": {
+          "type": "string",
+          "title": "查询最近几天的日志",
+          "description": "仅支持0,1 默认0查询当天 1表示查询昨天凌晨到现在"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "backDays"
+      ],
+      "required": [
+        "aggOrgId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "企业获取",
+        "value": "{\r\n    \"aggOrgId\": \"1234562123\",\r\n    \"accountId\": \"51245644656226\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 168900456,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "operationTime": {
+                  "type": "string",
+                  "title": "登录时间",
+                  "description": "2026-05-26 21:10:46"
+                },
+                "srcIp": {
+                  "type": "string",
+                  "title": "来源IP"
+                },
+                "creditCode": {
+                  "type": "string",
+                  "title": "统一社会信用代码"
+                },
+                "loginType": {
+                  "type": "string",
+                  "title": "个人业务/企业业务/代理业务"
+                },
+                "enterpriseName": {
+                  "type": "string",
+                  "title": "企业名称"
+                }
+              },
+              "x-apifox-orders": [
+                "operationTime",
+                "srcIp",
+                "creditCode",
+                "loginType",
+                "enterpriseName"
+              ],
+              "required": [
+                "operationTime",
+                "srcIp",
+                "creditCode",
+                "loginType",
+                "enterpriseName"
+              ]
+            },
+            "title": "业务数据"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 168900456,
+      "data": "{\r\n\t\"code\": \"2000\",\r\n\t\"success\": true,\r\n\t\"message\": null,\r\n\t\"data\": [\r\n\t\t{\r\n\t\t\t\"creditCode\": \"91*********GW5N\",\r\n\t\t\t\"enterpriseName\": \"洛阳*****发展有限公司\",\r\n\t\t\t\"loginType\": \"代理业务\",\r\n\t\t\t\"operationTime\": \"2026-08-21 18:22:29\",\r\n\t\t\t\"srcIp\": \"125.37.212.202\"\r\n\t\t}\r\n\t],\r\n\t\"timestamp\": \"2026-05-26 22:11:24\",\r\n\t\"reqId\": \"5cbf95380e197235a0ad7e94765b9f3f\"\r\n}",
+      "id": "019ca3a1-99df-745e-b354-36f5ededdb14"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75021689,
+  "ordering": 193,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-08-25T05:56:20.000Z",
+  "updatedAt": "2026-08-26T05:42:28.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "creatorUserId": 2400309,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

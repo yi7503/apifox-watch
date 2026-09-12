@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "获取欠费信息",
+  "description": "获取欠费信息\n注：费款所属期和申报日期如果都传，则同时生效",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -49,12 +49,20 @@
         "fkssqz": {
           "type": "string",
           "description": "费款所属期止，查询时间区间最多支持12个月，格式：YYYYMM"
+        },
+        "sbrqq": {
+          "type": "string",
+          "description": "格式：YYYY-MM-DD\n非必传，若传输，则申报日期起止必须都传。",
+          "title": "申报日期起"
+        },
+        "sbrqz": {
+          "type": "string",
+          "description": "格式：YYYY-MM-DD\n非必传，若传输，则申报日期起止必须都传。",
+          "title": "申报日期止"
         }
       },
       "required": [
         "aggOrgId",
-        "fkssqq",
-        "fkssqz",
         "accountId"
       ],
       "additionalProperties": false,
@@ -62,9 +70,12 @@
         "aggOrgId",
         "accountId",
         "fkssqq",
-        "fkssqz"
+        "fkssqz",
+        "sbrqq",
+        "sbrqz"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -173,11 +184,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-17T09:06:42.000Z",
-  "updatedAt": "2025-12-03T02:29:13.000Z",
+  "updatedAt": "2026-09-02T08:24:03.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 1534873,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 1534873,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

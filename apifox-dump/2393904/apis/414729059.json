@@ -47,7 +47,7 @@
         "rptType": {
           "type": "string",
           "title": "报告格式",
-          "description": "1 pdf链接 2 json 3 pdf+json"
+          "description": "1 简版和详细版的pdf链接 ，2 详细版 json ，3 简版和详细pdf+详细版json"
         },
         "aggOrgId": {
           "type": "string",
@@ -214,11 +214,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-03T08:58:46.000Z",
-  "updatedAt": "2026-06-02T14:00:02.000Z",
+  "updatedAt": "2026-08-20T07:19:46.000Z",
   "creatorId": 887778,
-  "editorId": 887778,
+  "editorId": 2795319,
   "creatorUserId": 887778,
-  "editorUserId": 887778,
+  "editorUserId": 2795319,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

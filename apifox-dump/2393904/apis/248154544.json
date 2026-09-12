@@ -107,6 +107,10 @@
         "xsgsd": {
           "title": "限售股所得税",
           "$ref": "#/definitions/139693165"
+        },
+        "bmbh": {
+          "type": "string",
+          "title": "部门编号"
         }
       },
       "required": [
@@ -117,6 +121,7 @@
       "x-apifox-orders": [
         "aggOrgId",
         "accountId",
+        "bmbh",
         "skssq",
         "rylb",
         "zhsd",
@@ -295,11 +300,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-25T02:40:16.000Z",
-  "updatedAt": "2026-04-13T12:19:03.000Z",
+  "updatedAt": "2026-07-23T10:27:47.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

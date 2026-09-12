@@ -1,0 +1,17 @@
+{
+  "id": 9279278,
+  "name": "  2026年7月发版内容",
+  "sidebarTitle": "",
+  "content": "2026年7月发布内容\n发布日期：2026-07-30\n发布版本：V2.2026.07\n\n# 新增功能\n1.新增广东地区的社保申报、缴款等接口\n注意广东地区是基于电子税局处理的，登录方式参考https://openapi.qixiangyun.com/doc-8513442\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/682616/image-preview)\n\n广东社保接口如下：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/682617/image-preview)\n\n# 优化功能\n年度缴费工资调整/申报、月度缴费工资调整优化\n1.按险种申报，险种：职工大额医疗互助保险缴费工资zgdeylhzbxjfgz  改为非必填，若需要用到该险种再传入\n\n",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-08-04T09:52:19.000Z",
+  "updatedAt": "2026-08-04T09:52:26.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

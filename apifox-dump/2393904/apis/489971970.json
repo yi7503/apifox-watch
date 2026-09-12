@@ -1,0 +1,278 @@
+{
+  "id": 489971970,
+  "name": "查询税收分类编码信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "税收分类编码信息查询",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/querySsflbm",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01HMB8Z9BA6J31EXMMQB2XBBS0"
+      ],
+      "x-apifox-refs": {
+        "01HMB8Z9BA6J31EXMMQB2XBBS0": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"913***************2G\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 339981033,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "spbm": {
+                      "type": "string",
+                      "title": "商品编码"
+                    },
+                    "tdyslxdm": {
+                      "type": "string",
+                      "title": "特定要素类型代码"
+                    },
+                    "cezsbz": {
+                      "type": "string",
+                      "title": "差额征税标志"
+                    },
+                    "bzs": {
+                      "type": "string",
+                      "title": "不征税",
+                      "description": "Y-是；N-否"
+                    },
+                    "jzjtdm": {
+                      "type": "string",
+                      "title": "即征即退代码"
+                    },
+                    "spmc": {
+                      "type": "string",
+                      "title": "商品和服务名称"
+                    },
+                    "spfwjc": {
+                      "type": "string",
+                      "title": "商品和服务分类简称"
+                    },
+                    "sm": {
+                      "type": "string",
+                      "title": "说明"
+                    },
+                    "zzsslv": {
+                      "type": "string",
+                      "title": "增值税税率"
+                    },
+                    "zslv": {
+                      "type": "string",
+                      "title": "征收率"
+                    },
+                    "zsstsgl": {
+                      "type": "string",
+                      "title": "增值税特殊管理"
+                    },
+                    "zzszcyj": {
+                      "type": "string",
+                      "title": "增值税政策依据"
+                    },
+                    "zzstsnrdm": {
+                      "type": "string",
+                      "title": "增值税特殊内容代码"
+                    },
+                    "xfsgl": {
+                      "type": "string",
+                      "title": "消费税管理"
+                    },
+                    "xfszcyj": {
+                      "type": "string",
+                      "title": "消费税政策依据"
+                    },
+                    "sfhzx": {
+                      "type": "string",
+                      "title": "是否汇总项",
+                      "description": "Y-是；N-否"
+                    },
+                    "dytjjbm": {
+                      "type": "string",
+                      "title": "对应统计局编码"
+                    },
+                    "hgjcksppm": {
+                      "type": "string",
+                      "title": "海关进出口商品品目"
+                    },
+                    "qyrq": {
+                      "type": "string",
+                      "title": "启用日期",
+                      "description": "格式：yyyy-MM-dd"
+                    },
+                    "tyrq": {
+                      "type": "string",
+                      "title": "停用日期",
+                      "description": "格式：yyyy-MM-dd"
+                    },
+                    "gjz": {
+                      "type": "string",
+                      "title": "关键字"
+                    },
+                    "fjbm": {
+                      "type": "string",
+                      "title": "父级编码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "spbm",
+                    "fjbm",
+                    "tdyslxdm",
+                    "cezsbz",
+                    "bzs",
+                    "jzjtdm",
+                    "spmc",
+                    "spfwjc",
+                    "sm",
+                    "zzsslv",
+                    "zslv",
+                    "zsstsgl",
+                    "zzszcyj",
+                    "zzstsnrdm",
+                    "xfsgl",
+                    "xfszcyj",
+                    "sfhzx",
+                    "dytjjbm",
+                    "hgjcksppm",
+                    "qyrq",
+                    "tyrq",
+                    "gjz"
+                  ]
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "list"
+            ],
+            "required": [
+              "list"
+            ]
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "x-apifox-orders": [
+          "data",
+          "01HRHB88J9Q0B7KWHNY4EC6Q9T"
+        ],
+        "x-apifox-refs": {
+          "01HRHB88J9Q0B7KWHNY4EC6Q9T": {
+            "$ref": "#/definitions/85577914"
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 339981033,
+      "data": "{\n    \"reqId\": \"4f1a1d3a1a25483789714ca86e6e536d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"list\": [\n            {\n                \"xfsgl\": null,\n                \"zzstsgl\": \"免税\",\n                \"spmc\": \"谷子\",\n                \"tdyslxdm\": \"11\",\n                \"hgjcksppm\": \"10082900【税则品名】其他谷子\",\n                \"jzjtdm\": null,\n                \"cezsbz\": null,\n                \"zzstsnrdm\": \"1011606.0\",\n                \"spfwjc\": \"谷物\",\n                \"qyrq\": \"2018-12-04\",\n                \"tyrq\": null,\n                \"gjz\": \"谷子、硬谷子、糯谷子\",\n                \"zzsslv\": \"9%\",\n                \"dytjjbm\": null,\n                \"sfhzx\": \"N\",\n                \"xfszcyj\": null,\n                \"zzszcyj\": \"《财政部 国家税务总局关于粮食企业增值税征免问题的通知》（财税字〔1999〕198号）\",\n                \"bzs\": \"N\",\n                \"sm\": \"包括硬谷子、糯谷子、其他谷子。\",\n                \"zslv\": \"3%\",\n                \"spbm\": \"1010101040000000000\"\n                \"fjbm\": \"1010101000000000000\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 402693892
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 62797071,
+  "ordering": 408,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-21T02:05:37.000Z",
+  "updatedAt": "2026-07-22T06:20:59.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "creatorUserId": 3600994,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

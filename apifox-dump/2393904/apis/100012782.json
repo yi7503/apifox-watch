@@ -41,27 +41,39 @@
               "enum": [
                 "030-数电普票",
                 "032-数电专票",
-                "87-数电纸质(机动车销售统一发票)",
-                "83-数电票(机动车销售统一发票)"
+                "83-数电票(机动车销售统一发票)",
+                "84-数电纸质发票（增值税专用发票）",
+                "85-数电纸质发票（普通发票）",
+                "87-数电纸质(机动车销售统一发票)"
               ],
               "x-apifox-enum": [
                 {
+                  "value": "030-数电普票",
                   "name": "",
-                  "value": "030,全电普通发票",
                   "description": ""
                 },
                 {
+                  "value": "032-数电专票",
                   "name": "",
-                  "value": "032,全电专用发票",
                   "description": ""
                 },
                 {
+                  "value": "87-数电纸质(机动车销售统一发票)",
                   "name": "",
-                  "value": "87,全电纸质机动车发票",
                   "description": ""
                 },
                 {
-                  "value": "83,数电票（机动车销售统一发票）",
+                  "value": "83-数电票(机动车销售统一发票)",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "84-数电纸质发票（增值税专用发票）",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "85-数电纸质发票（普通发票）",
                   "name": "",
                   "description": ""
                 }
@@ -124,21 +136,22 @@
                   "ggxh": {
                     "type": "string",
                     "title": "商品规格型号",
-                    "description": "当特定要素类型为14-机动车时，此值的内容为”车辆识别代号/车架号码“"
+                    "description": "当特定要素类型为14-机动车时，此值的内容为”车辆识别代号/车架号码“;\n当特定要素类型为05、06不动租赁和不动产销售时，自动置为空；"
                   },
                   "dw": {
                     "type": "string",
-                    "title": "单位"
+                    "title": "单位",
+                    "description": "当特定要素类型为05、06不动租赁和不动产销售时，使用不动产信息中的单位填充；"
                   },
                   "spsl": {
                     "type": "string",
                     "title": "商品数量",
-                    "description": "不可传0，可以不传或传空串"
+                    "description": "传入非空时不允许为0，为小数时最大可输入13位小数，小数点后的末尾不要留0，例如：（\"123.4500\" → \"123.45\"、\"123.000\" → \"123\"）"
                   },
                   "dj": {
                     "type": "string",
                     "title": "单价",
-                    "description": "当含税标识为含税时，单价为含税单价(如传了税额-se，该字段需传不含税单价)"
+                    "description": "当含税标识为含税时，单价为含税单价(如传了税额-se，该字段需传不含税单价)。传入非空时不允许为0，为小数时最大可输入13位小数，小数点后的末尾不要留0，例如：（\"123.4500\" → \"123.45\"、\"123.000\" → \"123\"）；当含税标识为含税时，单价为含税单价(如传了税额-se，该字段需传不含税单价)"
                   },
                   "je": {
                     "type": "string",
@@ -146,7 +159,8 @@
                   },
                   "sl": {
                     "type": "string",
-                    "title": "税率"
+                    "title": "税率",
+                    "description": "数字格式，支持以下税率：\n0、0.005、0.01、0.015、0.02、0.03、0.04、0.05、0.06、0.09、0.10、0.11、0.13、0.16、0.17"
                   },
                   "se": {
                     "type": [
@@ -163,7 +177,8 @@
                   },
                   "xmmc": {
                     "type": "string",
-                    "title": "项目名称"
+                    "title": "项目名称",
+                    "description": "开具机动车销售统一发票时，此值需与与合格证中的车辆名称(CLMC)一致"
                   },
                   "slbs": {
                     "type": "string",
@@ -339,8 +354,9 @@
             },
             "ly_ddbh": {
               "type": "string",
+              "title": "来源订单编号",
               "description": "指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。",
-              "title": "来源订单编号"
+              "maxLength": 50
             },
             "hsslbs": {
               "type": [
@@ -1001,10 +1017,6 @@
                     "type": "string",
                     "title": "不动产详细地址"
                   },
-                  "wqhtbabm": {
-                    "type": "string",
-                    "title": "不动产单元代码/网签合同备案编码"
-                  },
                   "tdzzsxmbh": {
                     "type": "string",
                     "title": "土地增值税项目编号"
@@ -1026,6 +1038,10 @@
                     "type": "string",
                     "title": "面积单位",
                     "description": "平方米,亩,m²,平方千米,公顷,hm²,km²"
+                  },
+                  "wqhtbabh": {
+                    "type": "string",
+                    "title": "不动产单元代码/网签合同备案编码"
                   }
                 },
                 "required": [
@@ -1037,7 +1053,7 @@
                   "fwcqzshm",
                   "bdcdz",
                   "bdcxxdz",
-                  "wqhtbabm",
+                  "wqhtbabh",
                   "tdzzsxmbh",
                   "hdjsjg",
                   "sjcjhsje",
@@ -2754,6 +2770,36 @@
               "type": "string",
               "title": "申报项目代码",
               "description": "扣除额=0时，非必填，传空；扣除额大于0，必填；申报项目代码与开具明细的商品编码和差额征税类型必须匹配，具体参考详见：[差额征税-申报项目说明\n](doc-9026578)"
+            },
+            "fpdm": {
+              "type": "string",
+              "title": "发票代码",
+              "description": "纸质发票开具必传"
+            },
+            "zzfphm": {
+              "type": "string",
+              "title": "发票号码",
+              "description": "纸质发票开具必传"
+            },
+            "zzFpzlDm": {
+              "type": "string",
+              "title": "纸质发票种类代码",
+              "description": "通过企业票种核定信息获取。纸质发票开具必传"
+            },
+            "cpydjToolow": {
+              "type": "string",
+              "title": "成品油单价异常确认",
+              "description": "true：忽略异常开具；false：返回异常信息，阻断开具。\n注：\n1.吨单价小于等于1000（不含增值税）元、升单价小于等于1（不含增值税）元时为“成品油单价异常”；\n2.同张发票上同一成品油货物编码（包括正数和负数）合并计算；同一张发票多行明细时当任一成品油货物编码对应的单价低于标准时，将当前发票认定为“成品油单价异常”；\n3.仅适用于蓝字发票；\n"
+            },
+            "sfxsdcxfs2slzszc": {
+              "type": "string",
+              "title": "是否享受电池消费税2%税率征收政策",
+              "description": "Y-是，N-否;\n商品编码为有效期内的减税商品编码时，必填\n适用商品编码参考[电池消费税商品编码说明-减税商编](doc-9419949#减税商编)"
+            },
+            "sfxsdcxfsmszc": {
+              "type": "string",
+              "title": "是否享受电池消费税免税政策",
+              "description": "Y-是，N-否;\n商品编码为有效期内的免税商品编码时，此值必填。\n适用商品编码参考[电池消费税商品编码说明-免税商编](doc-9419949#免税商编)"
             }
           },
           "required": [
@@ -2767,6 +2813,9 @@
           "x-apifox-orders": [
             "ly_ddbh",
             "fplxdm",
+            "fpdm",
+            "zzfphm",
+            "zzFpzlDm",
             "xsf_nsrsbh",
             "xsf_nsrmc",
             "xsf_dz",
@@ -2793,6 +2842,7 @@
             "gfxx_confirm",
             "kjje_confirm",
             "kdsbzConfirm",
+            "cpydjToolow",
             "dfgtgmbq",
             "gtgmxxes",
             "zfxxes",
@@ -2832,7 +2882,9 @@
             "jbrgjdm",
             "jbrzrrnsrsbh",
             "jbrzjzldm",
-            "sfmxzlyw"
+            "sfmxzlyw",
+            "sfxsdcxfs2slzszc",
+            "sfxsdcxfsmszc"
           ],
           "title": "请求数据",
           "x-apifox-refs": {
@@ -2991,18 +3043,18 @@
               },
               "pdf_url": {
                 "type": "string",
-                "description": "pdf格式文件下载链接（税局原始链接）--入参wjgs传入对应格式才会返回",
+                "description": "pdf格式文件下载链接--入参wjgs传入对应格式才会返回;\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。",
                 "title": "链接"
               },
               "ofd_url": {
                 "type": "string",
                 "title": "链接",
-                "description": "ofd格式文件下载链接（税局原始链接）--入参wjgs传入对应格式才会返回"
+                "description": "ofd格式文件下载链接--入参wjgs传入对应格式才会返回；\n默认返回OSS地址（有效期一年），可以联系配置返回税局原始链接。"
               },
               "xml_url": {
                 "type": "string",
                 "title": "链接",
-                "description": "xml格式文件下载链接（税局原始链接）--入参wjgs传入对应格式才会返回"
+                "description": "xml格式文件下载链接--入参wjgs传入对应格式才会返回；zip包解压后为xml文件。\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。"
               },
               "ewm_url": {
                 "type": "string",
@@ -3109,7 +3161,7 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf\",\r\n\t\"ofd_url\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd\",\r\n\t\"xml_url\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-07-24T07:28:14.000Z",
-  "updatedAt": "2026-06-30T07:54:50.000Z",
+  "updatedAt": "2026-09-09T02:49:51.000Z",
   "creatorId": 1793923,
   "editorId": 3099717,
   "creatorUserId": 1793923,

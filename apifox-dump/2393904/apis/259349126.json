@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口是同步接口。\n用于查询年收入不足 6 万元人员的扣除资格名单。返回企业下符合减除费用扣除条件的人员列表及其扣除标识和确认状态。\n### 功能场景\n●用于查询指定税款所属年度下，企业中年收入不足 6 万元的人员扣除资格名单。\n●获取每个人员的扣除标识（kcbs）和是否已确认扣除（sfqrkc），判断该人员是否符合减除费用 6 万元的政策条件。\n●在进行个税算税或申报前，通过本接口确认哪些人员适用年收入不足 6 万元扣除政策。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -56,6 +56,7 @@
         "accountId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -224,11 +225,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-02-11T02:56:37.000Z",
-  "updatedAt": "2026-03-07T02:19:22.000Z",
+  "updatedAt": "2026-08-19T10:15:38.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

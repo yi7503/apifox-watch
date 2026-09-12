@@ -13,7 +13,7 @@
   "method": "post",
   "path": "/v2/invoice/gj/queryYcpzJxsezc",
   "tags": [],
-  "status": 1,
+  "status": "released",
   "requestBody": {
     "type": "application/json",
     "parameters": [],
@@ -35,6 +35,27 @@
         "skssq": {
           "type": "string",
           "title": "税款所属期"
+        },
+        "sqBz": {
+          "type": "string",
+          "title": "数据申请标识",
+          "description": "不填默认为1\n",
+          "enum": [
+            "0:查询数据加工后的进项税额转出记录，syncBz必须为“0”",
+            "1:查询电子发票服务平台统计的进项税额转出记录"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "0:查询数据加工后的进项税额转出记录，syncBz必须为“0”",
+              "name": "",
+              "description": ""
+            },
+            {
+              "value": "1:查询电子发票服务平台统计的进项税额转出记录",
+              "name": "",
+              "description": ""
+            }
+          ]
         }
       },
       "required": [
@@ -44,9 +65,10 @@
       ],
       "x-apifox-orders": [
         "nsrsbh",
-        "skssq",
         "aggOrgId",
-        "accountId"
+        "accountId",
+        "skssq",
+        "sqBz"
       ]
     },
     "required": false,
@@ -161,7 +183,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-12T02:02:42.000Z",
-  "updatedAt": "2026-03-12T02:06:04.000Z",
+  "updatedAt": "2026-08-17T05:19:25.000Z",
   "creatorId": 2118003,
   "editorId": 2118003,
   "creatorUserId": 2118003,

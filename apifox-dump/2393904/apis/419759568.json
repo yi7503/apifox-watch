@@ -39,11 +39,17 @@
               "type": "string",
               "title": "发票类型代码",
               "enum": [
-                "70-数电发票（二手车销售统一发票）"
+                "70-数电发票（二手车销售统一发票）",
+                "88-数电纸质发票（二手车销售统一发票）"
               ],
               "x-apifox-enum": [
                 {
                   "value": "70-数电发票（二手车销售统一发票）",
+                  "name": "",
+                  "description": ""
+                },
+                {
+                  "value": "88-数电纸质发票（二手车销售统一发票）",
                   "name": "",
                   "description": ""
                 }
@@ -316,8 +322,9 @@
             },
             "ly_ddbh": {
               "type": "string",
+              "title": "来源订单编号",
               "description": "指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。",
-              "title": "来源订单编号"
+              "maxLength": 50
             },
             "hsslbs": {
               "type": [
@@ -2299,6 +2306,21 @@
               "type": "string",
               "title": "减按征收类型代码",
               "description": "01：个人出租住房；03：销售自己使用过的固定资产；05: 住房租赁；"
+            },
+            "fpdm": {
+              "type": "string",
+              "title": "发票代码",
+              "description": "纸质发票开具必传"
+            },
+            "zzfphm": {
+              "type": "string",
+              "title": "发票号码",
+              "description": "纸质发票开具必传"
+            },
+            "zzFpzlDm": {
+              "type": "string",
+              "title": "纸质发票种类代码",
+              "description": "通过企业核定票种信息接口获取。纸质发票开具必传"
             }
           },
           "required": [
@@ -2315,6 +2337,9 @@
           "x-apifox-orders": [
             "ly_ddbh",
             "fplxdm",
+            "fpdm",
+            "zzfphm",
+            "zzFpzlDm",
             "xsf_nsrsbh",
             "xsf_nsrmc",
             "xsf_dz",
@@ -2598,10 +2623,10 @@
   "oasExtensions": "",
   "mockScript": {
     "enable": true,
-    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar responseJson = {\r\n\t\"kplx\": \"0\",\r\n\t\"kplsh\": \"202407211032369994199505\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"gmfNsrmc\": \"华夏天地测试有限公司\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"xsfNsrmc\": \"华夏测试有限公司\",\r\n\t\"fplxdm\": \"030\",\r\n\t\"kprq\": \"\",\r\n\t\"jshj\": 5499.22,\r\n\t\"fphm\": \"\",\r\n\t\"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n\t\r\n};\r\nlet numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];\r\nvar randomstr = \"\";\r\nfor(var i = 0;i<18;i++){\r\n\tvar index = Math.floor(Math.random(0,9)*10);\r\n\trandomstr = randomstr + numberArray[index];\r\n}\r\nvar fphm = '99' + randomstr;\r\n//var fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2026-02-26T02:55:59.000Z",
-  "updatedAt": "2026-06-26T09:47:37.000Z",
+  "updatedAt": "2026-07-14T09:00:21.000Z",
   "creatorId": 3099717,
   "editorId": 3099717,
   "creatorUserId": 3099717,

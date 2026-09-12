@@ -3,7 +3,18 @@
   "name": "账号产品绑定",
   "type": "http",
   "serverId": "",
-  "preProcessors": [],
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "1oKNApYSwi64ntSvBtspJ",
+      "executionTiming": "prerequest"
+    }
+  ],
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
@@ -53,7 +64,12 @@
     },
     "required": false,
     "mediaType": "",
-    "examples": [],
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"accountId\": 5383376150151936,\r\n    \"aggOrgId\": 5382299249738496,\r\n    \"productCode\": \"0020\",\r\n    \"isDefaut\": \"\"\r\n}"
+      }
+    ],
     "oasExtensions": ""
   },
   "parameters": {
@@ -247,11 +263,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-12T03:27:32.000Z",
-  "updatedAt": "2026-06-30T06:30:15.000Z",
+  "updatedAt": "2026-08-05T07:53:28.000Z",
   "creatorId": 887778,
-  "editorId": 493303,
+  "editorId": 3612160,
   "creatorUserId": 887778,
-  "editorUserId": 493303,
+  "editorUserId": 3612160,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

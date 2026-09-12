@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整本年度或历史年度缴费工资。\n四川、浙江、宁波、深圳、山西、福建、内蒙古地区的可用月底缴费工资调整\n该接口于2026年1月6日将调整为异步接口，请各位客户做好适配。具体参数请看文档https://doc.weixin.qq.com/doc/w3_AT4AdwZQAO0CNBtloKvNbTUqq41KB?scode=AM4ARwdGAA4P4hFlBNAT4AdwZQAO0",
+  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整本年度或历史年度缴费工资。\n四川、浙江、宁波、深圳、山西、福建、内蒙古、西藏地区的可用月底缴费工资调整\n备注：本接口可能存在部分成功的情况，因此需要对每一个人员返回的失败原因做判断，如果人员信息异常则失败原因不会空",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -60,7 +60,7 @@
     "examples": [
       {
         "name": "示例 1",
-        "value": "{\r\n    \"aggOrgId\": \"498736\",\r\n    \"accountId\": \"504653\",\r\n    \"taskId\": \"2345678345\"\r\n}",
+        "value": "{\r\n    \"aggOrgId\": \"5202141210395264\",\r\n    \"accountId\": \"5120594683285915265\",\r\n    \"taskId\": \"5123249058974189490\"\r\n}",
         "mediaType": "application/json"
       }
     ],
@@ -133,7 +133,29 @@
               },
               "taskStatus": {
                 "type": "string",
-                "title": "任务执行状态"
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
               },
               "taskStatusName": {
                 "type": "string",
@@ -194,7 +216,7 @@
     {
       "name": "成功示例",
       "responseId": 807917507,
-      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"code\": \"2000\",\n        \"message\": \"申报成功\",\n        \"result\": {\n            \"cbjstjlb\": [\n                {\n                    \"xm\": \"XX\",\n                    \"zjlx\": \"201\",\n                    \"zjhm\": \"140023456780017\",\n                    \"xjfgz\": \"6326.00\",\n                    \"sxyf\": \"2025-07\",\n                    \"sbyy\": \"\"\n                }\n            ]\n        },\n        \"taskId\": \"5009000000\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"taskTypeCode\": \"shbx-rcsb\",\n        \"taskTypeName\": \"日常申报申请\"\n    }\n}",
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"code\": \"2000\",\n        \"message\": \"操作成功\",\n        \"result\": {\n            \"cbjstjlb\": [\n                {\n                    \"xz\": {\n                        \"102040101\": 4000.0,\n                        \"102020101\": 4000.0,\n                        \"102011101\": 4000.0\n                    },\n                    \"sxyf\": \"\",\n                    \"xm\": \"XXXX\",\n                    \"zjlx\": \"201\",\n                    \"zjlxmc\": \"居民身份证\",\n                    \"zjhm\": \"22234567894567829\"\n                },\n                {\n                    \"xz\": {\n                        \"102040101\": 4000.0,\n                        \"102020101\": 4000.0,\n                        \"102011101\": 4000.0\n                    },\n                    \"sxyf\": \"\",\n                    \"xm\": \"XXXX\",\n                    \"zjlx\": \"201\",\n                    \"zjlxmc\": \"居民身份证\",\n                    \"sbyy\": \"不存在有效的险种信息\",\n                    \"zjhm\": \"152134567890539\"\n                }\n            ]\n        },\n        \"taskId\": \"5154356787654253\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"taskTypeCode\": \"shbx-ydjfgztz\",\n        \"taskTypeName\": \"月度缴费工资调整\"\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -215,11 +237,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-01-05T09:47:47.000Z",
-  "updatedAt": "2026-03-24T03:58:58.000Z",
+  "updatedAt": "2026-09-09T13:42:59.000Z",
   "creatorId": 1910680,
-  "editorId": 493303,
+  "editorId": 1534873,
   "creatorUserId": 1910680,
-  "editorUserId": 493303,
+  "editorUserId": 1534873,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

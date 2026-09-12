@@ -93,13 +93,19 @@
           "type": "string",
           "title": "代理机构税号",
           "description": "dlfs=15必传"
+        },
+        "loginType": {
+          "type": "string",
+          "title": "特定主体类型",
+          "description": "0-普通 1-特定主体 目前特定主体修改需要传1 否则会被默认值0覆盖"
         }
       },
       "required": [
         "accountId",
         "aggOrgId",
         "dlfs",
-        "proxyNsrsbh"
+        "proxyNsrsbh",
+        "loginType"
       ],
       "x-apifox-orders": [
         "aggOrgId",
@@ -111,6 +117,7 @@
         "gryhmm",
         "sjhm",
         "proxyNsrsbh",
+        "loginType",
         "dlmm",
         "dlzh"
       ]
@@ -287,7 +294,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:03:52.000Z",
-  "updatedAt": "2026-05-20T03:58:19.000Z",
+  "updatedAt": "2026-09-01T07:18:39.000Z",
   "creatorId": 2795319,
   "editorId": 2400309,
   "creatorUserId": 2795319,

@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于获取已作废/已红冲的发票数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起作废/红冲归集任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）\n2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）\n  </Step>\n</Steps>\n",
+  "description": "该接口用于获取蓝字发票状态为已作废/已红冲的发票数据，调用流程如下：\n\n<Steps>\n  <Step title=\"调用「发起作废/红冲归集任务」接口\">\n    调用接口成功后，获取到任务ID-taskId\n  </Step>\n  <Step title=\"调用「查询归集任务结果」接口\">\n通过taskId调用接口，返回任务状态\"status\"=3则表示归集任务成功，此时有两种方式获取发票结构化数据：\n1、通过此接口返参内返回的「jsonUrl」字段解析获得结构化数据（建议统一用这个方法）\n2、通过taskId调用「获取发票数据」接口获取结构化数据（不建议用这个方法，若数据大小大于2M，只返回jsonUrl，不会返回结构化数据）\n  </Step>\n</Steps>\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -187,15 +187,6 @@
           "title": "开票时间止",
           "description": "支持按月/天获取数据：\n1、按月:YYYYMM(例202011)\n2、按天: YYYYMMdd(例20201102)，此形式不支持跨月"
         },
-        "accountId": {
-          "type": "string",
-          "title": "账号唯一标识",
-          "description": "多账号下的账号唯一标识"
-        },
-        "aggOrgId": {
-          "type": "string",
-          "title": "企业id"
-        },
         "dateType": {
           "type": "string",
           "title": "日期类型",
@@ -216,25 +207,36 @@
               "description": ""
             }
           ]
+        },
+        "swjgDm": {
+          "type": "string",
+          "title": "税务机关代码",
+          "description": "同一个纳税人存在多个归属地发票时传递这个参数用户区分采集哪个归属地发票数据"
         }
       },
       "required": [
         "nsrsbh",
         "kpyfq",
-        "kpyfz",
-        "aggOrgId"
+        "kpyfz"
       ],
       "x-apifox-orders": [
-        "aggOrgId",
-        "accountId",
+        "01KY4RZ2Q81H4HENYR6558H8FZ",
         "nsrsbh",
         "fplx",
         "jxxbz",
         "kpyfq",
         "kpyfz",
-        "dateType"
+        "dateType",
+        "swjgDm"
       ],
-      "x-apifox-refs": {}
+      "x-apifox-refs": {
+        "01KY4RZ2Q81H4HENYR6558H8FZ": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
     },
     "required": false,
     "mediaType": "",
@@ -391,11 +393,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T02:28:32.000Z",
-  "updatedAt": "2026-05-20T05:56:19.000Z",
+  "updatedAt": "2026-08-17T04:01:06.000Z",
   "creatorId": 2118003,
-  "editorId": 1564651,
+  "editorId": 2118003,
   "creatorUserId": 2118003,
-  "editorUserId": 1564651,
+  "editorUserId": 2118003,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
