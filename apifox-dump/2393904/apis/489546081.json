@@ -1,0 +1,247 @@
+{
+  "id": 489546081,
+  "name": "查询上市企业信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "VJhnaDN3ViWQdN37zuSpD",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "查询上市企业信息（同步接口）\n申报限售股所得可通过该接口查询上市公司信息",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/cx/ssgsxxcx",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "gpdm": {
+          "type": "string",
+          "description": "股票代码"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "gpdm"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "gpdm"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"1123455\",\r\n    \"accountId\": \"55465746\",\r\n    \"gpdm\": \"600000\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "ssgsxx": {
+                "type": "array",
+                "description": "上市公司信息列表",
+                "items": {
+                  "type": "object",
+                  "title": "上市公司信息列表",
+                  "properties": {
+                    "ssgsnsrsbh": {
+                      "type": "string",
+                      "description": "上市公司纳税人识别号"
+                    },
+                    "ssgsmc": {
+                      "type": "string",
+                      "description": "上市公司名称"
+                    },
+                    "ssgsdjxh": {
+                      "type": "string",
+                      "description": "上市公司登记序号"
+                    },
+                    "ssgsZgswksfjDm": {
+                      "type": "string",
+                      "description": "上市公司主管税务科所分局代码"
+                    },
+                    "ssgsZgswksfjmc": {
+                      "type": "string",
+                      "description": "上市公司主管税务科所分局名称"
+                    },
+                    "ssgsZgswjgDm": {
+                      "type": "string",
+                      "description": "上市公司主管税务机关代码"
+                    },
+                    "ssgsZgswjgmc": {
+                      "type": "string",
+                      "description": "上市公司主管税务机关名称"
+                    },
+                    "scjydz": {
+                      "type": "string",
+                      "description": "生产经营地址"
+                    },
+                    "gpDm": {
+                      "type": "string",
+                      "description": "股票代码"
+                    },
+                    "gpmc": {
+                      "type": "string",
+                      "description": "股票名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "ssgsnsrsbh",
+                    "ssgsmc",
+                    "ssgsdjxh",
+                    "ssgsZgswksfjDm",
+                    "ssgsZgswksfjmc",
+                    "ssgsZgswjgDm",
+                    "ssgsZgswjgmc",
+                    "scjydz",
+                    "gpDm",
+                    "gpmc"
+                  ]
+                }
+              }
+            },
+            "x-apifox-orders": [
+              "ssgsxx"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"ssgsxx\": [\n            {\n                \"ssgsnsrsbh\": \"9131000060720XXXX\",\n                \"ssgsmc\": \"上海XXXX股份有限公司\",\n                \"ssgsdjxh\": \"123456789012345678\",\n                \"ssgsZgswksfjDm\": \"13100000000\",\n                \"ssgsZgswksfjmc\": \"国家税务总局XXXXX局第一税务所\",\n                \"ssgsZgswjgDm\": \"13100000000\",\n                \"ssgsZgswjgmc\": \"国家税务总局XXXX区税务局\",\n                \"scjydz\": \"上海市中山东一路12号\",\n                \"gpDm\": \"600000\",\n                \"gpmc\": \"XX银行\"\n            }\n        ]\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 46,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-20T06:16:03.000Z",
+  "updatedAt": "2026-08-15T02:56:33.000Z",
+  "creatorId": 1910680,
+  "editorId": 493303,
+  "creatorUserId": 1910680,
+  "editorUserId": 493303,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

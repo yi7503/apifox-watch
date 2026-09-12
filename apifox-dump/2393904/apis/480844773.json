@@ -1,0 +1,183 @@
+{
+  "id": 480844773,
+  "name": "申报缴款情况查询",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "dg6SU_79TW7-nteqkeHfv",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbxweb/sbjkqkcx",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID，多账户场景"
+        },
+        "fkssqq": {
+          "type": "string",
+          "title": "费款所属期起",
+          "description": "1.YYYYMM\n2.起止日期必须在同一年度"
+        },
+        "fkssqz": {
+          "type": "string",
+          "title": "费款所属期止",
+          "description": "1.YYYYMM\n2.起止日期必须在同一年度"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "fkssqq",
+        "fkssqz",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": 123456,\r\n    \"accountId\": 789,\r\n    \"fkssqq\": \"202601\",\r\n    \"fkssqz\": \"202606\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01KVY8TDJEWTA6VV9C3237MPTV"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01KVY8TDJEWTA6VV9C3237MPTV": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "taskId": {
+                    "type": "string",
+                    "title": "任务ID"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "taskId"
+                ],
+                "required": [
+                  "taskId"
+                ]
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {}\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 89937700,
+  "ordering": 38,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-01T07:46:40.000Z",
+  "updatedAt": "2026-07-07T07:25:34.000Z",
+  "creatorId": 1452584,
+  "editorId": 3222025,
+  "creatorUserId": 1452584,
+  "editorUserId": 3222025,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

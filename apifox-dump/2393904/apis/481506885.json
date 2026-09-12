@@ -1,0 +1,204 @@
+{
+  "id": 481506885,
+  "name": "查询成品油调拨历史信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "成品油业务-查询成品油调拨历史信息\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/cpyDbHistories",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageNumber": {
+              "type": "integer",
+              "title": "页码",
+              "description": "默认：1"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页记录数",
+              "description": "默认：10，最大：50"
+            },
+            "fzjgnsrsbh": {
+              "type": "string",
+              "title": "分公司税号"
+            },
+            "fzjgnsrmc": {
+              "type": "string",
+              "title": "分公司名称"
+            },
+            "cpykcbdsjq": {
+              "type": "string",
+              "title": "调拨日期起 ",
+              "description": "格式 yyyy-MM-dd ，不能大于当期日期"
+            },
+            "cpykcbdsjz": {
+              "type": "string",
+              "title": "调拨日期止",
+              "description": "格式 yyyy-MM-dd，不能小于起始日期"
+            },
+            "ypbm": {
+              "type": "string",
+              "title": "成品油税编"
+            }
+          },
+          "x-apifox-orders": [
+            "fzjgnsrmc",
+            "fzjgnsrsbh",
+            "cpykcbdsjq",
+            "cpykcbdsjz",
+            "ypbm",
+            "pageNumber",
+            "pageSize"
+          ],
+          "required": [
+            "cpykcbdsjq",
+            "cpykcbdsjz"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**********QY4Y\",\r\n    \"data\": {\r\n        \"fzjgnsrmc\": \"\",\r\n        \"fzjgnsrsbh\": \"\",\r\n        \"cpykcbdsjq\": \"2026-06-01\",\r\n        \"cpykcbdsjz\": \"2026-06-24\",\r\n        \"ypbm\": \"1070101010100000000\",\r\n        \"pageNumber\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KWGX0K25MEDXPP6HAGXRK9W0"
+            ],
+            "x-apifox-refs": {
+              "01KWGX0K25MEDXPP6HAGXRK9W0": {
+                "$ref": "#/definitions/290540003"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"pageNumber\": 1,\n        \"pageSize\": 10,\n        \"total\": 1,\n        \"list\": [\n            {\n                \"fzjgnsrsbh\": \"91************6A7C\",\n                \"fzjgnsrmc\": \"*****加油站\",\n                \"ypmc\": \"乙醇汽油\",\n                \"ypbm\": \"1070101010300000000\",\n                \"cpykcbdsl\": \"50\",\n                \"cpykcbdsj\": \"2026-06-23 15:43:57\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": null,\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\n}",
+      "id": 405632304
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32480793,
+  "ordering": 74,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-02T07:45:23.000Z",
+  "updatedAt": "2026-07-08T06:03:12.000Z",
+  "creatorId": 3099717,
+  "editorId": 3600994,
+  "creatorUserId": 3099717,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -1,6 +1,6 @@
 {
   "id": 256452790,
-  "name": "并档查询",
+  "name": "自然人并档服务",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -33,7 +33,8 @@
       "properties": {
         "bizNo": {
           "type": "string",
-          "title": "外部业务编号"
+          "title": "外部业务编号",
+          "description": "业务唯一识别号，可用来做任务幂等，相同业务编号多次传递系统会拦截，并返回任务执行结果"
         },
         "accountId": {
           "type": "string",
@@ -65,36 +66,12 @@
               "zzhm": {
                 "type": "string",
                 "title": "证件号码"
-              },
-              "gxrybdxx\t": {
-                "type": "object",
-                "properties": {
-                  "gxxm": {
-                    "type": "string",
-                    "title": "更新姓名\t"
-                  },
-                  "gxzzlx": {
-                    "type": "string",
-                    "title": "更新证件类型\t"
-                  },
-                  "gxzzhm": {
-                    "type": "string",
-                    "title": "更新证件号码\t"
-                  }
-                },
-                "x-apifox-orders": [
-                  "gxxm",
-                  "gxzzlx",
-                  "gxzzhm"
-                ],
-                "title": "更新人员并档信息\t"
               }
             },
             "x-apifox-orders": [
               "xm",
               "zzlx",
-              "zzhm",
-              "gxrybdxx\t"
+              "zzhm"
             ],
             "x-apifox-refs": {},
             "required": [
@@ -122,6 +99,7 @@
         "skssq"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -281,10 +259,10 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-21T07:01:31.000Z",
-  "updatedAt": "2025-12-18T13:21:21.000Z",
+  "updatedAt": "2026-09-10T08:02:44.000Z",
   "creatorId": 1452584,
   "editorId": 1452584,
   "creatorUserId": 1452584,

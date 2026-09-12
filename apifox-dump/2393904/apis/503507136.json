@@ -1,0 +1,319 @@
+{
+  "id": 503507136,
+  "name": "隔月税款试算服务反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "erfrC3oUi5FE7srocSsGQ",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口是同步接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/iit/calculateTax/gyssFeedback",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "维护企业信息接口返回的 aggOrgId"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"accountId\": \"4552900726228096\",\r\n\t\"taskId\": \"1000000000000001304\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 591724188,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "taskTypeCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "taskTypeName": {
+                "type": "string",
+                "title": "任务类型名称"
+              },
+              "taskStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
+              },
+              "taskStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "执行任务信息"
+              },
+              "result": {
+                "title": "任务返回业务结果",
+                "$ref": "#/definitions/169384725"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "taskId",
+              "taskTypeCode",
+              "taskTypeName",
+              "taskStatus",
+              "taskStatusName",
+              "code",
+              "message",
+              "result"
+            ],
+            "required": [
+              "taskId",
+              "result",
+              "message",
+              "code",
+              "taskStatusName",
+              "taskStatus",
+              "taskTypeName",
+              "taskTypeCode"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 591724188,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae1981bb6d4a4a8300ac35eacf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"taskId\": \"1000000000000001102\",\n        \"taskTypeCode\": \"gs-ybss\",\n        \"taskTypeName\": \"异步算税\",\n        \"taskStatus\": \"3\",\n        \"taskStatusName\": \"执行成功\",\n        \"code\": \"2000\",\n        \"message\": \"异步算税成功\",\n        \"result\": {\n            \"qymc\": \"企业名称\",\n            \"nsrsbh\": \"91***************W\",\n            \"areaid\": \"330000\",\n            \"bmbh\": \"\",\n            \"bmmc\": \"\",\n            \"skssq\": \"202503\",\n            \"zhsd\": {\n                \"zcgzxj\": {\n                    \"sscglb\": [\n                        {\n                            \"sfmxsb\": \"\",\n                            \"xm\": \"姓名\",\n                            \"zzlx\": \"居民身份证\",\n                            \"zzhm\": \"330000000000000453\",\n                            \"rzsgrq\": \"\",\n                            \"lzrq\": \"\",\n                            \"sre\": 0,\n                            \"mssd\": 0,\n                            \"jbylaobxf\": 0,\n                            \"jbylbxf\": 0,\n                            \"sybxf\": 0,\n                            \"zfgjj\": 0,\n                            \"znjyzc\": 0,\n                            \"sylrzc\": 0,\n                            \"zfdklxzc\": 0,\n                            \"zfzjzc\": 0,\n                            \"jxjyzc\": 0,\n                            \"fxljxjyzc\": 0,\n                            \"xljxjyzc\": 0,\n                            \"yyezhzc\": 0,\n                            \"nj\": 0,\n                            \"syjkbx\": 0,\n                            \"syylbx\": 0,\n                            \"qt\": 0,\n                            \"zykcjze\": 0,\n                            \"jmse\": 0,\n                            \"bz\": \"\",\n                            \"jcfy\": 0,\n                            \"qtckhj\": 0,\n                            \"ynssde\": \"\",\n                            \"ynse\": \"\",\n                            \"ykjse\": \"\",\n                            \"yingkjse\": \"\",\n                            \"sl\": 0.03,\n                            \"sskcs\": 0,\n                            \"sdxm\": \"正常工资薪金\",\n                            \"ybtse\": 0,\n                            \"ljsre\": 0,\n                            \"ljmssd\": 0,\n                            \"ljzxkce\": 0,\n                            \"ljzxfjkce\": 0,\n                            \"ljqtkce\": 0,\n                            \"ljjmse\": 0,\n                            \"ljjcfye\": 0,\n                            \"ljyjcfy\": 0,\n                            \"yjcfy\": 0,\n                            \"yxkcsf\": 0,\n                            \"zycb\": 0,\n                            \"ljynssde\": 0,\n                            \"ljynse\": 0,\n                            \"ljyingkjse\": 0,\n                            \"ljykjse\": 0,\n                            \"ljznjyzc\": 0,\n                            \"ljjxjyzc\": 0,\n                            \"ljfxljxjyzc\": 0,\n                            \"ljxljxjyzc\": 0,\n                            \"ljzfzjzc\": 0,\n                            \"ljzfdklxzc\": 0,\n                            \"ljsylrzc\": 0,\n                            \"ljyyezhzc\": 0,\n                            \"ljzykcjze\": 0,\n                            \"ljgrylj\": 0,\n                            \"ljgryljjym\": \"\",\n                            \"qysysfysb\": \"\",\n                            \"ygzsjljykjse\": 0,\n                            \"byyljkjse\": 0,\n                            \"bcykjse\": 0,\n                            \"ftnds\": 0,\n                            \"njcfy\": 0\n                        }\n                    ],\n                    \"sssbyylb\": [],\n                    \"sszrs\": 1,\n                    \"sssbrs\": 0,\n                    \"njsx\": 0,\n                    \"zfgjjsx\": 0,\n                    \"npjgz\": 0,\n                    \"qysysfysb\": \"\"\n                }\n            },\n            \"flsd\": [],\n            \"fjmsd\": [],\n            \"xsgsd\": [],\n            \"rysbsblb\": []\n        }\n    }\n}",
+      "id": 464248419
+    },
+    {
+      "name": "异常示例",
+      "responseId": 591724188,
+      "data": "{\n    \"code\": \"4002\",\n    \"success\": false,\n    \"message\": \"aggOrgId请求参数不能为空！\",\n    \"reqId\": \"c1543b641ff9488ab1f39a13fb198c6a\"\n}",
+      "id": 464248420
+    },
+    {
+      "name": "任务执行中",
+      "responseId": 591724188,
+      "data": "{\n    \"code\": \"4001\",\n    \"success\": false,\n    \"message\": \"1000000000000001304：当前任务执行中！\",\n    \"reqId\": \"238e301d9d8342bfa54ea0c8ced83fca\"\n}",
+      "id": 464248421
+    },
+    {
+      "name": "异常人员失败示例",
+      "responseId": 591724188,
+      "data": "{\r\n    \"reqId\": \"d000000000adef26d\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"result\": {\r\n            \"areaId\": \"310000\",\r\n            \"nsrsbh\": \"9131010000000000\",\r\n            \"zhsd\": {\r\n                \"zcgzxj\": {\r\n                    \"sszrs\": 2,\r\n                    \"njsx\": null,\r\n                    \"sssblb\": [],\r\n                    \"zfgjjsx\": null,\r\n                    \"sssbrs\": 2,\r\n                    \"npjgz\": null,\r\n                    \"qysysfysb\": null,\r\n                    \"sscglb\": [],\r\n                    \"sssbyylb\": [\r\n                        {\r\n                            \"ygid\": null,\r\n                            \"xm\": \"王忠\",\r\n                            \"zzlx\": \"居民身份证\",\r\n                            \"cwm\": null,\r\n                            \"sdxmdm\": null,\r\n                            \"cwxx\": \"当前人员未报送或报送失败，请检查人员是否报送成功\",\r\n                            \"sdxmmc\": null,\r\n                            \"zzhm\": \"234567890\"\r\n                        },\r\n                        {\r\n                            \"ygid\": null,\r\n                            \"xm\": \"王琪\",\r\n                            \"zzlx\": \"居民身份证\",\r\n                            \"cwm\": null,\r\n                            \"sdxmdm\": null,\r\n                            \"cwxx\": \"当前人员未报送或报送失败，请检查人员是否报送成功\",\r\n                            \"sdxmmc\": null,\r\n                            \"zzhm\": \"234567890\"\r\n                        }\r\n                    ]\r\n                }\r\n            },\r\n            \"qymc\": \"XXXXX技术有限公司\",\r\n            \"rysbsblb\": [],\r\n            \"skssq\": \"202512\"\r\n        },\r\n        \"taskStatusName\": \"执行失败\",\r\n        \"code\": \"4000\",\r\n        \"message\": \"存在未报送或报送失败人员，请检查人员是否报送成功！\",\r\n        \"taskTypeName\": \"异步算税\",\r\n        \"taskTypeCode\": \"gs-ybss\",\r\n        \"taskId\": \"525570000000004\",\r\n        \"taskStatus\": \"2\"\r\n    }\r\n}",
+      "id": "019cf5f2-efa4-70f6-b57f-eae0bb27870d"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 48153091,
+  "ordering": 77,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-08-19T03:14:00.000Z",
+  "updatedAt": "2026-08-21T01:55:36.000Z",
+  "creatorId": 1452584,
+  "editorId": 1452584,
+  "creatorUserId": 1452584,
+  "editorUserId": 1452584,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

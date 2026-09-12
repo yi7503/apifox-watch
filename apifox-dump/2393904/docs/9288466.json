@@ -1,0 +1,17 @@
+{
+  "id": 9288466,
+  "name": "附列资料（一）附1未开具发票销售明细_即征即退项目",
+  "sidebarTitle": "",
+  "content": " \n## 概述\n\n本表为增值税及附加税费申报（一般纳税人适用）附列资料（一）附1——未开具发票销售明细_即征即退项目（wkjfpxsmxJzjt 节点）\n\n## 报文结构\n ```\n\"wkjfpxsmxJzjt\": {     \n\n \"nxyw\": [//内销业务\n        {\n\n            \"slmc\": \"13%税率\",              //税率名称,字符型；【13%税率，9%税率，6%税率，5%征收率，3%征收率，3%征收率减按2%，5%征收率减按1.5%，3%征收率减按0.5%,免征】\n            \"wkjfpZsxse\": \"0.00\",       //本期正数销售额,字符串(强制保留2位小数)\n            \"wkjfpZsse\": \"0.00\",        //本期正数税额,字符串(强制保留2位小数)\n            \"wkjfpFsxse\": \"0.00\",       //本期负数销售额,字符串(强制保留2位小数)\n            \"wkjfpFsse\": \"0.00\",        //本期负数税额,字符串(强制保留2位小数)\n            \"fsSkssqq\": \"\",        //被冲减的前期申报正数销售额属期起,字符型；格式yyyy‑MM‑dd\n            \"fsSkssqz\": \"\"         //被冲减的前期申报正数销售额属期止,字符型；格式yyyy‑MM‑dd\n        }\n    ]\n}\n\n```\n\n## 字段说明\n\n| 字段名 | 字段含义 | 数据类型 | 格式 |\n|--------|----------|----------|------|\n| `nxyw` | 内销业务 | Array | 明细行数组 |\n| `slmc` | 税率名称 | String | 字符型 |\n| `wkjfpZsxse` | 本期正数销售额 | String | 保留2位小数 |\n| `wkjfpZsse` | 本期正数税额 | String | 保留2位小数 |\n| `wkjfpFsxse` | 本期负数销售额 | String | 保留2位小数 |\n| `wkjfpFsse` | 本期负数税额 | String | 保留2位小数 |\n| `fsSkssqq` | 被冲减的前期申报正数销售额属期起 | String | `yyyy-MM-dd` |\n| `fsSkssqz` | 被冲减的前期申报正数销售额属期止 | String | `yyyy-MM-dd` |\n ",
+  "folderId": 92774138,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-08-06T09:37:36.000Z",
+  "updatedAt": "2026-08-31T00:58:01.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

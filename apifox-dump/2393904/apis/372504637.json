@@ -127,7 +127,7 @@
               },
               "zgdeylhzbxjfgz": {
                 "type": "number",
-                "description": "职工大额医疗互助保险缴费工资"
+                "description": "职工大额医疗互助保险缴费工资，没有则不传"
               },
               "gsbxjfgz": {
                 "type": "number",
@@ -136,12 +136,7 @@
             },
             "required": [
               "xm",
-              "zjhm",
-              "zgjbylbxjfgz",
-              "sybxjfgz",
-              "zgjbyliaobxjfgz",
-              "zgdeylhzbxjfgz",
-              "gsbxjfgz"
+              "zjhm"
             ],
             "x-apifox-orders": [
               "xm",
@@ -290,11 +285,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-11-06T03:34:32.000Z",
-  "updatedAt": "2026-01-22T09:47:21.000Z",
+  "updatedAt": "2026-08-14T02:00:51.000Z",
   "creatorId": 1910680,
-  "editorId": 3222025,
+  "editorId": 1442097,
   "creatorUserId": 1910680,
-  "editorUserId": 3222025,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

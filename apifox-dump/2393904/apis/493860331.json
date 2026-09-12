@@ -1,0 +1,342 @@
+{
+  "id": 493860331,
+  "name": "获取企业风险疑点查询结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述:\n获取企业风险疑点查询结果。\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/fxydResult",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID（多账号场景使用）",
+          "title": "账号ID"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID",
+          "description": "发起时的"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"taskId\": \"234567\",\r\n    \"aggOrgId\": \"550600000336\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "C3zZwP7F1m",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "vzEtnceQx5",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "70xQEWwAzD",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "FQ579YUILH",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 594828441,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "x-apifox-refs": {
+          "01JGJBMVZZ0GMQA9AN0SHT2VEG": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": "object",
+                "description": "响应核心数据",
+                "additionalProperties": false,
+                "properties": {
+                  "taskId": {
+                    "type": "string",
+                    "title": "任务ID"
+                  },
+                  "code": {
+                    "type": "string",
+                    "title": "任务code"
+                  },
+                  "message": {
+                    "type": "string",
+                    "title": "信息"
+                  },
+                  "businessStatus": {
+                    "type": "string",
+                    "description": "\n\n",
+                    "title": "任务执行状态"
+                  },
+                  "serviceCode": {
+                    "type": "string",
+                    "title": "任务类型代码"
+                  },
+                  "detail": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "rwbh": {
+                          "type": "string",
+                          "description": "任务编号"
+                        },
+                        "rwbt": {
+                          "type": "string",
+                          "description": "任务标题；\n0=全部\n1=企业所得税疑点任务反馈\n2=企业所得税税前扣除凭证（发票）风险提示反馈（跟票管）\n3=企业所得税税前扣除凭证（发票）风险提示反馈（按户管）\n4=大企业千户集团税收风险提示函反馈\n5=风控核查任务反馈\n6=异常普票风险疑点任务反馈\n7=通用风险疑点任务反馈\n8=增值税涉税风险合规辅导自查反馈\n9=涉嫌接受虚开发票疑点反馈\n10=平台内的经营者和从业人员涉税信息提取反馈"
+                        },
+                        "jsrq": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "接收时间（年月日）"
+                        },
+                        "fkqx": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "反馈期限（年月日）"
+                        },
+                        "zt": {
+                          "type": "integer",
+                          "description": "状态，返回码表；\n0=全部\n1=未反馈\n2=已反馈\n3=已查阅未反馈\n4=退回补正",
+                          "enum": [
+                            1,
+                            2,
+                            3,
+                            4
+                          ],
+                          "x-enum-descriptions": {
+                            "1": "未反馈",
+                            "2": "已反馈",
+                            "3": "已查阅未反馈",
+                            "4": "退回补正"
+                          }
+                        },
+                        "detail": {
+                          "type": "object",
+                          "properties": {
+                            "tsrq": {
+                              "type": "string",
+                              "format": "date",
+                              "description": "推送日期（年月日）"
+                            },
+                            "sxqdList": {
+                              "type": "array",
+                              "description": "风险疑点事项清单列表",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "sxmc": {
+                                    "type": "string",
+                                    "description": "事项名称"
+                                  },
+                                  "sxnr": {
+                                    "type": "string",
+                                    "description": "事项内容"
+                                  },
+                                  "fkjg": {
+                                    "type": "string",
+                                    "description": "反馈结果"
+                                  },
+                                  "sk": {
+                                    "type": "number",
+                                    "description": "税款（元），保留两位小数"
+                                  },
+                                  "znj": {
+                                    "type": "number",
+                                    "description": "滞纳金（元），保留两位小数"
+                                  },
+                                  "fk": {
+                                    "type": "number",
+                                    "description": "罚款（元），保留两位小数"
+                                  },
+                                  "ssq": {
+                                    "type": "string",
+                                    "description": "所属期"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "sxmc",
+                                  "sxnr",
+                                  "fkjg",
+                                  "sk",
+                                  "znj",
+                                  "fk",
+                                  "ssq"
+                                ]
+                              }
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "tsrq",
+                            "sxqdList"
+                          ],
+                          "description": "事项详情"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "rwbh",
+                        "rwbt",
+                        "jsrq",
+                        "fkqx",
+                        "zt",
+                        "detail"
+                      ]
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "taskId",
+                  "code",
+                  "serviceCode",
+                  "businessStatus",
+                  "message",
+                  "detail"
+                ],
+                "x-apifox-refs": {},
+                "required": [
+                  "taskId",
+                  "code",
+                  "serviceCode"
+                ]
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01JGJBMVZZ0GMQA9AN0SHT2VEG"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "企业不存在",
+      "responseId": 594828441,
+      "data": "{\"reqId\":\"bc8d1c6a828a49978bdde83dec543c20\",\"code\":\"PARAMETER_ERROR\",\"success\":true,\"message\":\"没有找到对应的企业！\",\"data\":null}",
+      "id": 466282648
+    },
+    {
+      "name": "成功示例",
+      "responseId": 594828441,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"message\": \"成功\",\n    \"data\": {\n        \"taskId\": \"2321345678\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"tax-fxydcx\",\n        \"businessStatus\": \"3\",\n        \"message\": \"成功\",\n        \"detail\": [\n            {\n                \"rwbt\": \"2\",\n                \"fkqx\": \"2024-07-07\",\n                \"jsrq\": \"2024-06-07\",\n                \"zt\": \"1\",\n                \"detail\": {\n                    \"tsrq\": \"2024-06-08\",\n                    \"sxqdList\": [\n                        {\n                            \"ssq\": \"\",\n                            \"fk\": \"\",\n                            \"znj\": \"\",\n                            \"sk\": \"\",\n                            \"sxmc\": \"\",\n                            \"fkjg\": \"\",\n                            \"sxnr\": \"根据《企业所得税税前扣除凭证管理办法》的规定，企业所得税税前扣除凭证应遵循真实性、合法性、关联性原则。经税务机关数据分析比对，近期你单位收受的发票存在企业所得税税前扣除异常情况，涉及发票1份，发票金额17787.61元。请你单位及时自查核实，核实结果请在30日内通过电子税务局反馈。\"\n                        }\n                    ]\n                },\n                \"rwbh\": \"8345254645635468543a567e19\"\n            },\n            {\n                \"rwbt\": \"4\",\n                \"fkqx\": \"2025-02-24\",\n                \"jsrq\": \"2025-02-19\",\n                \"zt\": \"2\",\n                \"detail\": {\n                    \"tsrq\": \"\"\n                },\n                \"rwbh\": \"053ad56fa6767d8F\"\n            },\n            {\n                \"rwbt\": \"3\",\n                \"fkqx\": \"2026-05-02\",\n                \"jsrq\": \"2026-04-02\",\n                \"zt\": \"2\",\n                \"detail\": {\n                    \"tsrq\": \"2026-04-02\",\n                    \"sxqdList\": [\n                        {\n                            \"ssq\": \"\",\n                            \"fk\": \"\",\n                            \"znj\": \"\",\n                            \"sk\": \"\",\n                            \"sxmc\": \"企业开具发票收入大于所得税申报收入\",\n                            \"fkjg\": \"\",\n                            \"sxnr\": \"经税务机关数据分析比对，近期你单位存在企业所得税异常情况，涉及异常项目1项/次。请你单位及时自查核实，核实结果请在30日内通过电子税务局反馈。\"\n                        }\n                    ]\n                },\n                \"rwbh\": \"5456477686464020212463\"\n            },\n            {\n                \"rwbt\": \"5\",\n                \"fkqx\": \"2026-04-26\",\n                \"jsrq\": \"2026-04-17\",\n                \"zt\": \"2\",\n                \"detail\": {\n                    \"tsrq\": \"2026-04-17\",\n                    \"sxqdList\": [\n                        {\n                            \"ssq\": \"2020-01-01~2025-06-30\",\n                            \"fk\": \"\",\n                            \"znj\": \"\",\n                            \"sk\": \"\",\n                            \"sxmc\": \"证券交易专项风险疑点\",\n                            \"fkjg\": \"我公司证券交易相关业务均依规核算，足额缴纳各项税费，账务处理、纳税申报真实准确、合法合规，不存在少缴、漏缴税款及其他涉税风险问题。\",\n                            \"sxnr\": \"该企业证券交易业务，可能存在少缴增值税、企业所得税风险。\"\n                        }\n                    ]\n                },\n                \"rwbh\": \"0626BULAS45670\"\n            },\n            {\n                \"rwbt\": \"0\",\n                \"fkqx\": \"2026-07-31\",\n                \"jsrq\": \"2026-07-27\",\n                \"zt\": \"2\",\n                \"detail\": {\n                    \"tsrq\": \"2026-07-27\",\n                    \"sxqdList\": [\n                        {\n                            \"ssq\": \"2021-01-01~2025-12-31\",\n                            \"fk\": \"\",\n                            \"znj\": \"\",\n                            \"sk\": \"\",\n                            \"sxmc\": \"存在取得财政补贴未按规定缴纳增值税、企业所得税的风险\",\n                            \"fkjg\": \"收到的政府补贴不涉及增值税，相关收入计入当期利润，因有可弥补亏损，故不涉及缴纳企业所得税。\",\n                            \"sxnr\": \"存在取得财政补贴未按规定缴纳增值税、企业所得税的风险\"\n                        }\n                    ]\n                },\n                \"rwbh\": \"05456A5B454564F\"\n            }\n        ]\n    }\n}",
+      "id": 466282649
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 92612461,
+  "ordering": 39,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-28T10:20:33.000Z",
+  "updatedAt": "2026-08-18T03:36:15.000Z",
+  "creatorId": 1910680,
+  "editorId": 1476015,
+  "creatorUserId": 1910680,
+  "editorUserId": 1476015,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

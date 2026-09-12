@@ -132,11 +132,126 @@
                 "title": "上级编码"
               },
               "tdyslxDm": {
-                "type": [
-                  "string",
-                  "null"
+                "type": "string",
+                "title": "特定要素类型代码",
+                "enum": [
+                  "01：成品油",
+                  "02：稀土",
+                  "03：建筑服务",
+                  "04：货物运输",
+                  "05：不动产销售",
+                  "06：不动产租赁",
+                  "07：代收车船使用税",
+                  "08：通行费",
+                  "09：旅客运输",
+                  "10：医疗服务",
+                  "11：农产品",
+                  "12：拖拉机和联合收割机",
+                  "13：机动车",
+                  "14：光伏收购",
+                  "15：卷烟",
+                  "17：报废产品",
+                  "18：金银首饰",
+                  "20：金融商品转让",
+                  "21:客运场站服务"
                 ],
-                "title": "特定要素类型代码"
+                "x-apifox-enum": [
+                  {
+                    "value": "01：成品油",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "02：稀土",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "03：建筑服务",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "04：货物运输",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "05：不动产销售",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "06：不动产租赁",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "07：代收车船使用税",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "08：通行费",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "09：旅客运输",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "10：医疗服务",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "11：农产品",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "12：拖拉机和联合收割机",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "13：机动车",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "14：光伏收购",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "15：卷烟",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "17：报废产品",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "18：金银首饰",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "20：金融商品转让",
+                    "name": "",
+                    "description": ""
+                  },
+                  {
+                    "value": "21:客运场站服务",
+                    "name": "",
+                    "description": ""
+                  }
+                ]
               },
               "zzscezsbj": {
                 "type": [
@@ -285,11 +400,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-10-24T13:46:31.000Z",
-  "updatedAt": "2026-05-21T03:57:44.000Z",
+  "updatedAt": "2026-09-01T02:29:49.000Z",
   "creatorId": 577326,
-  "editorId": 3600994,
+  "editorId": 3099717,
   "creatorUserId": 577326,
-  "editorUserId": 3600994,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

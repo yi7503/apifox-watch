@@ -1,0 +1,17 @@
+{
+  "id": 2857028,
+  "name": "办税小号-常见问题",
+  "sidebarTitle": "",
+  "content": "\n**1. 在上海电子税务局操作添加办税小号，提示：\"姓名证件手机号不匹配。如您发生本人手机号实名认证未通过的情况，可于周一至周五，8:00-20:00(节假日除外)拨打021-962600咨询处理。目前系统暂不支持主副卡和集团业务中的号码使用人进行验证。\"如图。**\n\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/468014/image-preview\" width=\"80%\" />\n\n原因：上海税局比较特殊，有可信认证，无法添加成功。\n解决方案：对于同一个自然人，全国任意地区的电子税局自然人数据是互通的。可以登录除上海以外任一地区电子税局操作即可，例如浙江电局-自然人登录操作添加即可。\n\n\n**2.使用办税小号会一直登录税局吗？**\n答：办税小号的登录方式，只有在用户发起需要登录税局的任务时才会主动去登录税局，没有任务是不会主动登录的。\n\n**3. 绑定接口返回“该办税小号没有操作权限！”**\n答：用的不是小号所属appkey，所以提示没权限，确认小号申请使用的appkey是哪个，只能用这个。\n\n\n\n**4. 在税局添加办税小号提示：“请您通过实名或银联验证方式维护手机号”，如下图**\n\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691427/image-preview\" width=\"70%\" />\n\n原因：税局对于自然人名下有实名认证类型手机号，无法添加其他类型手机号。\n\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691432/image-preview\" width=\"80%\" />\n\n解决方案：\n\n<Steps>\n  <Step title=\"第一步\">\n    在电子税局通过 “自然人业务” 登录成功后-进入[账户中心]-[用户注销]-图1，点确认注销； \n  </Step>\n  <Step title=\"第二步\">\n    在电子税局通过 “自然人业务” 页面-用户注册，验证方式一定要选择**国家网络身份认证**-图2，先扫码，再填写自己的手机号码（无需填写小号）；\n  </Step>\n  <Step title=\"第三步\">\n    注册完成，实名等级为三级，为不影响后续业务使用，需点击“去提升实名等级”-图3，选择**国家网络身份认证**进行刷脸认证-图4，成功提升实名等级为4级-图5；\n  </Step> \n  <Step title=\"第四步\">\n    认证成功后，重新登录电子税局-自然人业务，[账户中心]-[手机号码修改] 完成办税小号的添加。手机号类型为税务预留手机号或其他手机号-图6。自己的手机号请不要在此页面操做实名或银联认证；\n  </Step>\n</Steps>\n\n图1\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691424/image-preview\"  width=\"80%\" />\n\n图2\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691453/image-preview\"  width=\"80%\" />\n\n图3\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691817/image-preview\"  width=\"80%\" />\n\n图4\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691818/image-preview\"  width=\"80%\" />\n\n图5\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691819/image-preview\"  width=\"80%\" />\n\n图6\n<img src=\"https://api.apifox.com/api/v1/projects/2393904/resources/692095/image-preview\"  width=\"80%\" />",
+  "folderId": 17492639,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2023-08-12T06:20:26.000Z",
+  "updatedAt": "2026-09-09T05:59:39.000Z",
+  "creatorId": 493984,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

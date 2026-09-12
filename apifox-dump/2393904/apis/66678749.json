@@ -36,6 +36,11 @@
         "tdztswjgmc": {
           "type": "string",
           "title": "特定主体税务机关名称"
+        },
+        "sfcjsxsfz": {
+          "type": "string",
+          "title": "是否采集失效税费种认定",
+          "description": "Y/N"
         }
       },
       "required": [
@@ -44,6 +49,7 @@
       "x-apifox-orders": [
         "aggOrgId",
         "accountId",
+        "sfcjsxsfz",
         "kqyswjgmc",
         "tdztswjgmc"
       ]
@@ -198,7 +204,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-03T08:30:27.000Z",
-  "updatedAt": "2026-06-30T05:50:58.000Z",
+  "updatedAt": "2026-09-10T12:56:02.000Z",
   "creatorId": 1452584,
   "editorId": 1442097,
   "creatorUserId": 1452584,

@@ -30,26 +30,43 @@
           "type": "string",
           "description": "纳税人识别号"
         },
-        "accountId": {
-          "type": "string",
-          "title": "账号唯一标识",
-          "description": "多账号下的账号唯一标识"
-        },
         "aggOrgId": {
           "type": "string",
           "title": "企业id"
+        },
+        "page": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer",
+              "title": "返回条数"
+            },
+            "currentPage": {
+              "type": "integer",
+              "title": "当前页码"
+            }
+          },
+          "required": [
+            "pageSize",
+            "currentPage"
+          ],
+          "x-apifox-orders": [
+            "pageSize",
+            "currentPage"
+          ]
         }
       },
       "required": [
         "taskId",
         "nsrsbh",
-        "aggOrgId"
+        "aggOrgId",
+        "page"
       ],
       "x-apifox-orders": [
         "taskId",
         "nsrsbh",
         "aggOrgId",
-        "accountId"
+        "page"
       ],
       "x-apifox-refs": {}
     },
@@ -115,12 +132,32 @@
               }
             },
             "properties": {
+              "total": {
+                "type": "integer",
+                "title": "总数据条数"
+              },
+              "totalPages": {
+                "type": "integer",
+                "title": "总页数"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "分页大小"
+              },
+              "pageNum": {
+                "type": "integer",
+                "title": "当前页"
+              },
               "jsonUrl": {
                 "type": "string",
                 "title": "数据文件url"
               }
             },
             "x-apifox-orders": [
+              "total",
+              "totalPages",
+              "pageSize",
+              "pageNum",
               "jsonUrl",
               "01JD6CRJ4W9DNH3B4G077YS04J"
             ]
@@ -176,8 +213,21 @@
           "data": {
             "type": "object",
             "properties": {
-              "page": {
-                "type": "null"
+              "total": {
+                "type": "integer",
+                "title": "总数据条数"
+              },
+              "totalPages": {
+                "type": "integer",
+                "title": "总页数"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "分页大小"
+              },
+              "pageNum": {
+                "type": "integer",
+                "title": "当前页"
               },
               "list": {
                 "type": "array",
@@ -290,14 +340,16 @@
               }
             },
             "required": [
-              "page",
               "list",
               "jsonUrl"
             ],
             "x-apifox-orders": [
-              "page",
               "jsonUrl",
-              "list"
+              "list",
+              "total",
+              "totalPages",
+              "pageSize",
+              "pageNum"
             ]
           }
         },
@@ -351,8 +403,21 @@
           "data": {
             "type": "object",
             "properties": {
-              "page": {
-                "type": "null"
+              "total": {
+                "type": "integer",
+                "title": "总数据条数"
+              },
+              "totalPages": {
+                "type": "integer",
+                "title": "总页数"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "分页大小"
+              },
+              "pageNum": {
+                "type": "integer",
+                "title": "当前页"
               },
               "list": {
                 "type": "array",
@@ -473,14 +538,16 @@
               }
             },
             "required": [
-              "page",
               "list",
               "jsonUrl"
             ],
             "x-apifox-orders": [
-              "page",
               "jsonUrl",
-              "list"
+              "list",
+              "total",
+              "totalPages",
+              "pageSize",
+              "pageNum"
             ]
           }
         },
@@ -534,6 +601,22 @@
           "data": {
             "type": "object",
             "properties": {
+              "total": {
+                "type": "integer",
+                "title": "总数据条数"
+              },
+              "totalPages": {
+                "type": "integer",
+                "title": "总页数"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "分页大小"
+              },
+              "pageNum": {
+                "type": "integer",
+                "title": "当前页"
+              },
               "jsonUrl": {
                 "type": "string",
                 "title": "已勾选发票json格式结构化数据文件url"
@@ -675,7 +758,11 @@
             ],
             "x-apifox-orders": [
               "jsonUrl",
-              "list"
+              "list",
+              "total",
+              "totalPages",
+              "pageSize",
+              "pageNum"
             ]
           }
         },
@@ -729,6 +816,22 @@
           "data": {
             "type": "object",
             "properties": {
+              "total": {
+                "type": "integer",
+                "title": "总数据条数"
+              },
+              "totalPages": {
+                "type": "integer",
+                "title": "总页数"
+              },
+              "pageSize": {
+                "type": "integer",
+                "title": "分页大小"
+              },
+              "pageNum": {
+                "type": "integer",
+                "title": "当前页"
+              },
               "jsonUrl": {
                 "type": "string",
                 "title": "已勾选发票json格式结构化数据文件url"
@@ -953,7 +1056,11 @@
             ],
             "x-apifox-orders": [
               "jsonUrl",
-              "list"
+              "list",
+              "total",
+              "totalPages",
+              "pageSize",
+              "pageNum"
             ]
           }
         },
@@ -983,7 +1090,7 @@
     {
       "name": "成功（数据小于2M）",
       "responseId": 438821231,
-      "data": "{\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"page\": null,\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=4EWWrRGrrvLxkANyK8saw****\",\n        \"list\": [\n            {\n                \"fpdm\": \"\",\n                \"fpfxdj\": \"正常\",\n                \"fphm\": \"2411200000*******1\",\n                \"fplx\": \"81\",\n                \"fply\": \"电子发票服务平台\",\n                \"fpztDm\": \"0\",\n                \"gfmc\": \"北京*******有限公司\",\n                \"gfsbh\": \"911101116*******P\",\n                \"gmfdzdh\": \"北京市房山区知兴*******8\",\n                \"gxsj\": \"2024-11-10T20:04:10\",\n                \"gxztDm\": \"1\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"8849.55*******9\",\n                        \"fpdm\": \"\",\n                        \"fphm\": \"2411200000*******11\",\n                        \"ggxh\": \"\",\n                        \"je\": 8849.56,\n                        \"jldw\": \"套\",\n                        \"mc\": \"*其他机械设备*显示屏支架\",\n                        \"mxxh\": \"1\",\n                        \"sdphm\": \"24112000*******5111\",\n                        \"se\": 1150.44,\n                        \"sl\": \"1\",\n                        \"slv\": 0.13,\n                        \"spbm\": \"1099900000*******0000\"\n                    }\n                ],\n                \"hxytDm\": \"1\",\n                \"je\": 8849.56,\n                \"jshj\": 10000,\n                \"jxxbz\": \"jx\",\n                \"kpr\": \"\",\n                \"kprq\": \"2024-10-21 12:39:50\",\n                \"kpyf\": \"202410\",\n                \"sdphm\": \"2411200000*******1\",\n                \"se\": 1150.44,\n                \"seYxdk\": 1150.44,\n                \"skssq\": 202410,\n                \"slv\": \"0.13\",\n                \"xfmc\": \"北京北*******有限公司\",\n                \"xfsbh\": \"91110111078*******\"\n            }\n        ]\n    }\n}",
+      "data": "{\n    \"reqId\": \"7eeae4c409ec404eab3d7908c64e9fd3\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageNum\": 1,\n        \"pageSize\": 10,\n        \"total\": 1,\n        \"totalPages\": 1,\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=4EWWrRGrrvLxkANyK8saw****\",\n        \"list\": [\n            {\n                \"fpdm\": \"\",\n                \"fpfxdj\": \"正常\",\n                \"fphm\": \"2411200000*******1\",\n                \"fplx\": \"81\",\n                \"fply\": \"电子发票服务平台\",\n                \"fpztDm\": \"0\",\n                \"gfmc\": \"北京*******有限公司\",\n                \"gfsbh\": \"911101116*******P\",\n                \"gmfdzdh\": \"北京市房山区知兴*******8\",\n                \"gxsj\": \"2024-11-10T20:04:10\",\n                \"gxztDm\": \"1\",\n                \"hwxx\": [\n                    {\n                        \"dj\": \"8849.55*******9\",\n                        \"fpdm\": \"\",\n                        \"fphm\": \"2411200000*******11\",\n                        \"ggxh\": \"\",\n                        \"je\": 8849.56,\n                        \"jldw\": \"套\",\n                        \"mc\": \"*其他机械设备*显示屏支架\",\n                        \"mxxh\": \"1\",\n                        \"sdphm\": \"24112000*******5111\",\n                        \"se\": 1150.44,\n                        \"sl\": \"1\",\n                        \"slv\": 0.13,\n                        \"spbm\": \"1099900000*******0000\"\n                    }\n                ],\n                \"hxytDm\": \"1\",\n                \"je\": 8849.56,\n                \"jshj\": 10000,\n                \"jxxbz\": \"jx\",\n                \"kpr\": \"\",\n                \"kprq\": \"2024-10-21 12:39:50\",\n                \"kpyf\": \"202410\",\n                \"sdphm\": \"2411200000*******1\",\n                \"se\": 1150.44,\n                \"seYxdk\": 1150.44,\n                \"skssq\": 202410,\n                \"slv\": \"0.13\",\n                \"xfmc\": \"北京北*******有限公司\",\n                \"xfsbh\": \"91110111078*******\"\n            }\n        ]\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -992,7 +1099,7 @@
     {
       "name": "成功（数据大于2M）",
       "responseId": 438821231,
-      "data": "{\n    \"reqId\": \"0f32b889dfcb463590a51c0e8258fc03\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=4EWWrRGrrvLx*************\",\n        \"list\": []\n    }\n}",
+      "data": "{\n    \"reqId\": \"0f32b889dfcb463590a51c0e8258fc03\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=4EWWrRGrrvLx*************\",\n        \"list\": []\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -1001,7 +1108,7 @@
     {
       "name": "示例 1",
       "responseId": 438821231,
-      "data": "{\n    \"reqId\": \"8d14bc635773443b9a885242d70d3271\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91450200MAEABEPX9P/2513884767962857472.txt?Expires=1787929108&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=0t5mbUGaLXo96udOi3uH9*****\",\n        \"list\": [\n            {\n                \"kpyf\": \"202503\",\n                \"xfsbh\": \"45022119851*****\",\n                \"gxztDm\": \"1\",\n                \"bqjjkcse\": \"442.47\",\n                \"gfmc\": \"*****有限公司\",\n                \"sdphm\": \"254520000000*****\",\n                \"fpfxdj\": \"正常\",\n                \"jxxbz\": \"jx\",\n                \"se\": 0,\n                \"kprq\": \"2025-03-27 00:00:00\",\n                \"fpztDm\": \"0\",\n                \"hxytDm\": \"1\",\n                \"gfsbh\": \"91450200MAEA*****\",\n                \"fpdm\": \"\",\n                \"fplx\": \"82\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"\",\n                \"seYxdk\": 3982.23,\n                \"kjjkcse\": \"442.47\",\n                \"gmfdzdh\": \"******************************\",\n                \"sfqbkyyzzsjjkc\": \"1\",\n                \"gxsj\": \"2025-04-18 09:54:45\",\n                \"jshj\": 44247,\n                \"je\": 44247,\n                \"slv\": \"0.0\",\n                \"xfmc\": \"*****\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"fpdm\": \"\",\n                        \"jldw\": \"公斤\",\n                        \"dj\": \"0.7\",\n                        \"mxxh\": \"1\",\n                        \"se\": 0,\n                        \"mc\": \"*林业产品*桉木\",\n                        \"sl\": \"63210\",\n                        \"je\": 44247,\n                        \"slv\": 0,\n                        \"spbm\": \"1010202010000000000\",\n                        \"fphm\": \"2545200000003*****\"\n                    }\n                ],\n                \"fphm\": \"25452000000034*****\",\n                \"skssq\": 202503,\n                \"sykjjkcse\": \"0.0\"\n            }\n        ]\n    }\n}",
+      "data": "{\n    \"reqId\": \"8d14bc635773443b9a885242d70d3271\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91450200MAEABEPX9P/2513884767962857472.txt?Expires=1787929108&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=0t5mbUGaLXo96udOi3uH9*****\",\n        \"list\": [\n            {\n                \"kpyf\": \"202503\",\n                \"xfsbh\": \"45022119851*****\",\n                \"gxztDm\": \"1\",\n                \"bqjjkcse\": \"442.47\",\n                \"gfmc\": \"*****有限公司\",\n                \"sdphm\": \"254520000000*****\",\n                \"fpfxdj\": \"正常\",\n                \"jxxbz\": \"jx\",\n                \"se\": 0,\n                \"kprq\": \"2025-03-27 00:00:00\",\n                \"fpztDm\": \"0\",\n                \"hxytDm\": \"1\",\n                \"gfsbh\": \"91450200MAEA*****\",\n                \"fpdm\": \"\",\n                \"fplx\": \"82\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"\",\n                \"seYxdk\": 3982.23,\n                \"kjjkcse\": \"442.47\",\n                \"gmfdzdh\": \"******************************\",\n                \"sfqbkyyzzsjjkc\": \"1\",\n                \"gxsj\": \"2025-04-18 09:54:45\",\n                \"jshj\": 44247,\n                \"je\": 44247,\n                \"slv\": \"0.0\",\n                \"xfmc\": \"*****\",\n                \"hwxx\": [\n                    {\n                        \"ggxh\": \"\",\n                        \"fpdm\": \"\",\n                        \"jldw\": \"公斤\",\n                        \"dj\": \"0.7\",\n                        \"mxxh\": \"1\",\n                        \"se\": 0,\n                        \"mc\": \"*林业产品*桉木\",\n                        \"sl\": \"63210\",\n                        \"je\": 44247,\n                        \"slv\": 0,\n                        \"spbm\": \"1010202010000000000\",\n                        \"fphm\": \"2545200000003*****\"\n                    }\n                ],\n                \"fphm\": \"25452000000034*****\",\n                \"skssq\": 202503,\n                \"sykjjkcse\": \"0.0\"\n            }\n        ]\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -1019,7 +1126,7 @@
     {
       "name": "成功",
       "responseId": 438821231,
-      "data": "{\n    \"reqId\": \"0f32b889dfcb463590a51c0e8258fc03\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=4EWWrRGrrvLx*************\",\n        \"list\": [\n            {\n                \"kpyf\": \"202507\",\n                \"xfsbh\": \"915111815864****\",\n                \"gxztDm\": \"1\",\n                \"gfmc\": \"****全技术服务有限公司\",\n                \"sdphm\": \"25519147729********\",\n                \"fpfxdj\": \"正常\",\n                \"jxxbz\": \"jx\",\n                \"se\": 3.39,\n                \"kprq\": \"2025-07-31 00:00:00\",\n                \"fpztDm\": \"0\",\n                \"hxytDm\": \"1\",\n                \"gfsbh\": \"91510106MA6****\",\n                \"fpdm\": \"\",\n                \"fplx\": \"51\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"\",\n                \"seYxdk\": 3.39,\n                \"gxsj\": \"2025-08-06 16:33:32\",\n                \"jshj\": 41,\n                \"je\": 37.61,\n                \"slv\": \"\",\n                \"xfmc\": \"中国铁路成都局集团有限公司****\",\n                \"fphm\": \"25519147729000****\",\n                \"skssq\": 202507\n            }\n        ]\n    }\n}",
+      "data": "{\n    \"reqId\": \"0f32b889dfcb463590a51c0e8258fc03\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"jsonUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/91510106MA6CFWFC1F/2497757756504211456.txt?Expires=1786006711&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=4EWWrRGrrvLx*************\",\n        \"list\": [\n            {\n                \"kpyf\": \"202507\",\n                \"xfsbh\": \"915111815864****\",\n                \"gxztDm\": \"1\",\n                \"gfmc\": \"****全技术服务有限公司\",\n                \"sdphm\": \"25519147729********\",\n                \"fpfxdj\": \"正常\",\n                \"jxxbz\": \"jx\",\n                \"se\": 3.39,\n                \"kprq\": \"2025-07-31 00:00:00\",\n                \"fpztDm\": \"0\",\n                \"hxytDm\": \"1\",\n                \"gfsbh\": \"91510106MA6****\",\n                \"fpdm\": \"\",\n                \"fplx\": \"51\",\n                \"fply\": \"电子发票服务平台\",\n                \"kpr\": \"\",\n                \"seYxdk\": 3.39,\n                \"gxsj\": \"2025-08-06 16:33:32\",\n                \"jshj\": 41,\n                \"je\": 37.61,\n                \"slv\": \"\",\n                \"xfmc\": \"中国铁路成都局集团有限公司****\",\n                \"fphm\": \"25519147729000****\",\n                \"skssq\": 202507\n            }\n        ]\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -1040,11 +1147,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T03:17:26.000Z",
-  "updatedAt": "2026-05-20T05:53:34.000Z",
+  "updatedAt": "2026-07-31T08:02:17.000Z",
   "creatorId": 887778,
-  "editorId": 1564651,
+  "editorId": 2118003,
   "creatorUserId": 887778,
-  "editorUserId": 1564651,
+  "editorUserId": 2118003,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

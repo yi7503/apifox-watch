@@ -167,6 +167,122 @@
               "description": ""
             }
           ]
+        },
+        "fply": {
+          "type": "string",
+          "title": "发票来源",
+          "enum": [
+            "0",
+            "1",
+            "2"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "0",
+              "name": "全部",
+              "description": ""
+            },
+            {
+              "value": "1",
+              "name": "增值税发票管理系统",
+              "description": ""
+            },
+            {
+              "value": "2",
+              "name": "电子发票服务平台",
+              "description": ""
+            }
+          ],
+          "description": "默认全部"
+        },
+        "fpzt": {
+          "type": "string",
+          "title": "发票状态",
+          "description": "多个状态之间使用英文“,”分隔,默认全部",
+          "enum": [
+            "01",
+            "02",
+            "03",
+            "04"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "01",
+              "name": "正常",
+              "description": ""
+            },
+            {
+              "value": "02",
+              "name": "已作废",
+              "description": ""
+            },
+            {
+              "value": "03",
+              "name": "已红冲-全额",
+              "description": ""
+            },
+            {
+              "value": "04",
+              "name": "已红冲-部分",
+              "description": ""
+            }
+          ]
+        },
+        "fplxDm": {
+          "type": "string",
+          "description": "多个类型之间使用英文“,”分隔",
+          "title": "发票类型"
+        },
+        "sflzfp": {
+          "type": "string",
+          "title": "是否蓝字发票",
+          "description": "Y-是正数N-是负数发票如果是N fpzt只能是 01 02",
+          "enum": [
+            "Y",
+            "N"
+          ],
+          "x-apifox-enum": [
+            {
+              "value": "Y",
+              "name": "正数发票",
+              "description": ""
+            },
+            {
+              "value": "N",
+              "name": "负数发票",
+              "description": ""
+            }
+          ]
+        },
+        "fpjeq": {
+          "type": "string",
+          "title": "发票金额起",
+          "description": "与fpjez成对出现"
+        },
+        "fpjez": {
+          "type": "string",
+          "title": "发票金额止",
+          "description": "与fpjeq成对出现"
+        },
+        "dfnsrsbh": {
+          "type": "string",
+          "title": "对方纳税人识别号"
+        },
+        "fpdm": {
+          "type": "string",
+          "title": "发票代码"
+        },
+        "fphm": {
+          "type": "string",
+          "title": "发票号码"
+        },
+        "sdphm": {
+          "type": "string",
+          "title": "数电票号码"
+        },
+        "swjgDm": {
+          "type": "string",
+          "title": "税务机关代码"
         }
       },
       "required": [
@@ -184,8 +300,19 @@
         "jxxbz",
         "kprqq",
         "kprqz",
+        "fply",
+        "fpzt",
+        "fplxDm",
+        "sflzfp",
+        "fpjeq",
+        "fpjez",
+        "dfnsrsbh",
+        "fpdm",
+        "fphm",
+        "sdphm",
         "pageSize",
-        "pageNumber"
+        "pageNumber",
+        "swjgDm"
       ],
       "x-apifox-refs": {
         "01H68S0SX78CFY8Q6FKJ4NKG82": {
@@ -196,6 +323,7 @@
         }
       }
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -739,10 +867,10 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-23T12:03:59.000Z",
-  "updatedAt": "2025-12-16T07:04:11.000Z",
+  "updatedAt": "2026-08-17T04:04:02.000Z",
   "creatorId": 2118003,
   "editorId": 2118003,
   "creatorUserId": 2118003,

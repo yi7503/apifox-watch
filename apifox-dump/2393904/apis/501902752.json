@@ -1,0 +1,187 @@
+{
+  "id": 501902752,
+  "name": "获取纳税人发票归属地",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/gj/getNsrFpgsdxx",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "纳税人识别号"
+        }
+      },
+      "required": [
+        "nsrsbh"
+      ],
+      "x-apifox-orders": [
+        "01KY4RTYQ7YRW5Y1BPJ74E1C4A",
+        "nsrsbh"
+      ],
+      "x-apifox-refs": {
+        "01KY4RTYQ7YRW5Y1BPJ74E1C4A": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\n    \"nsrsbh\": \"91310118MAD*****\",\n    \"aggOrgId\": \"12342342344\"\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 780102198,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "nsrsbh": {
+                "type": "string",
+                "title": "纳税人识别号"
+              },
+              "qySwjg": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "swjgDm": {
+                      "type": "string",
+                      "title": "税务机关代码"
+                    },
+                    "dqMc": {
+                      "type": "string",
+                      "title": "地区名称"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "swjgDm",
+                    "dqMc"
+                  ]
+                },
+                "title": "税务机关信息"
+              }
+            },
+            "required": [
+              "nsrsbh"
+            ],
+            "x-apifox-orders": [
+              "nsrsbh",
+              "qySwjg"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 780102198,
+      "data": "{\n    \"reqId\": \"d4a86f12b50345eca2a31695810901d8\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"nsrsbh\": \"911023421334234***\",\n        \"qySwjg\": [\n            {\n                \"swjgDm\": \"13302000000\",\n                \"dqMc\": \"宁波\"\n            },\n            {\n                \"swjgDm\": \"13100000000\",\n                \"dqMc\": \"上海\"\n            }\n        ]\n    }\n}",
+      "id": 710186633
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 34804361,
+  "ordering": 158,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-08-14T07:45:31.000Z",
+  "updatedAt": "2026-08-19T09:38:11.000Z",
+  "creatorId": 2118003,
+  "editorId": 3600994,
+  "creatorUserId": 2118003,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

@@ -39,6 +39,9 @@
         "accountId"
       ]
     },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
     "oasExtensions": ""
   },
   "parameters": {
@@ -155,6 +158,12 @@
       "responseId": 511799813,
       "data": "{\n    \"code\": \"4251\",\n    \"success\": true,\n    \"message\": \"账号频繁登录失败，原因：已连续次输入个人用户密码错误，您可以通过“忘记密码”设置新密码。如果再次输入错误，您的账户会被锁定 该账号ID 524320096505856已被锁定，请修改登录信息后，调用启用接口进行账号解锁。\",\n    \"reqId\": \"2b0719302b1242f9bad0bd0189e550d2\"\n}",
       "id": 426010767
+    },
+    {
+      "name": "异常示例手机号不存在",
+      "responseId": 511799813,
+      "data": "{\r\n    \"reqId\": \"db059e81fa854bdc84a1feaa23e9f3e9\",\r\n    \"code\": \"4037\",\r\n    \"success\": true,\r\n    \"message\": \"手机号码不存在，您可以尝试使用证件号码登录\",\r\n    \"data\": {}\r\n}",
+      "id": "019f6dda-58b6-72d9-bd62-316d03938468"
     }
   ],
   "codeSamples": [],
@@ -168,14 +177,14 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:13:57.000Z",
-  "updatedAt": "2026-04-01T10:45:59.000Z",
+  "updatedAt": "2026-07-17T02:14:14.000Z",
   "creatorId": 2795319,
-  "editorId": 2250318,
+  "editorId": 2400309,
   "creatorUserId": 2795319,
-  "editorUserId": 2250318,
+  "editorUserId": 2400309,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

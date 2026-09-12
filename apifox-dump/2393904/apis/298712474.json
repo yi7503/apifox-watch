@@ -20,10 +20,6 @@
     "jsonSchema": {
       "type": "object",
       "properties": {
-        "aggOrgId": {
-          "type": "number",
-          "title": "企业id"
-        },
         "nsrsbh": {
           "type": "string",
           "title": "纳税人识别号"
@@ -117,21 +113,26 @@
         }
       },
       "x-apifox-orders": [
-        "aggOrgId",
+        "01KY4S7AB8K91PJ508D6C32H1Z",
         "nsrsbh",
         "data"
       ],
       "required": [
-        "aggOrgId",
         "nsrsbh",
         "data"
-      ]
+      ],
+      "x-apifox-refs": {
+        "01KY4S7AB8K91PJ508D6C32H1Z": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
         "mediaType": "application/json",
-        "value": "{\r\n    \"aggOrgId\":451678202380672,\r\n    \"nsrsbh\":\"9144011155441xxxxx\",\r\n    \"data\":[\r\n        {\r\n            \"hgjkshm\":\"222520251000071111-L01\",\r\n            \"kprq\":\"2025-04-01 00:00:00\",\r\n            \"je\":51771.92,\r\n            \"se\":0.00,\r\n            \"rzsj\":\"2025-05-01\",\r\n            \"rzytDm\":\"03\"\r\n        }\r\n    ]\r\n}"
+        "value": "{\r\n    \"nsrsbh\": \"91310118MAD5*****\",\r\n    \"data\": {\r\n        \"params\": [\r\n            {\r\n                \"hgjkshm\": \"223320261000512444-L02\",\r\n                \"kprq\": \"2026-06-02 00:00:00\",\r\n                \"je\": \"1474770.92\",\r\n                \"se\": \"191720.22\",\r\n                \"rzsj\": \"2026-06-30\",\r\n                \"rzytDm\": \"02\"\r\n            }\r\n        ]\r\n    }\r\n}"
       }
     ],
     "oasExtensions": ""
@@ -284,7 +285,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-21T05:42:52.000Z",
-  "updatedAt": "2025-12-05T01:24:40.000Z",
+  "updatedAt": "2026-07-30T06:43:29.000Z",
   "creatorId": 887778,
   "editorId": 2118003,
   "creatorUserId": 887778,

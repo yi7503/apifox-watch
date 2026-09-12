@@ -197,7 +197,7 @@
                 "kprqq": {
                   "type": "string",
                   "title": "开票起始日期",
-                  "description": "yyyy-MM-dd，时间范围不超出3个月"
+                  "description": "yyyy-MM-dd，时间范围不超出3个月（税局限制）"
                 },
                 "xsfnsrsbh": {
                   "type": "string",
@@ -308,7 +308,7 @@
                 "kprqz": {
                   "type": "string",
                   "title": "开票结束日期",
-                  "description": "yyyy-MM-dd，时间范围不超出3个月"
+                  "description": "yyyy-MM-dd，时间范围不超出3个月（税局限制）"
                 }
               },
               "x-apifox-orders": [
@@ -787,7 +787,6 @@
                     },
                     "mxuuid": {
                       "type": "string",
-                      "description": "该字段在「发票入账信息更新」中为必传字段，需保存",
                       "title": "入账明细uuid"
                     },
                     "rzuuid": {
@@ -943,9 +942,11 @@
   },
   "customApiFields": {},
   "oasExtensions": "",
-  "mockScript": {},
+  "mockScript": {
+    "enable": false
+  },
   "createdAt": "2024-07-17T07:45:00.000Z",
-  "updatedAt": "2026-06-25T06:37:19.000Z",
+  "updatedAt": "2026-08-05T10:35:32.000Z",
   "creatorId": 1875505,
   "editorId": 1564651,
   "creatorUserId": 1875505,

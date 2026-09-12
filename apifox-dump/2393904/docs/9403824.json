@@ -1,0 +1,17 @@
+{
+  "id": 9403824,
+  "name": "2026年8月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级优化点：\n1. 新增存款账户报告备案返回\n2. 新增风险疑点清册返回\n:::\n## 一、新增存款账户报告备案返回\n1.涉及接口：获取结果的接口中基础信息节点中新增存款账户备案信息列表节点\n2.按需配置返回的节点\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691180/image-preview)\n\n对应税局：存款账户报告路径，点击每个账户的变更进入把详细信息返回\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691182/image-preview)\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691183/image-preview)\n\n\n## 二、新增风险疑点清册返回\n1.涉及接口：新增一个企业风险疑点清册列表的节点\n2.按需配置返回的节点\n3.获取内容：风险疑点清册界面数据，该界面可以查询到风险包括：\n企业所得税疑点任务反馈\n企业所得税税前扣除凭证（发票）风险提示反馈（跟票管）\n企业所得税税前扣除凭证（发票）风险提示反馈（按户管）\n大企业千户集团税收风险提示函反馈\n风控核查任务反馈\n异常普票风险疑点任务反馈\n通用风险疑点任务反馈\n增值税涉税风险合规辅导自查反馈\n涉嫌接受虚开发票疑点反馈\n平台内的经营者和从业人员涉税信息提取反馈\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691189/image-preview)\n返回结构：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691191/image-preview)\n将税局风险疑点清册记录都支持返回：\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691193/image-preview)\n每条记录详细内容中风控核查任务信息、风险点事项清单的结构化数据返回\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/691194/image-preview)",
+  "folderId": 51135865,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-09-04T06:18:06.000Z",
+  "updatedAt": "2026-09-04T06:18:13.000Z",
+  "creatorId": 1476015,
+  "editorId": 1476015,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

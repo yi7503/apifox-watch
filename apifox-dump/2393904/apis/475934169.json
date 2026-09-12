@@ -1,9 +1,20 @@
 {
   "id": 475934169,
-  "name": "社会保险费申报预览反馈（异步任务结果查询）",
+  "name": "社会保险费申报预览反馈",
   "type": "http",
   "serverId": "",
-  "preProcessors": [],
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": false,
+      "enable": true,
+      "id": "FW467YGqyMbYlL_ijpKgQ",
+      "executionTiming": "presend"
+    }
+  ],
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
@@ -27,21 +38,32 @@
         "taskId": {
           "type": "string",
           "title": "任务id"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID"
         }
       },
       "x-apifox-refs": {},
       "x-apifox-orders": [
         "aggOrgId",
+        "accountId",
         "taskId"
       ],
       "required": [
         "aggOrgId",
-        "taskId"
+        "taskId",
+        "accountId"
       ]
     },
     "required": true,
     "mediaType": "",
-    "examples": [],
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\r\n    \"aggOrgId\": \"5332778446358080\",\r\n    \"taskId\": \"668216540711936\"\r\n}"
+      }
+    ],
     "oasExtensions": ""
   },
   "parameters": {},
@@ -217,7 +239,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 88927022,
+  "folderId": 89937037,
   "ordering": 16,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -228,11 +250,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-06-22T01:51:25.000Z",
-  "updatedAt": "2026-06-25T14:22:20.000Z",
+  "updatedAt": "2026-07-11T03:26:57.000Z",
   "creatorId": 1442097,
-  "editorId": 1442097,
+  "editorId": 3222025,
   "creatorUserId": 1442097,
-  "editorUserId": 1442097,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

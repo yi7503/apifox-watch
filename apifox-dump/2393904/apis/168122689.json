@@ -169,7 +169,7 @@
               "jsonUrl": {
                 "type": "string",
                 "title": "采集到发票存储到的ossUrl",
-                "description": "1.正常票量返回链接(文件内容为发票结构化数据)：\nhttp://qxy-oss-robot-product.qixiangyun.com/9131************75W/2703******5936.txt?Expires=1810569651&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=qmvej4nW1gf6oJBgvDA8D2%2FHdeY%3D\n\n2.大票量返回链接含有\"bigDataMark\"（链接打开含有多个正常票量链接，每个链接文件打开为发票结构化数据）：\nhttp://qxy-oss-robot-product.qixiangyun.com/9132********908F/2634********952/bigDataMark.txt?Expires=1802338309&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=vwB7taAXaEVSIUB1smcdU8i5uOU%3D\n\n3.无数据的链接同正常票量链接一样，文件内容为空数组：[]"
+                "description": "1.正常票量返回链接(文件内容为发票结构化数据)：\nhttp://qxy-oss-robot-product.qixiangyun.com/9131************75W/2703******5936.txt?Expires=1810569651&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=qmvej4nW1gf6oJBgvDA8D2%2FHdeY%3D\n\n2.大票量返回链接含有\"bigDataMark\"（链接打开含有多个正常票量链接，每个链接文件打开为发票结构化数据）：\nhttp://qxy-oss-robot-product.qixiangyun.com/9132********908F/2634********952/bigDataMark.txt?Expires=1802338309&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=vwB7taAXaEVSIUB1smcdU8i5uOU%3D\n\n3.无数据的链接同正常票量链接一样，文件内容为空数组：[]"
               },
               "jxxbz": {
                 "type": "string",

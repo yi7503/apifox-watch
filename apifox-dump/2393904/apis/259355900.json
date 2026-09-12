@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口是同步接口。\n该接口用于查询扣除名单确认 修改的结果\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口是同步接口。\n用于查询扣除名单确认修改任务的执行结果。配合【扣除名单确认】接口使用，【扣除名单确认】为异步接口，调用后返回 taskId，通过本接口传入 taskId 获取扣除确认的最终执行结果，包括成功/失败人员列表及失败原因。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -316,11 +317,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-02-11T03:08:07.000Z",
-  "updatedAt": "2026-03-07T03:39:49.000Z",
+  "updatedAt": "2026-08-19T10:38:27.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

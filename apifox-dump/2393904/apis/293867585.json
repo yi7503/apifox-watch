@@ -59,7 +59,7 @@
     "mediaType": "",
     "examples": [
       {
-        "value": "{\r\n\t\"aggOrgId\": \"4539696148287232\",\r\n\t\"accountId\": \"4552900726228096\",\r\n\t\"taskId\": \"1000000000000001304\"\r\n}",
+        "value": "{\r\n\t\"accountId\": \"5428914219209081506\",\r\n    \"aggOrgId\": \"5373733650628800\",\r\n\t\"taskId\": \"5428914219209081630\"\r\n}",
         "mediaType": "application/json",
         "description": ""
       }
@@ -466,11 +466,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-09T08:13:42.000Z",
-  "updatedAt": "2026-05-13T09:47:17.000Z",
+  "updatedAt": "2026-07-22T07:24:56.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 3612160,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 3612160,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

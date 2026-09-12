@@ -29,12 +29,74 @@
     "type": "application/json",
     "parameters": [],
     "jsonSchema": {
-      "$ref": "#/definitions/138834501"
+      "type": "object",
+      "properties": {
+        "bizNo": {
+          "type": "string",
+          "title": "外部业务编号",
+          "description": "业务唯一识别号，可用来做任务幂等，相同业务编号多次传递系统会拦截，并返回任务执行结果"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号ID",
+          "description": "传入accountId就免传登录信息"
+        },
+        "skssq": {
+          "type": "string",
+          "title": "所属期",
+          "description": "格式YYYYMM年月",
+          "deprecated": true
+        },
+        "rylb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "x-apifox-refs": {
+              "01JW89XZ1Q8DDGWD64NW2T35ZJ": {
+                "$ref": "#/definitions/138834666",
+                "x-apifox-overrides": {
+                  "bmbh": null,
+                  "skssq": null
+                }
+              }
+            },
+            "properties": {},
+            "x-apifox-orders": [
+              "01JW89XZ1Q8DDGWD64NW2T35ZJ"
+            ]
+          },
+          "title": "企业人员列表"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "bmbh": {
+          "type": "string",
+          "title": "部门编号",
+          "deprecated": true
+        }
+      },
+      "x-apifox-refs": {},
+      "x-apifox-orders": [
+        "bizNo",
+        "aggOrgId",
+        "accountId",
+        "skssq",
+        "bmbh",
+        "rylb"
+      ],
+      "required": [
+        "rylb",
+        "aggOrgId",
+        "accountId"
+      ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
-        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4539696148287232\",\r\n    \"skssq\": \"202412\",\r\n    \"rylb\": [{\r\n            \"xm\": \"姓名\",\r\n            \"zzlx\": \"证件类型\",\r\n            \"zzhm\": \"证件号码\",\r\n            \"qtzzlx\": \"其他证件类型\",\r\n            \"qtzzhm\": \"其他证件号码\",\r\n            \"rybscl\": \"人员报送策略\",\r\n            \"gh\": \"工号\",\r\n            \"skssq\": \"所属期\",\r\n            \"lxdh\": \"电话号码\",\r\n            \"nsrzt\": \"人员状态\",\r\n            \"sfgy\": \"任职受雇类型\",\r\n            \"rzndjyqk\": \"入职年度就业情形\",\r\n            \"rzsgrq\": \"受雇日期\",\r\n            \"xb\": \"性别\",\r\n            \"csny\": \"出生日期\",\r\n            \"gj\": \"国籍\",\r\n            \"rydq\": \"人员地区\",\r\n            \"lzrq\": \"离职日期\",\r\n            \"grgbze\": \"1\",\r\n            \"grgbbl\": \"2\",\r\n            \"sfcj\": \"是否残疾\",\r\n            \"sfls\": \"是否烈属\",\r\n            \"sfgl\": \"是否孤老\",\r\n            \"sfzdw\": \"是否扣除减除费用\",\r\n            \"cjzjlx\": \"残疾证件类型\",\r\n            \"cjzh\": \"残疾证号\",\r\n            \"lszh\": \"烈属证号\",\r\n            \"dzyx\": \"邮箱\",\r\n            \"xl\": \"学历\",\r\n            \"zw\": \"职务\",\r\n            \"khyh\": \"开户银行\",\r\n            \"khyhsfmz\": \"开户银行省份\",\r\n            \"yhzh\": \"银行账号\",\r\n            \"lxdz_sheng\": \"居住省份\",\r\n            \"lxdz_shi\": \"居住城市\",\r\n            \"lxdz_qx\": \"居住区县\",\r\n            \"lxdz_jd\": \"居住街道\",\r\n            \"lxdz\": \"居住详细地址\",\r\n            \"hjszd_sheng\": \"户籍省份\",\r\n            \"hjszd_shi\": \"户籍城市\",\r\n            \"hjszd_qx\": \"户籍区县\",\r\n            \"hjszd_jd\": \"户籍街道\",\r\n            \"hjszd_xxdz\": \"户籍详细地址\",\r\n            \"bz\": \"备注\",\r\n            \"csd\": \"出生地\",\r\n            \"sssx\": \"涉税事由\",\r\n            \"scrjsj\": \"首次入境时间\",\r\n            \"yjljsj\": \"预计离境时间\",\r\n            \"wjrlxdz_sheng\": \"联系地省份\",\r\n            \"wjrlxdz_shi\": \"联系地城市\",\r\n            \"wjrlxdz_qx\": \"联系地区县\",\r\n            \"wjrlxdz_jd\": \"联系地街道\",\r\n            \"wjrlxdz_xxdz\": \"联系地详细地址\",\r\n            \"xmzw\": \"中文名\"\r\n        }\r\n    ]\r\n}\r\n",
+        "value": "{\r\n    \"aggOrgId\": \"4539696148287232\",\r\n    \"accountId\": \"4539696148287232\",\r\n    \"skssq\": \"202412\",\r\n    \"rylb\": [\r\n        {\r\n            \"xm\": \"姓名\",\r\n            \"zzlx\": \"证件类型\",\r\n            \"zzhm\": \"证件号码\",\r\n            \"qtzzlx\": \"其他证件类型\",\r\n            \"qtzzhm\": \"其他证件号码\",\r\n            \"rybscl\": \"人员报送策略\",\r\n            \"gh\": \"工号\",\r\n            \"skssq\": \"所属期\",\r\n            \"lxdh\": \"电话号码\",\r\n            \"sfgy\": \"任职受雇类型\",\r\n            \"rzndjyqk\": \"入职年度就业情形\",\r\n            \"rzsgrq\": \"受雇日期\",\r\n            \"xb\": \"性别\",\r\n            \"csny\": \"出生日期\",\r\n            \"gj\": \"国籍\",\r\n            \"rydq\": \"人员地区\",\r\n            \"lzrq\": \"离职日期\",\r\n            \"sflzhbfgz\": \"是否离职后补发工资\",\r\n            \"bfskssq\": \"实际补发工资的月份\",\r\n            \"grgbze\": \"1\",\r\n            \"grgbbl\": \"2\",\r\n            \"sfcj\": \"是否残疾\",\r\n            \"sfls\": \"是否烈属\",\r\n            \"sfgl\": \"是否孤老\",\r\n            \"sfzdw\": \"是否扣除减除费用\",\r\n            \"cjzjlx\": \"残疾证件类型\",\r\n            \"cjzh\": \"残疾证号\",\r\n            \"lszh\": \"烈属证号\",\r\n            \"dzyx\": \"邮箱\",\r\n            \"xl\": \"学历\",\r\n            \"zw\": \"职务\",\r\n            \"khyh\": \"开户银行\",\r\n            \"khyhsfmz\": \"开户银行省份\",\r\n            \"yhzh\": \"银行账号\",\r\n            \"lxdz_sheng\": \"居住省份\",\r\n            \"lxdz_shi\": \"居住城市\",\r\n            \"lxdz_qx\": \"居住区县\",\r\n            \"lxdz_jd\": \"居住街道\",\r\n            \"lxdz\": \"居住详细地址\",\r\n            \"hjszd_sheng\": \"户籍省份\",\r\n            \"hjszd_shi\": \"户籍城市\",\r\n            \"hjszd_qx\": \"户籍区县\",\r\n            \"hjszd_jd\": \"户籍街道\",\r\n            \"hjszd_xxdz\": \"户籍详细地址\",\r\n            \"bz\": \"备注\",\r\n            \"csd\": \"出生地\",\r\n            \"sssx\": \"涉税事由\",\r\n            \"scrjsj\": \"首次入境时间\",\r\n            \"yjljsj\": \"预计离境时间\",\r\n            \"wjrlxdz_sheng\": \"联系地省份\",\r\n            \"wjrlxdz_shi\": \"联系地城市\",\r\n            \"wjrlxdz_qx\": \"联系地区县\",\r\n            \"wjrlxdz_jd\": \"联系地街道\",\r\n            \"wjrlxdz_xxdz\": \"联系地详细地址\",\r\n            \"xmzw\": \"中文名\"\r\n        }\r\n    ]\r\n}",
         "mediaType": "application/json",
         "description": ""
       }
@@ -197,17 +259,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-23T10:02:05.000Z",
-  "updatedAt": "2026-05-07T07:30:31.000Z",
+  "updatedAt": "2026-09-10T08:01:37.000Z",
   "creatorId": 1452584,
-  "editorId": 1534873,
+  "editorId": 1452584,
   "creatorUserId": 1452584,
-  "editorUserId": 1534873,
-  "responseChildren": [
-    "BLANK.590503925"
-  ],
+  "editorUserId": 1452584,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

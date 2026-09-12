@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于申请数电发票版式文件，可通过该接口申请已开具和取得的数电发票 xml、 pdf 、ofd版式文件\n\n\n:::highlight purple 💡\n各类型发票信息返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)\n:::",
+  "description": "该接口是 **同步接口** 不支持异步返回，用于申请数电发票版式文件，可通过该接口申请已开具和取得的数电发票 xml、 pdf 、ofd版式文件\n\n\n:::highlight purple 💡\n各类型发票信息返回格式和字段与「获取发票数据」接口一致，详见：[获取发票数据](api-98524059)\n:::",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -72,7 +72,10 @@
       ],
       "x-apifox-refs": {
         "01HMB9H0G6QMVS6KKGMGDFNS6R": {
-          "$ref": "#/definitions/79273658"
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
         }
       }
     },
@@ -80,7 +83,7 @@
     "mediaType": "",
     "examples": [
       {
-        "value": "{\n    \"nsrsbh\": \"91310118MAD57LQ***\",\n    \"fphm\": \"24448784110000017***\",\n    \"kprq\": \"2024-06-10\",\n    \"jxxbz\": \"1\",\n    \"accountId\": \"23434234*****\"\n}",
+        "value": "{\n    \"nsrsbh\": \"91310118MAD57LQ***\",\n    \"fphm\": \"24448784110000017***\",\n    \"kprq\": \"2024-06-10\",\n    \"jxxbz\": \"jx\",\n    \"accountId\": \"23434234*****\"\n}",
         "mediaType": "application/json",
         "description": ""
       }
@@ -400,11 +403,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-15T01:50:35.000Z",
-  "updatedAt": "2026-01-10T06:27:09.000Z",
+  "updatedAt": "2026-08-19T07:50:44.000Z",
   "creatorId": 2118003,
-  "editorId": 2795319,
+  "editorId": 1564651,
   "creatorUserId": 2118003,
-  "editorUserId": 2795319,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "##  接口描述\n\n涉税专业服务委托方企业确认代理\n",
+  "description": "##  接口描述\n该接口是委托人（指终端企业），进行委托确认申请；\nps:该接口 的aggOrgId 和accountId 需传 委托人（指终端企业）的，请提前进行账号创建；\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -30,7 +30,8 @@
         },
         "strtyshxydm": {
           "type": "string",
-          "title": "代理方纳税人识别号"
+          "title": "受托人统一社会信用代码",
+          "description": "指代理企业"
         }
       },
       "x-apifox-orders": [
@@ -47,7 +48,7 @@
     "mediaType": "",
     "examples": [
       {
-        "value": "{\r\n    \"aggOrgId\": \"123456xxxxx\",\r\n    \"accountId\": \"\",\r\n    \"agentNsrsbh\": \"91*************49CD\"\r\n}",
+        "value": "{\r\n    \"aggOrgId\": \"123456xxxxx\",\r\n    \"accountId\": \"\",\r\n    \"strtyshxydm\": \"91*************49CD\"\r\n}",
         "mediaType": "application/json",
         "description": ""
       }
@@ -209,7 +210,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-16T09:50:12.000Z",
-  "updatedAt": "2026-06-29T13:31:11.000Z",
+  "updatedAt": "2026-08-28T08:01:00.000Z",
   "creatorId": 3099717,
   "editorId": 2795319,
   "creatorUserId": 3099717,

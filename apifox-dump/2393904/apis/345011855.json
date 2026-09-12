@@ -201,7 +201,7 @@
     {
       "name": "成功示例",
       "responseId": 759990627,
-      "data": "{\n    \"reqId\": \"a8670\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"yjns\": [\n            {\n                \"xm\": \"投资者姓名\",\n                \"sbzl\": \"正常申报\",\n                \"sbzt\": 1,\n                \"sbqdmc\": \"\",\n                \"skssqq\": \"20250501\",\n                \"skssqz\": \"20250531\"\n            }\n        ],\n        \"ndhj\": [\n            {\n                \"xm\": \"投资者姓名\",\n                \"sbzl\": \"正常申报\",\n                \"sbzt\": 7,\n                \"sbqdmc\": \"客户端\",\n                \"skssqq\": \"20250501\",\n                \"skssqz\": \"20250531\"\n            }\n        ]\n    }\n}",
+      "data": "{\n    \"reqId\": \"037ad9bc55beafdf7f93a384aa70a427\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"ndhj\": [],\n        \"yjns\": [\n            {\n                \"sbqdmc\": \"客户端\",\n                \"sbzl\": \"正常申报\",\n                \"sbzt\": 5,\n                \"skssqq\": \"202601\",\n                \"skssqz\": \"202603\",\n                \"xm\": \"张三\"\n            }\n        ]\n    },\n    \"timestamp\": \"2026-04-08 17:15:05\"\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -224,6 +224,30 @@
       "oasKey": "",
       "oasExtensions": "",
       "id": 673892352
+    },
+    {
+      "name": "有认定未到申报期",
+      "responseId": 759990627,
+      "data": "{\n    \"code\": \"4999\",\n    \"success\": false,\n    \"message\": \"该税号是季度申报，本月无需申报\",\n    \"data\": null,\n    \"timestamp\": \"2026-09-08 16:03:21\",\n    \"reqId\": \"e203e847c449bf1a74f19996783bfebe\"\n}",
+      "id": "01a08027-38cc-765d-b6b8-0ebd54935569"
+    },
+    {
+      "name": "未认定经营所得税费种",
+      "responseId": 759990627,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"该所属期内无生产经营税种，无需申报\",\n    \"data\": null,\n    \"timestamp\": \"2026-09-08 16:03:20\",\n    \"reqId\": \"287a57ea83599642c5d38abbce7b045d\"\n}",
+      "id": "01a08027-38cc-765d-b6b8-1138a63e9191"
+    },
+    {
+      "name": "定期定额 无需申报",
+      "responseId": 759990627,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"征收方式为定期定额不支持查询\",\n    \"data\": null,\n    \"timestamp\": \"2026-09-08 16:28:51\",\n    \"reqId\": \"d99183dac72afec40ffb6db502cc532b\"\n}",
+      "id": "01a08027-38cc-765d-b6b8-17d8d42528b5"
+    },
+    {
+      "name": "未申报",
+      "responseId": 759990627,
+      "data": "{\n    \"code\": \"4000\",\n    \"success\": false,\n    \"message\": \"该所属期内无申报记录\",\n    \"data\": null,\n    \"timestamp\": \"2026-09-08 15:53:47\",\n    \"reqId\": \"1bebc9d4b9f47f20c2bc803d37da7d7b\"\n}",
+      "id": "01a08027-38cc-765d-b6b8-18f06510584c"
     }
   ],
   "codeSamples": [],
@@ -241,11 +265,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-09-03T07:08:29.000Z",
-  "updatedAt": "2026-04-02T03:18:21.000Z",
+  "updatedAt": "2026-09-08T08:34:09.000Z",
   "creatorId": 2795319,
-  "editorId": 1442097,
+  "editorId": 493303,
   "creatorUserId": 2795319,
-  "editorUserId": 1442097,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

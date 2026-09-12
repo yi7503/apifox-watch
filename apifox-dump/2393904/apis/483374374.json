@@ -1,0 +1,293 @@
+{
+  "id": 483374374,
+  "name": "社保增员登记",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "8f3Y_QjImymDOh9LXPAAT",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbxweb/zydj",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID，多账户场景"
+        },
+        "zylb": {
+          "type": "array",
+          "description": "增员列表",
+          "items": {
+            "type": "object",
+            "required": [
+              "gj",
+              "zjlx",
+              "zjhm",
+              "xm",
+              "xb",
+              "csrq",
+              "hjlx",
+              "ygxs",
+              "rylb",
+              "ryzt",
+              "sjhm",
+              "jfgz",
+              "sjcbny",
+              "xzxz"
+            ],
+            "properties": {
+              "gj": {
+                "type": "string",
+                "description": "国籍 代码，枚举值查看社保附录"
+              },
+              "zjlx": {
+                "type": "string",
+                "description": "证件类型 代码，枚举值查看社保附录"
+              },
+              "zjhm": {
+                "type": "string",
+                "description": "证件号码"
+              },
+              "xm": {
+                "type": "string",
+                "description": "姓名"
+              },
+              "xb": {
+                "type": "string",
+                "enum": [
+                  "0",
+                  "1"
+                ],
+                "description": "性别 0男/1女"
+              },
+              "csrq": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "出生日期 \n1.格式YYYY-MM -DD\n2.年龄小于16周岁不能参保"
+              },
+              "hjlx": {
+                "type": "string",
+                "description": "户籍类型 代码，枚举值查看社保附录"
+              },
+              "ygxs": {
+                "type": "string",
+                "description": "用工形式 代码，枚举值查看社保附录"
+              },
+              "rylb": {
+                "type": "string",
+                "description": "人员类别 代码，枚举值查看社保附录"
+              },
+              "ryzt": {
+                "type": "string",
+                "description": "人员状态 代码，枚举值查看社保附录"
+              },
+              "sjhm": {
+                "type": "string",
+                "pattern": "^\\d{1,11}$",
+                "description": "手机号码 不超过11位"
+              },
+              "jfgz": {
+                "type": "integer",
+                "description": "缴费工资只能录入整数"
+              },
+              "sjcbny": {
+                "type": "string",
+                "pattern": "^\\d{6}$",
+                "description": "实际参保年月，\n1.格式YYYYMM\n2.只允许输入本月或次月"
+              },
+              "xzxz": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "险种选择，多选，传入代码，枚举值：110基本养老保险、201工伤保险、305失业保险、410离休医疗保险基金、418公务员医疗补助、499基本医疗保险（含生育）、426基本医疗保险（退休）、439高额补充医疗保险、xxx农民工失业保险、xxx城镇工失业保险"
+              }
+            },
+            "x-apifox-orders": [
+              "gj",
+              "zjlx",
+              "zjhm",
+              "xm",
+              "xb",
+              "csrq",
+              "hjlx",
+              "ygxs",
+              "rylb",
+              "ryzt",
+              "sjhm",
+              "jfgz",
+              "sjcbny",
+              "xzxz"
+            ]
+          }
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "zylb"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "zylb"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"100000123\",\r\n    \"accountId\": \"1001\",\r\n    \"zylb\": [\r\n        {\r\n            \"gj\": \"156\",\r\n            \"zjlx\": \"201\",\r\n            \"zjhm\": \"110101199001011234\",\r\n            \"xm\": \"张三\",\r\n            \"xb\": \"0\",\r\n            \"csrq\": \"1990-01-01\",\r\n            \"hjlx\": \"10\",\r\n            \"ygxs\": \"1\",\r\n            \"rylb\": \"1\",\r\n            \"ryzt\": \"1\",\r\n            \"sjhm\": \"13800138000\",\r\n            \"jfgz\": 5000,\r\n            \"sjcbny\": \"202608\",\r\n            \"xzxz\": [\r\n                \"110\",\r\n                \"201\",\r\n                \"499\"\r\n            ]\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              }
+            },
+            "x-apifox-orders": [
+              "taskId"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"taskId\": \"12345678\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 90579377,
+  "ordering": 45,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-07T06:46:10.000Z",
+  "updatedAt": "2026-09-07T03:43:58.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

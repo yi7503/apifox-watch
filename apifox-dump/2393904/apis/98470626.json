@@ -228,35 +228,54 @@
             }
           ]
         },
-        "accountId": {
+        "fpdm": {
           "type": "string",
-          "title": "账号唯一标识",
-          "description": "多账号下的账号唯一标识"
+          "title": "发票代码",
+          "description": "不为空时kpyfq和kpyfz区间范围不能超365天"
         },
-        "aggOrgId": {
+        "fphm": {
           "type": "string",
-          "title": "企业id"
+          "title": "发票号码",
+          "description": "不为空时kpyfq和kpyfz区间范围不能超365天"
+        },
+        "sdphm": {
+          "type": "string",
+          "title": "数电票号码",
+          "description": "不为空时kpyfq和kpyfz区间范围不能超365天"
+        },
+        "swjgDm": {
+          "type": "string",
+          "title": "税务机关代码",
+          "description": "同一个纳税人存在多个归属地发票时传递这个参数用户区分采集哪个归属地发票数据"
         }
       },
       "required": [
         "nsrsbh",
         "kpyfq",
-        "kpyfz",
-        "aggOrgId",
-        "dataType"
+        "kpyfz"
       ],
       "x-apifox-orders": [
-        "aggOrgId",
-        "accountId",
+        "01KY4RWDQGGHPYDQ4T4KZV2S7P",
         "nsrsbh",
         "fplx",
         "jxxbz",
         "kpyfq",
         "kpyfz",
+        "fpdm",
+        "fphm",
+        "sdphm",
         "dateType",
-        "dataType"
+        "dataType",
+        "swjgDm"
       ],
-      "x-apifox-refs": {}
+      "x-apifox-refs": {
+        "01KY4RWDQGGHPYDQ4T4KZV2S7P": {
+          "$ref": "#/definitions/79273658",
+          "x-apifox-overrides": {
+            "async": null
+          }
+        }
+      }
     },
     "required": false,
     "mediaType": "",
@@ -418,11 +437,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-25T02:09:05.000Z",
-  "updatedAt": "2026-05-20T05:54:02.000Z",
+  "updatedAt": "2026-08-17T03:56:43.000Z",
   "creatorId": 887778,
-  "editorId": 1564651,
+  "editorId": 2118003,
   "creatorUserId": 887778,
-  "editorUserId": 1564651,
+  "editorUserId": 2118003,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -1,0 +1,17 @@
+{
+  "id": 9103681,
+  "name": "  2026年6月发布内容",
+  "sidebarTitle": "",
+  "content": "2026年6月发布内容\n发布日期：2026-06-29\n发布版本：V2.2026.06\n\n# 社保新增功能\n## 新增社保申报密码修改\n1.支持修改申报密码\n2.支持新开户，修改临时密码\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671676/image-preview)\n\n## 社保新增截图接口\n1.日常申报截图\n2.特殊缴款申报截图\n3.社保费申报记录截图\n4.欠费截图\n5.缴费记录截图\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671686/image-preview)\n\n## 支持广东社保申报，6月支持功能如下：\n1.社会保险费申报预览\n2.社会保险费申报提交\n3.社会保险费申报作废\n其他功能7月完成\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671696/image-preview)\n\n# 社保功能优化\n\n## 职工参有差保信息查询接口，优化返回险种名称\n社保有地区差异，不同地区的险种有差异，适配了南昌的补充工伤险\n\n## 社保费申报记录反馈，增加申报类型字段返回，返回中文\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/671688/image-preview)",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-07-01T09:23:24.000Z",
+  "updatedAt": "2026-07-01T09:23:33.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

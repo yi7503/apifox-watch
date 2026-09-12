@@ -45,8 +45,8 @@
             },
             "wcjyhdssglzmbh": {
               "type": "string",
-              "title": "跨区域涉税事项报验管理编号",
-              "description": "跨区域涉税事项报验管理编号"
+              "title": "跨区域涉税事项报验管理编号-前缀",
+              "description": "跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则前缀部分为： 北海"
             },
             "zmyxqxq": {
               "type": "string",
@@ -70,11 +70,13 @@
             },
             "wcjyhdssglzmbhq": {
               "type": "string",
-              "title": "跨税报起"
+              "title": "跨区域涉税事项报验管理编号-年份",
+              "description": "跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则年份部分为： 2026"
             },
             "wcjyhdssglzmbhy": {
               "type": "string",
-              "title": "跨税报止"
+              "title": "跨区域涉税事项报验管理编号-编号",
+              "description": "跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则编号部分为： 2403"
             }
           },
           "x-apifox-orders": [
@@ -84,12 +86,12 @@
             "htdfnsrsbh",
             "kqyjydxzqh",
             "wcjyhdssglzmbh",
+            "wcjyhdssglzmbhq",
+            "wcjyhdssglzmbhy",
             "zmyxqxq",
             "zmyxqxz",
             "cjsjq",
-            "cjsjz",
-            "wcjyhdssglzmbhq",
-            "wcjyhdssglzmbhy"
+            "cjsjz"
           ],
           "x-apifox-refs": {
             "01HVNG5GM4P39XZHBAS4TE4TDW": {
@@ -105,15 +107,33 @@
                     50,
                     100
                   ],
-                  "x-apifox": {
-                    "enumDescriptions": {
-                      "5": "",
-                      "10": "",
-                      "20": "",
-                      "50": "",
-                      "100": ""
+                  "x-apifox-enum": [
+                    {
+                      "value": 5,
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": 10,
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": 20,
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": 50,
+                      "name": "",
+                      "description": ""
+                    },
+                    {
+                      "value": 100,
+                      "name": "",
+                      "description": ""
                     }
-                  }
+                  ]
                 },
                 "pageIndex": {
                   "type": "integer",
@@ -340,7 +360,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-20T08:56:07.000Z",
-  "updatedAt": "2025-12-16T02:22:22.000Z",
+  "updatedAt": "2026-08-27T02:12:58.000Z",
   "creatorId": 2400309,
   "editorId": 3099717,
   "creatorUserId": 2400309,

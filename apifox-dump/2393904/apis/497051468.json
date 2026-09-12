@@ -1,0 +1,278 @@
+{
+  "id": 497051468,
+  "name": "查询电子税务局特定主体报验户列表",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "##  接口描述\n查询电子税务局特定主体报验户列表 目前仅支持小号模式，账号是特定主体账号并且是报验户类型\n此接口每次都会消耗一次短信，不要频繁调用\n不传分页参数默认是获取所有，所以接口返回比较慢",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/info/specific/byhList",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "多账号id"
+        },
+        "kqysssxbyglbh": {
+          "type": "string",
+          "title": "跨区域涉税事项报验管理编号",
+          "description": "查询条件"
+        }
+      },
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "kqysssxbyglbh"
+      ],
+      "required": [
+        "aggOrgId",
+        "accountId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n\t\"accountId\": \"5358******5696\",\r\n\t\"aggOrgId\": \"538*****40864\",\r\n\t\"kqysssxbyglbh\": \"林税 税跨报 〔2025〕 000000 号\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "M9p43DU1T1",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "4R8TPN3AxK",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "pVgXmsJzVY",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Isa8Et6oLB",
+        "name": "req_sign",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 581534477,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "title": "企业数量"
+              },
+              "list": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "regNumber": {
+                      "type": "string",
+                      "title": "序号"
+                    },
+                    "zgswjgdm": {
+                      "type": "string",
+                      "title": "主管税务机关代码"
+                    },
+                    "zgswjgmc": {
+                      "type": "string",
+                      "title": "主管税务机关名称"
+                    },
+                    "kqysssxbyglbh": {
+                      "type": "string",
+                      "title": "跨区域报验编号"
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "description": "yyyy-MM-dd",
+                      "title": "开始时间"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "description": "yyyy-MM-dd",
+                      "title": "结束时间"
+                    }
+                  },
+                  "required": [
+                    "regNumber",
+                    "zgswjgdm",
+                    "zgswjgmc",
+                    "kqysssxbyglbh",
+                    "startDate",
+                    "endDate"
+                  ],
+                  "x-apifox-orders": [
+                    "regNumber",
+                    "zgswjgdm",
+                    "zgswjgmc",
+                    "kqysssxbyglbh",
+                    "startDate",
+                    "endDate"
+                  ]
+                },
+                "title": "明细"
+              }
+            },
+            "required": [
+              "total",
+              "list"
+            ],
+            "x-apifox-orders": [
+              "total",
+              "list"
+            ]
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误 信息"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求ID"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "登录成功示例",
+      "responseId": 581534477,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"查询成功\",\n    \"data\": {\n        \"list\": [\n            {\n                \"endDate\": \"2027-06-30\",\n                \"kqysssxbyglbh\": \"林税 税跨报 〔2025〕 35184 号\",\n                \"regNumber\": \"10214101000002563318\",\n                \"startDate\": \"2025-05-29\",\n                \"zgswjgdm\": \"14101887200\",\n                \"zgswjgmc\": \"国家税务总局郑州航空港经济综合实验区税务局郑东新区税务分局税源管理二股\"\n            }\n        ],\n        \"total\": 1\n    },\n    \"timestamp\": \"2026-08-04 18:30:46\",\n    \"reqId\": \"191ad3bee5ed6454ea65d889527cea8bf\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 445674336
+    },
+    {
+      "name": "异常示例",
+      "responseId": 581534477,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"success\": true,\n    \"code\": \"4000\",\n    \"data\": \"\",\n    \"message\": \"参数aggOrgId不能为空！\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 445674337
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 92868035,
+  "ordering": 182,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-08-04T10:10:23.000Z",
+  "updatedAt": "2026-08-07T02:34:01.000Z",
+  "creatorId": 2400309,
+  "editorId": 2795319,
+  "creatorUserId": 2400309,
+  "editorUserId": 2795319,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

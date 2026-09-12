@@ -264,20 +264,31 @@ def main():
         sys.exit(f"not found: {apis_dir}")
 
     meta = json.load(open(meta_path)) if os.path.exists(meta_path) else {}
-    tree = json.load(open(tree_path)) if os.path.exists(tree_path) else []
+    if not os.path.exists(tree_path):
+        sys.exit(f"not found: {tree_path}")
+    tree = json.load(open(tree_path))
+    if not isinstance(tree, list) or not tree:
+        sys.exit(f"invalid or empty tree: {tree_path}")
 
     by_api_id = {}
     tag_map = build_tags_from_tree(tree, by_api_id)
+    if not by_api_id:
+        sys.exit(f"tree contains no API nodes: {tree_path}")
 
     paths = OrderedDict()
     n_total = 0
     n_conflict = 0
 
-    files = sorted(os.listdir(apis_dir))
-    for fn in files:
-        if not fn.endswith(".json"):
-            continue
-        api = json.load(open(os.path.join(apis_dir, fn)))
+    api_ids = sorted(by_api_id, key=str)
+    if any(isinstance(api_id, bool) or not isinstance(api_id, int) or api_id <= 0 for api_id in api_ids):
+        sys.exit(f"tree contains an invalid API id: {tree_path}")
+    for api_id in api_ids:
+        api_path = os.path.join(apis_dir, f"{api_id}.json")
+        if not os.path.exists(api_path):
+            sys.exit(f"missing API detail for tree node {api_id}: {api_path}")
+        api = json.load(open(api_path))
+        if api.get("id") != api_id:
+            sys.exit(f"API detail id mismatch for tree node {api_id}: {api_path}")
         method = (api.get("method") or "get").lower()
         path = api.get("path") or f"/_apifox/{api.get('id')}"
         tag = by_api_id.get(api.get("id"), "")

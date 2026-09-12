@@ -137,7 +137,29 @@
               },
               "taskStatus": {
                 "type": "string",
-                "title": "任务执行状态"
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
               },
               "taskStatusName": {
                 "type": "string",
@@ -219,11 +241,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-05-25T07:42:05.000Z",
-  "updatedAt": "2026-05-28T03:40:37.000Z",
+  "updatedAt": "2026-07-22T01:43:53.000Z",
   "creatorId": 1910680,
-  "editorId": 3222025,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 3222025,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

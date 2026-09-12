@@ -30,7 +30,6 @@
         "isDirectDeclare",
         "jrwc",
         "gzDeclare",
-        "allowRepeatDeclare",
         "overloadKjzdzz",
         "waitResult",
         "sfjxbdjy",
@@ -80,14 +79,6 @@
           ],
           "title": "财报覆盖申报",
           "description": "1表示覆盖申报；0表示不覆盖。默认及空为0； 当isDirectDeclare为true 时生效。此参数针对税局财报已申报，是否继续覆盖申报\t"
-        },
-        "allowRepeatDeclare": {
-          "type": [
-            "boolean",
-            "null"
-          ],
-          "title": "是否允许重复申报",
-          "description": "V1版本客户使用，现对接无需使用。true 表示不校验清册申报状态，即使清册已申报，允许重复发起申报；false 表示校验清册申报状态，如果清册状态显示已申报，则不允许重复申报"
         },
         "overloadKjzdzz": {
           "type": [
@@ -399,11 +390,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T02:58:13.000Z",
-  "updatedAt": "2026-04-24T03:11:06.000Z",
+  "updatedAt": "2026-07-11T08:56:12.000Z",
   "creatorId": 2122743,
-  "editorId": 1476015,
+  "editorId": 1452584,
   "creatorUserId": 2122743,
-  "editorUserId": 1476015,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -121,7 +122,29 @@
               },
               "taskStatus": {
                 "type": "string",
-                "title": "任务执行状态"
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
               },
               "taskStatusName": {
                 "type": "string",
@@ -304,11 +327,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-16T08:13:36.000Z",
-  "updatedAt": "2025-11-19T06:59:38.000Z",
+  "updatedAt": "2026-07-22T01:43:27.000Z",
   "creatorId": 1442097,
-  "editorId": 1442097,
+  "editorId": 493303,
   "creatorUserId": 1442097,
-  "editorUserId": 1442097,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

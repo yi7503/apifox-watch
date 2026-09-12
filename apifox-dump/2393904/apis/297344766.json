@@ -1,6 +1,6 @@
 {
   "id": 297344766,
-  "name": "打印缴款凭证的缴款结果查询",
+  "name": "银行端缴款书缴款的缴款结果查询",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -56,6 +56,7 @@
         "skssq"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -261,14 +262,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-19T01:56:07.000Z",
-  "updatedAt": "2025-07-15T04:02:52.000Z",
+  "updatedAt": "2026-08-20T08:40:29.000Z",
   "creatorId": 1910680,
-  "editorId": 2795319,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 2795319,
-  "responseChildren": [
-    "BLANK.678064812"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

@@ -26,11 +26,11 @@
         },
         "year": {
           "type": "integer",
-          "description": "年"
+          "description": "年 （当前发起任务的年度）"
         },
         "period": {
           "type": "integer",
-          "description": "月"
+          "description": "月 （当前发起任务的年度）"
         },
         "accountId": {
           "type": "string",
@@ -49,6 +49,8 @@
         "period"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"aggOrgId\": 452681066557440,\r\n    \"year\": 2023,\r\n    \"period\":3\r\n}",
@@ -174,17 +176,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-03T06:36:54.000Z",
-  "updatedAt": "2025-02-27T12:48:26.000Z",
+  "updatedAt": "2026-08-19T07:06:38.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
-  "responseChildren": [
-    "BLANK.170253240"
-  ],
+  "editorUserId": 1476015,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

@@ -170,7 +170,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 58725450,
+  "folderId": 90626167,
   "ordering": 60,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -182,15 +182,13 @@
   "oasExtensions": null,
   "mockScript": {},
   "createdAt": "2024-10-30T06:41:26.000Z",
-  "updatedAt": "2025-06-10T10:17:09.000Z",
+  "updatedAt": "2026-07-10T08:36:49.000Z",
   "creatorId": 1426961,
-  "editorId": 2706439,
+  "editorId": 1564651,
   "creatorUserId": 1426961,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.199398868"
-  ],
-  "visibility": "INHERITED",
+  "editorUserId": 1564651,
+  "responseChildren": [],
+  "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""
 }

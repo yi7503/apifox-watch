@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "该接口用于下载「销项」数电发票 xml、 pdf 、ofd版式文件以及EWM链接\n\n:::tip[]\n仅支持销项单张下载，如需进项或批量下载请联系商务采购[数电版式下载](doc-7270798)产品\n:::\n",
+  "description": "该接口用于下载「销项」数电发票 xml、 pdf 、ofd版式文件以及EWM链接；\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。\n\n:::tip[]\n仅支持销项单张下载，如需进项或批量下载请联系商务采购[数电版式下载](doc-7270798)产品\n:::\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -230,7 +230,7 @@
                     "url": {
                       "type": "string",
                       "title": "文件内容（url格式）",
-                      "description": "税局地址或OSS地址长期有效"
+                      "description": "税局地址或OSS地址（有效期一年）"
                     },
                     "fphm": {
                       "type": "string",
@@ -318,7 +318,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T03:03:13.000Z",
-  "updatedAt": "2026-06-26T06:05:03.000Z",
+  "updatedAt": "2026-07-01T10:39:23.000Z",
   "creatorId": 887900,
   "editorId": 3099717,
   "creatorUserId": 887900,

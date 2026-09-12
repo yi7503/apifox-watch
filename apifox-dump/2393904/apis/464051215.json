@@ -1,0 +1,200 @@
+{
+  "id": 464051215,
+  "name": "查询用户最后一次登录税号(托管)",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "托管客户通过用户名/身份证号获取最后一次登录税号",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/public/login/remote/queryLastLogin",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "gryhm": {
+          "type": "string",
+          "title": "个人用户名",
+          "description": "手机号/身份账号"
+        },
+        "dq": {
+          "type": "string",
+          "title": "地区代码",
+          "description": "见附录"
+        }
+      },
+      "x-apifox-orders": [
+        "gryhm",
+        "dq"
+      ],
+      "required": [
+        "gryhm"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "企业获取",
+        "value": "{\r\n    \"gryhm\": \"131****1234\",\r\n    \"dq\": \"31\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 168900456,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "nsrsbh": {
+                "type": "string",
+                "title": "税号"
+              },
+              "dlfs": {
+                "type": "integer",
+                "title": "登录方式",
+                "description": "14-企业 15-代理 13-扫码"
+              },
+              "loginTime": {
+                "type": "string",
+                "title": "登录时间",
+                "description": "示例：2026-05-26 21:10:46"
+              },
+              "proxyNsrsbh": {
+                "type": "string",
+                "title": "代理机构税号",
+                "description": "如果最后一次是代理登录该值不为空"
+              }
+            },
+            "title": "业务数据",
+            "x-apifox-orders": [
+              "nsrsbh",
+              "dlfs",
+              "loginTime",
+              "proxyNsrsbh"
+            ],
+            "required": [
+              "nsrsbh",
+              "loginTime",
+              "dlfs"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ],
+        "x-apifox-refs": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 168900456,
+      "data": "{\r\n\t\"code\": \"2000\",\r\n\t\"success\": true,\r\n\t\"message\": null,\r\n\t\"data\": {\r\n\t\t\"dlfs\": 14,\r\n\t\t\"loginTime\": \"2026-05-26 21:10:46\",\r\n\t\t\"nsrsbh\": \"91***********4Y\",\r\n\t\t\"proxyNsrsbh\": null\r\n\t},\r\n\t\"timestamp\": \"2026-05-26 22:11:24\",\r\n\t\"reqId\": \"5cbf95380e197235a0ad7e94765b9f3f\"\r\n}",
+      "id": "019ca3a1-99df-745e-b354-36f5ededdb14"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 75021689,
+  "ordering": 191,
+  "responsibleId": 2400309,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-05-27T02:00:10.000Z",
+  "updatedAt": "2026-07-08T05:40:35.000Z",
+  "creatorId": 2400309,
+  "editorId": 2400309,
+  "creatorUserId": 2400309,
+  "editorUserId": 2400309,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

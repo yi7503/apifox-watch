@@ -33,7 +33,8 @@
       "properties": {
         "aggOrgId": {
           "type": "string",
-          "title": "维护企业信息接口返回的 aggOrgId"
+          "title": "订购产品信息接口返回的 aggOrgId",
+          "description": "订购产品信息接口返回的 aggOrgId"
         },
         "nsrsbh": {
           "type": "string",
@@ -264,11 +265,11 @@
     "enable": false
   },
   "createdAt": "2025-04-14T02:24:31.000Z",
-  "updatedAt": "2026-04-09T01:57:42.000Z",
+  "updatedAt": "2026-08-17T10:04:09.000Z",
   "creatorId": 1442097,
-  "editorId": 1910680,
+  "editorId": 1442097,
   "creatorUserId": 1442097,
-  "editorUserId": 1910680,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

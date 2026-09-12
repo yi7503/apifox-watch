@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n根据税费种的yzpzzlDm和税款所属期发起从税局获取往期PDF数据进行归档。支持单税种下载。 \n该功能只支持查询2018年之后的数据。 \n下载PDF任务执行完后，可以通过【查询往期pdf数据】接口进行查询，节点pdfUrl获取文件地址。\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| BUSINESS_ERROR | 任务不支持 |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| INTERFACE_ERROR | 接口异常,请联系管理员!|\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|",
+  "description": "## 接口描述\n根据税费种的yzpzzlDm和税款所属期发起从税局获取往期PDF文件及结构化数据进行归档。支持单税种下载。 \n该功能只支持查询2021年及之后的数据。 \n下载PDF任务执行完后，可以通过【查询往期pdf数据】接口进行查询，节点pdfUrl获取文件地址。\n\n2026年7月最新变化：此接口可以不进行对接，直接通过原获取当期PDF接口即可下载。https://openapi.qixiangyun.com/api-67645165\n\n\n## 错误码\n\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n| PARAMETER_ERROR | 没有找到对应的企业！ |\n| BUSINESS_ERROR | 任务不支持 |\n| PARAMETER_ERROR | 企业Id(aggOrgId)不能为空! |\n| INTERFACE_ERROR | 接口异常,请联系管理员!|\n| INTERFACE_ERROR | 系统繁忙，请降低调用频率！|",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -79,7 +79,7 @@
             "null"
           ],
           "title": "解析pdf",
-          "description": "解析pdf Y-解析 N-不解析；支持解析税种：增值税小规模 、增值税一般人、企业所得税预缴（月季报）、财务报表月季报/年报、印花税、房产税、土地、房土合并（财行税21年6月实行之前的报表不支持解析）"
+          "description": "解析pdf Y-解析 N-不解析；支持解析税种：增值税小规模 、增值税一般人、企业所得税预缴（月季报）、财务报表月季报/年报、印花税、房产税、土地、房土合并（财行税21年6月实行之前的报表不支持解析）、通用申报、残疾人保障金、文化事业建设费、金融类财务报表、汇算清缴（2025年前报表不支持解析）"
         },
         "accountId": {
           "type": "string",
@@ -244,7 +244,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 13531082,
+  "folderId": 91995593,
   "ordering": 101,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -256,11 +256,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-06T05:58:18.000Z",
-  "updatedAt": "2026-05-21T09:52:04.000Z",
+  "updatedAt": "2026-09-04T10:10:37.000Z",
   "creatorId": 1452584,
-  "editorId": 1391922,
+  "editorId": 1910680,
   "creatorUserId": 1452584,
-  "editorUserId": 1391922,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

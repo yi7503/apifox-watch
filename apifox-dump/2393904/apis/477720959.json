@@ -61,7 +61,8 @@
       },
       "required": [
         "aggOrgId",
-        "fkssq"
+        "fkssq",
+        "accountId"
       ],
       "additionalProperties": false,
       "x-apifox-orders": [
@@ -158,7 +159,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 88927022,
+  "folderId": 89937037,
   "ordering": 30,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -169,11 +170,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-06-24T10:10:46.000Z",
-  "updatedAt": "2026-06-26T06:32:34.000Z",
+  "updatedAt": "2026-07-07T07:24:10.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 3222025,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

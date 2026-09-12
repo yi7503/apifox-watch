@@ -1,0 +1,17 @@
+{
+  "id": 9370218,
+  "name": "2026年8月发布内容",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级亮点：\n1. 涉税专业服务希望增加停止代理协议的接口；\n2. 重置税局密码功能\n:::\n\n## 一、登录业务\n1.涉税专业服务-增加全量查询\n受托人（指代理机构企业），涉税专业服务机构正在代理中（进行中）的委托方企业全量查询申请；\n\nhttps://api.qixiangyun.com/v2/public/sszyfw/qlcx\nhttps://openapi.qixiangyun.com/api-507388036\n\n\n2.重置税局密码增加返回手机号列表； \nhttps://openapi.qixiangyun.com/api-487259196\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/691261/image-preview)\n\n3.税局登录日志查询\n- 需要先登录后才可以查询，使用小号的可以直接调用改接口；\n- 此接口主要用于排查掉线原因，请不要频繁调用；\n- 查询昨天凌晨到今天的登录日志；\nhttps://api.qixiangyun.com/v2/public/login/queryTaxLog\n\n## 二、开放平台\n--增加修改密码\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/689677/image-preview)\n\n\n",
+  "folderId": 51136061,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-08-28T01:44:53.000Z",
+  "updatedAt": "2026-09-04T09:41:39.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -3,7 +3,18 @@
   "name": "订购取消",
   "type": "http",
   "serverId": "",
-  "preProcessors": [],
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "AUDQ115tBIWmwMkBtwAEY",
+      "executionTiming": "prerequest"
+    }
+  ],
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
@@ -251,11 +262,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T08:30:43.000Z",
-  "updatedAt": "2026-05-07T01:48:24.000Z",
+  "updatedAt": "2026-09-03T07:15:33.000Z",
   "creatorId": 2122743,
-  "editorId": 3612160,
+  "editorId": 493303,
   "creatorUserId": 2122743,
-  "editorUserId": 3612160,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

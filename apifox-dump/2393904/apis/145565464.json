@@ -84,7 +84,7 @@
     "examples": [
       {
         "mediaType": "application/json",
-        "value": "{\r\n    \"nsrsbh\": \"91430103MADFYUHT72\",\r\n    \"aggOrgName\": \"长沙市天心区智健益丰大药房（个人独资）\",\r\n    \"dq\": \"43\",\r\n    \"productCodeList\": \"0053\"\r\n}"
+        "value": "{\r\n    \"nsrsbh\": \"914300000000000072\",\r\n    \"aggOrgName\": \"企享云\",\r\n    \"dq\": \"43\",\r\n    \"productCodeList\": \"0053\"\r\n}"
       }
     ],
     "oasExtensions": ""
@@ -326,11 +326,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T08:30:18.000Z",
-  "updatedAt": "2026-05-08T07:01:59.000Z",
+  "updatedAt": "2026-09-10T10:44:42.000Z",
   "creatorId": 2122743,
-  "editorId": 3612160,
+  "editorId": 493303,
   "creatorUserId": 2122743,
-  "editorUserId": 3612160,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

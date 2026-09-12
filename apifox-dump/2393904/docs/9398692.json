@@ -1,0 +1,17 @@
+{
+  "id": 9398692,
+  "name": "办税助手-常见问题",
+  "sidebarTitle": "",
+  "content": "**1. mac安装办税助手，报错如图。**\n\n![0c835785-ab12-4a25-8b67-95247306cd55.png](https://api.apifox.com/api/v1/projects/2393904/resources/690919/image-preview)\n\n答：因为是我们自己封包的，mac签名校验不通过；\nsudo xattr -rd com.apple.quarantine   程序位置  \n用这个命令在终端执行下，绕过签名。\n\n\n**2. windows安装办税助手报错：A JavaScript error occurred in the main process。**\n![97bf6325-99e7-4d54-b483-c810a39bfa36.png](https://api.apifox.com/api/v1/projects/2393904/resources/690924/image-preview)\n\n答：下载压缩文件，解压后，运行bat文件。[点我下载](https://static.qixiangyun.com/sb/%E8%A7%A3%E5%86%B3%E5%8A%9E%E7%A8%8E%E5%8A%A9%E6%89%8BJavaScript%E6%8A%A5%E9%94%99%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8Cbat%E6%96%87%E4%BB%B6.zip)",
+  "folderId": 94972660,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-09-03T07:36:46.000Z",
+  "updatedAt": "2026-09-03T08:08:59.000Z",
+  "creatorId": 1564651,
+  "editorId": 1564651,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

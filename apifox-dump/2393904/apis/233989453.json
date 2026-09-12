@@ -97,9 +97,11 @@
       ],
       "title": "返回的内容结构"
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
-        "value": "\r\n##发票开具回调示例\r\n{\r\n    \"request\": {\r\n        \"requestTime\": 1709631963068,\r\n        \"bizType\": \"invoice\",\r\n        \"nsrsbh\": \"************UE434Y\",\r\n        \"requestId\": \"****************16738490\",\r\n        \"action\": \"fpkj_zzs\"\r\n    },\r\n    \"returnCode\": \"0\",\r\n    \"returnMsg\": \"Success\",\r\n    \"returnBody\": {\r\n        \"xsfNsrmc\": \"**************（个体工商户）\",\r\n        \"kplx\": \"0\",\r\n        \"fplxdm\": \"030\",\r\n        \"gmfNsrsbh\": \"************JL4X8H\",\r\n        \"kplsh\": \"****************16738490\",\r\n        \"kprq\": \"2024-03-05 17:46:01\",\r\n        \"jshj\": 1.00,\r\n        \"gmfNsrmc\": \"********有限责任公司\",\r\n        \"xsfNsrsbh\": \"************UE434Y\",\r\n        \"fphm\": \"************17968847\"\r\n    }\r\n}\r\n##版式文件回调示例\r\n{\r\n\t\"request\": {\r\n\t\t\"requestTime\": 1721962333596,\r\n\t\t\"bizType\": \"query\",\r\n\t\t\"nsrsbh\": \"91310118****7LQY4Y\",\r\n\t\t\"requestId\": \"202407261052137627974719\",\r\n\t\t\"action\": \"bswjxzBatch\"\r\n\t},\r\n\t\"returnCode\": \"0\",\r\n\t\"returnMsg\": \"Success\",\r\n\t\"execStatus\": 2,\r\n\t\"returnBody\": [{\r\n\t\t\"kprq\": \"2024-03-20 10:12:51\",\r\n\t\t\"base64\": \"base64字符串\",\r\n\t\t\"wjgs\": \"PDF\",\r\n\t\t\"url\": \"oss url地址\",\r\n\t\t\"fphm\": \"2492200********75124\"\r\n\t}]\r\n}\r\n\r\n",
+        "value": "\r\n##发票开具回调示例\r\n{\r\n    \"request\": {\r\n        \"requestTime\": 1709631963068,\r\n        \"bizType\": \"invoice\",\r\n        \"nsrsbh\": \"************UE434Y\",\r\n        \"requestId\": \"****************16738490\",\r\n        \"action\": \"fpkj_zzs\"\r\n    },\r\n    \"returnCode\": \"0\",\r\n    \"returnMsg\": \"Success\",\r\n    \"returnBody\": {\r\n        \"xsfNsrmc\": \"**************（个体工商户）\",\r\n        \"kplx\": \"0\",\r\n        \"fplxdm\": \"030\",\r\n        \"gmfNsrsbh\": \"************JL4X8H\",\r\n        \"kplsh\": \"****************16738490\",\r\n        \"kprq\": \"2024-03-05 17:46:01\",\r\n        \"jshj\": 1.00,\r\n        \"gmfNsrmc\": \"********有限责任公司\",\r\n        \"xsfNsrsbh\": \"************UE434Y\",\r\n        \"fphm\": \"************17968847\"\r\n    }\r\n}\r\n##版式文件回调示例\r\n{\r\n    \"request\": {\r\n        \"requestTime\": 1721962333596,\r\n        \"bizType\": \"query\",\r\n        \"nsrsbh\": \"91310118****7LQY4Y\",\r\n        \"requestId\": \"202407261052137627974719\",\r\n        \"action\": \"bswjxzBatch\"\r\n    },\r\n    \"returnCode\": \"0\",\r\n    \"returnMsg\": \"Success\",\r\n    \"execStatus\": 2,\r\n    \"returnBody\": [\r\n        {\r\n            \"kprq\": \"2024-03-20 10:12:51\",\r\n            \"base64\": \"base64字符串\",\r\n            \"wjgs\": \"PDF\",\r\n            \"url\": \"oss url地址\",\r\n            \"fphm\": \"2492200********75124\"\r\n        }\r\n    ]\r\n}\r\n\r\n##入账信息查询接口示例\r\n{\r\n    \"request\": {\r\n        \"requestId\": \"202601222103084117768103\",\r\n        \"bizType\": \"query\",\r\n        \"action\": \"fprzxx\",\r\n        \"nsrsbh\": \"91310118MAD57LQY4Y\",\r\n        \"accountId\": \"user001\",\r\n        \"requestTime\": 1769086988247,\r\n        \"ly_ddbh\": \"来源订单号\"\r\n    },\r\n    \"execStatus\": 2,\r\n    \"returnCode\": \"0\",\r\n    \"returnMsg\": \"任务执行成功\",\r\n    \"returnBody\": {\r\n        \"pageIndex\": 1,\r\n        \"pageSize\": 100,\r\n        \"records\": 50,\r\n        \"totalPages\": 1,\r\n        \"list\": [\r\n            {\r\n                \"mxuuid\": \"明细UUID\",\r\n                \"rzuuid\": \"认证UUID\",\r\n                \"fppzDm\": \"票种代码\",\r\n                \"fplyDm\": \"发票来源代码\",\r\n                \"zz_fpdm\": \"增值税发票代码\",\r\n                \"fpfxdjDm\": \"发票风险等级代码\",\r\n                \"fplxmc\": \"发票类型名称\",\r\n                \"fpkjztmc\": \"发票开具状态名称\",\r\n                \"xsf_nsrsbh\": \"销售方纳税人识别号\",\r\n                \"se\": 100.00,\r\n                \"fpfxdjmc\": \"发票风险等级名称\",\r\n                \"fplxDm\": \"发票类型代码\",\r\n                \"kprq\": \"2026-01-15 00:00:00\",\r\n                \"xsf_nsrmc\": \"销售方纳税人名称\",\r\n                \"je\": 1000.00,\r\n                \"fpkjztDm\": \"发票开具状态代码\",\r\n                \"zz_fphm\": \"增值税发票号码\",\r\n                \"gmf_nsrsbh\": \"购买方纳税人识别号\",\r\n                \"fphm\": \"发票号码\",\r\n                \"fprzztDm\": \"发票认证状态代码\",\r\n                \"rzytDm\": \"认证用途代码\",\r\n                \"zhbz\": \"综合标志\",\r\n                \"rzsj\": \"2026-01-20 00:00:00\"\r\n            }\r\n        ]\r\n    }\r\n}\r\n\r\n##入账保存示例\r\n{\r\n    \"request\": {\r\n        \"requestId\": \"202601222103084117768103\",\r\n        \"bizType\": \"invoice\",\r\n        \"action\": \"fprz_save\",\r\n        \"nsrsbh\": \"91310118MAD57LQY4Y\",\r\n        \"accountId\": \"user001\",\r\n        \"requestTime\": 1769086988247,\r\n        \"ly_ddbh\": \"来源订单号\"\r\n    },\r\n    \"returnCode\": \"0\",\r\n    \"returnMsg\": \"任务执行成功\",\r\n    \"returnBody\": {\r\n        \"rzuuid\": \"认证UUID\",\r\n        \"errorList\": []\r\n    }\r\n}",
         "mediaType": "application/json",
         "description": ""
       }
@@ -186,17 +188,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-11-15T02:51:56.000Z",
-  "updatedAt": "2025-05-22T03:09:51.000Z",
+  "updatedAt": "2026-08-06T07:40:41.000Z",
   "creatorId": 887900,
-  "editorId": 2706439,
+  "editorId": 2118003,
   "creatorUserId": 887900,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.565445458"
-  ],
+  "editorUserId": 2118003,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

@@ -505,7 +505,8 @@
                   "string",
                   "null"
                 ],
-                "title": "纳税人类型"
+                "title": "纳税人类型",
+                "description": "\"增值税一般纳税人\"、“小规模纳税人”、“ ” 返回空为小规模纳税人 "
               },
               "entityType": {
                 "type": [
@@ -622,7 +623,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 50629818,
+  "folderId": 92200701,
   "ordering": 10,
   "responsibleId": 2400309,
   "commonResponseStatus": {},
@@ -633,11 +634,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-11T01:41:34.000Z",
-  "updatedAt": "2026-05-13T07:41:15.000Z",
+  "updatedAt": "2026-09-08T01:36:55.000Z",
   "creatorId": 2400309,
-  "editorId": 493303,
+  "editorId": 1564651,
   "creatorUserId": 2400309,
-  "editorUserId": 493303,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

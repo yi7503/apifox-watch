@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n同步接口\n场景说明: 该接口用于个税的人员信息查询,支持查询验证状态，以及人员 基础信息、任职受雇从业信息、联系方式、投资信息等\n\n如无需获取企业人员列表信息，无需调研该接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n同步接口\n场景说明: 该接口用于个税的人员信息查询,支持查询验证状态，以及人员 基础信息、任职受雇从业信息、联系方式、投资信息等；\n查询信息为在本平台报送过的人员信息。\n\n如无需获取企业人员列表信息，无需调研该接口。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -66,6 +66,7 @@
         "accountId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -596,11 +597,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-11T05:51:39.000Z",
-  "updatedAt": "2026-01-29T12:11:17.000Z",
+  "updatedAt": "2026-08-06T06:13:50.000Z",
   "creatorId": 1910680,
-  "editorId": 1452584,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 1452584,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

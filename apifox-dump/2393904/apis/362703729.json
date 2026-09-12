@@ -73,6 +73,7 @@
         "yzpzxhlb"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -155,7 +156,7 @@
     {
       "name": "成功示例",
       "responseId": 790204790,
-      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"jglb\": {\n            \"zt\": 1,\n            \"sbyy\": \"查询成功\",\n            \"jkjglb\": [\n                {\n                    \"jfzt\": \"1\",\n                    \"jfje\": 100.50,\n                    \"jkmxlb\": [\n                        {\n                            \"yzpzxh\": \"PZ001\",\n                            \"yzpzmxxh\": \"MX001\",\n                            \"ybtse\": 50.00,\n                            \"jfzt\": \"已缴费\",\n                            \"zsxmdm\": \"XS001\",\n                            \"zspmdm\": \"PM001\",\n                            \"fkssqq\": \"2023-01-01\",\n                            \"fkssqz\": \"2023-01-31\"\n                        },\n                        {\n                            \"yzpzxh\": \"PZ001\",\n                            \"yzpzmxxh\": \"MX002\",\n                            \"ybtse\": 25.50,\n                            \"jfzt\": \"已缴费\",\n                            \"zsxmdm\": \"XS002\",\n                            \"zspmdm\": \"PM002\",\n                            \"fkssqq\": \"2023-02-01\",\n                            \"fkssqz\": \"2023-02-28\"\n                        }\n                    ],\n                    \"sbyy\": \"无\"\n                },\n                {\n                    \"jfzt\": \"0\",\n                    \"jfje\": null,\n                    \"jkmxlb\": [],\n                    \"sbyy\": \"缴费金额不足\"\n                }\n            ]\n        }\n    }\n}",
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"jglb\": {\n            \"jkjglb\": [\n                {\n                    \"jfje\": 447157.86,\n                    \"jfzt\": \"扣税成功\",\n                    \"jkmxlb\": [\n                        {\n                            \"fkssqq\": \"2026-07-01\",\n                            \"fkssqz\": \"2026-07-31\",\n                            \"jfzt\": \"扣税成功\",\n                            \"ybtse\": 6504.91,\n                            \"yzpzmxxh\": \"1\",\n                            \"yzpzxh\": \"1001334573566745\",\n                            \"zspmdm\": \"102040101\",\n                            \"zspmmc\": \"工伤保险\",\n                            \"zsxmdm\": \"10204\",\n                            \"zsxmmc\": \"工伤保险费\"\n                        },\n                        {\n                            \"fkssqq\": \"2026-07-01\",\n                            \"fkssqz\": \"2026-07-31\",\n                            \"jfzt\": \"扣税成功\",\n                            \"ybtse\": 173466.72,\n                            \"yzpzmxxh\": \"2\",\n                            \"yzpzxh\": \"100123452654354096353\",\n                            \"zspmdm\": \"102011101\",\n                            \"zspmmc\": \"职工基本养老保险(单位缴纳)\",\n                            \"zsxmdm\": \"10201\",\n                            \"zsxmmc\": \"企业职工基本养老保险费\"\n                        }\n                    ]\n                }\n            ],\n            \"sbyy\": \"\",\n            \"zt\": 1\n        }\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -176,7 +177,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-17T09:07:07.000Z",
-  "updatedAt": "2025-12-03T02:29:16.000Z",
+  "updatedAt": "2026-08-14T08:16:05.000Z",
   "creatorId": 1910680,
   "editorId": 1910680,
   "creatorUserId": 1910680,

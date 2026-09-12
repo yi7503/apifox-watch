@@ -164,11 +164,12 @@
         "nsrsbh"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
         "name": "请求示例",
-        "value": "{\n    \"aggOrgId\": 451678202380672,\n    \"nsrsbh\": \"9144011155441xxxxx\",\n    \"data\": {\n        \"pageIndex\": 1,\n        \"pageSize\": 10,\n        \"params\": {\n            \"kprqq\": \"2025-04-01\",\n            \"kprqz\": \"2025-05-30\",\n            \"hgjkshm\": \"xxxxxxxx\",\n            \"rzyts\": [\n                \"01\",\n                \"02\"\n            ]\n        }\n    }\n}",
+        "value": "{\n    \"aggOrgId\": 451678202380672,\n    \"nsrsbh\": \"9144011155441xxxxx\",\n    \"data\": {\n        \"pageIndex\": 1,\n        \"pageSize\": 10,\n        \"params\": {\n            \"kprqq\": \"2025-04-01\",\n            \"kprqz\": \"2025-05-30\",\n            \"rzyts\": [\n                \"01\",\n                \"02\"\n            ]\n        }\n    }\n}",
         "mediaType": "application/json"
       }
     ],
@@ -398,14 +399,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-21T06:35:04.000Z",
-  "updatedAt": "2025-12-13T10:02:42.000Z",
+  "updatedAt": "2026-07-30T07:03:04.000Z",
   "creatorId": 887778,
-  "editorId": 2795319,
+  "editorId": 2118003,
   "creatorUserId": 887778,
-  "editorUserId": 2795319,
-  "responseChildren": [
-    "BLANK.680468398"
-  ],
+  "editorUserId": 2118003,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

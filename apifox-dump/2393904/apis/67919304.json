@@ -373,17 +373,60 @@
                         },
                         "tcExcelUrl": {
                           "type": "string",
-                          "title": "弹窗文件URL"
+                          "title": "弹窗文件URL",
+                          "description": "增值税一般人出口业务情况说明弹窗文件模版：https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E5%A2%9E%E5%80%BC%E7%A8%8E%E4%B8%80%E8%88%AC%E4%BA%BA%E5%87%BA%E5%8F%A3%E4%B8%9A%E5%8A%A1%E6%83%85%E5%86%B5%E8%AF%B4%E6%98%8E%E5%BC%B9%E7%AA%97%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88.xlsx\n\n企业所得税出口收入差异弹窗文件模版：https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E4%BC%81%E4%B8%9A%E6%89%80%E5%BE%97%E7%A8%8E%E5%87%BA%E5%8F%A3%E6%94%B6%E5%85%A5%E5%B7%AE%E5%BC%82%E5%BC%B9%E7%AA%97%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88.xlsx\n重点税源审核返回审核情况说明弹框文件模版：\nhttps://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E9%87%8D%E7%82%B9%E7%A8%8E%E6%BA%90%E4%B8%9A%E5%8A%A1%E5%BC%B9%E6%A1%86%E6%A8%A1%E7%89%88.xlsx"
                         },
                         "cksrcyqkb ": {
                           "$ref": "#/definitions/273428689",
                           "title": "企业所得税预缴出口收入差异表"
+                        },
+                        "shqksm": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "ewbhxh": {
+                                "type": "string",
+                                "title": "序号"
+                              },
+                              "bm": {
+                                "type": "string",
+                                "title": "表名"
+                              },
+                              "bcbgjz": {
+                                "type": "string",
+                                "title": "变长表关键字"
+                              },
+                              "shtsxx": {
+                                "type": "string",
+                                "title": "审核提示信息"
+                              },
+                              "shqksm": {
+                                "type": "string",
+                                "title": "审核情况说明"
+                              },
+                              "shgs": {
+                                "type": "string",
+                                "title": "审核公式"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "ewbhxh",
+                              "bm",
+                              "bcbgjz",
+                              "shtsxx",
+                              "shqksm",
+                              "shgs"
+                            ]
+                          },
+                          "title": "重点税源审核情况说明（弹窗节点）"
                         }
                       },
                       "x-apifox-orders": [
                         "ckywqksm",
                         "cksrcyqkb",
                         "cksrcyqkb ",
+                        "shqksm",
                         "tcExcelUrl"
                       ],
                       "title": "弹窗节点"
@@ -500,19 +543,19 @@
     {
       "name": "任务执行成功-重复申报",
       "responseId": 172548995,
-      "data": "{\"reqId\":\"7942ca7fbce64dec9a4c4cf95558bb6f\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"finishTime\":\"2023-03-21 12:01:26\",\"businessStatusName\":\"执行成功\",\"businessStatus\":3,\"serviceName\":\"多税种申报\",\"resultMessage\":\"多税种申报成功\",\"sbState\":1,\"result\":\"多税种申报成功\",\"sbScreenUrl\":\"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_1cc253b3-fa57-4aa4-854c-47fd69293de11679371192103_1679371278023.png?Expires=1682235424&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=riW002si71tpPk4zlHVGUxPL%2Bc8%3D\",\"startTime\":\"2023-03-21 11:59:53\",\"detail\":[{\"result\":\"增值税当前税种在电子税务局已申报，请勿重复申报\",\"code\":\"2002\",\"bqybtse\":\"0.00\",\"yzpzzlDm\":\"BDA0610606\",\"bqybtsejyfj\":\"0.00\",\"bqybtsecjs\":\"0.00\",\"bqybtsedfjyfj\":\"0.00\",\"screenshot\":\"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_1cc253b3-fa57-4aa4-854c-47fd69293de11679371192103_1679371278023.png?Expires=1682235424&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=riW002si71tpPk4zlHVGUxPL%2Bc8%3D\",\"state\":\"1\",\"message\":\"\",\"taxAmount\":\"0\"}],\"taxAmount\":\"0\",\"taskId\":\"456000692344832\"}}",
+      "data": "{\"reqId\":\"7942ca7fbce64dec9a4c4cf95558bb6f\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"finishTime\":\"2023-03-21 12:01:26\",\"businessStatusName\":\"执行成功\",\"businessStatus\":3,\"serviceName\":\"多税种申报\",\"resultMessage\":\"多税种申报成功\",\"sbState\":1,\"result\":\"多税种申报成功\",\"sbScreenUrl\":\"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_1cc253b3-fa57-4aa4-854c-47fd69293de11679371192103_1679371278023.png?Expires=1682235424&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=riW002si71tpPk4zlHVGUxPL%2Bc8%3D\",\"startTime\":\"2023-03-21 11:59:53\",\"detail\":[{\"result\":\"增值税当前税种在电子税务局已申报，请勿重复申报\",\"code\":\"2002\",\"bqybtse\":\"0.00\",\"yzpzzlDm\":\"BDA0610606\",\"bqybtsejyfj\":\"0.00\",\"bqybtsecjs\":\"0.00\",\"bqybtsedfjyfj\":\"0.00\",\"screenshot\":\"https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_1cc253b3-fa57-4aa4-854c-47fd69293de11679371192103_1679371278023.png?Expires=1682235424&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=riW002si71tpPk4zlHVGUxPL%2Bc8%3D\",\"state\":\"1\",\"message\":\"\",\"taxAmount\":\"0\"}],\"taxAmount\":\"0\",\"taskId\":\"456000692344832\"}}",
       "id": 17182384
     },
     {
       "name": "任务执行成功-申报成功",
       "responseId": 172548995,
-      "data": "{\"reqId\":\"3b9920bcffcc42f58dafb7c9fdbf2d48\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"finishTime\":\"2023-03-14 11:20:24\",\"businessStatusName\":\"执行成功\",\"bqybtse\":\"121458.73\",\"bqybtsecjs\":\"4251.05\",\"businessStatus\":3,\"serviceName\":\"多税种申报\",\"resultMessage\":\"多税种申报成功\",\"sbState\":1,\"result\":\"多税种申报成功\",\"sbScreenUrl\":\"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_e85cec94-7fe6-42d9-b976-3b45733cd0ac1678759506097_1678759896277.png?Expires=1682235441&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=iTPxghK1qMhaSxAz5Z5vg%2B5WlW0%3D\",\"bqybtsejyfj\":\"1821.88\",\"bqybtsedfjyfj\":\"1214.58\",\"startTime\":\"2023-03-14 11:18:17\",\"detail\":[{\"result\":\"增值税申报成功\",\"code\":\"2000\",\"bqybtse\":\"121458.73\",\"yzpzzlDm\":\"BDA0610606\",\"bqybtsejyfj\":\"1821.88\",\"bqybtsecjs\":\"4251.05\",\"bqybtsedfjyfj\":\"1214.58\",\"screenshot\":\"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_e85cec94-7fe6-42d9-b976-3b45733cd0ac1678759506097_1678759896277.png?Expires=1682235441&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=iTPxghK1qMhaSxAz5Z5vg%2B5WlW0%3D\",\"state\":\"1\",\"message\":\"\",\"taxAmount\":\"0.00\"}],\"taxAmount\":\"0.00\",\"taskId\":\"454756950473984\"}}",
+      "data": "{\"reqId\":\"3b9920bcffcc42f58dafb7c9fdbf2d48\",\"code\":\"SUCCESS\",\"success\":true,\"message\":\"\",\"data\":{\"finishTime\":\"2023-03-14 11:20:24\",\"businessStatusName\":\"执行成功\",\"bqybtse\":\"121458.73\",\"bqybtsecjs\":\"4251.05\",\"businessStatus\":3,\"serviceName\":\"多税种申报\",\"resultMessage\":\"多税种申报成功\",\"sbState\":1,\"result\":\"多税种申报成功\",\"sbScreenUrl\":\"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_e85cec94-7fe6-42d9-b976-3b45733cd0ac1678759506097_1678759896277.png?Expires=1682235441&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=iTPxghK1qMhaSxAz5Z5vg%2B5WlW0%3D\",\"bqybtsejyfj\":\"1821.88\",\"bqybtsedfjyfj\":\"1214.58\",\"startTime\":\"2023-03-14 11:18:17\",\"detail\":[{\"result\":\"增值税申报成功\",\"code\":\"2000\",\"bqybtse\":\"121458.73\",\"yzpzzlDm\":\"BDA0610606\",\"bqybtsejyfj\":\"1821.88\",\"bqybtsecjs\":\"4251.05\",\"bqybtsedfjyfj\":\"1214.58\",\"screenshot\":\"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_e85cec94-7fe6-42d9-b976-3b45733cd0ac1678759506097_1678759896277.png?Expires=1682235441&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=iTPxghK1qMhaSxAz5Z5vg%2B5WlW0%3D\",\"state\":\"1\",\"message\":\"\",\"taxAmount\":\"0.00\"}],\"taxAmount\":\"0.00\",\"taskId\":\"454756950473984\"}}",
       "id": 17223309
     },
     {
       "name": "申报返回导入中状态",
       "responseId": 172548995,
-      "data": "{\r\n    \"result\": {\r\n        \"req_id\": \"23c17beaea174b3494c15b79016dc3d3\",\r\n        \"success\": true,\r\n        \"time\": 446,\r\n        \"timestamp\": 1700791518129\r\n    },\r\n    \"value\": {\r\n        \"code\": \"SUCCESS\",\r\n        \"data\": {\r\n            \"result\": \"多税种申报成功\",\r\n            \"finishTime\": \"2023-11-24 10:04:48\",\r\n            \"businessStatusName\": \"执行成功\",\r\n            \"sbScreenUrl\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_411e1df*******************38750119_1697439323864.png?Expires=1703383517&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=ekFrH%2Bupeq8B448CYvTz06Le4As%3D\",\r\n            \"businessStatus\": 3,\r\n            \"startTime\": \"2023-11-24 10:04:28\",\r\n            \"detail\": [\r\n                {\r\n                    \"result\": \"增值税税局申报状态等待中\",\r\n                    \"code\": \"7001\",\r\n                    \"bqybtse\": \"8072.84\",\r\n                    \"yzpzzlDm\": \"BDA0610606\",\r\n                    \"bqybtsejyfj\": \"252.19\",\r\n                    \"bqybtsecjs\": \"555.1\",\r\n                    \"bqybtsedfjyfj\": \"171.46\",\r\n                    \"screenshot\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_411e1d*********************30e1697438750119_1697439323864.png?Expires=1703383517&OSSAccessKeyId=LTAI5tLVQ9UmRYPSfnsqd5kz&Signature=ekFrH%2Bupeq8B448CYvTz06Le4As%3D\",\r\n                    \"state\": \"10\",\r\n                    \"message\": \"\",\r\n                    \"taxAmount\": \"95281.59\"\r\n                }\r\n            ],\r\n            \"serviceName\": \"多税种申报\",\r\n            \"resultMessage\": \"多税种申报成功\",\r\n            \"taxAmount\": \"95281.59\",\r\n            \"sbState\": 10,\r\n            \"taskId\": \"499869415206400\"\r\n        },\r\n        \"success\": true,\r\n        \"aggOrgId\": 48273*********88800,\r\n        \"message\": \"\"\r\n    }\r\n}",
+      "data": "{\r\n    \"result\": {\r\n        \"req_id\": \"23c17beaea174b3494c15b79016dc3d3\",\r\n        \"success\": true,\r\n        \"time\": 446,\r\n        \"timestamp\": 1700791518129\r\n    },\r\n    \"value\": {\r\n        \"code\": \"SUCCESS\",\r\n        \"data\": {\r\n            \"result\": \"多税种申报成功\",\r\n            \"finishTime\": \"2023-11-24 10:04:48\",\r\n            \"businessStatusName\": \"执行成功\",\r\n            \"sbScreenUrl\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_411e1df*******************38750119_1697439323864.png?Expires=1703383517&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=ekFrH%2Bupeq8B448CYvTz06Le4As%3D\",\r\n            \"businessStatus\": 3,\r\n            \"startTime\": \"2023-11-24 10:04:28\",\r\n            \"detail\": [\r\n                {\r\n                    \"result\": \"增值税税局申报状态等待中\",\r\n                    \"code\": \"7001\",\r\n                    \"bqybtse\": \"8072.84\",\r\n                    \"yzpzzlDm\": \"BDA0610606\",\r\n                    \"bqybtsejyfj\": \"252.19\",\r\n                    \"bqybtsecjs\": \"555.1\",\r\n                    \"bqybtsedfjyfj\": \"171.46\",\r\n                    \"screenshot\": \"https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/SCREENSHOT/etax-agg-product_411e1d*********************30e1697438750119_1697439323864.png?Expires=1703383517&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=ekFrH%2Bupeq8B448CYvTz06Le4As%3D\",\r\n                    \"state\": \"10\",\r\n                    \"message\": \"\",\r\n                    \"taxAmount\": \"95281.59\"\r\n                }\r\n            ],\r\n            \"serviceName\": \"多税种申报\",\r\n            \"resultMessage\": \"多税种申报成功\",\r\n            \"taxAmount\": \"95281.59\",\r\n            \"sbState\": 10,\r\n            \"taskId\": \"499869415206400\"\r\n        },\r\n        \"success\": true,\r\n        \"aggOrgId\": 48273*********88800,\r\n        \"message\": \"\"\r\n    }\r\n}",
       "id": 360986840
     }
   ],
@@ -531,11 +574,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-13T07:57:53.000Z",
-  "updatedAt": "2026-05-13T06:16:44.000Z",
+  "updatedAt": "2026-08-06T09:41:26.000Z",
   "creatorId": 798265,
-  "editorId": 1452584,
+  "editorId": 1910680,
   "creatorUserId": 798265,
-  "editorUserId": 1452584,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

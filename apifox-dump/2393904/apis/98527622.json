@@ -144,15 +144,26 @@
           "type": "boolean",
           "title": "发起任务类型",
           "description": "true-发起获取版式任务；false-获取版式任务结果\n此字段用于发起任务及任务结果查询：\n1、传true发起任务\n2、传false获取任务结果，返回成功则调用「获取数电票版式文件」获取版式文件"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "账号唯一标识",
+          "description": "单账号非必填，多账号必填，多账号详见说明：[账号创建](api-398469975)"
+        },
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
         }
       },
       "required": [
         "nsrsbh",
-        "addJob"
+        "addJob",
+        "aggOrgId"
       ],
       "x-apifox-orders": [
         "nsrsbh",
-        "01HMB9H0G6QMVS6KKGMGDFNS6R",
+        "aggOrgId",
+        "accountId",
         "addJob",
         "dateType",
         "kpyf",
@@ -161,23 +172,9 @@
         "jxxbzs",
         "fplxs"
       ],
-      "x-apifox-refs": {
-        "01HMB9H0G6QMVS6KKGMGDFNS6R": {
-          "$ref": "#/definitions/79273658",
-          "x-apifox-overrides": {
-            "async": {
-              "type": "boolean",
-              "title": "是否为异步方式（默认同步)",
-              "default": "false"
-            }
-          },
-          "required": [
-            "aggOrgId",
-            "async"
-          ]
-        }
-      }
+      "x-apifox-refs": {}
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -387,11 +384,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-03T08:49:09.000Z",
-  "updatedAt": "2025-12-17T02:14:26.000Z",
+  "updatedAt": "2026-09-09T01:44:41.000Z",
   "creatorId": 2118003,
-  "editorId": 1564651,
+  "editorId": 2118003,
   "creatorUserId": 2118003,
-  "editorUserId": 1564651,
+  "editorUserId": 2118003,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

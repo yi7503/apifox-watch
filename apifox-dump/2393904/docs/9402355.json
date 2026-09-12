@@ -1,0 +1,17 @@
+{
+  "id": 9402355,
+  "name": "2026年8月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2026年8月发布内容\n\n发布日期：2026-08-27\n发布版本：V2.2026.08\n\n\n## 一、发票开具\n1. 医疗服务（门诊）特定业务发票开具时，发票明细新增支持“费用明细”。\n   - https://openapi.qixiangyun.com/api-451385883\n   <img width={500}        src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691102/image-preview\" />\n\n2. 优化涉税专业服务发票开具时，优化涉税专业服务项目涉税与专业服务协议对应的采集表编号的匹配处理逻辑。\n\n3. 查询税收分类编码接口返回增加“fjspbm-父级商品编码”。\n   - https://openapi.qixiangyun.com/api-404275902\n \n 4. 优化机动车销售统一发票开具时车辆类型补偿处理规则，使用合格证信息中车辆名称进行补偿。\n   - https://openapi.qixiangyun.com/api-100012782\n       <img width={500}  src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691113/image-preview\" />\n  \n 5. 成品油蓝字发票开具支持单价低开异常继续开具，增加“成品油单价异常确认-cpydjToolow”参数。\n   - https://openapi.qixiangyun.com/api-100012782\n       <img width={500}  src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691114/image-preview\" />\n       \n 6. 解决扫脸认证时长与税局设置不一致的问题。\n 7. 优化不动产销售服务、不动产经营租赁服务发票开具时，发票明细行“ggxh-规格型号”传参处理。\n\n   \n## 二、发票归集\n1. 优化查询已勾选归集数据接口，增加分页查询参数。\n    - https://openapi.qixiangyun.com/api-168122864\n\n2. 新增接口，获取纳税人发票归属地，用于查询企业是否存在多个发票归属地信息，返回企业发票归属地的税务机关代码和地区名称。\n   - https://openapi.qixiangyun.com/api-501902752\n   <img width={500}  src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691123/image-preview\" />\n4. 发票归集支持多归属地发票，新增参数“swjgDm-税务机关代码”。\n    - https://openapi.qixiangyun.com/api-179601448\n     \n4. 优化进项税额转出功能，支持按照当前税款所属期和数据申请标识获取进项税额转出信息。\n   - 发起查询：https://openapi.qixiangyun.com/api-426566068\n   - 查询结果：https://openapi.qixiangyun.com/api-426566216\n6. 优化发票归集结果中发票明细税率和零税率标识。\n7. 优化大票量归集数据处理时长。\n\n\n ## 三、发票查验\n1. 优化新版增值税发票查验针对航空运输电子客票行程单的查验结果返回。\n   - https://openapi.qixiangyun.com/api-431038998\n\n2. 财政票据查验兼容江苏地区4位校验码。\n    \n\n## 四、发票认证\n1. 发票认证相关接口返回新增“originaCode”，返回具体登录业务错误码，可用于调用方精细化业务控制。\n   <img width={500}  src=\"https://api.apifox.com/api/v1/projects/2393904/resources/691135/image-preview\" />  \n   \n2. 优化进项发票采集文档说明，采集不抵扣未勾选发票时需单独处理。\n   - https://openapi.qixiangyun.com/api-120631810\n \n     \n\n\n   \n",
+  "folderId": 36975595,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-09-04T01:32:53.000Z",
+  "updatedAt": "2026-09-04T10:44:26.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

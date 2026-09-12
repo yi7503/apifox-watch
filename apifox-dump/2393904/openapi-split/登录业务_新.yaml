@@ -6,7 +6,9 @@ info:
 tags:
 - name: 登录业务（新）
 - name: 登录业务（新） / 涉税专业服务
+- name: 登录业务（新） / 特定登录列表查询
 - name: 登录业务（新） / 登录管理
+- name: 登录业务（新） / 登录管理 / 忘记密码
 - name: 登录业务（新） / 登录管理 / 扫码登录
 - name: 登录业务（新） / 登录管理 / 验证码登录
 - name: 登录业务（新） / 获取企业列表
@@ -354,11 +356,16 @@ paths:
                   type: string
                   title: 代理机构税号
                   description: dlfs=15必传
+                loginType:
+                  type: string
+                  title: 特定主体类型
+                  description: 0-普通 1-特定主体 目前特定主体修改需要传1 否则会被默认值0覆盖
               required:
               - accountId
               - aggOrgId
               - dlfs
               - proxyNsrsbh
+              - loginType
               x-apifox-orders:
               - aggOrgId
               - accountId
@@ -369,6 +376,7 @@ paths:
               - gryhmm
               - sjhm
               - proxyNsrsbh
+              - loginType
               - dlmm
               - dlzh
             examples:
@@ -876,21 +884,6 @@ paths:
                 - 01GW14PXT5M6CPA7QN31MEE9HS
                 properties: {}
               examples:
-                登录成功示例:
-                  summary: 登录成功示例
-                  value:
-                    code: '2000'
-                    data:
-                      taskId: 1780851217847750700
-                    success: true
-                    reqId: 60ffd6de076a46bea9de8acc66cab677
-                异常示例:
-                  summary: 异常示例
-                  value:
-                    req_id: b58c2ab8200c4e77b3fbe6f9d32fc3af
-                    code: '4006'
-                    success: true
-                    message: 登录方式不正确！
                 成功发送短信示例:
                   summary: 成功发送短信示例
                   value:
@@ -899,6 +892,20 @@ paths:
                     code: '2000'
                     data:
                       taskId: 1671038727830339600
+                登录成功示例:
+                  summary: 登录成功示例
+                  value:
+                    code: '2000'
+                    success: true
+                    message: 税务数字账户登录成功
+                    reqId: 6f37c2c5a424454f99b4decb6c0cfb30
+                异常示例:
+                  summary: 异常示例
+                  value:
+                    req_id: b58c2ab8200c4e77b3fbe6f9d32fc3af
+                    code: '4006'
+                    success: true
+                    message: 登录方式不正确！
       x-apifox-status: released
   /v2/public/login/remote/pushsms#398473366:
     post:
@@ -1349,6 +1356,14 @@ paths:
                     success: true
                     message: 账号频繁登录失败，原因：已连续次输入个人用户密码错误，您可以通过“忘记密码”设置新密码。如果再次输入错误，您的账户会被锁定 该账号ID 524320096505856已被锁定，请修改登录信息后，调用启用接口进行账号解锁。
                     reqId: 2b0719302b1242f9bad0bd0189e550d2
+                异常示例手机号不存在:
+                  summary: 异常示例手机号不存在
+                  value:
+                    reqId: db059e81fa854bdc84a1feaa23e9f3e9
+                    code: '4037'
+                    success: true
+                    message: 手机号码不存在，您可以尝试使用证件号码登录
+                    data: {}
       x-apifox-status: released
   /v2/public/agent/login/proxyOrgList#398478451:
     post:
@@ -1916,8 +1931,7 @@ paths:
       - 登录业务（新） / 涉税专业服务
       description: |+
         ##  接口描述
-
-        涉税专业服务机构协议要素信息新增（通过excel导入）
+        受托人（指代理机构企业），发起涉税专业服务机构协议要素信息新增（通过excel导入）
 
         [协议要素信息采集表模板](https://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/tax/static/XYXXCJ_IMPORT.xlsx)
 
@@ -2041,8 +2055,8 @@ paths:
       - 登录业务（新） / 涉税专业服务
       description: |
         ##  接口描述
-
-        涉税专业服务委托方企业确认代理
+        该接口是委托人（指终端企业），进行委托确认申请；
+        ps:该接口 的aggOrgId 和accountId 需传 委托人（指终端企业）的，请提前进行账号创建；
       parameters:
       - name: Content-Type
         in: header
@@ -2083,7 +2097,8 @@ paths:
                   title: 多账号id
                 strtyshxydm:
                   type: string
-                  title: 代理方纳税人识别号
+                  title: 受托人统一社会信用代码
+                  description: 指代理企业
               x-apifox-orders:
               - aggOrgId
               - accountId
@@ -2350,8 +2365,7 @@ paths:
       - 登录业务（新） / 涉税专业服务
       description: |+
         ##  接口描述
-
-        涉税专业服务机构协议要素信息新增结果查询
+        受托人（指代理机构企业），查询涉税专业服务机构协议要素信息新增（通过excel导入）结果。
 
       parameters:
       - name: Content-Type
@@ -2513,7 +2527,8 @@ paths:
       description: |+
         ##  接口描述
 
-        涉税专业服务委托方企业确认代理结果查询
+        该接口是委托人（指终端企业），进行委托确认申请结果查询；
+        ps:该接口 的aggOrgId 和accountId 需传 委托人（指终端企业）的，请提前进行账号创建；
 
       parameters:
       - name: Content-Type
@@ -2778,4 +2793,1514 @@ paths:
                     success: true
                     message: 参数gryhm不能为空！
                     reqId: 8b2991d73f924e85994670564975aa42
+      x-apifox-status: released
+  /v2/public/login/remote/queryLastLogin:
+    post:
+      summary: 查询用户最后一次登录税号(托管)
+      operationId: api-464051215
+      tags:
+      - 登录业务（新）
+      description: 托管客户通过用户名/身份证号获取最后一次登录税号
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gryhm:
+                  type: string
+                  title: 个人用户名
+                  description: 手机号/身份账号
+                dq:
+                  type: string
+                  title: 地区代码
+                  description: 见附录
+              x-apifox-orders:
+              - gryhm
+              - dq
+              required:
+              - gryhm
+            examples:
+              企业获取:
+                summary: 企业获取
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      nsrsbh:
+                        type: string
+                        title: 税号
+                      dlfs:
+                        type: integer
+                        title: 登录方式
+                        description: 14-企业 15-代理 13-扫码
+                      loginTime:
+                        type: string
+                        title: 登录时间
+                        description: 示例：2026-05-26 21:10:46
+                      proxyNsrsbh:
+                        type: string
+                        title: 代理机构税号
+                        description: 如果最后一次是代理登录该值不为空
+                    title: 业务数据
+                    x-apifox-orders:
+                    - nsrsbh
+                    - dlfs
+                    - loginTime
+                    - proxyNsrsbh
+                    required:
+                    - nsrsbh
+                    - loginTime
+                    - dlfs
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - code
+                - success
+                - reqId
+                - message
+                x-apifox-refs: {}
+              examples:
+                成功:
+                  summary: 成功
+                  value:
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      dlfs: 14
+                      loginTime: '2026-05-26 21:10:46'
+                      nsrsbh: 91***********4Y
+                      proxyNsrsbh: null
+                    timestamp: '2026-05-26 22:11:24'
+                    reqId: 5cbf95380e197235a0ad7e94765b9f3f
+      x-apifox-status: released
+  /v2/public/login/forgetPassw/sendSms:
+    post:
+      summary: 局端忘记密码发送短信
+      operationId: api-487256885
+      tags:
+      - 登录业务（新） / 登录管理 / 忘记密码
+      description: |-
+        如果是企享云购买的小号，调用此接口直接完成密码修改，不需要上传短信
+        如果不是小号，调用此接口则会完成发送短信
+        托管账号修改完局端密码后还需要维护账号关系，调用账号管理-账号修改接口
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dq:
+                  type: string
+                  title: 地区
+                  description: 见附录
+                zjlx:
+                  type: string
+                  title: 证件类型代码
+                  description: 目前仅支持201-身份证 默认值201
+                zjhm:
+                  type: string
+                  title: 证件号码
+                  description: 目前仅支持身份证号
+                gryhmm:
+                  type: string
+                  title: 个人用户名密码
+                  description: |-
+                    新密码使用RSA加密
+                    校验规则：长度为8-16个字符，必须包含数字、字母（区分大小写）、特殊字符（包括 . @ $ %* # _ + - ~ & ^ ）三者中至少两种
+                sjhm:
+                  type: string
+                  title: 手机号码
+                  description: 用户接受短信验证
+                nsrsbh:
+                  type: string
+                  title: 税号
+              x-apifox-orders:
+              - dq
+              - zjlx
+              - zjhm
+              - sjhm
+              - gryhmm
+              - nsrsbh
+              required:
+              - dq
+              - zjhm
+              - gryhmm
+              - sjhm
+              - nsrsbh
+            examples:
+              成功:
+                summary: 成功
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      taskId:
+                        type: string
+                        title: 返回任务id
+                        description: 如果是真实手机号则需要调用上传短信接口时用到该字段
+                    title: 业务数据
+                    x-apifox-orders:
+                    - taskId
+                    required:
+                    - taskId
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - code
+                - success
+                - reqId
+                - message
+                x-apifox-refs: {}
+              examples:
+                小号修改密码成功:
+                  summary: 小号修改密码成功
+                  value:
+                    code: '2000'
+                    success: true
+                    message: 修改成功
+                    data:
+                      msg: 成功
+                    timestamp: '2026-07-15 11:39:34'
+                    reqId: 948444b4409b2759d2d8f78f2faf5c45
+                真实手机号发送短信成功:
+                  summary: 真实手机号发送短信成功
+                  value:
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      msg: 成功
+                      mobile: 1******1107
+                      taskId: 5122276644018646520
+                    timestamp: '2026-07-15 11:39:34'
+                    reqId: 948444b4409b2759d2d8f78f2faf5c45
+                登录人和手机号不一致错误:
+                  summary: 登录人和手机号不一致错误
+                  value:
+                    code: '4059'
+                    success: false
+                    message: 当前登录人使用的手机号码与已确认的唯一手机号不一致！
+                    data:
+                      sjhmList:
+                      - sjhm: 1*******1234
+                        default_flag: 0
+                      - sjhm: 1*******1235
+                        default_flag: 1
+                    timestamp: '2026-07-15 11:39:34'
+                    reqId: 948444b4409b2759d2d8f78f2faf5c45
+      x-apifox-status: released
+  /v2/public/login/forgetPassw/pushSms:
+    post:
+      summary: 局端忘记密码上传短信
+      operationId: api-487259196
+      tags:
+      - 登录业务（新） / 登录管理 / 忘记密码
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskId:
+                  type: string
+                  title: 发送短信接口返回的taskId
+                smsCode:
+                  type: string
+                  title: 短信验证码
+                  description: 有效期3分钟
+              x-apifox-orders:
+              - taskId
+              - smsCode
+              required:
+              - taskId
+              - smsCode
+            examples:
+              上传短信:
+                summary: 上传短信
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      sjhmList:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            sjhm:
+                              type: string
+                              title: 手机号码
+                              description: 脱敏后的手机号局端也是脱敏后的
+                            default_flag:
+                              type: integer
+                              title: 是否默认
+                              description: 1-默认 0-不是默认
+                          x-apifox-orders:
+                          - sjhm
+                          - default_flag
+                    title: 业务数据
+                    x-apifox-orders:
+                    - sjhmList
+                    description: 如果code返回4059则返回下面手机号码列表
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - code
+                - success
+                - reqId
+                - message
+                x-apifox-refs: {}
+              examples:
+                登录人手机号不一致:
+                  summary: 登录人手机号不一致
+                  value:
+                    code: '4059'
+                    success: false
+                    message: 当前登录人使用的手机号码与已确认的唯一手机号不一致！
+                    data:
+                      sjhmList:
+                      - sjhm: 1*******1234
+                        default_flag: 0
+                      - sjhm: 1*******1235
+                        default_flag: 1
+                    timestamp: '2026-07-15 11:39:34'
+                    reqId: 948444b4409b2759d2d8f78f2faf5c45
+                成功:
+                  summary: 成功
+                  value:
+                    code: '2000'
+                    success: true
+                    message: 修改成功
+                    data: null
+                    timestamp: '2026-07-15 11:39:34'
+                    reqId: 948444b4409b2759d2d8f78f2faf5c45
+      x-apifox-status: released
+  /v2/public/sszyfw/tzdlxy:
+    post:
+      summary: 涉税专业服务终止代理协议
+      operationId: api-491360919
+      tags:
+      - 登录业务（新） / 涉税专业服务
+      description: |
+        ##  接口描述
+        受托人（指代理机构企业），发起涉税专业服务停止代理协议申请
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业ID
+                accountId:
+                  type: string
+                  title: 多账号id
+                strtyshxydm:
+                  type: string
+                  title: 受托人统一社会信用代码
+                  description: dljg：受托人终止时必传；
+                role:
+                  type: string
+                  title: 身份标识
+                  description: bdljg：委托人终止（默认）； dljg：受托人终止；
+                wtrtyshxydm:
+                  type: string
+                  description: bdljg：委托人终止时必传
+                  title: 委托人统一社会信用代码
+                zzrq:
+                  type: string
+                  title: 终止日期
+                  description: 格式：yyyy-MM-dd，委托人终止时必传；
+                zzyy:
+                  type: string
+                  title: 终止原因
+                  description: 委托人终止时必传；
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              - role
+              - strtyshxydm
+              - wtrtyshxydm
+              - zzrq
+              - zzyy
+              required:
+              - aggOrgId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                $id: https://tax-report.example.com/platform-tax-response.schema.json
+                type: object
+                additionalProperties: false
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                properties:
+                  reqId:
+                    type: string
+                    description: 请求唯一标识，用于关联请求与响应，追踪业务链路
+                    minLength: 1
+                    maxLength: 64
+                    examples:
+                    - REQ202510160001000001
+                    - TAX_REQ_87654321
+                  code:
+                    type: string
+                    description: 响应状态码，标识请求处理结果（如成功、参数错误、系统异常等）
+                    minLength: 1
+                    maxLength: 10
+                    examples:
+                    - '0000'
+                    - '1001'
+                    - '5000'
+                  success:
+                    type: boolean
+                    description: 请求处理结果标识，true 表示处理成功，false 表示处理失败
+                    examples:
+                    - true
+                    - false
+                  message:
+                    type: string
+                    description: 响应提示信息，说明处理结果或错误原因，便于问题排查
+                    minLength: 1
+                    maxLength: 512
+                    examples:
+                    - 涉税信息报送成功
+                    - detail数组中证件号码格式错误，请核对后重新提交
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - 01K7PK6WER718SH7RH6EQTMZFQ
+                x-apifox-refs:
+                  01K7PK6WER718SH7RH6EQTMZFQ:
+                    $ref: '#/definitions/141932940'
+      x-apifox-status: released
+  /v2/public/sszyfw/tzdlxyResult:
+    post:
+      summary: 涉税专业服务终止代理协议结果查询
+      operationId: api-491381129
+      tags:
+      - 登录业务（新） / 涉税专业服务
+      description: "##  接口描述\n受托人（指代理机构企业），发起涉税专业服务停止代理协议申请结果查询。\n \n"
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 维护企业信息接口返回的 aggOrgId
+                taskId:
+                  type: string
+                  title: 任务ID
+                accountId:
+                  type: string
+                  title: 多账号ID
+              required:
+              - aggOrgId
+              - taskId
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              - taskId
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                $id: https://tax-report.example.com/platform-tax-response.schema.json
+                type: object
+                additionalProperties: false
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                properties:
+                  reqId:
+                    type: string
+                    description: 请求唯一标识，用于关联请求与响应，追踪业务链路
+                    minLength: 1
+                    maxLength: 64
+                    examples:
+                    - REQ202510160001000001
+                    - TAX_REQ_87654321
+                  code:
+                    type: string
+                    description: 响应状态码，标识请求处理结果（如成功、参数错误、系统异常等）
+                    minLength: 1
+                    maxLength: 10
+                    examples:
+                    - '0000'
+                    - '1001'
+                    - '5000'
+                  success:
+                    type: boolean
+                    description: 请求处理结果标识，true 表示处理成功，false 表示处理失败
+                    examples:
+                    - true
+                    - false
+                  message:
+                    type: string
+                    description: 响应提示信息，说明处理结果或错误原因，便于问题排查
+                    minLength: 1
+                    maxLength: 512
+                    examples:
+                    - 涉税信息报送成功
+                    - detail数组中证件号码格式错误，请核对后重新提交
+                  data:
+                    type: object
+                    description: 响应核心数据
+                    additionalProperties: false
+                    properties:
+                      taskId:
+                        type: string
+                        title: 任务ID
+                      businessStatus:
+                        type: string
+                        description: |+
+                          1：执行中；2：失败；3：已完成
+
+                        title: 任务执行状态
+                      serviceCode:
+                        type: string
+                        title: 任务类型代码
+                      code:
+                        type: string
+                        title: 任务code
+                      message:
+                        type: string
+                        title: 执行任务信息
+                      result:
+                        type: object
+                        properties: {}
+                        x-apifox-orders:
+                        - 01KY6FEJE84ZPGF3HR6EH2ED69
+                        x-apifox-refs:
+                          01KY6FEJE84ZPGF3HR6EH2ED69:
+                            $ref: '#/definitions/297451493'
+                        required: []
+                    x-apifox-orders:
+                    - taskId
+                    - serviceCode
+                    - businessStatus
+                    - code
+                    - message
+                    - result
+                    x-apifox-refs: {}
+                    required:
+                    - taskId
+                    - serviceCode
+                    - businessStatus
+                    - code
+                    - message
+                    - result
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                x-apifox-refs: {}
+      x-apifox-status: released
+  /v2/public/login/info/specific/byhList:
+    post:
+      summary: 查询电子税务局特定主体报验户列表
+      operationId: api-497051468
+      tags:
+      - 登录业务（新） / 特定登录列表查询
+      description: |-
+        ##  接口描述
+        查询电子税务局特定主体报验户列表 目前仅支持小号模式，账号是特定主体账号并且是报验户类型
+        此接口每次都会消耗一次短信，不要频繁调用
+        不传分页参数默认是获取所有，所以接口返回比较慢
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业ID
+                accountId:
+                  type: string
+                  title: 多账号id
+                kqysssxbyglbh:
+                  type: string
+                  title: 跨区域涉税事项报验管理编号
+                  description: 查询条件
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              - kqysssxbyglbh
+              required:
+              - aggOrgId
+              - accountId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    title: 错误码
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        title: 企业数量
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            regNumber:
+                              type: string
+                              title: 序号
+                            zgswjgdm:
+                              type: string
+                              title: 主管税务机关代码
+                            zgswjgmc:
+                              type: string
+                              title: 主管税务机关名称
+                            kqysssxbyglbh:
+                              type: string
+                              title: 跨区域报验编号
+                            startDate:
+                              type: string
+                              description: yyyy-MM-dd
+                              title: 开始时间
+                            endDate:
+                              type: string
+                              description: yyyy-MM-dd
+                              title: 结束时间
+                          required:
+                          - regNumber
+                          - zgswjgdm
+                          - zgswjgmc
+                          - kqysssxbyglbh
+                          - startDate
+                          - endDate
+                          x-apifox-orders:
+                          - regNumber
+                          - zgswjgdm
+                          - zgswjgmc
+                          - kqysssxbyglbh
+                          - startDate
+                          - endDate
+                        title: 明细
+                    required:
+                    - total
+                    - list
+                    x-apifox-orders:
+                    - total
+                    - list
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    title: 错误 信息
+                  reqId:
+                    type: string
+                    title: 请求ID
+                required:
+                - code
+                - data
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - code
+                - data
+                - success
+                - message
+                - reqId
+              examples:
+                登录成功示例:
+                  summary: 登录成功示例
+                  value:
+                    code: '2000'
+                    success: true
+                    message: 查询成功
+                    data:
+                      list:
+                      - endDate: '2027-06-30'
+                        kqysssxbyglbh: 林税 税跨报 〔2025〕 35184 号
+                        regNumber: '10214101000002563318'
+                        startDate: '2025-05-29'
+                        zgswjgdm: '14101887200'
+                        zgswjgmc: 国家税务总局郑州航空港经济综合实验区税务局郑东新区税务分局税源管理二股
+                      total: 1
+                    timestamp: '2026-08-04 18:30:46'
+                    reqId: 191ad3bee5ed6454ea65d889527cea8bf
+                异常示例:
+                  summary: 异常示例
+                  value:
+                    req_id: b58c2ab8200c4e77b3fbe6f9d32fc3af
+                    success: true
+                    code: '4000'
+                    data: ''
+                    message: 参数aggOrgId不能为空！
+      x-apifox-status: released
+  /v2/public/login/info/specific/crossTaxSourceList:
+    post:
+      summary: 查询跨税源登记列表
+      operationId: api-497059835
+      tags:
+      - 登录业务（新） / 特定登录列表查询
+      description: |-
+        ##  接口描述
+        查询跨税源登记列表，从个人账号里面进去的
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业ID
+                accountId:
+                  type: string
+                  title: 多账号id
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              required:
+              - aggOrgId
+              - accountId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    title: 错误码
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                        title: 企业数量
+                      list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            zgswjgmc:
+                              type: string
+                              title: 主管税务机关名称
+                            legalPerson:
+                              type: string
+                              title: 法定代表人姓名
+                            productionAndOperationAddress:
+                              type: string
+                              title: 生产经营地址
+                            taxpayerStatus:
+                              type: string
+                              title: 纳税人状态
+                              enum:
+                              - '03'
+                              - '07'
+                              x-apifox-enum:
+                              - value: '03'
+                                name: 正常
+                                description: ''
+                              - value: '07'
+                                name: 注销
+                                description: ''
+                          required:
+                          - zgswjgmc
+                          - legalPerson
+                          - productionAndOperationAddress
+                          - taxpayerStatus
+                          x-apifox-orders:
+                          - zgswjgmc
+                          - legalPerson
+                          - productionAndOperationAddress
+                          - taxpayerStatus
+                        title: 明细
+                    required:
+                    - total
+                    - list
+                    x-apifox-orders:
+                    - total
+                    - list
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    title: 错误 信息
+                  reqId:
+                    type: string
+                    title: 请求ID
+                required:
+                - code
+                - data
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - code
+                - data
+                - success
+                - message
+                - reqId
+              examples:
+                登录成功示例:
+                  summary: 登录成功示例
+                  value:
+                    code: '2000'
+                    success: true
+                    message: 操作成功
+                    data:
+                      list:
+                      - areaCode: '4100'
+                        legalPerson: 石**
+                        productionAndOperationAddress: '****政府院内'
+                        taxpayerStatus: '07'
+                        zgswjgmc: 国家税务总局*****税务分局
+                      - areaCode: '4100'
+                        legalPerson: 李**
+                        productionAndOperationAddress: '*****政府院内'
+                        taxpayerStatus: '03'
+                        zgswjgmc: 国家税务总局*******税务分局
+                      total: 2
+                    timestamp: '2026-08-04 18:53:27'
+                    reqId: 0082461b524ac4b42aaf50cf7cf650b84
+                异常示例:
+                  summary: 异常示例
+                  value:
+                    req_id: b58c2ab8200c4e77b3fbe6f9d32fc3af
+                    success: true
+                    code: '4000'
+                    data: ''
+                    message: 参数aggOrgId不能为空！
+      x-apifox-status: released
+  /v2/public/login/queryTaxLog:
+    post:
+      summary: 查询账户中心登录日志
+      operationId: api-506198506
+      tags:
+      - 登录业务（新）
+      description: |-
+        仅限托管用户进行查询，需要先登录后才可以查询，使用小号的可以直接调用改接口
+        此接口主要用于排查掉线原因，请不要频繁调用
+        查询昨天凌晨到今天的登录日志
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: access_token
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_date
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: req_sign
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: integer
+                  title: 企业id
+                accountId:
+                  type: string
+                  title: 账号id
+                backDays:
+                  type: string
+                  title: 查询最近几天的日志
+                  description: 仅支持0,1 默认0查询当天 1表示查询昨天凌晨到现在
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              - backDays
+              required:
+              - aggOrgId
+            examples:
+              企业获取:
+                summary: 企业获取
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    type:
+                    - array
+                    - 'null'
+                    items:
+                      type: object
+                      properties:
+                        operationTime:
+                          type: string
+                          title: 登录时间
+                          description: '2026-05-26 21:10:46'
+                        srcIp:
+                          type: string
+                          title: 来源IP
+                        creditCode:
+                          type: string
+                          title: 统一社会信用代码
+                        loginType:
+                          type: string
+                          title: 个人业务/企业业务/代理业务
+                        enterpriseName:
+                          type: string
+                          title: 企业名称
+                      x-apifox-orders:
+                      - operationTime
+                      - srcIp
+                      - creditCode
+                      - loginType
+                      - enterpriseName
+                      required:
+                      - operationTime
+                      - srcIp
+                      - creditCode
+                      - loginType
+                      - enterpriseName
+                    title: 业务数据
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                required:
+                - code
+                - success
+                - reqId
+                - message
+                x-apifox-refs: {}
+              examples:
+                成功:
+                  summary: 成功
+                  value:
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                    - creditCode: 91*********GW5N
+                      enterpriseName: 洛阳*****发展有限公司
+                      loginType: 代理业务
+                      operationTime: '2026-08-21 18:22:29'
+                      srcIp: 125.37.212.202
+                    timestamp: '2026-05-26 22:11:24'
+                    reqId: 5cbf95380e197235a0ad7e94765b9f3f
+      x-apifox-status: released
+  /v2/public/sszyfw/qlcx:
+    post:
+      summary: 涉税专业服务全量查询申请
+      operationId: api-507384314
+      tags:
+      - 登录业务（新） / 涉税专业服务
+      description: |
+        ##  接口描述
+        受托人（指代理机构企业），涉税专业服务机构正在代理中（进行中）的委托方企业全量查询申请；
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业ID
+                accountId:
+                  type: string
+                  title: 多账号id
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              required:
+              - aggOrgId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                $id: https://tax-report.example.com/platform-tax-response.schema.json
+                type: object
+                additionalProperties: false
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                properties:
+                  reqId:
+                    type: string
+                    description: 请求唯一标识，用于关联请求与响应，追踪业务链路
+                    minLength: 1
+                    maxLength: 64
+                    examples:
+                    - REQ202510160001000001
+                    - TAX_REQ_87654321
+                  code:
+                    type: string
+                    description: 响应状态码，标识请求处理结果（如成功、参数错误、系统异常等）
+                    minLength: 1
+                    maxLength: 10
+                    examples:
+                    - '0000'
+                    - '1001'
+                    - '5000'
+                  success:
+                    type: boolean
+                    description: 请求处理结果标识，true 表示处理成功，false 表示处理失败
+                    examples:
+                    - true
+                    - false
+                  message:
+                    type: string
+                    description: 响应提示信息，说明处理结果或错误原因，便于问题排查
+                    minLength: 1
+                    maxLength: 512
+                    examples:
+                    - 涉税信息报送成功
+                    - detail数组中证件号码格式错误，请核对后重新提交
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - 01K7PK6WER718SH7RH6EQTMZFQ
+                x-apifox-refs:
+                  01K7PK6WER718SH7RH6EQTMZFQ:
+                    $ref: '#/definitions/141932940'
+      x-apifox-status: released
+  /v2/public/sszyfw/qlcxResult:
+    post:
+      summary: 涉税专业服务全量查询结果查询
+      operationId: api-507388036
+      tags:
+      - 登录业务（新） / 涉税专业服务
+      description: |-
+        ##  接口描述
+
+        受托人（指代理机构企业），涉税专业服务机构正在代理中（进行中）的委托方企业全量查询申请的结果；
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 维护企业信息接口返回的 aggOrgId
+                taskId:
+                  type: string
+                  title: 任务ID
+                accountId:
+                  type: string
+                  title: 多账号ID
+              required:
+              - aggOrgId
+              - taskId
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              - taskId
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                $id: https://tax-report.example.com/platform-tax-response.schema.json
+                type: object
+                additionalProperties: false
+                required:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                properties:
+                  reqId:
+                    type: string
+                    description: 请求唯一标识，用于关联请求与响应，追踪业务链路
+                    minLength: 1
+                    maxLength: 64
+                    examples:
+                    - REQ202510160001000001
+                    - TAX_REQ_87654321
+                  code:
+                    type: string
+                    description: 响应状态码，标识请求处理结果（如成功、参数错误、系统异常等）
+                    minLength: 1
+                    maxLength: 10
+                    examples:
+                    - '0000'
+                    - '1001'
+                    - '5000'
+                  success:
+                    type: boolean
+                    description: 请求处理结果标识，true 表示处理成功，false 表示处理失败
+                    examples:
+                    - true
+                    - false
+                  message:
+                    type: string
+                    description: 响应提示信息，说明处理结果或错误原因，便于问题排查
+                    minLength: 1
+                    maxLength: 512
+                    examples:
+                    - 涉税信息报送成功
+                    - detail数组中证件号码格式错误，请核对后重新提交
+                  data:
+                    type: object
+                    description: 响应核心数据
+                    additionalProperties: false
+                    properties:
+                      taskId:
+                        type: string
+                        title: 任务ID
+                      businessStatus:
+                        type: string
+                        description: |+
+                          1：执行中；2：失败；3：已完成
+
+                        title: 任务执行状态
+                      serviceCode:
+                        type: string
+                        title: 任务类型代码
+                      code:
+                        type: string
+                        title: 任务code
+                      message:
+                        type: string
+                        title: 执行任务信息
+                      result:
+                        type: object
+                        properties: {}
+                        x-apifox-orders:
+                        - 01M111NYTWKTZ37DVVHB86JBA6
+                        x-apifox-refs:
+                          01M111NYTWKTZ37DVVHB86JBA6:
+                            $ref: '#/definitions/308547006'
+                            x-apifox-overrides:
+                              responseJsonUrl: null
+                    x-apifox-orders:
+                    - taskId
+                    - serviceCode
+                    - businessStatus
+                    - code
+                    - message
+                    - result
+                    x-apifox-refs: {}
+                    required:
+                    - taskId
+                    - serviceCode
+                    - businessStatus
+                    - code
+                    - message
+                    - result
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                x-apifox-refs: {}
       x-apifox-status: released

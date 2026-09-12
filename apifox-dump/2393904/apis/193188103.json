@@ -1486,6 +1486,79 @@
       "mediaType": "",
       "headers": [],
       "oasExtensions": ""
+    },
+    {
+      "id": 182903489,
+      "name": "医疗服务（住院）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01JBP1HSWTFNX62B30DKR9P718": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JDTZRQM70RG0TCN00YYD14VN": {
+                      "$ref": "#/definitions/35326710",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "title": "查验结果",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "x-apifox-refs": {
+                            "01JDTZSFKNRDPQTHSF4M54AB44": {
+                              "$ref": "#/definitions/107884339",
+                              "x-apifox-overrides": {
+                                "tspzxx": {
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ],
+                                  "items": {
+                                    "$ref": "#/definitions/299058482"
+                                  },
+                                  "title": "特殊票种信息"
+                                }
+                              }
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01JDTZSFKNRDPQTHSF4M54AB44"
+                          ],
+                          "properties": {}
+                        }
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JDTZRQM70RG0TCN00YYD14VN"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01JBP1HSWTFNX62B30DKR9P718"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
     }
   ],
   "responseExamples": [
@@ -1792,11 +1865,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-12T02:51:11.000Z",
-  "updatedAt": "2026-06-10T04:14:52.000Z",
+  "updatedAt": "2026-07-28T09:30:21.000Z",
   "creatorId": 1426961,
-  "editorId": 1564651,
+  "editorId": 3099717,
   "creatorUserId": 1426961,
-  "editorUserId": 1564651,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

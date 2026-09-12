@@ -38,6 +38,9 @@
         "taskId"
       ]
     },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
     "oasExtensions": ""
   },
   "parameters": {
@@ -151,7 +154,7 @@
               "result": {
                 "type": "string",
                 "title": "清单结果",
-                "description": "附录--获取审核结果清单说明https://openapi.qixiangyun.com/doc-8019423"
+                "description": "附录--获取审核结果清单说明https://openapi.qixiangyun.com/doc-8817935"
               }
             },
             "x-apifox-refs": {},
@@ -221,11 +224,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-07-31T07:26:28.000Z",
-  "updatedAt": "2026-01-13T07:59:08.000Z",
+  "updatedAt": "2026-08-19T03:16:53.000Z",
   "creatorId": 1910680,
-  "editorId": 1476015,
+  "editorId": 1564651,
   "creatorUserId": 1910680,
-  "editorUserId": 1476015,
+  "editorUserId": 1564651,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

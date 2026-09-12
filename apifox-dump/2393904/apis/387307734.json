@@ -48,6 +48,11 @@
           "type": "string",
           "title": "税款所属期止\t",
           "description": "格式：YYYYMM，查询跨度不能超过12个月，允许跨年"
+        },
+        "xzdwsbjlb": {
+          "type": "string",
+          "description": "传：是、否。是则返回下载表，否则不返回",
+          "title": "是否下载单位申报记录表"
         }
       },
       "required": [
@@ -60,7 +65,8 @@
         "aggOrgId",
         "accountId",
         "skssqq",
-        "skssqz"
+        "skssqz",
+        "xzdwsbjlb"
       ]
     },
     "required": false,
@@ -168,10 +174,16 @@
               "screenshot": {
                 "type": "string",
                 "title": "单位申报记录截图"
+              },
+              "dwsbjlb": {
+                "type": "string",
+                "description": "返回url，（xzdwsbjlb=是）",
+                "title": "单位申报记录表"
               }
             },
             "x-apifox-orders": [
-              "screenshot"
+              "screenshot",
+              "dwsbjlb"
             ]
           },
           "success": {
@@ -210,7 +222,7 @@
     {
       "name": "成功示例",
       "responseId": 591913511,
-      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"8afc14e4324c746d06\",\n    \"data\": {\n        \"screenshot\": \"https://...\"\n    }\n}",
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"reqId\": \"8afc14e4324c746d06\",\n    \"data\": {\n        \"screenshot\": \"https://...\",\n        \"dwsbjlb\": \"https://...\"\n    }\n}",
       "id": 464284825
     },
     {
@@ -241,11 +253,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-06T03:51:43.000Z",
-  "updatedAt": "2025-12-19T07:36:46.000Z",
+  "updatedAt": "2026-07-01T07:41:46.000Z",
   "creatorId": 1910680,
-  "editorId": 3222025,
+  "editorId": 1910680,
   "creatorUserId": 1910680,
-  "editorUserId": 3222025,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

@@ -93,6 +93,10 @@
         "xsgsd": {
           "title": "限售股所得",
           "$ref": "#/definitions/139620459"
+        },
+        "bmbh": {
+          "type": "string",
+          "title": "部门编号"
         }
       },
       "required": [
@@ -103,6 +107,7 @@
       "x-apifox-orders": [
         "aggOrgId",
         "accountId",
+        "bmbh",
         "skssq",
         "zhsd",
         "flsd",
@@ -282,11 +287,11 @@
     "enable": false
   },
   "createdAt": "2025-01-04T09:35:58.000Z",
-  "updatedAt": "2026-05-13T08:00:52.000Z",
+  "updatedAt": "2026-07-23T10:27:24.000Z",
   "creatorId": 1452584,
-  "editorId": 3222025,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 3222025,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

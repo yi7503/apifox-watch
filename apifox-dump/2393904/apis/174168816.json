@@ -97,17 +97,17 @@
                   "zz_fpdm": {
                     "type": "string",
                     "title": "发票代码",
-                    "description": "增值税发票必传"
+                    "description": "税控发票和数电纸质发票必传"
                   },
                   "fphm": {
                     "type": "string",
                     "title": "数电票号码",
-                    "description": "数电票必传"
+                    "description": "数电电票票和数电纸质发票必传"
                   },
                   "zz_fphm": {
                     "type": "string",
                     "title": "发票号码",
-                    "description": "增值税发票必传"
+                    "description": "税控发票和数电纸质发票必传"
                   },
                   "fplxDm": {
                     "type": "string",
@@ -586,16 +586,22 @@
   ],
   "responseExamples": [
     {
-      "name": "成功示例",
+      "name": "同步成功示例",
       "responseId": 451074672,
-      "data": "{\n    \"reqId\": \"23f8b9b8de834e1aa96f86f0fe67d1b5\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"rzuuid\": \"bcb87699dfd94478a462e2ad0c09ad17\"\n    }\n}",
+      "data": "{\n    \"reqId\": \"23f8b9b8de834e1aa96f86f0fe6****\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"rzuuid\": \"bcb87699dfd94478a462e2ad0c09***\"\n    }\n}",
       "id": 410435905
     },
     {
       "name": "请求超时转异步示例",
       "responseId": 451074672,
-      "data": "{\r\n    \"success\": true,\r\n    \"code\": \"2000\",\r\n    \"message\": null,\r\n    \"reqId\": \"476030dc57824fa1bd622f186f18da48\",\r\n    \"data\": {\r\n        \"requestId\": \"1d5d8c5a1d02441493b8a2c57810xxxx\",\r\n        \"message\": \"异步调用完成，请等待回调结果或主动调用asynResult进行业务结果查询\"\r\n    }\r\n}",
+      "data": "{\r\n    \"code\": \"2001\",\r\n    \"success\": true,\r\n    \"message\": \"任务执行超时，本次请求已自动转为异步方式，可通过异步请求结果查询获取结果。\",\r\n    \"data\": {\r\n        \"code\": \"700009\",\r\n        \"requestId\": \"2026083101303468968***\",\r\n        \"message\": \"任务执行超时，本次请求已自动转为异步方式，可通过异步请求结果查询获取结果。\"\r\n    },\r\n    \"timestamp\": \"2026-08-31 01:31:14\",\r\n    \"reqId\": \"9f6d3b8182fac03f762a0d1f6b***\"\r\n}",
       "id": "019e6773-9eac-70e9-8c46-5a34fc9050e6"
+    },
+    {
+      "name": "异步成功示例",
+      "responseId": 451074672,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"requestId\": \"2026083116011057206***\",\r\n        \"message\": \"异步调用完成，请稍后调用asynResult进行结果查询\"\r\n    },\r\n    \"timestamp\": \"2026-08-31 16:01:10\",\r\n    \"reqId\": \"7d7cdec8223c982ea659c3d92f***\"\r\n}",
+      "id": "01a056d7-9303-7319-bac5-181505d519dd"
     }
   ],
   "codeSamples": [],
@@ -613,11 +619,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-12T11:18:06.000Z",
-  "updatedAt": "2026-05-27T03:21:31.000Z",
+  "updatedAt": "2026-08-31T07:56:48.000Z",
   "creatorId": 887900,
-  "editorId": 1391922,
+  "editorId": 2118003,
   "creatorUserId": 887900,
-  "editorUserId": 1391922,
+  "editorUserId": 2118003,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

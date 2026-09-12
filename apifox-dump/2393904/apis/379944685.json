@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整本年度或历史年度缴费工资。\n四川、浙江、宁波、深圳、山西、福建、内蒙古地区的可用月底缴费工资调整\n该接口于2026年1月6日将调整为异步接口，请各位客户做好适配。具体参数请看文档https://doc.weixin.qq.com/doc/w3_AT4AdwZQAO0CNBtloKvNbTUqq41KB?scode=AM4ARwdGAA4P4hFlBNAT4AdwZQAO0",
+  "description": "新入职员工或缴费工资发生调整，需要申报年度缴费工资的，本接口支持新参保、调整在参人员本年度或历史年度缴费工资（税局规定通常只能调高不能调低，调高需要缴款）。\n四川、浙江、宁波、深圳、山西、福建、内蒙古、宁夏、西藏、海南、辽宁地区的可用月度缴费工资调整\n",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -74,18 +74,17 @@
               },
               "sxyfq": {
                 "type": "string",
-                "description": "生效月份起\n"
+                "description": "生效月份起，不填写默认为当前月，格式为YYYYMM"
               },
               "sxyfz": {
                 "type": "string",
-                "description": "生效月份止\n"
+                "description": "生效月份止，格式为YYYYMM"
               }
             },
             "required": [
               "xm",
               "zjhm",
-              "xjfgz",
-              "sxyfq"
+              "xjfgz"
             ],
             "x-apifox-orders": [
               "xm",
@@ -134,7 +133,7 @@
               },
               "zgdeylhzbxjfgz": {
                 "type": "number",
-                "description": "职工大额医疗互助保险缴费工资"
+                "description": "职工大额医疗互助保险缴费工资，没有则不传"
               },
               "gsbxjfgz": {
                 "type": "number",
@@ -142,11 +141,11 @@
               },
               "sxyfq": {
                 "type": "string",
-                "description": "生效月份起"
+                "description": "生效月份起，不填写默认为当前月，格式为YYYYMM"
               },
               "sxyfz": {
                 "type": "string",
-                "description": "生效月份止"
+                "description": "生效月份止，格式为YYYYMM"
               },
               "cqhlbx": {
                 "type": "number",
@@ -155,12 +154,7 @@
             },
             "required": [
               "xm",
-              "zjhm",
-              "zgjbylbxjfgz",
-              "sybxjfgz",
-              "zgjbyliaobxjfgz",
-              "zgdeylhzbxjfgz",
-              "gsbxjfgz"
+              "zjhm"
             ],
             "x-apifox-orders": [
               "xm",
@@ -305,11 +299,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-11-21T02:06:47.000Z",
-  "updatedAt": "2026-04-21T02:40:48.000Z",
+  "updatedAt": "2026-08-14T02:00:37.000Z",
   "creatorId": 1442097,
-  "editorId": 1910680,
+  "editorId": 1442097,
   "creatorUserId": 1442097,
-  "editorUserId": 1910680,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

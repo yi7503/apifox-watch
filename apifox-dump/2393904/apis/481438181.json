@@ -1,0 +1,336 @@
+{
+  "id": 481438181,
+  "name": "查询成品油库存变动明细信息",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "成品油业务-查询成品油库存变动明细信息\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/qdfp/queryKcbdmx",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "nsrsbh": {
+          "type": "string",
+          "title": "税号"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "pageNumber": {
+              "type": "integer",
+              "title": "页码",
+              "description": "默认：1"
+            },
+            "pageSize": {
+              "type": "integer",
+              "title": "每页记录数",
+              "description": "默认：10，最大：50"
+            },
+            "cxssny": {
+              "type": "string",
+              "title": "查询月份",
+              "description": "不能大于当前月,格式 yyyyMM"
+            },
+            "ypbm": {
+              "type": "string",
+              "title": "成品油税编"
+            },
+            "kcbdlx": {
+              "type": "string",
+              "enum": [
+                "1",
+                "2"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "1",
+                  "name": "增加",
+                  "description": ""
+                },
+                {
+                  "value": "2",
+                  "name": "减少",
+                  "description": ""
+                }
+              ],
+              "title": "变动类型",
+              "description": "1：增加；2：减少"
+            },
+            "bdfl": {
+              "type": "string",
+              "title": "变动分类",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8 ",
+                "9"
+              ],
+              "x-apifox-enum": [
+                {
+                  "value": "1",
+                  "name": "增值税发票",
+                  "description": ""
+                },
+                {
+                  "value": "2",
+                  "name": "海关缴款书",
+                  "description": ""
+                },
+                {
+                  "value": "3",
+                  "name": "税务机关补录",
+                  "description": ""
+                },
+                {
+                  "value": "4",
+                  "name": "油品调拨",
+                  "description": ""
+                },
+                {
+                  "value": "5",
+                  "name": "油品回退",
+                  "description": ""
+                },
+                {
+                  "value": "6",
+                  "name": "乙醇汽油调配",
+                  "description": ""
+                },
+                {
+                  "value": "7",
+                  "name": "库存退回",
+                  "description": ""
+                },
+                {
+                  "value": "8 ",
+                  "name": "库存下载",
+                  "description": ""
+                },
+                {
+                  "value": "9",
+                  "name": "库存下载取消",
+                  "description": ""
+                }
+              ],
+              "description": "目前仅支持：增值税发票、油品调拨、油品回退；\n库存增加可选变动分类：1增值税发票、2海关缴款书、3税务机关补录、4油品调拨、6乙醇汽油调配、7库存退回、9库存下载取消\n库存减少可选变动分类：1增值税发票、2税务机关补录、5油品回退、6乙醇汽油调配、8库存下载、7库存退回"
+            }
+          },
+          "x-apifox-orders": [
+            "cxssny",
+            "ypbm",
+            "kcbdlx",
+            "bdfl",
+            "pageNumber",
+            "pageSize"
+          ],
+          "required": [
+            "kcbdlx",
+            "bdfl",
+            "cxssny",
+            "ypbm"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "nsrsbh",
+        "01JAA099QH73978DKKD71TW15M",
+        "data"
+      ],
+      "x-apifox-refs": {
+        "01JAA099QH73978DKKD71TW15M": {
+          "$ref": "#/definitions/79273658"
+        }
+      },
+      "required": [
+        "nsrsbh",
+        "data"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"nsrsbh\": \"91**********QY4Y\",\r\n    \"data\": {\r\n        \"cxssny\": \"202606\",\r\n        \"kcbdlx\": \"1\",\r\n        \"bdfl\": \"1\",\r\n        \"pageNumber\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": []
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 434683201,
+      "name": "成功-增值税发票",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KWGTP1DG7Y85N2SWSP63PGCA"
+            ],
+            "x-apifox-refs": {
+              "01KWGTP1DG7Y85N2SWSP63PGCA": {
+                "$ref": "#/definitions/290492623"
+              }
+            },
+            "required": []
+          }
+        },
+        "x-apifox-orders": [
+          "01HVKDS7N9RXXVA81489RZ05WM",
+          "data"
+        ],
+        "x-apifox-refs": {
+          "01HVKDS7N9RXXVA81489RZ05WM": {
+            "$ref": "#/definitions/85577914"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 118522700,
+      "name": "成功-油品调拨（油品回退）",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [
+              "01KWGV7X3PBN5PTSHJ6QD6XR5V"
+            ],
+            "required": [],
+            "x-apifox-refs": {
+              "01KWGV7X3PBN5PTSHJ6QD6XR5V": {
+                "$ref": "#/definitions/290510456"
+              }
+            }
+          },
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "null"
+          },
+          "reqId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 434683201,
+      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"pageNumber\": 1,\n        \"pageSize\": 10,\n        \"total\": 1,\n        \"list\": [\n            {\n                \"xh\": 1,\n                \"fplx\": \"数电发票（增值税专用发票）\",\n                \"fphm\": \"26*****************46\",\n                \"ypmc\": \"柴油\",\n                \"ypbm\": \"1070101030100000000\",\n                \"cpytjzdbgsl\": \"3.757\",\n                \"kjrq\": \"2026-06-10\",\n                \"bdfsText\": \"销售红冲\",\n                \"bdsj\": \"2026-06-10 11:30:11\"\n            }\n        ]\n    },\n    \"success\": true,\n    \"message\": null,\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\n}",
+      "id": 405632304
+    },
+    {
+      "name": "成功示例",
+      "responseId": 118522700,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"pageNumber\": 1,\r\n        \"pageSize\": 10,\r\n        \"total\": 1,\r\n        \"list\": [\r\n            {\r\n                \"xh\": 1,\r\n                \"ypmc\": \"柴油\",\r\n                \"ypbm\": \"1070101030100000000\",\r\n                \"cpytjzdbgsl\": \"1000\",\r\n                \"dbsj\": \"2026-06-24 10:50:50\"\r\n            }\r\n        ]\r\n    },\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"reqId\": \"832ab1b361f462a2869f66b3f523ad81\"\r\n}",
+      "id": "019f21b4-357b-740f-bf0a-f06c70cff35f"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 32480793,
+  "ordering": 77,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-02T06:58:50.000Z",
+  "updatedAt": "2026-07-08T06:03:12.000Z",
+  "creatorId": 3099717,
+  "editorId": 3600994,
+  "creatorUserId": 3099717,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

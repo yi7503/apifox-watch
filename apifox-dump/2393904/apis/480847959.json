@@ -1,0 +1,721 @@
+{
+  "id": 480847959,
+  "name": "申报缴款情况查询反馈",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "mRIWjAcU0xXTtjxeFQGn4",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbxweb/sbjkqkcxfk",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID，多账户场景"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "description": "响应核心数据",
+            "additionalProperties": false,
+            "properties": {
+              "taskId": {
+                "type": "string",
+                "title": "任务ID"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "信息"
+              },
+              "businessStatus": {
+                "type": "string",
+                "description": "\n\n",
+                "title": "任务执行状态"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "任务类型代码"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业ID"
+              },
+              "serviceName": {
+                "type": "string",
+                "title": "任务类型代码名称"
+              },
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务执行状态名称"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "sbjkqkurl": {
+                    "type": "string",
+                    "title": "申报缴款情况链接",
+                    "description": "返回url，压缩后的json数组，参考本节点下内容结构\n返回链接统一用https\n具体字段参考示例"
+                  },
+                  "ossUrl内容结构": {
+                    "type": "object",
+                    "properties": {
+                      "sbjklb": {
+                        "type": "array",
+                        "description": "申报缴款记录列表",
+                        "items": {
+                          "type": "object",
+                          "description": "申报缴款记录",
+                          "properties": {
+                            "sblsh": {
+                              "type": "string",
+                              "description": "申报流水号"
+                            },
+                            "yjfehj": {
+                              "type": "number",
+                              "description": "应缴费额"
+                            },
+                            "yijfehj": {
+                              "type": "number",
+                              "description": "已缴费额合计"
+                            },
+                            "fkssqq": {
+                              "type": "string",
+                              "description": "费款所属期起 YYYYMM"
+                            },
+                            "fkssqz": {
+                              "type": "string",
+                              "description": "费款所属期止 YYYYMM"
+                            },
+                            "sbrq": {
+                              "type": "string",
+                              "description": "申报日期 YYYY-MM-DD"
+                            },
+                            "sbfs": {
+                              "type": "string",
+                              "description": "申报方式，返回中文"
+                            },
+                            "sbhzb": {
+                              "type": "array",
+                              "description": "申报汇总表，元素字段见 2",
+                              "items": {
+                                "type": "object",
+                                "description": "申报汇总表元素",
+                                "properties": {
+                                  "fkssqq": {
+                                    "type": "string",
+                                    "description": "费款所属期起 YYYYMM"
+                                  },
+                                  "fkssqz": {
+                                    "type": "string",
+                                    "description": "费款所属期止 YYYYMM"
+                                  },
+                                  "zsxm": {
+                                    "type": "string",
+                                    "description": "征收项目，返回中文"
+                                  },
+                                  "zspm": {
+                                    "type": "string",
+                                    "description": "征收品目，返回中文"
+                                  },
+                                  "jfrs": {
+                                    "type": "number",
+                                    "description": "缴费人数"
+                                  },
+                                  "jfjsze": {
+                                    "type": "number",
+                                    "description": "缴费基数总额"
+                                  },
+                                  "fl": {
+                                    "type": "number",
+                                    "description": "费率"
+                                  },
+                                  "yjje": {
+                                    "type": "number",
+                                    "description": "应缴金额"
+                                  },
+                                  "jfjsdwhj": {
+                                    "type": "number",
+                                    "description": "缴费基数总额-单位合计"
+                                  },
+                                  "jfjsgrhj": {
+                                    "type": "number",
+                                    "description": "缴费基数总额-个人合计"
+                                  },
+                                  "jfjshj": {
+                                    "type": "number",
+                                    "description": "缴费基数总额-总计"
+                                  },
+                                  "yjjedwhj": {
+                                    "type": "number",
+                                    "description": "应缴金额-单位合计"
+                                  },
+                                  "yjjegrhj": {
+                                    "type": "number",
+                                    "description": "应缴金额-个人合计"
+                                  },
+                                  "yjjehj": {
+                                    "type": "number",
+                                    "description": "应缴金额-总计"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "fkssqq",
+                                  "fkssqz",
+                                  "zsxm",
+                                  "zspm",
+                                  "jfrs",
+                                  "jfjsze",
+                                  "fl",
+                                  "yjje",
+                                  "jfjsdwhj",
+                                  "jfjsgrhj",
+                                  "jfjshj",
+                                  "yjjedwhj",
+                                  "yjjegrhj",
+                                  "yjjehj"
+                                ]
+                              }
+                            },
+                            "sbmx": {
+                              "type": "array",
+                              "description": "申报明细表，元素字段见 3",
+                              "items": {
+                                "type": "object",
+                                "description": "申报明细表元素",
+                                "properties": {
+                                  "xm": {
+                                    "type": "string",
+                                    "description": "姓名"
+                                  },
+                                  "zjlx": {
+                                    "type": "string",
+                                    "description": "证件类型，返回中文"
+                                  },
+                                  "zjhm": {
+                                    "type": "string",
+                                    "description": "证件号码"
+                                  },
+                                  "grsbh": {
+                                    "type": "string",
+                                    "description": "个人社保号"
+                                  },
+                                  "fkssqq": {
+                                    "type": "string",
+                                    "description": "费款所属期起 YYYYMM"
+                                  },
+                                  "fkssqz": {
+                                    "type": "string",
+                                    "description": "费款所属期止 YYYYMM"
+                                  },
+                                  "jbyljfjsdw": {
+                                    "type": "number",
+                                    "description": "基本养老保险缴费基数-单位"
+                                  },
+                                  "jbylyjjedw": {
+                                    "type": "number",
+                                    "description": "基本养老保险应缴金额-单位"
+                                  },
+                                  "jbyljfjsgr": {
+                                    "type": "number",
+                                    "description": "基本养老保险缴费基数-个人"
+                                  },
+                                  "jbylyjjegr": {
+                                    "type": "number",
+                                    "description": "基本养老保险应缴金额-个人"
+                                  },
+                                  "syjfjsdw": {
+                                    "type": "number",
+                                    "description": "失业保险缴费基数-单位"
+                                  },
+                                  "syyjjedw": {
+                                    "type": "number",
+                                    "description": "失业保险应缴金额-单位"
+                                  },
+                                  "syjfjsgr": {
+                                    "type": "number",
+                                    "description": "失业保险缴费基数-个人"
+                                  },
+                                  "syyjjegr": {
+                                    "type": "number",
+                                    "description": "失业保险应缴金额-个人"
+                                  },
+                                  "jbyiliaojfjsdw": {
+                                    "type": "number",
+                                    "description": "基本医疗保险缴费基数-单位"
+                                  },
+                                  "jbyiliaoyjjedw": {
+                                    "type": "number",
+                                    "description": "基本医疗保险应缴金额-单位"
+                                  },
+                                  "jbyiliaojfjsgr": {
+                                    "type": "number",
+                                    "description": "基本医疗保险缴费基数-个人"
+                                  },
+                                  "jbyiliaoyjjegr": {
+                                    "type": "number",
+                                    "description": "基本医疗保险应缴金额-个人"
+                                  },
+                                  "gsjfjs": {
+                                    "type": "number",
+                                    "description": "工伤保险缴费基数"
+                                  },
+                                  "gsyjje": {
+                                    "type": "number",
+                                    "description": "工伤保险应缴金额"
+                                  },
+                                  "gebcyljfjs": {
+                                    "type": "number",
+                                    "description": "高额补充医疗保险缴费基数-单位"
+                                  },
+                                  "gebcylyjje": {
+                                    "type": "number",
+                                    "description": "高额补充医疗保险应缴金额-单位"
+                                  },
+                                  "tdrydxgsjfjs": {
+                                    "type": "number",
+                                    "description": "特定人员单项工伤保险缴费基数"
+                                  },
+                                  "drydxgsyjje": {
+                                    "type": "number",
+                                    "description": "特定人员单项工伤保险应缴金额"
+                                  },
+                                  "bcjbyiliaojfjsdw": {
+                                    "type": "number",
+                                    "description": "补充基本医疗保险缴费基数-单位"
+                                  },
+                                  "bcjbyiliaoyjjedw": {
+                                    "type": "number",
+                                    "description": "补充基本医疗保险应缴金额-单位"
+                                  },
+                                  "bcjbyiliaojfjsgr": {
+                                    "type": "number",
+                                    "description": "补充基本医疗保险缴费基数-个人"
+                                  },
+                                  "bcjbyiliaoyjjegr": {
+                                    "type": "number",
+                                    "description": "补充基本医疗保险应缴金额-个人"
+                                  },
+                                  "xxxxjfjs": {
+                                    "type": "number",
+                                    "description": "xxx险种缴费基数"
+                                  },
+                                  "xxxxyjje": {
+                                    "type": "number",
+                                    "description": "xxx险种应缴金额"
+                                  },
+                                  "dwbfhj": {
+                                    "type": "number",
+                                    "description": "单位部分合计"
+                                  },
+                                  "grbfhj": {
+                                    "type": "number",
+                                    "description": "个人部分合计"
+                                  },
+                                  "yjjehj": {
+                                    "type": "number",
+                                    "description": "应缴金额合计"
+                                  },
+                                  "zyjbyljfjsdw": {
+                                    "type": "number",
+                                    "description": "住院基本医疗保险缴费基数-单位\n"
+                                  },
+                                  "zyjbylyjjedw": {
+                                    "type": "number",
+                                    "description": "住院基本医疗保险应缴金额-单位\n"
+                                  },
+                                  "zyjbyljfjsgr": {
+                                    "type": "number",
+                                    "description": "住院基本医疗保险缴费基数-个人\n"
+                                  },
+                                  "zyjbylyjjegr": {
+                                    "type": "number",
+                                    "description": "住院基本医疗保险应缴金额-个人\n"
+                                  },
+                                  "zyjbyltxjfjsdw": {
+                                    "type": "number",
+                                    "description": "住院基本医疗保险（退休）缴费基数-单位\n"
+                                  },
+                                  "zyjbyltxyjjedw": {
+                                    "type": "number",
+                                    "description": "住院基本医疗保险（退休）应缴金额-单位\n"
+                                  },
+                                  "zhjbyltxjfjsdw": {
+                                    "type": "number",
+                                    "description": "综合基本医疗保险（退休）缴费基数-单位\n"
+                                  },
+                                  "zhjbyltxyjjedw": {
+                                    "type": "number",
+                                    "description": "综合基本医疗保险（退休）应缴金额-单位\n"
+                                  },
+                                  "nmgsyjfjsdw": {
+                                    "type": "number",
+                                    "description": "农民工失业保险缴费基数-单位"
+                                  },
+                                  "nmgsyyjjedw": {
+                                    "type": "number",
+                                    "description": "农民工失业保险应缴金额-单位"
+                                  },
+                                  "nmgsyjfjsgr": {
+                                    "type": "number",
+                                    "description": "农民工失业保险缴费基数-个人"
+                                  },
+                                  "nmgsyyjjegr": {
+                                    "type": "number",
+                                    "description": "农民工失业保险应缴金额-个人"
+                                  },
+                                  "wzmyyljfjsdw": {
+                                    "type": "number",
+                                    "description": "外资民营个体经济养老保险缴费基数-单位"
+                                  },
+                                  "wzmyylyjjedw": {
+                                    "type": "number",
+                                    "description": "外资民营个体经济养老保险应缴金额-单位"
+                                  },
+                                  "wzmyyljfjsgr": {
+                                    "type": "number",
+                                    "description": "外资民营个体经济养老保险缴费基数-个人"
+                                  },
+                                  "wzmyylyjjegr": {
+                                    "type": "number",
+                                    "description": "外资民营个体经济养老保险应缴金额-个人"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "xm",
+                                  "zjlx",
+                                  "zjhm",
+                                  "grsbh",
+                                  "fkssqq",
+                                  "fkssqz",
+                                  "jbyljfjsdw",
+                                  "jbylyjjedw",
+                                  "jbyljfjsgr",
+                                  "jbylyjjegr",
+                                  "syjfjsdw",
+                                  "syyjjedw",
+                                  "syjfjsgr",
+                                  "syyjjegr",
+                                  "jbyiliaojfjsdw",
+                                  "jbyiliaoyjjedw",
+                                  "jbyiliaojfjsgr",
+                                  "jbyiliaoyjjegr",
+                                  "gsjfjs",
+                                  "gsyjje",
+                                  "gebcyljfjs",
+                                  "gebcylyjje",
+                                  "tdrydxgsjfjs",
+                                  "drydxgsyjje",
+                                  "bcjbyiliaojfjsdw",
+                                  "bcjbyiliaoyjjedw",
+                                  "bcjbyiliaojfjsgr",
+                                  "bcjbyiliaoyjjegr",
+                                  "zyjbyljfjsdw",
+                                  "zyjbylyjjedw",
+                                  "zyjbyljfjsgr",
+                                  "zyjbylyjjegr",
+                                  "zyjbyltxjfjsdw",
+                                  "zyjbyltxyjjedw",
+                                  "zhjbyltxjfjsdw",
+                                  "zhjbyltxyjjedw",
+                                  "nmgsyjfjsdw",
+                                  "nmgsyyjjedw",
+                                  "nmgsyjfjsgr",
+                                  "nmgsyyjjegr",
+                                  "wzmyyljfjsdw",
+                                  "wzmyylyjjedw",
+                                  "wzmyyljfjsgr",
+                                  "wzmyylyjjegr",
+                                  "xxxxjfjs",
+                                  "xxxxyjje",
+                                  "dwbfhj",
+                                  "grbfhj",
+                                  "yjjehj"
+                                ],
+                                "required": [
+                                  "wzmyylyjjedw"
+                                ]
+                              }
+                            },
+                            "jkqk": {
+                              "type": "array",
+                              "description": "缴款情况，元素字段见 4",
+                              "items": {
+                                "type": "object",
+                                "description": "缴款情况元素",
+                                "properties": {
+                                  "sblsh": {
+                                    "type": "string",
+                                    "description": "申报流水号"
+                                  },
+                                  "zsxm": {
+                                    "type": "string",
+                                    "description": "征收项目，返回中文"
+                                  },
+                                  "zspm": {
+                                    "type": "string",
+                                    "description": "征收品目，返回中文"
+                                  },
+                                  "fkssqq": {
+                                    "type": "string",
+                                    "description": "费款所属期起 YYYYMM"
+                                  },
+                                  "fkssqz": {
+                                    "type": "string",
+                                    "description": "费款所属期止 YYYYMM"
+                                  },
+                                  "yjkzje": {
+                                    "type": "number",
+                                    "description": "应缴款总金额"
+                                  },
+                                  "yijkzje": {
+                                    "type": "number",
+                                    "description": "已缴款总金额"
+                                  },
+                                  "jkrq": {
+                                    "type": "string",
+                                    "description": "缴款日期"
+                                  },
+                                  "jkqx": {
+                                    "type": "string",
+                                    "description": "缴款期限"
+                                  },
+                                  "yjkzjehj": {
+                                    "type": "number",
+                                    "description": "应缴款总金额合计"
+                                  },
+                                  "yijkzjehj": {
+                                    "type": "number",
+                                    "description": "已缴款总金额合计"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "sblsh",
+                                  "zsxm",
+                                  "zspm",
+                                  "fkssqq",
+                                  "fkssqz",
+                                  "yjkzje",
+                                  "yijkzje",
+                                  "jkrq",
+                                  "jkqx",
+                                  "yjkzjehj",
+                                  "yijkzjehj"
+                                ]
+                              }
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "sblsh",
+                            "yjfehj",
+                            "yijfehj",
+                            "fkssqq",
+                            "fkssqz",
+                            "sbrq",
+                            "sbfs",
+                            "sbhzb",
+                            "sbmx",
+                            "jkqk"
+                          ]
+                        }
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "sbjklb"
+                    ],
+                    "description": "ossUrl链接内容的参考节点",
+                    "title": "参考节点"
+                  }
+                },
+                "x-apifox-orders": [
+                  "sbjkqkurl",
+                  "ossUrl内容结构"
+                ]
+              }
+            },
+            "x-apifox-orders": [
+              "taskId",
+              "aggOrgId",
+              "code",
+              "message",
+              "serviceCode",
+              "serviceName",
+              "businessStatus",
+              "businessStatusName",
+              "result"
+            ],
+            "x-apifox-refs": {},
+            "required": [
+              "taskId",
+              "serviceCode",
+              "aggOrgId",
+              "serviceName",
+              "businessStatusName",
+              "businessStatus"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"message\": \"成功\",\n    \"data\": {\n        \"taskId\": \"2321345678\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"shbx-web-sfxyjk\",\n        \"businessStatus\": \"3\",\n        \"message\": \"成功\",\n        \"result\": {\n            \"sbjkqkurl\": \"https://....\"\n        }\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    },
+    {
+      "name": "申报缴款情况文件详情",
+      "responseId": 789981527,
+      "data": "\r\n#### 1 申报缴款记录（`sbjklb` 元素）\r\n\r\n| 字段 | 类型 | 说明 |\r\n|---|---|---|\r\n| `sblsh` | string | 申报流水号 |\r\n| `yjfehj` | number | 应缴费额 |\r\n| `yijfehj` | number | 已缴费额合计 |\r\n| `fkssqq` | string | 费款所属期起 YYYYMM |\r\n| `fkssqz` | string | 费款所属期止 YYYYMM |\r\n| `sbrq` | string | 申报日期 YYYY-MM-DD |\r\n| `sbfs` | string | 申报方式，返回中文 |\r\n| `sbhzb` | list | 申报汇总表，元素字段见 2 |\r\n| `sbmx` | list | 申报明细表，元素字段见 3 |\r\n| `jkqk` | list | 缴款情况，元素字段见 4 |\r\n\r\n#### 2 申报汇总表（`sbhzb` 元素）\r\n\r\n| 字段 | 类型 | 说明 |\r\n|---|---|---|\r\n| `fkssqq` | string | 费款所属期起 YYYYMM |\r\n| `fkssqz` | string | 费款所属期止 YYYYMM |\r\n| `zsxm` | string | 征收项目，返回中文 |\r\n| `zspm` | string | 征收品目，返回中文 |\r\n| `jfrs` | number | 缴费人数 |\r\n| `jfjsze` | number | 缴费基数总额 |\r\n| `fl` | number | 费率 |\r\n| `yjje` | number | 应缴金额 |\r\n| `jfjsdwhj` | number | 缴费基数总额-单位合计 |\r\n| `jfjsgrhj` | number | 缴费基数总额-个人合计 |\r\n| `jfjshj` | number | 缴费基数总额-总计 |\r\n| `yjjedwhj` | number | 应缴金额-单位合计 |\r\n| `yjjegrhj` | number | 应缴金额-个人合计 |\r\n| `yjjehj` | number | 应缴金额-总计 |\r\n\r\n#### 3 申报明细表（`sbmx` 元素）\r\n\r\n| 字段 | 类型 | 说明 |\r\n|---|---|---|\r\n| `xm` | string | 姓名 |\r\n| `zjlx` | string | 证件类型，返回中文 |\r\n| `zjhm` | string | 证件号码 |\r\n| `grsbh` | string | 个人社保号 |\r\n| `fkssqq` | string | 费款所属期起 YYYYMM |\r\n| `fkssqz` | string | 费款所属期止 YYYYMM |\r\n| `jbyljfjsdw` | number | 基本养老保险缴费基数-单位 |\r\n| `jbylyjjedw` | number | 基本养老保险应缴金额-单位 |\r\n| `jbyljfjsgr` | number | 基本养老保险缴费基数-个人 |\r\n| `jbylyjjegr` | number | 基本养老保险应缴金额-个人 |\r\n| `syjfjsdw` | number | 失业保险缴费基数-单位 |\r\n| `syyjjedw` | number | 失业保险应缴金额-单位 |\r\n| `syjfjsgr` | number | 失业保险缴费基数-个人 |\r\n| `syyjjegr` | number | 失业保险应缴金额-个人 |\r\n| `jbyiliaojfjsdw` | number | 基本医疗保险缴费基数-单位 |\r\n| `jbyiliaoyjjedw` | number | 基本医疗保险应缴金额-单位 |\r\n| `jbyiliaojfjsgr` | number | 基本医疗保险缴费基数-个人 |\r\n| `jbyiliaoyjjegr` | number | 基本医疗保险应缴金额-个人 |\r\n| `gsjfjs` | number | 工伤保险缴费基数 |\r\n| `gsyjje` | number | 工伤保险应缴金额 |\r\n| `gebcyljfjs` | number | 高额补充医疗保险缴费基数-单位 |\r\n| `gebcylyjje` | number | 高额补充医疗保险应缴金额-单位 |\r\n| `tdrydxgsjfjs` | number | 特定人员单项工伤保险缴费基数 |\r\n| `drydxgsyjje` | number | 特定人员单项工伤保险应缴金额 |\r\n| `bcjbyiliaojfjsdw` | number | 补充基本医疗保险缴费基数-单位 |\r\n| `bcjbyiliaoyjjedw` | number | 补充基本医疗保险应缴金额-单位 |\r\n| `bcjbyiliaojfjsgr` | number | 补充基本医疗保险缴费基数-个人 |\r\n| `bcjbyiliaoyjjegr` | number | 补充基本医疗保险应缴金额-个人 |\r\n| `xxxxjfjs` | number | xxx险种缴费基数 |\r\n| `xxxxyjje` | number | xxx险种应缴金额 |\r\n| `dwbfhj` | number | 单位部分合计 |\r\n| `grbfhj` | number | 个人部分合计 |\r\n| `yjjehj` | number | 应缴金额合计 |\r\n\r\n\r\n#### 4 缴款情况（`jkqk` 元素）\r\n\r\n| 字段 | 类型 | 说明 |\r\n|---|---|---|\r\n| `sblsh` | string | 申报流水号 |\r\n| `zsxm` | string | 征收项目，返回中文 |\r\n| `zspm` | string | 征收品目，返回中文 |\r\n| `fkssqq` | string | 费款所属期起 YYYYMM |\r\n| `fkssqz` | string | 费款所属期止 YYYYMM |\r\n| `yjkzje` | number | 应缴款总金额 |\r\n| `yijkzje` | number | 已缴款总金额 |\r\n| `jkrq` | string | 缴款日期 |\r\n| `jkqx` | string | 缴款期限 |\r\n| `yjkzjehj` | number | 应缴款总金额合计 |\r\n| `yijkzjehj` | number | 已缴款总金额合计 |\r\n\r\n#### 5 字段示例\r\n\r\n```json\r\n{\r\n    \"sbjklb\": [\r\n        {\r\n            \"sblsh\": \"SB2025010001\",\r\n            \"yjfehj\": 28380.00,\r\n            \"yijfehj\": 28380.00,\r\n            \"fkssqq\": \"202501\",\r\n            \"fkssqz\": \"202506\",\r\n            \"sbrq\": \"2025-07-10\",\r\n            \"sbfs\": \"网上申报\",\r\n            \"sbhzb\": [\r\n                {\r\n                    \"fkssqq\": \"202501\",\r\n                    \"fkssqz\": \"202506\",\r\n                    \"zsxm\": \"基本养老保险\",\r\n                    \"zspm\": \"基本养老保险费\",\r\n                    \"jfrs\": 2,\r\n                    \"jfjsze\": 60000.00,\r\n                    \"fl\": 0.24,\r\n                    \"yjje\": 19200.00,\r\n                    \"jfjsdwhj\": 60000.00,\r\n                    \"jfjsgrhj\": 60000.00,\r\n                    \"jfjshj\": 120000.00,\r\n                    \"yjjedwhj\": 9600.00,\r\n                    \"yjjegrhj\": 9600.00,\r\n                    \"yjjehj\": 19200.00\r\n                },\r\n                {\r\n                    \"fkssqq\": \"202501\",\r\n                    \"fkssqz\": \"202506\",\r\n                    \"zsxm\": \"基本医疗保险\",\r\n                    \"zspm\": \"基本医疗保险费\",\r\n                    \"jfrs\": 2,\r\n                    \"jfjsze\": 60000.00,\r\n                    \"fl\": 0.13,\r\n                    \"yjje\": 7800.00,\r\n                    \"jfjsdwhj\": 60000.00,\r\n                    \"jfjsgrhj\": 60000.00,\r\n                    \"jfjshj\": 120000.00,\r\n                    \"yjjedwhj\": 6000.00,\r\n                    \"yjjegrhj\": 1800.00,\r\n                    \"yjjehj\": 7800.00\r\n                }\r\n            ],\r\n            \"sbmx\": [\r\n                {\r\n                    \"xm\": \"张三\",\r\n                    \"zjlx\": \"居民身份证\",\r\n                    \"zjhm\": \"110101199001011234\",\r\n                    \"grsbh\": \"GRSB0001\",\r\n                    \"fkssqq\": \"202501\",\r\n                    \"fkssqz\": \"202506\",\r\n                    \"jbyljfjsdw\": 30000.00,\r\n                    \"jbylyjjedw\": 4800.00,\r\n                    \"jbyljfjsgr\": 30000.00,\r\n                    \"jbylyjjegr\": 4800.00,\r\n                    \"syjfjsdw\": 30000.00,\r\n                    \"syyjjedw\": 300.00,\r\n                    \"syjfjsgr\": 30000.00,\r\n                    \"syyjjegr\": 150.00,\r\n                    \"jbyiliaojfjsdw\": 30000.00,\r\n                    \"jbyiliaoyjjedw\": 3000.00,\r\n                    \"jbyiliaojfjsgr\": 30000.00,\r\n                    \"jbyiliaoyjjegr\": 900.00,\r\n                    \"gsjfjs\": 30000.00,\r\n                    \"gsyjje\": 240.00,\r\n                    \"gebcyljfjs\": 0.00,\r\n                    \"gebcylyjje\": 0.00,\r\n                    \"tdrydxgsjfjs\": 0.00,\r\n                    \"drydxgsyjje\": 0.00,\r\n                    \"bcjbyiliaojfjsdw\": 0.00,\r\n                    \"bcjbyiliaoyjjedw\": 0.00,\r\n                    \"bcjbyiliaojfjsgr\": 0.00,\r\n                    \"bcjbyiliaoyjjegr\": 0.00,\r\n                    \"dwbfhj\": 8340.00,\r\n                    \"grbfhj\": 5850.00,\r\n                    \"yjjehj\": 14190.00\r\n                },\r\n                {\r\n                    \"xm\": \"李四\",\r\n                    \"zjlx\": \"居民身份证\",\r\n                    \"zjhm\": \"110101199203033456\",\r\n                    \"grsbh\": \"GRSB0002\",\r\n                    \"fkssqq\": \"202501\",\r\n                    \"fkssqz\": \"202506\",\r\n                    \"jbyljfjsdw\": 30000.00,\r\n                    \"jbylyjjedw\": 4800.00,\r\n                    \"jbyljfjsgr\": 30000.00,\r\n                    \"jbylyjjegr\": 4800.00,\r\n                    \"syjfjsdw\": 30000.00,\r\n                    \"syyjjedw\": 300.00,\r\n                    \"syjfjsgr\": 30000.00,\r\n                    \"syyjjegr\": 150.00,\r\n                    \"jbyiliaojfjsdw\": 30000.00,\r\n                    \"jbyiliaoyjjedw\": 3000.00,\r\n                    \"jbyiliaojfjsgr\": 30000.00,\r\n                    \"jbyiliaoyjjegr\": 900.00,\r\n                    \"gsjfjs\": 30000.00,\r\n                    \"gsyjje\": 240.00,\r\n                    \"gebcyljfjs\": 0.00,\r\n                    \"gebcylyjje\": 0.00,\r\n                    \"tdrydxgsjfjs\": 0.00,\r\n                    \"drydxgsyjje\": 0.00,\r\n                    \"bcjbyiliaojfjsdw\": 0.00,\r\n                    \"bcjbyiliaoyjjedw\": 0.00,\r\n                    \"bcjbyiliaojfjsgr\": 0.00,\r\n                    \"bcjbyiliaoyjjegr\": 0.00,\r\n                    \"dwbfhj\": 8340.00,\r\n                    \"grbfhj\": 5850.00,\r\n                    \"yjjehj\": 14190.00\r\n                }\r\n            ],\r\n            \"jkqk\": [\r\n                {\r\n                    \"sblsh\": \"SB2025010001\",\r\n                    \"zsxm\": \"基本养老保险\",\r\n                    \"zspm\": \"基本养老保险费\",\r\n                    \"fkssqq\": \"202501\",\r\n                    \"fkssqz\": \"202506\",\r\n                    \"yjkzje\": 19200.00,\r\n                    \"yijkzje\": 19200.00,\r\n                    \"jkrq\": \"2025-07-15\",\r\n                    \"jkqx\": \"2025-07-31\",\r\n                    \"yjkzjehj\": 28380.00,\r\n                    \"yijkzjehj\": 28380.00\r\n                },\r\n                {\r\n                    \"sblsh\": \"SB2025010001\",\r\n                    \"zsxm\": \"基本医疗保险\",\r\n                    \"zspm\": \"基本医疗保险费\",\r\n                    \"fkssqq\": \"202501\",\r\n                    \"fkssqz\": \"202506\",\r\n                    \"yjkzje\": 7800.00,\r\n                    \"yijkzje\": 7800.00,\r\n                    \"jkrq\": \"2025-07-15\",\r\n                    \"jkqx\": \"2025-07-31\",\r\n                    \"yjkzjehj\": 28380.00,\r\n                    \"yijkzjehj\": 28380.00\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}\r\n```\r\n",
+      "id": "019f3c96-9dc0-763f-9943-229cdc652a27"
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 89937700,
+  "ordering": 68,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-01T07:49:38.000Z",
+  "updatedAt": "2026-07-23T10:10:26.000Z",
+  "creatorId": 1452584,
+  "editorId": 1442097,
+  "creatorUserId": 1452584,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

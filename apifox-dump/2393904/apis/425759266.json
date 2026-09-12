@@ -23,6 +23,7 @@
     "jsonSchema": {
       "$ref": "#/definitions/99667779"
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -107,24 +108,9 @@
                     "01JNCX5TZQXN9S446WF13A4AFF": {
                       "$ref": "#/definitions/98557271",
                       "x-apifox-overrides": {
-                        "ewmUrl": {
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "title": "ewm二维码地址url",
-                          "deprecated": true
-                        },
                         "qdfphm": {
                           "type": "string",
                           "title": "数电发票号码"
-                        },
-                        "xmlUrl": {
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "title": "xml版式文件url"
                         }
                       },
                       "required": [
@@ -171,7 +157,7 @@
   "responseExamples": [
     {
       "name": "未查询到对应的发票查验版式文件下载记录",
-      "responseId": 554698596,
+      "responseId": 554698595,
       "data": "{\n    \"reqId\": \"19ca9336059a45198fdc37fb5e1c2018\",\n    \"code\": \"BusinessVerification\",\n    \"success\": false,\n    \"message\": \"未查询到对应的发票查验版式文件下载记录\",\n    \"data\": null\n}",
       "description": "",
       "oasKey": "",
@@ -208,7 +194,7 @@
     {
       "name": "新增kprq、fplx、jshj返回示例",
       "responseId": 554698595,
-      "data": "{\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"chargingNsrsbh\": null,\n            \"code\": null,\n            \"fplx\": \"0910\",\n            \"jshj\": 32814.07,\n            \"kprq\": \"2024-06-30 00:00:00\",\n            \"message\": null,\n            \"ofdUrl\": null,\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\n            \"qdfphm\": \"24****************39\",\n            \"xmlUrl\": null,\n            \"zt\": \"3\"\n        }\n    ]\n}",
+      "data": "{\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"chargingNsrsbh\": null,\n            \"code\": null,\n            \"fplx\": \"0910\",\n            \"jshj\": 32814.07,\n            \"kprq\": \"2024-06-30 00:00:00\",\n            \"message\": null,\n            \"ofdUrl\": null,\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\n            \"qdfphm\": \"24****************39\",\n            \"xmlUrl\": null,\n            \"zt\": \"3\"\n        }\n    ]\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -226,14 +212,14 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-10T12:08:26.000Z",
-  "updatedAt": "2026-03-10T12:12:49.000Z",
+  "updatedAt": "2026-07-30T07:08:34.000Z",
   "creatorId": 2795319,
-  "editorId": 2795319,
+  "editorId": 3099717,
   "creatorUserId": 2795319,
-  "editorUserId": 2795319,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

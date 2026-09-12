@@ -29,7 +29,9 @@
         "bsswjg",
         "tdztswjgmc",
         "kqyswjgmc",
-        "yzpzzlDm"
+        "yzpzzlDm",
+        "ssqQ",
+        "ssqZ"
       ],
       "properties": {
         "year": {
@@ -47,7 +49,7 @@
         "yzpzzlDm": {
           "type": "string",
           "title": "应征凭证种类代码",
-          "description": "BDA0610790SYCJ城镇土地使用税税源采集 BDA0610791SYCJ房产税税源采集 BDA0610980SYCJ环保税税源采集 BDA0610005SYCJ车船税税源采集\nBDA0610987SYCJ\t水资源税源采集\nBDA0610036SYCJ   资源税税源采集\n"
+          "description": "BDA0610790SYCJ城镇土地使用税税源采集 BDA0610791SYCJ房产税税源采集 BDA0610980SYCJ环保税税源采集 BDA0610005SYCJ车船税税源采集\nBDA0610987SYCJ\t水资源税源采集\nBDA0610036SYCJ   资源税税源采集\nBDA0610794SYCJ\t印花税税源获取\nBDA0610794HBSYCJ\t印花税合并税源获取"
         },
         "bsswjg": {
           "type": "string",
@@ -66,6 +68,16 @@
         "kqyswjgmc": {
           "type": "string",
           "title": "跨区域税局机关名称"
+        },
+        "ssqQ": {
+          "type": "string",
+          "title": "所属期起",
+          "description": "yyyy-MM-dd，仅印花税水源获取传入"
+        },
+        "ssqZ": {
+          "type": "string",
+          "title": "所属期止",
+          "description": "yyyy-MM-dd，仅印花税水源获取传入"
         }
       },
       "required": [
@@ -231,11 +243,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T05:47:20.000Z",
-  "updatedAt": "2026-06-26T08:16:58.000Z",
+  "updatedAt": "2026-07-21T07:50:18.000Z",
   "creatorId": 2122743,
-  "editorId": 1452584,
+  "editorId": 1910680,
   "creatorUserId": 2122743,
-  "editorUserId": 1452584,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

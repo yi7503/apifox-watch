@@ -50,8 +50,9 @@
             },
             "ly_ddbh": {
               "type": "string",
+              "title": "来源订单编号",
               "description": "指业务系统中对应的订单编号，销售单号或合同单号等，本接口同一个单号仅能开具一次发票。",
-              "title": "来源订单编号"
+              "maxLength": 50
             }
           },
           "required": [
@@ -188,19 +189,23 @@
               },
               "ofd_url": {
                 "type": "string",
-                "title": "红字发票ofd文件"
+                "title": "红字发票ofd文件",
+                "description": "ofd格式文件下载链接--入参wjgs传入对应格式才会返回；\n默认返回OSS地址（有效期一年），可以联系配置返回税局原始链接。"
               },
               "pdf_url": {
                 "type": "string",
-                "title": "红字发票pdf文件"
+                "title": "红字发票pdf文件",
+                "description": "pdf格式文件下载链接--入参wjgs传入对应格式才会返回;\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。"
               },
               "xml_url": {
                 "type": "string",
-                "title": "红字发票xml文件"
+                "title": "红字发票xml文件",
+                "description": "xml格式文件下载链接--入参wjgs传入对应格式才会返回；zip包解压后为xml文件。\n默认返回OSS地址（有效期一年），可以联系服务商配置返回税局原始链接。"
               },
               "ewm_url": {
                 "type": "string",
-                "title": "红字发票二维码文件"
+                "title": "红字发票二维码文件",
+                "description": "二维码下载链接（税局原始链接） --入参wjgs传入对应格式才会返回"
               },
               "hzuuid": {
                 "type": "string",
@@ -308,10 +313,10 @@
   "oasExtensions": "",
   "mockScript": {
     "enable": true,
-    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\nvar responseJson = {\r\n\t\"xsfmc\": \"华夏测试有限公司\",\r\n\t\"hzuuid\": \"8ce2e471219d4219a18e6f4984e70c3f\",\r\n\t\"hzqrdbh\": \"31022************30\",\r\n\t\"fpdm\": \"\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"kprq\": \"2024-09-28 20:13:28\",\r\n\t\"gmfmc\": \"华夏天地测试有限公司\",\r\n\t\"gmfzrrbz\": \"N\",\r\n\t\"zzfphm\": \"\",\r\n\t\"hzHjse\": -0.03,\r\n\t\"hzHjje\": -0.97,\r\n\t\"jshj\": \"-1090\",\r\n\t\"tdyslxDm\": \"09\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"fphm\": \"24312************0327\",\r\n    \"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n};\r\nvar fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar hzqrd = '' + Math.floor(Math.random() * 100000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\nresponseJson.hzuuid = uuid;\r\nresponseJson.hzqrdbh = hzqrd;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
+    "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar uuid =   eval(\"(\" + request.raw + \")\").data.hzuuid;\r\nvar responseJson = {\r\n\t\"xsfmc\": \"华夏测试有限公司\",\r\n\t\"hzuuid\": \"8ce2e471219d4219a18e6f4984e70c3f\",\r\n\t\"hzqrdbh\": \"31022************30\",\r\n\t\"fpdm\": \"\",\r\n\t\"gmfNsrsbh\": \"913717247242887403\",\r\n\t\"kprq\": \"2024-09-28 20:13:28\",\r\n\t\"gmfmc\": \"华夏天地测试有限公司\",\r\n\t\"gmfzrrbz\": \"N\",\r\n\t\"zzfphm\": \"\",\r\n\t\"hzHjse\": -0.03,\r\n\t\"hzHjje\": -0.97,\r\n\t\"jshj\": \"-1090\",\r\n\t\"tdyslxDm\": \"09\",\r\n\t\"xsfNsrsbh\": \"91110103445668409Q\",\r\n\t\"fphm\": \"24312************0327\",\r\n    \"pdf_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.pdf?Expires=1768450871&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=ohqhrow3OBpVaVOchQVyiguQB%2F0%3D\",\r\n\t\"ofd_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.ofd?Expires=1768449469&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=YthNLaDzcv9XPKl%2BZALiUxXNVoE%3D\",\r\n\t\"xml_url\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/ARCHIVE/dzfp_25952000000193124888_%E5%8D%8E%E5%A4%8F%E6%B5%8B%E8%AF%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8_0250917105310.zip?Expires=1768451030&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=wORRt6vupfgiaL6jIrPN%2FwFY790%3D\"\r\n};\r\nvar fphm = '99' + '' + Math.floor(Math.random() * 1000000000000000000);\r\nvar hzqrd = '' + Math.floor(Math.random() * 100000000000000000000);\r\nvar kplsh = Math.floor(Math.random() * 1000000000000000000000000).toLocaleString().replace(/,/g,\"\");\r\nconst now = new Date();\r\nconst timezoneOffset = now.getTimezoneOffset(); // 本地与 UTC 的分钟差\r\nconst shkOffset = 480; // 纽约为 UTC-5，单位为分钟\r\nconst shDate = new Date(now.getTime() + (timezoneOffset + shkOffset) * 60000);\r\nconst year = shDate.getFullYear().toString().padStart(4, '0');\r\nconst month = (shDate.getMonth() + 1).toString().padStart(2, '0');\r\nconst day = shDate.getDate().toString().padStart(2, '0');\r\nconst hour = shDate.getHours().toString().padStart(2, '0');\r\nconst minute = shDate.getMinutes().toString().padStart(2, '0');\r\nconst second = shDate.getSeconds().toString().padStart(2, '0');\r\nvar kprq = `${year}-${month}-${day} ${hour}:${minute}:${second}`;\r\nresponseJson.kprq = kprq;\r\nresponseJson.fphm = fphm;\r\nresponseJson.kplsh = kplsh;\r\nresponseJson.hzuuid = uuid;\r\nresponseJson.hzqrdbh = hzqrd;\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-09-25T03:52:44.000Z",
-  "updatedAt": "2026-04-16T09:33:12.000Z",
+  "updatedAt": "2026-07-14T09:01:24.000Z",
   "creatorId": 887900,
   "editorId": 3099717,
   "creatorUserId": 887900,

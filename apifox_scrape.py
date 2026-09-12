@@ -26,6 +26,44 @@ API_BASE = "https://api.apifox.com/api/v1"
 CONCURRENCY = 8
 RETRY = 3
 TIMEOUT = 20
+MAX_REMOVAL_RATIO = 0.25
+ALIBABA_ACCESS_KEY_ID_RE = re.compile(
+    r"(?<![A-Za-z0-9])(?:LTAI|STS\.)[A-Za-z0-9]{12,40}(?![A-Za-z0-9])"
+)
+CREDENTIAL_PLACEHOLDER = "<ALIBABA_ACCESS_KEY_ID>"
+
+
+def redact_credentials(value):
+    if isinstance(value, str):
+        return ALIBABA_ACCESS_KEY_ID_RE.sub(CREDENTIAL_PLACEHOLDER, value)
+    if isinstance(value, list):
+        return [redact_credentials(item) for item in value]
+    if isinstance(value, dict):
+        return {key: redact_credentials(item) for key, item in value.items()}
+    return value
+
+
+def validate_tree_items(kind, items, require_nonempty=False):
+    ids = [item[1] for item in items]
+    if require_nonempty and not ids:
+        raise RuntimeError(f"tree contains no {kind} nodes")
+    if any(isinstance(item_id, bool) or not isinstance(item_id, int) or item_id <= 0 for item_id in ids):
+        raise RuntimeError(f"tree contains a {kind} node without a valid id")
+    if len(ids) != len(set(ids)):
+        raise RuntimeError(f"tree contains duplicate {kind} ids")
+
+
+def prune_stale_json(directory, current_ids):
+    expected = {f"{item_id}.json" for item_id in current_ids}
+    existing = {filename for filename in os.listdir(directory) if filename.endswith(".json")}
+    stale = existing - expected
+    if existing and len(stale) / len(existing) > MAX_REMOVAL_RATIO:
+        raise RuntimeError(
+            f"refusing to remove {len(stale)}/{len(existing)} JSON files from {directory}"
+        )
+    for filename in stale:
+        os.remove(os.path.join(directory, filename))
+    return len(stale)
 
 
 def session_for(domain: str) -> requests.Session:
@@ -94,7 +132,7 @@ def main():
     s = session_for(domain)
 
     # 1. domain -> projectId/branchId
-    meta = get_json(s, f"{API_BASE}/published-projects/domains/{domain}")
+    meta = redact_credentials(get_json(s, f"{API_BASE}/published-projects/domains/{domain}"))
     project_id = meta["projectId"]
     versions = meta.get("versionSettings") or []
     default_branch = next((v for v in versions if v.get("isDefaultVersion")), versions[0] if versions else None)
@@ -113,13 +151,15 @@ def main():
     tree_url = f"{API_BASE}/published-projects/{project_id}/http-api-tree"
     if branch_id:
         tree_url += f"?branchId={branch_id}"
-    tree = get_json(s, tree_url)
+    tree = redact_credentials(get_json(s, tree_url))
     with open(os.path.join(out_root, "tree.json"), "w", encoding="utf-8") as f:
         json.dump(tree, f, ensure_ascii=False, indent=2)
 
     leaves = list(walk_tree(tree))
     apis = [x for x in leaves if x[0] == "api"]
     docs = [x for x in leaves if x[0] == "doc"]
+    validate_tree_items("api", apis, require_nonempty=True)
+    validate_tree_items("doc", docs)
     print(f"[+] tree: {len(apis)} apis, {len(docs)} docs")
 
     # 3. fetch details in parallel
@@ -127,13 +167,19 @@ def main():
         url = f"{API_BASE}/published-projects/{project_id}/http-apis/{api_id}"
         if branch_id:
             url += f"?branchId={branch_id}"
-        return api_id, get_json(s, url)
+        data = get_json(s, url)
+        if data.get("id") != api_id:
+            raise RuntimeError(f"API detail id mismatch: requested {api_id}, got {data.get('id')}")
+        return api_id, redact_credentials(data)
 
     def fetch_doc(doc_id):
         url = f"{API_BASE}/published-projects/{project_id}/doc/{doc_id}"
         if branch_id:
             url += f"?branchId={branch_id}"
-        return doc_id, get_json(s, url)
+        data = get_json(s, url)
+        if data.get("id") != doc_id:
+            raise RuntimeError(f"doc detail id mismatch: requested {doc_id}, got {data.get('id')}")
+        return doc_id, redact_credentials(data)
 
     failures = []
     print(f"[+] fetching {len(apis)} api details (concurrency={CONCURRENCY}) ...")
@@ -193,6 +239,22 @@ def main():
         if no_progress:
             break
 
+    # Always persist the final failure set. A partial fetch must never be turned
+    # into generated specs or committed by scrape.sh.
+    failures.sort(key=lambda f: (f[0], f[1]))
+    with open(os.path.join(out_root, "failures.json"), "w", encoding="utf-8") as f:
+        json.dump(failures, f, ensure_ascii=False, indent=2)
+    if failures:
+        print(f"[!] {len(failures)} failures remain after retry:")
+        for kind, _id, name, err in failures[:20]:
+            print(f"    {kind} {_id} ({name}): {err}")
+        sys.exit(1)
+
+    removed_apis = prune_stale_json(apis_dir, [item[1] for item in apis])
+    removed_docs = prune_stale_json(docs_dir, [item[1] for item in docs])
+    if removed_apis or removed_docs:
+        print(f"[+] removed stale files: {removed_apis} apis, {removed_docs} docs")
+
     # 4. index.md
     lines = [f"# Apifox dump — projectId {project_id}", ""]
     lines.append(f"- domain: `{domain}`")
@@ -218,18 +280,6 @@ def main():
         lines.append(f"| {safe_name} | {parent} | [docs/{_id}.json](docs/{_id}.json) |")
     with open(os.path.join(out_root, "index.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
-
-    # Sort so re-runs produce a stable order (ThreadPoolExecutor completes in
-    # arbitrary order, which otherwise causes meaningless diffs). Always write
-    # the file — including an empty [] — so a clean run overwrites a stale
-    # failures.json instead of leaving last run's failures on disk.
-    failures.sort(key=lambda f: (f[0], f[1]))
-    if failures:
-        print(f"[!] {len(failures)} failures remain after retry:")
-        for kind, _id, name, err in failures[:20]:
-            print(f"    {kind} {_id} ({name}): {err}")
-    with open(os.path.join(out_root, "failures.json"), "w", encoding="utf-8") as f:
-        json.dump(failures, f, ensure_ascii=False, indent=2)
 
     print(f"[OK] saved to {out_root}")
 

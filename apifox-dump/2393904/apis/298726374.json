@@ -20,10 +20,6 @@
     "jsonSchema": {
       "type": "object",
       "properties": {
-        "aggOrgId": {
-          "type": "number",
-          "title": "企业id"
-        },
         "nsrsbh": {
           "type": "string",
           "title": "纳税人识别号"
@@ -129,21 +125,26 @@
         }
       },
       "x-apifox-orders": [
-        "aggOrgId",
+        "01KY4S8GD9XF7M6158CEV7J7HH",
         "nsrsbh",
         "data"
       ],
       "required": [
-        "aggOrgId",
         "nsrsbh",
         "data"
-      ]
+      ],
+      "x-apifox-refs": {
+        "01KY4S8GD9XF7M6158CEV7J7HH": {
+          "$ref": "#/definitions/79273658"
+        }
+      }
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
         "mediaType": "application/json",
-        "value": "{\r\n  \"aggOrgId\": 451678202380672,\r\n  \"nsrsbh\": \"9144011155441xxxxx\",\r\n  \"data\": [\r\n    {\r\n      \"pzhm\": \"33101625020035xxxx\",\r\n      \"kprq\": \"2025-04-01 00:00:00\",\r\n      \"xsfnsrsbh\":\"F31011582605xxx\",\r\n      \"xsfmc\":\"王xx\",\r\n      \"je\": 51771.92,\r\n      \"se\": 100.00,\r\n      \"rzsj\": \"2025-05-01\",\r\n      \"rzytDm\": \"03\"\r\n    }\r\n  ]\r\n}"
+        "value": "{\r\n  \"nsrsbh\": \"91310118MAD57LQY4Y\",\r\n  \"data\": {\r\n    \"params\": [\r\n      {\r\n        \"pzhm\": \"223320261000512444\",\r\n        \"kprq\": \"2026-06-02 00:00:00\",\r\n        \"je\": \"1474770.92\",\r\n        \"se\": \"191720.22\",\r\n        \"rzsj\": \"2026-06-30\",\r\n        \"rzytDm\": \"02\"\r\n      }\r\n    ]\r\n  }\r\n}"
       }
     ],
     "oasExtensions": ""
@@ -222,11 +223,21 @@
                       "type": "string",
                       "title": "凭证号码",
                       "description": ""
+                    },
+                    "bkjywrsbh": {
+                      "type": "string",
+                      "title": "被扣缴纳税人识别号"
+                    },
+                    "kjywrsbh": {
+                      "type": "string",
+                      "title": "扣缴义务人识别号"
                     }
                   },
                   "x-apifox-orders": [
                     "pzhm",
                     "kprq",
+                    "bkjywrsbh",
+                    "kjywrsbh",
                     "errorCode",
                     "errorMsg"
                   ],
@@ -234,7 +245,9 @@
                     "errorMsg",
                     "errorCode",
                     "kprq",
-                    "pzhm"
+                    "pzhm",
+                    "bkjywrsbh",
+                    "kjywrsbh"
                   ]
                 },
                 "description": "入参中rzType为1时返回"
@@ -297,7 +310,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-05-21T05:54:02.000Z",
-  "updatedAt": "2025-12-05T01:26:28.000Z",
+  "updatedAt": "2026-07-30T06:55:22.000Z",
   "creatorId": 887778,
   "editorId": 2118003,
   "creatorUserId": 887778,

@@ -23,20 +23,20 @@
       "x-apifox-refs": {},
       "x-apifox-orders": [
         "aggOrgId",
+        "accountId",
         "year",
         "period",
-        "zsxmList",
-        "accountId"
+        "zsxmList"
       ],
       "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
         "accountId": {
           "type": "string",
           "title": "账号id",
           "description": "多账号场景"
-        },
-        "aggOrgId": {
-          "type": "string",
-          "title": "企业Id"
         },
         "year": {
           "type": "integer",
@@ -49,8 +49,31 @@
         },
         "zsxmList": {
           "type": "array",
+          "title": "征收项目列表",
           "items": {
             "type": "object",
+            "x-apifox-orders": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "zsxmDm",
+              "zspmDm",
+              "zlbsxlDm",
+              "templateCode",
+              "fzjgxx",
+              "fbsxAMc",
+              "xzqhszDm",
+              "formList",
+              "fcbhList",
+              "tdbhList",
+              "ywxxb"
+            ],
+            "required": [
+              "yzpzzlDm",
+              "ssqQ",
+              "ssqZ",
+              "ywxxb"
+            ],
             "properties": {
               "yzpzzlDm": {
                 "type": "string",
@@ -67,6 +90,11 @@
                 "title": "所属期止",
                 "description": "格式yyyy-MM-dd"
               },
+              "zsxmDm": {
+                "type": "string",
+                "title": "征收项目代码",
+                "description": "工会经费=39900/水利建设专项收入=30221 合并=39999 通用申报必传"
+              },
               "zspmDm": {
                 "type": "string",
                 "title": "征收品目代码",
@@ -80,55 +108,149 @@
               "templateCode": {
                 "type": "string",
                 "title": "资料报送子类代码",
-                "description": "【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企业；\n【企业会计准则金融企业】类型是必填，1：适用已执行新金融工具准则的金融企业（目前仅支持金融类型的这个子类）；\n其他准则传0"
+                "description": "财报必须传\n【一般企业会计准则】类型时必填，1:适用未执行新金融准则、新收入准则和新租赁准则的一般企业、2:适用已执行新金融准则、新收入准则和新租赁准则的一般企 业；\n【企业会计准则金融企业】类型是必填，1：适用已执行新金融工具准则的金融企业（目前仅支持金融类型的这个子类）；\n其他准则传0"
+              },
+              "fzjgxx": {
+                "type": "array",
+                "title": "分支机构信息列表",
+                "description": "非必传节点，仅企业所得税预缴总机构获取初始化使用，支持传多个分支机构",
+                "items": {
+                  "type": "object",
+                  "x-apifox-orders": [
+                    "nsrsbh",
+                    "jgmc",
+                    "yysr",
+                    "zgxc",
+                    "zcze"
+                  ],
+                  "properties": {
+                    "nsrsbh": {
+                      "type": "string",
+                      "title": "纳税人识别号"
+                    },
+                    "jgmc": {
+                      "type": "string",
+                      "title": "机构名称"
+                    },
+                    "yysr": {
+                      "type": "string",
+                      "title": "营业收入",
+                      "description": "金额，精度2位"
+                    },
+                    "zgxc": {
+                      "type": "string",
+                      "title": "职工薪酬",
+                      "description": "金额，精度2位"
+                    },
+                    "zcze": {
+                      "type": "string",
+                      "title": "资产总额",
+                      "description": "金额，精度2位"
+                    }
+                  },
+                  "required": [
+                    "nsrsbh",
+                    "jgmc",
+                    "zcze"
+                  ]
+                }
+              },
+              "fbsxAMc": {
+                "type": "array",
+                "title": "出口方式",
+                "description": "发生了自营出口业务、发生了委托出口业务、承担了代理出口业务 。允许多传选项",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "xzqhszDm": {
+                "type": "string",
+                "title": "跨省总机构行政区划代码",
+                "description": "要求6位，参考附录中地区代码，例如北京：110000"
               },
               "formList": {
                 "type": "array",
+                "title": "获取表单数据",
+                "description": "企业所得税汇缴初始化生效：\n[\"A000000\",\"A100000\",\"A101010\",\"A102010\",\"A104000\",\"A105050\",\"A105000\",\"A105080\",\"A106000\"]\n仅支持以下表单\n\"A000000\":  \"企业所得税年度纳税申报基础信息表\", 必传\n\"A100000\": \"企业所得税年度纳税申报主表（2024年版）\", 必传\n\"A101010\": \"一般企业收入明细表\",\n\"A102010\":\"一般企业成本支出明细表\",\n\"A104000\": \"期间费用明细表\",\n\"A105050\": \"职工薪酬支出及纳税调整明细表\",\n\"A105000\": \"纳税调整项目明细表\",\n\"A105080\":\"资产折旧、摊销及纳税调整明细表\",\n\"A106000\": \"企业所得税弥补亏损明细表\"",
                 "items": {
                   "type": "string"
-                },
-                "title": "获取表单数据",
-                "description": "企业所得税汇缴初始化生效：\n[\"A000000\",\"A100000\",\"A101010\",\"A102010\",\"A104000\",\"A105050\",\"A105000\",\"A105080\",\"A106000\"]\n仅支持以下表单\n\"A000000\": \"企业所得税年度纳税申报基础信息表\", 必传\n\"A100000\": \"企业所得税年度纳税申报主表（2024年版）\", 必传\n\"A101010\": \"一般企业收入明细表\",\n\"A102010\": \"一般企业成本支出明细表\",\n\"A104000\": \"期间费用明细表\",\n\"A105050\": \"职工薪酬支出及纳税调整明细表\",\n\"A105000\": \"纳税调整项目明细表\",\n\"A105080\": \"资产折旧、摊销及纳税调整明细表\",\n\"A106000\": \"企业所得税弥补亏损明细表\""
-              },
-              "zsxmDm": {
-                "type": "string",
-                "title": "征收项目代码",
-                "description": "工会经费=39900/水利建设专项收入=30221 合并=39999 通用申报必传"
+                }
               },
               "fcbhList": {
                 "type": "array",
+                "title": "房产编号",
                 "items": {
                   "type": "string"
-                },
-                "title": "房产编号"
+                }
               },
               "tdbhList": {
                 "type": "array",
+                "title": "城镇土地编号",
                 "items": {
                   "type": "string"
-                },
-                "title": "城镇土地编号"
+                }
+              },
+              "ywxxb": {
+                "type": "object",
+                "title": "增值税新版业务信息表",
+                "description": "jsonobject",
+                "x-apifox-orders": [
+                  "blsx",
+                  "zzsHznsqk",
+                  "ybnsryxqq",
+                  "ywlxs",
+                  "tsnsrlxs",
+                  "syzclxs"
+                ],
+                "required": [
+                  "blsx",
+                  "zzsHznsqk",
+                  "ywlxs"
+                ],
+                "properties": {
+                  "blsx": {
+                    "type": "string",
+                    "title": "101办理事项代码",
+                    "description": "01按期纳税｜02按次纳税；绝大多数按月/季度申报填01"
+                  },
+                  "zzsHznsqk": {
+                    "type": "string",
+                    "title": "103增值税汇总纳税情况代码",
+                    "description": "01非汇总纳税；10汇总纳税；11总机构(跨省)；12总机构(省内)；13分支机构(跨省)；14分支机构(省内)"
+                  },
+                  "ybnsryxqq": {
+                    "type": "string",
+                    "title": "一般纳税人有效期起",
+                    "description": "格式yyyy-MM-dd"
+                  },
+                  "ywlxs": {
+                    "type": "array",
+                    "title": "105业务类型代码",
+                    "description": "多选，参考新版增值税码表",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "tsnsrlxs": {
+                    "type": "array",
+                    "title": "106特殊纳税人类型代码",
+                    "description": "多选，参考新版增值税码表",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "syzclxs": {
+                    "type": "array",
+                    "title": "107适用政策类型代码",
+                    "description": "多选，参考新版增值税码表",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
               }
-            },
-            "x-apifox-orders": [
-              "yzpzzlDm",
-              "ssqQ",
-              "ssqZ",
-              "zsxmDm",
-              "zspmDm",
-              "zlbsxlDm",
-              "templateCode",
-              "formList",
-              "fcbhList",
-              "tdbhList"
-            ],
-            "required": [
-              "yzpzzlDm",
-              "ssqQ",
-              "ssqZ"
-            ]
-          },
-          "title": "征收项目列表"
+            }
+          }
         }
       },
       "required": [
@@ -301,11 +423,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-31T03:29:11.000Z",
-  "updatedAt": "2026-06-29T02:30:09.000Z",
+  "updatedAt": "2026-09-11T04:01:46.000Z",
   "creatorId": 1452584,
-  "editorId": 1476015,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1476015,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -1,0 +1,352 @@
+{
+  "id": 484773332,
+  "name": "出口退税发票状态查询结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/ckts/getCktsInvoiceResult",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务id"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "taskId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":452681066557440,\r\n    \"taskId\":\"454760922049792\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "9ClHSF6y5t",
+        "name": "Content-Type",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "application/json"
+      },
+      {
+        "id": "voG5SU8tY3",
+        "name": "access_token",
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "LJ2zE2ezmT",
+        "name": "req_date",
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "Gtbff0bWiA",
+        "name": "req_sign",
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 734212058,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "title": "业务code",
+                "description": "2000业务成功"
+              },
+              "message": {
+                "type": "string",
+                "title": "信息"
+              },
+              "businessStatus": {
+                "type": "string",
+                "title": "任务执行状态",
+                "description": "1进行中，2 失败，3成功"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "title": "结果的url",
+                    "description": "对应的json数据，说明参见urldata虚拟节点"
+                  },
+                  "urldata": {
+                    "type": "object",
+                    "properties": {
+                      "zjls": {
+                        "type": "integer",
+                        "title": "总数量"
+                      },
+                      "cktsfpList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "fpdm": {
+                              "type": "string",
+                              "title": "发票代码"
+                            },
+                            "fphm": {
+                              "type": "string",
+                              "title": "发票号码"
+                            },
+                            "kprq": {
+                              "type": "string",
+                              "title": "开票日期"
+                            },
+                            "xfnsrsbh": {
+                              "type": "string",
+                              "title": "销售方纳税人识别号"
+                            },
+                            "xhfmc": {
+                              "type": "string",
+                              "title": "销售方名称"
+                            },
+                            "jhzt": {
+                              "type": "string",
+                              "title": "稽核状态"
+                            },
+                            "fptszt": {
+                              "type": "string",
+                              "title": "退税状态",
+                              "description": "未退税、部分退税、全部退税"
+                            },
+                            "je": {
+                              "type": "string",
+                              "title": "金额"
+                            },
+                            "sbfpjsje": {
+                              "type": "string",
+                              "title": "申报发票计税金额"
+                            },
+                            "lslsbfpjsje": {
+                              "type": "string",
+                              "title": "零税率申报发票计税金额"
+                            },
+                            "se": {
+                              "type": "string",
+                              "title": "税额"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "fpdm",
+                            "fphm",
+                            "kprq",
+                            "xfnsrsbh",
+                            "xhfmc",
+                            "jhzt",
+                            "fptszt",
+                            "je",
+                            "sbfpjsje",
+                            "lslsbfpjsje",
+                            "se"
+                          ],
+                          "required": [
+                            "fpdm",
+                            "fphm",
+                            "kprq",
+                            "xfnsrsbh",
+                            "xhfmc",
+                            "jhzt",
+                            "fptszt",
+                            "je",
+                            "sbfpjsje",
+                            "lslsbfpjsje",
+                            "se"
+                          ]
+                        },
+                        "title": "列表"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "zjls",
+                      "cktsfpList"
+                    ],
+                    "title": "urldata虚拟节点",
+                    "description": "该节点不存在，是对url链接数据的节点说明\n",
+                    "required": [
+                      "zjls"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "url",
+                  "urldata"
+                ],
+                "title": "反馈结果",
+                "required": [
+                  "url"
+                ]
+              }
+            },
+            "x-apifox-orders": [
+              "code",
+              "businessStatus",
+              "message",
+              "result"
+            ],
+            "required": [
+              "code",
+              "businessStatus"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": "string",
+            "title": "错误码"
+          },
+          "reqId": {
+            "type": "string",
+            "title": "请求id"
+          }
+        },
+        "required": [
+          "code",
+          "data",
+          "success",
+          "message",
+          "reqId"
+        ],
+        "x-apifox-orders": [
+          "code",
+          "success",
+          "message",
+          "reqId",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功",
+      "responseId": 734212058,
+      "data": "{\n    \"reqId\": \"1322d119d59f4437af88097c10cab389\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"成功\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"tax-ckts-fpcx\",\n        \"businessStatus\": 3,\n        \"serviceName\": \"出口退税发票查询\",\n        \"message\": \"出口退税发票状态查询成功\",\n        \"result\": {\n            \"url\": \"https://qxy-oss-robot-product.qixiangyun.com/ARCHIVE/etax-agg-product_1783599288672_d5d5484a86b141b2bd87aee80a0a67b5_cwbb_xqykjzz.json?OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Expires=1848572088&Signature=/FPoaT1XHdU6vpW9rPBgPxAby28%3D\"\n        },\n        \"aggOrgId\": 5245084167160768,\n        \"taskId\": 669564414084352\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650777808
+    },
+    {
+      "name": "失败",
+      "responseId": 734212058,
+      "data": "{\n    \"code\": \"4708\",\n    \"success\": true,\n    \"message\": \"请先进行自检申请上传申报表相关数据，再进行附列资料上传\",\n    \"reqId\": \"c2f9201cdaaf46f8a4a13efed1528e45\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 650777809
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 90491031,
+  "ordering": 0,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-07-09T07:57:20.000Z",
+  "updatedAt": "2026-07-11T01:31:31.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

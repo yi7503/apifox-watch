@@ -173,24 +173,6 @@
   ],
   "responseExamples": [
     {
-      "name": "登录成功示例",
-      "responseId": 431855866,
-      "data": "{\n    \"code\": \"2000\",\n    \"data\": {\n        \"taskId\": 1780851217847750700\n    },\n    \"success\": true,\n    \"reqId\": \"60ffd6de076a46bea9de8acc66cab677\"\n}",
-      "description": "",
-      "oasKey": "",
-      "oasExtensions": "",
-      "id": 405015638
-    },
-    {
-      "name": "异常示例",
-      "responseId": 431855866,
-      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"code\": \"4006\",\n    \"success\": true,\n    \"message\": \"登录方式不正确！\"\n}",
-      "description": "",
-      "oasKey": "",
-      "oasExtensions": "",
-      "id": 405015639
-    },
-    {
       "name": "成功发送短信示例",
       "responseId": 431855866,
       "data": "{\n    \"req_id\": \"0f1fe24daa164e95b0191f80a2bf11fc\",\n    \"success\": true,\n    \"code\": \"2000\",\n    \"data\": {\n        \"taskId\": 1671038727830339600\n    }\n}",
@@ -198,6 +180,18 @@
       "oasKey": "",
       "oasExtensions": "",
       "id": 405017992
+    },
+    {
+      "name": "登录成功示例",
+      "responseId": 431855866,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"税务数字账户登录成功\",\n    \"reqId\": \"6f37c2c5a424454f99b4decb6c0cfb30\"\n}",
+      "id": "019fa684-24bb-746a-a67b-dd53b1c4477d"
+    },
+    {
+      "name": "异常示例",
+      "responseId": 431855866,
+      "data": "{\n    \"req_id\": \"b58c2ab8200c4e77b3fbe6f9d32fc3af\",\n    \"code\": \"4006\",\n    \"success\": true,\n    \"message\": \"登录方式不正确！\"\n}",
+      "id": "019fa684-24bb-746a-a67b-e2adfb0578d2"
     }
   ],
   "codeSamples": [],
@@ -214,11 +208,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:07:15.000Z",
-  "updatedAt": "2026-04-28T12:28:49.000Z",
+  "updatedAt": "2026-07-28T02:18:26.000Z",
   "creatorId": 2795319,
-  "editorId": 2400309,
+  "editorId": 493303,
   "creatorUserId": 2795319,
-  "editorUserId": 2400309,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

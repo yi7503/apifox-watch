@@ -36,18 +36,14 @@
         "taskId": {
           "type": "string",
           "title": "任务id",
-          "mock": {
-            "mock": "1698948417616556034"
-          },
-          "description": "任务成功后任务ID"
+          "description": "任务成功后任务ID",
+          "x-apifox-mock": "1698948417616556034"
         },
         "nsrsbh": {
           "type": "string",
           "title": "纳税人识别号",
-          "mock": {
-            "mock": "91440111MACHRDGB9W"
-          },
-          "description": "纳税人识别号"
+          "description": "纳税人识别号",
+          "x-apifox-mock": "91440111MACHRDGB9W"
         }
       },
       "x-apifox-orders": [
@@ -60,6 +56,8 @@
         "nsrsbh"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"taskId\": \"1698948417616556034\",\r\n    \"nsrsbh\": \"91**************9W\"\r\n}",
@@ -132,18 +130,14 @@
           "reqId": {
             "type": "string",
             "title": "请求唯一id",
-            "mock": {
-              "mock": "1702594054403760130"
-            },
-            "description": "请求唯一id"
+            "description": "请求唯一id",
+            "x-apifox-mock": "1702594054403760130"
           },
           "code": {
             "type": "string",
             "title": "返回code码",
-            "mock": {
-              "mock": "2000"
-            },
-            "description": "返回code码"
+            "description": "返回code码",
+            "x-apifox-mock": "2000"
           },
           "success": {
             "type": "boolean"
@@ -155,9 +149,7 @@
             ],
             "title": "返回信息描述",
             "description": "返回信息描述",
-            "mock": {
-              "mock": "成功"
-            }
+            "x-apifox-mock": "成功"
           },
           "data": {
             "type": [
@@ -194,7 +186,7 @@
                     "title": "分组总code",
                     "description": "8000：存在登录失效任务，2000：全部成功，其他code：失败"
                   },
-                  "sb、fp、jcxx、syhq、db、tx": {
+                  "sb、fp、jcxx、syhq、db、tx、fx": {
                     "type": "object",
                     "properties": {
                       "status": {
@@ -222,7 +214,7 @@
                 },
                 "title": "任务状态详情",
                 "x-apifox-orders": [
-                  "sb、fp、jcxx、syhq、db、tx",
+                  "sb、fp、jcxx、syhq、db、tx、fx",
                   "main",
                   "mainStatusCode"
                 ]
@@ -290,17 +282,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T09:20:42.000Z",
-  "updatedAt": "2024-07-31T09:22:26.000Z",
+  "updatedAt": "2026-09-02T06:18:51.000Z",
   "creatorId": 1910680,
   "editorId": 1910680,
   "creatorUserId": 1910680,
   "editorUserId": 1910680,
-  "responseChildren": [
-    "BLANK.500951185"
-  ],
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

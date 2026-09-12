@@ -251,7 +251,7 @@
                   "bgjcsj"
                 ],
                 "title": "报告的json格式内容",
-                "description": "当风险报告申请接口的入参rptType=1时，该字段为空"
+                "description": "当风险报告申请接口的入参rptType=1时，该字段为空。为2时仅返回详细版Json。"
               },
               "rptUrls": {
                 "type": "array",
@@ -259,7 +259,7 @@
                   "type": "string"
                 },
                 "title": "报告的pdfurl信息",
-                "description": "当风险报告申请接口的入参rptType=2时，该字段为空"
+                "description": "当风险报告申请接口的入参rptType=2时，该字段为空。URL链接的尾号01是简版、02是详细版。链接长期有效。"
               },
               "status": {
                 "type": "integer",
@@ -334,11 +334,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-03T09:04:36.000Z",
-  "updatedAt": "2026-06-03T03:53:40.000Z",
+  "updatedAt": "2026-08-20T09:10:13.000Z",
   "creatorId": 887778,
-  "editorId": 887778,
+  "editorId": 2795319,
   "creatorUserId": 887778,
-  "editorUserId": 887778,
+  "editorUserId": 2795319,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

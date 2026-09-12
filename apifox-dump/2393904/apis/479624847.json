@@ -1,0 +1,198 @@
+{
+  "id": 479624847,
+  "name": "三方协议缴款",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "CqlneJBUFZ425aVwTcfuw",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/shbxweb/sfxyjk",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID，多账户场景"
+        },
+        "fkssqq": {
+          "type": "string",
+          "title": "费款所属期起",
+          "description": "1.格式：YYYYMM"
+        },
+        "fkssqz": {
+          "type": "string",
+          "title": "费款所属期止",
+          "description": "1.格式：YYYYMM\n2.费款所属期止必须大于或等于费款所属期起"
+        },
+        "sblsh": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "1.若上传则校验费款所属期下是否存在流水号，不存在返回：费款所属期起-费款所属期止，不存在该申报流水号\n2.若上传流水号，且流水号正确存在，则只缴款该流水号的申报金额。\n3.若不上传流水号，则缴款费款所属期起-费款所属期止所有欠费数据",
+          "title": "申报流水号"
+        },
+        "sfxyh": {
+          "type": "string",
+          "description": "存在多个三方协议号时必填",
+          "title": "三方协议号"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "fkssqq",
+        "fkssqz",
+        "accountId"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "fkssqq",
+        "fkssqz",
+        "sblsh",
+        "sfxyh"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": 123456,\r\n    \"accountId\": 789,\r\n    \"fkssqq\": \"202601\",\r\n    \"fkssqz\": \"202606\",\r\n    \"sblsh\": [\r\n        \"SBLSH2026010001\",\r\n        \"SBLSH2026010002\"\r\n    ],\r\n    \"sfxyh\": \"110000000123456789\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01KVY8TDJEWTA6VV9C3237MPTV"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01KVY8TDJEWTA6VV9C3237MPTV": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "taskId": {
+                    "type": "string",
+                    "title": "任务ID"
+                  }
+                },
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "taskId"
+                ],
+                "required": [
+                  "taskId"
+                ]
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {}\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 89937315,
+  "ordering": 32,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-06-29T07:44:38.000Z",
+  "updatedAt": "2026-07-07T10:25:57.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

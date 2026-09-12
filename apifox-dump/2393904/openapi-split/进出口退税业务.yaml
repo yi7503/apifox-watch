@@ -4,6 +4,7 @@ info:
   version: latest
   description: 'Split from full spec, module: 进出口退税业务'
 tags:
+- name: 进出口退税业务 / 出口退税申报 / 出口退税发票状态查询
 - name: 进出口退税业务 / 出口退税申报 / 出口退税申报作废
 - name: 进出口退税业务 / 出口退税申报 / 出口退税申报确认提交
 - name: 进出口退税业务 / 出口退税申报 / 出口退税申报自检反馈
@@ -272,6 +273,7 @@ paths:
       operationId: api-308725729
       tags:
       - 进出口退税业务 / 出口退税申报 / 出口退税申报自检反馈
+      description: 自检申请返回自检申请通过后再调此接口查询自检反馈的结果
       parameters:
       - name: Content-Type
         in: header
@@ -759,7 +761,9 @@ paths:
       operationId: api-309025228
       tags:
       - 进出口退税业务 / 出口退税申报 / 出口退税申报确认提交
-      description: "1.\t支持发起生产型业务出口退税申报确认提交任务，以及申报提交结果的返回"
+      description: |-
+        1.支持发起生产型业务出口退税申报确认提交任务，以及申报提交结果的返回
+        2.自检反馈查询ktgydbz =Y则表示自检通过无疑点，才能进行申报确认提交，存在疑点ktgydbz =N情况是不能进行申报确认提交的
       parameters:
       - name: Content-Type
         in: header
@@ -4184,7 +4188,7 @@ paths:
                       result:
                         type: string
                         title: 清单结果
-                        description: 附录--获取审核结果清单说明https://openapi.qixiangyun.com/doc-8019423
+                        description: 附录--获取审核结果清单说明https://openapi.qixiangyun.com/doc-8817935
                     x-apifox-refs: {}
                     x-apifox-orders:
                     - code
@@ -5306,4 +5310,339 @@ paths:
                       </body>
                     </business>"
                     }
+      x-apifox-status: released
+  /v2/ckts/queryCktsInvoice:
+    post:
+      summary: 出口退税发票状态查询
+      operationId: api-484773331
+      tags:
+      - 进出口退税业务 / 出口退税申报 / 出口退税发票状态查询
+      description: ' '
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业Id
+                accountId:
+                  type: string
+                  title: 账号ID
+                  description: 账号
+                kprqq:
+                  type: string
+                  title: 开票日期起
+                  description: 必传yyyy-MM-dd
+                kprqz:
+                  type: string
+                  title: 开票日期止
+                  description: 必传yyyy-MM-dd
+                fpdm:
+                  type: string
+                  title: 发票代码
+                fphm:
+                  type: string
+                  title: '发票号码  '
+                fpsbzt:
+                  type: string
+                  title: '  退税状态'
+                  description: 未退税、部分退税、全部退税
+              required:
+              - kprqq
+              - aggOrgId
+              - kprqz
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+              - kprqq
+              - kprqz
+              - fpdm
+              - fphm
+              - fpsbzt
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type:
+                - object
+                - 'null'
+                x-apifox-refs:
+                  01GW664NTG8DAA40CQ3926Y530:
+                    $ref: '#/definitions/35327531'
+                    x-apifox-overrides:
+                      data:
+                        type: object
+                        x-apifox-refs:
+                          01JWX7QQGXX4YJKTV4NQFFAMKT:
+                            $ref: '#/definitions/33757676'
+                            x-apifox-overrides:
+                              aggOrgId: null
+                        x-apifox-orders:
+                        - 01JWX7QQGXX4YJKTV4NQFFAMKT
+                        properties: {}
+                x-apifox-orders:
+                - 01GW664NTG8DAA40CQ3926Y530
+                properties: {}
+      x-apifox-status: released
+  /v2/ckts/getCktsInvoiceResult:
+    post:
+      summary: 出口退税发票状态查询结果
+      operationId: api-484773332
+      tags:
+      - 进出口退税业务 / 出口退税申报 / 出口退税发票状态查询
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业id
+                taskId:
+                  type: string
+                  title: 任务id
+              required:
+              - aggOrgId
+              - taskId
+              x-apifox-orders:
+              - aggOrgId
+              - taskId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        title: 业务code
+                        description: 2000业务成功
+                      message:
+                        type: string
+                        title: 信息
+                      businessStatus:
+                        type: string
+                        title: 任务执行状态
+                        description: 1进行中，2 失败，3成功
+                      result:
+                        type: object
+                        properties:
+                          url:
+                            type: string
+                            title: 结果的url
+                            description: 对应的json数据，说明参见urldata虚拟节点
+                          urldata:
+                            type: object
+                            properties:
+                              zjls:
+                                type: integer
+                                title: 总数量
+                              cktsfpList:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    fpdm:
+                                      type: string
+                                      title: 发票代码
+                                    fphm:
+                                      type: string
+                                      title: 发票号码
+                                    kprq:
+                                      type: string
+                                      title: 开票日期
+                                    xfnsrsbh:
+                                      type: string
+                                      title: 销售方纳税人识别号
+                                    xhfmc:
+                                      type: string
+                                      title: 销售方名称
+                                    jhzt:
+                                      type: string
+                                      title: 稽核状态
+                                    fptszt:
+                                      type: string
+                                      title: 退税状态
+                                      description: 未退税、部分退税、全部退税
+                                    je:
+                                      type: string
+                                      title: 金额
+                                    sbfpjsje:
+                                      type: string
+                                      title: 申报发票计税金额
+                                    lslsbfpjsje:
+                                      type: string
+                                      title: 零税率申报发票计税金额
+                                    se:
+                                      type: string
+                                      title: 税额
+                                  x-apifox-orders:
+                                  - fpdm
+                                  - fphm
+                                  - kprq
+                                  - xfnsrsbh
+                                  - xhfmc
+                                  - jhzt
+                                  - fptszt
+                                  - je
+                                  - sbfpjsje
+                                  - lslsbfpjsje
+                                  - se
+                                  required:
+                                  - fpdm
+                                  - fphm
+                                  - kprq
+                                  - xfnsrsbh
+                                  - xhfmc
+                                  - jhzt
+                                  - fptszt
+                                  - je
+                                  - sbfpjsje
+                                  - lslsbfpjsje
+                                  - se
+                                title: 列表
+                            x-apifox-orders:
+                            - zjls
+                            - cktsfpList
+                            title: urldata虚拟节点
+                            description: |
+                              该节点不存在，是对url链接数据的节点说明
+                            required:
+                            - zjls
+                        x-apifox-orders:
+                        - url
+                        - urldata
+                        title: 反馈结果
+                        required:
+                        - url
+                    x-apifox-orders:
+                    - code
+                    - businessStatus
+                    - message
+                    - result
+                    required:
+                    - code
+                    - businessStatus
+                  success:
+                    type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
+                  message:
+                    type: string
+                    title: 错误码
+                  reqId:
+                    type: string
+                    title: 请求id
+                required:
+                - code
+                - data
+                - success
+                - message
+                - reqId
+                x-apifox-orders:
+                - code
+                - success
+                - message
+                - reqId
+                - data
+              examples:
+                成功:
+                  summary: 成功
+                  value:
+                    reqId: 1322d119d59f4437af88097c10cab389
+                    code: '2000'
+                    success: true
+                    message: 成功
+                    data:
+                      businessStatusName: 已成功
+                      code: '2000'
+                      serviceCode: tax-ckts-fpcx
+                      businessStatus: 3
+                      serviceName: 出口退税发票查询
+                      message: 出口退税发票状态查询成功
+                      result:
+                        url: https://qxy-oss-robot-product.qixiangyun.com/ARCHIVE/etax-agg-product_1783599288672_d5d5484a86b141b2bd87aee80a0a67b5_cwbb_xqykjzz.json?OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Expires=1848572088&Signature=/FPoaT1XHdU6vpW9rPBgPxAby28%3D
+                      aggOrgId: 5245084167160768
+                      taskId: 669564414084352
+                失败:
+                  summary: 失败
+                  value:
+                    code: '4708'
+                    success: true
+                    message: 请先进行自检申请上传申报表相关数据，再进行附列资料上传
+                    reqId: c2f9201cdaaf46f8a4a13efed1528e45
       x-apifox-status: released

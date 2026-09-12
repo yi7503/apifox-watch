@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -341,7 +342,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 48153106,
-  "ordering": 60,
+  "ordering": 107,
   "responsibleId": 0,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -349,17 +350,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-25T03:50:35.000Z",
-  "updatedAt": "2025-05-19T03:50:33.000Z",
+  "updatedAt": "2026-08-28T03:40:01.000Z",
   "creatorId": 1452584,
   "editorId": 1452584,
   "creatorUserId": 1452584,
   "editorUserId": 1452584,
-  "responseChildren": [
-    "BLANK.591849209"
-  ],
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

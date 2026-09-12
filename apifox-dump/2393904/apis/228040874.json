@@ -108,15 +108,6 @@
                     "01JNCX5TZQXN9S446WF13A4AFF": {
                       "$ref": "#/definitions/98557271",
                       "x-apifox-overrides": {
-                        "ewmUrl": {
-                          "type": [
-                            "string",
-                            "null"
-                          ],
-                          "title": "ewm二维码地址url",
-                          "deprecated": true,
-                          "description": "OSS地址有效期1个月"
-                        },
                         "qdfphm": {
                           "type": "string",
                           "title": "数电发票号码"
@@ -202,7 +193,7 @@
     {
       "name": "新增kprq、fplx、jshj返回示例",
       "responseId": 554698595,
-      "data": "{\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"chargingNsrsbh\": null,\n            \"code\": null,\n            \"fplx\": \"0910\",\n            \"jshj\": 32814.07,\n            \"kprq\": \"2024-06-30 00:00:00\",\n            \"message\": null,\n            \"ofdUrl\": null,\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=LTAI5tMHcomKiHbKRhS2uU8X&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\n            \"qdfphm\": \"24****************39\",\n            \"xmlUrl\": null,\n            \"zt\": \"3\"\n        }\n    ]\n}",
+      "data": "{\n    \"reqId\": \"cff55d263f3e4b8a91711d524a1b311b\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"chargingNsrsbh\": null,\n            \"code\": null,\n            \"fplx\": \"0910\",\n            \"jshj\": 32814.07,\n            \"kprq\": \"2024-06-30 00:00:00\",\n            \"message\": null,\n            \"ofdUrl\": null,\n            \"pdfUrl\": \"http://qxy-oss-robot-product.qixiangyun.com/9fc6bb308e1fdfd4ae49523f9e94e4ed.pdf?OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Expires=1730012403&Signature=7OhdQTPEoKsMlS9xFlEGwXCd4CE%3D\",\n            \"qdfphm\": \"24****************39\",\n            \"xmlUrl\": null,\n            \"zt\": \"3\"\n        }\n    ]\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",

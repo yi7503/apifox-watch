@@ -6,13 +6,14 @@ info:
 tags:
 - name: 数据业务 / 企业商事查询 / 云抬头
 - name: 数据业务 / 企业商事查询 / 企业360度数据洞察
+- name: 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
+- name: 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
+- name: 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-失信场景
+- name: 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
 - name: 数据业务 / 企业商事查询 / 企业信息查询
 - name: 数据业务 / 企业商事查询 / 企业联系人信息查询
 - name: 数据业务 / 企业商事查询 / 新增企业查询
 - name: 数据业务 / 企业数据采集 / 解析版
-- name: 数据业务 / 企业风险识别 / 企业黑名单
-- name: 数据业务 / 企业风险识别 / 企业黑名单-融合版A
-- name: 数据业务 / 企业风险识别 / 企业黑名单-融合版B
 paths:
   /v2/collect/invoice/getCollectTaskPageData:
     post:
@@ -724,6 +725,7 @@ paths:
                             - 01JN3ZH1VKYTX2VMDQX0DTB1MD
                             - 01JTJAG732G86QEPE6YJEXBKQT
                             - 01JYNHD401EPSR3SSEXR2T0BGJ
+                            - 01M1E9DCCN8N1F7MAFXKHW1QWF
                             x-apifox-refs:
                               01HA4TA6BST2MGBZGWH5JSM9GC:
                                 $ref: '#/definitions/60712671'
@@ -826,6 +828,8 @@ paths:
                                 $ref: '#/definitions/165415548'
                               01JYNHD401EPSR3SSEXR2T0BGJ:
                                 $ref: '#/definitions/179395277'
+                              01M1E9DCCN8N1F7MAFXKHW1QWF:
+                                $ref: '#/definitions/309958290'
                           syhq:
                             type: object
                             properties:
@@ -847,12 +851,15 @@ paths:
                             $ref: '#/definitions/128059214'
                           tx:
                             $ref: '#/definitions/128057392'
+                          fx:
+                            $ref: '#/definitions/309959478'
                         x-apifox-orders:
                         - jcxx
                         - sb
                         - syhq
                         - db
                         - tx
+                        - fx
                         x-apifox-refs: {}
                         description: 任务结果内容
                         title: 任务结果内容
@@ -2459,6 +2466,58 @@ paths:
                                                     }
                                                 },
                                                 {
+                                                    "tableType": "FTHB_JMSMXSBFB",
+                                                    "ccxwsjmsmxsbfb": { // 房土合并减免税明细申报附表
+                                                        "nsrxx": { //纳税人信息
+                                                            "nsrsbh": "91440101*****4G", // 纳税人识别号
+                                                            "nsrmc": "******公司" // 纳税人名称
+                                                        },
+                                                        "header": { // 表头
+                                                            "bqsfsyxwqylslfjzszc": "", //本期是否适用小微企业“六税两费”减征收政策 Y是 N否
+                                                            "jzzcsyztzzsxgmnsr": "", // 减征政策适用主体-增值税小规模纳税人 Y是 N否
+                                                            "jzzcsyztzzsybnsr": "", //  减征政策适用主体-增值税一般纳税人： 1个体工商户 2小型微利企业
+                                                            "syjzzcqsj": "", // 适用减征政策起时间
+                                                            "syjzzczsj": "" // 适用减征政策止时间
+                                                        },
+                                                        "body": {
+                                                            "hjjmse": "合计减免税额", //合计减免税额
+                                                            "cztdsysList": [ //城镇土地使用税数组
+                                                                {
+                                                                    "tdbh": "-", //  土地编号
+                                                                    "skssqq": "-", //税款所属期起
+                                                                    "skssqz": "-", //税款所属期止
+                                                                    "jmxzDm": "", // 减免性质编码
+                                                                    "swsxDm": "", // 减免性质的税务事项代码
+                                                                    "jmxzShowData": "", // 减免政策展示的名称
+                                                                    "jmse": "" // 减免税额
+                                                                }
+                                                            ],
+                                                            "cztdsysHjjmse": "城镇土地使用税合计减免税额", //城镇土地使用税合计减免税额
+                                                            "fcsList": [ //房产税数组
+                                                                {
+                                                                    "fcbh": "-", //  房产编号
+                                                                    "skssqq": "-", //税款所属期起
+                                                                    "skssqz": "-", //税款所属期止
+                                                                    "jmxzDm": "", // 减免性质编码
+                                                                    "swsxDm": "", // 减免性质的税务事项代码
+                                                                    "jmxzShowData": "", // 减免政策展示的名称
+                                                                    "jmse": "" // 减免税额
+                                                                }
+                                                            ],
+                                                            "fcsHjjmse": "房产税合计减免税额" //房产税合计减免税额
+                                                        },
+                                                        "footer": { //表尾
+                                                            "jbr": "", // 经办人
+                                                            "slr": "", // 受理人
+                                                            "jbrsfzjhm": "", // 经办人身份证件号码
+                                                            "slswjg": "", // 受理税务机关（章）
+                                                            "dljgqz": "", // 代理机构签章
+                                                            "slrq": "", // 受理日期
+                                                            "dljgtyshxydm": "" // 代理机构统一社会信用代码
+                                                        }
+                                                    }
+                                                },
+                                                {
                                                     "tableType": "ZYS_JMSMXSBFB",
                                                     "zysjmxxGridlbVO": { // 资源税减免税明细申报附表
                                                         "commonTop": {
@@ -3087,8 +3146,8 @@ paths:
                     escfpbhsjghj\": \"\", // 二手车销售统一发票不含税价格合计\r\n                                        \"xnyqclxdm\": \"\", // 新能源汽车类型代码\r\n                                        \"xsfnsrsbh\": \"\", // 销售方纳税人识别代号\r\n                                        \"qtyxpzmc\": \"\", // 其它有效凭证名称\r\n                                        \"qtyxpzhm\": \"\", // 其它有效凭证号码\r\n                                        \"qtyxpzjg\": \"\", // 其他有效凭证价格\r\n                                        \"hgjkgszyjks\": \"\", // 海关进口关税专用缴款书（或进出口货物征免税证明）号码\r\n                                        \"gswsjg\": \"\", // 关税完税价格\r\n                                        \"gsjg\": \"\", // 关税价格\r\n                                        \"xfsjg\": \"\" // 消费税价格\r\n                                    },\r\n                                    \"jsxx\": {\r\n                                        \"sbjsjg\": \"\", // 申报计税价格\r\n                                        \"jsjg\": \"\", // 计税价格\r\n                       \
                     \                 \"sl\": \"\", // 税率\r\n                                        \"ynse\": \"\", // 应纳税额\r\n                                        \"mjse\": \"\", // 免（减）税额\r\n                                        \"yjse\": \"\", // 已缴税额\r\n                                        \"sjje\": \"\", // 实纳金额\r\n                                        \"znjje\": \"\", // 滞纳金金额\r\n                                        \"yjjhj\": \"\", // 应缴交合计\r\n                                        \"scmszssj\": \"\" // 首次免税征收省局\r\n                                    }\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"statusDetails\": {\r\n            \"jcxx\": {\r\n                \"status\": 3\r\n            },\r\n            \"main\": 3,\r\n            \"sb\": {\r\n                \"status\": 3\r\n            }\r\n        },\r\n        \"statusMsg\"\
                     : \"完成\",\r\n        \"status\": 3\r\n    }\r\n}"
-                关联业务往来汇总:
-                  summary: 关联业务往来汇总
+                关联业务往来汇总（仅支持融通资金表）:
+                  summary: 关联业务往来汇总（仅支持融通资金表）
                   value: "{\r\n    \"msg\": null,\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"result\": {\r\n            \"jcxx\": {},\r\n            \"fp\": {},\r\n            \"sb\": {\r\n                \"finRptList\": [],\r\n                \"taxRptList\": [\r\n                    {\r\n                        \"nsrsbh\": \"91**********15\",\r\n                        \"taskType\": \"TAX_GLYWWL\",\r\n                        \"taxRq\": \"2023-11-10\",\r\n                        \"ssqq\": \"2023-10-01\",\r\n                        \"ssqz\": \"2023-10-31\",\r\n                        \"resultData\": [\r\n                            {\r\n                                \"tableType\": \"GLYWWL_RTZJB\",\r\n                                \"rtzjb\": { // 企业年度关联业务往来汇总-融通资金表\r\n                                    \"glrrzjGridlb\": [\r\n                                        {\r\n                                            \"hc\": \"\", // 行次\r\n                                \
                     \            \"gljylx\": \"\", // 关联交易类型\r\n                                            \"glfmc\": \"\", // 关联方名称\r\n                                            \"gljynr\": \"\", // 关联交易内容\r\n                                            \"jdje\": \"\", // 借贷金额\r\n                                            \"bnsjzyts\": \"\", // 本年实际占用天数\r\n                                            \"jwgljyje\": \"\", // 境外关联交易金额（利息）\r\n                                            \"jngljyje\": \"\", // 境内关联交易金额（利息）\r\n                                            \"ndpjglzqtzje\": \"\" // 年度平均关联债权投资金额\r\n                                        }\r\n                                    ],\r\n                                    \"glrczjGridlb\": [\r\n                                        {\r\n                                            \"hc\": \"\", // 行次\r\n                                            \"gljylx\": \"\", // 关联交易类型\r\n                                            \"glfmc\":\
                     \ \"\", // 关联方名称\r\n                                            \"gljynr\": \"\", // 关联交易内容\r\n                                            \"jdje\": \"\", // 借贷金额\r\n                                            \"bnsjzyts\": \"\", // 本年实际占用天数\r\n                                            \"jwgljyje\": \"\", // 境外关联交易金额（利息）\r\n                                            \"jngljyje\": \"\", // 境内关联交易金额（利息）\r\n                                            \"ndpjglzqtzje\": \"\" // 年度平均关联债权投资金额\r\n                                        }\r\n                                    ],\r\n                                    \"ndpjglzqtzjehj\": \"0.0\" // 年度平均关联债券投资金额合计\r\n                                }\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"statusDetails\": {\r\n            \"jcxx\": {\r\n                \"status\": 3\r\n            },\r\n            \"main\": 3,\r\n\
@@ -4546,6 +4605,49 @@ paths:
                     \        \"zzsyjse\": \"增值税预缴税额\",\r\n                                                \"sfl\": \"税（费）率\", //传数值（%）\r\n                                                \"bqynse\": \"本期应纳税（费）额\",\r\n                                                \"jmxzDm\": \"\", //减免性质代码\r\n                                                \"jmxzdmMc\": \"\", //减免性质代码名称\r\n                                                \"swsxDm\": \"\", //税务事项代码\r\n                                                \"swsxMc\": \"\", //税务事项名称\r\n                                                \"jms\": \"减免税（费）额\",\r\n                                                \"jzbl\": \"减征比例\", //传数值（%）\r\n                                                \"jze\": \"减征额\",\r\n                                                \"bqybtse\": \"本期应补（退）税（费）额\"\r\n                                            },\r\n                                            {\r\n                                                \"zsxmDm\": \"合计\",\
                     \ //合计行\r\n                                                \"zsxmMc\": \"合计\", //合计行\r\n                                                \"zzsyjse\": \"增值税预缴税额\",\r\n                                                \"sfl\": \"税（费）率\", //传数值（%）\r\n                                                \"bqynse\": \"本期应纳税（费）额\",\r\n                                                \"jmxzDm\": \"\", //减免性质代码\r\n                                                \"jmxzdmMc\": \"\", //减免性质代码名称\r\n                                                \"swsxDm\": \"\", //税务事项代码\r\n                                                \"swsxMc\": \"\", //税务事项名称\r\n                                                \"jms\": \"减免税（费）额\",\r\n                                                \"jzbl\": \"减征比例\", //传数值（%）\r\n                                                \"jze\": \"减征额\",\r\n                                                \"bqybtse\": \"本期应补（退）税（费）额\"\r\n                                       \
                     \     }\r\n                                        ]\r\n                                    }\r\n                                ]\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"statusDetails\": {\r\n            \"jcxx\": {\r\n                \"status\": 3\r\n            },\r\n            \"main\": 3,\r\n            \"sb\": {\r\n                \"status\": 3\r\n            }\r\n        },\r\n        \"statusMsg\": \"完成\",\r\n        \"status\": 3\r\n    }\r\n}"
+                fx  企业信息采集-企业风险:
+                  summary: fx  企业信息采集-企业风险
+                  value:
+                    reqId: a4015b********341
+                    code: '2000'
+                    success: true
+                    message: null
+                    data:
+                      result:
+                        fx:
+                          riskYdqc:
+                          - rwbt: '2'
+                            fkqx: '2024-11-11'
+                            jsrq: '2024-11-11'
+                            zt: '2'
+                            rwbh: e90*********ae906
+                          - rwbt: '2'
+                            fkqx: '2024-11-04'
+                            jsrq: '2024-11-05'
+                            zt: '2'
+                            rwbh: fdf1*************b1ebac
+                          - rwbt: '0'
+                            fkqx: '2026-11-11'
+                            jsrq: '2026-11-11'
+                            zt: '2'
+                            detail:
+                              tsrq: '2026-11-27'
+                              sxqdList:
+                              - ssq: 2023-11-01~2025-12-31
+                                fk: ''
+                                znj: ''
+                                sk: ''
+                                sxmc: 可能违规享受先进制造业企业增值税加计抵减政策
+                                fkjg: |
+                                  关于该项税收************************************重新认定高新技**************受该项税收优惠政策。
+                                sxnr: 享受先进制造业企业增值税加计抵减政策金额较大，可能存在违规享受风险。
+                              - ssq: 2023-09-01~2026-05-06
+                                fk: ''
+                                znj: ''
+                                sk: ''
+                                sxmc: 增值税加计抵减进项税额未足额调减
+                                fkjg: 数据分析偏差：公司按政策要求事前申请，审批***************************************逻辑测算加计抵扣税额；
+                                sxnr: （本期进项税额转出-上*********************计本期调减额，少调减本期加计抵减额。
       x-apifox-status: released
   /v2/collect/beginFinTask:
     post:
@@ -4600,18 +4702,164 @@ paths:
           application/json:
             schema:
               type: object
-              x-apifox-refs:
-                01HV0TJ5317Q3J9WJ7Z3ZJ5B6F:
-                  $ref: '#/definitions/86364451'
-                  x-apifox-overrides:
-                    filter: null
-                    reqType: null
-                    aggOrgId: null
-                    collectCycle: null
-                    respondStatusMark: null
+              x-apifox-refs: {}
               x-apifox-orders:
-              - 01HV0TJ5317Q3J9WJ7Z3ZJ5B6F
-              properties: {}
+              - nsrsbh
+              - accountId
+              - areaCode
+              - kqyswjgmc
+              - tdztswjgmc
+              - cjyfq
+              - cjyfz
+              - updateCache
+              - ywqqmxModel
+              - ywqqmx
+              - sfxzhzwszm
+              - bbcjrqlx
+              properties:
+                nsrsbh:
+                  type: string
+                  title: 纳税人识别号
+                  description: 纳税人识别号
+                areaCode:
+                  type: string
+                  title: 地区编码
+                  description: 地区编码（二位或四位地区编码）
+                cjyfq:
+                  type: string
+                  title: 采集月份起
+                  description: |
+                    格式：yyyyMM，
+                    sb节点可以通过bbcjrqlx字段选择按申报日期或所属期采集；
+                    jcxx节点-申报查询 按申报日期采集；
+                    jcxx节点-税款征收信息 按缴款日期采集；
+                    其他节点数据默认按所属期采集；
+                cjyfz:
+                  type: string
+                  title: 采集月份止
+                  description: |
+                    格式：yyyyMM，
+                    sb节点可以通过bbcjrqlx字段选择按申报日期或所属期采集；
+                    jcxx节点-申报查询 按申报日期采集；
+                    jcxx节点-税款征收信息 按缴款日期采集；
+                    其他节点数据默认按所属期采集；
+                updateCache:
+                  type:
+                  - string
+                  - 'null'
+                  title: 更新缓存
+                  description: 更新缓存数据（默认0：不更新，1：更新）
+                ywqqmx:
+                  type:
+                  - object
+                  - 'null'
+                  properties:
+                    sb:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        description: 查看附录 企业数据采集-用户自定义采集代码描述
+                      description: 采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集
+                      title: 自定义税表类型列表
+                    jcxx:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        description: 查看附录 企业数据采集-用户自定义采集代码描述
+                      description: 采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集
+                      title: 自定义基础信息类型列表
+                    fp:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        description: 查看附录 企业数据采集-用户自定义采集代码描述
+                      description: 采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集
+                      title: 自定义发票类型列表
+                    syhq:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        description: 查看附录 企业数据采集-用户自定义采集代码描述
+                      title: 自定义税源获取类型
+                      description: 采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集
+                    tx:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        description: 查看附录 企业数据采集-用户自定义采集代码描述
+                      title: 自定义提醒类型
+                      description: 采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集
+                    db:
+                      type:
+                      - array
+                      - 'null'
+                      items:
+                        type: string
+                        description: 查看附录 企业数据采集-用户自定义采集代码描述
+                      title: 自定义待办类型
+                      description: 采集自定义的项，当ywqqmxModel=0时不传则不采集，当ywqqmxModel=1时不传则都采集
+                  x-apifox-orders:
+                  - sb
+                  - jcxx
+                  - fp
+                  - syhq
+                  - tx
+                  - db
+                  title: 自定义采集
+                  description: 查看示例及《解析表结构详情附录》- 用户自定义采集代码描述
+                ywqqmxModel:
+                  type:
+                  - string
+                  - 'null'
+                  title: 自定义采集模式
+                  description: 当ywqqmx有自定义时生效，'0'： 默认-全自定义模式，'1'：部分定义模式（只自定义其中某项）
+                accountId:
+                  type: string
+                  title: accountId
+                  description: 多账号ID
+                sfxzhzwszm:
+                  type:
+                  - string
+                  - 'null'
+                  description: Y=是、N=否
+                  title: 是否下载汇总完税证明
+                kqyswjgmc:
+                  type: string
+                  title: 跨区域税务机关名称
+                  description: |-
+                    1. 跨区域采集专用；
+                    2. 跨区域业务和特定主体业务需要分开采集不能同时有值；
+                tdztswjgmc:
+                  type: string
+                  title: 特定主体税务机关名称
+                  description: |-
+                    1. 特定主体采集专用；
+                    2. 跨区域业务和特定主体业务需要分开采集不能同时有值；
+                    3. tdztswjgmc有值的时候accountId必须有值；
+                bbcjrqlx:
+                  type:
+                  - string
+                  - 'null'
+                  description: |-
+                    0=按照所属期采集  1=按照申报日期采集；
+                    默认采集类型是0，不传这个字段或者不传值=0；
+                    注意：此参数只针对sb节点有效！
+                  title: 报表采集日期类型
+              required:
+              - nsrsbh
+              - areaCode
+              - cjyfq
+              - cjyfz
             examples:
               默认:
                 summary: 默认
@@ -4692,7 +4940,7 @@ paths:
                     message: 异常信息
                     reqId: d56999744734437eb10f3369d52efc15
       x-apifox-status: released
-  /v2/collect/getTaxAndFpInfo#176336449:
+  /v2/collect/getTaxAndFpInfo:
     post:
       summary: 获取采集状态及全量数据
       operationId: api-176336449
@@ -4873,6 +5121,7 @@ paths:
                             - 01JN3VM8RMBQ0KNB35PJGP68C1
                             - 01JTJADQ7V80Z6N4CYED2X50SZ
                             - 01JYNHGGWDSDA9EZH4X02B26F9
+                            - 01M1E985MWBZA4W35K1D0EMYAK
                             x-apifox-refs:
                               01HA4TA6BST2MGBZGWH5JSM9GC:
                                 $ref: '#/definitions/60712671'
@@ -4912,6 +5161,9 @@ paths:
                                 $ref: '#/definitions/179395277'
                               01K2C1YR120V70G16X7Y7FCWRQ:
                                 $ref: '#/definitions/144673091'
+                              01M1E985MWBZA4W35K1D0EMYAK:
+                                $ref: '#/definitions/309958290'
+                                x-apifox-overrides: {}
                           fp:
                             description: 发票节点
                             type: object
@@ -4988,6 +5240,8 @@ paths:
                           tx:
                             description: 我的提醒节点
                             $ref: '#/definitions/128057392'
+                          fx:
+                            $ref: '#/definitions/309959478'
                         x-apifox-orders:
                         - jcxx
                         - sb
@@ -4995,6 +5249,7 @@ paths:
                         - syhq
                         - db
                         - tx
+                        - fx
                         x-apifox-refs: {}
                         description: 任务结果内容
                         title: 任务结果内容
@@ -5017,7 +5272,7 @@ paths:
                             type: string
                             title: 分组总code
                             description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败，4500：无权限
-                          sb、fp、jcxx、syhq、db、tx:
+                          sb、fp、jcxx、syhq、db、tx、fx:
                             type: object
                             properties:
                               status:
@@ -5038,7 +5293,7 @@ paths:
                             description: 类型及下节点类型参考上级目录中的《企业数据采集公共附录》
                         title: 任务状态详情
                         x-apifox-orders:
-                        - sb、fp、jcxx、syhq、db、tx
+                        - sb、fp、jcxx、syhq、db、tx、fx
                         - main
                         - mainStatusCode
                     x-apifox-orders:
@@ -5221,6 +5476,20 @@ paths:
                             sbqx: '2025-09-30'
                             nsqx: ''
                             sfcwbb: N
+                          ckzhbgba:
+                          - xzqh: XX区
+                            yhyywdmc: XXXX支行
+                            fzrq: '2024-01-24'
+                            yhzh: '32456754367675'
+                            zhxz: 基本存款账户
+                            bgrq: ''
+                            khrq: '2024-01-24'
+                            yhkhdjzh: '214345678954356'
+                            sxjszhbz: Y
+                            bz: 人民币
+                            tszhbz: Y
+                            yhhbmc: XX银行
+                            zhmc: XXX有限公司
                         fp:
                           jxsezcFileDownLoad:
                             jsonUrl: https://qxy-oss-test.oss
@@ -5500,6 +5769,12 @@ paths:
                             FULL_FILE_ZIP: 1
                           status: 1
                       status: 1
+                企业风险:
+                  summary: 企业风险
+                  value: "{\r\n    \"msg\": null,\r\n    \"code\": \"2000\",\r\n    \"data\": {\r\n        \"result\": {\r\n            \"jcxx\": {},\r\n            \"fx\": {\r\n                \"riskYdqc\": [ // 企业风险疑点清册\r\n                    {\r\n                        \"rwbh\": \"05423452343C\",\r\n                        \"rwbt\": \"0\",\r\n                        \"jsrq\": \"2026-08-19\",\r\n                        \"fkqx\": \"2026-08-25\",\r\n                        \"zt\": \"2\",\r\n                        \"detail\": {\r\n                            \"tsrq\": \"2026-08-19\",\r\n                            \"sxqdList\": [\r\n                                {\r\n                                    \"sxmc\": \"存在取得财政补贴未按规定缴纳增值税、企业所得税的风险\",\r\n                                    \"sxnr\": \"存在取得财政补贴未按规定缴纳增值税、企业所得税的风险，需提供对应年度的政府补贴计划、财政拨付文件、专项资金核算明细、科目余额表、增值税12月申报表，企业所得税年报电子版。证明业务处理情况\",\r\n                                    \"ssq\": \"2021-01-01~2025-12-31\",\r\n                  \
+                    \                  \"fkjg\": \"我公司按照要求核查2022年收到783.50万元、2023年收到200万元财政性资金涉税情况如下：\\n我公司2019年司法重整，通用技术集团作为战略投资者参与本次重整。为明确我公司相关遗留问题的处理、推动重整之后企业快速健康发展，通用技术集团与沈阳市人民政府签订《投资保障协议》对我公司人员安置、支持企业发展的优惠政策、历史遗留问题处理等做出明确约定。783.50万元补贴为上述协议约定的扶持事项之一，2022年由沈阳市国资委、沈阳市财政局按照我公司重整后前3年，对市以下（含市级）缴纳税款的50%计算确定应补贴783.50万元。我公司于2022年收到该财政性资金，记入“其他收益”。（协议文件涉及合作方商业保密及地方招商涉密条款，附件仅截取本次核查相关内容。）\\n根据《沈阳市促进金融业发展若干政策措施的通知》（沈政办发[2019]14号）第十九条“对企业完成上市再融资，1亿元（含）以上5亿元（含）以下的一次性奖励100万元，5亿元以上的一次性奖励200万元。”我公司于2023年收到200万财政性资金，记入“其他收益”。\\n我公司收到以上两笔财政性资金与企业收入或者产品销量无关，故无需缴纳增值税；相关补贴分别计入对应年度企业所得税应纳税所得额，故不存在少缴税款问题。\",\r\n                                    \"sk\": \"\",\r\n                                    \"znj\": \"\",\r\n                                    \"fk\": \"\"\r\n                                }\r\n                            ]\r\n                        }\r\n                    },\r\n                    {\r\n                        \"rwbh\": \"8a854234wegw422352343529\",\r\n                        \"rwbt\"\
+                    : \"2\",\r\n                        \"jsrq\": \"2024-06-07\",\r\n                        \"fkqx\": \"2024-07-07\",\r\n                        \"zt\": \"1\",\r\n                        \"detail\": {\r\n                            \"tsrq\": \"2024-06-08\",\r\n                            \"sxqdList\": [\r\n                                {\r\n                                    \"sxmc\": \"\",\r\n                                    \"sxnr\": \"根据《企业所得税税前扣除凭证管理办法》的规定，企业所得税税前扣除凭证应遵循真实性、合法性、关联性原则。经税务机关数据分析比对，近期你单位收受的发票存在企业所得税税前扣除异常情况，涉及发票1份，发票金额17787.61元。请你单位及时自查核实，核实结果请在30日内通过电子税务局反馈。\",\r\n                                    \"ssq\": \"\",\r\n                                    \"fkjg\": \"\",\r\n                                    \"sk\": \"\",\r\n                                    \"znj\": \"\",\r\n                                    \"fk\": \"\"\r\n                                }\r\n                            ]\r\n                        }\r\n                    }\r\
+                    \n                ]\r\n            }\r\n        },\r\n        \"statusDetails\": {\r\n            \"fx\": {\r\n                \"groupStatusDetail\": {\r\n                    \"ORG_RISK_YDQC\": {\r\n                        \"code\": \"2000\",\r\n                        \"hasLoginErr\": \"0\",\r\n                        \"codeMsg\": \"执行完成\",\r\n                        \"status\": 3\r\n                    }\r\n                },\r\n                \"loginCode\": \"2000\",\r\n                \"status\": 3\r\n            },\r\n            \"mainStatusCode\": \"2000\",\r\n            \"main\": 3\r\n        },\r\n        \"statusMsg\": \"完成\",\r\n        \"status\": 3\r\n    }\r\n}"
       x-apifox-status: released
   /v2/collect/taskStatusDetails:
     post:
@@ -5556,15 +5831,13 @@ paths:
                 taskId:
                   type: string
                   title: 任务id
-                  mock:
-                    mock: '1698948417616556034'
                   description: 任务成功后任务ID
+                  x-apifox-mock: '1698948417616556034'
                 nsrsbh:
                   type: string
                   title: 纳税人识别号
-                  mock:
-                    mock: 91440111MACHRDGB9W
                   description: 纳税人识别号
+                  x-apifox-mock: 91440111MACHRDGB9W
               x-apifox-orders:
               - taskId
               - nsrsbh
@@ -5587,15 +5860,13 @@ paths:
                   reqId:
                     type: string
                     title: 请求唯一id
-                    mock:
-                      mock: '1702594054403760130'
                     description: 请求唯一id
+                    x-apifox-mock: '1702594054403760130'
                   code:
                     type: string
                     title: 返回code码
-                    mock:
-                      mock: '2000'
                     description: 返回code码
+                    x-apifox-mock: '2000'
                   success:
                     type: boolean
                   message:
@@ -5604,8 +5875,7 @@ paths:
                     - 'null'
                     title: 返回信息描述
                     description: 返回信息描述
-                    mock:
-                      mock: 成功
+                    x-apifox-mock: 成功
                   data:
                     type:
                     - object
@@ -5634,7 +5904,7 @@ paths:
                             type: string
                             title: 分组总code
                             description: 8000：存在登录失效任务，2000：全部成功，其他code：失败
-                          sb、fp、jcxx、syhq、db、tx:
+                          sb、fp、jcxx、syhq、db、tx、fx:
                             type: object
                             properties:
                               status:
@@ -5655,7 +5925,7 @@ paths:
                             description: 类型及下节点类型参考上级目录中的《企业数据采集公共附录》
                         title: 任务状态详情
                         x-apifox-orders:
-                        - sb、fp、jcxx、syhq、db、tx
+                        - sb、fp、jcxx、syhq、db、tx、fx
                         - main
                         - mainStatusCode
                     x-apifox-orders:
@@ -5810,7 +6080,11 @@ paths:
                       type: string
                       title: 分组总状态
                       description: 1：进行中，2：失败（任一失败），3：成功
-                    sb、fp、jcxx、syhq:
+                    mainStatusCode:
+                      type: string
+                      title: 分组总code
+                      description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败，4500：无权限
+                    sb、fp、jcxx、syhq、db、tx、fx:
                       type:
                       - object
                       - 'null'
@@ -5827,12 +6101,8 @@ paths:
                       - status
                       - loginCode
                       title: 分组任务状态详情节点
-                    mainStatusCode:
-                      type: string
-                      title: 分组总code
-                      description: 8000：存在登录失效任务，2000：全部成功，5000：部分失败，4500：无权限
                   x-apifox-orders:
-                  - sb、fp、jcxx、syhq
+                  - sb、fp、jcxx、syhq、db、tx、fx
                   - main
                   - mainStatusCode
                   title: 任务状态详情
@@ -5889,7 +6159,7 @@ paths:
       summary: 工商基本信息
       operationId: api-243056813
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       description: 该接口用于获取企业登记注册相关信息，包括基本信息、经营信息、状态信息等，可通过该接口获取企业从注册成立到经营存续等各方面的详细信息，辅助进行业务决策、风险评估等工作。
       parameters:
       - name: Content-Type
@@ -6247,6 +6517,7 @@ paths:
                         - string
                         - 'null'
                         title: 纳税人类型
+                        description: '"增值税一般纳税人"、“小规模纳税人”、“ ” 返回空为小规模纳税人 '
                       entityType:
                         type:
                         - string
@@ -6376,7 +6647,7 @@ paths:
       summary: 税务非正常户
       operationId: api-243058455
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 可通过该接口获取企业的欠税状态、金额、税种、判定信息等数据，辅助进行税收管理、风险防控和商业决策。
       parameters:
       - name: Content-Type
@@ -6497,7 +6768,7 @@ paths:
       summary: 资质证书信息
       operationId: api-243064199
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
       description: 该接口可用于获取企业相关资质证书的详细信息
       parameters:
       - name: Content-Type
@@ -6679,7 +6950,7 @@ paths:
       summary: 列入经营异常名录信息
       operationId: api-243068557
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 该接口可用于获取企业相关公告信息及列入、移除情况
       parameters:
       - name: Content-Type
@@ -7408,7 +7679,7 @@ paths:
       summary: 失信信息
       operationId: api-243107849
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-失信场景
       description: 该接口提供涉诉案件执行信息，包括执行依据单位、法院、义务、文号、失信情形、履行情况等信息
       parameters:
       - name: Content-Type
@@ -7645,7 +7916,7 @@ paths:
       summary: 对外投资
       operationId: api-243110626
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       description: 该接口可用于获取企业投资相关信息
       parameters:
       - name: Content-Type
@@ -7936,7 +8207,7 @@ paths:
       summary: 裁判文书
       operationId: api-243112754
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 接口可用于获取企业或相关主体涉诉案件的详细信息
       parameters:
       - name: Content-Type
@@ -8101,7 +8372,7 @@ paths:
       summary: 限制高消费信息
       operationId: api-243114640
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-失信场景
       description: 用于获取企业涉诉限令正文、案由等详细信息
       parameters:
       - name: Content-Type
@@ -8242,7 +8513,7 @@ paths:
       summary: 限制高消费关联企业
       operationId: api-243141331
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-失信场景
       description: 用于获取企业涉诉相关基础信息
       parameters:
       - name: Content-Type
@@ -8418,7 +8689,7 @@ paths:
       summary: 列入严重违法失信企业名单
       operationId: api-243154125
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 用于获取企业列入或移出严重违法失信名单相关信息
       parameters:
       - name: Content-Type
@@ -8599,7 +8870,7 @@ paths:
       summary: 税务重大违法
       operationId: api-243155296
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 可通过该接口获取企业违法违规相关信息。
       parameters:
       - name: Content-Type
@@ -8797,7 +9068,7 @@ paths:
       summary: 欠税公告
       operationId: api-243157314
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 该接口用于获取企业的欠税相关信息
       parameters:
       - name: Content-Type
@@ -9440,7 +9711,7 @@ paths:
       summary: 商标信息
       operationId: api-271925231
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
       description: 该接口用于获取企业的商标信息
       parameters:
       - name: Content-Type
@@ -9747,7 +10018,7 @@ paths:
       summary: 专利信息
       operationId: api-271935254
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
       description: 企业维度获取到对应的专利信息
       parameters:
       - name: Content-Type
@@ -9917,7 +10188,7 @@ paths:
       summary: 专利关系信息
       operationId: api-271944743
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
       description: |
         企业维度获取到对应的专利关系信息。
       parameters:
@@ -10049,7 +10320,7 @@ paths:
       summary: 专利法律状态信息
       operationId: api-271952729
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
       description: |
         企业维度获取到对应的专利法律状态。
       parameters:
@@ -10178,7 +10449,7 @@ paths:
       summary: 企业联系信息
       operationId: api-280471530
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       description: 通过该接口可以获取到企业的联系信息
       parameters:
       - name: Content-Type
@@ -10339,7 +10610,7 @@ paths:
       summary: A类纳税人信息查询
       operationId: api-283005612
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       parameters:
       - name: Content-Type
         in: header
@@ -10458,7 +10729,7 @@ paths:
       summary: 股东出资信息
       operationId: api-299636785
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       description: 可查询该企业股东对应的实缴/认缴相关信息
       parameters:
       - name: Content-Type
@@ -10637,7 +10908,7 @@ paths:
       summary: 分支机构信息
       operationId: api-302311059
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       description: 可根据企业信息查询该企业的分级机构名称、税号信息
       parameters:
       - name: Content-Type
@@ -10754,7 +11025,7 @@ paths:
       summary: 失信执行信息
       operationId: api-302354703
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-失信场景
       description: 可根据企业信息查询司法执行阶段的相关信息
       parameters:
       - name: Content-Type
@@ -10935,7 +11206,7 @@ paths:
       summary: 失信被执行对象
       operationId: api-302357949
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-失信场景
       description: 企业执行人的相关信息，司法执行中的责任主体情况
       parameters:
       - name: Content-Type
@@ -11086,7 +11357,7 @@ paths:
       summary: 软件著作权信息
       operationId: api-302377016
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 证书专利商标著作权场景
       description: 获取企业软件著作权的详细信息
       parameters:
       - name: Content-Type
@@ -11246,7 +11517,7 @@ paths:
       summary: 立案公告信息
       operationId: api-302383369
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 企业立案后对应的公告信息
       parameters:
       - name: Content-Type
@@ -11454,7 +11725,7 @@ paths:
       summary: 裁判文书相关企业
       operationId: api-302394888
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       description: 发生裁判文书相关的企业信息
       parameters:
       - name: Content-Type
@@ -11870,7 +12141,7 @@ paths:
       summary: 高管关联企业信息
       operationId: api-306989970
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       parameters:
       - name: Content-Type
         in: header
@@ -12328,7 +12599,7 @@ paths:
       summary: 企业年报
       operationId: api-342936350
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       parameters:
       - name: Content-Type
         in: header
@@ -13014,7 +13285,7 @@ paths:
       summary: 企业变更信息
       operationId: api-386738300
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       parameters:
       - name: Content-Type
         in: header
@@ -13132,7 +13403,7 @@ paths:
       summary: 股权出质信息
       operationId: api-386791778
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       parameters:
       - name: Content-Type
         in: header
@@ -13235,7 +13506,7 @@ paths:
       summary: 主要人员信息
       operationId: api-386816770
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 企业信息及联系人场景
       parameters:
       - name: Content-Type
         in: header
@@ -13331,7 +13602,7 @@ paths:
       summary: 开庭公告信息
       operationId: api-386840241
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       parameters:
       - name: Content-Type
         in: header
@@ -13359,13 +13630,25 @@ paths:
           application/json:
             schema:
               type: object
-              properties: {}
+              properties:
+                pageSize:
+                  type: string
+                  title: 每页显示条数
+                  description: |
+                    最大20
+                pageIndex:
+                  type: string
+                  title: 页码
               x-apifox-orders:
               - 01KBP54Q4QRBQCJK00HY318R27
-              required: []
+              - pageSize
+              - pageIndex
               x-apifox-refs:
                 01KBP54Q4QRBQCJK00HY318R27:
                   $ref: '#/definitions/226029776'
+              required:
+              - pageSize
+              - pageIndex
             examples:
               example_0:
                 summary: ''
@@ -13447,7 +13730,7 @@ paths:
       summary: 司法股权冻结
       operationId: api-386843183
       tags:
-      - 数据业务 / 企业商事查询 / 企业360度数据洞察
+      - 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
       parameters:
       - name: Content-Type
         in: header
@@ -13550,212 +13833,6 @@ paths:
                     timestamp: '2025-12-05 13:38:43'
                     reqId: aaaaaaaaaaaaaaaaaaaa
       x-apifox-status: testing
-  /v2/risk/hmd/standard:
-    post:
-      summary: 查询企业是否黑名单
-      operationId: api-67295912
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单-融合版A
-      description: |-
-        ## 接口描述
-         根据企业全名/统一社会信用代码查询企业征信。 查询是否异常，以及经营异常、严重违法、重大税收违法风险的三个标志和列表。
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|
-        | NO_RESULT| 查询无结果。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                qyName:
-                  type: string
-                  title: 企业全名/统一社会信用代码
-              x-apifox-orders:
-              - qyName
-              required:
-              - qyName
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    description: 错误码
-                    type: string
-                    title: 错误码
-                  data:
-                    title: 业务数据
-                    type: object
-                    x-apifox-refs: {}
-                    properties:
-                      qyName:
-                        type:
-                        - string
-                        - 'null'
-                        title: 企业全名
-                      isHmd:
-                        type:
-                        - boolean
-                        - 'null'
-                        title: 是否黑名单(false:不是黑名单；true:黑名单)如果经营异常、严重违法、重大税收违法风险有一项，就是黑名单
-                      jyycFlag:
-                        type:
-                        - integer
-                        - 'null'
-                        title: 经营异常风险标志(0：无经营异常；1:有经营异常)，如果返回报文是”当前公示信息“且”移出日期“为空视作经营异常；
-                      yzwfFlag:
-                        type:
-                        - integer
-                        - 'null'
-                        title: 严重违法风险标志(0：无严重违法；1:有严重违法)，如果返回报文是”当前公示信息“且”移出日期“为空 视作严重违法；
-                      zdsswfFlag:
-                        type:
-                        - integer
-                        - 'null'
-                        title: 重大税收违法风险标志(0：无重大税收违法；1:有重大税收违法)，如果返回报文是”当前公示信息“ 视作重大税收违法；
-                      jyycList:
-                        title: 经营异常列表
-                        $ref: '#/definitions/37483494'
-                      yzwfList:
-                        title: 严重违法列表
-                        $ref: '#/definitions/37486261'
-                      zdsswfList:
-                        title: 重大税收违法列表
-                        $ref: '#/definitions/37486518'
-                    x-apifox-orders:
-                    - qyName
-                    - isHmd
-                    - jyycFlag
-                    - yzwfFlag
-                    - zdsswfFlag
-                    - jyycList
-                    - yzwfList
-                    - zdsswfList
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-refs: {}
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: 18d349a72fd243ad9704e51cd1e3dc4a
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      qyName: 湖南长沙XX有限公司
-                      isHmd: true
-                      jyycFlag: 1
-                      yzwfFlag: 1
-                      zdsswfFlag: 1
-                      jyycList:
-                      - total: 2
-                        items:
-                        - outReason: '-'
-                          regNo: '430102000312822'
-                          outDate: '-'
-                          province: HUNAN
-                          inDate: '2018-07-09'
-                          name: 湖南长沙XX有限公司
-                          disabled: '0'
-                          inReason: 未按照规定报送年度报告
-                          department: 长沙市工商行政管理局芙蓉分局
-                        - outReason: '-'
-                          regNo: '430102000312822'
-                          outDate: '-'
-                          province: HUNAN
-                          inDate: '2018-07-08'
-                          name: 湖南长沙XX有限公司
-                          disabled: '1'
-                          inReason: 未按照规定报送年度报告
-                          department: 长沙市工商行政管理局芙蓉分局
-                      yzwfList:
-                        execution:
-                        - in_department: 湖南省市场监督管理局
-                          out_department: '-'
-                          in_date: '2019-07-30'
-                          in_reason: 被列入经营异常名录届满3年仍未履行相关义务
-                          out_date: '-'
-                          out_reason: '-'
-                      zdsswfList:
-                        total: 1
-                        items:
-                        - created_time: '2019-04-09'
-                          updated_time: '2019-04-09'
-                          agent: '-'
-                          address: 湖南省经济技术开发区承德南路266号6#楼322室
-                          illegal_fact: 经江苏省淮安市国家税务局稽查局检查，发现其在2015年12月01日至2016年05月31日期间，主要存在以下问题：对外虚开增值税销项发票150份，金额1408.00万元，税额239.00万元。
-                          url: http://hd.chinatax.gov.cn/xxk/action/GetArticleView1.do?op=xxkweb&id=234642
-                          result: 依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款0.01万元的行政处罚，并依法移送司法机关。
-                          credit_no: 91320891MA1MC20690
-                          name: 湖南长沙XX有限公司
-                          property: 虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票
-                          oper: 史桂,男
-                          time: '2017-03-01'
-                          org_no: A1MC2069
-                          finance_officer: '-'
-      x-apifox-status: released
   /v2/risk/hmd/qycxnew:
     post:
       summary: 企业精准查询接口
@@ -13879,970 +13956,6 @@ paths:
                       econKindCode: '1152'
                       startDate: '2021-06-08'
                       status: 存续
-      x-apifox-status: released
-  /v2/risk/hmd/jyyc:
-    post:
-      summary: 经营异常风险接口
-      operationId: api-67296618
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单
-      description: |-
-        ## 接口描述
-         企业经营异常信息，企业被列入或移出的原因和时间，以及做出决定的机关等。
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|
-        | NO_RESULT| 查询无结果。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                qyName:
-                  type: string
-                  title: 企业全名/统一社会信用代码，必填
-              x-apifox-orders:
-              - qyName
-              required:
-              - qyName
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    description: 错误码
-                    type: string
-                    title: 错误码
-                  data:
-                    type: object
-                    properties:
-                      qyName:
-                        type:
-                        - string
-                        - 'null'
-                        title: 企业名称/纳税识别号
-                      jyycFlag:
-                        type:
-                        - string
-                        - 'null'
-                        title: 经营异常风险标志
-                      jyycList:
-                        type:
-                        - object
-                        - 'null'
-                        properties:
-                          total:
-                            type:
-                            - integer
-                            - 'null'
-                            title: 返回列表中记录总数
-                          items:
-                            type:
-                            - array
-                            - 'null'
-                            items:
-                              type:
-                              - object
-                              - 'null'
-                              properties:
-                                regNo:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 注册号
-                                province:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 省份
-                                inReason:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 列入原因
-                                inDate:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 列入时间
-                                outReason:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 移出原因
-                                outDate:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 移出时间
-                                department:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 做出决定机关
-                                disabled:
-                                  type:
-                                  - string
-                                  - 'null'
-                                  title: 0：当前公示信息；1：历史公示信息
-                              x-apifox-orders:
-                              - regNo
-                              - province
-                              - inReason
-                              - inDate
-                              - outReason
-                              - outDate
-                              - department
-                              - disabled
-                            title: 企业股东及出资信息列表
-                        x-apifox-refs: {}
-                        x-apifox-orders:
-                        - total
-                        - items
-                    title: 业务数据
-                    x-apifox-orders:
-                    - qyName
-                    - jyycFlag
-                    - jyycList
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-refs: {}
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: 18d349a72fd243ad9704e51cd1e3dc4a
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      qyName: 湖南长沙XX有限公司
-                      jyycFlag: 1
-                      jyycList:
-                      - total: 2
-                        items:
-                        - outReason: '-'
-                          regNo: '430102000312822'
-                          outDate: '-'
-                          province: HUNAN
-                          inDate: '2018-07-09'
-                          name: 湖南长沙XX有限公司
-                          disabled: '0'
-                          inReason: 未按照规定报送年度报告
-                          department: 长沙市工商行政管理局芙蓉分局
-                        - outReason: '-'
-                          regNo: '430102000312822'
-                          outDate: '-'
-                          province: HUNAN
-                          inDate: '2018-07-08'
-                          name: 湖南长沙XX有限公司
-                          disabled: '1'
-                          inReason: 未按照规定报送年度报告
-                          department: 长沙市工商行政管理局芙蓉分局
-      x-apifox-status: released
-  /v2/risk/hmd/yzwf:
-    post:
-      summary: 严重违法风险接口
-      operationId: api-67296658
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单
-      description: |-
-        ## 接口描述
-        ​ 企业严重违法信息，企业被列入或移出的原因和时间，以及做出决定的机关等 。
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|
-        | NO_RESULT| 查询无结果。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                qyName:
-                  type: string
-                  title: 企业全名/统一社会信用代码，必填
-              x-apifox-orders:
-              - qyName
-              required:
-              - qyName
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    description: 错误码
-                    type: string
-                    title: 错误码
-                  data:
-                    type: object
-                    properties:
-                      qyName:
-                        type:
-                        - string
-                        - 'null'
-                        title: 企业名称/纳税识别号
-                      yzwfFlag:
-                        type:
-                        - string
-                        - 'null'
-                        title: 严重违法风险标志
-                        description: 如果有未移除的严重违法内容，则为1 ，没有严重违法内容则为0 (0：无严重违法；1:有严重违法)
-                      yzwfList:
-                        $ref: '#/definitions/37486261'
-                      yzwfError:
-                        type: string
-                        title: 异常信息
-                    title: 业务数据
-                    x-apifox-orders:
-                    - qyName
-                    - yzwfFlag
-                    - yzwfList
-                    - yzwfError
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-                x-apifox-refs: {}
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: 0421b1180dcb4c6994a7bdf6aab6c22e
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      qyName: 湖南长沙XX有限公司
-                      yzwfFlag: 1
-                      yzwfList:
-                        execution:
-                        - in_department: 湖南省市场监督管理局
-                          out_department: '-'
-                          in_date: '2019-07-30'
-                          in_reason: 被列入经营异常名录届满3年仍未履行相关义务
-                          out_date: '-'
-                          out_reason: '-'
-                          is_history: 0
-      x-apifox-status: released
-  /v2/risk/hmd/zdsswf:
-    post:
-      summary: 重大税收违法风险接口
-      operationId: api-67296976
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单
-      description: |-
-        ## 接口描述
-        ​ 企业业重大税收违法信息，包括案件性质、主要违法事实等。
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|
-        | NO_RESULT| 查询无结果。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                qyName:
-                  type: string
-                  title: 企业全名/统一社会信用代码，必填
-              x-apifox-orders:
-              - qyName
-              required:
-              - qyName
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    description: 错误码
-                    type: string
-                    title: 错误码
-                  data:
-                    type: object
-                    properties:
-                      qyName:
-                        type:
-                        - string
-                        - 'null'
-                        title: 企业名称/纳税识别号企业名称/纳税识别号
-                      zdsswfFlag:
-                        type:
-                        - string
-                        - 'null'
-                        title: 重大税收违法风险标志，(0：无重大税收违法；1:有重大税收违法)有重大税收违法则为1，否则为0
-                      zdsswfList:
-                        title: "\t重大税收违法列表"
-                        $ref: '#/definitions/37486518'
-                      zdsswfError:
-                        type: string
-                        title: 异常信息
-                    title: 业务数据
-                    x-apifox-orders:
-                    - qyName
-                    - zdsswfFlag
-                    - zdsswfList
-                    - zdsswfError
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-                x-apifox-refs: {}
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: e5c3e852df134750891cf77b110a155f
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      qyName: 湖南长沙XX有限公司
-                      zdsswfFlag: 1
-                      zdsswfList:
-                        total: 1
-                        items:
-                        - created_time: '2019-04-09'
-                          updated_time: '2019-04-09'
-                          agent: '-'
-                          address: 湖南省经济技术开发区承德南333室
-                          illegal_fact: 经江苏省淮安市国家税务局稽查局检查，发现其在2015年12月01日至2016年05月31日期间，主要存在以下问题：对外虚开增值税销项发票150份，金额1408.00万元，税额239.00万元。
-                          url: http://hd.chinatax.gov.cn/xxk/action/GetArticleView1.do?op=xxkweb&id=234642
-                          result: 依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款0.01万元的行政处罚，并依法移送司法机关。
-                          credit_no: XXXXXXXXXXXXXX
-                          name: 湖南长沙XX有限公司
-                          property: 虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票
-                          oper: 史臻桂,男
-                          time: '2017-03-01'
-                          org_no: A1MC2069
-                          finance_officer: '-'
-                          u_tags: 0
-      x-apifox-status: released
-  /v2/risk/hmd/fzchnew:
-    post:
-      summary: 非正常户接口
-      operationId: api-67296994
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单
-      description: |-
-        ## 接口描述
-        ​ 通过纳税人识别号获取企业在税局的纳税人状态（正常或非正常）。 如需通过企业名称查询，建议先调用企业查询接口获取纳税人识别号。
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数nsrsbh（纳税人识别号）不能为空。|
-        | PARAMETER_ERROR | 请输入正确的纳税人识别号！ |
-        | NO_RESULT| 查询无结果。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                nsrsbh:
-                  type: string
-                  title: 纳税人识别号，必填
-                dqdm:
-                  type: string
-                  title: 地区代码
-                  description: 取值参考公共业务>附录>地区代码页
-                  deprecated: true
-              x-apifox-orders:
-              - nsrsbh
-              - dqdm
-              required:
-              - nsrsbh
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-                x-apifox-orders:
-                - 01GW4K3DFX135Y25QQ1ANB12FZ
-                x-apifox-refs:
-                  01GW4K3DFX135Y25QQ1ANB12FZ:
-                    $ref: '#/definitions/35327531'
-                    x-apifox-overrides:
-                      data:
-                        type: object
-                        properties:
-                          nsrsbh:
-                            type:
-                            - string
-                            - 'null'
-                            title: 纳税人识别号
-                          fzchFlag:
-                            type: integer
-                            title: 非正常户标志
-                            description: 非正常户标志(0：正常户；1:非正常户；2；其他信息)
-                          fzchList:
-                            type:
-                            - object
-                            - 'null'
-                            properties:
-                              msg:
-                                type:
-                                - string
-                                - 'null'
-                                title: 状态描述
-                              code:
-                                type:
-                                - string
-                                - 'null'
-                                title: code码
-                            x-apifox-orders:
-                            - msg
-                            - code
-                            title: 非正常户数据列表
-                        title: 业务数据
-                        x-apifox-orders:
-                        - nsrsbh
-                        - fzchFlag
-                        - fzchList
-                        required:
-                        - fzchFlag
-              examples:
-                正常示例:
-                  summary: 正常示例
-                  value:
-                    reqId: ed7b201ff75211f
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      nsrsbh: 913000000000JXD
-                      fzchList:
-                        msg: 正常
-                      fzchFlag: '0'
-                异常示例:
-                  summary: 异常示例
-                  value:
-                    reqId: 448f13c12fb44d329e3ce48bf56f0d3a
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      nsrsbh: 14301020000130T
-                      fzchFlag: 2
-                      fzchList:
-                        msg: 企业信息不存在
-                非正常户示例:
-                  summary: 非正常户示例
-                  value:
-                    reqId: 623ac28724db2a
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      nsrsbh: 920000000040N
-                      fzchList:
-                        msg: 当前单位状态为【非正常】
-                      fzchFlag: 1
-      x-apifox-status: released
-  /v2/risk/hmd/plus:
-    post:
-      summary: 查询企业是否黑名单（增强版）
-      operationId: api-67298035
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单-融合版B
-      description: |-
-        ## 接口描述
-         根据企业名/统一社会信用代码查询企业征信。 查询企业基本信息，是否异常，以及经营异常、严重违法、重大税收违法风险的三个标志和列表。
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|
-        | NO_RESULT| 查询无结果。 |
-        | QY_NORESULT| 查询企业不存在。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                qyName:
-                  type: string
-                  title: 企业名/统一社会信用代码，必填
-              x-apifox-orders:
-              - qyName
-              required:
-              - qyName
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    description: 错误码
-                    type: string
-                    title: 错误码
-                  data:
-                    title: 业务数据
-                    type: object
-                    x-apifox-refs:
-                      01HZ3QAM4DZA7V3882FS38DX2J:
-                        $ref: '#/definitions/37494190'
-                        x-apifox-overrides: {}
-                    properties:
-                      dqdm:
-                        type: string
-                        title: 地区代码
-                        description: 取值参考公共业务>附录>地区代码页
-                    required:
-                    - dqdm
-                    x-apifox-orders:
-                    - dqdm
-                    - 01HZ3QAM4DZA7V3882FS38DX2J
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-refs: {}
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-      x-apifox-status: released
-  /v2/risk/hmd/qyfkmx:
-    post:
-      summary: 企业风控明细接口
-      operationId: api-67298640
-      tags:
-      - 数据业务 / 企业风险识别 / 企业黑名单
-      description: |-
-        ## 接口描述
-        ​ 企业经营异常接口、严重违法接口、重大税收违法接口，支持用户可以调用1个接口，也可以调用2个或3个或3个接口。
-
-        ## 错误码
-
-        | **错误代码** | **错误信息**  | **解决方案**|
-        | --- | --- |---|
-        | PARAMETER_ERROR | 参数qyName（企业全名/统一社会信用代码）不能为空。|
-        | PARAMETER_ERROR | 参数interfaceList（黑名单明细分组接口名）不能为空。 |
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        schema:
-          type: string
-        example: application/json
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                qyName:
-                  type: string
-                interfaceList:
-                  type: string
-                  title: 黑名单明细分组接口，下边接口名逗号隔开； 例如："jyyc,yzwf,zdsswf" jyyc：经营异常风险接口 yzwf：严重违法风险接口 zdsswf：重大税收违法风险接口
-              x-apifox-orders:
-              - qyName
-              - interfaceList
-              required:
-              - qyName
-              - interfaceList
-              description: 企业全名/统一社会信用代码，必填
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    description: 错误码
-                    type: string
-                    title: 错误码
-                  data:
-                    title: 业务数据
-                    type: object
-                    x-apifox-refs:
-                      01J4X06064PBV8D95MWSA6QT0W:
-                        $ref: '#/definitions/37482797'
-                        x-apifox-overrides:
-                          isHmd: null
-                    x-apifox-orders:
-                    - 01J4X06064PBV8D95MWSA6QT0W
-                    properties: {}
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-refs: {}
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: 18d349a72fd243ad9704e51cd1e3dc4a
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      qyName: 91430XXXXXXX94XX
-                      jyycFlag: 1
-                      yzwfFlag: 1
-                      zdsswfFlag: 1
-                      jyycList:
-                      - total: 2
-                        items:
-                        - outReason: '-'
-                          regNo: '430102000312822'
-                          outDate: '-'
-                          province: HUNAN
-                          inDate: '2018-07-09'
-                          name: 湖南长沙XX有限公司
-                          disabled: '0'
-                          inReason: 未按照规定报送年度报告
-                          department: 长沙市工商行政管理局芙蓉分局
-                        - outReason: '-'
-                          regNo: '430102000312822'
-                          outDate: '-'
-                          province: HUNAN
-                          inDate: '2018-07-08'
-                          name: 湖南长沙XX有限公司
-                          disabled: '1'
-                          inReason: 未按照规定报送年度报告
-                          department: 长沙市工商行政管理局芙蓉分局
-                      yzwfList:
-                        execution:
-                        - in_department: 湖南省市场监督管理局
-                          out_department: '-'
-                          in_date: '2019-07-30'
-                          in_reason: 被列入经营异常名录届满3年仍未履行相关义务
-                          out_date: '-'
-                          out_reason: '-'
-                      zdsswfList:
-                        total: 1
-                        items:
-                        - created_time: '2019-04-09'
-                          updated_time: '2019-04-09'
-                          agent: '-'
-                          address: 湖南省经济技术开发区承德南路266号6#楼322室
-                          illegal_fact: 经江苏省淮安市国家税务局稽查局检查，发现其在2015年12月01日至2016年05月31日期间，主要存在以下问题：对外虚开增值税销项发票150份，金额1408.00万元，税额239.00万元。
-                          url: http://hd.chinatax.gov.cn/xxk/action/GetArticleView1.do?op=xxkweb&id=234642
-                          result: 依照《中华人民共和国税收征收管理法》等相关法律法规的有关规定，对其处以罚款0.01万元的行政处罚，并依法移送司法机关。
-                          credit_no: 91320891MA1MC20690
-                          name: 湖南长沙XX有限公司
-                          property: 虚开增值税专用发票或者虚开用于骗取出口退税、抵扣税款的其他发票
-                          oper: 史桂,男
-                          time: '2017-03-01'
-                          org_no: A1MC2069
-                          finance_officer: '-'
       x-apifox-status: released
   /v2/risk/hmd/qycx:
     post:

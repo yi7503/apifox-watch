@@ -1,0 +1,225 @@
+{
+  "id": 479737975,
+  "name": "生产经营-缴款记录截图",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "wjEeGKLbZbbwlmKDLyaEZ",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "缴税记录查询截图",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/scjy/payment/jsjlcxjt",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "title": "字段信息JSON Schema",
+      "description": "定义了所需字段的结构和约束",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "description": "企业ID"
+        },
+        "accountId": {
+          "type": "string",
+          "description": "账号ID"
+        },
+        "ssqq": {
+          "type": "string",
+          "description": "税款所属期起，格式 YYYYMM"
+        },
+        "ssqz": {
+          "type": "string",
+          "description": "税款所属期止，格式 YYYYMM，不能大于当前申报月"
+        },
+        "bblx": {
+          "type": "string",
+          "enum": [
+            "0",
+            "1"
+          ],
+          "default": "0",
+          "description": "报表类型：0-预缴纳税申报(默认) 1-年度汇缴清缴"
+        },
+        "xm": {
+          "type": "string",
+          "description": "姓名"
+        },
+        "zzlx": {
+          "type": "string",
+          "description": "证件类型"
+        },
+        "zzhm": {
+          "type": "string",
+          "description": "证件号码"
+        }
+      },
+      "required": [
+        "aggOrgId",
+        "accountId",
+        "ssqq",
+        "ssqz"
+      ],
+      "additionalProperties": false,
+      "x-apifox-orders": [
+        "aggOrgId",
+        "accountId",
+        "ssqq",
+        "ssqz",
+        "bblx",
+        "xm",
+        "zzlx",
+        "zzhm"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "示例 1",
+        "value": "{\r\n    \"aggOrgId\": \"1124257\",\r\n    \"accountId\": \"334567344\",\r\n    \"ssqq\": \"202601\",\r\n    \"ssqz\": \"202606\",\r\n    \"bblx\": \"0\",\r\n    \"xm\": \"张三\",\r\n    \"zzlx\": \"201\",\r\n    \"zzhm\": \"110101199001011234\"\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 789981527,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "description": "请求唯一标识ID，用于追踪和定位请求",
+            "title": "请求唯一标识ID"
+          },
+          "code": {
+            "type": "string",
+            "description": "错误码",
+            "title": "错误码"
+          },
+          "success": {
+            "type": "boolean",
+            "description": "请求是否成功的标记，true表示成功，false表示失败",
+            "title": "请求是否成功的标记"
+          },
+          "message": {
+            "type": "string",
+            "description": "错误信息，成功时通常返回'查询成功'等提示，失败时返回具体错误原因",
+            "title": "错误信息"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "screenshot": {
+                "type": "string",
+                "title": "缴款记录查询截图",
+                "description": "截图URL"
+              }
+            },
+            "x-apifox-orders": [
+              "screenshot"
+            ],
+            "required": [
+              "screenshot"
+            ]
+          }
+        },
+        "required": [
+          "reqId",
+          "code",
+          "success",
+          "message"
+        ],
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 789981527,
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"screenshot\": \"https://...\"\n    }\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 715340452
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 53477172,
+  "ordering": 69,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-06-29T09:10:54.000Z",
+  "updatedAt": "2026-07-03T01:46:01.000Z",
+  "creatorId": 1910680,
+  "editorId": 1910680,
+  "creatorUserId": 1910680,
+  "editorUserId": 1910680,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}
