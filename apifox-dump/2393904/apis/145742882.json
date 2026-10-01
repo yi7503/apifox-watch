@@ -252,7 +252,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 28539131,
-  "ordering": 128,
+  "ordering": 146,
   "responsibleId": 2122743,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -262,7 +262,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-26T08:30:43.000Z",
-  "updatedAt": "2026-09-03T07:15:33.000Z",
+  "updatedAt": "2026-09-22T10:20:04.000Z",
   "creatorId": 2122743,
   "editorId": 493303,
   "creatorUserId": 2122743,

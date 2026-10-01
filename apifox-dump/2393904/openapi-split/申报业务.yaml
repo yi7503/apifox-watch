@@ -1910,6 +1910,7 @@ paths:
                               analysisResult:
                                 type: string
                                 title: pdf解析结构化数据节点
+                                description: 返回报文结构参考目录【各税种申报表报文】菜单下每个税种对应的报文结构
                               message:
                                 type: string
                                 title: 失败信息
@@ -1935,7 +1936,7 @@ paths:
                         jtOssUrl:
                           type: string
                           title: 截图url
-                          description: 任务code=4811是返回
+                          description: 请求税种+所属期在申报查询界面没有查到记录，导致无法返回申报表，返回结果code=4811  msg：该税种在电子税务局找不到,无法获取报表时会返回截图参考，其他场景不会返回截图
                       x-apifox-orders:
                       - startTime
                       - finishTime
@@ -1993,7 +1994,7 @@ paths:
                         yzpzzlDm: BDA0611159
                         toDate: '2024-07-31'
                         pdfOssUrl: https://qxy-oss-robot-test.qixiangyun.com/ARCHIVE/etax-agg-product_17xxxxxxxxx.pdf?Expires=1728195669&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=H3Q6dOUfM8VYUZLcL0gFivSWLhU%3D
-                        analysisResult: '[{"nsrsbh":"纳税人识别号","taxDm":"BDA0611159","ssqq":"2024-07-01","bwData":{"a200000Ywbd":{"sdjmGrid":{"sdjmGridlb":[]},"nsrqtxxForm":{"fddbrqzrq":"","sfdlsb":"","blr":"","blrysfzjlxDm":"","slrq":"2024年08月09日","jbrzyzjhm":"","dljgtyshxydm":"","tbrq1":"","dlsbzjjg":"","slr":"11100xdzswj","fddbr":"","dlsbrq":"","jbr":"","kjzg":"","blrysfzjhm":"","slswjg":"国家税务总局******局"},"sbbxxForm":{"gdzcjszjkctjeLj":"0.00","qmzcze4":"","zczePjz":"0.00","sdjmLj":"0.00","slLj":"0.25","qmzcze2":"0.00","yysrLj":"994660489.38","bzssrLj":"0.00","fzjgftbl":"","dlscjybmftbl":"","qmzcze3":"0.00","jzmzlx":"","qmzcze1":"0.00","mbyqndksLj":"0.00","qmcyrs3":"0","yycbLj":"491656930.01","qmcyrs4":"","gjxzhjzhy":"N","sjybtsdseBq":"9339764.25","tdywjsdynssdeLj":"0.00","sjyyjsdseLj":"40402951.61","fpbl":"0.00000000%","sfsyxxwlqy":"","mzzzdqdfjmBq":"0.00","dfjsrsjynseBq":"2794474.98","qccyrs4":"","qccyrs3":"0","qccyrs2":"0","qccyrs1":"0","qczcze3":"0.00","qczcze2":"0.00","zjgftbl":"","qczcze4":"","zjgybtsdseBq":"9339764.25","zjgyftsdseBq":"2353576.80","jzfd":"","qczcze1":"0.00","mzzzdqdfjmzfjghjLj":"0.00","lrzeLj":"427465997.31","dfjsrynseBq":"2794474.98","zjgczjzftbl":"","ynsdseLj":"83028764.68","mzzzdqdfjmLj":"0.00","zyjsrsjynseBq":"6545289.27","ybtsdseLj":"9414307.20","mssrLj":"95350938.61","zjgdlscjybmyftsdseBq":"4632610.65","fzjgfpsdseBq":"0.00","qmcyrs1":"0","qmcyrs2":"0","sjlreLj":"332115058.70","cyrsPjz":"0","czjzfpsdseBq":"2353576.80","jmsdseLj":"33211505.87","tdywyjzsdseLj":"0.00"},"fbsxGrid":{"fbsxGridlb":[{"xxbz":"N","ewbhgjz":"K01002","fbsxMc":"扶贫捐赠支出全额扣除（本年累计，元）","jehxxz":"0.00"},{"xxbz":"N","ewbhgjz":"Y01001","fbsxMc":"软件集成电路企业优惠政策适用类型","jehxxz":""},{"xxbz":"N","ewbhgjz":"Y01002","fbsxMc":"高新技术企业资格证书发证时间","jehxxz":""}]},"nsrxxForm":{"xzqhszDm":"","sbrq1":"","nsrsbh":"*****有限公司","sbqylx":"1","skssqz":"2024-07-31","yjfs":"1","nsrmc":"纳税人识别号","skssqq":"2024-07-01"},"mssrGrid":{"mssrGridlb":[{"jejslx":"01","yhswsx":"MSSR021","ssjmxzDm":"0004083909","ewbhgjz":"一般股息红利等权益性投资收益免征企业所得税","sxSelect":true,"yhjmje":"48000000.00","zyywsrzb":"0.00","ewbhxh":"2","jejslxMc":"免税收入"},{"jejslx":"01","yhswsx":"JJKC012","ssjmxzDm":"","ewbhgjz":"企业开发新技术、新产品、新工艺发生的研究开发费用加计扣除（按100%加计扣除）","sxSelect":true,"yhjmje":"47350938.61","zyywsrzb":"0.00","ewbhxh":"23","jejslxMc":"加计扣除"}]},"jmsdGrid":{"jmsdGridlb":[{"jejslx":"gxjsqy","yhswsx":"JMSE00201","ssjmxzDm":"0004024501","ewbhgjz":"高新技术企业减按15%的税率征收企业所得税","sxSelect":true,"yhjmje":"33211505.87","zyywsrzb":"0.00","ewbhxh":"2","jejslxMc":"高新技术企业"}]}},"a201020Ywbd":{"gdzcjszjkcMxbGrid":{"gdzcjszjkcmxbGridlb":[{"yhswsx":"HJ_JSZJ","zcyz":"0.00","xsjszjyhjsdzjjeLj":"0.00","ssjmxzDm":"HJ_JSZJ","nstjjeLj":"0.00","ewbhgjz":"HJ_JSZJ","zzzjjeLj":"0.00","ewbhxh":"1","azssybgdjsdzjjeLj":"0.00","xsjszjyhjeLj":"0.00","hmc":"一、加速折旧、摊销（不含一次性扣除，2+3+4+5+6+7）"},{"yhswsx":"YCKC_HJ","zcyz":"0.00","xsjszjyhjsdzjjeLj":"0.00","ssjmxzDm":"YCKC_HJ","nstjjeLj":"0.00","ewbhgjz":"YCKC_HJ","zzzjjeLj":"0.00","ewbhxh":"8","azssybgdjsdzjjeLj":"0.00","xsjszjyhjeLj":"0.00","hmc":"二、固定资产、无形资产一次性扣除（9+10+11+12+13）
+                        analysisResult: '[{"nsrsbh":"纳税人识别号","taxDm":"BDA0611159","taxRq":"2025-01-01","ssqq":"2024-07-01","bwData":{"a200000Ywbd":{"sdjmGrid":{"sdjmGridlb":[]},"nsrqtxxForm":{"fddbrqzrq":"","sfdlsb":"","blr":"","blrysfzjlxDm":"","slrq":"2024年08月09日","jbrzyzjhm":"","dljgtyshxydm":"","tbrq1":"","dlsbzjjg":"","slr":"11100xdzswj","fddbr":"","dlsbrq":"","jbr":"","kjzg":"","blrysfzjhm":"","slswjg":"国家税务总局******局"},"sbbxxForm":{"gdzcjszjkctjeLj":"0.00","qmzcze4":"","zczePjz":"0.00","sdjmLj":"0.00","slLj":"0.25","qmzcze2":"0.00","yysrLj":"994660489.38","bzssrLj":"0.00","fzjgftbl":"","dlscjybmftbl":"","qmzcze3":"0.00","jzmzlx":"","qmzcze1":"0.00","mbyqndksLj":"0.00","qmcyrs3":"0","yycbLj":"491656930.01","qmcyrs4":"","gjxzhjzhy":"N","sjybtsdseBq":"9339764.25","tdywjsdynssdeLj":"0.00","sjyyjsdseLj":"40402951.61","fpbl":"0.00000000%","sfsyxxwlqy":"","mzzzdqdfjmBq":"0.00","dfjsrsjynseBq":"2794474.98","qccyrs4":"","qccyrs3":"0","qccyrs2":"0","qccyrs1":"0","qczcze3":"0.00","qczcze2":"0.00","zjgftbl":"","qczcze4":"","zjgybtsdseBq":"9339764.25","zjgyftsdseBq":"2353576.80","jzfd":"","qczcze1":"0.00","mzzzdqdfjmzfjghjLj":"0.00","lrzeLj":"427465997.31","dfjsrynseBq":"2794474.98","zjgczjzftbl":"","ynsdseLj":"83028764.68","mzzzdqdfjmLj":"0.00","zyjsrsjynseBq":"6545289.27","ybtsdseLj":"9414307.20","mssrLj":"95350938.61","zjgdlscjybmyftsdseBq":"4632610.65","fzjgfpsdseBq":"0.00","qmcyrs1":"0","qmcyrs2":"0","sjlreLj":"332115058.70","cyrsPjz":"0","czjzfpsdseBq":"2353576.80","jmsdseLj":"33211505.87","tdywyjzsdseLj":"0.00"},"fbsxGrid":{"fbsxGridlb":[{"xxbz":"N","ewbhgjz":"K01002","fbsxMc":"扶贫捐赠支出全额扣除（本年累计，元）","jehxxz":"0.00"},{"xxbz":"N","ewbhgjz":"Y01001","fbsxMc":"软件集成电路企业优惠政策适用类型","jehxxz":""},{"xxbz":"N","ewbhgjz":"Y01002","fbsxMc":"高新技术企业资格证书发证时间","jehxxz":""}]},"nsrxxForm":{"xzqhszDm":"","sbrq1":"","nsrsbh":"*****有限公司","sbqylx":"1","skssqz":"2024-07-31","yjfs":"1","nsrmc":"纳税人识别号","skssqq":"2024-07-01"},"mssrGrid":{"mssrGridlb":[{"jejslx":"01","yhswsx":"MSSR021","ssjmxzDm":"0004083909","ewbhgjz":"一般股息红利等权益性投资收益免征企业所得税","sxSelect":true,"yhjmje":"48000000.00","zyywsrzb":"0.00","ewbhxh":"2","jejslxMc":"免税收入"},{"jejslx":"01","yhswsx":"JJKC012","ssjmxzDm":"","ewbhgjz":"企业开发新技术、新产品、新工艺发生的研究开发费用加计扣除（按100%加计扣除）","sxSelect":true,"yhjmje":"47350938.61","zyywsrzb":"0.00","ewbhxh":"23","jejslxMc":"加计扣除"}]},"jmsdGrid":{"jmsdGridlb":[{"jejslx":"gxjsqy","yhswsx":"JMSE00201","ssjmxzDm":"0004024501","ewbhgjz":"高新技术企业减按15%的税率征收企业所得税","sxSelect":true,"yhjmje":"33211505.87","zyywsrzb":"0.00","ewbhxh":"2","jejslxMc":"高新技术企业"}]}},"a201020Ywbd":{"gdzcjszjkcMxbGrid":{"gdzcjszjkcmxbGridlb":[{"yhswsx":"HJ_JSZJ","zcyz":"0.00","xsjszjyhjsdzjjeLj":"0.00","ssjmxzDm":"HJ_JSZJ","nstjjeLj":"0.00","ewbhgjz":"HJ_JSZJ","zzzjjeLj":"0.00","ewbhxh":"1","azssybgdjsdzjjeLj":"0.00","xsjszjyhjeLj":"0.00","hmc":"一、加速折旧、摊销（不含一次性扣除，2+3+4+5+6+7）"},{"yhswsx":"YCKC_HJ","zcyz":"0.00","xsjszjyhjsdzjjeLj":"0.00","ssjmxzDm":"YCKC_HJ","nstjjeLj":"0.00","ewbhgjz":"YCKC_HJ","zzzjjeLj":"0.00","ewbhxh":"8","azssybgdjsdzjjeLj":"0.00","xsjszjyhjeLj":"0.00","hmc":"二、固定资产、无形资产一次性扣除（9+10+11+12+13）
                           _or_ 二、一次性扣除"},{"yhswsx":"HJ","zcyz":"0.00","xsjszjyhjsdzjjeLj":"0.00","ssjmxzDm":"HJ","nstjjeLj":"0.00","ewbhgjz":"HJ","zzzjjeLj":"0.00","ewbhxh":"14","azssybgdjsdzjjeLj":"0.00","xsjszjyhjeLj":"0.00","hmc":"合计（1+8）"}]}},"a202000Ywbd":{"hj":{"fzjggzzeHj":"249302997.98","fpblHj":"","fpseHj":"4707153.60","xsdfjmjeHj":"","fzjgsrzeHj":"1491779409.94","fzjgzczeHj":"3778688629.47"},"zjgxxForm":{"zjgczjzfpsdse":"2353576.80","xsdfjmfd":"","zjgmc":"*****有限公司","ynsdse":"9414307.20","sfxsdfjm":"","zjgnsrsbh":"纳税人识别号","zjgftsdse":"2353576.80","fzjgftdsdse":"4707153.60"},"fzjgxxGrid":{"fzjgxxGridlb":[{"fzjgnsrsbh":"纳税人识别号","fzjggzze":"249302888.98","fzjglxlb":"","fpbl":"0.9841638993","fzjgzgswjDm":"","fzjgsrze":"1491659720.11","fzjgxsqyxyhqk":"","fzjgdjxh":"","fpse":"4632610.65","fzjgmc":"*****有限公司（独立生产经营部门）","fzjgzcze":"3579578616.07","xsdfjmfd":"","xsdfjmje":"","sfxsdfjm":""},{"fzjgnsrsbh":"911***********","fzjggzze":"109.00","fzjglxlb":"","fpbl":"0.0000416483","fzjgzgswjDm":"","fzjgsrze":"119689.83","fzjgxsqyxyhqk":"","fzjgdjxh":"","fpse":"196.04","fzjgmc":"*****有限公司固安分公司","fzjgzcze":"168954.71","xsdfjmfd":"","xsdfjmje":"","sfxsdfjm":""},{"fzjgnsrsbh":"9*************","fzjggzze":"0.00","fzjglxlb":"","fpbl":"0.0157944524","fzjgzgswjDm":"","fzjgsrze":"0.00","fzjgxsqyxyhqk":"","fzjgdjxh":"","fpse":"74346.91","fzjgmc":"*****有限公司成都分公司","fzjgzcze":"198941058.69","xsdfjmfd":"","xsdfjmje":"","sfxsdfjm":""}]}}},"ssqz":"2024-07-31"}]'
                         message: pdf下载成功
                       serviceName: 获取往期PDF
@@ -3219,7 +3220,7 @@ paths:
                 smmm:
                   type: string
                   title: 实名密码
-                  description: 当mmlx=2时，必填 （密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）
+                  description: 当mmlx=2时，必填 （密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）加密前原密码长度限制15位
                 djxhid:
                   type: string
                   title: 登记序号
@@ -3242,7 +3243,7 @@ paths:
                 sbmm:
                   type: string
                   title: 申报密码
-                  description: 当mmlx=0时，必填 （密码需加密 加密参考[加密说明](apifox://link/pages/3774763) ）
+                  description: 当mmlx=0时，必填 （密码需加密 加密参考[加密说明](apifox://link/pages/3774763) ）加密前原密码长度限制20位
               x-apifox-orders:
               - aggOrgId
               - checkPassword
@@ -4820,6 +4821,7 @@ paths:
                 bmbh:
                   type: string
                   title: 部门编号
+                  deprecated: true
               required:
               - aggOrgId
               - accountId
@@ -6624,6 +6626,7 @@ paths:
                 bmbh:
                   type: string
                   title: 部门编号
+                  deprecated: true
               required:
               - aggOrgId
               - skssq
@@ -9290,8 +9293,6 @@ paths:
                 - success
                 - message
                 - data
-                - 01JYZ87BCDDHEKCP5EFW1G0VKS
-                - 01JYZ87AHPR1FXTXJ3E3F612XC
                 properties:
                   code:
                     type:
@@ -9344,12 +9345,16 @@ paths:
                         x-apifox-refs:
                           01JN0V542M4MFD0QXNH5ZDMKRP:
                             $ref: '#/definitions/144288780'
+                      znj:
+                        title: 滞纳金完税证明
+                        $ref: '#/definitions/144288780'
                     x-apifox-refs: {}
                     x-apifox-orders:
                     - zhsd
                     - flsd
                     - fjmsd
                     - xsgsd
+                    - znj
                   success:
                     description: 接口是否成功（是否发生业务异常）
                     type: boolean
@@ -9363,17 +9368,11 @@ paths:
                     - string
                     - 'null'
                     title: 错误信息
-                  01JYZ87AHPR1FXTXJ3E3F612XC:
-                    x-tmp-pending-properties: true
-                  01JYZ87BCDDHEKCP5EFW1G0VKS:
-                    x-tmp-pending-properties: true
                 required:
                 - code
                 - success
                 - reqId
                 - message
-                - 01JYZ87AHPR1FXTXJ3E3F612XC
-                - 01JYZ87BCDDHEKCP5EFW1G0VKS
               examples:
                 成功示例:
                   summary: 成功示例
@@ -9851,7 +9850,7 @@ paths:
       operationId: api-259290126
       tags:
       - 申报业务 / 个税申报 / 代扣代缴 / 专项附加扣除管理
-      description: "## 接口描述\n该接口是同步接口。\n\n下载企业人员专付扣信息；如需本地算税，需调用该接口获取信息；反之，则不需要调用该接口。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |"
+      description: "## 接口描述\n该接口是同步接口。\n\n下载企业人员专付扣信息；如需本地算税，需调用该接口获取信息；反之，则不需要调用该接口。\n专附扣是否可以享受减免，判断规则：\n判断条件，返回报文中 的yxbz等于N且 kzztDm不等于1 则认为该条数据为无效数据，过滤不计算该条专附扣金额。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |"
       parameters:
       - name: Content-Type
         in: header
@@ -10982,13 +10981,6 @@ paths:
                     success: false
                     message: aggOrgId请求参数不能为空！
                     reqId: c1543b641ff9488ab1f39a13fb198c6a
-                任务执行中:
-                  summary: 任务执行中
-                  value:
-                    code: '4001'
-                    success: false
-                    message: 1000000000000001304：当前任务执行中！
-                    reqId: 238e301d9d8342bfa54ea0c8ced83fca
       x-apifox-status: released
   /v2/iit/declare/queryEssentialInfo:
     post:
@@ -13037,7 +13029,7 @@ paths:
                 smmm:
                   type: string
                   title: 实名密码
-                  description: 当mmlx=2时，必填 （密码加密）
+                  description: 当mmlx=2时，必填 （密码加密）加密前原密码长度限制15位
                 djxhid:
                   type: string
                   title: 登记序号
@@ -22035,6 +22027,9 @@ paths:
                         type: string
                         title: 上年职工工资总额
                         description: 上年度，每月当期收入求和汇总
+                      gjjtzsx:
+                        type: string
+                        title: 公积金调整上限
                     x-apifox-refs: {}
                     x-apifox-orders:
                     - gjjsx
@@ -22042,6 +22037,7 @@ paths:
                     - npjgz
                     - snzzzgpjrs
                     - snzggzze
+                    - gjjtzsx
                 required:
                 - code
                 - success
@@ -22926,7 +22922,9 @@ paths:
                     pch:
                       type: number
                       title: 批次号
-                      description: 当sfdpc为1时必填
+                      description: |-
+                        当sfdpc为1时必填
+                        清空批次支持按批次号清空或按人员明细清空。同一税号存在多个操作员同时发起算税时，若仅传入批次号（pch）清空，将删除该税号下该批次的全部人员数据，包括其他操作员已算税成功的人员。请确认范围后再调用；多人分人算税场景请按人员明细清空。
                     rylb:
                       type: array
                       items:
@@ -27469,7 +27467,7 @@ paths:
       x-apifox-status: released
   /v2/shbx/declare/getCompanyRegisterInfo:
     post:
-      summary: 企业登记和查询
+      summary: 企业登记查询
       operationId: api-360653452
       tags:
       - 申报业务 / 社保费申报 / 企业登记
@@ -33391,7 +33389,7 @@ paths:
       operationId: api-401129198
       tags:
       - 申报业务 / 个税申报 / 代扣代缴 / 退付手续费核对
-      description: "## 接口描述\n该接口是同步接口\n查询退付手续费数据\n\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |"
+      description: "## 接口描述\n该接口是同步接口\n根据相关政策要求，扣缴义务人可按照所扣缴的税款退付百分之二的手续费。单位上年度有代扣代征税款的，可在4月1日前完成上一年度的结报单确认工作。\n手续费退税流程说明：\n税务机关查询扣缴义务人的“代扣代收代征税款分户清册”和“代扣代收代征税款结报单”。查询出结果后，可提交给扣缴义务人核对。\n\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |"
       parameters:
       - name: Content-Type
         in: header
@@ -34816,14 +34814,22 @@ paths:
                 properties:
                   reqId:
                     type: string
+                    title: 请求id
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
                   code:
                     type: string
+                    title: 错误码
+                    description: 错误码
                   success:
                     type: boolean
+                    title: 是否成功标记
+                    description: 接口是否成功（是否发生业务异常）
                   message:
                     type: 'null'
+                    title: 错误信息
                   data:
                     type: object
+                    description: 数据
                     properties:
                       result:
                         type: array
@@ -34853,20 +34859,42 @@ paths:
                           - zzhm
                           - cjzt
                         title: 业务办理结果
+                        description: 任务返回业务结果
                       taskStatusName:
                         type: string
+                        title: 任务执行状态名称
                       code:
                         type: string
+                        title: 任务code
                       message:
                         type: string
+                        title: 执行任务信息
                       taskTypeName:
                         type: string
+                        title: 任务类型名称
                       taskTypeCode:
                         type: string
+                        title: 任务类型代码
                       taskId:
                         type: string
+                        title: 任务ID
                       taskStatus:
                         type: string
+                        title: 任务执行状态
+                        enum:
+                        - '1'
+                        - '2'
+                        - '3'
+                        x-apifox-enum:
+                        - value: '1'
+                          name: 执行中
+                          description: ''
+                        - value: '2'
+                          name: 失败
+                          description: ''
+                        - value: '3'
+                          name: 已完成
+                          description: ''
                     required:
                     - result
                     - taskStatusName
@@ -35023,39 +35051,56 @@ paths:
                 properties:
                   reqId:
                     type: string
+                    description: 请求唯一标识号，用于链路追踪
                   code:
                     type: string
+                    description: 接口返回业务编码
                   success:
                     type: boolean
+                    description: 接口是否调用成功：true成功，false失败
                   message:
                     type: 'null'
+                    description: 提示信息，成功时为null，失败存放错误描述
                   data:
                     type: array
+                    description: 捐赠明细数据列表
                     items:
                       type: object
+                      description: 单条捐赠记录
                       properties:
                         jzpzh:
                           type: string
+                          description: 捐赠凭证号
                         kcbl:
                           type: string
+                          description: 扣除比例
                         szdwmc:
                           type: string
+                          description: 捐赠单位名称
                         xm:
                           type: string
+                          description: 姓名（捐赠人）
                         zzlx:
                           type: string
+                          description: 证件类型
                         jzje:
                           type: string
+                          description: 捐赠金额
                         zt:
                           type: string
+                          description: 状态
                         zzhm:
                           type: string
+                          description: 证件号码
                         jzrq:
                           type: string
+                          description: 捐赠日期
                         szdwtyshxydm:
                           type: string
+                          description: 受赠单位统一社会信用代码
                         cjlsh:
                           type: string
+                          description: 采集流水号
                       x-apifox-orders:
                       - jzpzh
                       - kcbl
@@ -35280,8 +35325,16 @@ paths:
                       zt:
                         type: string
                         description: '业务办理状态: 1成功 2失败'
+                      msg:
+                        type: string
+                        title: ' 信息'
+                      reason:
+                        type: string
+                        title: 原因
                     x-apifox-orders:
                     - zt
+                    - msg
+                    - reason
                 required:
                 - reqId
                 - code
@@ -36898,18 +36951,29 @@ paths:
                 cxny:
                   type: string
                   title: 查询年月
-                  description: 年月--202603，只能单月查询，不支持跨月查询。仅支持查询本年及上一年的数据
+                  description: |-
+                    年月--202603，只能单月查询，不支持跨月查询。仅支持查询本年及上一年的数据
+                    查询月份和所属期起止必须有一个请求有值。
+                ssqq:
+                  type: string
+                  title: 所属期起
+                  description: 年月日  查询月份和所属期起止必须有一个请求有值。
+                ssqz:
+                  type: string
+                  title: 所属期止
+                  description: 年月日  查询月份和所属期起止必须有一个请求有值。
               x-apifox-refs: {}
               x-apifox-orders:
               - aggOrgId
               - accountId
               - cxny
+              - ssqq
+              - ssqz
               - cxlbList
               - tdztswjgmc
               - kqyswjgmc
               required:
               - aggOrgId
-              - cxny
             examples:
               example_0:
                 summary: ''
@@ -44137,6 +44201,18 @@ paths:
                                           wzmyylyjjegr:
                                             type: number
                                             description: 外资民营个体经济养老保险应缴金额-个人
+                                          zhjbyljfjsdw:
+                                            type: number
+                                            description: 综合基本医疗保险缴费基数-单位
+                                          zhjbylyjjedw:
+                                            type: number
+                                            description: 综合基本医疗保险应缴金额-单位
+                                          zhjbyljfjsgr:
+                                            type: number
+                                            description: 综合基本医疗保险缴费基数-个人
+                                          zhjbylyjjegr:
+                                            type: number
+                                            description: 综合基本医疗保险应缴金额-个人
                                         x-apifox-orders:
                                         - xm
                                         - zjlx
@@ -44187,6 +44263,10 @@ paths:
                                         - dwbfhj
                                         - grbfhj
                                         - yjjehj
+                                        - zhjbyljfjsdw
+                                        - zhjbylyjjedw
+                                        - zhjbyljfjsgr
+                                        - zhjbylyjjegr
                                         required:
                                         - wzmyylyjjedw
                                     jkqk:
@@ -46301,16 +46381,17 @@ paths:
                 zt:
                   type: string
                   description: |-
-                    状态；不传或传空默认为0=全部；
+                    不传或传空默认为0=全部
                     0=全部
                     1=未反馈
                     2=已反馈
                     3=已查阅未反馈
                     4=退回补正
+                  title: 状态
                 rwbt:
                   type: string
                   description: |-
-                    任务标题；不传或传空默认为0=全部；
+                    不传或传空默认为0=全部
                     0=全部
                     1=企业所得税疑点任务反馈
                     2=企业所得税税前扣除凭证（发票）风险提示反馈（跟票管）
@@ -46322,6 +46403,7 @@ paths:
                     8=增值税涉税风险合规辅导自查反馈
                     9=涉嫌接受虚开发票疑点反馈
                     10=平台内的经营者和从业人员涉税信息提取反馈
+                  title: 任务标题
               required:
               - aggOrgId
               x-apifox-orders:
@@ -46487,12 +46569,10 @@ paths:
                               properties:
                                 rwbh:
                                   type: string
-                                  description: 任务编号
+                                  title: 任务编号
                                 rwbt:
                                   type: string
                                   description: |-
-                                    任务标题；
-                                    0=全部
                                     1=企业所得税疑点任务反馈
                                     2=企业所得税税前扣除凭证（发票）风险提示反馈（跟票管）
                                     3=企业所得税税前扣除凭证（发票）风险提示反馈（按户管）
@@ -46503,18 +46583,19 @@ paths:
                                     8=增值税涉税风险合规辅导自查反馈
                                     9=涉嫌接受虚开发票疑点反馈
                                     10=平台内的经营者和从业人员涉税信息提取反馈
+                                  title: 任务标题
                                 jsrq:
                                   type: string
                                   format: date
-                                  description: 接收时间（年月日）
+                                  title: 接收时间（年月日）
                                 fkqx:
                                   type: string
                                   format: date
-                                  description: 反馈期限（年月日）
+                                  title: 反馈期限（年月日）
                                 zt:
                                   type: integer
                                   description: |-
-                                    状态，返回码表；
+                                    返回码表；
                                     0=全部
                                     1=未反馈
                                     2=已反馈
@@ -46530,6 +46611,7 @@ paths:
                                     '2': 已反馈
                                     '3': 已查阅未反馈
                                     '4': 退回补正
+                                  title: 状态
                                 detail:
                                   type: object
                                   properties:
@@ -46576,6 +46658,7 @@ paths:
                                   - tsrq
                                   - sxqdList
                                   description: 事项详情
+                                  title: 事项详情
                               x-apifox-orders:
                               - rwbh
                               - rwbt
@@ -46672,7 +46755,7 @@ paths:
                             fkjg: 我公司证券交易相关业务均依规核算，足额缴纳各项税费，账务处理、纳税申报真实准确、合法合规，不存在少缴、漏缴税款及其他涉税风险问题。
                             sxnr: 该企业证券交易业务，可能存在少缴增值税、企业所得税风险。
                         rwbh: 0626BULAS45670
-                      - rwbt: '0'
+                      - rwbt: '3'
                         fkqx: '2026-07-31'
                         jsrq: '2026-07-27'
                         zt: '2'
@@ -47485,6 +47568,298 @@ paths:
                       message: 查询成功
                       result:
                         shbxfjlpdf: http://qxy-oss-robot-product.qixiangyun.com/...
+      x-apifox-status: released
+  /v2/tax/qys/loadVatVersionUpgrade:
+    post:
+      summary: 发起增值税版本升级查询
+      operationId: api-518018734
+      tags:
+      - 申报业务 / 企业税申报 / 企业信息
+      description: "## 接口描述\n\n   该接口用于发起增值税版本升级查询任务 \n\n\n\n\n"
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业Id
+                accountId:
+                  type: string
+                  title: 账号ID
+                  description: 多账号场景
+              required:
+              - aggOrgId
+              x-apifox-orders:
+              - aggOrgId
+              - accountId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                x-apifox-refs:
+                  01GVYT0XZT0SWWG3XFN85J43P1:
+                    $ref: '#/definitions/35327531'
+                    x-apifox-overrides:
+                      data:
+                        type:
+                        - object
+                        - 'null'
+                        properties:
+                          aggOrgId:
+                            type:
+                            - string
+                            - 'null'
+                            title: 企业Id
+                          taskId:
+                            type:
+                            - string
+                            - 'null'
+                            title: 任务Id
+                        description: 数据
+                        x-apifox-orders:
+                        - aggOrgId
+                        - taskId
+                x-apifox-orders:
+                - 01GVYT0XZT0SWWG3XFN85J43P1
+                properties: {}
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    code: SUCCESS
+                    success: true
+                    message: ''
+                    reqId: 2cbe2928fe234eb38733b5a87013f2a3
+                    data:
+                      aggOrgId: 447*********200
+                      taskId: '455839218784768'
+      x-apifox-status: released
+  /v2/tax/qys/vatVersionUpgradeResult:
+    post:
+      summary: 增值税版本升级查询结果
+      operationId: api-518020369
+      tags:
+      - 申报业务 / 企业税申报 / 企业信息
+      description: |+
+        ## 接口描述
+
+           该接口用于获取增值税版本升级查询任务 结果
+
+
+
+
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        schema:
+          type: string
+        example: application/json
+      - name: access_token
+        in: header
+        required: true
+        description: 通过调用access_token接口返回的access_token值
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        description: 当前时间转为的毫秒数
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: 签名算法得到的签名
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aggOrgId:
+                  type: string
+                  title: 企业Id
+                taskId:
+                  type: string
+                  title: 任务ID
+              required:
+              - aggOrgId
+              x-apifox-orders:
+              - aggOrgId
+              - taskId
+            examples:
+              example_0:
+                summary: ''
+                value: null
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                x-apifox-refs: {}
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    type: object
+                    properties:
+                      businessStatusName:
+                        type: string
+                        title: 任务状态名称
+                      serviceCode:
+                        type: string
+                        title: 任务编码
+                      businessStatus:
+                        type: integer
+                        title: 任务状态
+                      code:
+                        type: string
+                        title: 任务code
+                      message:
+                        type: string
+                        title: 任务信息
+                      result:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            isNewVat:
+                              type: string
+                              title: 是否升级新版增值税
+                              description: 必返返回 Y/N
+                            upgradeDate:
+                              type: string
+                              title: 税局升级月份
+                              description: |-
+                                年月 ：2026-07,非必返回
+                                返回的时间是申报年月
+                                升级新版增值税=是时，必须返回
+                          x-apifox-orders:
+                          - isNewVat
+                          - upgradeDate
+                          required:
+                          - isNewVat
+                        title: 任务结果
+                      aggOrgId:
+                        type: string
+                        title: 企业id
+                      taskId:
+                        type: string
+                        title: 任务Isdd
+                    x-apifox-refs: {}
+                    x-apifox-orders:
+                    - businessStatusName
+                    - serviceCode
+                    - businessStatus
+                    - result
+                    - code
+                    - aggOrgId
+                    - taskId
+                    - message
+                    required:
+                    - businessStatusName
+                    - serviceCode
+                    - businessStatus
+                    - result
+                    - message
+                    - code
+                    - aggOrgId
+                    - taskId
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                required:
+                - code
+                - success
+                - reqId
+                - message
+              examples:
+                成功示例:
+                  summary: 成功示例
+                  value:
+                    reqId: 7bf64065403142ac8fc21acb0b130919
+                    code: '2000'
+                    success: true
+                    message: 成功
+                    data:
+                      businessStatusName: 已成功
+                      code: '2000'
+                      serviceCode: vat-version-upgrade
+                      businessStatus: 3
+                      serviceName: 企税-增值税版本升级
+                      message: 查询成功
+                      result:
+                        isNewVat: Y
+                        upgradeDate: 2026-09
+                      aggOrgId: 5459878413402688
+                      taskId: 682485914529536
       x-apifox-status: released
   /v2/public/org/loadOrgTaxInfo:
     post:
@@ -48569,7 +48944,7 @@ paths:
                         - hdzxqq
                         - hdzxqz
                         - dqdehdxx
-                        description: 对应税局路径：账户中心-身份切换-跨区域办税-税源登记选择
+                        description: 对应税局路径：我要查询-纳税人信息查询-核定征收信息
                       zfzjg:
                         type: array
                         items:
@@ -48689,6 +49064,34 @@ paths:
                             accountingstandardCode:
                               type: string
                               title: 企业会计制度编码
+                            sygtgshyssdb:
+                              type: string
+                              title: 应税所得表
+                              description: Y=备案  N未备案
+                            sygtgshlclrb:
+                              type: string
+                              title: '留存利润表 '
+                              description: Y=备案  N未备案
+                            ywhdb:
+                              type: string
+                              title: '业务活动表 '
+                              description: Y=备案  N未备案
+                            srfyb:
+                              type: string
+                              title: 收入费用表
+                              description: Y=备案  N未备案
+                            ' jzcbdb':
+                              type: string
+                              title: 净资产变动表
+                              description: Y=备案  N未备案
+                            ' nyhzsyyfpbVO':
+                              type: string
+                              title: 盈余及盈余分配表
+                              description: Y=备案  N未备案
+                            nyhzscyqybdbVO:
+                              type: string
+                              title: 成员权益变动表
+                              description: Y=备案  N未备案
                           x-apifox-orders:
                           - yxqq
                           - yxqz
@@ -48704,6 +49107,13 @@ paths:
                           - xjllb
                           - syzqybdb
                           - fz
+                          - sygtgshyssdb
+                          - sygtgshlclrb
+                          - ywhdb
+                          - srfyb
+                          - ' jzcbdb'
+                          - ' nyhzsyyfpbVO'
+                          - nyhzscyqybdbVO
                           required:
                           - yxqq
                           - yxqz
@@ -48719,6 +49129,13 @@ paths:
                           - fz
                           - accountingStandardName
                           - accountingstandardCode
+                          - sygtgshyssdb
+                          - sygtgshlclrb
+                          - ywhdb
+                          - srfyb
+                          - ' jzcbdb'
+                          - ' nyhzsyyfpbVO'
+                          - nyhzscyqybdbVO
                         title: 财报全部备案信息
                         description: 对应税局路径：财务会计制度及核算软件备案报告。包含历史备案信息
                       sdshd:
@@ -53000,7 +53417,7 @@ paths:
                       jtOssUrl:
                         type: string
                         title: 截图url
-                        description: 任务code=4811是返回
+                        description: 请求税种+所属期在申报查询界面没有查到记录，导致无法返回申报表，返回结果code=4811  msg：该税种在电子税务局找不到,无法获取报表时会返回截图参考，其他场景不会返回截图
                     x-apifox-refs: {}
                     x-apifox-orders:
                     - result
@@ -53226,29 +53643,25 @@ paths:
                       serviceName: 完税证明
                       resultMessage: ''
                       taskId: '454625331471104'
-                任务执行成功-无完税证明:
-                  summary: 任务执行成功-无完税证明
+                任务执行失败:
+                  summary: 任务执行失败
                   value:
-                    reqId: 8a37b2f1eda04efd86d462d3c979b8c7
+                    reqId: 1adaebb436634a518bbe485f2cb66762
                     code: SUCCESS
                     success: true
                     message: ''
                     data:
-                      result: 完税证明成功
-                      finishTime: '2023-03-13 17:28:32'
-                      businessStatusName: 执行成功
-                      startTime: '2023-03-13 17:27:14'
-                      businessStatus: 3
-                      detail:
-                      - fromDate: '2023-02-01'
-                        code: '4040'
-                        yzpzzlDm: BDA0610606
-                        toDate: '2023-02-28'
-                        screenshot: https://qxy-oss-robot-test.oss-cn-beijing.aliyuncs.com/SCREENSHOT/ttkEtax-AGG-test_*****35-deab-40f4-aebc-5bbe547d86c21678699633576_1678699706926.png?Expires=1681986300&OSSAccessKeyId=<ALIBABA_ACCESS_KEY_ID>&Signature=1WEd5SVDUdYIG1XMuSr%2BPwzZhkU%3D
-                        message: 电子税局税款所属期为2023-02-01到2023-02-28内的增值税找不到可下载的完税证明，请核实
+                      result: 业务执行失败
+                      finishTime: '2026-09-27 22:00:44'
+                      businessStatusName: 执行失败
+                      code: 4818
+                      businessStatus: 2
+                      startTime: '2026-09-27 22:00:15'
+                      detail: []
+                      message: 电子税局税款所属期为2024-01-01到2024-12-31的残保金找不到可下载的完税证明，请核实。
                       serviceName: 完税证明
-                      resultMessage: 完税证明成功
-                      taskId: '454625331471104'
+                      resultMessage: 电子税局税款所属期为2024-01-01到2024-12-31的残保金找不到可下载的完税证明，请核实。
+                      taskId: '683628565229111'
                 任务执行成功-下载成功:
                   summary: 任务执行成功-下载成功
                   value:
@@ -53525,7 +53938,6 @@ paths:
                     - yzpzzlDm
                     - ssqQ
                     - ssqZ
-                    - ywxxb
                     properties:
                       yzpzzlDm:
                         type: string
@@ -53542,7 +53954,7 @@ paths:
                       zsxmDm:
                         type: string
                         title: 征收项目代码
-                        description: 工会经费=39900/水利建设专项收入=30221 合并=39999 通用申报必传
+                        description: "通用申报必传\n工会经费=39900/水利建设专项收入=30221 合并=39999 "
                       zspmDm:
                         type: string
                         title: 征收品目代码
@@ -53597,18 +54009,18 @@ paths:
                       fbsxAMc:
                         type: array
                         title: 出口方式
-                        description: 发生了自营出口业务、发生了委托出口业务、承担了代理出口业务 。允许多传选项
+                        description: 非必传参数，仅企业所得税预缴初始化使用。传参选项：发生了自营出口业务、发生了委托出口业务
                         items:
                           type: string
                       xzqhszDm:
                         type: string
                         title: 跨省总机构行政区划代码
-                        description: 要求6位，参考附录中地区代码，例如北京：110000
+                        description: 非必传参数，仅企业所得税预缴时分支机构获取初始化使用。要求6位，参考附录中地区代码，例如北京：110000
                       formList:
                         type: array
                         title: 获取表单数据
                         description: |-
-                          企业所得税汇缴初始化生效：
+                          非必传参数，仅企业所得税汇缴初始化生效：
                           ["A000000","A100000","A101010","A102010","A104000","A105050","A105000","A105080","A106000"]
                           仅支持以下表单
                           "A000000":  "企业所得税年度纳税申报基础信息表", 必传
@@ -53627,26 +54039,17 @@ paths:
                         title: 房产编号
                         items:
                           type: string
+                        description: 非必传参数，仅房产税初始化使用。
                       tdbhList:
                         type: array
                         title: 城镇土地编号
                         items:
                           type: string
+                        description: 非必传参数，仅房产税初始化使用。
                       ywxxb:
-                        type: object
-                        title: 增值税新版业务信息表
-                        description: jsonobject
-                        x-apifox-orders:
-                        - blsx
-                        - zzsHznsqk
-                        - ybnsryxqq
-                        - ywlxs
-                        - tsnsrlxs
-                        - syzclxs
-                        required:
-                        - blsx
-                        - zzsHznsqk
-                        - ywlxs
+                        type:
+                        - object
+                        - 'null'
                         properties:
                           blsx:
                             type: string
@@ -53678,6 +54081,19 @@ paths:
                             description: 多选，参考新版增值税码表
                             items:
                               type: string
+                        x-apifox-orders:
+                        - blsx
+                        - zzsHznsqk
+                        - ybnsryxqq
+                        - ywlxs
+                        - tsnsrlxs
+                        - syzclxs
+                        title: 增值税新版业务信息表
+                        description: 非必传参数，仅2026新版增值初始化业务需要时上传该节点
+                        required:
+                        - blsx
+                        - zzsHznsqk
+                        - ywlxs
               required:
               - aggOrgId
               - year
@@ -55091,6 +55507,7 @@ paths:
         目前支持以下excel上传：
         BDA0610606增值税及附加税(适用于一般纳税人)
         BDA0610611增值税及附加税(适用于小规模纳税人)
+        BDA0611224新版增值税
         BDA0000000财产行为税合并纳税申报（房土）
         BDA0610005车船税
         BDA0610036资源税
@@ -56617,6 +57034,21 @@ paths:
                                   type: string
                                   description: 0=正常、1=义务终止
                                   title: 税源状态
+                                sbqxdm:
+                                  type: string
+                                  title: 申报期限代码
+                                nsqxdm:
+                                  type: string
+                                  title: 纳税期限代码
+                                skssqq:
+                                  type: string
+                                  title: 税款所属期起
+                                skssqz:
+                                  type: string
+                                  title: 税款所属期止
+                                nsywzzsj:
+                                  type: string
+                                  title: 纳税义务终止时间
                               x-apifox-orders:
                               - fwsztdbh
                               - fcbh
@@ -56634,6 +57066,11 @@ paths:
                               - nsrsbh
                               - syqrmc
                               - nsrlx
+                              - sbqxdm
+                              - nsqxdm
+                              - skssqq
+                              - skssqz
+                              - nsywzzsj
                               - cjjz
                               - czjz
                               - syzt

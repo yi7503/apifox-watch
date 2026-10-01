@@ -15,6 +15,7 @@ tags:
 - name: 发票业务 / 发票归集 / 异步归集-电票平台 / 应税凭证进项税额转出
 - name: 发票业务 / 发票归集 / 异步归集-电票平台 / 进销项发票归集
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证
+- name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 代开农场品发票录入
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 其他信息查询 / 不得抵扣发票信息
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 其他信息查询 / 历史已抵扣信息
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 其他信息查询 / 红字发票信息
@@ -34,7 +35,6 @@ tags:
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 进项数据采集 / 农产品发票采集
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 进项数据采集 / 海关缴款书采集
 - name: 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 进项数据采集 / 进项发票采集
-- name: 发票业务 / 发票识别
 - name: 发票业务 / 数电开票 / 业务回调接口
 - name: 发票业务 / 数电开票 / 发票交付
 - name: 发票业务 / 数电开票 / 发票额度调整
@@ -59,19 +59,19 @@ tags:
 - name: 发票业务 / 数电开票 / 蓝字发票开具
 - name: 发票业务 / 数电开票 / 销项版式文件下载
 - name: 发票业务 / 数电版式下载
-- name: 发票业务 / 票据查验 / 发票查验 / 其它发票查验
-- name: 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 区块链发票查验
-- name: 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 通用电子发票查验
-- name: 发票业务 / 票据查验 / 发票查验 / 增值税平台查验-新平台
-- name: 发票业务 / 票据查验 / 发票查验 / 增值税平台查验-旧平台（新对接请使用新平台查验）
-- name: 发票业务 / 票据查验 / 发票查验 / 电票平台查验（新对接请使用新平台查验）
-- name: 发票业务 / 票据查验 / 查验扩展 / 上传文件查验
-- name: 发票业务 / 票据查验 / 查验扩展 / 入账状态及用途标签
-- name: 发票业务 / 票据查验 / 查验扩展 / 异步查验并获取版式文件(总局门户)
-- name: 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
-- name: 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 同步方式
-- name: 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
+- name: 发票业务 / 票据查验 / 区块链发票查验
+- name: 发票业务 / 票据查验 / 增值税发票查验
+- name: 发票业务 / 票据查验 / 增值税发票查验 / 电票平台查验（新对接请使用增值税平台查验）
+- name: 发票业务 / 票据查验 / 增值税发票查验扩展 / 上传发票源文件查验
+- name: 发票业务 / 票据查验 / 增值税发票查验扩展 / 发票入账状态及用途标签
+- name: 发票业务 / 票据查验 / 增值税发票查验扩展 / 异步查验并获取版式文件(总局门户)
+- name: 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
+- name: 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 同步方式
+- name: 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
 - name: 发票业务 / 票据查验 / 财政票据查验
+- name: 发票业务 / 票据查验 / 车辆通行费发票查验
+- name: 发票业务 / 票据查验 / 通用电子发票查验
+- name: 发票业务 / 票据识别
 paths:
   /v2/invoice/qdfp/rzewm:
     post:
@@ -3111,7 +3111,7 @@ paths:
                       type: string
                       title: 申报项目代码
                       description: |-
-                        扣除额=0时，非必填，传空；扣除额大于0，必填；申报项目代码与开具明细的商品编码和差额征税类型必须匹配，具体参考详见：[差额征税-申报项目说明
+                        差额开票必填；申报项目代码与开具明细的商品编码和差额征税类型必须匹配，具体参考详见：[差额征税-申报项目说明
                         ](doc-9026578)
                     fpdm:
                       type: string
@@ -3155,6 +3155,7 @@ paths:
                   - xmmx
                   - ly_ddbh
                   - xsf_nsrsbh
+                  - sbxmDm
                   x-apifox-orders:
                   - ly_ddbh
                   - fplxdm
@@ -6139,189 +6140,6 @@ paths:
                       lzFphm: '************54513666'
                       lzKprq: '2024-02-29 00:00:00'
       x-apifox-status: released
-  /v2/invoice/qdfp/bswjxz:
-    post:
-      summary: 下载版式文件-废弃
-      operationId: api-100012792
-      tags:
-      - 发票业务 / 数电开票 / 销项版式文件下载
-      description: |-
-        :::caution[]
-        该接口将于2026年1月30日下线，请使用[下载版式文件](api-155759098)接口
-        :::
-      parameters:
-      - name: Content-Type
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: access_token
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: req_date
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: req_sign
-        in: header
-        required: false
-        schema:
-          type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                action:
-                  type:
-                  - string
-                  - 'null'
-                  title: 操作类型
-                  description: 本接口传入：bswjxz
-                nsrsbh:
-                  type: string
-                  title: 税号
-                data:
-                  type: object
-                  properties:
-                    fphm:
-                      title: 发票号码
-                      type: string
-                      description: 20位数电发票号码
-                    kprq:
-                      title: 开票日期
-                      type: string
-                      description: 包含时间 yyyy-MM-dd HH:mm:ss
-                    wjgs:
-                      type: string
-                      title: 文件格式
-                      enum:
-                      - PDF
-                      - OFD
-                      - XML
-                      x-apifox-enum:
-                      - value: PDF
-                        name: ''
-                        description: 获取PDF文件
-                      - value: OFD
-                        name: ''
-                        description: 获取OFD文件
-                      - value: XML
-                        name: ''
-                        description: 获取XML文件(zip格式)
-                    xzlx:
-                      type: string
-                      title: 下载类型
-                      description: base64或url(建议使用url，base64的数据超过500k后自动转换为url)
-                      enum:
-                      - base64
-                      - url
-                      x-apifox-enum:
-                      - value: base64
-                        name: ''
-                        description: 以base64编码返回文件内容
-                      - value: url
-                        name: ''
-                        description: 以URL方式返回下载路
-                  x-apifox-orders:
-                  - kprq
-                  - fphm
-                  - wjgs
-                  - xzlx
-                  title: ''
-                  required:
-                  - wjgs
-                  - kprq
-                  - fphm
-              required:
-              - nsrsbh
-              - data
-              x-apifox-orders:
-              - action
-              - nsrsbh
-              - data
-              - 01HMB9DDH1NFAW3GHNDVRZB4Y9
-              x-apifox-refs:
-                01HMB9DDH1NFAW3GHNDVRZB4Y9:
-                  $ref: '#/definitions/79273658'
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      wjgs:
-                        type: string
-                        title: 文件格式
-                      base64:
-                        type: string
-                        title: 文件内容(Base64格式)
-                      fpdm:
-                        type: string
-                        title: 发票代码
-                        description: 数电时为空
-                      fphm:
-                        type: string
-                        title: 发票号码
-                        description: 数电时为20位数电号码
-                      kprq:
-                        type: string
-                        title: 开票日期
-                      url:
-                        type: string
-                        title: 文件内容（url格式）
-                    required:
-                    - wjgs
-                    - base64
-                    - fpdm
-                    - fphm
-                    - kprq
-                    - url
-                    x-apifox-orders:
-                    - wjgs
-                    - base64
-                    - url
-                    - fpdm
-                    - fphm
-                    - kprq
-                required:
-                - data
-                x-apifox-orders:
-                - data
-                - 01HRH5V0125SFV3HMTSC59PWYF
-                x-apifox-refs:
-                  01HRH5V0125SFV3HMTSC59PWYF:
-                    $ref: '#/definitions/85577914'
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: 8aa61a5f34024b0fa9f3c6e659b915e6
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      fpdm: ''
-                      kprq: '2024-02-29 10:59:02'
-                      base64: ''
-                      wjgs: XML
-                      url: ''
-                      fphm: '************54513944'
-      x-apifox-status: deprecated
   /v2/invoice/qdfp/asynResult:
     post:
       summary: 异步请求结果查询
@@ -12035,10 +11853,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/cltxffpCy:
     post:
-      summary: 车辆通行费发票查验(江苏)
+      summary: 车辆通行费发票查验-江苏
       operationId: api-144115059
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 其它发票查验
+      - 发票业务 / 票据查验 / 车辆通行费发票查验
       description: |-
         ## 接口描述
         该接口用于车辆通行费发票查验，目前支持江苏车辆通行费发票查验。与[江苏省车辆通行费（非ETC）发票查验](https://etax.jiangsu.chinatax.gov.cn:8443/tsyw/view/dfts/cltxffpcy)保持一致。
@@ -19033,7 +18851,7 @@ paths:
       summary: 查验版式下载任务结果查询
       operationId: api-176207105
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 异步查验并获取版式文件(总局门户)
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 异步查验并获取版式文件(总局门户)
       description: |-
         ## 接口描述
         该接口用于数电发票查验版式文件下载结果查询。可用过查验时返回的bswjxzTaskId进行结果查询，也可通过单个或多个全电发票号码进行结果查询。
@@ -19255,7 +19073,7 @@ paths:
       summary: 数电票查验并获取版式文件
       operationId: api-177662633
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 异步查验并获取版式文件(总局门户)
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 异步查验并获取版式文件(总局门户)
       description: |-
         ## 接口描述
         该接口用于数电票查验及版式文件下载。查验结果与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致，版式文件下载结果与电票平台版式文件保持一致。
@@ -21228,7 +21046,7 @@ paths:
       summary: 版式下载任务执行结果回调
       operationId: api-193040992
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 异步查验并获取版式文件(总局门户)
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 异步查验并获取版式文件(总局门户)
       description: |2-
 
         :::highlight red 💡
@@ -21465,10 +21283,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/dpptCy:
     post:
-      summary: 数电票查验
+      summary: 电票平台-数电票查验
       operationId: api-193188103
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 电票平台查验（新对接请使用新平台查验）
+      - 发票业务 / 票据查验 / 增值税发票查验 / 电票平台查验（新对接请使用增值税平台查验）
       description: |-
         ## 接口描述
         该接口用于数电票查验，目前仅支持数电票与数电纸质发票查验，与[电票平台-发票查验](https://dppt.shanghai.chinatax.gov.cn:8443/invoice-check)保持一致。
@@ -21476,6 +21294,7 @@ paths:
         【**数电纸质发票**】包含：数电纸质（增值税专用发票）、数电纸质（增值税普通发票）、数电纸质（机动车销售统一发票）、数电纸质（二手车销售统一发票）；
 
         ::: highlight red 💡
+         新对接用户注意：新对接的客户使用，请使用增值税平台查验 https://openapi.qixiangyun.com/api-431038998
         注意：数电纸质发票也使用三要素查验20位数电票号码+价税合计+开票日期
         :::
 
@@ -21622,7 +21441,7 @@ paths:
       summary: 入账状态及用途标签查询
       operationId: api-200704954
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 入账状态及用途标签
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 发票入账状态及用途标签
       description: "## 接口描述\n该接口用于查询发票的入账状态及用途标签。\n\n::: highlight red \U0001F4A1\n注意：不同的数电票价税合计取值不同\n:::\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n|\
         \ IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| CheckRzztAndYtbqException | 入账状态及用途标签查询失败！ |请重试\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError\
         \ | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -21778,10 +21597,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/bswjxz:
     post:
-      summary: 同步获取数电票版式文件
+      summary: 同步获取版式文件
       operationId: api-206461616
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 同步方式
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 同步方式
       description: "## 接口描述\n该接口用于数电票版式文件下载，目前仅支持数电票（0910、0920、51、61、70、8208、83）的版式文件下载。\n| 代码  | 名称                        | \n| ---- | ---------------------       |\n| 51   | 数电（铁路电子客票）          |\n| 61   | 数电（航空运输电子客票行程单）  | \n| 70   | 数电（二手车销售统一发票）     |       \n| 0920   | 数电（增值税专用发票）   | \n| 0910   | 数电（增值税普通发票）  |\n| 83   | 数电（机动车销售统一发票）     | \n| 8208   | 数电发票（通行费发票）     | \n::: highlight red \U0001F4A1\n注意：不同的数电票价税合计取值不同\n:::\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode\
         \ | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException\
         \ | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| CheckRzztAndYtbqException | 入账状态及用途标签查询失败！ |请重试\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -22740,10 +22559,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/asyncBswjxz:
     post:
-      summary: 异步获取数电票版式文件
+      summary: 异步获取版式文件-发起提交
       operationId: api-211282562
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
       description: "## 接口描述\n该接口用于异步数电票版式文件下载，目前仅支持数电票（0910、0920、61、83）的版式文件下载。\n\n::: highlight red \U0001F4A1\n注意：不同的数电票价税合计取值不同\n:::\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！\
         \ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| CheckRzztAndYtbqException | 入账状态及用途标签查询失败！ |请重试\n| ServerError\
         \ | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -22923,11 +22742,11 @@ paths:
                     kqyjydxzqh:
                       type: string
                       title: 跨区域经营地行政区划
-                      description: 跨区域经营地行政区划
+                      description: 跨区域经营地行政区划，参考地区码https://openapi.qixiangyun.com/doc-6136969
                     wcjyhdssglzmbh:
                       type: string
                       title: 跨区域涉税事项报验管理编号-前缀
-                      description: 跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则前缀部分为： 北海
+                      description: 跨区域涉税事项报验管理编号全称为：”北海 税跨报 〔2026〕 2403 号“，则前缀部分为： 北海
                     zmyxqxq:
                       type: string
                       title: 跨区域涉税事项有效期起
@@ -22947,11 +22766,11 @@ paths:
                     wcjyhdssglzmbhq:
                       type: string
                       title: 跨区域涉税事项报验管理编号-年份
-                      description: 跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则年份部分为： 2026
+                      description: 跨区域涉税事项报验管理编号全称为：”北海 税跨报 〔2026〕 2403 号“，则年份部分为： 2026
                     wcjyhdssglzmbhy:
                       type: string
                       title: 跨区域涉税事项报验管理编号-编号
-                      description: 跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则编号部分为： 2403
+                      description: 跨区域涉税事项报验管理编号全称为：”北海 税跨报 〔2026〕 2403 号“，则编号部分为： 2403
                   x-apifox-orders:
                   - 01HVNG5GM4P39XZHBAS4TE4TDW
                   - gcxmmc
@@ -23135,10 +22954,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/bsxzJgCx#228040874:
     post:
-      summary: 查验版式下载任务结果查询
+      summary: 查验并获取版式文件结果查询
       operationId: api-228040874
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
       description: |-
         ## 接口描述
         该接口用于数电发票查验版式文件下载结果查询。可用过查验时返回的bswjxzTaskId进行结果查询，也可通过单个或多个全电发票号码进行结果查询。
@@ -23205,10 +23024,10 @@ paths:
       x-apifox-status: released
   /服务商CallbackURL地址#228041280:
     post:
-      summary: 版式下载任务执行结果回调
+      summary: 查验并获取版式文件结果回调
       operationId: api-228041280
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
       description: |2-
 
         :::highlight red 💡
@@ -23920,7 +23739,7 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/czpjCy:
     post:
-      summary: 财政票据(明细版)
+      summary: 财政票据查验(明细版)
       operationId: api-241358209
       tags:
       - 发票业务 / 票据查验 / 财政票据查验
@@ -41399,10 +41218,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/dpptCy#271508610:
     post:
-      summary: 数电票查验并获取版式文件
+      summary: 查验并获取版式文件（电票平台）
       operationId: api-271508610
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 1查验并获取版式文件
       description: |-
         ## 接口描述
         该接口用于数电票查验，目前仅支持数电票与数电纸质发票查验，与[电票平台-发票查验](https://dppt.shanghai.chinatax.gov.cn:8443/invoice-check)保持一致。
@@ -53618,10 +53437,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/bsxzJgCx#425759266:
     post:
-      summary: 查验版式下载任务结果查询
+      summary: 异步获取版式文件-查询结果
       operationId: api-425759266
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
       description: |-
         ## 接口描述
         该接口用于数电发票查验版式文件下载结果查询。可用过查验时返回的bswjxzTaskId进行结果查询，也可通过单个或多个全电发票号码进行结果查询。
@@ -53688,10 +53507,10 @@ paths:
       x-apifox-status: released
   /服务商CallbackURL地址#425759273:
     post:
-      summary: 版式下载任务执行结果回调
+      summary: 异步获取版式文件-结果回调
       operationId: api-425759273
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 获取版式文件(电票平台) / 2不查验获取版式 / 异步方式
       description: |2-
 
         :::highlight red 💡
@@ -54143,7 +53962,7 @@ paths:
       summary: 增值税发票查验
       operationId: api-431038998
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 增值税平台查验-新平台
+      - 发票业务 / 票据查验 / 增值税发票查验
       description: "## 接口描述\n该接口用于数电票查验。\nnewFlag 是否使用新平台查验 为“否”，与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致。\nnewFlag 是否使用新平台查验 为“是”，与[国家税务总局全国增值税查验平台（新）](https://inv-veri.chinatax.gov.cn) 保持一致。 \n\n\n:::highlight red \U0001F4A1\n[企享云-增值税发票查验升级切换通知](https://static.qixiangyun.com/FP/%E4%BC%81%E4%BA%AB%E4%BA%91-%E5%A2%9E%E5%80%BC%E7%A8%8E%E5%8F%91%E7%A5%A8%E6%9F%A5%E9%AA%8C%E5%8D%87%E7%BA%A7%E5%88%87%E6%8D%A2%E9%80%9A%E7%9F%A5(1).pdf)\n:::\n\n\n【**支持发票票种**】 \n税控发票\n04        增值税普通发票        \n01        增值税专用发票        \n10        增值税普通发票（电子）        \n11        增值税普通发票（卷票）        \n14        道路通行费电子普通发票        \n08        增值税专用发票（电子）        \n03        机动车销售统一发票        \n15        二手车统一销售发票     \n数电发票\n0910\t数电发票（普通发票）\n0920\t数电发票（增值税专用发票）\n0904\t数电纸质发票（普通发票）\t\n0901\t数电纸质发票（增值税专用发票）\n61\t        数电发票（航空运输电子客票行程单）\n83\t         数电发票（铁路电子客票）\n0903\t数电纸质发票（机动车销售统一发票）\n0930\t数电发票（机动车销售统一发票）\n0915\t数电纸质发票(二手车统一销售发票)\n0940\t数电发票（二手车统一销售发票）\n\n注意事项：\n1、新旧平台存在发票状态不一致的情况，老平台页面显示正常，新平台是部分红冲；\n\
         --税局数据同步机制导致，可隔天在查验。\n2、备注内容不一样，一个是两边对于特殊字符的处理和转义方式不同，第二个是新平台把特定要素的一些内容、购销方地址电话的内容当成了独立的字段返回，旧平台是直接放到了备注里；\n-- 详见购销方信息的独立字段；\n3、税率精度存在不同的情况，不过不影响，老平台会出现精度补位，新平台不补位；\n--业务上没有影响\n4、特殊票种标志不同，新平台的特殊票种从80-99开始，共20种类型\n-- 参考原附录的tspzDm-特殊票种代码 https://openapi.qixiangyun.com/doc-7675729 。\n5、新平台没有代开标志\n6、times字段查验次数，旧查验平台返回是累计查验次数；新查验平台新版返回的是当日查验次数；\n\n::: highlight red \U0001F4A1\n注意：不同的数电票价税合计取值不同\n:::\n\n## 错误码\n| **错误代码**                                     | **错误信息**                                   | **说明**                                                     |\n| ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |\n| CheckInvoiceOverSupportCount                     | 超过当前接口支持最大查验张数!                  | 超过接口限制的单次请求张数，请调整单次请求张数。             |\n| CheckInvoiceForTheSameFrequent                   | 当前发票正在查验中,请不要频繁请求              | 当前发票正在查验中,请稍后重试                                |\n\
         | CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |\n| IllegalParameter                                 | 请求参数不正确                                 | 请核对请求参数                                               |\n| IllegalParameter.IllegalInvoiceCode              | 请求参数不正确,参数fpdm发票代码不正确！        | 请核对fpdm发票代码是否符合参数规范                           |\n| IllegalParameter.IllegalInvoiceNumber            | 请求参数不正确,参数fphm发票号码不正确！        | 请核对fphm发票号码是否符合参数规范                           |\n| IllegalParameter.IllegalBillingDate              | 请求参数不正确,参数kprq开票日期不正确！        | 请核对kprq开票日期是否符合参数规范                           |\n| IllegalParameter.IllegalCheckCode                | 参数jym[发票校验码后6位]不正确                 | 请核对jym校验码是否符合参数规范                              |\n| IllegalParameter.IllegalTotalAmount              | 参数je[不含税金额]不正确                       | 请核对je金额是否符合参数规范                                 |\n| IllegalParameter.IllegalTotalAmountIincludingTax\
@@ -58586,76 +58405,41 @@ paths:
                       - swjgDm: '13100000000'
                         dqMc: 上海
       x-apifox-status: released
-  /v2/invoice/cy/zzsfpCy#66282957:
+  /v2/invoice/rz/dkNcpFpLrJg:
     post:
-      summary: 数电票查验
-      operationId: api-66282957
+      summary: 代开农产品发票录入结果查询
+      operationId: api-515343989
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 增值税平台查验-旧平台（新对接请使用新平台查验）
+      - 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 代开农场品发票录入
       description: |-
         ## 接口描述
-        该接口用于数电票查验。与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致。
-        【**数电票**】包含：电子发票（普通发票）、电子发票（增值税专用发票）、电子发票（铁路电子客票）、电子发票（航空运输电子客票行程单）、电子发票（机动车销售统一发票）、电子发票（二手车统一销售发票）、电子发票（通行费发票）。
-
-        ::: highlight red 💡
-        注意：不同的数电票价税合计取值不同
-        :::
+        该接口用于查询企业电子发票服务平台（发票云）代开农产品发票录入任务的结果。
 
         ## 错误码
-        | **错误代码**                                     | **错误信息**                                   | **说明**                                                     |
-        | ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |
-        | CheckInvoiceOverSupportCount                     | 超过当前接口支持最大查验张数!                  | 超过接口限制的单次请求张数，请调整单次请求张数。             |
-        | CheckInvoiceForTheSameFrequent                   | 当前发票正在查验中,请不要频繁请求              | 当前发票正在查验中,请稍后重试                                |
-        | CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |
-        | IllegalParameter                                 | 请求参数不正确                                 | 请核对请求参数                                               |
-        | IllegalParameter.IllegalInvoiceCode              | 请求参数不正确,参数fpdm发票代码不正确！        | 请核对fpdm发票代码是否符合参数规范                           |
-        | IllegalParameter.IllegalInvoiceNumber            | 请求参数不正确,参数fphm发票号码不正确！        | 请核对fphm发票号码是否符合参数规范                           |
-        | IllegalParameter.IllegalBillingDate              | 请求参数不正确,参数kprq开票日期不正确！        | 请核对kprq开票日期是否符合参数规范                           |
-        | IllegalParameter.IllegalCheckCode                | 参数jym[发票校验码后6位]不正确                 | 请核对jym校验码是否符合参数规范                              |
-        | IllegalParameter.IllegalTotalAmount              | 参数je[不含税金额]不正确                       | 请核对je金额是否符合参数规范                                 |
-        | IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！                  | 请核对jshj价税合计是否符合参数规范                           |
-        | IllegalParameter.IllegalXfsbh                    | 请求参数不正确,销售方识别号为空！              | 请核对xfsbh销方识别号是否符合参数规范                        |
-        | IllegalParameter.IllegalArea                     | 请求参数不正确,参数dq地区不正确！              | 请核对dq地区是否符合参数规范                                 |
-        | CheckInvoicesMoreThanToday                       | 开票日期超过当前日期                           | 请核对开票日期是否正确                                       |
-        | CheckInvoicesOverFiveYears                       | 超过五年的发票不能查验                         | 请核对开票日期是否正确                                       |
-        | CheckInvoiceNotSupport                           | 暂不支持该（省市）电子票据查验                 | 该地区暂不支持该票种查验                                     |
-        | CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |
-        | CheckInvoiceMoreFiveTimes                        | 超过该张票当天查验次数                         | 请确认在调用接口前是否已经通过官方平台查验超过5次            |
-        | CheckInvoiceNotExistence                         | 查验成功所查发票不存在                         | 发票代码或发票号码在税局查不到，请核对代码、号码是否正确  <br>注：可能原因如下：(1)输入的查验项有误；(2)查询的发票开票日期距当前日期超过5年；(3)由于开票方离线开票，发票数据未上传至税务局；(4)非增值税发票管理系统开具的发票。 |
-        | CheckInvoiceNotSame                              | 查验成功所查发票不一致                         | 请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票 |
-        | CheckInvoiceNotStandard                          | 查询发票不规范                                 | 请核对四要素是否符合发票规范                                 |
-        | CheckInvoiceRequestNonStandard                   | 请求不规范                                     | 请核对请求参数                                               |
-        | CheckInvoiceException                            | 税局服务异常，建议15-20分钟后重试              | 税局服务异常，建议15-20分钟后重试                            |
-        | CheckAbnormal                                    | 查验异常（错误信息不固定）                     | 税局服务异常，建议15-20分钟后重试                            |
-        | CheckExceedingLimit                              | 查验发票张数超过限制                           | 发票剩余查验量不足，请与运营负责人沟通确认                   |
-        | CheckInvoiceSingular                             | 请求太频繁或超过服务器最大请求数，请稍后访问！ | 当前请求数达到服务最大并发数                                 |
-        | ServerError                                      | 服务器异常，请稍后重试                         | 服务器异常                                                   |
-        | InternalServerError                              | 服务遇到未知错误，请稍后重试                   | 请联系管理员                                                 |
-        | RemoteDataException                              | 税局数据异常                                   | 请联系管理员                                                 |
-        | RemoteResultFail                                 | 调用税局异常，请稍后重试。                     | 请联系管理员                                                 |
-        | 50008                                            | 字段文件名称不能为空(name)                     | 请联系管理员                                                 |
-        | 50014                                            | 超过并发限制                                   | 请降低并发                                                   |
-        | 59999                                            | 未知异常                                       | 请联系管理员                                                 |
-        | 505002                                           | 接口调用异常!                                  | 请联系管理员                                                 |
+        | **错误代码**              | **错误消息**                                     | **解决方案**                |
+        | ------------------------- | ------------------------------------------------ | --------------------------- |
+        | 600004                    | 未开通权限，请联系管理员！                       | 与运营沟通申请开通对应权限  |
+        | 505002                    | 接口调用异常，请联系管理员!                      | 请联系管理员                |
+        | FprzParameterVerification | 传入的参数-taskId不能为空                        | 请检查参数-taskId是否不为空 |
+        | FprzServerError           | 操作发生异常，请联系管理员 | 认证服务出错，请联系管理员  |
       parameters:
       - name: access_token
         in: header
         required: true
-        description: 通过调用access_token接口返回的access_token值
         schema:
           type: string
         example: '{{access_token}}'
       - name: req_date
         in: header
         required: true
-        description: 当前时间转为的毫秒数
         schema:
           type: string
         example: '{{req_date}}'
       - name: req_sign
         in: header
         required: true
-        description: 签名算法得到的签名
+        description: |
+          待签名字符串 = HTTPMethod + "_" + Content-Md5 + "_" + req_date + "_" + access_token + "_" + AppSecret
         schema:
           type: string
         example: '{{req_sign}}'
@@ -58669,224 +58453,185 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              x-apifox-refs:
-                01GVJ2XAQ09QAS411D7711BVQQ:
-                  $ref: '#/definitions/33125145'
-                  x-apifox-overrides: {}
-              properties:
-                customReqId:
-                  type: string
-                  description: 传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb
-              x-apifox-orders:
-              - 01GVJ2XAQ09QAS411D7711BVQQ
-              - customReqId
+              $ref: '#/definitions/56280364'
             examples:
               example_0:
                 summary: ''
                 value: null
       responses:
         '200':
-          description: 电子发票(二手车销售统一发票)
+          description: 成功
           content:
             application/json:
               schema:
                 type: object
-                x-apifox-refs:
-                  01JXV98PXB45N9XZB70S42H34K:
-                    $ref: '#/definitions/35327531'
-                    x-apifox-overrides:
-                      data:
-                        type:
-                        - array
-                        - 'null'
-                        items:
-                          type: object
-                          x-apifox-refs:
-                            01JXV99512Q3T4TAST7VHC187F:
-                              $ref: '#/definitions/35326710'
-                              x-apifox-overrides:
-                                data:
-                                  title: 查验结果
-                                  anyOf:
-                                  - $ref: '#/definitions/176185678'
-                                  - type: 'null'
-                              required: []
-                          x-apifox-orders:
-                          - 01JXV99512Q3T4TAST7VHC187F
-                          properties: {}
-                        title: 业务数据
+                x-apifox-refs: {}
+                x-apifox-orders:
+                - reqId
+                - code
+                - success
+                - message
+                - data
+                properties:
+                  code:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误码
+                    description: 错误码
+                  data:
+                    title: 业务数据
+                    type:
+                    - object
+                    - 'null'
+                    x-apifox-refs:
+                      01M2J56GEEQ3WMBFZTKTRRFCZW:
+                        $ref: '#/definitions/313996877'
+                    x-apifox-orders:
+                    - 01M2J56GEEQ3WMBFZTKTRRFCZW
+                    properties: {}
                     required: []
-                x-apifox-orders:
-                - 01JXV98PXB45N9XZB70S42H34K
-                properties: {}
-      x-apifox-status: released
-  /v2/invoice/cy/zzsfpCy#66282961:
-    post:
-      summary: 税控发票查验
-      operationId: api-66282961
-      tags:
-      - 发票业务 / 票据查验 / 发票查验 / 增值税平台查验-旧平台（新对接请使用新平台查验）
-      description: |+
-        ## 接口描述
-        该接口用于增值税发票四要素查验，与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致。
-
-
-        ::: highlight red 💡
-        注意：不同类型的发票cyList里的字段有差异
-        :::
-
-      parameters:
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      - name: Content-Type
-        in: header
-        required: false
-        schema:
-          type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              x-apifox-refs:
-                01HKM9846GEFFPGW2XT7JZ35DR:
-                  $ref: '#/definitions/33124987'
-                  x-apifox-overrides: {}
-              properties:
-                customReqId:
-                  type: string
-                  description: 传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb
-              x-apifox-orders:
-              - 01HKM9846GEFFPGW2XT7JZ35DR
-              - customReqId
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 二手车统一销售发票成功
-          content:
-            application/json:
-              schema:
-                type: object
-                x-apifox-refs:
-                  01GXSPQZMVKCNYTB4VHNF8KQKZ:
-                    $ref: '#/definitions/35327531'
-                    x-apifox-overrides:
-                      data:
-                        type:
-                        - array
-                        - 'null'
-                        items:
-                          type: object
-                          x-apifox-refs:
-                            01HVRFPT4BKBK7R2FX4HVFWHS8:
-                              $ref: '#/definitions/35326710'
-                              x-apifox-overrides:
-                                data:
-                                  title: 查验结果
-                                  $ref: '#/definitions/40996898'
-                              required:
-                              - data
-                          x-apifox-orders:
-                          - 01HVRFPT4BKBK7R2FX4HVFWHS8
-                          properties: {}
-                        title: 业务数据
-                x-apifox-orders:
-                - 01GXSPQZMVKCNYTB4VHNF8KQKZ
-                properties: {}
+                  success:
+                    description: 接口是否成功（是否发生业务异常）
+                    type: boolean
+                    title: 是否成功标记
+                  reqId:
+                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
+                    type: string
+                    title: 请求id
+                  message:
+                    type:
+                    - string
+                    - 'null'
+                    title: 错误信息
+                required:
+                - code
+                - success
+                - reqId
+                - message
               examples:
-                二手车统一销售发票成功示例:
-                  summary: 二手车统一销售发票成功示例
+                任务执行失败:
+                  summary: 任务执行失败
                   value:
-                    reqId: a35dd06f9325456ab3126a965ad3a46e
                     code: '2000'
+                    data:
+                      code: FprzTaxFailed
+                      customReqId: 100019999a75ad80a399417eaac351f85343fb77
+                      dkNcpFpLrInfo:
+                        lrjg: 2
+                        ncpse: 3.25
+                        fpdm: '1234567890'
+                        kprq: '2025-11-01'
+                        yxse: 3.25
+                        ncpje: 10.0
+                        message: 1234567890=12345678未查询到发票信息!
+                        fphm: '12345678'
+                      originalCode: '202'
+                      zt: '2'
+                      message: 1234567890=12345678未查询到发票信息!
                     success: true
                     message: null
-                    data:
-                    - data:
-                        bz: 此车迁出本市
-                        cjhj: 8000
-                        cjhjcn: 捌仟元整
-                        cllx: 小型普通客车
-                        clsbdm: LZWADAGA5GB281091
-                        cpxh: '**牌LZ*****MY'
-                        cpzh: 京P****6
-                        djzh: 11********76
-                        dq: 北京
-                        escDh: 83****88
-                        escDz: 北**********************号
-                        escMc: 北*************************司
-                        escSbh: 91*************1P
-                        escYhzh: 建行*******************45
-                        fpdm: 01********17
-                        fphm: 01*****70
-                        fplx: '15'
-                        fpztDm: '0'
-                        gfDh: 13*********00
-                        gfDm: 22*********************13
-                        gfDz: 吉**************************组
-                        gfMc: 张*龙
-                        jyPmDh: ''
-                        jyPmDz: ''
-                        jyPmMc: ''
-                        jyPmSbh: ''
-                        jyPmYhzh: ''
-                        kjlx: '1'
-                        kpr: null
-                        kprq: '2024-02-29 00:00:00'
-                        sbbh: 66*********14
-                        skm: null
-                        spbm: null
-                        xfDh: 13*********85
-                        xfDm: 11************23
-                        xfDz: 北********************号
-                        xfMc: 李*慧
-                        yfpdm: null
-                        yfphm: null
-                        zfr: null
-                        zfrq: null
-                        zrdclglsMc: 延********************所
-                      dq: '11'
-                      fpdm: 01******17
-                      fphm: 01****70
-                      fplx: '15'
-                      je: 8000
-                      jshj: null
-                      jym: null
-                      kprq: '2024-02-29 00:00:00'
-                      success: true
-                      time: '2024-04-18 18:28:12'
-                      times: 3
-      x-apifox-status: released
+                    timestamp: '2026-09-15 16:43:29'
+                    reqId: inv-authenticationc0868746-b9c1-4815-ad78-157364a957ac
+      x-apifox-status: developing
+  /v2/invoice/rz/sqDkNcpFpLr:
+    post:
+      summary: 代开农产品发票录入
+      operationId: api-515367691
+      tags:
+      - 发票业务 / 发票认证 / 电票平台认证 / 异步认证 / 托管模式认证 / 代开农场品发票录入
+      description: |-
+        ## 接口描述
+        该接口用于发起企业电子发票服务平台（发票云）代开农产品发票录入申请。
+
+
+        ## 错误码
+        | **错误代码**              | **错误消息**                                                 | **解决方案**                                                 |
+        | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+        | 600004                    | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |
+        | 505002                    | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |
+        | FprzBusinessVerification  | 请求任务正在执行中，请等待。                                 | 请稍后重新发起任务                                           |
+        | FprzSqTaskFailed          | 申请任务发起失败！                                           | 请重新发起任务                                               |
+        | FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代开农产品发票录入结果查询](https://openapi.qixiangyun.com/api-515343989)接口查询任务转异步后执行结果。 |
+      parameters:
+      - name: access_token
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{access_token}}'
+      - name: req_date
+        in: header
+        required: true
+        schema:
+          type: string
+        example: '{{req_date}}'
+      - name: req_sign
+        in: header
+        required: true
+        description: |
+          待签名字符串 = HTTPMethod + "_" + Content-Md5 + "_" + req_date + "_" + access_token + "_" + AppSecret
+        schema:
+          type: string
+        example: '{{req_sign}}'
+      - name: Content-Type
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              x-apifox-refs:
+                01M2J5TP2QMQZ1KZS3B98WY7AV:
+                  $ref: '#/definitions/313986598'
+              properties: {}
+              x-apifox-orders:
+              - 01M2J5TP2QMQZ1KZS3B98WY7AV
+              required: []
+            examples:
+              同步请求示例:
+                summary: 同步请求示例
+                value: null
+      responses:
+        '200':
+          description: 同步超时转异步
+          content:
+            application/json:
+              schema:
+                title: ''
+                type: object
+                properties: {}
+                x-apifox-orders:
+                - 01K5FWP5JTSXBBA7WV2BH3TY73
+                required: []
+                x-apifox-refs:
+                  01K5FWP5JTSXBBA7WV2BH3TY73:
+                    $ref: '#/definitions/35327531'
+                    x-apifox-overrides:
+                      data:
+                        type:
+                        - object
+                        - 'null'
+                        properties: {}
+                        title: 业务数据
+                        x-apifox-orders:
+                        - 01K5FWPE284KKC1F1FPP3TH6QH
+                        required: []
+                        x-apifox-refs:
+                          01K5FWPE284KKC1F1FPP3TH6QH:
+                            $ref: '#/definitions/104050184'
+                    required: []
+      x-apifox-status: developing
   /v2/invoice/cy/qklfpCy:
     post:
       summary: 区块链发票(北京)
       operationId: api-66282962
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 区块链发票查验
+      - 发票业务 / 票据查验 / 区块链发票查验
       description: "## 接口描述\n该接口用于区块链发票查验。与[北京区块链发票查验](https://etax.beijing.chinatax.gov.cn/ptfp/fpindex.jsp?cdId=10101d00398f4d5eae60302640b42da4&gnDm=wz.gzfw.gzcx.fpcx&qxkzsx=0#)保持一致。\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n\
         | IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| ServerError\
         \ | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -59042,7 +58787,7 @@ paths:
       summary: 通用电子发票(浙江/宁波)
       operationId: api-66282964
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 通用电子发票查验
+      - 发票业务 / 票据查验 / 通用电子发票查验
       description: "## 接口描述\n该接口用于通用电子发票查验，目前支持浙江、宁波通用电子发票查验。与[浙江通用电子发票查验](http://etax.zhejiang.chinatax.gov.cn/zjgfdzswjfpyh/fp/fpzw/fpzw.html)保持一致。\n\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！\
         \ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试\
         \ |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -59217,7 +58962,7 @@ paths:
       summary: 普通票据识别
       operationId: api-66365912
       tags:
-      - 发票业务 / 发票识别
+      - 发票业务 / 票据识别
       description: |-
         ::: highlight red 💡
         发票图片信息相关参数**imageUrl**、**imageData**、**imageFile**只需传入一项，任选一项上传即可
@@ -59380,7 +59125,7 @@ paths:
       summary: 区块链发票(云南)
       operationId: api-67646592
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 区块链发票查验
+      - 发票业务 / 票据查验 / 区块链发票查验
       description: "## 接口描述\n该接口用于区块链发票查验，与[云南区块链发票查验](https://yunnan.chinatax.gov.cn/col/col8041/index.html)保持一致。\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范\
         \ |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n|\
         \ RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|\n"
@@ -59565,7 +59310,7 @@ paths:
       summary: 区块链发票(深圳)
       operationId: api-67646673
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 区块链发票查验
+      - 发票业务 / 票据查验 / 区块链发票查验
       description: |-
         ## 接口描述
         该接口用于区块链发票查验，与[深圳区块链发票查验](https://etax.shenzhen.chinatax.gov.cn/BsfwtWeb/apps/views/fp/fpcy/fp_fpcy.html)保持一致。
@@ -59739,7 +59484,7 @@ paths:
       summary: 通用电子发票(广东)
       operationId: api-67646895
       tags:
-      - 发票业务 / 票据查验 / 发票查验 / 其它发票查验 / 通用电子发票查验
+      - 发票业务 / 票据查验 / 通用电子发票查验
       description: "## 接口描述\n该接口用于通用电子发票查验，目前支持广东通用电子发票查验。与[广东通用电子发票查验](https://etax.guangdong.chinatax.gov.cn/xxmh/html/index_origin.html?gopage=true&m1=gzcx&m2=&fromWhere=&qxkzsx=0&tabTitle=null&cdId=dlqcd-1&gnDm=gndm-dlqcd-1#none)保持一致。\n\n\n:::tip[]\n因广东通用电子发票原税局查验平台已停止服务，且目前暂未找到该地区对应的替代查验平台，广东通用电子发票查验接口已做下架处理--2025年8月18日\n:::\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确\
         \ | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n\
         | CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n| RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -59856,208 +59601,6 @@ paths:
                       xzpj: null
                       ylpjFile: null
       x-apifox-status: deprecated
-  /v2/invoice/cy/zzsfpCy#68533683:
-    post:
-      summary: 数电纸质发票查验
-      operationId: api-68533683
-      tags:
-      - 发票业务 / 票据查验 / 发票查验 / 增值税平台查验-旧平台（新对接请使用新平台查验）
-      description: |-
-        ## 接口描述
-        该接口用于全电纸质发票查验。与[国家税务总局全国增值税查验平台](https://inv-veri.chinatax.gov.cn/index.html)保持一致。
-        【**数电纸质发票**】包含：数电纸质（增值税专用发票）、数电纸质（增值税普通发票）、数电纸质（机动车销售统一发票）、数电纸质（二手车销售统一发票）；
-
-        ::: highlight red 💡
-        注意：不同类型的发票cyList里的字段不同
-        :::
-
-
-
-
-        ## 错误码
-        | **错误代码**                                     | **错误信息**                                   | **说明**                                                     |
-        | ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |
-        | CheckInvoiceOverSupportCount                     | 超过当前接口支持最大查验张数!                  | 超过接口限制的单次请求张数，请调整单次请求张数。             |
-        | CheckInvoiceForTheSameFrequent                   | 当前发票正在查验中,请不要频繁请求              | 当前发票正在查验中,请稍后重试                                |
-        | CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |
-        | IllegalParameter                                 | 请求参数不正确                                 | 请核对请求参数                                               |
-        | IllegalParameter.IllegalInvoiceCode              | 请求参数不正确,参数fpdm发票代码不正确！        | 请核对fpdm发票代码是否符合参数规范                           |
-        | IllegalParameter.IllegalInvoiceNumber            | 请求参数不正确,参数fphm发票号码不正确！        | 请核对fphm发票号码是否符合参数规范                           |
-        | IllegalParameter.IllegalBillingDate              | 请求参数不正确,参数kprq开票日期不正确！        | 请核对kprq开票日期是否符合参数规范                           |
-        | IllegalParameter.IllegalCheckCode                | 参数jym[发票校验码后6位]不正确                 | 请核对jym校验码是否符合参数规范                              |
-        | IllegalParameter.IllegalTotalAmount              | 参数je[不含税金额]不正确                       | 请核对je金额是否符合参数规范                                 |
-        | IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！                  | 请核对jshj价税合计是否符合参数规范                           |
-        | IllegalParameter.IllegalXfsbh                    | 请求参数不正确,销售方识别号为空！              | 请核对xfsbh销方识别号是否符合参数规范                        |
-        | IllegalParameter.IllegalArea                     | 请求参数不正确,参数dq地区不正确！              | 请核对dq地区是否符合参数规范                                 |
-        | CheckInvoicesMoreThanToday                       | 开票日期超过当前日期                           | 请核对开票日期是否正确                                       |
-        | CheckInvoicesOverFiveYears                       | 超过五年的发票不能查验                         | 请核对开票日期是否正确                                       |
-        | CheckInvoiceNotSupport                           | 暂不支持该（省市）电子票据查验                 | 该地区暂不支持该票种查验                                     |
-        | CheckInvoicesOverOneYears                        | 仅可查验最近一年内开具的财政电子票据!          | 请检查开票日期！                                             |
-        | CheckInvoiceMoreFiveTimes                        | 超过该张票当天查验次数                         | 请确认在调用接口前是否已经通过官方平台查验超过5次            |
-        | CheckInvoiceNotExistence                         | 查验成功所查发票不存在                         | 发票代码或发票号码在税局查不到，请核对代码、号码是否正确  <br>注：可能原因如下：(1)输入的查验项有误；(2)查询的发票开票日期距当前日期超过5年；(3)由于开票方离线开票，发票数据未上传至税务局；(4)非增值税发票管理系统开具的发票。 |
-        | CheckInvoiceNotSame                              | 查验成功所查发票不一致                         | 请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票 |
-        | CheckInvoiceNotStandard                          | 查询发票不规范                                 | 请核对四要素是否符合发票规范                                 |
-        | CheckInvoiceRequestNonStandard                   | 请求不规范                                     | 请核对请求参数                                               |
-        | CheckInvoiceException                            | 税局服务异常，建议15-20分钟后重试              | 税局服务异常，建议15-20分钟后重试                            |
-        | CheckAbnormal                                    | 查验异常（错误信息不固定）                     | 税局服务异常，建议15-20分钟后重试                            |
-        | CheckExceedingLimit                              | 查验发票张数超过限制                           | 发票剩余查验量不足，请与运营负责人沟通确认                   |
-        | CheckInvoiceSingular                             | 请求太频繁或超过服务器最大请求数，请稍后访问！ | 当前请求数达到服务最大并发数                                 |
-        | ServerError                                      | 服务器异常，请稍后重试                         | 服务器异常                                                   |
-        | InternalServerError                              | 服务遇到未知错误，请稍后重试                   | 请联系管理员                                                 |
-        | RemoteDataException                              | 税局数据异常                                   | 请联系管理员                                                 |
-        | RemoteResultFail                                 | 调用税局异常，请稍后重试。                     | 请联系管理员                                                 |
-        | 50008                                            | 字段文件名称不能为空(name)                     | 请联系管理员                                                 |
-        | 50014                                            | 超过并发限制                                   | 请降低并发                                                   |
-        | 59999                                            | 未知异常                                       | 请联系管理员                                                 |
-        | 505002                                           | 接口调用异常!                                  | 请联系管理员                                                 |
-      parameters:
-      - name: access_token
-        in: header
-        required: true
-        description: 通过调用access_token接口返回的access_token值
-        schema:
-          type: string
-        example: '{{access_token}}'
-      - name: req_date
-        in: header
-        required: true
-        description: 当前时间转为的毫秒数
-        schema:
-          type: string
-        example: '{{req_date}}'
-      - name: req_sign
-        in: header
-        required: true
-        description: 签名算法得到的签名
-        schema:
-          type: string
-        example: '{{req_sign}}'
-      - name: Content-Type
-        in: header
-        required: false
-        schema:
-          type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              x-apifox-refs:
-                01HKM9BJJP5N72W2T484GE0GHZ:
-                  $ref: '#/definitions/33124987'
-                  x-apifox-overrides: {}
-              properties:
-                customReqId:
-                  type: string
-                  description: 传入的请求ID，用于标识一次调用，传入前先保存，需保证唯一性。 生成规则：AppKey+去掉横杠的UUID，示例：100019953790cccf01c45ce1b744e14ec46384eb
-              x-apifox-orders:
-              - 01HKM9BJJP5N72W2T484GE0GHZ
-              - customReqId
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 全电纸质发票（二手车统一销售发票)查验成功
-          content:
-            application/json:
-              schema:
-                type: object
-                x-apifox-refs:
-                  01J3YX8WSBK9C0TWP5T3XMFFGF:
-                    $ref: '#/definitions/35327531'
-                    x-apifox-overrides:
-                      data:
-                        type:
-                        - array
-                        - 'null'
-                        items:
-                          type: object
-                          x-apifox-refs:
-                            01J3YYKBMJAZ9QGN3ERTQ1R3SD:
-                              $ref: '#/definitions/35326710'
-                              x-apifox-overrides:
-                                data:
-                                  title: 查验结果
-                                  anyOf:
-                                  - $ref: '#/definitions/40996898'
-                                  - type: 'null'
-                              required: []
-                          x-apifox-orders:
-                          - 01J3YYKBMJAZ9QGN3ERTQ1R3SD
-                          properties: {}
-                        title: 业务数据
-                x-apifox-orders:
-                - 01J3YX8WSBK9C0TWP5T3XMFFGF
-                properties: {}
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: 5f4afc2e01ac4f86a05a84148e7909e5
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                    - customReqId: 10001999867de90c6090426b99e57628beda4ad0
-                      data:
-                        bz: ''
-                        cjhj: 1000.0
-                        cjhjcn: 壹仟元整
-                        cllx: 小型轿车
-                        clsbdm: LS****************10
-                        cpxh: 晶锐牌SV******SD
-                        cpzh: 津*******
-                        djzh: 12*********32
-                        dq: 天津
-                        escDh: 022-26******58
-                        escDz: 天津*********************************院内
-                        escMc: 天津************************公司
-                        escSbh: 91******************1J
-                        escYhzh: 天津**********************支行 90*********************60
-                        fpdm: 01***********17
-                        fphm: 00****96
-                        fplx: 0915
-                        fpztDm: '0'
-                        gfDh: 13********21
-                        gfDm: 12**************46
-                        gfDz: 天津***********************14号
-                        gfMc: 张*
-                        hzfpxx: []
-                        jyPmDh: ''
-                        jyPmDz: ''
-                        jyPmMc: ''
-                        jyPmSbh: ''
-                        jyPmYhzh: ''
-                        kjlx: '1'
-                        kpr: null
-                        kprq: '2023-11-14 00:00:00'
-                        sbbh: ''
-                        skm: null
-                        spbm: null
-                        xfDh: 18*************51
-                        xfDm: 12********************27
-                        xfDz: 天津****************************4号
-                        xfMc: 吴*
-                        yfpdm: null
-                        yfphm: null
-                        zfr: null
-                        zfrq: null
-                        zrdclglsMc: 天津******理所
-                      dq: '12'
-                      fpdm: 01**********17
-                      fphm: 00****96
-                      fplx: 0915
-                      je: 1000.0
-                      jshj: null
-                      jym: null
-                      kprq: '2023-11-14 00:00:00'
-                      success: true
-                      time: '2024-07-29 17:34:36'
-                      times: 36
-      x-apifox-status: released
   /v2/invoice/rz/tjqrsqjg:
     post:
       summary: 统计确认/撤销统计结果查询
@@ -60559,10 +60102,10 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/uploadCy:
     post:
-      summary: 上传文件查验
+      summary: 发票文件上传查验
       operationId: api-77854461
       tags:
-      - 发票业务 / 票据查验 / 查验扩展 / 上传文件查验
+      - 发票业务 / 票据查验 / 增值税发票查验扩展 / 上传发票源文件查验
       description: "## 接口描述\n该接口用于上传文件查验（仅限增值税发票），支持xml、ofd、pdf 格式的文件。上传文件大小需小于500kb。\n\n## 错误码\n| **错误代码** | **错误信息** | **说明** |\n| ------------ | ------------ | ------------ |\n| CheckInvoiceForTheSameFrequent | 当前发票正在查验中,请不要频繁请求 | 当前发票正在查验中,请稍后重试 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| IllegalParameter | 请求参数不正确 | 请核对请求参数 |\n| IllegalParameter.IllegalInvoiceCode | 请求参数不正确,参数fpdm发票代码不正确！ | 请核对fpdm发票代码是否符合参数规范 |\n| IllegalParameter.IllegalInvoiceNumber | 请求参数不正确,参数fphm发票号码不正确！ | 请核对fphm发票号码是否符合参数规范 |\n| IllegalParameter.IllegalBillingDate | 请求参数不正确,参数kprq开票日期不正确！ | 请核对kprq开票日期是否符合参数规范 |\n| IllegalParameter.IllegalCheckCode | 参数jym[发票校验码后6位]不正确 | 请核对jym校验码是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmount | 参数je[不含税金额]不正确 | 请核对je金额是否符合参数规范 |\n| IllegalParameter.IllegalTotalAmountIincludingTax | 请求参数不正确,价税合计为空！ | 请核对jshj价税合计是否符合参数规范                           |\n| IllegalParameter.IllegalXfsbh | 请求参数不正确,销售方识别号为空！ | 请核对xfsbh销方识别号是否符合参数规范 |\n| IllegalParameter.IllegalArea\
         \ | 请求参数不正确,参数dq地区不正确！ | 请核对dq地区是否符合参数规范 |\n| CheckInvoicesMoreThanToday | 开票日期超过当前日期 | 请核对开票日期是否正确 |\n| CheckInvoicesOverFiveYears | 超过五年的发票不能查验 | 请核对开票日期是否正确 |\n| CheckInvoiceNotSupport | 暂不支持该（省市）电子票据查验 | 该地区暂不支持该票种查验 |\n| CheckInvoicesOverOneYears | 仅可查验最近一年内开具的财政电子票据! | 请检查开票日期！ |\n| CheckInvoiceMoreFiveTimes\t| 超过该张票当天查验次数|请确认在调用接口前是否已经通过官方平台查验超过5次|\n| CheckInvoiceNotExistence| \t查验成功所查发票不存在|发票代码或发票号码在税局查不到，请核对代码、号码是否正确|\n| CheckInvoiceNotSame| \t查验成功所查发票不一致|请检查四要素是否与真实票面一致，传入金额是否为不含税金额（非二手车）或该发票是否为假票|\n| CheckInvoiceNotStandard| \t查询发票不规范|请核对四要素是否符合发票规范|\n| CheckInvoiceRequestNonStandard| \t请求不规范|请核对请求参数|\n| CheckInvoiceException | 税局服务异常，建议15-20分钟后重试 |税局服务异常，建议15-20分钟后重试|\n| CheckAbnormal | 查验异常（错误信息不固定） |税局服务异常，建议15-20分钟后重试|\n| CheckExceedingLimit | 查验发票张数超过限制 |发票剩余查验量不足，请与运营负责人沟通确认|\n| CheckInvoiceSingular | 请求太频繁或超过服务器最大请求数，请稍后访问！ |当前请求数达到服务最大并发数|\n| ServerError | 服务器异常，请稍后重试 |服务器异常|\n| InternalServerError | 服务遇到未知错误，请稍后重试 |请联系管理员|\n| RemoteDataException | 税局数据异常 |请联系管理员|\n\
         | RemoteResultFail | 调用税局异常，请稍后重试。 |请联系管理员|\n| 50008 | 字段文件名称不能为空(name) |请联系管理员|\n| 50014 | 超过并发限制 |请降低并发|\n| 59999 | 未知异常 |请联系管理员|"
@@ -62293,7 +61836,7 @@ paths:
       x-apifox-status: released
   /v2/invoice/cy/czpjCy#89495807:
     post:
-      summary: 财政票据
+      summary: 财政票据查验
       operationId: api-89495807
       tags:
       - 发票业务 / 票据查验 / 财政票据查验

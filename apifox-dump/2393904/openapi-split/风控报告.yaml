@@ -279,6 +279,28 @@ paths:
                                 ejflMc:
                                   type: string
                                   title: 二级分类名称
+                                sysjVO:
+                                  type: object
+                                  properties:
+                                    data:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties: {}
+                                        x-apifox-orders: []
+                                    head:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties: {}
+                                        x-apifox-orders: []
+                                  x-apifox-orders:
+                                  - data
+                                  - head
+                                  required:
+                                  - data
+                                  - head
+                                  title: 溯源数据
                               x-apifox-orders:
                               - yjflDm
                               - yjflMc
@@ -296,6 +318,9 @@ paths:
                               - cljy
                               - ycqj
                               - ycxq
+                              - sysjVO
+                              required:
+                              - sysjVO
                             title: 风险明细列表
                           gfx:
                             type: integer
@@ -427,6 +452,36 @@ paths:
                           ycqj: 202510-202510
                           ycxq: 根据该期间的数据分析结果显示，2025年10月进项税增长率为32.61%，销项税增长率为-51.74%，进项税与销项税增长趋势严重不符，存在隐匿收入、虚增进项、少缴增值税风险。
                           ejflMc: 增值税风险
+                          sysjVO:
+                            data:
+                            - QYSDSYYSR: '0.00'
+                              ZZSYYSR: 299,189.37
+                              TJNJ: 2026Q2
+                              ZB: 0%
+                              ZZSYYSRYQYSDSYYSRCYBD: 299,189.37
+                            - QYSDSYYSR: '0.00'
+                              ZZSYYSR: 171,166.30
+                              TJNJ: 2026Q1
+                              ZB: 0%
+                              ZZSYYSRYQYSDSYYSRCYBD: 171,166.30
+                            head:
+                            - pxgz: desc
+                              pxxh: 1
+                              sczdmc: 季度
+                              sczdywmc: TJNJ
+                              xsxh: 1
+                            - sczdmc: 增值税季度累计销售收入（1）
+                              sczdywmc: ZZSYYSR
+                              xsxh: 2
+                            - sczdmc: 企业所得税季度累计营业收入（2）
+                              sczdywmc: QYSDSYYSR
+                              xsxh: 3
+                            - sczdmc: 差值（3=abs(1-2)）
+                              sczdywmc: ZZSYYSRYQYSDSYYSRCYBD
+                              xsxh: 4
+                            - sczdmc: 占比（4=（abs(1-2)/2）
+                              sczdywmc: ZB
+                              xsxh: 5
                         gfx: 0
                         fxzs: 8
                         zfx: 5

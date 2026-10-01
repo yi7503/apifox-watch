@@ -1161,7 +1161,7 @@
                   "hdzxqz",
                   "dqdehdxx"
                 ],
-                "description": "对应税局路径：账户中心-身份切换-跨区域办税-税源登记选择"
+                "description": "对应税局路径：我要查询-纳税人信息查询-核定征收信息"
               },
               "zfzjg": {
                 "type": "array",
@@ -1306,6 +1306,41 @@
                     "accountingstandardCode": {
                       "type": "string",
                       "title": "企业会计制度编码"
+                    },
+                    "sygtgshyssdb": {
+                      "type": "string",
+                      "title": "应税所得表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "sygtgshlclrb": {
+                      "type": "string",
+                      "title": "留存利润表 ",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "ywhdb": {
+                      "type": "string",
+                      "title": "业务活动表 ",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "srfyb": {
+                      "type": "string",
+                      "title": "收入费用表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    " jzcbdb": {
+                      "type": "string",
+                      "title": "净资产变动表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    " nyhzsyyfpbVO": {
+                      "type": "string",
+                      "title": "盈余及盈余分配表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "nyhzscyqybdbVO": {
+                      "type": "string",
+                      "title": "成员权益变动表",
+                      "description": "Y=备案  N未备案"
                     }
                   },
                   "x-apifox-orders": [
@@ -1322,7 +1357,14 @@
                     "lrb",
                     "xjllb",
                     "syzqybdb",
-                    "fz"
+                    "fz",
+                    "sygtgshyssdb",
+                    "sygtgshlclrb",
+                    "ywhdb",
+                    "srfyb",
+                    " jzcbdb",
+                    " nyhzsyyfpbVO",
+                    "nyhzscyqybdbVO"
                   ],
                   "required": [
                     "yxqq",
@@ -1338,7 +1380,14 @@
                     "syzqybdb",
                     "fz",
                     "accountingStandardName",
-                    "accountingstandardCode"
+                    "accountingstandardCode",
+                    "sygtgshyssdb",
+                    "sygtgshlclrb",
+                    "ywhdb",
+                    "srfyb",
+                    " jzcbdb",
+                    " nyhzsyyfpbVO",
+                    "nyhzscyqybdbVO"
                   ]
                 },
                 "title": "财报全部备案信息",
@@ -1438,11 +1487,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-29T15:33:02.000Z",
-  "updatedAt": "2026-09-11T03:46:55.000Z",
+  "updatedAt": "2026-09-29T08:17:10.000Z",
   "creatorId": 1452584,
-  "editorId": 1476015,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1476015,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

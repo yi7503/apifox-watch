@@ -110,7 +110,8 @@
         },
         "bmbh": {
           "type": "string",
-          "title": "部门编号"
+          "title": "部门编号",
+          "deprecated": true
         }
       },
       "required": [
@@ -300,11 +301,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-12-25T02:40:16.000Z",
-  "updatedAt": "2026-07-23T10:27:47.000Z",
+  "updatedAt": "2026-09-14T09:41:47.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 1452584,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -645,6 +645,7 @@ paths:
                           type: string
                           title: 账号状态
                           description: '"" 未验证，0 验证通过，1 未通过'''
+                          deprecated: true
                         gryhm:
                           type: string
                           title: 个人用户名
@@ -689,7 +690,6 @@ paths:
                       - sflx
                       - dq
                       - accountId
-                      - zhzt
                       - gryhm
                       - nsrsbh
                       - createTime
@@ -795,10 +795,14 @@ paths:
       operationId: api-398473365
       tags:
       - 登录业务（新） / 登录管理 / 验证码登录
-      description: |
+      description: |-
         ##  接口描述
         该接口用于用户使用手机号触发税局下发的验证码。
         支持企业登录和代理登录，「登录方式」使用 14：企业业务登录（自传验证码）15：代理业务登录（自传验证码）。
+
+        - 说明
+        1. 登录发送短信验证码后返回taskid，并且发送短信到用户手机号上，2分钟内不允许重复登录发送验证码，重复发送会提示「短信频繁」；
+        2. 上传短信验证码，5分钟内上传短信有效，超出时限会提示「登录任务已过期」，此时需要重新登录发送验证码；
       parameters:
       - name: access_token
         in: header
@@ -2173,7 +2177,9 @@ paths:
       operationId: api-428543325
       tags:
       - 登录业务（新） / 登录管理 / 扫码登录
-      description: 获取局端登录二维码
+      description: |-
+        获取局端登录二维码
+        获取到的二维码有效期为300秒，必须要要在300秒内完成扫码登录；
       parameters:
       - name: Content-Type
         in: header

@@ -1,12 +1,12 @@
 # 七翔云开放平台 — Split OpenAPI
 
-Source: `../openapi.yaml`  (648 paths total)
+Source: `../openapi.yaml`  (649 paths total)
 
 | Module | Operations | Tags | File |
 |---|---:|---:|---|
-| 申报业务 | 277 | 81 | [申报业务.yaml](申报业务.yaml) |
-| 发票业务 | 192 | 68 | [发票业务.yaml](发票业务.yaml) |
-| 数据业务 | 47 | 10 | [数据业务.yaml](数据业务.yaml) |
+| 申报业务 | 279 | 81 | [申报业务.yaml](申报业务.yaml) |
+| 发票业务 | 190 | 68 | [发票业务.yaml](发票业务.yaml) |
+| 数据业务 | 47 | 12 | [数据业务.yaml](数据业务.yaml) |
 | 登录业务（旧版） | 44 | 16 | [登录业务_旧版.yaml](登录业务_旧版.yaml) |
 | 登录业务（新） | 30 | 9 | [登录业务_新.yaml](登录业务_新.yaml) |
 | 进出口退税业务 | 27 | 12 | [进出口退税业务.yaml](进出口退税业务.yaml) |
@@ -16,5 +16,6 @@ Source: `../openapi.yaml`  (648 paths total)
 | 平台基础服务 | 3 | 2 | [平台基础服务.yaml](平台基础服务.yaml) |
 | 平台查询 | 3 | 1 | [平台查询.yaml](平台查询.yaml) |
 | 风控报告 | 2 | 1 | [风控报告.yaml](风控报告.yaml) |
+| 快速开始 | 1 | 1 | [快速开始.yaml](快速开始.yaml) |
 | 平台接口鉴权 | 1 | 1 | [平台接口鉴权.yaml](平台接口鉴权.yaml) |
 | 办税助手 | 1 | 1 | [办税助手.yaml](办税助手.yaml) |

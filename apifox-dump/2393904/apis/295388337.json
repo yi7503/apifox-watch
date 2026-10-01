@@ -50,7 +50,7 @@
             "pch": {
               "type": "number",
               "title": "批次号",
-              "description": "当sfdpc为1时必填"
+              "description": "当sfdpc为1时必填\n清空批次支持按批次号清空或按人员明细清空。同一税号存在多个操作员同时发起算税时，若仅传入批次号（pch）清空，将删除该税号下该批次的全部人员数据，包括其他操作员已算税成功的人员。请确认范围后再调用；多人分人算税场景请按人员明细清空。"
             },
             "rylb": {
               "type": "array",
@@ -293,11 +293,11 @@
     "enable": false
   },
   "createdAt": "2025-05-13T11:37:54.000Z",
-  "updatedAt": "2026-05-20T10:17:53.000Z",
+  "updatedAt": "2026-09-29T03:39:25.000Z",
   "creatorId": 1452584,
-  "editorId": 493303,
+  "editorId": 1452584,
   "creatorUserId": 1452584,
-  "editorUserId": 493303,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

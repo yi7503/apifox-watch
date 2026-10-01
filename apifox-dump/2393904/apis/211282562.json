@@ -1,6 +1,6 @@
 {
   "id": 211282562,
-  "name": "异步获取数电票版式文件",
+  "name": "异步获取版式文件-发起提交",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -42,6 +42,8 @@
       ],
       "properties": {}
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"customReqId\": \"\",\r\n    \"cyList\": [\r\n        {\r\n            \"fphm\": \"23****************27\",\r\n            \"kprq\": \"2023-01-05\",\r\n            \"jshj\": \"60000\",\r\n            \"bswjLx\": \"XML,OFD,PDF\"\r\n        }\r\n    ]\r\n}",
@@ -139,17 +141,15 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-03T05:51:20.000Z",
-  "updatedAt": "2026-03-10T12:09:28.000Z",
+  "updatedAt": "2026-09-30T03:50:20.000Z",
   "creatorId": 1426961,
-  "editorId": 2795319,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 2795319,
-  "responseChildren": [
-    "BLANK.522540417"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

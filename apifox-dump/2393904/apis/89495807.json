@@ -1,6 +1,6 @@
 {
   "id": 89495807,
-  "name": "财政票据",
+  "name": "财政票据查验",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -333,14 +333,12 @@
   "oasExtensions": null,
   "mockScript": {},
   "createdAt": "2024-07-12T02:31:43.000Z",
-  "updatedAt": "2026-01-29T10:46:19.000Z",
+  "updatedAt": "2026-09-30T07:12:19.000Z",
   "creatorId": 1426961,
-  "editorId": 3099717,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 3099717,
-  "responseChildren": [
-    "BLANK.42947084"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

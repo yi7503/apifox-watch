@@ -1,6 +1,6 @@
 {
   "id": 425759273,
-  "name": "版式下载任务执行结果回调",
+  "name": "异步获取版式文件-结果回调",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -50,6 +50,8 @@
         "errorMsg"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"taskId\": \"12345abcde\",\r\n    \"status\": 3,\r\n    \"errorMsg\": \"成功\"\r\n}",
@@ -138,14 +140,14 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-10T12:08:32.000Z",
-  "updatedAt": "2026-03-10T12:12:58.000Z",
+  "updatedAt": "2026-09-30T03:51:00.000Z",
   "creatorId": 2795319,
-  "editorId": 2795319,
+  "editorId": 3600994,
   "creatorUserId": 2795319,
-  "editorUserId": 2795319,
+  "editorUserId": 3600994,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -2,12 +2,13 @@
 
 - domain: `openapi.qixiangyun.com`
 - branchId: `2914965`
-- apis: 648  docs: 362
+- apis: 649  docs: 365
 
 ## APIs
 
 | Method | Path | Name | Folder | File |
 |---|---|---|---|---|
+| POST | `/v2/oauth2/oss/getAccessKey` | 文件上传凭证获取 | 快速开始/文件预上传 | [apis/518887307.json](apis/518887307.json) |
 | POST | `/v2/public/oauth2/login` | 获取access_token | 平台接口鉴权 | [apis/66569900.json](apis/66569900.json) |
 | POST | `/v2/public/org/productPurchase` | 订购产品 | 产品订购 | [apis/145565464.json](apis/145565464.json) |
 | POST | `/v2/public/org/productPurchaseModify` | 订购修改 | 产品订购 | [apis/239363004.json](apis/239363004.json) |
@@ -62,32 +63,29 @@
 | POST | `/v2/public/sjhm/queryNote` | 查询短信验证码 | 办税小号业务/短信管理 | [apis/88262035.json](apis/88262035.json) |
 | POST | `/v2/public/sjhm/editPushSmsConfig` | 配置小号短信通知地址 | 办税小号业务/短信管理 | [apis/91844768.json](apis/91844768.json) |
 | POST | `/客户提供的小号短信通知地址` | 小号短信通知回调 | 办税小号业务/短信管理 | [apis/91843602.json](apis/91843602.json) |
-| POST | `/v2/invoice/cy/zzsfpCy` | 增值税发票查验 | 发票业务/票据查验/发票查验/增值税平台查验-新平台 | [apis/431038998.json](apis/431038998.json) |
-| POST | `/v2/invoice/cy/zzsfpCy` | 税控发票查验 | 发票业务/票据查验/发票查验/增值税平台查验-旧平台（新对接请使用新平台查验） | [apis/66282961.json](apis/66282961.json) |
-| POST | `/v2/invoice/cy/zzsfpCy` | 数电票查验 | 发票业务/票据查验/发票查验/增值税平台查验-旧平台（新对接请使用新平台查验） | [apis/66282957.json](apis/66282957.json) |
-| POST | `/v2/invoice/cy/zzsfpCy` | 数电纸质发票查验 | 发票业务/票据查验/发票查验/增值税平台查验-旧平台（新对接请使用新平台查验） | [apis/68533683.json](apis/68533683.json) |
-| POST | `/v2/invoice/cy/dpptCy` | 数电票查验 | 发票业务/票据查验/发票查验/电票平台查验（新对接请使用新平台查验） | [apis/193188103.json](apis/193188103.json) |
-| POST | `/v2/invoice/cy/tydzfpCy` | 通用电子发票(浙江/宁波) | 发票业务/票据查验/发票查验/其它发票查验/通用电子发票查验 | [apis/66282964.json](apis/66282964.json) |
-| POST | `/v2/invoice/cy/tydzfpCy` | 通用电子发票(广东) | 发票业务/票据查验/发票查验/其它发票查验/通用电子发票查验 | [apis/67646895.json](apis/67646895.json) |
-| POST | `/v2/invoice/cy/qklfpCy` | 区块链发票(深圳) | 发票业务/票据查验/发票查验/其它发票查验/区块链发票查验 | [apis/67646673.json](apis/67646673.json) |
-| POST | `/v2/invoice/cy/qklfpCy` | 区块链发票(北京) | 发票业务/票据查验/发票查验/其它发票查验/区块链发票查验 | [apis/66282962.json](apis/66282962.json) |
-| POST | `/v2/invoice/cy/qklfpCy` | 区块链发票(云南) | 发票业务/票据查验/发票查验/其它发票查验/区块链发票查验 | [apis/67646592.json](apis/67646592.json) |
-| POST | `/v2/invoice/cy/cltxffpCy` | 车辆通行费发票查验(江苏) | 发票业务/票据查验/发票查验/其它发票查验 | [apis/144115059.json](apis/144115059.json) |
-| POST | `/v2/invoice/cy/dpptCy` | 数电票查验并获取版式文件 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/1查验并获取版式文件 | [apis/271508610.json](apis/271508610.json) |
-| POST | `/v2/invoice/cy/bsxzJgCx` | 查验版式下载任务结果查询 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/1查验并获取版式文件 | [apis/228040874.json](apis/228040874.json) |
-| POST | `/服务商CallbackURL地址` | 版式下载任务执行结果回调 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/1查验并获取版式文件 | [apis/228041280.json](apis/228041280.json) |
-| POST | `/v2/invoice/cy/bswjxz` | 同步获取数电票版式文件 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/2不查验获取版式/同步方式 | [apis/206461616.json](apis/206461616.json) |
-| POST | `/v2/invoice/cy/asyncBswjxz` | 异步获取数电票版式文件 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/2不查验获取版式/异步方式 | [apis/211282562.json](apis/211282562.json) |
-| POST | `/v2/invoice/cy/bsxzJgCx` | 查验版式下载任务结果查询 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/2不查验获取版式/异步方式 | [apis/425759266.json](apis/425759266.json) |
-| POST | `/服务商CallbackURL地址` | 版式下载任务执行结果回调 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台)/2不查验获取版式/异步方式 | [apis/425759273.json](apis/425759273.json) |
-| POST | `/v2/invoice/cy/zzsfpCy` | 数电票查验并获取版式文件 | 发票业务/票据查验/查验扩展/异步查验并获取版式文件(总局门户) | [apis/177662633.json](apis/177662633.json) |
-| POST | `/v2/invoice/cy/bsxzJgCx` | 查验版式下载任务结果查询 | 发票业务/票据查验/查验扩展/异步查验并获取版式文件(总局门户) | [apis/176207105.json](apis/176207105.json) |
-| POST | `/服务商CallbackURL地址` | 版式下载任务执行结果回调 | 发票业务/票据查验/查验扩展/异步查验并获取版式文件(总局门户) | [apis/193040992.json](apis/193040992.json) |
-| POST | `/v2/invoice/cy/uploadCy` | 上传文件查验 | 发票业务/票据查验/查验扩展/上传文件查验 | [apis/77854461.json](apis/77854461.json) |
-| POST | `/v2/invoice/cy/ytbqCx` | 入账状态及用途标签查询 | 发票业务/票据查验/查验扩展/入账状态及用途标签 | [apis/200704954.json](apis/200704954.json) |
-| POST | `/v2/invoice/cy/czpjCy` | 财政票据 | 发票业务/票据查验/财政票据查验 | [apis/89495807.json](apis/89495807.json) |
-| POST | `/v2/invoice/cy/czpjCy` | 财政票据(明细版) | 发票业务/票据查验/财政票据查验 | [apis/241358209.json](apis/241358209.json) |
-| POST | `/v2/invoice/ocr/sb` | 普通票据识别 | 发票业务/发票识别 | [apis/66365912.json](apis/66365912.json) |
+| POST | `/v2/invoice/cy/dpptCy` | 电票平台-数电票查验 | 发票业务/票据查验/增值税发票查验/电票平台查验（新对接请使用增值税平台查验） | [apis/193188103.json](apis/193188103.json) |
+| POST | `/v2/invoice/cy/zzsfpCy` | 增值税发票查验 | 发票业务/票据查验/增值税发票查验 | [apis/431038998.json](apis/431038998.json) |
+| POST | `/v2/invoice/cy/uploadCy` | 发票文件上传查验 | 发票业务/票据查验/增值税发票查验扩展/上传发票源文件查验 | [apis/77854461.json](apis/77854461.json) |
+| POST | `/v2/invoice/cy/dpptCy` | 查验并获取版式文件（电票平台） | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/1查验并获取版式文件 | [apis/271508610.json](apis/271508610.json) |
+| POST | `/v2/invoice/cy/bsxzJgCx` | 查验并获取版式文件结果查询 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/1查验并获取版式文件 | [apis/228040874.json](apis/228040874.json) |
+| POST | `/服务商CallbackURL地址` | 查验并获取版式文件结果回调 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/1查验并获取版式文件 | [apis/228041280.json](apis/228041280.json) |
+| POST | `/v2/invoice/cy/bswjxz` | 同步获取版式文件 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/2不查验获取版式/同步方式 | [apis/206461616.json](apis/206461616.json) |
+| POST | `/v2/invoice/cy/asyncBswjxz` | 异步获取版式文件-发起提交 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/2不查验获取版式/异步方式 | [apis/211282562.json](apis/211282562.json) |
+| POST | `/v2/invoice/cy/bsxzJgCx` | 异步获取版式文件-查询结果 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/2不查验获取版式/异步方式 | [apis/425759266.json](apis/425759266.json) |
+| POST | `/服务商CallbackURL地址` | 异步获取版式文件-结果回调 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台)/2不查验获取版式/异步方式 | [apis/425759273.json](apis/425759273.json) |
+| POST | `/v2/invoice/cy/zzsfpCy` | 数电票查验并获取版式文件 | 发票业务/票据查验/增值税发票查验扩展/异步查验并获取版式文件(总局门户) | [apis/177662633.json](apis/177662633.json) |
+| POST | `/v2/invoice/cy/bsxzJgCx` | 查验版式下载任务结果查询 | 发票业务/票据查验/增值税发票查验扩展/异步查验并获取版式文件(总局门户) | [apis/176207105.json](apis/176207105.json) |
+| POST | `/服务商CallbackURL地址` | 版式下载任务执行结果回调 | 发票业务/票据查验/增值税发票查验扩展/异步查验并获取版式文件(总局门户) | [apis/193040992.json](apis/193040992.json) |
+| POST | `/v2/invoice/cy/ytbqCx` | 入账状态及用途标签查询 | 发票业务/票据查验/增值税发票查验扩展/发票入账状态及用途标签 | [apis/200704954.json](apis/200704954.json) |
+| POST | `/v2/invoice/cy/tydzfpCy` | 通用电子发票(浙江/宁波) | 发票业务/票据查验/通用电子发票查验 | [apis/66282964.json](apis/66282964.json) |
+| POST | `/v2/invoice/cy/tydzfpCy` | 通用电子发票(广东) | 发票业务/票据查验/通用电子发票查验 | [apis/67646895.json](apis/67646895.json) |
+| POST | `/v2/invoice/cy/qklfpCy` | 区块链发票(深圳) | 发票业务/票据查验/区块链发票查验 | [apis/67646673.json](apis/67646673.json) |
+| POST | `/v2/invoice/cy/qklfpCy` | 区块链发票(北京) | 发票业务/票据查验/区块链发票查验 | [apis/66282962.json](apis/66282962.json) |
+| POST | `/v2/invoice/cy/qklfpCy` | 区块链发票(云南) | 发票业务/票据查验/区块链发票查验 | [apis/67646592.json](apis/67646592.json) |
+| POST | `/v2/invoice/cy/cltxffpCy` | 车辆通行费发票查验-江苏 | 发票业务/票据查验/车辆通行费发票查验 | [apis/144115059.json](apis/144115059.json) |
+| POST | `/v2/invoice/cy/czpjCy` | 财政票据查验 | 发票业务/票据查验/财政票据查验 | [apis/89495807.json](apis/89495807.json) |
+| POST | `/v2/invoice/cy/czpjCy` | 财政票据查验(明细版) | 发票业务/票据查验/财政票据查验 | [apis/241358209.json](apis/241358209.json) |
+| POST | `/v2/invoice/ocr/sb` | 普通票据识别 | 发票业务/票据识别 | [apis/66365912.json](apis/66365912.json) |
 | POST | `/v2/invoice/qdfp/qyjbxxcx` | 企业基本信息 | 发票业务/数电开票/开票初始配置/企业信息 | [apis/100012778.json](apis/100012778.json) |
 | POST | `/v2/invoice/qdfp/sxlbCx` | 扫脸认证时长查询 | 发票业务/数电开票/开票初始配置/扫脸认证查询和设置 | [apis/100012774.json](apis/100012774.json) |
 | POST | `/v2/invoice/qdfp/smsc` | 扫脸认证时长设置 | 发票业务/数电开票/开票初始配置/扫脸认证查询和设置 | [apis/142321778.json](apis/142321778.json) |
@@ -129,7 +127,6 @@
 | POST | `/v2/invoice/qdfp/fpmx` | 已开发票明细查询 | 发票业务/数电开票/已开发票信息查询 | [apis/100012790.json](apis/100012790.json) |
 | POST | `/v2/invoice/qdfp/fptjcx` | 已开发票统计查询 | 发票业务/数电开票/已开发票信息查询 | [apis/100012789.json](apis/100012789.json) |
 | POST | `/v2/invoice/qdfp/bswjxzBatch` | 下载版式文件 | 发票业务/数电开票/销项版式文件下载 | [apis/155759098.json](apis/155759098.json) |
-| POST | `/v2/invoice/qdfp/bswjxz` | 下载版式文件-废弃 | 发票业务/数电开票/销项版式文件下载 | [apis/100012792.json](apis/100012792.json) |
 | POST | `/v2/invoice/qdfp/fpjf` | 税局邮箱交付 | 发票业务/数电开票/发票交付 | [apis/135401359.json](apis/135401359.json) |
 | POST | `/v2/invoice/qdfp/saveSxedsqSqxx` | 申请发票额度调整 | 发票业务/数电开票/发票额度调整 | [apis/307864132.json](apis/307864132.json) |
 | POST | `/v2/invoice/qdfp/querySxedtzSqxx` | 查询申请额度列表 | 发票业务/数电开票/发票额度调整 | [apis/306889565.json](apis/306889565.json) |
@@ -160,9 +157,6 @@
 | POST | `/v2/invoice/qdfp/cjmbAdd` | 场景模版添加 | 发票业务/数电开票/开票信息维护/附加信息维护 | [apis/174294992.json](apis/174294992.json) |
 | POST | `/v2/invoice/qdfp/cjmbUpdate` | 场景模版编辑 | 发票业务/数电开票/开票信息维护/附加信息维护 | [apis/174295015.json](apis/174295015.json) |
 | POST | `/v2/invoice/qdfp/cjmbDel` | 场景模版删除 | 发票业务/数电开票/开票信息维护/附加信息维护 | [apis/174295020.json](apis/174295020.json) |
-| POST | `/v2/invoice/qdfp/asynResult` | 异步请求结果查询 | 发票业务/数电开票/业务回调接口 | [apis/100012793.json](apis/100012793.json) |
-| POST | `/服务商CallbackURL地址` | 业务请求回调通知 | 发票业务/数电开票/业务回调接口 | [apis/100012794.json](apis/100012794.json) |
-| POST | `/服务商CallbackURL地址` | 扫脸认证回调通知 | 发票业务/数电开票/业务回调接口 | [apis/100012795.json](apis/100012795.json) |
 | POST | `/v2/invoice/qdfp/dqsqzzssfsb` | 当前属期增值税是否申报 | 发票业务/数电开票/申报信息查询 | [apis/400363131.json](apis/400363131.json) |
 | POST | `/v2/invoice/qdfp/cxsbbd` | 查询企业未申报税目 | 发票业务/数电开票/申报信息查询 | [apis/403829110.json](apis/403829110.json) |
 | POST | `/v2/invoice/qdfp/queryYkjfpHgztz` | 已开具发票的合格证台账信息查询 | 发票业务/数电开票/机动车业务 | [apis/415083843.json](apis/415083843.json) |
@@ -174,6 +168,9 @@
 | POST | `/v2/invoice/qdfp/pzhdxx` | 获取企业核定票种的信息 | 发票业务/数电开票/数电纸质相关接口 | [apis/482639590.json](apis/482639590.json) |
 | POST | `/v2/invoice/qdfp/getDqzzkbfpdmhm` | 获取当前纸质空白发票号码代码 | 发票业务/数电开票/数电纸质相关接口 | [apis/482649252.json](apis/482649252.json) |
 | POST | `/v2/invoice/qdfp/zzfpzf` | 数电纸质发票作废 | 发票业务/数电开票/数电纸质相关接口 | [apis/482656034.json](apis/482656034.json) |
+| POST | `/v2/invoice/qdfp/asynResult` | 异步请求结果查询 | 发票业务/数电开票/业务回调接口 | [apis/100012793.json](apis/100012793.json) |
+| POST | `/服务商CallbackURL地址` | 业务请求回调通知 | 发票业务/数电开票/业务回调接口 | [apis/100012794.json](apis/100012794.json) |
+| POST | `/服务商CallbackURL地址` | 扫脸认证回调通知 | 发票业务/数电开票/业务回调接口 | [apis/100012795.json](apis/100012795.json) |
 | POST | `/v2/invoice/rz/sqSkssqCj` | 更新税款所属期 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/获取税款所属期 | [apis/121573897.json](apis/121573897.json) |
 | POST | `/v2/invoice/rz/skssqCjjg` | 更新税款所属期任务结果 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/获取税款所属期 | [apis/121573912.json](apis/121573912.json) |
 | POST | `/v2/invoice/rz/sqJxfpCj` | 申请进项发票采集 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/进项数据采集/进项发票采集 | [apis/120631810.json](apis/120631810.json) |
@@ -221,6 +218,8 @@
 | POST | `/v2/invoice/rz/jxfpqs` | 进项发票取数 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/其他信息查询/缓存查询接口 | [apis/79034491.json](apis/79034491.json) |
 | POST | `/v2/invoice/rz/hgjksqs` | 海关缴款书取数 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/其他信息查询/缓存查询接口 | [apis/79034492.json](apis/79034492.json) |
 | POST | `/v2/invoice/rz/tjqrjg` | 最新统计确认信息查询 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/其他信息查询/缓存查询接口 | [apis/69718402.json](apis/69718402.json) |
+| POST | `/v2/invoice/rz/sqDkNcpFpLr` | 代开农产品发票录入 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/代开农场品发票录入 | [apis/515367691.json](apis/515367691.json) |
+| POST | `/v2/invoice/rz/dkNcpFpLrJg` | 代开农产品发票录入结果查询 | 发票业务/发票认证/电票平台认证/异步认证/托管模式认证/代开农场品发票录入 | [apis/515343989.json](apis/515343989.json) |
 | POST | `/服务商CallbackURL地址` | 异步任务结果回调 | 发票业务/发票认证/电票平台认证/异步认证 | [apis/193036791.json](apis/193036791.json) |
 | POST | `/v2/invoice/gj/collectTask` | 发起进销项归集任务 | 发票业务/发票归集/异步归集-电票平台/进销项发票归集 | [apis/98470626.json](apis/98470626.json) |
 | POST | `/v2/invoice/gj/collectTaskStatus` | 查询归集任务结果 | 发票业务/发票归集/异步归集-电票平台/进销项发票归集 | [apis/98521304.json](apis/98521304.json) |
@@ -259,6 +258,8 @@
 | POST | `/v2/public/org/hasReadSJInfo` | 查询企业税务信息状态 | 申报业务/企业税申报/企业信息 | [apis/66685544.json](apis/66685544.json) |
 | POST | `/v2/public/org/queryOrgInfo` | 查询企业信息 | 申报业务/企业税申报/企业信息 | [apis/66706506.json](apis/66706506.json) |
 | POST | `/v2/tax/qys/batchAccountingStandard` | 批量设置会计准则制度 | 申报业务/企业税申报/企业信息 | [apis/66708152.json](apis/66708152.json) |
+| POST | `/v2/tax/qys/loadVatVersionUpgrade` | 发起增值税版本升级查询 | 申报业务/企业税申报/企业信息 | [apis/518018734.json](apis/518018734.json) |
+| POST | `/v2/tax/qys/vatVersionUpgradeResult` | 增值税版本升级查询结果 | 申报业务/企业税申报/企业信息 | [apis/518020369.json](apis/518020369.json) |
 | POST | `/v2/tax/qys/loadTaxItemTask` | 发起获取申报条目任务 | 申报业务/企业税申报/应申报清册条目/获取清册条目 | [apis/66960663.json](apis/66960663.json) |
 | POST | `/v2/tax/qys/queryTaskTaxInfo` | 查询申报条目任务 | 申报业务/企业税申报/应申报清册条目/获取清册条目 | [apis/67007395.json](apis/67007395.json) |
 | POST | `/v2/tax/qys/writeTaxData` | 上传各税种申报表数据 | 申报业务/企业税申报/上传税报报表数据及申报 | [apis/67298736.json](apis/67298736.json) |
@@ -291,12 +292,12 @@
 | POST | `/v2/tax/qys/queryTaskTaxInfo` | 查询申报信息任务 | 申报业务/企业税申报/申报查询 | [apis/67183686.json](apis/67183686.json) |
 | POST | `/v2/tax/qys/loadTaxCheckTask` | 发起漏报检查任务 | 申报业务/企业税申报/漏报检查 | [apis/66968884.json](apis/66968884.json) |
 | POST | `/v2/tax/qys/queryTaskTaxInfo` | 查询漏报检查任务 | 申报业务/企业税申报/漏报检查 | [apis/67191387.json](apis/67191387.json) |
-| POST | `/v2/tax/qys/loadTaxFundTask` | 税源信息采集接口 | 申报业务/企业税申报/税源采集/获取/变更/税源采集 （不维护） | [apis/80514947.json](apis/80514947.json) |
-| POST | `/v2/tax/qys/queryTaskInfo` | 查询税源信息采集任务结果 | 申报业务/企业税申报/税源采集/获取/变更/税源采集 （不维护） | [apis/238577498.json](apis/238577498.json) |
 | POST | `/v2/tax/qys/loadTaxFundGainTask` | 税源信息获取接口 | 申报业务/企业税申报/税源采集/获取/变更/税源获取 | [apis/87521820.json](apis/87521820.json) |
 | POST | `/v2/tax/qys/queryTaxFundGainInfo` | 查询税源获取任务结果接口 | 申报业务/企业税申报/税源采集/获取/变更/税源获取 | [apis/87525549.json](apis/87525549.json) |
 | POST | `/v2/tax/qys/loadTaxFundChangeTask` | 税源变更接口 | 申报业务/企业税申报/税源采集/获取/变更/税源变更 | [apis/319645815.json](apis/319645815.json) |
 | POST | `/v2/tax/qys/queryTaxFundChangeTask` | 查询税源变更任务结果接口 | 申报业务/企业税申报/税源采集/获取/变更/税源变更 | [apis/319645816.json](apis/319645816.json) |
+| POST | `/v2/tax/qys/loadTaxFundTask` | 税源信息采集接口 | 申报业务/企业税申报/税源采集/获取/变更/税源采集 （不维护） | [apis/80514947.json](apis/80514947.json) |
+| POST | `/v2/tax/qys/queryTaskInfo` | 查询税源信息采集任务结果 | 申报业务/企业税申报/税源采集/获取/变更/税源采集 （不维护） | [apis/238577498.json](apis/238577498.json) |
 | POST | `/v2/public/org/saveDialogInfo` | 保存申报辅助设置弹窗选项信息 | 申报业务/企业税申报/业务弹框 | [apis/70060037.json](apis/70060037.json) |
 | POST | `/v2/public/queryDiaLogInfo` | 查询申报辅助设置弹窗信息 | 申报业务/企业税申报/业务弹框 | [apis/69919108.json](apis/69919108.json) |
 | POST | `/v2/public/org/queryAllDiaLogInfo` | 查询全量申报辅助设置弹窗信息 | 申报业务/企业税申报/业务弹框 | [apis/106941302.json](apis/106941302.json) |
@@ -316,6 +317,7 @@
 | POST | `/v2/tax/qys/loadFxyd` | 发起企业风险疑点查询 | 申报业务/企业税申报/查询我的待办&我的提醒&风险疑点清册/风险疑点清册查询 | [apis/493860319.json](apis/493860319.json) |
 | POST | `/v2/tax/qys/fxydResult` | 获取企业风险疑点查询结果 | 申报业务/企业税申报/查询我的待办&我的提醒&风险疑点清册/风险疑点清册查询 | [apis/493860331.json](apis/493860331.json) |
 | POST | `/v2/tax/qys/queryTaskIdsInfo` | 查询多个任务执行结果 | 申报业务/企业税申报/申报辅助 | [apis/69721501.json](apis/69721501.json) |
+| POST | `/callbackUrl` | 个税回调接口 | 申报业务/个税申报/回调接口 | [apis/258212230.json](apis/258212230.json) |
 | POST | `/v2/iit/declare/getCompanyRegisterInfo` | 企业注册 | 申报业务/个税申报/代扣代缴/企业登记及查询服务/企业注册 | [apis/247413304.json](apis/247413304.json) |
 | POST | `/v2/iit/check/checkPassword` | 申报密码创建 | 申报业务/个税申报/代扣代缴/企业登记及查询服务/账户密码创建校验 | [apis/247459693.json](apis/247459693.json) |
 | POST | `/v2/iit/account/modifyPassword` | 申报密码修改 | 申报业务/个税申报/代扣代缴/企业登记及查询服务/申报密码修改 | [apis/400706397.json](apis/400706397.json) |
@@ -447,8 +449,7 @@
 | POST | `/v2/scjy/report/sbjljt` | 生产经营-申报记录截图 | 申报业务/个税申报/生产经营/查询统计 | [apis/479762525.json](apis/479762525.json) |
 | POST | `/v2/scjy/payment/queryTaxPayment` | 生产经营-缴税记录查询 | 申报业务/个税申报/生产经营/查询统计 | [apis/322067265.json](apis/322067265.json) |
 | POST | `/v2/scjy/payment/jsjlcxjt` | 生产经营-缴款记录截图 | 申报业务/个税申报/生产经营/查询统计 | [apis/479737975.json](apis/479737975.json) |
-| POST | `/callbackUrl` | 个税回调接口 | 申报业务/个税申报/回调接口 | [apis/258212230.json](apis/258212230.json) |
-| POST | `/v2/shbx/declare/getCompanyRegisterInfo` | 企业登记和查询 | 申报业务/社保费申报/企业登记 | [apis/360653452.json](apis/360653452.json) |
+| POST | `/v2/shbx/declare/getCompanyRegisterInfo` | 企业登记查询 | 申报业务/社保费申报/企业登记 | [apis/360653452.json](apis/360653452.json) |
 | POST | `/v2/shbx/declare/checkAccountPassword` | 账户密码上传校验 | 申报业务/社保费申报/企业登记 | [apis/360920408.json](apis/360920408.json) |
 | POST | `/v2/shbx/declare/modifyDeclarePassword` | 社保申报密码修改 | 申报业务/社保费申报/企业登记 | [apis/476248510.json](apis/476248510.json) |
 | POST | `/v2/shbx/declare/queryAnnualPaymentSalary` | 年度缴费工资查询 | 申报业务/社保费申报/工资申报 | [apis/372454804.json](apis/372454804.json) |
@@ -558,13 +559,13 @@
 | POST | `/v2/ckts/queryCktsInvoice` | 出口退税发票状态查询 | 进出口退税业务/出口退税申报/出口退税发票状态查询 | [apis/484773331.json](apis/484773331.json) |
 | POST | `/v2/ckts/getCktsInvoiceResult` | 出口退税发票状态查询结果 | 进出口退税业务/出口退税申报/出口退税发票状态查询 | [apis/484773332.json](apis/484773332.json) |
 | POST | `/v2/ckts/syncRefundTaxLibraryQuery` | 出口退税文库查询 | 进出口退税业务/出口退税申报/退税文库查询 | [apis/329683187.json](apis/329683187.json) |
-| POST | `/v2/collect/beginFinTask` | 发起企业数据采集 | 数据业务/企业数据采集/解析版 | [apis/148769453.json](apis/148769453.json) |
-| POST | `/v2/collect/taskStatusDetails` | 获取采集状态信息 | 数据业务/企业数据采集/解析版 | [apis/199749234.json](apis/199749234.json) |
-| POST | `/地址联系技术支持配置` | 获取采集状态-回调通知 | 数据业务/企业数据采集/解析版 | [apis/199784772.json](apis/199784772.json) |
-| POST | `/v2/collect/getTaxAndFpInfo` | 获取采集状态及全量数据 | 数据业务/企业数据采集/解析版 | [apis/176336449.json](apis/176336449.json) |
-| POST | `/v2/collect/tax/getTaxInfo` | 获取税务数据 | 数据业务/企业数据采集/解析版 | [apis/119267313.json](apis/119267313.json) |
-| POST | `/v2/collect/invoice/getCollectTaskPageData` | 获取发票数据 | 数据业务/企业数据采集/解析版 | [apis/119239827.json](apis/119239827.json) |
-| POST | `/地址联系技术支持配置` | 采集任务（其他）-回调通知 | 数据业务/企业数据采集/解析版 | [apis/302460635.json](apis/302460635.json) |
+| POST | `/地址联系技术支持配置` | 获取采集状态-回调通知 | 数据业务/企业数据采集/回调接口 | [apis/199784772.json](apis/199784772.json) |
+| POST | `/地址联系技术支持配置` | 采集任务（其他）-回调通知 | 数据业务/企业数据采集/回调接口 | [apis/302460635.json](apis/302460635.json) |
+| POST | `/v2/collect/beginFinTask` | 发起企业数据采集 | 数据业务/企业数据采集/发起企业数据采集 | [apis/148769453.json](apis/148769453.json) |
+| POST | `/v2/collect/taskStatusDetails` | 获取采集状态信息 | 数据业务/企业数据采集/获取采集状态及数据 | [apis/199749234.json](apis/199749234.json) |
+| POST | `/v2/collect/getTaxAndFpInfo` | 获取采集状态及全量数据 | 数据业务/企业数据采集/获取采集状态及数据 | [apis/176336449.json](apis/176336449.json) |
+| POST | `/v2/collect/tax/getTaxInfo` | 获取税务数据 | 数据业务/企业数据采集/获取采集状态及数据 | [apis/119267313.json](apis/119267313.json) |
+| POST | `/v2/collect/invoice/getCollectTaskPageData` | 获取发票数据 | 数据业务/企业数据采集/获取采集状态及数据 | [apis/119239827.json](apis/119239827.json) |
 | POST | `/v2/risk/hmd/qycx` | 云抬头查询 | 数据业务/企业商事查询/云抬头 | [apis/96367333.json](apis/96367333.json) |
 | POST | `/v2/risk/hmd/qycxnew` | 企业精准查询接口 | 数据业务/企业商事查询/企业信息查询 | [apis/67296527.json](apis/67296527.json) |
 | POST | `/v2/insight/newEnterprise` | 新增企业信息 | 数据业务/企业商事查询/新增企业查询 | [apis/257062815.json](apis/257062815.json) |
@@ -662,15 +663,12 @@
 | Name | Folder | File |
 |---|---|---|
 | 基本介绍 |  | [docs/2179520.json](docs/2179520.json) |
-| 对接指引 | 快速开始 | [docs/2179950.json](docs/2179950.json) |
-| 开发必读 | 快速开始 | [docs/2162821.json](docs/2162821.json) |
+| 对接指引 | 快速开始 | [docs/2162821.json](docs/2162821.json) |
+| 开发必读 | 快速开始 | [docs/2179950.json](docs/2179950.json) |
 | 接口调用 | 快速开始 | [docs/2182015.json](docs/2182015.json) |
 | 加密说明 | 快速开始 | [docs/3774763.json](docs/3774763.json) |
-| 调用模式 | 快速开始 | [docs/4434866.json](docs/4434866.json) |
-| 业务形态 | 快速开始 | [docs/3682852.json](docs/3682852.json) |
 | 平台公共code码 | 快速开始 | [docs/8506205.json](docs/8506205.json) |
 | SDK集成 | 快速开始/SDK集成 | [docs/2180025.json](docs/2180025.json) |
-| SDK文件上传 | 快速开始/SDK集成 | [docs/8334504.json](docs/8334504.json) |
 | MCP集成 | 快速开始/MCP集成 | [docs/7603877.json](docs/7603877.json) |
 | 税局登录服务 | 快速开始/MCP集成 | [docs/7673497.json](docs/7673497.json) |
 | 数电开票服务 | 快速开始/MCP集成 | [docs/7662723.json](docs/7662723.json) |
@@ -680,6 +678,7 @@
 | 发票查验服务 | 快速开始/MCP集成 | [docs/8946126.json](docs/8946126.json) |
 | 查询业务服务 | 快速开始/MCP集成 | [docs/8947126.json](docs/8947126.json) |
 | 风控业务服务 | 快速开始/MCP集成 | [docs/8947127.json](docs/8947127.json) |
+| SDK文件上传 | 快速开始/文件预上传 | [docs/8334504.json](docs/8334504.json) |
 | 认证鉴权简介 | 平台接口鉴权 | [docs/2179954.json](docs/2179954.json) |
 | API鉴权-常见问题 | 平台接口鉴权 | [docs/9327439.json](docs/9327439.json) |
 | 简介 | 产品订购 | [docs/5110463.json](docs/5110463.json) |
@@ -697,15 +696,15 @@
 | 办税小号申请和操作全流程指引 | 办税小号业务 | [docs/2906513.json](docs/2906513.json) |
 | 简介 | 发票业务 | [docs/4433600.json](docs/4433600.json) |
 | 简介 | 发票业务/票据查验 | [docs/2146026.json](docs/2146026.json) |
-| 附录 | 发票业务/票据查验 | [docs/7675729.json](docs/7675729.json) |
-| 票据查验-常见问题 | 发票业务/票据查验 | [docs/8790153.json](docs/8790153.json) |
-| 增值税发票查验附录 | 发票业务/票据查验/发票查验/增值税平台查验-新平台 | [docs/9152686.json](docs/9152686.json) |
-| 简介 | 发票业务/票据查验/发票查验/其它发票查验 | [docs/5029551.json](docs/5029551.json) |
-| 简介 | 发票业务/票据查验/查验扩展/获取版式文件(电票平台) | [docs/4537369.json](docs/4537369.json) |
-| 简介 | 发票业务/发票识别 | [docs/2146778.json](docs/2146778.json) |
-| 发票识别-常见问题 | 发票业务/发票识别 | [docs/8829377.json](docs/8829377.json) |
-| 发票票样 | 发票业务/发票识别 | [docs/2857056.json](docs/2857056.json) |
-| 附录 | 发票业务/发票识别 | [docs/8832103.json](docs/8832103.json) |
+| 业务码表 | 发票业务/票据查验 | [docs/9506329.json](docs/9506329.json) |
+| 状态码表 | 发票业务/票据查验 | [docs/9506330.json](docs/9506330.json) |
+| 常见问题 | 发票业务/票据查验 | [docs/9506333.json](docs/9506333.json) |
+| 查验参数规范 | 发票业务/票据查验/增值税发票查验 | [docs/9152686.json](docs/9152686.json) |
+| 简介 | 发票业务/票据查验/增值税发票查验扩展/获取版式文件(电票平台) | [docs/4537369.json](docs/4537369.json) |
+| 简介 | 发票业务/票据识别 | [docs/2146778.json](docs/2146778.json) |
+| 发票识别-常见问题 | 发票业务/票据识别 | [docs/8829377.json](docs/8829377.json) |
+| 发票票样 | 发票业务/票据识别 | [docs/2857056.json](docs/2857056.json) |
+| 附录 | 发票业务/票据识别 | [docs/8832103.json](docs/8832103.json) |
 | 数电开票-常见问题 | 发票业务/数电开票 | [docs/8829378.json](docs/8829378.json) |
 | 简介 | 发票业务/数电开票/说明 | [docs/2815824.json](docs/2815824.json) |
 | 接入指引 | 发票业务/数电开票/说明 | [docs/4533173.json](docs/4533173.json) |
@@ -726,8 +725,9 @@
 | 发票入账-常见问题 | 发票业务/发票入账 | [docs/8829382.json](docs/8829382.json) |
 | 发票附录 | 发票业务/发票附录 | [docs/2189114.json](docs/2189114.json) |
 | 数电票号码规则 | 发票业务/发票附录 | [docs/3726002.json](docs/3726002.json) |
-| 简介 | 申报业务/企业税申报 | [docs/2168925.json](docs/2168925.json) |
-| 企税申报-常见问题 | 申报业务/企业税申报 | [docs/8790154.json](docs/8790154.json) |
+| 简介-对接指引 | 申报业务/企业税申报 | [docs/2168925.json](docs/2168925.json) |
+| 企业税-常见问题 | 申报业务/企业税申报 | [docs/8790154.json](docs/8790154.json) |
+| 财产行为税对接指引 | 申报业务/企业税申报 | [docs/9489649.json](docs/9489649.json) |
 | 上传excel文件常见填写规则 | 申报业务/企业税申报/上传报文/excel规则及部分参数业务说明 | [docs/5657593.json](docs/5657593.json) |
 | 上传申报报文规则说明 | 申报业务/企业税申报/上传报文/excel规则及部分参数业务说明 | [docs/5679771.json](docs/5679771.json) |
 | 申报 缴款部分请求业务参数说明 | 申报业务/企业税申报/上传报文/excel规则及部分参数业务说明 | [docs/5679774.json](docs/5679774.json) |
@@ -745,8 +745,10 @@
 | 简介 | 申报业务/企业税申报/税款缴纳 | [docs/2228126.json](docs/2228126.json) |
 | 简介 | 申报业务/企业税申报/申报查询 | [docs/2228029.json](docs/2228029.json) |
 | 简介 | 申报业务/企业税申报/漏报检查 | [docs/2233817.json](docs/2233817.json) |
-| 简介 | 申报业务/企业税申报/税源采集/获取/变更/税源采集 （不维护） | [docs/2887847.json](docs/2887847.json) |
+| 简介 | 申报业务/企业税申报/税源采集/获取/变更 | [docs/9480864.json](docs/9480864.json) |
 | 简介 | 申报业务/企业税申报/税源采集/获取/变更/税源获取 | [docs/2921853.json](docs/2921853.json) |
+| 简介 | 申报业务/企业税申报/税源采集/获取/变更/税源变更 | [docs/9485188.json](docs/9485188.json) |
+| 简介 | 申报业务/企业税申报/税源采集/获取/变更/税源采集 （不维护） | [docs/2887847.json](docs/2887847.json) |
 | 简介 | 申报业务/企业税申报/业务弹框 | [docs/2233823.json](docs/2233823.json) |
 | 简介 | 申报业务/企业税申报/获取完税证明（表格式） | [docs/2227954.json](docs/2227954.json) |
 | 简介 | 申报业务/企业税申报/获取PDF | [docs/2227844.json](docs/2227844.json) |
@@ -777,8 +779,8 @@
 | 支持政府会计准则财报 | 申报业务/企业税申报/各税种申报表报文 | [docs/8384075.json](docs/8384075.json) |
 | 民间非盈利组织会计制度 | 申报业务/企业税申报/各税种申报表报文 | [docs/8586015.json](docs/8586015.json) |
 | 农民专业合作社会计制度 | 申报业务/企业税申报/各税种申报表报文 | [docs/8586020.json](docs/8586020.json) |
-| fcsSycjData(房产税税源采集报文) | 申报业务/企业税申报/各税种申报表报文 | [docs/2576263.json](docs/2576263.json) |
-| cztdsSycjData(城镇土地使用税税源采集报文)  | 申报业务/企业税申报/各税种申报表报文 | [docs/2576281.json](docs/2576281.json) |
+| 已弃用-fcsSycjData(房产税税源采集报文)  | 申报业务/企业税申报/各税种申报表报文 | [docs/2576263.json](docs/2576263.json) |
+| 已弃用-cztdsSycjData(城镇土地使用税税源采集报文)  | 申报业务/企业税申报/各税种申报表报文 | [docs/2576281.json](docs/2576281.json) |
 | glywData(企业年度关联业务往来报告表) | 申报业务/企业税申报/各税种申报表报文 | [docs/2615704.json](docs/2615704.json) |
 | jthbData(企业集团合并财务报表)  | 申报业务/企业税申报/各税种申报表报文 | [docs/4349096.json](docs/4349096.json) |
 | ccxwshbData（财产行为税合并纳税申报（房土）） | 申报业务/企业税申报/各税种申报表报文 | [docs/3356049.json](docs/3356049.json) |
@@ -853,13 +855,14 @@
 | 重点税源附录 | 申报业务/企业税申报/申报相关字段码表汇总 | [docs/4935070.json](docs/4935070.json) |
 | 减免性质代码码表 | 申报业务/企业税申报/申报相关字段码表汇总 | [docs/4886154.json](docs/4886154.json) |
 | 企业所得税预缴优惠事项码表 | 申报业务/企业税申报/申报相关字段码表汇总 | [docs/9343572.json](docs/9343572.json) |
-| 个税简介 | 申报业务/个税申报 | [docs/5982787.json](docs/5982787.json) |
-| 业务指引 | 申报业务/个税申报 | [docs/6094274.json](docs/6094274.json) |
-| 个税申报-常见问题 | 申报业务/个税申报 | [docs/8790158.json](docs/8790158.json) |
-| 个税附录 | 申报业务/个税申报 | [docs/5750636.json](docs/5750636.json) |
+| 简介-对接指引 | 申报业务/个税申报 | [docs/5982787.json](docs/5982787.json) |
+| 个税-常见问题 | 申报业务/个税申报 | [docs/8790158.json](docs/8790158.json) |
+| 个税-业务码表 | 申报业务/个税申报 | [docs/5750636.json](docs/5750636.json) |
+| 个税-错误码 | 申报业务/个税申报 | [docs/9458567.json](docs/9458567.json) |
 | 社保简介 | 申报业务/社保费申报 | [docs/7617289.json](docs/7617289.json) |
 | 社保费申报-常见问题 | 申报业务/社保费申报 | [docs/8790159.json](docs/8790159.json) |
 | 社保附录 | 申报业务/社保费申报 | [docs/8468093.json](docs/8468093.json) |
+| 简介 | 申报业务/社保费申报/ 广东社保业务 | [docs/9449991.json](docs/9449991.json) |
 | 广东社保附录 | 申报业务/社保费申报/ 广东社保业务 | [docs/9167871.json](docs/9167871.json) |
 | 简介 | 申报业务/工商年报申报 | [docs/8392815.json](docs/8392815.json) |
 | 工商年报-常见问题 | 申报业务/工商年报申报 | [docs/8790160.json](docs/8790160.json) |
@@ -883,21 +886,22 @@
 | 深圳附录 | 申报业务/工商年报申报/各地区表单 | [docs/8958827.json](docs/8958827.json) |
 | 深圳个体户表单 | 申报业务/工商年报申报/各地区表单 | [docs/8965592.json](docs/8965592.json) |
 | 深圳表单 | 申报业务/工商年报申报/各地区表单 | [docs/8965596.json](docs/8965596.json) |
-| 进出口退税-常见问题 | 进出口退税业务 | [docs/8790155.json](docs/8790155.json) |
 | 简介 | 进出口退税业务/进出口报关单 | [docs/7231909.json](docs/7231909.json) |
-| 附录 | 进出口退税业务/进出口报关单 | [docs/7807607.json](docs/7807607.json) |
-| 简介 | 进出口退税业务/出口退税申报 | [docs/7182862.json](docs/7182862.json) |
-| 出口退税码表 | 进出口退税业务/出口退税申报/附录 | [docs/7151341.json](docs/7151341.json) |
-| 出口退税审核进度说明 | 进出口退税业务/出口退税申报/附录 | [docs/7151343.json](docs/7151343.json) |
-| 自检申请上传的业务报文说明 | 进出口退税业务/出口退税申报/附录 | [docs/6799230.json](docs/6799230.json) |
-| 自检反馈查询结果返回参数说明 | 进出口退税业务/出口退税申报/附录 | [docs/8019425.json](docs/8019425.json) |
-| 获取审核结果清单说明 | 进出口退税业务/出口退税申报/附录 | [docs/8817935.json](docs/8817935.json) |
+| 关单-常见问题 | 进出口退税业务/进出口报关单 | [docs/8790155.json](docs/8790155.json) |
+| 业务码表 | 进出口退税业务/进出口报关单 | [docs/7807607.json](docs/7807607.json) |
+| 产品简介&对接指引 | 进出口退税业务/出口退税申报 | [docs/7182862.json](docs/7182862.json) |
+| 退税申报-码表 | 进出口退税业务/出口退税申报 | [docs/7151341.json](docs/7151341.json) |
+| 退税申报-常见问题 | 进出口退税业务/出口退税申报 | [docs/9502117.json](docs/9502117.json) |
+| 出口退税审核进度说明 | 进出口退税业务/出口退税申报/业务码表 | [docs/7151343.json](docs/7151343.json) |
+| 自检申请上传的业务报文说明 | 进出口退税业务/出口退税申报/业务码表 | [docs/6799230.json](docs/6799230.json) |
+| 自检反馈查询结果返回参数说明 | 进出口退税业务/出口退税申报/业务码表 | [docs/8019425.json](docs/8019425.json) |
+| 获取审核结果清单说明 | 进出口退税业务/出口退税申报/业务码表 | [docs/8817935.json](docs/8817935.json) |
 | 简介 | 数据业务/企业数据采集 | [docs/2990560.json](docs/2990560.json) |
 | 企业数据采集-常见问题 | 数据业务/企业数据采集 | [docs/8832091.json](docs/8832091.json) |
-| 解析表结构详情附录 | 数据业务/企业数据采集/解析版 | [docs/4223483.json](docs/4223483.json) |
-| 企业数据采集公共附录 | 数据业务/企业数据采集/附录 | [docs/3017220.json](docs/3017220.json) |
+| 企业数据采集公共附录 | 数据业务/企业数据采集/业务码表 | [docs/3017220.json](docs/3017220.json) |
+| 解析表结构详情附录 | 数据业务/企业数据采集/发起企业数据采集 | [docs/4223483.json](docs/4223483.json) |
 | 企业商务查询-常见问题 | 数据业务/企业商事查询 | [docs/8832096.json](docs/8832096.json) |
-| 地区码 | 数据业务/企业商事查询/附录 | [docs/6136969.json](docs/6136969.json) |
+| 地区码 | 数据业务/企业商事查询/业务码表 | [docs/6136969.json](docs/6136969.json) |
 | 法规库-常见问题 | 法规库 | [docs/8832097.json](docs/8832097.json) |
 | 简介 | 风控报告 | [docs/8289942.json](docs/8289942.json) |
 | 风控报告-常见问题 | 风控报告 | [docs/8790157.json](docs/8790157.json) |

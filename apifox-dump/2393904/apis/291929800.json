@@ -196,6 +196,10 @@
                 "type": "string",
                 "title": "上年职工工资总额",
                 "description": "上年度，每月当期收入求和汇总"
+              },
+              "gjjtzsx": {
+                "type": "string",
+                "title": "公积金调整上限"
               }
             },
             "x-apifox-refs": {},
@@ -204,7 +208,8 @@
               "njsx",
               "npjgz",
               "snzzzgpjrs",
-              "snzggzze"
+              "snzggzze",
+              "gjjtzsx"
             ]
           }
         },
@@ -259,11 +264,11 @@
     "enable": false
   },
   "createdAt": "2025-05-06T02:07:42.000Z",
-  "updatedAt": "2025-12-08T14:19:27.000Z",
+  "updatedAt": "2026-09-21T10:26:15.000Z",
   "creatorId": 1442097,
-  "editorId": 2795319,
+  "editorId": 1452584,
   "creatorUserId": 1442097,
-  "editorUserId": 2795319,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

@@ -156,9 +156,7 @@
           "code",
           "success",
           "message",
-          "data",
-          "01JYZ87BCDDHEKCP5EFW1G0VKS",
-          "01JYZ87AHPR1FXTXJ3E3F612XC"
+          "data"
         ],
         "properties": {
           "code": {
@@ -232,6 +230,10 @@
                     "$ref": "#/definitions/144288780"
                   }
                 }
+              },
+              "znj": {
+                "title": "滞纳金完税证明",
+                "$ref": "#/definitions/144288780"
               }
             },
             "x-apifox-refs": {},
@@ -239,7 +241,8 @@
               "zhsd",
               "flsd",
               "fjmsd",
-              "xsgsd"
+              "xsgsd",
+              "znj"
             ]
           },
           "success": {
@@ -258,21 +261,13 @@
               "null"
             ],
             "title": "错误信息"
-          },
-          "01JYZ87AHPR1FXTXJ3E3F612XC": {
-            "x-tmp-pending-properties": true
-          },
-          "01JYZ87BCDDHEKCP5EFW1G0VKS": {
-            "x-tmp-pending-properties": true
           }
         },
         "required": [
           "code",
           "success",
           "reqId",
-          "message",
-          "01JYZ87AHPR1FXTXJ3E3F612XC",
-          "01JYZ87BCDDHEKCP5EFW1G0VKS"
+          "message"
         ]
       },
       "itemSchema": {},
@@ -326,11 +321,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-23T03:13:15.000Z",
-  "updatedAt": "2026-05-28T02:14:48.000Z",
+  "updatedAt": "2026-09-29T08:37:17.000Z",
   "creatorId": 1452584,
-  "editorId": 493303,
+  "editorId": 1452584,
   "creatorUserId": 1452584,
-  "editorUserId": 493303,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
