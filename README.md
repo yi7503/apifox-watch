@@ -14,22 +14,23 @@
 ### 1. 先看模块总览
 
 接口按 **14 个业务模块**组织。从 `apifox-dump/2393904/openapi-split/INDEX.md`
-开始挑模块：
+开始挑模块（下表为 2026-11-01 快照；模块名/接口数以 `INDEX.md` 为准，上游会改名，
+例如 2026-11 起「申报业务」「发票业务」更名为「国内申报业务」「国内发票业务」，「办税小号业务」已下架）：
 
 | 模块 | 接口数 | OpenAPI 文件 |
 |---|---:|---|
-| 申报业务 | 277 | `openapi-split/申报业务.yaml` |
-| 发票业务 | 192 | `openapi-split/发票业务.yaml` |
-| 数据业务 | 47 | `openapi-split/数据业务.yaml` |
+| 国内申报业务 | 287 | `openapi-split/国内申报业务.yaml` |
+| 国内发票业务 | 188 | `openapi-split/国内发票业务.yaml` |
+| 数据业务 | 46 | `openapi-split/数据业务.yaml` |
 | 登录业务（旧版） | 44 | `openapi-split/登录业务_旧版.yaml` |
 | 登录业务（新） | 30 | `openapi-split/登录业务_新.yaml` |
 | 进出口退税业务 | 27 | `openapi-split/进出口退税业务.yaml` |
-| 办税小号业务 | 11 | `openapi-split/办税小号业务.yaml` |
 | 产品订购 | 5 | `openapi-split/产品订购.yaml` |
 | 法规库 | 5 | `openapi-split/法规库.yaml` |
 | 平台基础服务 | 3 | `openapi-split/平台基础服务.yaml` |
 | 平台查询 | 3 | `openapi-split/平台查询.yaml` |
 | 风控报告 | 2 | `openapi-split/风控报告.yaml` |
+| 快速开始 | 1 | `openapi-split/快速开始.yaml` |
 | 平台接口鉴权 | 1 | `openapi-split/平台接口鉴权.yaml` |
 | 办税助手 | 1 | `openapi-split/办税助手.yaml` |
 
@@ -38,7 +39,7 @@
 
 ### 2. 按 method/path 定位单个接口
 
-整个项目 648 个接口的索引在 `apifox-dump/2393904/index.md`，按 method/path/name/folder
+整个项目 643 个接口的索引在 `apifox-dump/2393904/index.md`，按 method/path/name/folder
 列出来，**最适合 grep**：
 
 ```bash
@@ -98,8 +99,8 @@ grep "/v2/public/account/create" apifox-dump/2393904/index.md
 建议复用：
 
 - `qxy-common` skill —— OAuth 鉴权、`req_sign` 签名、`access_token` 缓存
-- `qxy-invoice` skill —— 发票业务（192 接口）已封装
-- `qxy-declaration` skill —— 申报业务
+- `qxy-invoice` skill —— 国内发票业务（188 接口）已封装
+- `qxy-declaration` skill —— 国内申报业务
 
 如果某个接口业务 skill 还没覆盖，按上面 1-3 步从 dump 里读定义后自己拼请求，
 鉴权和签名走 `qxy-common`。
@@ -112,14 +113,14 @@ grep "/v2/public/account/create" apifox-dump/2393904/index.md
 apifox-dump/2393904/
 ├── meta.json                  Apifox 项目元信息 (projectId/branchId)
 ├── tree.json                  Apifox 原始目录树 (含文件夹层级)
-├── index.md                   全部 648 个 API + 362 个 doc 的可读索引
+├── index.md                   全部 643 个 API + 386 个 doc 的可读索引
 ├── failures.json              本次爬取失败的节点 (Apifox 端 403 等)
-├── openapi.yaml               全部接口的合并 OpenAPI 3.0 (7.8 MB)
+├── openapi.yaml               全部接口的合并 OpenAPI 3.0 (7.7 MB)
 ├── openapi-split/
 │   ├── INDEX.md               按业务模块拆分的索引
 │   └── <模块>.yaml × 14       每个模块一份独立 OpenAPI
-├── apis/<apiId>.json × 648    单个接口完整定义 (Apifox 原始 schema)
-├── docs/<docId>.json × 362    单个文档节点 (Markdown content)
+├── apis/<apiId>.json × 643    单个接口完整定义 (Apifox 原始 schema)
+├── docs/<docId>.json × 386    单个文档节点 (Markdown content)
 └── attachments/               Apifox 文档引用的离线附件
 ```
 
