@@ -1,0 +1,17 @@
+{
+  "id": 9538685,
+  "name": "社保-CODE码表",
+  "sidebarTitle": "",
+  "content": "### 一、公共CODE码表\n\n平台公共code码：http://openapi.qixiangyun.com/doc-8506205\n\n### 二、业务CODE码表\n| code | 核心含义 | 解决方案 |\n| ---- | ---- | ---- |\n| 2000 | 业务成功 | 业务成功 |\n| 4000 | 业务失败 | 业务成功，查看反馈msg、失败原因 |\n| 4001 | 异步任务重复提交（任务执行中） | 等待返回结果 |\n| 4002 | 企业不存在 / 查询任务信息为空 | 检查企业信息是否正确 |\n| 4998 | 社保扣缴端HTTP 超时 | 稍后重试，或者联系技术支持 |\n| 4999 | 系统异常兜底 | 重试 |",
+  "folderId": 68385480,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-12T11:20:28.000Z",
+  "updatedAt": "2026-10-16T11:35:12.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

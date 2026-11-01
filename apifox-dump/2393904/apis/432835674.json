@@ -42,12 +42,22 @@
             "type": "string"
           },
           "title": "查询类别",
-          "description": "sfzrd（税费种认定节点）\nbqysb（本期应申报）\nsbcx（申报查询）\njkxxcx（缴款信息查询）\nwsbxxcx（未申报信息查询）\nqsxxcx（欠税信息查询）\ncwbbxxcx（财务报表信息查询）"
+          "description": "sfzrd（税费种认定节点）\nbqysb（本期应申报）\nsbcx（申报查询）\njkxxcx（缴款信息查询）\nwsbxxcx（未申报信息查询）\nqsxxcx（欠税信息查询）\ncwbbxxcx（财务报表信息查询）\nzdsyxxcx（重点税源采集查询）\nfssrtysbzgbmhd（非税收入通用申报（主管部门核定)查询）"
         },
         "cxny": {
           "type": "string",
           "title": "查询年月",
-          "description": "年月--202603，只能单月查询，不支持跨月查询。仅支持查询本年及上一年的数据"
+          "description": "年月--202603，只能单月查询，不支持跨月查询。仅支持查询本年及上一年的数据\n查询月份和所属期起止必须有一个请求有值。"
+        },
+        "ssqq": {
+          "type": "string",
+          "title": "所属期起",
+          "description": "年月日  查询月份和所属期起止必须有一个请求有值。"
+        },
+        "ssqz": {
+          "type": "string",
+          "title": "所属期止",
+          "description": "年月日  查询月份和所属期起止必须有一个请求有值。"
         }
       },
       "x-apifox-refs": {},
@@ -55,13 +65,14 @@
         "aggOrgId",
         "accountId",
         "cxny",
+        "ssqq",
+        "ssqz",
         "cxlbList",
         "tdztswjgmc",
         "kqyswjgmc"
       ],
       "required": [
-        "aggOrgId",
-        "cxny"
+        "aggOrgId"
       ]
     },
     "required": false,
@@ -247,7 +258,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-24T09:47:00.000Z",
-  "updatedAt": "2026-04-22T09:53:57.000Z",
+  "updatedAt": "2026-10-16T02:10:45.000Z",
   "creatorId": 1452584,
   "editorId": 1452584,
   "creatorUserId": 1452584,

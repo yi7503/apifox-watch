@@ -2245,6 +2245,107 @@
                   "description": ""
                 }
               ]
+            },
+            "zrrzjlxdm": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "自然人证件类型     ",
+              "enum": [
+                "201 - 居民身份证",
+                "208 - 外国护照",
+                "210 - 港澳居民来往内地通行证",
+                "213 - 台湾居民来往大陆通行证",
+                "227 - 中国护照",
+                "215 - 外国人居留证",
+                "237 - 中华人民共和国港澳居民居住证",
+                "238 - 中华人民共和国台湾居民居住证"
+              ],
+              "x-apifox-enum": [
+                {
+                  "name": "",
+                  "value": "201 - 居民身份证",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "208 - 外国护照",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "210 - 港澳居民来往内地通行证",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "213 - 台湾居民来往大陆通行证",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "227 - 中国护照",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "215 - 外国人居留证",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "237 - 中华人民共和国港澳居民居住证",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "238 - 中华人民共和国台湾居民居住证",
+                  "description": ""
+                }
+              ]
+            },
+            "zrrzjhm": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "自然人证件号码"
+            },
+            "zrrgjdm": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "自然人国籍代码",
+              "enum": [
+                "156-中华人民共和国",
+                "158-中国台湾  ",
+                "344-中国香港特别行政区 ",
+                "446-中国澳门特别行政区"
+              ],
+              "x-apifox-enum": [
+                {
+                  "name": "",
+                  "value": "156-中华人民共和国",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "158-中国台湾  ",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "344-中国香港特别行政区 ",
+                  "description": ""
+                },
+                {
+                  "name": "",
+                  "value": "446-中国澳门特别行政区",
+                  "description": ""
+                }
+              ]
             }
           },
           "required": [
@@ -2259,7 +2360,10 @@
             "xsf_dh",
             "xsf_yhzh",
             "xsf_yhmc",
-            "gmf_nsrsbh"
+            "gmf_nsrsbh",
+            "zrrzjlxdm",
+            "zrrzjhm",
+            "zrrgjdm"
           ],
           "x-apifox-orders": [
             "ly_ddbh",
@@ -2302,14 +2406,12 @@
             "jbrgjdm",
             "jbrzrrnsrsbh",
             "jbrzjzldm",
-            "01JYGP0JBQWAF0JR7FXKTYFPW5"
+            "zrrzjlxdm",
+            "zrrzjhm",
+            "zrrgjdm"
           ],
           "title": "请求数据",
-          "x-apifox-refs": {
-            "01JYGP0JBQWAF0JR7FXKTYFPW5": {
-              "$ref": "#/definitions/178770939"
-            }
-          }
+          "x-apifox-refs": {}
         }
       },
       "required": [
@@ -2543,11 +2645,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-23T10:25:57.000Z",
-  "updatedAt": "2026-08-04T06:07:33.000Z",
+  "updatedAt": "2026-10-28T09:05:38.000Z",
   "creatorId": 887900,
-  "editorId": 1564651,
+  "editorId": 3099717,
   "creatorUserId": 887900,
-  "editorUserId": 1564651,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

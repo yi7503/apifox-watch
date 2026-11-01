@@ -18,7 +18,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口描述\n该接口是同步接口。\n\n下载企业人员专付扣信息；如需本地算税，需调用该接口获取信息；反之，则不需要调用该接口。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
+  "description": "## 接口描述\n该接口是同步接口。\n\n下载企业人员专付扣信息；如需本地算税，需调用该接口获取信息；反之，则不需要调用该接口。\n专附扣是否可以享受减免，判断规则：\n判断条件，返回报文中 的yxbz等于N且 kzztDm不等于1 则认为该条数据为无效数据，过滤不计算该条专附扣金额。\n## 错误码\n\n| **错误代码** | **错误信息**\t | **解决方案**|\n| --- | --- | --- |\n| 4003 | 没有找到对应的企业！ |\n| 4002 | aggOrgId请求参数不能为空！ |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -309,11 +310,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-02-11T01:44:22.000Z",
-  "updatedAt": "2026-03-17T08:47:19.000Z",
+  "updatedAt": "2026-09-14T03:51:41.000Z",
   "creatorId": 1452584,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1452584,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

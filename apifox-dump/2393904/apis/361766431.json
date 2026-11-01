@@ -1,6 +1,6 @@
 {
   "id": 361766431,
-  "name": "特殊缴款待申报信息查询",
+  "name": "特殊缴款待申报信息查询-同步（旧版）",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -55,6 +55,7 @@
         "fkssq"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [],
     "oasExtensions": ""
@@ -282,11 +283,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-16T02:30:18.000Z",
-  "updatedAt": "2026-02-10T03:14:53.000Z",
+  "updatedAt": "2026-10-30T03:34:21.000Z",
   "creatorId": 1442097,
-  "editorId": 1910680,
+  "editorId": 3222025,
   "creatorUserId": 1442097,
-  "editorUserId": 1910680,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

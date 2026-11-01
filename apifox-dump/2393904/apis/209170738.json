@@ -1,6 +1,6 @@
 {
   "id": 209170738,
-  "name": "申请加计扣除农产品采集",
+  "name": "申请加计扣除农产品发票采集",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -264,15 +264,7 @@
   "folderId": 58712055,
   "ordering": 1062,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {}
   },
@@ -280,16 +272,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-27T09:02:34.000Z",
-  "updatedAt": "2025-10-11T01:54:52.000Z",
+  "updatedAt": "2026-10-29T07:31:39.000Z",
   "creatorId": 1426961,
-  "editorId": 3099717,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 3099717,
-  "responseChildren": [
-    "BLANK.518497387",
-    "BLANK.773132098",
-    "BLANK.773132099"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

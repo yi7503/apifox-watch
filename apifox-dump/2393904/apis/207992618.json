@@ -1,6 +1,6 @@
 {
   "id": 207992618,
-  "name": "待处理农产品采集结果查询",
+  "name": "待处理农产品发票采集结果查询",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -20,6 +20,8 @@
     "jsonSchema": {
       "$ref": "#/definitions/116190581"
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"nsrsbh\": \"91****************8A\",\r\n    \"taskId\": 548184393478912,\r\n    \"customReqId\": \"\"\r\n}",
@@ -164,17 +166,15 @@
     "disabledSystemHeaders": {}
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-23T06:48:03.000Z",
-  "updatedAt": "2025-06-10T08:39:48.000Z",
+  "updatedAt": "2026-10-29T07:31:21.000Z",
   "creatorId": 1426961,
-  "editorId": 2706439,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.516352366"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

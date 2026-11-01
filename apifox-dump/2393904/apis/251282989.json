@@ -96,7 +96,13 @@
         },
         "bmbh": {
           "type": "string",
-          "title": "部门编号"
+          "title": "部门编号",
+          "deprecated": true
+        },
+        "sfjyzbfb": {
+          "type": "string",
+          "title": "是否开启主表和附表一致性校验",
+          "description": "是、否 默认是否"
         }
       },
       "required": [
@@ -109,6 +115,7 @@
         "accountId",
         "bmbh",
         "skssq",
+        "sfjyzbfb",
         "zhsd",
         "flsd",
         "fjmsd",
@@ -287,11 +294,11 @@
     "enable": false
   },
   "createdAt": "2025-01-04T09:35:58.000Z",
-  "updatedAt": "2026-07-23T10:27:24.000Z",
+  "updatedAt": "2026-10-26T02:49:16.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 1452584,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

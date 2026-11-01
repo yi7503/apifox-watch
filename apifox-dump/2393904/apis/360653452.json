@@ -1,6 +1,6 @@
 {
   "id": 360653452,
-  "name": "企业登记和查询",
+  "name": "企业登记查询",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -259,11 +259,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-14T03:40:14.000Z",
-  "updatedAt": "2026-04-21T03:47:24.000Z",
+  "updatedAt": "2026-09-29T05:48:35.000Z",
   "creatorId": 1442097,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1442097,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

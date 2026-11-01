@@ -34,7 +34,7 @@
       "properties": {
         "skssqq": {
           "type": "string",
-          "description": "首年税款所属期起应在企业开业设立日期所在月份， 次年及之后应为每年1月。税款所属期起，格式YYYYMMDD"
+          "description": "首年税款所属期起应在企业开业设立日期所在月份的1日， 次年及之后应为每年1月。税款所属期起，格式YYYYMMDD"
         },
         "skssqz": {
           "type": "string",
@@ -85,7 +85,8 @@
                       },
                       "fpbl": {
                         "type": "string",
-                        "title": "投资者信息-分配比例"
+                        "title": "投资者信息-分配比例",
+                        "description": "0-1之间的小数，小数点保留4位，不能为0，最大为1"
                       },
                       "sfjcfy": {
                         "type": "string",
@@ -250,6 +251,10 @@
                       "zfgjj": {
                         "type": "number",
                         "title": "住房公积金\t"
+                      },
+                      "tzzjcfyje": {
+                        "type": "number",
+                        "title": "投资者减除费用金额"
                       }
                     },
                     "x-apifox-orders": [
@@ -268,6 +273,7 @@
                       "ynssde",
                       "jmse",
                       "zfgjj",
+                      "tzzjcfyje",
                       "jmsxfb",
                       "jzfb"
                     ],
@@ -1210,11 +1216,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-20T13:25:35.000Z",
-  "updatedAt": "2026-02-04T01:53:28.000Z",
+  "updatedAt": "2026-10-22T12:11:29.000Z",
   "creatorId": 2661157,
-  "editorId": 3222025,
+  "editorId": 1452584,
   "creatorUserId": 2661157,
-  "editorUserId": 3222025,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

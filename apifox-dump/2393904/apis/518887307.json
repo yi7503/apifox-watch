@@ -1,0 +1,281 @@
+{
+  "id": 518887307,
+  "name": "文件上传凭证获取",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [
+    {
+      "type": "commonScript",
+      "data": [
+        408221
+      ],
+      "defaultEnable": true,
+      "enable": true,
+      "id": "THTpgcNqWifbfltd9u7s0",
+      "executionTiming": "prerequest"
+    }
+  ],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "用于获取**阿里云 OSS 临时上传凭证（STS）**。客户端拿到凭证后，可直接向 OSS 上传文件（用于业务传输文件使用），无需经过我方服务器中转，上传速度与稳定性更好。",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/oauth2/oss/getAccessKey",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "fileSuffix": {
+          "type": "string",
+          "title": "文件后缀名",
+          "description": "文件后缀名，字母/数字 1~8 位，可带或不带点，如 pdf、.xlsx"
+        }
+      },
+      "x-apifox-orders": [
+        "fileSuffix"
+      ],
+      "required": [
+        "fileSuffix"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "mediaType": "application/json",
+        "value": "{\"fileSuffix\": \"pdf\"}"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "b2HFgIPJxQ",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "5ovtpQcjKS",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "eyhz9DMYOg",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "wLZW0UQYA4",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type",
+        "enable": false
+      },
+      {
+        "name": "access_token",
+        "enable": false
+      },
+      {
+        "name": "req_date",
+        "enable": false
+      },
+      {
+        "name": "req_sign",
+        "enable": false
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 575808264,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "reqId": {
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "examples": [
+              "SUCCESS"
+            ]
+          },
+          "success": {
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          },
+          "data": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "accessKeyId": {
+                "type": "string",
+                "description": "STS 临时凭证三元组，用于构造 OSS 客户端",
+                "title": "accessKeyId"
+              },
+              "accessKeySecret": {
+                "type": "string",
+                "description": "STS 临时凭证三元组，用于构造 OSS 客户端",
+                "title": "accessKeySecret"
+              },
+              "securityToken": {
+                "type": "string",
+                "description": "STS 临时凭证三元组，用于构造 OSS 客户端",
+                "title": "securityToken"
+              },
+              "bucketName": {
+                "type": "string",
+                "description": "目标桶",
+                "title": "目标桶"
+              },
+              "endPoint": {
+                "type": "string",
+                "description": "endPoint",
+                "title": "端点"
+              },
+              "region": {
+                "type": "string",
+                "description": "地域信息",
+                "title": "地域"
+              },
+              "expiration": {
+                "type": "string",
+                "title": "过期时间"
+              },
+              "objectKey": {
+                "type": "string",
+                "description": "本次唯一允许上传的对象 key；",
+                "title": "上传对象key值"
+              }
+            },
+            "x-apifox-orders": [
+              "accessKeyId",
+              "accessKeySecret",
+              "securityToken",
+              "bucketName",
+              "endPoint",
+              "region",
+              "expiration",
+              "objectKey"
+            ],
+            "title": "业务数据",
+            "required": [
+              "accessKeySecret",
+              "accessKeyId",
+              "securityToken",
+              "bucketName",
+              "endPoint",
+              "region",
+              "expiration",
+              "objectKey"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "required": [
+          "reqId",
+          "success",
+          "code",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 575808264,
+      "data": "{\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"accessKeyId\": \"STS.NYaGQdN***********33Pa4dvoyC\",\n        \"accessKeySecret\": \"3gxctNQs9V***********YJ9FoNCwkQhbKmPiRmpSdd7\",\n        \"securityToken\": \"CAISqAR1q6***********vQo4527qiKQEzD1zMFbbtImarSoTz2IHh...\",\n        \"bucketName\": \"custom-file-upload\",\n        \"endPoint\": \"oss-cn-beijing.aliyuncs.com\",\n        \"region\": \"cn-beijing\",\n        \"expiration\": \"2026-09-22T07:11:45Z\",\n        \"objectKey\": \"custom/{appkey}/2bacdfdc3e344ebbbbd4ce88add8cb41.pdf\"\n    },\n    \"reqId\": \"0cca7ae7-56ed-4718-bd8a-505c8493ca96\"\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 443937037
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 96497711,
+  "ordering": 92,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-09-22T10:20:04.000Z",
+  "updatedAt": "2026-09-23T01:44:06.000Z",
+  "creatorId": 2661157,
+  "editorId": 2661157,
+  "creatorUserId": 2661157,
+  "editorUserId": 2661157,
+  "responseChildren": [],
+  "visibility": "INHERITED",
+  "securityScheme": {},
+  "callbacks": ""
+}

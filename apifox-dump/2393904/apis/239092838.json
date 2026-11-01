@@ -33,13 +33,6 @@
           "title": "一般纳税人增值税及附加税报文",
           "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
         },
-        "xgmData": {
-          "type": "object",
-          "properties": {},
-          "x-apifox-orders": [],
-          "title": "小规模增值税及附加税报文",
-          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
-        },
         "sdsaData": {
           "type": "object",
           "properties": {},
@@ -217,6 +210,16 @@
           "type": "string",
           "title": "禁用申报缓存",
           "description": "Y/N 非必传参数，默认为空。Y=不缓存 空/N或者不传这个参数=缓存"
+        },
+        "01M5P96DY9C2MF3ZE19WNYQTQW": {
+          "x-tmp-pending-properties": true
+        },
+        "zzsData": {
+          "type": "object",
+          "properties": {},
+          "x-apifox-orders": [],
+          "title": "新版增值税",
+          "description": "JSON格式，报文结构参考申报附录中的报文结构相应报文"
         }
       },
       "required": [
@@ -244,7 +247,8 @@
         "attachEncode",
         "attachName",
         "ybData",
-        "xgmData",
+        "01M5P96DY9C2MF3ZE19WNYQTQW",
+        "zzsData",
         "xgmDqdeData",
         "sdsaData",
         "sdsData",
@@ -484,11 +488,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-11-29T02:09:50.000Z",
-  "updatedAt": "2026-06-02T02:51:31.000Z",
+  "updatedAt": "2026-10-24T06:22:52.000Z",
   "creatorId": 1452584,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1452584,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -351,8 +351,7 @@
                     "hjje",
                     "hjse",
                     "jshj",
-                    "kpr",
-                    "kpf_nsrsbh"
+                    "kpr"
                   ]
                 }
               }
@@ -414,11 +413,11 @@
     "value": "// 获取自动 Mock 出来的数据\r\n//var responseJson = $$.mockResponse.json();\r\n\r\nvar request = $$.mockRequest.body.toJSON();\r\nvar responseJson = {\r\n\t\"pageIndex\": 1,\r\n\t\"records\": 1,\r\n\t\"pageSize\": 50,\r\n\t\"list\": [{\r\n\t\t\"fphm\": \"25952000000193124888\",\r\n\t\t\"fplxdm\": \"032\",\r\n\t\t\"fpztdm\": \"01\",\r\n\t\t\"gmf_nsrmc\": \"华夏天地测试有限公司\",\r\n\t\t\"gmf_nsrsbh\": \"913717247242887403\",\r\n\t\t\"hjje\": 573.21,\r\n\t\t\"hjse\": 74.52,\r\n\t\t\"jshj\": 647.73,\r\n\t\t\"kpf_nsrsbh\": \"91110103445668409Q\",\r\n\t\t\"kplx\": \"0\",\r\n\t\t\"kpr\": \"张三\",\r\n\t\t\"kprq\": \"2025-10-13 11:20:17\",\r\n\t\t\"lpFpdm\": null,\r\n\t\t\"lpFphm\": null,\r\n\t\t\"xsf_nsrmc\": \"华夏测试有限公司\",\r\n\t\t\"xsf_nsrsbh\": \"91110103445668409Q\",\r\n\t\t\"zz_fpdm\": \"\",\r\n\t\t\"zz_fphm\": \"\"\r\n\t}]\r\n};\r\n// 将修改后的 json 写入 $$.mockResponse\r\n$$.mockResponse.setBody(responseJson);"
   },
   "createdAt": "2024-11-11T08:41:47.000Z",
-  "updatedAt": "2025-12-13T09:21:07.000Z",
+  "updatedAt": "2026-10-28T03:01:01.000Z",
   "creatorId": 2400309,
-  "editorId": 2795319,
+  "editorId": 3099717,
   "creatorUserId": 2400309,
-  "editorUserId": 2795319,
+  "editorUserId": 3099717,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

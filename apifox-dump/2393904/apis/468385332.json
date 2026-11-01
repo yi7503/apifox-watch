@@ -50,8 +50,7 @@
       },
       "required": [
         "aggOrgId",
-        "accountId",
-        "fkssq"
+        "accountId"
       ],
       "additionalProperties": false,
       "x-apifox-orders": [
@@ -177,11 +176,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-06-04T05:51:24.000Z",
-  "updatedAt": "2026-07-17T05:46:52.000Z",
+  "updatedAt": "2026-10-17T08:27:19.000Z",
   "creatorId": 1910680,
-  "editorId": 493303,
+  "editorId": 1910680,
   "creatorUserId": 1910680,
-  "editorUserId": 493303,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

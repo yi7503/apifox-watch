@@ -154,6 +154,7 @@
               "aggOrgId",
               "taskId",
               "code",
+              "resultMessage",
               "businessStatus",
               "businessStatusName",
               "serviceCode",
@@ -509,6 +510,26 @@
                           "type": "string",
                           "description": "0=正常、1=义务终止",
                           "title": "税源状态"
+                        },
+                        "sbqxdm": {
+                          "type": "string",
+                          "title": "申报期限代码"
+                        },
+                        "nsqxdm": {
+                          "type": "string",
+                          "title": "纳税期限代码"
+                        },
+                        "skssqq": {
+                          "type": "string",
+                          "title": "税款所属期起"
+                        },
+                        "skssqz": {
+                          "type": "string",
+                          "title": "税款所属期止"
+                        },
+                        "nsywzzsj": {
+                          "type": "string",
+                          "title": "纳税义务终止时间"
                         }
                       },
                       "x-apifox-orders": [
@@ -528,6 +549,11 @@
                         "nsrsbh",
                         "syqrmc",
                         "nsrlx",
+                        "sbqxdm",
+                        "nsqxdm",
+                        "skssqq",
+                        "skssqz",
+                        "nsywzzsj",
                         "cjjz",
                         "czjz",
                         "syzt"
@@ -883,6 +909,10 @@
                 "$ref": "#/definitions/300153974",
                 "title": "印花税",
                 "description": "字段detail根据请求的税源类型不同，detail的格式不同"
+              },
+              "resultMessage": {
+                "type": "string",
+                "title": "任务信息"
               }
             },
             "required": [
@@ -968,11 +998,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T03:49:50.000Z",
-  "updatedAt": "2026-09-10T12:55:25.000Z",
+  "updatedAt": "2026-09-29T02:58:59.000Z",
   "creatorId": 2122743,
-  "editorId": 1476015,
+  "editorId": 1452584,
   "creatorUserId": 2122743,
-  "editorUserId": 1476015,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

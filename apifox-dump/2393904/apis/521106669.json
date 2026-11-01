@@ -1,0 +1,187 @@
+{
+  "id": 521106669,
+  "name": "同步获取版式文件",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "支持数电票以下类型的版式文件下载\n| 代码  | 名称                        | \n| ---- | ---------------------       |\n| 51   | 数电（铁路电子客票）          |\n| 61   | 数电（航空运输电子客票行程单）  | \n| 70   | 数电（二手车销售统一发票）     |       \n| 0920   | 数电（增值税专用发票）   | \n| 0910   | 数电（增值税普通发票）  |\n| 83   | 数电（机动车销售统一发票）     | \n| 8208   | 数电发票（通行费发票）     | \n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/cy/bswjxz",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01J732FPZAYSZDPA6WP1J83998": {
+          "$ref": "#/definitions/80195738",
+          "x-apifox-overrides": {
+            "cyList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/115262114"
+              },
+              "title": "查验列表",
+              "description": "必填"
+            }
+          },
+          "required": [
+            "cyList"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "01J732FPZAYSZDPA6WP1J83998"
+      ],
+      "properties": {}
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"customReqId\": \"\",\r\n    \"cyList\": [\r\n        {\r\n            \"fphm\": \"23****************27\",\r\n            \"kprq\": \"2023-01-05\",\r\n            \"jshj\": \"60000\",\r\n            \"bswjLx\": \"XML,OFD,PDF\"\r\n        }\r\n    ]\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {},
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 513520473,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01J5PQQ5MBEGG3B4Y6PXXGW14T": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "x-apifox-refs": {
+                    "01JNCXAY04BBB6T9GNQEJ6D2GK": {
+                      "$ref": "#/definitions/115268236",
+                      "x-apifox-overrides": {
+                        "chargingNsrsbh": null
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JNCXAY04BBB6T9GNQEJ6D2GK"
+                  ],
+                  "properties": {}
+                },
+                "title": "业务数据"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01J5PQQ5MBEGG3B4Y6PXXGW14T"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 513520473,
+      "data": "{\n    \"reqId\": \"05c3dbffdb7c4f378b919d8434050a84\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"chargingNsrsbh\": null,\n            \"code\": null,\n            \"jshj\": 18200,\n            \"kprq\": \"2024-04-30 00:00:00\",\n            \"message\": null,\n            \"ofdUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/5a44748e516f0742c40e81342605a9c5.ofd?OSSAccessKeyId=***************&Expires=1726986316&Signature=eVaeRyxQkuwXjs9le477etiW%2BYg%3D\",\n            \"pdfUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/f69f36a6521221ffe03dc647d2913b4b.pdf?Expires=1726899916&OSSAccessKeyId=*********************&Signature=kXDK1cRmhxd%2BNjzFWZMEQf8TQY4%3D\",\n            \"qdfphm\": \"24***************04\",\n            \"success\": true,\n            \"xmlUrl\": \"http://qxy-oss-robot-product.oss-cn-beijing.aliyuncs.com/dzfp_24***************04_20240520171423.xml?OSSAccessKeyId=*******************&Expires=1726986315&Signature=nDq%2BhfsNeNKUg4It1sHCQXBYsJg%3D\"\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423161857
+    },
+    {
+      "name": "失败示例",
+      "responseId": 513520473,
+      "data": "{\n    \"reqId\": \"9143e56e47bb42279f2e550b5f030346\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": \"CheckBswjxzException\",\n            \"customReqId\": \"1000199957b07995086c43b19f91e45fbf8fbd59\",\n            \"fpdm\": null,\n            \"fphm\": \"24*************04\",\n            \"fplx\": \"09\",\n            \"je\": null,\n            \"jshj\": 18200,\n            \"jym\": null,\n            \"kprq\": \"2024-04-30 00:00:00\",\n            \"message\": \"发票查验版式文件下载出错，请联系管理员！\",\n            \"success\": false\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423160952
+    },
+    {
+      "name": "数电纸质发票不支持版式文件下载",
+      "responseId": 513520473,
+      "data": "{\n    \"reqId\": \"632463d00edc4ce6b42be4eb97e5763d\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"chargingNsrsbh\": null,\n            \"code\": \"CheckBswjxzException\",\n            \"jshj\": 200000,\n            \"kprq\": \"2024-03-25 00:00:00\",\n            \"message\": \"数电纸质发票不支持版式文件下载\",\n            \"ofdUrl\": null,\n            \"pdfUrl\": null,\n            \"qdfphm\": \"24*****************50\",\n            \"success\": false,\n            \"xmlUrl\": null\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423156080
+    },
+    {
+      "name": "暂不支持非数电票版式文件下载",
+      "responseId": 513520473,
+      "data": "{\n    \"reqId\": \"13684719af144ad59570b4a41f1ae2ff\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": [\n        {\n            \"code\": \"CheckInvoiceNotSupport\",\n            \"customReqId\": \"1000199903b26280903645b08c8c303fcc8ff888\",\n            \"fpdm\": \"04******11\",\n            \"fphm\": \"69****77\",\n            \"fplx\": \"10\",\n            \"je\": 454.14,\n            \"jshj\": null,\n            \"jym\": null,\n            \"kprq\": \"2024-07-15 00:00:00\",\n            \"message\": \"暂不支持非数电票版式文件下载！\",\n            \"success\": false\n        }\n    ]\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 423239329
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 96839739,
+  "ordering": 52,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {}
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-09-30T07:06:09.000Z",
+  "updatedAt": "2026-10-15T04:38:49.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "creatorUserId": 3600994,
+  "editorUserId": 3600994,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

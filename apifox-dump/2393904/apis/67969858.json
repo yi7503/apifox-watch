@@ -260,7 +260,7 @@
               "jtOssUrl": {
                 "type": "string",
                 "title": "截图url",
-                "description": "任务code=4811是返回"
+                "description": "请求税种+所属期在申报查询界面没有查到记录，导致无法返回申报表，返回结果code=4811  msg：该税种在电子税务局找不到,无法获取报表时会返回截图参考，其他场景不会返回截图"
               }
             },
             "x-apifox-refs": {},

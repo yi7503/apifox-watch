@@ -238,10 +238,20 @@
               "zt": {
                 "type": "string",
                 "description": "业务办理状态: 1成功 2失败"
+              },
+              "msg": {
+                "type": "string",
+                "title": " 信息"
+              },
+              "reason": {
+                "type": "string",
+                "title": "原因"
               }
             },
             "x-apifox-orders": [
-              "zt"
+              "zt",
+              "msg",
+              "reason"
             ]
           }
         },
@@ -290,11 +300,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-27T07:26:37.000Z",
-  "updatedAt": "2026-05-11T07:48:30.000Z",
+  "updatedAt": "2026-09-29T03:36:47.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 1452584,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

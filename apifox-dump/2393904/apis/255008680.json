@@ -1,13 +1,13 @@
 {
   "id": 255008680,
-  "name": "撤销归集待执行任务",
+  "name": "撤销异步待执行任务",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "可通过此接口撤销未执行的归集任务，执行中(status=1)的任务无法撤销。",
+  "description": "可通过此接口撤销未执行的任务，执行中(status=1)的任务无法撤销。",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -54,6 +54,7 @@
       ],
       "x-apifox-refs": {}
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -233,7 +234,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 13475569,
+  "folderId": 13281900,
   "ordering": 122,
   "responsibleId": 2118003,
   "commonResponseStatus": {},
@@ -245,14 +246,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-01-16T02:06:40.000Z",
-  "updatedAt": "2025-07-30T02:38:10.000Z",
+  "updatedAt": "2026-10-20T08:47:08.000Z",
   "creatorId": 2118003,
-  "editorId": 2706439,
+  "editorId": 3600994,
   "creatorUserId": 2118003,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.603752676"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

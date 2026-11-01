@@ -25,7 +25,8 @@
         "accountId",
         "dwbh",
         "fkssq",
-        "dwzyjfy"
+        "dwzyjfy",
+        "djjelb"
       ],
       "properties": {
         "aggOrgId": {
@@ -77,6 +78,60 @@
             8900,
             5678.25
           ]
+        },
+        "djjelb": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fkssqq": {
+                "type": "string",
+                "description": "格式 YYYYMM",
+                "title": "费款所属期起"
+              },
+              "fkssqz": {
+                "type": "string",
+                "description": "格式 YYYYMM",
+                "title": "费款所属期止"
+              },
+              "zsxmDm": {
+                "type": "string",
+                "title": "征收项目代码",
+                "description": "通过日常待申报查询接口获取到征收项目代码；只有税局允许可抵缴险种代码才能抵缴"
+              },
+              "zspmDm": {
+                "type": "string",
+                "title": "征收品目代码",
+                "description": "通过日常待申报查询接口获取到征收品目代码；只有税局允许可抵缴险种代码才能抵缴"
+              },
+              "zszmDm": {
+                "type": "string",
+                "title": "征收子目代码",
+                "description": "通过日常待申报查询接口获取到征收子目代码；只有税局允许可抵缴险种代码才能抵缴"
+              },
+              "djje": {
+                "type": "string",
+                "title": "抵缴金额",
+                "description": "抵缴金额大于0;小于等于总金额，不能大于允许抵缴的金额"
+              }
+            },
+            "x-apifox-orders": [
+              "fkssqq",
+              "fkssqz",
+              "zsxmDm",
+              "zspmDm",
+              "zszmDm",
+              "djje"
+            ],
+            "required": [
+              "fkssqq",
+              "fkssqz",
+              "zspmDm",
+              "djje",
+              "zsxmDm"
+            ]
+          },
+          "title": "抵缴金额列表"
         }
       },
       "required": [
@@ -193,11 +248,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-14T06:51:16.000Z",
-  "updatedAt": "2026-03-13T05:56:56.000Z",
+  "updatedAt": "2026-10-20T12:05:08.000Z",
   "creatorId": 1442097,
-  "editorId": 3222025,
+  "editorId": 1910680,
   "creatorUserId": 1442097,
-  "editorUserId": 3222025,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

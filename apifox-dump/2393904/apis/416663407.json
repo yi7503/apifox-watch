@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -95,19 +96,27 @@
         "type": "object",
         "properties": {
           "reqId": {
-            "type": "string"
+            "type": "string",
+            "title": "请求id",
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "title": "错误码",
+            "description": "错误码"
           },
           "success": {
-            "type": "boolean"
+            "type": "boolean",
+            "title": "是否成功标记",
+            "description": "接口是否成功（是否发生业务异常）"
           },
           "message": {
-            "type": "null"
+            "type": "null",
+            "title": "错误信息"
           },
           "data": {
             "type": "object",
+            "description": "数据",
             "properties": {
               "result": {
                 "type": "array",
@@ -144,28 +153,58 @@
                     "cjzt"
                   ]
                 },
-                "title": "业务办理结果"
+                "title": "业务办理结果",
+                "description": "任务返回业务结果"
               },
               "taskStatusName": {
-                "type": "string"
+                "type": "string",
+                "title": "任务执行状态名称"
               },
               "code": {
-                "type": "string"
+                "type": "string",
+                "title": "任务code"
               },
               "message": {
-                "type": "string"
+                "type": "string",
+                "title": "执行任务信息"
               },
               "taskTypeName": {
-                "type": "string"
+                "type": "string",
+                "title": "任务类型名称"
               },
               "taskTypeCode": {
-                "type": "string"
+                "type": "string",
+                "title": "任务类型代码"
               },
               "taskId": {
-                "type": "string"
+                "type": "string",
+                "title": "任务ID"
               },
               "taskStatus": {
-                "type": "string"
+                "type": "string",
+                "title": "任务执行状态",
+                "enum": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "x-apifox-enum": [
+                  {
+                    "value": "1",
+                    "name": "执行中",
+                    "description": ""
+                  },
+                  {
+                    "value": "2",
+                    "name": "失败",
+                    "description": ""
+                  },
+                  {
+                    "value": "3",
+                    "name": "已完成",
+                    "description": ""
+                  }
+                ]
               }
             },
             "required": [
@@ -239,11 +278,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-07T02:39:45.000Z",
-  "updatedAt": "2026-03-02T01:21:02.000Z",
+  "updatedAt": "2026-09-22T03:44:32.000Z",
   "creatorId": 887778,
-  "editorId": 887778,
+  "editorId": 1452584,
   "creatorUserId": 887778,
-  "editorUserId": 887778,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

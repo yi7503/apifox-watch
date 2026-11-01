@@ -1,0 +1,17 @@
+{
+  "id": 9559252,
+  "name": "农产品核定扣除增值税进项税额计算表（汇总表）",
+  "sidebarTitle": "",
+  "content": "## 概述\n\n农产品核定扣除增值税进项税额计算表（汇总表）\n## 报文结构\n\n\n```\n {\n    \"zzsybnsrsbncphdkczzsjxsejsb\": { // 农产品核定扣除增值税进项税额计算表（汇总表）\n\n        \"ncphdkczzsjxsejsb\": { // 汇总表明细\n            \"dqyxdkncpzzsjxseHj\": \"0.00\", // 合计：当期允许抵扣农产品增值税进项税额（元，保留2位小数）\n            \"dqyxdkncpzzsjxseHjBz\": \"\", // 合计备注\n\n            \"schwTrccfJxse\": \"0.00\", // 投入产出法：当期允许抵扣农产品增值税进项税额（元，保留2位小数）\n            \"schwTrccfBz\": \"\", // 投入产出法备注\n\n            \"schwCbfJxse\": \"0.00\", // 成本法：当期允许抵扣农产品增值税进项税额（元，保留2位小数）\n            \"schwCbfBz\": \"\", // 成本法备注\n\n            \"zjxsJxse\": \"0.00\", // 购进农产品直接销售：当期允许抵扣农产品增值税进项税额（元，保留2位小数）\n            \"zjxsBz\": \"\", // 购进农产品直接销售备注\n\n            \"scjyJxse\": \"0.00\", // 购进农产品用于生产经营且不构成货物实体：当期允许抵扣进项税额（元，保留2位小数）\n            \"scjyBz\": \"\"  // 购进农产品用于生产经营且不构成货物实体备注\n        }\n    }\n}\n\n```\n\n",
+  "folderId": 97715918,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-17T02:29:32.000Z",
+  "updatedAt": "2026-10-29T11:52:06.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

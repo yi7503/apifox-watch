@@ -60,7 +60,7 @@
               },
               "zsxmDm": {
                 "type": "string",
-                "description": "工会经费=39900/水利建设专项收入=30221 合并下载则可以为空",
+                "description": "工会经费=39900/水利建设专项收入=30221 合并下载则可以为空。\n其他非税收入（大中型水库移民后期扶持基金 、可再生能源发展基金 、国家重大水利工程建设基金）=30229",
                 "title": "征收项目代码"
               },
               "bsswjg": {
@@ -258,11 +258,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-11T03:27:16.000Z",
-  "updatedAt": "2026-09-08T07:51:24.000Z",
+  "updatedAt": "2026-10-21T09:00:40.000Z",
   "creatorId": 798265,
-  "editorId": 1476015,
+  "editorId": 1910680,
   "creatorUserId": 798265,
-  "editorUserId": 1476015,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

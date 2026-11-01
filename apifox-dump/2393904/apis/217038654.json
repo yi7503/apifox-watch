@@ -41,12 +41,12 @@
             "kqyjydxzqh": {
               "type": "string",
               "title": "跨区域经营地行政区划",
-              "description": "跨区域经营地行政区划"
+              "description": "跨区域经营地行政区划，参考地区码https://openapi.qixiangyun.com/doc-6136969"
             },
             "wcjyhdssglzmbh": {
               "type": "string",
               "title": "跨区域涉税事项报验管理编号-前缀",
-              "description": "跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则前缀部分为： 北海"
+              "description": "跨区域涉税事项报验管理编号全称为：”北海 税跨报 〔2026〕 2403 号“，则前缀部分为： 北海"
             },
             "zmyxqxq": {
               "type": "string",
@@ -71,12 +71,12 @@
             "wcjyhdssglzmbhq": {
               "type": "string",
               "title": "跨区域涉税事项报验管理编号-年份",
-              "description": "跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则年份部分为： 2026"
+              "description": "跨区域涉税事项报验管理编号全称为：”北海 税跨报 〔2026〕 2403 号“，则年份部分为： 2026"
             },
             "wcjyhdssglzmbhy": {
               "type": "string",
               "title": "跨区域涉税事项报验管理编号-编号",
-              "description": "跨区域涉税事项报验管理编号全称为：”北海税 跨报 （2026） 2403 号“，则编号部分为： 2403"
+              "description": "跨区域涉税事项报验管理编号全称为：”北海 税跨报 〔2026〕 2403 号“，则编号部分为： 2403"
             }
           },
           "x-apifox-orders": [
@@ -360,7 +360,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-20T08:56:07.000Z",
-  "updatedAt": "2026-08-27T02:12:58.000Z",
+  "updatedAt": "2026-09-22T09:00:31.000Z",
   "creatorId": 2400309,
   "editorId": 3099717,
   "creatorUserId": 2400309,

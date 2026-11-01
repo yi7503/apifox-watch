@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -251,39 +252,61 @@
                       "properties": {
                         "xm": {
                           "type": "string",
-                          "description": "人员名称"
+                          "title": "人员名称"
                         },
                         "zzlx": {
                           "type": "string",
-                          "description": "证件类型"
+                          "title": "证件类型"
                         },
                         "zzhm": {
                           "type": "string",
-                          "description": "证件号码"
+                          "title": "证件号码"
                         },
                         "sbztbj": {
                           "type": "string",
-                          "description": "申报状态标记"
+                          "enum": [
+                            "3",
+                            "5",
+                            "6"
+                          ],
+                          "x-apifox-enum": [
+                            {
+                              "value": "3",
+                              "name": "申报失败",
+                              "description": ""
+                            },
+                            {
+                              "value": "5",
+                              "name": "申报成功,无需缴款",
+                              "description": ""
+                            },
+                            {
+                              "value": "6",
+                              "name": "申报成功,未缴款",
+                              "description": ""
+                            }
+                          ],
+                          "title": "申报状态标记"
                         },
                         "sbzt": {
                           "type": "string",
-                          "description": "申报状态描述"
+                          "title": "申报状态描述"
                         },
                         "fkztbj": {
                           "type": "string",
-                          "description": "反馈状态标记"
+                          "title": "反馈状态标记"
                         },
                         "fkzt": {
                           "type": "string",
-                          "description": "反馈状态描述"
+                          "title": "反馈状态描述"
                         },
                         "fknr": {
                           "type": "string",
-                          "description": "反馈内容"
+                          "title": "反馈内容"
                         },
                         "ybtse": {
                           "type": "number",
-                          "description": "应补退税额"
+                          "title": "应补退税额"
                         }
                       },
                       "x-apifox-orders": [
@@ -394,7 +417,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-20T13:25:35.000Z",
-  "updatedAt": "2025-12-23T09:05:55.000Z",
+  "updatedAt": "2026-10-12T06:56:21.000Z",
   "creatorId": 2661157,
   "editorId": 493303,
   "creatorUserId": 2661157,

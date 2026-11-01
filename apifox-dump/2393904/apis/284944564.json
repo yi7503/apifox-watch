@@ -31,7 +31,7 @@
         "skssqq": {
           "type": "string",
           "title": "税款所属期起",
-          "description": "税款所属期起，格式：YYYYMMDD"
+          "description": "首年税款所属期起应在企业开业设立日期所在月份的1日， 次年及之后应为每年1月。税款所属期起，格式YYYYMMDD"
         },
         "skssqz": {
           "type": "string",
@@ -52,6 +52,7 @@
         "skssqz"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -63,8 +64,8 @@
     "oasExtensions": ""
   },
   "parameters": {
-    "path": [],
     "query": [],
+    "path": [],
     "cookie": [],
     "header": [
       {
@@ -73,6 +74,7 @@
         "required": true,
         "description": "签名算法得到的签名",
         "type": "string",
+        "enable": true,
         "sampleValue": "{{req_sign}}"
       },
       {
@@ -81,6 +83,7 @@
         "required": true,
         "description": "当前时间转为的毫秒数",
         "type": "string",
+        "enable": true,
         "sampleValue": "{{req_date}}"
       },
       {
@@ -89,6 +92,7 @@
         "required": true,
         "description": "通过调用access_token接口返回的access_token值",
         "type": "string",
+        "enable": true,
         "sampleValue": "{{access_token}}"
       },
       {
@@ -97,6 +101,7 @@
         "required": true,
         "description": "",
         "type": "string",
+        "enable": true,
         "sampleValue": "application/json"
       }
     ]
@@ -207,14 +212,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-16T07:42:37.000Z",
-  "updatedAt": "2025-06-25T02:04:49.000Z",
+  "updatedAt": "2026-10-17T05:56:29.000Z",
   "creatorId": 2400309,
-  "editorId": 996549,
+  "editorId": 493303,
   "creatorUserId": 2400309,
-  "editorUserId": 996549,
-  "responseChildren": [
-    "BLANK.656455795"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

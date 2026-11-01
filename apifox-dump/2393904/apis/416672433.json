@@ -83,6 +83,7 @@
         "rylb"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -123,54 +124,71 @@
         "type": "object",
         "properties": {
           "reqId": {
-            "type": "string"
+            "type": "string",
+            "description": "请求唯一标识号，用于链路追踪"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "接口返回业务编码"
           },
           "success": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "接口是否调用成功：true成功，false失败"
           },
           "message": {
-            "type": "null"
+            "type": "null",
+            "description": "提示信息，成功时为null，失败存放错误描述"
           },
           "data": {
             "type": "array",
+            "description": "捐赠明细数据列表",
             "items": {
               "type": "object",
+              "description": "单条捐赠记录",
               "properties": {
                 "jzpzh": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "捐赠凭证号"
                 },
                 "kcbl": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "扣除比例"
                 },
                 "szdwmc": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "捐赠单位名称"
                 },
                 "xm": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "姓名（捐赠人）"
                 },
                 "zzlx": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "证件类型"
                 },
                 "jzje": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "捐赠金额"
                 },
                 "zt": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "状态"
                 },
                 "zzhm": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "证件号码"
                 },
                 "jzrq": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "捐赠日期"
                 },
                 "szdwtyshxydm": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "受赠单位统一社会信用代码"
                 },
                 "cjlsh": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "采集流水号"
                 }
               },
               "x-apifox-orders": [
@@ -232,11 +250,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-02-07T03:24:48.000Z",
-  "updatedAt": "2026-03-02T01:21:11.000Z",
+  "updatedAt": "2026-09-22T03:46:22.000Z",
   "creatorId": 887778,
-  "editorId": 887778,
+  "editorId": 1452584,
   "creatorUserId": 887778,
-  "editorUserId": 887778,
+  "editorUserId": 1452584,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

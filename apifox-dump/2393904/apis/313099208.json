@@ -301,7 +301,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 48153091,
-  "ordering": 83,
+  "ordering": 113,
   "responsibleId": 0,
   "commonResponseStatus": {
     "168498155": false,
@@ -320,7 +320,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-06-24T08:34:31.000Z",
-  "updatedAt": "2025-10-15T08:51:27.000Z",
+  "updatedAt": "2026-10-13T08:07:45.000Z",
   "creatorId": 1452584,
   "editorId": 493303,
   "creatorUserId": 1452584,

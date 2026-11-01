@@ -73,16 +73,13 @@
         },
         "skssqq": {
           "type": "string",
-          "description": "首年税款所属期起应在企业开业设立日期所在月份， 次年及之后应为每年1月,税款所属期起，格式：YYYYMMDD",
+          "description": "首年税款所属期起应在企业开业设立日期所在月份的1日， 次年及之后应为每年1月。税款所属期起，格式YYYYMMDD",
           "title": "税款所属期起"
         },
         "skssqz": {
           "type": "string",
           "title": "税款所属期止",
           "description": "税款所属期止，格式：YYYYMMDD"
-        },
-        "01JZS7HWRV2FS47BT1MAHWMGK9": {
-          "x-tmp-pending-properties": true
         }
       },
       "required": [
@@ -91,8 +88,7 @@
         "skssqq",
         "skssqz",
         "bbmc",
-        "tzzxx",
-        "01JZS7HWRV2FS47BT1MAHWMGK9"
+        "tzzxx"
       ],
       "x-apifox-orders": [
         "aggOrgId",
@@ -100,10 +96,10 @@
         "skssqq",
         "skssqz",
         "bbmc",
-        "tzzxx",
-        "01JZS7HWRV2FS47BT1MAHWMGK9"
+        "tzzxx"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -294,14 +290,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-16T08:28:41.000Z",
-  "updatedAt": "2025-07-21T10:01:25.000Z",
+  "updatedAt": "2026-10-17T05:54:56.000Z",
   "creatorId": 2400309,
-  "editorId": 1442097,
+  "editorId": 493303,
   "creatorUserId": 2400309,
-  "editorUserId": 1442097,
-  "responseChildren": [
-    "BLANK.656567911"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

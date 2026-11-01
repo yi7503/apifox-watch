@@ -41,7 +41,7 @@
         },
         "skssqq": {
           "type": "string",
-          "description": "税款所属期起，格式：YYYYMMDD",
+          "description": "首年税款所属期起应在企业开业设立日期所在月份的1日， 次年及之后应为每年1月。税款所属期起，格式YYYYMMDD",
           "title": "税款所属期起"
         },
         "skssqz": {
@@ -70,6 +70,7 @@
         "bbmc"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -260,14 +261,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-16T08:46:43.000Z",
-  "updatedAt": "2025-05-22T12:32:04.000Z",
+  "updatedAt": "2026-10-17T05:56:35.000Z",
   "creatorId": 2400309,
-  "editorId": 2400309,
+  "editorId": 493303,
   "creatorUserId": 2400309,
-  "editorUserId": 2400309,
-  "responseChildren": [
-    "BLANK.656596680"
-  ],
+  "editorUserId": 493303,
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

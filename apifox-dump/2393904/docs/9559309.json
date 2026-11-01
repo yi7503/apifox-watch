@@ -1,0 +1,17 @@
+{
+  "id": 9559309,
+  "name": "购进农产品用于生产经营且不构成货物实体核定农产品增值税进项税额计算表",
+  "sidebarTitle": "",
+  "content": "## 概述\n\n 购进农产品用于生产经营且不构成货物实体核定农产品增值税进项税额计算表\n## 报文结构\n```\n   \"zzsybnsrgjncpyyscjyqbgchwsthdncpzzsjxsejsb\": { // 购进农产品用于生产经营且不构成货物实体核定农产品增值税进项税额计算表\n\n        \"gjncpyyscjyqbgchwsthdncpzzsjxsejsb\": {\n            \"gjncpyyscjyqbgchwsthdncpzzsjxseGrid\": {\n                \"dqyxdkncpjxseHj\": \"629.49\", //当期允许抵扣农产品进项税额元,合计（小数点后保留2位小数）\n                \"gjncpyyscjyqbgchwsthdncpzzsjxseGridlbVO\": [{\n                        \"xh\": \"1\", // 序号\n                        \"cpmc\": \"15100000|酒精\", // 产品名称\n                        \"hyncpmc\": \"农产品名称1\", // 耗用农产品名称\n                        \"dqhyncpsl\": \"2.2355\", // 当期耗用农产品数量（吨）（小数点后保留4位小数）\n                        \"qckcncpsl\": \"9.8712\", // 期初库存农产品数量（吨）（小数点后保留4位小数）\n                        \"qcpjmj\": \"56.30\", // 期初平均买价（元/吨）（小数点后保留2位小数）\n                        \"dqgjncpsl\": \"10.2412\", // 当期购进农产品数量（吨）（小数点后保留4位小数）\n                        \"dqmj\": \"0.98\", // 当期买价（元/吨）（小数点后保留2位小数）\n                        \"ncppjgmdj\": \"9.99\", // 农产品平均购买单价（元/吨）（小数点后保留2位小数）\n                        \"kclmc\": \"9.0%\", // 扣除率（9.0%，10.0%）\n                        \"dqyxdkncpjxse\": \"23.22\" // 当期允许抵扣农产品进项税额（元）（小数点后保留2位小数）\n                    }\n                ]\n            }\n        }\n    }\n\n```",
+  "folderId": 97715918,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-17T02:57:53.000Z",
+  "updatedAt": "2026-10-29T11:52:06.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -250,13 +250,52 @@
                       ]
                     },
                     "title": "申报结果"
+                  },
+                  "sbyylb": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "xm": {
+                          "type": "string",
+                          "title": "姓名"
+                        },
+                        "zjlx": {
+                          "type": "string",
+                          "title": "证件类型"
+                        },
+                        "zjhm": {
+                          "type": "string",
+                          "title": "证件号码"
+                        },
+                        "zsxm": {
+                          "type": "string",
+                          "title": "征收项目"
+                        },
+                        "zspm": {
+                          "type": "string",
+                          "title": "征收品目"
+                        },
+                        "jyjg": {
+                          "type": "string",
+                          "title": "校验结果"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "xm",
+                        "zjlx",
+                        "zjhm",
+                        "zsxm",
+                        "zspm",
+                        "jyjg"
+                      ]
+                    },
+                    "title": "失败原因列表"
                   }
                 },
-                "required": [
-                  "sbjglb"
-                ],
                 "x-apifox-orders": [
-                  "sbjglb"
+                  "sbjglb",
+                  "sbyylb"
                 ],
                 "title": "任务返回业务结果"
               }
@@ -333,11 +372,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-14T06:55:12.000Z",
-  "updatedAt": "2026-07-22T01:43:11.000Z",
+  "updatedAt": "2026-10-17T08:36:47.000Z",
   "creatorId": 1442097,
-  "editorId": 493303,
+  "editorId": 1910680,
   "creatorUserId": 1442097,
-  "editorUserId": 493303,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

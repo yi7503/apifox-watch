@@ -71,8 +71,7 @@
             "required": [
               "yzpzzlDm",
               "ssqQ",
-              "ssqZ",
-              "ywxxb"
+              "ssqZ"
             ],
             "properties": {
               "yzpzzlDm": {
@@ -93,7 +92,7 @@
               "zsxmDm": {
                 "type": "string",
                 "title": "征收项目代码",
-                "description": "工会经费=39900/水利建设专项收入=30221 合并=39999 通用申报必传"
+                "description": "通用申报必传\n工会经费=39900/水利建设专项收入=30221 合并=39999 "
               },
               "zspmDm": {
                 "type": "string",
@@ -158,7 +157,7 @@
               "fbsxAMc": {
                 "type": "array",
                 "title": "出口方式",
-                "description": "发生了自营出口业务、发生了委托出口业务、承担了代理出口业务 。允许多传选项",
+                "description": "非必传参数，仅企业所得税预缴初始化使用。传参选项：发生了自营出口业务、发生了委托出口业务",
                 "items": {
                   "type": "string"
                 }
@@ -166,12 +165,12 @@
               "xzqhszDm": {
                 "type": "string",
                 "title": "跨省总机构行政区划代码",
-                "description": "要求6位，参考附录中地区代码，例如北京：110000"
+                "description": "非必传参数，仅企业所得税预缴时分支机构获取初始化使用。要求6位，参考附录中地区代码，例如北京：110000"
               },
               "formList": {
                 "type": "array",
                 "title": "获取表单数据",
-                "description": "企业所得税汇缴初始化生效：\n[\"A000000\",\"A100000\",\"A101010\",\"A102010\",\"A104000\",\"A105050\",\"A105000\",\"A105080\",\"A106000\"]\n仅支持以下表单\n\"A000000\":  \"企业所得税年度纳税申报基础信息表\", 必传\n\"A100000\": \"企业所得税年度纳税申报主表（2024年版）\", 必传\n\"A101010\": \"一般企业收入明细表\",\n\"A102010\":\"一般企业成本支出明细表\",\n\"A104000\": \"期间费用明细表\",\n\"A105050\": \"职工薪酬支出及纳税调整明细表\",\n\"A105000\": \"纳税调整项目明细表\",\n\"A105080\":\"资产折旧、摊销及纳税调整明细表\",\n\"A106000\": \"企业所得税弥补亏损明细表\"",
+                "description": "非必传参数，仅企业所得税汇缴初始化生效：\n[\"A000000\",\"A100000\",\"A101010\",\"A102010\",\"A104000\",\"A105050\",\"A105000\",\"A105080\",\"A106000\"]\n仅支持以下表单\n\"A000000\":  \"企业所得税年度纳税申报基础信息表\", 必传\n\"A100000\": \"企业所得税年度纳税申报主表（2024年版）\", 必传\n\"A101010\": \"一般企业收入明细表\",\n\"A102010\":\"一般企业成本支出明细表\",\n\"A104000\": \"期间费用明细表\",\n\"A105050\": \"职工薪酬支出及纳税调整明细表\",\n\"A105000\": \"纳税调整项目明细表\",\n\"A105080\":\"资产折旧、摊销及纳税调整明细表\",\n\"A106000\": \"企业所得税弥补亏损明细表\"",
                 "items": {
                   "type": "string"
                 }
@@ -181,31 +180,21 @@
                 "title": "房产编号",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "非必传参数，仅房产税初始化使用。"
               },
               "tdbhList": {
                 "type": "array",
                 "title": "城镇土地编号",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "非必传参数，仅房产税初始化使用。"
               },
               "ywxxb": {
-                "type": "object",
-                "title": "增值税新版业务信息表",
-                "description": "jsonobject",
-                "x-apifox-orders": [
-                  "blsx",
-                  "zzsHznsqk",
-                  "ybnsryxqq",
-                  "ywlxs",
-                  "tsnsrlxs",
-                  "syzclxs"
-                ],
-                "required": [
-                  "blsx",
-                  "zzsHznsqk",
-                  "ywlxs"
+                "type": [
+                  "object",
+                  "null"
                 ],
                 "properties": {
                   "blsx": {
@@ -247,7 +236,22 @@
                       "type": "string"
                     }
                   }
-                }
+                },
+                "x-apifox-orders": [
+                  "blsx",
+                  "zzsHznsqk",
+                  "ybnsryxqq",
+                  "ywlxs",
+                  "tsnsrlxs",
+                  "syzclxs"
+                ],
+                "title": "增值税新版业务信息表",
+                "description": "非必传参数，仅2026新版增值初始化业务需要时上传该节点",
+                "required": [
+                  "blsx",
+                  "zzsHznsqk",
+                  "ywlxs"
+                ]
               }
             }
           }
@@ -423,11 +427,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-31T03:29:11.000Z",
-  "updatedAt": "2026-09-11T04:01:46.000Z",
+  "updatedAt": "2026-09-16T06:07:20.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 1476015,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

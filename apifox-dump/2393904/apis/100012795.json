@@ -203,7 +203,7 @@
   "codeSamples": [],
   "projectId": 2393904,
   "moduleId": 306844,
-  "folderId": 19773348,
+  "folderId": 98239354,
   "ordering": 105,
   "responsibleId": 0,
   "commonResponseStatus": {},
@@ -215,11 +215,11 @@
   "oasExtensions": null,
   "mockScript": {},
   "createdAt": "2024-09-24T08:27:32.000Z",
-  "updatedAt": "2024-09-24T08:27:32.000Z",
+  "updatedAt": "2026-10-25T13:03:15.000Z",
   "creatorId": 493303,
-  "editorId": 493303,
+  "editorId": 2683110,
   "creatorUserId": 493303,
-  "editorUserId": 493303,
+  "editorUserId": 2683110,
   "responseChildren": [
     "BLANK.248847729"
   ],
