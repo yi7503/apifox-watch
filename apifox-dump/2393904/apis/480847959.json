@@ -482,6 +482,22 @@
                                   "wzmyylyjjegr": {
                                     "type": "number",
                                     "description": "外资民营个体经济养老保险应缴金额-个人"
+                                  },
+                                  "zhjbyljfjsdw": {
+                                    "type": "number",
+                                    "description": "综合基本医疗保险缴费基数-单位"
+                                  },
+                                  "zhjbylyjjedw": {
+                                    "type": "number",
+                                    "description": "综合基本医疗保险应缴金额-单位"
+                                  },
+                                  "zhjbyljfjsgr": {
+                                    "type": "number",
+                                    "description": "综合基本医疗保险缴费基数-个人"
+                                  },
+                                  "zhjbylyjjegr": {
+                                    "type": "number",
+                                    "description": "综合基本医疗保险应缴金额-个人"
                                   }
                                 },
                                 "x-apifox-orders": [
@@ -533,7 +549,11 @@
                                   "xxxxyjje",
                                   "dwbfhj",
                                   "grbfhj",
-                                  "yjjehj"
+                                  "yjjehj",
+                                  "zhjbyljfjsdw",
+                                  "zhjbylyjjedw",
+                                  "zhjbyljfjsgr",
+                                  "zhjbylyjjegr"
                                 ],
                                 "required": [
                                   "wzmyylyjjedw"
@@ -709,11 +729,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-07-01T07:49:38.000Z",
-  "updatedAt": "2026-07-23T10:10:26.000Z",
+  "updatedAt": "2026-09-14T10:25:05.000Z",
   "creatorId": 1452584,
-  "editorId": 1442097,
+  "editorId": 1910680,
   "creatorUserId": 1452584,
-  "editorUserId": 1442097,
+  "editorUserId": 1910680,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

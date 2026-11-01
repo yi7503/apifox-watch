@@ -57,7 +57,7 @@
         "smmm": {
           "type": "string",
           "title": "实名密码",
-          "description": "当mmlx=2时，必填 （密码加密）"
+          "description": "当mmlx=2时，必填 （密码加密）加密前原密码长度限制15位"
         },
         "djxhid": {
           "type": "string",
@@ -111,6 +111,7 @@
         "areaid"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -296,11 +297,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-14T02:24:30.000Z",
-  "updatedAt": "2026-01-15T07:53:41.000Z",
+  "updatedAt": "2026-09-21T06:55:19.000Z",
   "creatorId": 1442097,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1442097,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

@@ -1,6 +1,6 @@
 {
   "id": 207224975,
-  "name": "待处理农产品采集",
+  "name": "待处理农产品发票采集",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -30,6 +30,7 @@
         "01K5FV30B5ZVQFKRS7AB3KVDJ7"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -256,15 +257,7 @@
   "folderId": 58712055,
   "ordering": 841,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {}
   },
@@ -272,16 +265,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-08-21T09:38:36.000Z",
-  "updatedAt": "2025-09-19T07:06:55.000Z",
+  "updatedAt": "2026-10-29T07:31:04.000Z",
   "creatorId": 1426961,
-  "editorId": 3099717,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 3099717,
-  "responseChildren": [
-    "BLANK.514993491",
-    "BLANK.773121604",
-    "BLANK.773121605"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

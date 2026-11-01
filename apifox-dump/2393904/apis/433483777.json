@@ -211,7 +211,7 @@
               },
               "fpwj": {
                 "type": "string",
-                "description": "发票文件, base64"
+                "description": "发票表格文件, base64"
               }
             },
             "x-apifox-orders": [
@@ -244,7 +244,7 @@
     {
       "name": "成功示例",
       "responseId": 789981527,
-      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"fpmxlb\": [\n            {\n                \"dkrxm\": \"张三\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101199001011234\",\n                \"fphm\": \"12345678\",\n                \"fpdm\": \"110001900111\",\n                \"kprq\": \"2024-03-15\",\n                \"hwlwfwmc\": \"咨询服务费\",\n                \"je\": \"10000.00\",\n                \"sl\": \"0.06\",\n                \"se\": \"600.00\",\n                \"jshj\": \"10600.00\",\n                \"sdxm\": \"劳务报酬所得\"\n            },\n            {\n                \"dkrxm\": \"李四\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101198501015678\",\n                \"fphm\": \"12345679\",\n                \"fpdm\": \"110001900111\",\n                \"kprq\": \"2024-03-20\",\n                \"hwlwfwmc\": \"技术服务费\",\n                \"je\": \"15000.00\",\n                \"sl\": \"0.06\",\n                \"se\": \"900.00\",\n                \"jshj\": \"15900.00\",\n                \"sdxm\": \"劳务报酬所得\"\n            }\n        ],\n        \"fpwj\": \"/invoices/2024/03/fp_12345678.pdf\"\n    }\n}",
+      "data": "{\n    \"code\": \"2000\",\n    \"reqId\": \"53ae198acf85fc\",\n    \"success\": true,\n    \"data\": {\n        \"fpmxlb\": [\n            {\n                \"dkrxm\": \"张三\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101199001011234\",\n                \"fphm\": \"12345678\",\n                \"fpdm\": \"110001900111\",\n                \"kprq\": \"2024-03-15\",\n                \"hwlwfwmc\": \"咨询服务费\",\n                \"je\": \"10000.00\",\n                \"sl\": \"0.06\",\n                \"se\": \"600.00\",\n                \"jshj\": \"10600.00\",\n                \"sdxm\": \"劳务报酬所得\"\n            },\n            {\n                \"dkrxm\": \"李四\",\n                \"zzlx\": \"身份证\",\n                \"zzhm\": \"110101198501015678\",\n                \"fphm\": \"12345679\",\n                \"fpdm\": \"110001900111\",\n                \"kprq\": \"2024-03-20\",\n                \"hwlwfwmc\": \"技术服务费\",\n                \"je\": \"15000.00\",\n                \"sl\": \"0.06\",\n                \"se\": \"900.00\",\n                \"jshj\": \"15900.00\",\n                \"sdxm\": \"劳务报酬所得\"\n            }\n        ],\n        \"fpwj\": \"/invoices/2024/03/fp_12345678.xls\"\n    }\n}",
       "description": "",
       "oasKey": "",
       "oasExtensions": "",
@@ -265,11 +265,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2026-03-25T09:02:47.000Z",
-  "updatedAt": "2026-04-08T03:25:24.000Z",
+  "updatedAt": "2026-10-27T03:17:39.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 493303,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 493303,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

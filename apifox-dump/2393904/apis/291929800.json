@@ -190,12 +190,16 @@
               "snzzzgpjrs": {
                 "type": "string",
                 "title": "上年在职职工平均人数",
-                "description": "指用人单位有用工参保登记的职工的年平均人数"
+                "description": "指用人单位有用工参保登记的职工的年平均人数;\n上年度每月申报人次汇总/申报月数四舍五入取整。(如果申报了12个月，是12个月的申报人次合/12)"
               },
               "snzggzze": {
                 "type": "string",
                 "title": "上年职工工资总额",
                 "description": "上年度，每月当期收入求和汇总"
+              },
+              "gjjtzsx": {
+                "type": "string",
+                "title": "公积金调整上限"
               }
             },
             "x-apifox-refs": {},
@@ -204,7 +208,8 @@
               "njsx",
               "npjgz",
               "snzzzgpjrs",
-              "snzggzze"
+              "snzggzze",
+              "gjjtzsx"
             ]
           }
         },
@@ -246,7 +251,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 48153091,
-  "ordering": 86,
+  "ordering": 125,
   "responsibleId": 0,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -259,11 +264,11 @@
     "enable": false
   },
   "createdAt": "2025-05-06T02:07:42.000Z",
-  "updatedAt": "2025-12-08T14:19:27.000Z",
+  "updatedAt": "2026-10-13T08:07:45.000Z",
   "creatorId": 1442097,
-  "editorId": 2795319,
+  "editorId": 3222025,
   "creatorUserId": 1442097,
-  "editorUserId": 2795319,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

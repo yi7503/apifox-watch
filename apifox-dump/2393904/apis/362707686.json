@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "单位缴费记录打印\n陕西、湖南、辽宁、四川税局无该功能，故无法进行单位缴费记录打印",
+  "description": "单位缴费记录打印\n陕西、湖南、辽宁、四川。内蒙税局无该功能，故无法进行单位缴费记录打印",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -66,6 +66,7 @@
         "jfrqz"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -174,11 +175,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-10-17T09:07:46.000Z",
-  "updatedAt": "2026-01-08T12:47:26.000Z",
+  "updatedAt": "2026-10-30T06:52:55.000Z",
   "creatorId": 1910680,
-  "editorId": 1910680,
+  "editorId": 3222025,
   "creatorUserId": 1910680,
-  "editorUserId": 1910680,
+  "editorUserId": 3222025,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

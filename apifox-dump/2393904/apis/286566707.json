@@ -54,6 +54,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -270,11 +271,27 @@
                         },
                         "fkztbj": {
                           "type": "string",
-                          "description": "反馈状态标记"
+                          "title": "反馈状态标记",
+                          "enum": [
+                            "8",
+                            "10"
+                          ],
+                          "x-apifox-enum": [
+                            {
+                              "value": "8",
+                              "name": "作废成功",
+                              "description": ""
+                            },
+                            {
+                              "value": "10",
+                              "name": "作废失败",
+                              "description": ""
+                            }
+                          ]
                         },
                         "fkzt": {
                           "type": "string",
-                          "description": "反馈状态描述"
+                          "title": "反馈状态描述"
                         },
                         "fknr": {
                           "type": "string",
@@ -387,14 +404,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-20T13:25:35.000Z",
-  "updatedAt": "2025-06-12T10:25:15.000Z",
+  "updatedAt": "2026-10-12T06:54:30.000Z",
   "creatorId": 2661157,
   "editorId": 493303,
   "creatorUserId": 2661157,
   "editorUserId": 493303,
-  "responseChildren": [
-    "BLANK.659290810"
-  ],
+  "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},
   "callbacks": ""

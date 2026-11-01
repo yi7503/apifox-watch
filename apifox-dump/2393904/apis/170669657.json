@@ -1,6 +1,6 @@
 {
   "id": 170669657,
-  "name": "代扣代缴凭证勾选",
+  "name": "代扣代缴完税凭证勾选",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -32,6 +32,7 @@
         "01K5FXTG6R7WKNXMX78Q3S7S8V"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -330,15 +331,7 @@
   "folderId": 58718987,
   "ordering": 789,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false,
-    "339435267": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
@@ -347,16 +340,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-11-05T01:54:05.000Z",
-  "updatedAt": "2025-09-19T07:31:26.000Z",
+  "updatedAt": "2026-10-29T07:36:25.000Z",
   "creatorId": 1426961,
-  "editorId": 3099717,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 3099717,
-  "responseChildren": [
-    "BLANK.443996193",
-    "BLANK.773186068",
-    "BLANK.773186069"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

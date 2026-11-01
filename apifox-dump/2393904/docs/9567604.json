@@ -1,0 +1,17 @@
+{
+  "id": 9567604,
+  "name": "农产品初始化檔案",
+  "sidebarTitle": "",
+  "content": "    \"ncpmcList\": [\"15100000|酒精\", \"16100002|棉纱（精梳）\"], //初始化返回的农产品名称集合",
+  "folderId": 92774138,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-20T06:10:42.000Z",
+  "updatedAt": "2026-10-21T07:25:01.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

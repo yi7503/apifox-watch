@@ -1,0 +1,17 @@
+{
+  "id": 9587290,
+  "name": "企业税-CODE码表",
+  "sidebarTitle": "",
+  "content": "### 一、公共CODE码表\n\n平台公共code码：http://openapi.qixiangyun.com/doc-8506205\n\n### 二、业务CODE码表\n\n企业税返回code码说明：[企业税code文件下载](https://custom-file-upload.oss-cn-beijing.aliyuncs.com/op-file-upload/企业税申报code说明1mvm0h8woz5hy2gli.xlsx)\n\n\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/701671/image-preview)",
+  "folderId": 13304132,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-24T06:15:22.000Z",
+  "updatedAt": "2026-10-27T13:46:41.000Z",
+  "creatorId": 1391922,
+  "editorId": 1391922,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

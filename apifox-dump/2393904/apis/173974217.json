@@ -927,6 +927,12 @@
       "responseId": 450726987,
       "data": "{\n    \"reqId\": \"7f3e7b6cf71b42d3a3c39f82471a77a4\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": {\n        \"pageIndex\": 1,\n        \"records\": 1,\n        \"pageSize\": 10,\n        \"list\": [\n            {\n                \"zz_fpdm\": \"********1211\",\n                \"fpfxdjDm\": \"01\",\n                \"fplxmc\": \"增值税电子普通发票\",\n                \"fplyDm\": \"1\",\n                \"kjhzfpdydlzfphm\": \"\",\n                \"fpkjztmc\": \"正常\",\n                \"fppzDm\": \"02\",\n                \"xsf_nsrsbh\": \"************G0FB09\",\n                \"se\": \"17.33\",\n                \"fpfxdjmc\": \"正常\",\n                \"fplxDm\": \"10\",\n                \"kprq\": \"2024-03-23 10:45:05\",\n                \"xsf_nsrmc\": \"********有限公司\",\n                \"je\": \"577.86\",\n                \"fpkjztDm\": \"0\",\n                \"zz_fphm\": \"****2516\",\n                \"gmf_nsrsbh\": \"************PDDL2G\",\n                \"fphm\": \"\",\n                \"fprzztDm\": \"00\",\n                \"zhbz\": \"N\"\n            }\n        ]\n    }\n}",
       "id": 408905752
+    },
+    {
+      "name": "异步请求",
+      "responseId": 450726987,
+      "data": "{\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"requestId\": \"202610191035107446******\",\r\n        \"message\": \"异步调用完成，请稍后调用asynResult进行结果查询\"\r\n    },\r\n    \"timestamp\": \"2026-10-19 10:35:10\",\r\n    \"reqId\": \"de68523bf4df920a1ba73af84663e***\"\r\n}",
+      "id": "01a15205-43f9-7329-ad5d-b587fab52ea3"
     }
   ],
   "codeSamples": [],
@@ -946,11 +952,11 @@
     "enable": false
   },
   "createdAt": "2024-07-17T07:45:00.000Z",
-  "updatedAt": "2026-08-05T10:35:32.000Z",
+  "updatedAt": "2026-10-19T02:37:19.000Z",
   "creatorId": 1875505,
-  "editorId": 1564651,
+  "editorId": 2118003,
   "creatorUserId": 1875505,
-  "editorUserId": 1564651,
+  "editorUserId": 2118003,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

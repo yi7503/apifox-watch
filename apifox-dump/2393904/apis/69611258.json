@@ -7,7 +7,7 @@
   "postProcessors": [],
   "inheritPreProcessors": {},
   "inheritPostProcessors": {},
-  "description": "## 接口即将废弃\n请用上传税报表数据以及上传财报报表数据这2个接口中isDirectDeclare=true直接发起申报\n## 接口描述\n根据税费种明细和税款所属期发起已经确认过数据的税费种申报任务。不再维护\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n|PARAMETER_ERROR   | 请求参数year或period不能为空！   |\n|PARAMETER_ERROR|请求参数year或period不合法！|\n|PARAMETER_ERROR |参数yzpzzlDms和zsxmList不能都为空！ |\n| PARAMETER_ERROR|参数yzpzzlDms和zsxmList不能都存在！ |\n|PARAMETER_ERROR |应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |\n| BUSINESS_ERROR|预约扣款情况，预约扣款日期必填并且是yyyy-MM-dd格式，当前错误值：XXX |",
+  "description": "## 接口已废弃，支持的税种有限\n请用上传税报表数据以及上传财报报表数据这2个接口中isDirectDeclare=true直接发起申报\n## 接口描述\n根据税费种明细和税款所属期发起已经确认过数据的税费种申报任务。不再维护\n## 错误码\n| **错误代码** | **错误信息**  | **解决方案**|\n| --- | --- |---|\n|PARAMETER_ERROR|企业Id(aggOrgId)不能为空！|\n|PARAMETER_ERROR   | 请求参数year或period不能为空！   |\n|PARAMETER_ERROR|请求参数year或period不合法！|\n|PARAMETER_ERROR |参数yzpzzlDms和zsxmList不能都为空！ |\n| PARAMETER_ERROR|参数yzpzzlDms和zsxmList不能都存在！ |\n|PARAMETER_ERROR |应征凭证种类代码为BDA0611033的企业所得税A类（2018年版）（查账征收）已停用，<br>请改用应征凭证种类代码BDA0611159来标志企业所得税A类（2021年版A类）（查账征收) |\n| BUSINESS_ERROR|预约扣款情况，预约扣款日期必填并且是yyyy-MM-dd格式，当前错误值：XXX |",
   "operationId": "",
   "sourceUrl": "",
   "method": "post",
@@ -196,6 +196,8 @@
         "zsxmList"
       ]
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n    \"aggOrgId\": 447111111111200,\r\n    \"year\": 2023,\r\n    \"period\": 3,\r\n    \"kkfs\": 2,\r\n    \"yykkrq\":\"2023-12-13\",\r\n    \"zsxmList\": [\r\n        {\r\n            \"yzpzzlDm\":\"BDA0610606\",\r\n            \"ssqQ\":\"2023-02-01\",\r\n            \"ssqZ\":\"2023-02-28\"\r\n        }\r\n        \r\n    ]\r\n}",
@@ -352,14 +354,12 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-07-31T02:01:25.000Z",
-  "updatedAt": "2025-05-27T02:00:17.000Z",
+  "updatedAt": "2026-10-08T10:21:38.000Z",
   "creatorId": 2122743,
-  "editorId": 1476015,
+  "editorId": 1442097,
   "creatorUserId": 2122743,
-  "editorUserId": 1476015,
-  "responseChildren": [
-    "BLANK.176663350"
-  ],
+  "editorUserId": 1442097,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

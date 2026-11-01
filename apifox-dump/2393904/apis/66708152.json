@@ -142,29 +142,22 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 13281987,
-  "ordering": 164,
+  "ordering": 201,
   "responsibleId": 0,
-  "commonResponseStatus": {
-    "168498155": false,
-    "168498156": false,
-    "168498157": false,
-    "168542879": false,
-    "168595624": false,
-    "235125880": false
-  },
+  "commonResponseStatus": {},
   "advancedSettings": {
     "disabledSystemHeaders": {},
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-07T09:46:41.000Z",
-  "updatedAt": "2024-12-03T08:30:27.000Z",
+  "updatedAt": "2026-10-22T03:40:19.000Z",
   "creatorId": 887778,
-  "editorId": 1910680,
+  "editorId": 1442097,
   "creatorUserId": 887778,
-  "editorUserId": 1910680,
+  "editorUserId": 1442097,
   "responseChildren": [
     "BLANK.169563945"
   ],

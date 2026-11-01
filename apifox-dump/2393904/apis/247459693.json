@@ -1,6 +1,6 @@
 {
   "id": 247459693,
-  "name": "申报密码创建",
+  "name": "申报账密创建及修改",
   "type": "http",
   "serverId": "",
   "preProcessors": [
@@ -57,7 +57,7 @@
         "smmm": {
           "type": "string",
           "title": "实名密码",
-          "description": "当mmlx=2时，必填 （密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）"
+          "description": "当mmlx=2时，必填 （密码需加密，加密参考[加密说明](apifox://link/pages/3774763) ）加密前原密码长度限制15位"
         },
         "djxhid": {
           "type": "string",
@@ -86,7 +86,7 @@
         "sbmm": {
           "type": "string",
           "title": "申报密码",
-          "description": "当mmlx=0时，必填 （密码需加密 加密参考[加密说明](apifox://link/pages/3774763) ）"
+          "description": "当mmlx=0时，必填 （密码需加密 加密参考[加密说明](apifox://link/pages/3774763) ）加密前原密码长度限制20位"
         }
       },
       "x-apifox-orders": [
@@ -299,7 +299,7 @@
     "enable": false
   },
   "createdAt": "2024-12-23T09:36:40.000Z",
-  "updatedAt": "2026-08-15T02:12:20.000Z",
+  "updatedAt": "2026-10-20T01:21:25.000Z",
   "creatorId": 1452584,
   "editorId": 493303,
   "creatorUserId": 1452584,

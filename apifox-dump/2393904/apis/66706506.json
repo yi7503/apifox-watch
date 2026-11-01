@@ -1161,7 +1161,7 @@
                   "hdzxqz",
                   "dqdehdxx"
                 ],
-                "description": "对应税局路径：账户中心-身份切换-跨区域办税-税源登记选择"
+                "description": "对应税局路径：我要查询-纳税人信息查询-核定征收信息"
               },
               "zfzjg": {
                 "type": "array",
@@ -1306,6 +1306,41 @@
                     "accountingstandardCode": {
                       "type": "string",
                       "title": "企业会计制度编码"
+                    },
+                    "sygtgshyssdb": {
+                      "type": "string",
+                      "title": "应税所得表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "sygtgshlclrb": {
+                      "type": "string",
+                      "title": "留存利润表 ",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "ywhdb": {
+                      "type": "string",
+                      "title": "业务活动表 ",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "srfyb": {
+                      "type": "string",
+                      "title": "收入费用表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    " jzcbdb": {
+                      "type": "string",
+                      "title": "净资产变动表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    " nyhzsyyfpbVO": {
+                      "type": "string",
+                      "title": "盈余及盈余分配表",
+                      "description": "Y=备案  N未备案"
+                    },
+                    "nyhzscyqybdbVO": {
+                      "type": "string",
+                      "title": "成员权益变动表",
+                      "description": "Y=备案  N未备案"
                     }
                   },
                   "x-apifox-orders": [
@@ -1322,7 +1357,14 @@
                     "lrb",
                     "xjllb",
                     "syzqybdb",
-                    "fz"
+                    "fz",
+                    "sygtgshyssdb",
+                    "sygtgshlclrb",
+                    "ywhdb",
+                    "srfyb",
+                    " jzcbdb",
+                    " nyhzsyyfpbVO",
+                    "nyhzscyqybdbVO"
                   ],
                   "required": [
                     "yxqq",
@@ -1338,7 +1380,14 @@
                     "syzqybdb",
                     "fz",
                     "accountingStandardName",
-                    "accountingstandardCode"
+                    "accountingstandardCode",
+                    "sygtgshyssdb",
+                    "sygtgshlclrb",
+                    "ywhdb",
+                    "srfyb",
+                    " jzcbdb",
+                    " nyhzsyyfpbVO",
+                    "nyhzscyqybdbVO"
                   ]
                 },
                 "title": "财报全部备案信息",
@@ -1346,6 +1395,94 @@
               },
               "sdshd": {
                 "$ref": "#/definitions/294636872"
+              },
+              "qyjyxx": {
+                "type": "object",
+                "properties": {
+                  "zczb": {
+                    "type": "string",
+                    "title": "注册资本"
+                  },
+                  "zczbHbszDm": {
+                    "type": "string",
+                    "title": "注册资本币种代码"
+                  },
+                  "zczbHbszMc": {
+                    "type": "string",
+                    "title": "注册资本币种名称"
+                  },
+                  "tzze": {
+                    "type": "string",
+                    "title": "投资总额"
+                  },
+                  "tzzeHbszDm": {
+                    "type": "string",
+                    "title": "投资总额币种代码"
+                  },
+                  "tzzeHbszMc": {
+                    "type": "string",
+                    "title": "投资总额币种名称"
+                  },
+                  "hsfsDm": {
+                    "type": "string",
+                    "title": "核算方式代码"
+                  },
+                  "hsfs": {
+                    "type": "string",
+                    "title": "核算方式"
+                  },
+                  "cyrs": {
+                    "type": "string",
+                    "title": "从业人数"
+                  },
+                  "wjcyrs": {
+                    "type": "string",
+                    "title": "外籍从业人数"
+                  },
+                  "hhrs": {
+                    "type": "string",
+                    "title": "合伙人数"
+                  },
+                  "ggrs": {
+                    "type": "string",
+                    "title": "雇工人数"
+                  },
+                  "gdgrs": {
+                    "type": "string",
+                    "title": "股东人数"
+                  },
+                  "jyfw": {
+                    "type": "string",
+                    "title": "经营范围"
+                  },
+                  "hbszDm": {
+                    "type": "string",
+                    "title": "币种代码"
+                  },
+                  "hbszMc": {
+                    "type": "string",
+                    "title": "币种名称"
+                  }
+                },
+                "x-apifox-orders": [
+                  "zczb",
+                  "zczbHbszDm",
+                  "zczbHbszMc",
+                  "tzze",
+                  "tzzeHbszDm",
+                  "tzzeHbszMc",
+                  "hsfsDm",
+                  "hsfs",
+                  "cyrs",
+                  "wjcyrs",
+                  "hhrs",
+                  "ggrs",
+                  "gdgrs",
+                  "jyfw",
+                  "hbszDm",
+                  "hbszMc"
+                ],
+                "title": "企业经营信息"
               }
             },
             "x-apifox-refs": {},
@@ -1365,7 +1502,8 @@
               "hdzsxx",
               "sdshd",
               "zfzjg",
-              "cwbbba"
+              "cwbbba",
+              "qyjyxx"
             ],
             "required": [
               "taxPaymentMessageDtos",
@@ -1427,7 +1565,7 @@
   "projectId": 2393904,
   "moduleId": 306844,
   "folderId": 13281987,
-  "ordering": 122,
+  "ordering": 147,
   "responsibleId": 0,
   "commonResponseStatus": {},
   "advancedSettings": {
@@ -1438,11 +1576,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-09-29T15:33:02.000Z",
-  "updatedAt": "2026-09-11T03:46:55.000Z",
+  "updatedAt": "2026-10-22T03:40:19.000Z",
   "creatorId": 1452584,
-  "editorId": 1476015,
+  "editorId": 1442097,
   "creatorUserId": 1452584,
-  "editorUserId": 1476015,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

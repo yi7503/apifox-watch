@@ -12,15 +12,16 @@ tags:
 - name: 数据业务 / 企业商事查询 / 企业360度数据洞察 / 风险识别-黑名单场景
 - name: 数据业务 / 企业商事查询 / 企业信息查询
 - name: 数据业务 / 企业商事查询 / 企业联系人信息查询
-- name: 数据业务 / 企业商事查询 / 新增企业查询
-- name: 数据业务 / 企业数据采集 / 解析版
+- name: 数据业务 / 企业数据采集 / 发起企业数据采集
+- name: 数据业务 / 企业数据采集 / 回调接口
+- name: 数据业务 / 企业数据采集 / 获取采集状态及数据
 paths:
   /v2/collect/invoice/getCollectTaskPageData:
     post:
       summary: 获取发票数据
       operationId: api-119239827
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 获取采集状态及数据
       description: |
         描述：仅获取发票采集状态及数据的接口
         注：发票数据量会过多一个月发票明细返回一个json进行整体压缩，返回压缩文件文件进行加密，解密方式参考附录示例
@@ -464,7 +465,7 @@ paths:
       summary: 获取税务数据
       operationId: api-119267313
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 获取采集状态及数据
       description: |
         描述：仅获取基础信息和税务采集状态及数据的接口
 
@@ -4654,7 +4655,7 @@ paths:
       summary: 发起企业数据采集
       operationId: api-148769453
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 发起企业数据采集
       description: |-
         该接口用于发起企业数据采集（需区分自持和托管）：
         1. 自持账号模式下：自行异步登录后再调用该接口；
@@ -4945,7 +4946,7 @@ paths:
       summary: 获取采集状态及全量数据
       operationId: api-176336449
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 获取采集状态及数据
       description: |-
         描述：该接口用于获取采集状态及税务和发票信息数据。
         调用流程：
@@ -5781,7 +5782,7 @@ paths:
       summary: 获取采集状态信息
       operationId: api-199749234
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 获取采集状态及数据
       description: |-
         描述：该接口用于获取采集状态。
         调用流程：
@@ -6027,7 +6028,7 @@ paths:
       summary: 获取采集状态-回调通知
       operationId: api-199784772
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 回调接口
       description: |-
         描述：采集任务完成时回调通知客户。
         调用流程：
@@ -9290,422 +9291,6 @@ paths:
                     message: 查询无结果
                     data: null
       x-apifox-status: released
-  /v2/insight/newEnterprise:
-    post:
-      summary: 新增企业信息
-      operationId: api-257062815
-      tags:
-      - 数据业务 / 企业商事查询 / 新增企业查询
-      description: 可利用该接口查询新增企业相关信息。更新评率：一般是T+2；新注册企业基本上都在公示后2天推送。
-      parameters:
-      - name: Content-Type
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: access_token
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: req_date
-        in: header
-        required: false
-        schema:
-          type: string
-      - name: req_sign
-        in: header
-        required: false
-        schema:
-          type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                pageIndex:
-                  type: string
-                  title: 页码
-                  description: 默认第一页
-                pageSize:
-                  type: string
-                  title: 每页条数
-                  description: 默认50条 ，最大100条
-                registerDate:
-                  type: string
-                  title: 注册日期
-                  description: YYYY-MM-DD（t+1）
-                entstatus:
-                  type: string
-                  title: 企业类型
-                  enum:
-                  - 个体工商户
-                  - 有限责任公司
-                  - 股份有限公司
-                  - 集体所有制
-                  - 国有企业
-                  - 个人独资企业
-                  - 股份合作制
-                  - 有限合伙企业
-                  - 普通合伙企业
-                  - 外商投资企业
-                  - 联营企业
-                  - 私营企业
-                  x-apifox-enum:
-                  - name: ''
-                    value: 个体工商户
-                    description: ''
-                  - name: ''
-                    value: 有限责任公司
-                    description: ''
-                  - name: ''
-                    value: 股份有限公司
-                    description: ''
-                  - name: ''
-                    value: 集体所有制
-                    description: ''
-                  - name: ''
-                    value: 国有企业
-                    description: ''
-                  - name: ''
-                    value: 个人独资企业
-                    description: ''
-                  - name: ''
-                    value: 股份合作制
-                    description: ''
-                  - name: ''
-                    value: 有限合伙企业
-                    description: ''
-                  - name: ''
-                    value: 普通合伙企业
-                    description: ''
-                  - name: ''
-                    value: 外商投资企业
-                    description: ''
-                  - name: ''
-                    value: 联营企业
-                    description: ''
-                  - name: ''
-                    value: 私营企业
-                    description: ''
-                organizationType:
-                  type: string
-                  title: 登记状态码
-                  enum:
-                  - 1 存续
-                  - 2 注销
-                  - 3 吊销
-                  - 4 撤销
-                  - 5 迁出
-                  - 6 设立中
-                  - 7 清算中
-                  - 8 停业
-                  - 9 其他
-                  - 10 空
-                  - 11 歇业
-                  - 12 责令关闭
-                  - 13 已取缔非法社会组织
-                  - 14 涉嫌非法社会组织
-                  - 15 待注销
-                  x-apifox-enum:
-                  - name: ''
-                    value: 1 存续
-                    description: ''
-                  - name: ''
-                    value: 2 注销
-                    description: ''
-                  - name: ''
-                    value: 3 吊销
-                    description: ''
-                  - name: ''
-                    value: 4 撤销
-                    description: ''
-                  - name: ''
-                    value: 5 迁出
-                    description: ''
-                  - name: ''
-                    value: 6 设立中
-                    description: ''
-                  - name: ''
-                    value: 7 清算中
-                    description: ''
-                  - name: ''
-                    value: 8 停业
-                    description: ''
-                  - name: ''
-                    value: 9 其他
-                    description: ''
-                  - name: ''
-                    value: 10 空
-                    description: ''
-                  - name: ''
-                    value: 11 歇业
-                    description: ''
-                  - name: ''
-                    value: 12 责令关闭
-                    description: ''
-                  - name: ''
-                    value: 13 已取缔非法社会组织
-                    description: ''
-                  - name: ''
-                    value: 14 涉嫌非法社会组织
-                    description: ''
-                  - name: ''
-                    value: 15 待注销
-                    description: ''
-                areaCode:
-                  type: string
-                  title: 省份地区
-                  description: 默认全国，如需指定地区，见附录-地区码-省级地区码
-                organizationTypeCode:
-                  type: string
-                  title: 机构类型码
-                  enum:
-                  - 1560101 机关
-                  - 1560102 事业单位
-                  - 1560103 中央编办直接管理机构编制的群众团体
-                  - 1560201 律师执业机构
-                  - 1560202 公证处
-                  - 1560203 基层法律服务所
-                  - 1560204 司法鉴定机构
-                  - 1560205 仲裁委员会
-                  - 1560301 社会团体
-                  - 1560302 民办非企业单位
-                  - 1560303 基金会
-                  - 1560304 村民委员会
-                  - 1560305 居民委员会
-                  - 1560401 基层工会
-                  - 1560501 企业
-                  - 1560502 个体工商户
-                  - 1560503 农民专业合作社
-                  - 1560601 组级集体经济组织
-                  - 1560602 村级集体经济组织
-                  - 1560603 乡镇级集体经济组织
-                  - 1569999 其他
-                  - 3440101 香港
-                  - 4660101 澳门
-                  - 1580101 台湾
-                  x-apifox-enum:
-                  - name: ''
-                    value: 1560101 机关
-                    description: ''
-                  - name: ''
-                    value: 1560102 事业单位
-                    description: ''
-                  - name: ''
-                    value: 1560103 中央编办直接管理机构编制的群众团体
-                    description: ''
-                  - name: ''
-                    value: 1560201 律师执业机构
-                    description: ''
-                  - name: ''
-                    value: 1560202 公证处
-                    description: ''
-                  - name: ''
-                    value: 1560203 基层法律服务所
-                    description: ''
-                  - name: ''
-                    value: 1560204 司法鉴定机构
-                    description: ''
-                  - name: ''
-                    value: 1560205 仲裁委员会
-                    description: ''
-                  - name: ''
-                    value: 1560301 社会团体
-                    description: ''
-                  - name: ''
-                    value: 1560302 民办非企业单位
-                    description: ''
-                  - name: ''
-                    value: 1560303 基金会
-                    description: ''
-                  - name: ''
-                    value: 1560304 村民委员会
-                    description: ''
-                  - name: ''
-                    value: 1560305 居民委员会
-                    description: ''
-                  - name: ''
-                    value: 1560401 基层工会
-                    description: ''
-                  - name: ''
-                    value: 1560501 企业
-                    description: ''
-                  - name: ''
-                    value: 1560502 个体工商户
-                    description: ''
-                  - name: ''
-                    value: 1560503 农民专业合作社
-                    description: ''
-                  - name: ''
-                    value: 1560601 组级集体经济组织
-                    description: ''
-                  - name: ''
-                    value: 1560602 村级集体经济组织
-                    description: ''
-                  - name: ''
-                    value: 1560603 乡镇级集体经济组织
-                    description: ''
-                  - name: ''
-                    value: 1569999 其他
-                    description: ''
-                  - name: ''
-                    value: 3440101 香港
-                    description: ''
-                  - name: ''
-                    value: 4660101 澳门
-                    description: ''
-                  - name: ''
-                    value: 1580101 台湾
-                    description: ''
-              x-apifox-orders:
-              - areaCode
-              - registerDate
-              - entstatus
-              - organizationType
-              - organizationTypeCode
-              - pageIndex
-              - pageSize
-              required:
-              - registerDate
-              - areaCode
-            examples:
-              example_0:
-                summary: ''
-                value: null
-      responses:
-        '200':
-          description: 成功
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  code:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误码
-                    description: 错误码
-                  data:
-                    type:
-                    - object
-                    - 'null'
-                    properties:
-                      total:
-                        type: integer
-                        title: 总数
-                      pageSize:
-                        type: string
-                        title: 分页大小
-                        description: ''
-                      pageIndex:
-                        type: string
-                        title: 当前页
-                        description: ''
-                      items:
-                        type: array
-                        items:
-                          type: object
-                          properties: {}
-                          x-apifox-orders:
-                          - 01JPKPMZW0WMYPNBSD84N6E2WS
-                          required: []
-                          x-apifox-refs:
-                            01JPKPMZW0WMYPNBSD84N6E2WS:
-                              $ref: '#/definitions/148215440'
-                    x-apifox-orders:
-                    - total
-                    - pageSize
-                    - pageIndex
-                    - items
-                    title: 业务数据
-                    required:
-                    - total
-                    - pageSize
-                    - pageIndex
-                    - items
-                  success:
-                    description: 接口是否成功（是否发生业务异常）
-                    type: boolean
-                    title: 是否成功标记
-                  reqId:
-                    description: 由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位
-                    type: string
-                    title: 请求id
-                  message:
-                    type:
-                    - string
-                    - 'null'
-                    title: 错误信息
-                x-apifox-orders:
-                - reqId
-                - code
-                - success
-                - message
-                - data
-                required:
-                - code
-                - success
-                - reqId
-                - message
-                x-apifox-refs: {}
-              examples:
-                成功示例:
-                  summary: 成功示例
-                  value:
-                    reqId: cbf9964769c142b483492bd1ce9a493d
-                    code: '2000'
-                    success: true
-                    message: null
-                    data:
-                      total: 899
-                      pageSize: 20
-                      pageIndex: 1
-                      items:
-                      - cancelDate: ''
-                        totalAssets: ''
-                        city: 北京市
-                        businessEndTime: '2041-06-07'
-                        revokeDate: ''
-                        revokeReason: ''
-                        legalPersonType: P
-                        creditCode: 9111********90
-                        province: 北京
-                        oneLevelName: 科学研究和技术服务业
-                        entityName: 企享云（北京）信息技术有限公司
-                        legalPerson: 崔**
-                        businessAddress: 北京市海淀区彩和坊路********
-                        cancelReason: ''
-                        registerCode: '110105031220840'
-                        twoLevelName: 科技推广和应用服务业
-                        registerDate: '2021-06-08'
-                        actualCapital: ''
-                        businessScope: 一般项目：技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广；计算机系统服务；数据处理服务；人工智能基础软件开发；软件开发；软件销售；网络与信息安全软件开发；广告发布；广告设计、代理；广告制作；企业管理咨询；税务服务；咨询策划服务；计算机软硬件及辅助设备零售；计算机软硬件及辅助设备批发；通讯设备销售；人工智能应用软件开发。（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）许可项目：代理记账；互联网信息服务。（依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以相关部门批准文件或许可证件为准）（不得从事国家和本市产业政策禁止和限制类项目的经营活动。）
-                        checkDate: '2024-10-21'
-                        insuranceEmployeeCnt: '**人'
-                        registerDepartment: 北京市海淀区市场监督管理局
-                        threeLevelCode: M7590
-                        organizationType: 企业
-                        threeLevelName: 其他科技推广服务业
-                        businessStartTime: '2021-06-08'
-                        registerAddress: 北京市海淀区彩和坊路********
-                        registerCapital: '1008.0'
-                        organizationCode: ma*****9
-                        organizationTypeCode: '1560501'
-                        oneLevelCode: M0000
-                        twoLevelCode: M7500
-                异常示例:
-                  summary: 异常示例
-                  value:
-                    reqId: d1c7834e45f248caad1930a14c973e7a
-                    code: '100001'
-                    success: false
-                    message: 查询无结果
-                    data: null
-      x-apifox-status: released
   /v2/insight/trademarkInfo:
     post:
       summary: 商标信息
@@ -12036,7 +11621,7 @@ paths:
       summary: 采集任务（其他）-回调通知
       operationId: api-302460635
       tags:
-      - 数据业务 / 企业数据采集 / 解析版
+      - 数据业务 / 企业数据采集 / 回调接口
       description: |-
         描述：除采集完成状态通知外的其他回调通知，如：大票通知。
         调用流程：

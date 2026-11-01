@@ -1,0 +1,17 @@
+{
+  "id": 9533372,
+  "name": "2026年9月发布内容 ",
+  "sidebarTitle": "",
+  "content": ":::highlight orange 💡\n升级内容：\n:::\n\n## 一、登录业务\n1.查询用户登录切换次数(托管) \n基于税局日志，统计最近1小时、和今天总切换次数。\nhttps://openapi.qixiangyun.com/api-421071020\n2.查询账户中心登录日志\n查询昨天凌晨到今天的登录日志，用于排查掉线原因，请不要频繁调用。\nhttps://openapi.qixiangyun.com/api-506198506\n\n## 二、开放平台\n1.【开放平台】 小号申请增加申请人；\n2.【开放平台】允许用户撤回申请中的订单；\n3.【开发平台】客户提交办税小号订单时可备注项目等信息；\n4.【开放平台】增加小号驳回原因的字段展示；\n5.【办税小号申请】增加审核驳回的邮件通知；\n6.【开放平台】新增发票服务监控功能，支持增值税发票查验、非税票据查验的大盘状态查看。\n \n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/698907/image-preview)\n\n\n![图片.png](https://api.apifox.com/api/v1/projects/2393904/resources/698908/image-preview)\n\n",
+  "folderId": 51136061,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-10T08:07:28.000Z",
+  "updatedAt": "2026-10-10T09:13:57.000Z",
+  "creatorId": 2795319,
+  "editorId": 2795319,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -143,7 +143,8 @@
                 "zhzt": {
                   "type": "string",
                   "title": "账号状态",
-                  "description": "\"\" 未验证，0 验证通过，1 未通过'"
+                  "description": "\"\" 未验证，0 验证通过，1 未通过'",
+                  "deprecated": true
                 },
                 "gryhm": {
                   "type": "string",
@@ -203,7 +204,6 @@
                 "sflx",
                 "dq",
                 "accountId",
-                "zhzt",
                 "gryhm",
                 "nsrsbh",
                 "createTime",
@@ -313,11 +313,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-12-29T10:03:52.000Z",
-  "updatedAt": "2026-06-01T09:16:54.000Z",
+  "updatedAt": "2026-09-18T01:30:04.000Z",
   "creatorId": 2795319,
-  "editorId": 1391922,
+  "editorId": 2400309,
   "creatorUserId": 2795319,
-  "editorUserId": 1391922,
+  "editorUserId": 2400309,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

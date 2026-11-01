@@ -1,0 +1,274 @@
+{
+  "id": 515367691,
+  "name": "代开农产品发票录入",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n该接口用于发起企业电子发票服务平台（发票云）代开农产品发票录入申请。\n\n\n## 错误码\n| **错误代码**              | **错误消息**                                                 | **解决方案**                                                 |\n| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 600004                    | 未开通权限，请联系管理员！                                   | 与运营沟通申请开通对应权限                                   |\n| 505002                    | 接口调用异常，请联系管理员!                                  | 请联系管理员                                                 |\n| FprzBusinessVerification  | 请求任务正在执行中，请等待。                                 | 请稍后重新发起任务                                           |\n| FprzSqTaskFailed          | 申请任务发起失败！                                           | 请重新发起任务                                               |\n| FprzSyncToAsync        | 业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果 | 可以使用任务转异步返回的参数通过[代开农产品发票录入结果查询](https://openapi.qixiangyun.com/api-515343989)接口查询任务转异步后执行结果。 |",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/invoice/rz/sqDkNcpFpLr",
+  "tags": [
+    "发票认证"
+  ],
+  "status": "developing",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "x-apifox-refs": {
+        "01M2J5TP2QMQZ1KZS3B98WY7AV": {
+          "$ref": "#/definitions/313986598"
+        }
+      },
+      "properties": {},
+      "x-apifox-orders": [
+        "01M2J5TP2QMQZ1KZS3B98WY7AV"
+      ],
+      "required": []
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "name": "同步请求示例",
+        "value": "{\r\n    \"nsrsbh\": \"9131**********QY4Y\",\r\n    \"sync\": false,\r\n    \"dkNcpfp\": {\r\n        \"fpdm\": \"1234567890\",\r\n        \"fphm\": \"12345678\",\r\n        \"kprq\": \"2025-11-01\",\r\n        \"yxse\": \"3.25\",\r\n        \"ncpje\": \"10\",\r\n        \"ncpse\": \"3.25\",\r\n        \"isZp\": \"N\"\r\n    }\r\n}",
+        "mediaType": "application/json"
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "id": "e8SqimXHyi",
+        "name": "access_token",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "id": "OXKAJLtSp9",
+        "name": "req_date",
+        "required": true,
+        "description": "",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "id": "o6hHfJgALt",
+        "name": "req_sign",
+        "required": true,
+        "description": "待签名字符串 = HTTPMethod + \"_\" + Content-Md5 + \"_\" + req_date + \"_\" + access_token + \"_\" + AppSecret\n",
+        "type": "string",
+        "enable": true,
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 669203755,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {
+          "01H4JGP42PW7JZCEDQNZP0E3PV": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "title": "申请代开农产品发票录入任务Id"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "01H4JGP42PW7JZCEDQNZP0E3PV"
+        ],
+        "properties": {}
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": [],
+      "oasExtensions": ""
+    },
+    {
+      "id": 773166842,
+      "name": "同步请求成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5FWH427TSCCMQ7WW2FK5TNW"
+        ],
+        "x-apifox-refs": {
+          "01K5FWH427TSCCMQ7WW2FK5TNW": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01M2J5X26A765WQDF0NAFBDBAA"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01M2J5X26A765WQDF0NAFBDBAA": {
+                    "$ref": "#/definitions/313996877"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    },
+    {
+      "id": 773166843,
+      "name": "同步超时转异步",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "title": "",
+        "type": "object",
+        "properties": {},
+        "x-apifox-orders": [
+          "01K5FWP5JTSXBBA7WV2BH3TY73"
+        ],
+        "required": [],
+        "x-apifox-refs": {
+          "01K5FWP5JTSXBBA7WV2BH3TY73": {
+            "$ref": "#/definitions/35327531",
+            "x-apifox-overrides": {
+              "data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {},
+                "title": "业务数据",
+                "x-apifox-orders": [
+                  "01K5FWPE284KKC1F1FPP3TH6QH"
+                ],
+                "required": [],
+                "x-apifox-refs": {
+                  "01K5FWPE284KKC1F1FPP3TH6QH": {
+                    "$ref": "#/definitions/104050184"
+                  }
+                }
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 669203755,
+      "data": "{\n    \"reqId\": \"78e9ee85b96c47b4876d0a2209eae41e\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": null,\n    \"data\": 4756913728329408\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 587937493
+    },
+    {
+      "name": "同步成功示例",
+      "responseId": 669203755,
+      "data": "{\r\n    \"reqId\": \"f143cfa71b6f4f98a6096f664398b209\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"code\": null,\r\n        \"customReqId\": \"10001999f18bddbe8b56421eac84ff5bc68b741d\",\r\n        \"dkNcpFpLrInfo\": {\r\n            \"lrjg\": 1,\r\n            \"ncpse\": 3.25,\r\n            \"fpdm\": \"1234567890\",\r\n            \"kprq\": \"2025-11-01\",\r\n            \"yxse\": 3.25,\r\n            \"ncpje\": 10.00,\r\n            \"message\": \"录入成功\",\r\n            \"fphm\": \"12345678\"\r\n        },\r\n        \"message\": null,\r\n        \"zt\": \"3\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707666833
+    },
+    {
+      "name": "同步超时转异步示例",
+      "responseId": 669203755,
+      "data": "{\r\n    \"reqId\": \"0dd7f306967a44dfbfe251b8c5b5c240\",\r\n    \"code\": \"2000\",\r\n    \"success\": true,\r\n    \"message\": null,\r\n    \"data\": {\r\n        \"action\": \"sqDkNcpFpLr\",\r\n        \"code\": \"FprzSyncToAsync\",\r\n        \"message\": \"业务处理超时,本次请求已自动转为异步方式，可通过taskId查询异步结果\",\r\n        \"taskId\": 534457481415296,\r\n        \"nsrsbh\": \"91************2G\"\r\n    }\r\n}",
+      "description": "",
+      "oasKey": "",
+      "oasExtensions": "",
+      "id": 707666834
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 95884637,
+  "ordering": 1057,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-09-15T09:18:28.000Z",
+  "updatedAt": "2026-09-15T09:28:21.000Z",
+  "creatorId": 3099717,
+  "editorId": 3099717,
+  "creatorUserId": 3099717,
+  "editorUserId": 3099717,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

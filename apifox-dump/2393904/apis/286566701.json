@@ -55,6 +55,7 @@
         "taskId"
       ]
     },
+    "required": false,
     "mediaType": "",
     "examples": [
       {
@@ -145,7 +146,7 @@
         ],
         "definitions": {
           "YjnsScjgResp": {
-            "title": "YjnsScjgResp",
+            "title": "预缴纳税算税反馈结果",
             "type": "object",
             "properties": {
               "sscglb": {
@@ -194,6 +195,7 @@
           "YjnsScjgInfoResp": {
             "title": "YjnsScjgInfoResp",
             "type": "object",
+            "description": "预缴纳税算税反馈结果",
             "properties": {
               "xm": {
                 "type": "string",
@@ -513,7 +515,8 @@
                     "description": "税款所属期止"
                   },
                   "yjns": {
-                    "$ref": "#/definitions/YjnsScjgResp"
+                    "$ref": "#/definitions/YjnsScjgResp",
+                    "description": "预缴纳税算税反馈结果"
                   },
                   "ndhj": {
                     "description": "年度汇缴",
@@ -612,11 +615,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2025-04-20T13:25:35.000Z",
-  "updatedAt": "2026-01-14T06:08:58.000Z",
+  "updatedAt": "2026-10-16T07:14:17.000Z",
   "creatorId": 2661157,
-  "editorId": 1452584,
+  "editorId": 1442097,
   "creatorUserId": 2661157,
-  "editorUserId": 1452584,
+  "editorUserId": 1442097,
   "responseChildren": [],
   "visibility": "SHARED",
   "securityScheme": {},

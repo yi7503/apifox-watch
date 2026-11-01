@@ -1,6 +1,6 @@
 {
   "id": 79034496,
-  "name": "海关缴款书勾选结果",
+  "name": "海关缴款书勾选结果查询",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -23,6 +23,8 @@
     "jsonSchema": {
       "$ref": "#/definitions/34563808"
     },
+    "required": false,
+    "mediaType": "",
     "examples": [
       {
         "value": "{\r\n  \"nsrsbh\": \"91****************90\",\r\n  \"reqId\": 459937506283840\r\n}",
@@ -151,17 +153,15 @@
     "isDefaultUrlEncoding": 1
   },
   "customApiFields": {},
-  "oasExtensions": null,
+  "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-30T06:57:03.000Z",
-  "updatedAt": "2025-06-10T09:14:50.000Z",
+  "updatedAt": "2026-10-29T07:40:50.000Z",
   "creatorId": 1426961,
-  "editorId": 2706439,
+  "editorId": 3600994,
   "creatorUserId": 1426961,
-  "editorUserId": 2706439,
-  "responseChildren": [
-    "BLANK.199398874"
-  ],
+  "editorUserId": 3600994,
+  "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},
   "callbacks": ""

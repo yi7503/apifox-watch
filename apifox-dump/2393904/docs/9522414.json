@@ -1,0 +1,17 @@
+{
+  "id": 9522414,
+  "name": "2026年9月发布内容",
+  "sidebarTitle": "",
+  "content": "## 2026年9月发布内容\n\n发布日期：2026-09-30\n发布版本：V2.2026.09\n\n\n## 一、发票开具\n1. 政策适配更新：电池生产企业、非电池生产企业在开具电池类商品编码时，需要根据电池类商品和服务税收分类编码的有效期、减/免税属性传入是否享受减/免税标识，对接方按需调整。\n   - https://openapi.qixiangyun.com/api-100012782\n   <img width={500}        src=\"https://api.apifox.com/api/v1/projects/2393904/resources/698280/image-preview\" />\n   \n\n2. 优化差额征税（差额开票、全额开票）申报项目代码的填写逻辑，当cezslxDm=01/02时必填，对接方按需调整。\n   - https://openapi.qixiangyun.com/api-100012782\n   <img width={500}        src=\"https://api.apifox.com/api/v1/projects/2393904/resources/698282/image-preview\" /> \n\n3. 优化差额征税开具的蓝字发票在申请红字确认单时的冲销金额与蓝字发票金额的比对逻辑，对接方无需调整。\n4. 优化发票开具时因登录账号信息异常返回的提示信息不匹配的问题。\n5. 优化差额征税-全额开票的价税分离校验逻辑，差额征税-全额开票模式下填写的“扣除额”不参与项目明细行的“税额”计算，系统根据计算公式“税额=含税销售额*税率或征收率/（1+税率或征收率）”计算出税额，对接方无需调整。\n6. 优化医疗服务（住院）发票开具时，医疗服务住院收费明细中“spsl（商品数量）”的数据格式处理，对接方无需调整。\n7. 优化申请授信额度调整上传附件处理，对接方无需调整。\n   - https://openapi.qixiangyun.com/api-307864132\n8. 针对金银首饰购销方试点企业，优化金银首饰发票开具时金银首饰批发标签选择弹框处理，对接方无需调整。\n\n   \n## 二、发票归集\n1. 优化大票量发票归集效率。\n2. 发票归集支持2017年1月1日前开具或取得的发票（对应电票平台“全量发票查询”功能）。\n\n\n ## 三、发票查验\n1. 增值税发票查验统一切换至国家税务总局新版增值税发票查验平台【[国家税务总局增值税发票查验平台](https://inv-veri.chinatax.gov.cn/)】，对接方无需调整。\n\n2. 优化部分地区财政票据查验效率。\n    \n\n## 四、发票认证\n1. 新增支持税务机关代开农产品发票录入功能，对接方按需对接。\n   - 代开农产品发票录入：https://openapi.qixiangyun.com/api-515367691\n   - 发票录入结果查询：https://openapi.qixiangyun.com/api-515343989  \n   \n2. 新增支持出口转内销发票/海关缴款书采集，通过增加采集参数“znxbz：Y/N”来判断是否采集转内销发票发票，默认否；对接方按需对接。\n   - 发票采集：https://openapi.qixiangyun.com/api-120631810\n   - 缴款书采集：https://openapi.qixiangyun.com/api-118200592\n   - znxbz（转内销标志）\n       <img width={500}        src=\"https://api.apifox.com/api/v1/projects/2393904/resources/698287/image-preview\" /> \n       \n       \n3. 优化获取税款所属期的处理逻辑，对接方无需调整。     \n4. 优化统计确认信息采集时偶发无法获取统计确认结果文件的问题。\n\n\n\n\n   \n",
+  "folderId": 36975595,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-08T03:50:50.000Z",
+  "updatedAt": "2026-10-10T08:29:32.000Z",
+  "creatorId": 3600994,
+  "editorId": 3600994,
+  "type": "",
+  "tags": [],
+  "visibility": "SHARED",
+  "filePath": null
+}

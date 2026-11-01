@@ -1,6 +1,6 @@
 {
   "id": 98530267,
-  "name": "获取数电票版式文件",
+  "name": "获取数电发票版式文件",
   "type": "http",
   "serverId": "",
   "preProcessors": [],
@@ -130,7 +130,7 @@
         },
         "filterHwxx": {
           "type": "string",
-          "title": "是否获取发票明细行",
+          "title": "是否过滤掉发票明细行",
           "description": "默认false，返回版式同时返回发票明细行(hwxx) 注意：只有归集成功过的才会返回明细，数据来源自归集",
           "enum": [
             "false-获取发票明细",
@@ -732,7 +732,7 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2024-10-23T01:58:18.000Z",
-  "updatedAt": "2026-07-22T11:24:22.000Z",
+  "updatedAt": "2026-10-27T02:50:46.000Z",
   "creatorId": 2400309,
   "editorId": 2118003,
   "creatorUserId": 2400309,

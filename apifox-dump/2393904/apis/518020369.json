@@ -1,0 +1,279 @@
+{
+  "id": 518020369,
+  "name": "增值税版本升级查询结果",
+  "type": "http",
+  "serverId": "",
+  "preProcessors": [],
+  "postProcessors": [],
+  "inheritPreProcessors": {},
+  "inheritPostProcessors": {},
+  "description": "## 接口描述\n\n   该接口用于获取增值税版本升级查询任务 结果\n\n\n\n\n",
+  "operationId": "",
+  "sourceUrl": "",
+  "method": "post",
+  "path": "/v2/tax/qys/vatVersionUpgradeResult",
+  "tags": [],
+  "status": "released",
+  "requestBody": {
+    "type": "application/json",
+    "parameters": [],
+    "jsonSchema": {
+      "type": "object",
+      "properties": {
+        "aggOrgId": {
+          "type": "string",
+          "title": "企业Id"
+        },
+        "taskId": {
+          "type": "string",
+          "title": "任务ID"
+        }
+      },
+      "required": [
+        "aggOrgId"
+      ],
+      "x-apifox-orders": [
+        "aggOrgId",
+        "taskId"
+      ]
+    },
+    "required": false,
+    "mediaType": "",
+    "examples": [
+      {
+        "value": "{\r\n    \"aggOrgId\":\"\",\r\n    \"taskId\":\"\"\r\n}",
+        "mediaType": "application/json",
+        "description": ""
+      }
+    ],
+    "oasExtensions": ""
+  },
+  "parameters": {
+    "query": [],
+    "path": [],
+    "cookie": [],
+    "header": [
+      {
+        "required": true,
+        "description": "",
+        "type": "string",
+        "id": "QC9t2uwmMc",
+        "enable": true,
+        "name": "Content-Type",
+        "sampleValue": "application/json"
+      },
+      {
+        "required": true,
+        "description": "通过调用access_token接口返回的access_token值",
+        "type": "string",
+        "id": "HDGNYv524W",
+        "enable": true,
+        "name": "access_token",
+        "sampleValue": "{{access_token}}"
+      },
+      {
+        "required": true,
+        "description": "当前时间转为的毫秒数",
+        "type": "string",
+        "id": "H0dlkTCZDB",
+        "enable": true,
+        "name": "req_date",
+        "sampleValue": "{{req_date}}"
+      },
+      {
+        "required": true,
+        "description": "签名算法得到的签名",
+        "type": "string",
+        "id": "m3kJkPvWbv",
+        "enable": true,
+        "name": "req_sign",
+        "sampleValue": "{{req_sign}}"
+      }
+    ]
+  },
+  "commonParameters": {
+    "query": [],
+    "body": [],
+    "cookie": [],
+    "header": [
+      {
+        "name": "Content-Type"
+      },
+      {
+        "name": "access_token"
+      },
+      {
+        "name": "req_date"
+      },
+      {
+        "name": "req_sign"
+      }
+    ]
+  },
+  "auth": {},
+  "responses": [
+    {
+      "id": 169469498,
+      "name": "成功",
+      "code": 200,
+      "contentType": "json",
+      "jsonSchema": {
+        "type": "object",
+        "x-apifox-refs": {},
+        "x-apifox-orders": [
+          "reqId",
+          "code",
+          "success",
+          "message",
+          "data"
+        ],
+        "properties": {
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误码",
+            "description": "错误码"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "businessStatusName": {
+                "type": "string",
+                "title": "任务状态名称"
+              },
+              "serviceCode": {
+                "type": "string",
+                "title": "任务编码"
+              },
+              "businessStatus": {
+                "type": "integer",
+                "title": "任务状态"
+              },
+              "code": {
+                "type": "string",
+                "title": "任务code"
+              },
+              "message": {
+                "type": "string",
+                "title": "任务信息"
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "isNewVat": {
+                    "type": "string",
+                    "title": "是否升级新版增值税",
+                    "description": "必返返回 Y/N"
+                  },
+                  "upgradeDate": {
+                    "type": "string",
+                    "title": "税局升级月份",
+                    "description": "年月 ：2026-07,非必返回\n返回的时间是申报年月\n升级新版增值税=是时，必须返回"
+                  }
+                },
+                "x-apifox-orders": [
+                  "isNewVat",
+                  "upgradeDate"
+                ],
+                "required": [
+                  "isNewVat"
+                ],
+                "title": "任务结果"
+              },
+              "aggOrgId": {
+                "type": "string",
+                "title": "企业id"
+              },
+              "taskId": {
+                "type": "string",
+                "title": "任务Isdd"
+              }
+            },
+            "x-apifox-refs": {},
+            "x-apifox-orders": [
+              "businessStatusName",
+              "serviceCode",
+              "businessStatus",
+              "result",
+              "code",
+              "aggOrgId",
+              "taskId",
+              "message"
+            ],
+            "required": [
+              "businessStatusName",
+              "serviceCode",
+              "businessStatus",
+              "result",
+              "code",
+              "aggOrgId",
+              "taskId",
+              "message"
+            ]
+          },
+          "success": {
+            "description": "接口是否成功（是否发生业务异常）",
+            "type": "boolean",
+            "title": "是否成功标记"
+          },
+          "reqId": {
+            "description": "由服务器端生成的唯一标识，对应每次请求。排查接口异常时，可提供该字段方便定位",
+            "type": "string",
+            "title": "请求id"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "错误信息"
+          }
+        },
+        "required": [
+          "code",
+          "success",
+          "reqId",
+          "message"
+        ]
+      },
+      "itemSchema": {},
+      "description": "",
+      "mediaType": "",
+      "headers": []
+    }
+  ],
+  "responseExamples": [
+    {
+      "name": "成功示例",
+      "responseId": 169469498,
+      "data": "{\n    \"reqId\": \"7bf64065403142ac8fc21acb0b130919\",\n    \"code\": \"2000\",\n    \"success\": true,\n    \"message\": \"成功\",\n    \"data\": {\n        \"businessStatusName\": \"已成功\",\n        \"code\": \"2000\",\n        \"serviceCode\": \"vat-version-upgrade\",\n        \"businessStatus\": 3,\n        \"serviceName\": \"企税-增值税版本升级\",\n        \"message\": \"查询成功\",\n        \"result\": {\n            \"isNewVat\": \"Y\",\n            \"upgradeDate\": \"2026-09\"\n        },\n        \"aggOrgId\": 5459878413402688,\n        \"taskId\": 682485914529536\n    }\n}",
+      "id": 17557609
+    }
+  ],
+  "codeSamples": [],
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "folderId": 13281987,
+  "ordering": 45,
+  "responsibleId": 0,
+  "commonResponseStatus": {},
+  "advancedSettings": {
+    "disabledSystemHeaders": {},
+    "isDefaultUrlEncoding": 1
+  },
+  "customApiFields": {},
+  "oasExtensions": "",
+  "mockScript": {},
+  "createdAt": "2026-09-21T03:08:34.000Z",
+  "updatedAt": "2026-10-22T03:40:19.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "creatorUserId": 1442097,
+  "editorUserId": 1442097,
+  "responseChildren": [],
+  "visibility": "SHARED",
+  "securityScheme": {},
+  "callbacks": ""
+}

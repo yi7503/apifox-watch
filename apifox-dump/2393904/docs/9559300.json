@@ -1,0 +1,17 @@
+{
+  "id": 9559300,
+  "name": "成本法核定农产品增值税进项税额计算表",
+  "sidebarTitle": "",
+  "content": "## 概述\n\n \n## 报文结构\n```\n    \"zzscbfhdncpzzsjxsejsb\": { // 成本法核定农产品增值税进项税额计算表\n  \n        \"cbfhdncpzzsjxsejsb\": {\n            \"cbfhdncpzzsjxseGrid\": {\n                \"dqyxdkncpjxseHj\": \"69.49\", //当期允许抵扣农产品进项税额元,合计（小数点后保留2位小数）\n                \"cbfhdncpzzsjxseGridlbVO\": [{\n                        \"xh\": \"1\", // 序号\n                        \"cpmc\": \"15100000|酒精\", // 产品名称\n                        \"kclmc\": \"13%\", // 扣除率（例如13%，税局下拉选项：6%，9%，13%）\n                        \"dqzyywcb\": \"12345123.45\", // 当期主营业务成本（元）（小数点后保留2位小数）\n                        \"ncphyl\": \"0.1300\", // 农产品耗用率（请填写小数形式，例如13%，请填写0.1300）\n                        \"dqyxdkncpjxse\": \"234.00\" // 当期允许抵扣农产品进项税额（元）（小数点后保留2位小数）\n                    }\n                ]\n            }\n        }\n    }\n\n```",
+  "folderId": 97715918,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-17T02:54:01.000Z",
+  "updatedAt": "2026-10-29T11:52:06.000Z",
+  "creatorId": 1442097,
+  "editorId": 1442097,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}

@@ -374,11 +374,27 @@
                         "tcExcelUrl": {
                           "type": "string",
                           "title": "弹窗文件URL",
-                          "description": "增值税一般人出口业务情况说明弹窗文件模版：https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E5%A2%9E%E5%80%BC%E7%A8%8E%E4%B8%80%E8%88%AC%E4%BA%BA%E5%87%BA%E5%8F%A3%E4%B8%9A%E5%8A%A1%E6%83%85%E5%86%B5%E8%AF%B4%E6%98%8E%E5%BC%B9%E7%AA%97%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88.xlsx\n\n企业所得税出口收入差异弹窗文件模版：https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E4%BC%81%E4%B8%9A%E6%89%80%E5%BE%97%E7%A8%8E%E5%87%BA%E5%8F%A3%E6%94%B6%E5%85%A5%E5%B7%AE%E5%BC%82%E5%BC%B9%E7%AA%97%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88.xlsx\n重点税源审核返回审核情况说明弹框文件模版：\nhttps://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E9%87%8D%E7%82%B9%E7%A8%8E%E6%BA%90%E4%B8%9A%E5%8A%A1%E5%BC%B9%E6%A1%86%E6%A8%A1%E7%89%88.xlsx"
+                          "description": "增值税一般人出口业务情况说明弹窗文件模版：https://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E5%A2%9E%E5%80%BC%E7%A8%8E%E4%B8%80%E8%88%AC%E4%BA%BA%E5%87%BA%E5%8F%A3%E4%B8%9A%E5%8A%A1%E6%83%85%E5%86%B5%E8%AF%B4%E6%98%8E%E5%BC%B9%E7%AA%97%E6%96%87%E4%BB%B6%E6%A8%A1%E7%89%88.xlsx\n\n企业所得税预缴出口收入差异弹窗文件模版：https://custom-file-upload.oss-cn-beijing.aliyuncs.com/op-file-upload/企业所得税出口收入差异弹窗文件模版 mv9c8fjw76ysr71f.xlsx\n重点税源审核返回审核情况说明弹框文件模版：\nhttps://qxy-oss-static.oss-cn-beijing.aliyuncs.com/sb/%E9%87%8D%E7%82%B9%E7%A8%8E%E6%BA%90%E4%B8%9A%E5%8A%A1%E5%BC%B9%E6%A1%86%E6%A8%A1%E7%89%88.xlsx"
                         },
                         "cksrcyqkb ": {
-                          "$ref": "#/definitions/273428689",
-                          "title": "企业所得税预缴出口收入差异表"
+                          "title": "企业所得税预缴出口收入差异表",
+                          "type": "object",
+                          "x-apifox-refs": {
+                            "01M4ZEK4J3R2MVBNCJ08CZE8JD": {
+                              "$ref": "#/definitions/273428689",
+                              "x-apifox-overrides": {
+                                "ckbgdckrmbsr": {
+                                  "type": "number",
+                                  "title": "出口报关单出口人民币收入"
+                                }
+                              },
+                              "required": []
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "01M4ZEK4J3R2MVBNCJ08CZE8JD"
+                          ],
+                          "properties": {}
                         },
                         "shqksm": {
                           "type": "array",
@@ -574,11 +590,11 @@
   "oasExtensions": "",
   "mockScript": {},
   "createdAt": "2023-03-13T07:57:53.000Z",
-  "updatedAt": "2026-08-06T09:41:26.000Z",
+  "updatedAt": "2026-10-15T09:35:00.000Z",
   "creatorId": 798265,
-  "editorId": 1910680,
+  "editorId": 1476015,
   "creatorUserId": 798265,
-  "editorUserId": 1910680,
+  "editorUserId": 1476015,
   "responseChildren": [],
   "visibility": "INHERITED",
   "securityScheme": {},

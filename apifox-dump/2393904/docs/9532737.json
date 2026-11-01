@@ -1,0 +1,17 @@
+{
+  "id": 9532737,
+  "name": "2026年9月发版内容",
+  "sidebarTitle": "",
+  "content": "2026年9月发布内容\n发布日期：2026-09-30\n发布版本：V2.2026.09\n\n\n# 优化功能\n1.年度缴费工资调整、月度缴费工资调整，这两个接口若存在调整失败的人员，则把失败人员信息返回到具体人员的失败原因中，方便快速查找失败原因\n![image.png](https://api.apifox.com/api/v1/projects/2393904/resources/698806/image-preview)\n\n2.广东地区，增加支持险种：综合基本医疗保险。\n所有涉及到的接口均增加：社会保险费申报预览反馈、申报缴款情况查询反馈、申报缴款个人明细查询反馈\n\n\n",
+  "folderId": 70341429,
+  "projectId": 2393904,
+  "moduleId": 306844,
+  "createdAt": "2026-10-10T07:08:38.000Z",
+  "updatedAt": "2026-10-10T07:22:06.000Z",
+  "creatorId": 3222025,
+  "editorId": 3222025,
+  "type": "",
+  "tags": [],
+  "visibility": "INHERITED",
+  "filePath": null
+}
